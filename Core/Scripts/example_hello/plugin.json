@@ -1,9 +1,0 @@
-{
-  "id": "example_hello",
-  "name": "Example: Hello C2UI",
-  "version": "0.1.0",
-  "author": "C2UI",
-  "description": "Minimal plugin: adds a Plugins > Hello action and logs SFM connection events.",
-  "enabled": true,
-  "entry": "__init__.py"
-}

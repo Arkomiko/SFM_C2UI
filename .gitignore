@@ -8,13 +8,24 @@ venv/
 # Build output
 build/
 dist/
-Core/API/c2ui_native*.pyd
-Core/API/native/build/
+*.pyd
 
-# Runtime
+# Vendored SDKs: Valve's files are not redistributable, only the structure is
+Core/dev-kit/sfm_sdk/*
+Core/dev-kit/source_sdk/*
+Core/dev-kit/source2_sdk/*
+Core/dev-kit/steam_sdk/*
+!Core/dev-kit/*/PLACE_SDK_HERE.md
+
+# Runtime data: generated next to the app, never committed
+App/Cache/*/*
+App/Temporary/*
+App/User/*/*
+!App/User/*/.gitkeep
+!App/Cache/*/.gitkeep
+
+# Logs
 *.log
-Assets/fonts/*.ttf
-Assets/fonts/*.otf
 
 # OS / editors
 Thumbs.db
@@ -22,7 +33,3 @@ desktop.ini
 .DS_Store
 .vscode/
 .idea/
-
-# Runtime data written next to the app
-User Data/
-
