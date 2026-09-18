@@ -1,0 +1,17 @@
+{
+  "menus": [
+    { "id": "file", "title_key": "menu.file", "items": [
+        "file.new", "file.open", "-", "file.save", "file.save_as", "-", "file.export_movie", "-", "app.exit" ] },
+    { "id": "edit", "title_key": "menu.edit", "items": [
+        "edit.undo", "edit.redo", "-", "edit.preferences" ] },
+    { "id": "sfm", "title_key": "menu.sfm", "items": [
+        "sfm.launch", "-", "sfm.connect", "sfm.disconnect", "-",
+        "sfm.embed_viewport", "sfm.release_viewport", "sfm.sync_theme", "-",
+        "sfm.install_agent", "sfm.uninstall_agent", "-", "sfm.api_dir" ] },
+    { "id": "window", "title_key": "menu.window", "items": [
+        "@panels", "-", "@workspaces", "@layouts", "-", "@themes", "@languages", "-",
+        "window.output_log", "window.fullscreen" ] },
+    { "id": "modes", "title_key": "menu.modes", "items": [ "@contexts" ] },
+    { "id": "help", "title_key": "menu.help", "items": [ "help.docs", "-", "help.about" ] }
+  ]
+}

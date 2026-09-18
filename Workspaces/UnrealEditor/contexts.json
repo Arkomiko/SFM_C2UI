@@ -1,0 +1,47 @@
+{
+  "default": "clip",
+  "shortcuts": {
+    "file.save": "Ctrl+S",
+    "window.output_log": "Ctrl+`"
+  },
+  "menus": {
+    "outliner":        ["sel.rename", "sel.duplicate", "-", "sel.delete", "-", "sel.properties"],
+    "content_browser": ["content.open", "content.reveal", "-", "content.import"],
+    "timeline":        ["clip.split", "clip.delete", "-", "transport.play_pause"]
+  },
+  "contexts": [
+    {
+      "id": "clip",
+      "name_key": "context.clip",
+      "icon": "mode_clip",
+      "shortcut": "F5",
+      "show_panels": ["timeline"],
+      "toolbar": ["transport.to_start", "transport.prev_frame", "transport.play_pause", "transport.stop", "transport.next_frame", "transport.to_end"]
+    },
+    {
+      "id": "motion",
+      "name_key": "context.motion",
+      "icon": "mode_motion",
+      "shortcut": "F6",
+      "show_panels": ["timeline", "details"],
+      "toolbar": ["transport.play_pause", "transport.stop"]
+    },
+    {
+      "id": "graph",
+      "name_key": "context.graph",
+      "icon": "mode_graph",
+      "shortcut": "F7",
+      "show_panels": ["timeline"],
+      "toolbar": ["transport.play_pause", "transport.stop"]
+    },
+    {
+      "id": "render",
+      "name_key": "context.render",
+      "icon": "mode_render",
+      "shortcut": "F8",
+      "show_panels": ["output_log"],
+      "hide_panels": ["place_actors"],
+      "toolbar": ["file.export_movie"]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "toolbars": [
+    { "id": "main", "title_key": "toolbar.main", "area": "top", "icon_size": 20, "text": true,
+      "items": [ "file.open", "file.save", "-", "@contexts", "->", "transport.play_pause", "transport.stop", "-", "sfm.launch" ] }
+  ]
+}

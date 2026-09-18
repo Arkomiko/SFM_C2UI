@@ -1,0 +1,21 @@
+{
+  "id": "aae_dark",
+  "name": "After Effects Dark",
+  "base": "ue5_dark",
+  "variant": "dark",
+  "description": "Adobe After Effects inspired charcoal theme with purple-blue accent.",
+  "tokens": {
+    "radius": 2, "radius.small": 2,
+    "bg.window": "#232323", "bg.panel": "#282828", "bg.base": "#1e1e1e", "bg.header": "#323232",
+    "bg.input": "#1a1a1a", "bg.hover": "#3a3a3a", "bg.pressed": "#191919", "bg.menu": "#2b2b2b",
+    "bg.alt": "#262626", "bg.tab": "#1f1f1f", "bg.tab.active": "#2e2e2e", "bg.titlebar": "#1b1b1b",
+    "bg.scrollbar": "#232323", "fg.scrollbar": "#4a4a4a",
+    "border": "#141414", "border.light": "#3c3c3c", "border.focus": "#7f8cff",
+    "text": "#d6d6d6", "text.dim": "#8c8c8c", "text.bright": "#ffffff",
+    "accent": "#7f8cff", "accent.hover": "#a3adff", "accent.pressed": "#5a66cc",
+    "selection": "#3c4a8c", "selection.inactive": "#2e365e", "icon.color": "#d6d6d6",
+    "viewport.bg_top": "#2a2a2a", "viewport.bg_bottom": "#161616",
+    "timeline.bg": "#212121", "timeline.header_bg": "#2a2a2a", "timeline.row": "#252525", "timeline.row_alt": "#292929",
+    "timeline.ruler_bg": "#1a1a1a", "timeline.clip": "#5a4f9f", "timeline.clip_border": "#8f84d8", "timeline.playhead": "#39a0ff"
+  }
+}

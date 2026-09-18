@@ -1,0 +1,17 @@
+{
+  "toolbars": [
+    {
+      "id": "main",
+      "title_key": "toolbar.main",
+      "area": "top",
+      "icon_size": 18,
+      "items": [
+        "file.save", "-",
+        "@contexts", "-",
+        "transport.to_start", "transport.prev_frame", "transport.play_pause", "transport.stop", "transport.next_frame", "transport.to_end",
+        "->",
+        "sfm.launch", "sfm.connect", "-", "edit.preferences"
+      ]
+    }
+  ]
+}

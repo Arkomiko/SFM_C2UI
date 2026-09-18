@@ -1,0 +1,15 @@
+{
+  "id": "uwp_default",
+  "name": "Windows (Default)",
+  "window": { "size": [1500, 860], "maximized": true },
+  "central": "viewport",
+  "corners": { "top_left": "left", "top_right": "right", "bottom_left": "left", "bottom_right": "right" },
+  "docks": [
+    { "panel": "outliner",        "area": "left" },
+    { "panel": "content_browser", "split": { "with": "outliner", "orientation": "vertical" } },
+    { "panel": "details",         "area": "right" },
+    { "panel": "timeline",        "area": "bottom", "active": true },
+    { "panel": "output_log",      "tabify": "timeline" }
+  ],
+  "sizes": { "outliner": [300, 380], "details": [340, 0], "timeline": [0, 260] }
+}

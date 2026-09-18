@@ -1,0 +1,100 @@
+/* =====================================================================
+   C2UI -> native SFM stylesheet (applied INSIDE sfm.exe, Qt 4.8).
+   Same @{token} placeholders as base.qss, but restricted to the QSS subset
+   Qt 4 understands and without url(icons:...) references (the icon search
+   path only exists in the host process).  Kept deliberately conservative so
+   SFM's custom-painted widgets (timeline, graph editor) keep working.
+   ===================================================================== */
+
+QWidget {
+    background-color: @{bg.panel};
+    color: @{text};
+}
+/* fonts only on standard chrome - SFM's custom labels (time code etc.) keep their own */
+QMenuBar, QMenu, QToolTip, QTabBar, QHeaderView, QTreeView, QListView, QTableView,
+QPushButton, QToolButton, QComboBox, QLineEdit, QSpinBox, QDoubleSpinBox, QStatusBar {
+    font-family: "@{font.family}";
+    font-size: @{font.size}pt;
+}
+QMainWindow, QDialog { background-color: @{bg.window}; }
+QWidget:disabled { color: @{text.dim}; }
+
+QMenuBar { background-color: @{bg.titlebar}; color: @{text}; border-bottom: 1px solid @{border}; }
+QMenuBar::item { padding: 4px 8px; background: transparent; }
+QMenuBar::item:selected { background-color: @{bg.hover}; color: @{text.bright}; }
+QMenu { background-color: @{bg.menu}; color: @{text}; border: 1px solid @{border.light}; padding: 3px; }
+QMenu::item { padding: 4px 24px 4px 22px; }
+QMenu::item:selected { background-color: @{selection}; color: @{text.bright}; }
+QMenu::item:disabled { color: @{text.dim}; }
+QMenu::separator { height: 1px; background: @{border.light}; margin: 3px 6px; }
+
+QToolBar { background-color: @{bg.window}; border: none; border-bottom: 1px solid @{border}; spacing: 2px; }
+QToolBar::separator { width: 1px; background: @{border.light}; margin: 4px 4px; }
+QToolButton { background: transparent; border: 1px solid transparent; border-radius: 3px; padding: 3px; color: @{text}; }
+QToolButton:hover { background-color: @{bg.hover}; color: @{text.bright}; }
+QToolButton:pressed { background-color: @{bg.pressed}; }
+QToolButton:checked { background-color: @{bg.header}; border-color: @{accent}; }
+
+QPushButton {
+    background-color: @{bg.header}; color: @{text};
+    border: 1px solid @{border}; border-radius: 3px; padding: 4px 12px; min-height: 16px;
+}
+QPushButton:hover { background-color: @{bg.hover}; color: @{text.bright}; }
+QPushButton:pressed { background-color: @{bg.pressed}; }
+QPushButton:default { border-color: @{accent}; }
+
+QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox, QComboBox {
+    background-color: @{bg.input}; color: @{text};
+    border: 1px solid @{border}; border-radius: 3px; padding: 2px 4px;
+    selection-background-color: @{selection}; selection-color: @{text.bright};
+}
+QLineEdit:focus, QSpinBox:focus, QDoubleSpinBox:focus, QComboBox:focus { border-color: @{border.focus}; }
+QComboBox::drop-down { border: none; width: 16px; }
+QComboBox QAbstractItemView { background-color: @{bg.menu}; border: 1px solid @{border.light}; selection-background-color: @{selection}; }
+QCheckBox::indicator, QGroupBox::indicator { width: 13px; height: 13px; border: 1px solid @{border.light}; border-radius: 2px; background-color: @{bg.input}; }
+QCheckBox::indicator:checked { background-color: @{accent}; border-color: @{accent}; }
+
+QDockWidget { titlebar-close-icon: none; titlebar-normal-icon: none; }
+QDockWidget::title { background-color: @{bg.header}; padding: 4px 8px; text-align: left; border-bottom: 1px solid @{border}; }
+QMainWindow::separator { background-color: @{bg.window}; width: 4px; height: 4px; }
+QMainWindow::separator:hover { background-color: @{accent}; }
+QSplitter::handle { background-color: @{border}; }
+QSplitter::handle:horizontal { width: 3px; }
+QSplitter::handle:vertical { height: 3px; }
+
+QTabBar::tab {
+    background-color: @{bg.tab}; color: @{text.dim};
+    border: 1px solid @{border}; border-bottom: none; padding: 4px 10px; margin-right: 1px; min-width: 50px;
+}
+QTabBar::tab:hover { color: @{text}; background-color: @{bg.hover}; }
+QTabBar::tab:selected { background-color: @{bg.tab.active}; color: @{text.bright}; border-top: 2px solid @{accent}; }
+QTabWidget::pane { border: 1px solid @{border}; background-color: @{bg.panel}; }
+
+QTreeView, QListView, QTableView, QTreeWidget, QListWidget, QTableWidget {
+    background-color: @{bg.panel}; alternate-background-color: @{bg.alt}; color: @{text};
+    border: none; selection-background-color: @{selection}; selection-color: @{text.bright};
+}
+QTreeView::item:hover, QListView::item:hover { background-color: @{bg.hover}; }
+QTreeView::item:selected, QListView::item:selected { background-color: @{selection}; color: @{text.bright}; }
+QHeaderView::section {
+    background-color: @{bg.header}; color: @{text.dim};
+    border: none; border-right: 1px solid @{border}; border-bottom: 1px solid @{border}; padding: 3px 5px;
+}
+
+QScrollBar:vertical { background-color: @{bg.scrollbar}; width: 11px; margin: 0; }
+QScrollBar::handle:vertical { background-color: @{fg.scrollbar}; min-height: 24px; border-radius: 4px; margin: 2px; }
+QScrollBar::handle:vertical:hover { background-color: @{text.dim}; }
+QScrollBar:horizontal { background-color: @{bg.scrollbar}; height: 11px; margin: 0; }
+QScrollBar::handle:horizontal { background-color: @{fg.scrollbar}; min-width: 24px; border-radius: 4px; margin: 2px; }
+QScrollBar::handle:horizontal:hover { background-color: @{text.dim}; }
+QScrollBar::add-line, QScrollBar::sub-line { width: 0; height: 0; }
+QScrollBar::add-page, QScrollBar::sub-page { background: transparent; }
+
+QStatusBar { background-color: @{bg.titlebar}; color: @{text.dim}; border-top: 1px solid @{border}; }
+QToolTip { background-color: @{bg.tooltip}; color: @{text}; border: 1px solid @{border.light}; padding: 3px 5px; }
+QGroupBox { border: 1px solid @{border}; border-radius: 3px; margin-top: 10px; padding-top: 6px; }
+QGroupBox::title { subcontrol-origin: margin; left: 8px; padding: 0 4px; color: @{text.dim}; }
+QProgressBar { background-color: @{bg.base}; border: 1px solid @{border}; border-radius: 3px; text-align: center; }
+QProgressBar::chunk { background-color: @{accent}; }
+QSlider::groove:horizontal { height: 4px; background-color: @{bg.base}; border-radius: 2px; }
+QSlider::handle:horizontal { width: 12px; margin: -5px 0; background-color: @{text}; border-radius: 6px; }
