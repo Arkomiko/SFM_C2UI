@@ -1,0 +1,7 @@
+{
+  "id": "sfm",
+  "name": "Source Filmmaker",
+  "entry": "bridge.py",
+  "requires_sdk": null,
+  "description": "Mounts a Source Filmmaker installation by expanding the search paths in usermod/gameinfo.txt."
+}
