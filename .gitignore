@@ -22,3 +22,7 @@ desktop.ini
 .DS_Store
 .vscode/
 .idea/
+
+# Runtime data written next to the app
+User Data/
+
