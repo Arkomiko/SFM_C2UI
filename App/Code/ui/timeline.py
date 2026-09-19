@@ -7,6 +7,8 @@ that scrolls and zooms as a whole. Time runs along X in the sequence's own
 time; each clip is a rectangle from its start to its end.
 
     left drag on the ruler or empty space   move the time cursor
+    shift + left drag on the ruler          make a time selection (its hold)
+    drag a selection edge on the ruler      move that edge (inner: hold, outer: falloff)
     left click on a clip                    select it (a shot is shown in the viewport)
     wheel                                   zoom about the cursor
     middle drag / shift + wheel             scroll
@@ -23,6 +25,7 @@ from PySide6.QtWidgets import QWidget
 
 from Core.API.dmx import Time
 from Core.API.session import Clip, FilmClip, Session, SoundClip
+from Core.Code.motion import INFINITE, TimeSelection
 
 __all__ = ["Timeline"]
 
@@ -42,6 +45,10 @@ FILM_SEL = QColor("#66c0f4")
 SOUND = QColor("#4a8a5c")
 OTHER = QColor("#6b5e9a")
 CURSOR = QColor("#ff5c5c")
+HOLD = QColor(255, 200, 80, 60)
+FALLOFF = QColor(255, 200, 80, 28)
+EDGE = QColor("#ffc850")
+EDGE_GRAB = 6
 
 
 @dataclass
@@ -55,6 +62,7 @@ class _Row:
 class Timeline(QWidget):
     time_changed = Signal(object)        # Time
     shot_selected = Signal(object)       # FilmClip
+    selection_changed = Signal(object)   # TimeSelection
 
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
@@ -70,6 +78,9 @@ class Timeline(QWidget):
         self._selected: Optional[Clip] = None
         self._drag: Optional[str] = None
         self._drag_last = QPointF()
+        self.selection: Optional[TimeSelection] = None
+        self._drag_edge: Optional[str] = None
+        self._drag_anchor = 0.0
         self._font = QFont(self.font())
         self._font.setPointSizeF(max(7.5, self.font().pointSizeF() - 1))
 
@@ -79,6 +90,11 @@ class Timeline(QWidget):
         self._rows = []
         self._selected = None
         self._time = Time(0)
+        self.selection = None
+        if session is not None and session.settings is not None:
+            element = session.settings.get("timeSelection")
+            if element is not None:
+                self.selection = TimeSelection.from_element(element)
         if session is not None and session.active_clip is not None:
             clip = session.active_clip
             self._duration = max(0.001, clip.time_frame.duration.seconds)
@@ -111,6 +127,40 @@ class Timeline(QWidget):
     def select_clip(self, clip: Optional[Clip]) -> None:
         self._selected = clip
         self.update()
+
+    # -- time selection ----------------------------------------------------------------
+    def set_selection(self, selection: Optional[TimeSelection], write: bool = True) -> None:
+        self.selection = selection
+        if write and self._session is not None and self._session.settings is not None:
+            element = self._session.settings.get("timeSelection")
+            if element is not None and selection is not None:
+                selection.write(element)
+        self.selection_changed.emit(selection)
+        self.update()
+
+    def clear_selection(self) -> None:
+        self.set_selection(TimeSelection(enabled=False))
+
+    def _edges(self):
+        """(name, seconds) of the finite selection edges."""
+        sel = self.selection
+        if sel is None or not sel.enabled:
+            return []
+        out = []
+        for name, t in (("falloff_left", sel.falloff_left), ("hold_left", sel.hold_left),
+                        ("hold_right", sel.hold_right), ("falloff_right", sel.falloff_right)):
+            if abs(t.ticks) < INFINITE.ticks:
+                out.append((name, t.seconds))
+        return out
+
+    def _edge_at(self, x: float) -> Optional[str]:
+        best = None
+        best_distance = EDGE_GRAB
+        for name, seconds in self._edges():
+            distance = abs(self._x(seconds) - x)
+            if distance < best_distance:
+                best, best_distance = name, distance
+        return best
 
     def fit(self) -> None:
         width = max(50, self.width() - HEADER_W - 8)
@@ -153,6 +203,7 @@ class Timeline(QWidget):
             return
 
         self._paint_ruler(p, w)
+        self._paint_selection(p, w, h)
         p.setClipRect(0, RULER_H, w, h - RULER_H)
         for row in self._rows:
             self._paint_row(p, row, w)
@@ -193,6 +244,29 @@ class Timeline(QWidget):
                 mx = round(self._x(seconds + step * k / 5))
                 if mx > HEADER_W:
                     p.drawLine(mx, RULER_H - 3, mx, RULER_H)
+
+    def _paint_selection(self, p: QPainter, w: int, h: int) -> None:
+        sel = self.selection
+        if sel is None or not sel.enabled:
+            return
+
+        def x_of(t: Time, fallback: float) -> float:
+            return fallback if abs(t.ticks) >= INFINITE.ticks else self._x(t.seconds)
+
+        fl = x_of(sel.falloff_left, HEADER_W)
+        hl = x_of(sel.hold_left, HEADER_W)
+        hr = x_of(sel.hold_right, w)
+        fr = x_of(sel.falloff_right, w)
+        left = max(HEADER_W, fl)
+        p.fillRect(QRectF(left, 0, max(0.0, min(w, fr) - left), h), FALLOFF)
+        p.fillRect(QRectF(max(HEADER_W, hl), 0, max(0.0, min(w, hr) - max(HEADER_W, hl)), h), HOLD)
+        p.setPen(QPen(EDGE, 1))
+        for _name, seconds in self._edges():
+            x = round(self._x(seconds))
+            if HEADER_W <= x <= w:
+                p.drawLine(x, 0, x, h)
+                p.setBrush(EDGE)
+                p.drawPolygon([QPointF(x - 4, RULER_H), QPointF(x + 4, RULER_H), QPointF(x, RULER_H - 6)])
 
     def _tick_step(self) -> float:
         """Seconds between labelled ticks, chosen so labels do not collide."""
@@ -239,6 +313,18 @@ class Timeline(QWidget):
             return
         if pos.x() < HEADER_W:
             return
+        if pos.y() < RULER_H:
+            edge = self._edge_at(pos.x())
+            if edge is not None:
+                self._drag = "edge"
+                self._drag_edge = edge
+                return
+            if event.modifiers() & Qt.ShiftModifier:
+                self._drag = "select"
+                self._drag_anchor = self._seconds(pos.x())
+                t = Time.from_seconds(self._drag_anchor)
+                self.set_selection(TimeSelection(t, t, t, t, enabled=True), write=False)
+                return
         clip, row = self._clip_at(pos)
         if clip is not None and pos.y() >= RULER_H:
             self._selected = clip
@@ -253,6 +339,14 @@ class Timeline(QWidget):
         pos = event.position()
         if self._drag == "scrub":
             self.set_time(Time.from_seconds(self._seconds(pos.x())))
+        elif self._drag == "select" and self.selection is not None:
+            a, b = sorted((self._drag_anchor, max(0.0, self._seconds(pos.x()))))
+            sel = self.selection
+            sel.falloff_left = sel.hold_left = Time.from_seconds(a)
+            sel.hold_right = sel.falloff_right = Time.from_seconds(b)
+            self.update()
+        elif self._drag == "edge" and self.selection is not None:
+            self._move_edge(self._drag_edge, max(0.0, self._seconds(pos.x())))
         elif self._drag == "pan":
             self._origin -= (pos.x() - self._drag_last.x()) / self._scale
             self._origin = max(0.0, self._origin)
@@ -260,7 +354,23 @@ class Timeline(QWidget):
         self._drag_last = pos
 
     def mouseReleaseEvent(self, event) -> None:
+        if self._drag in ("select", "edge") and self.selection is not None:
+            self.set_selection(self.selection)          # write it to the session
         self._drag = None
+        self._drag_edge = None
+
+    def _move_edge(self, edge: str, seconds: float) -> None:
+        sel = self.selection
+        t = Time.from_seconds(seconds)
+        if edge == "falloff_left":
+            sel.falloff_left = Time(min(t.ticks, sel.hold_left.ticks))
+        elif edge == "hold_left":
+            sel.hold_left = Time(min(max(t.ticks, sel.falloff_left.ticks), sel.hold_right.ticks))
+        elif edge == "hold_right":
+            sel.hold_right = Time(max(min(t.ticks, sel.falloff_right.ticks), sel.hold_left.ticks))
+        elif edge == "falloff_right":
+            sel.falloff_right = Time(max(t.ticks, sel.hold_right.ticks))
+        self.update()
 
     def wheelEvent(self, event) -> None:
         delta = event.angleDelta().y() / 120.0

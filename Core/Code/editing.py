@@ -286,6 +286,13 @@ def channel_index(clip) -> dict:
     return out
 
 
+def _read_slot(element: Element, name: str, slot: int) -> Any:
+    attr = element.attribute(name)
+    if attr is None:
+        return None
+    return attr.value[slot] if slot >= 0 and slot < len(attr.value) else attr.value
+
+
 def slot_of(element: Element, name: str, index: int) -> int:
     """SFM writes toIndex 0 for scalars too; an index only means something
     for an array attribute, so a scalar's slot is always -1."""
@@ -296,22 +303,36 @@ def slot_of(element: Element, name: str, index: int) -> int:
 
 
 def record_edit(index: dict, element: Element, name: str, value: Any, shot_time: Time,
-                slot: int = -1, label: Optional[str] = None) -> Command:
+                slot: int = -1, label: Optional[str] = None, selection=None) -> Command:
     """The command for changing `element.name` at a moment of the shot.
 
     When a channel drives the attribute, the value also becomes a key in
     the channel's log at the clip's local time - otherwise the next
-    evaluation would put the old value back. The channel's control gets the
-    value too, so the animation set's slider agrees.
+    evaluation would put the old value back. With a time `selection` (in
+    shot time) the difference is instead spread over the selection as the
+    motion editor does. The channel's control gets the value too, so the
+    animation set's slider agrees.
     """
     slot = slot_of(element, name, slot)
+    old = _read_slot(element, name, slot)
     commands: List[Command] = [SetAttribute(element, name, value, slot, label)]
     driven = index.get((id(element), name, slot))
     if driven is not None:
         log = driven.channel.log
         if log is not None and top_layer(log) is not None:
-            clip_time = driven.clip.time_frame.to_child_time(shot_time)
-            commands.append(SetKey(log, clip_time, value))
+            if selection is not None and top_layer(log).get("times"):
+                from .animation import sample_log
+                from .motion import OffsetOverSelection, offset_between
+                kind = value_type_of(log)
+                # the offset is from what the log says at the cursor, which is what was seen
+                found, at_cursor = sample_log(log, driven.clip.time_frame.to_child_time(shot_time))
+                offset = offset_between(kind, at_cursor if found else old, value)
+                if offset is not None:
+                    commands.append(OffsetOverSelection(
+                        log, kind, selection.mapped(driven.clip.time_frame), offset))
+            else:
+                clip_time = driven.clip.time_frame.to_child_time(shot_time)
+                commands.append(SetKey(log, clip_time, value))
         source = driven.channel.from_element
         from_attribute = driven.channel.from_attribute
         if source is not None and from_attribute and source.attribute(from_attribute) is not None:

@@ -26,6 +26,7 @@ from Core.Code.animation import Evaluator
 from Core.Code.editing import UndoStack, channel_index, record_edit
 from Core.Code.formats import FormatError, load_dmx, save_dmx
 from Core.Code.editing import Group
+from Core.Code.motion import TimeSelection
 from Core.Code.transform import (apply, apply_direction, invert, matrix_to_quaternion, multiply,
                                  quaternion_from_axis_angle, quaternion_multiply,
                                  quaternion_normalize, translation_of)
@@ -189,6 +190,16 @@ class MainWindow(QMainWindow):
         self.redo_action.setShortcuts([QKeySequence.Redo, QKeySequence("Ctrl+Shift+Z")])
         self.redo_action.triggered.connect(self.redo_edit)
         edit_menu.addAction(self.redo_action)
+        edit_menu.addSeparator()
+        self.motion_action = QAction("&Motion Editor (edit over the time selection)", self)
+        self.motion_action.setCheckable(True)
+        self.motion_action.setShortcut("M")
+        self.motion_action.toggled.connect(self._motion_toggled)
+        edit_menu.addAction(self.motion_action)
+        clear_selection = QAction("Clear &Time Selection", self)
+        clear_selection.setShortcut("Ctrl+Shift+A")
+        clear_selection.triggered.connect(lambda: self.timeline.clear_selection())
+        edit_menu.addAction(clear_selection)
         self._undo_changed()
 
         view_menu = bar.addMenu("&View")
@@ -410,6 +421,19 @@ class MainWindow(QMainWindow):
     def _shot_time(self, shot: FilmClip) -> Time:
         return shot.time_frame.to_child_time(self.timeline.time)
 
+    def _motion_toggled(self, on: bool) -> None:
+        self.statusBar().showMessage("motion editor: edits spread over the time selection" if on
+                                     else "graph editor: edits key at the cursor")
+
+    def _selection_for(self, shot: FilmClip) -> Optional[TimeSelection]:
+        """The time selection to edit over, in the shot's time, or None to key at the cursor."""
+        if not self.motion_action.isChecked():
+            return None
+        selection = self.timeline.selection
+        if selection is None or not selection.enabled:
+            selection = TimeSelection()                  # the whole clip, as SFM with no selection
+        return selection.mapped(shot.time_frame)
+
     def _inspector_edited(self, element: Element, name: str, index: int, value) -> None:
         if name == "name":
             old = element.name
@@ -432,7 +456,8 @@ class MainWindow(QMainWindow):
             self._channel_index_shot = shot
         try:
             if shot is not None:
-                command = record_edit(self._channel_index, element, name, value, self._shot_time(shot), index)
+                command = record_edit(self._channel_index, element, name, value, self._shot_time(shot), index,
+                                      selection=self._selection_for(shot))
             else:
                 from Core.Code.editing import SetAttribute
                 command = SetAttribute(element, name, value, index)
@@ -568,7 +593,8 @@ class MainWindow(QMainWindow):
             if not _same(self._channel_index_shot, shot):
                 self._channel_index = channel_index(shot)
                 self._channel_index_shot = shot
-            return record_edit(self._channel_index, element, name, value, self._shot_time(shot))
+            return record_edit(self._channel_index, element, name, value, self._shot_time(shot),
+                               selection=self._selection_for(shot))
         from Core.Code.editing import SetAttribute
         return SetAttribute(element, name, value)
 
