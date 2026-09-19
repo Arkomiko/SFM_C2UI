@@ -92,6 +92,14 @@ def test_mips_are_stored_smallest_first_and_returned_largest_first():
     assert (w, h) == (2, 2) and _pixel(rgba, 2, 1, 1) == RED
 
 
+def test_want_mips_off_keeps_only_the_full_image():
+    data = build_vtf(_checker(8, 8, RED, RED), 8, 8, fmt=ImageFormat.RGBA8888, mips=4)
+    tex = parse_vtf(data, "t.vtf", want_mips=False)
+    assert len(tex.mips) == 1 and tex.mip_count == 4
+    rgba, w, h = tex.to_rgba(max_size=2)              # nothing smaller stored: full image
+    assert (w, h) == (8, 8) and _pixel(rgba, 8, 7, 7) == RED
+
+
 def test_max_size_picks_the_smallest_mip_that_is_big_enough():
     data = build_vtf(_checker(64, 32), 64, 32, fmt=ImageFormat.RGBA8888, mips=7)
     tex = parse_vtf(data, "t.vtf")

@@ -169,7 +169,11 @@ class VtfFile:
 
 
 def parse_vtf(data: bytes, name: str = "texture.vtf", want_mips: bool = True) -> VtfFile:
-    """Read a .vtf.  Raises :class:`FormatError` when it is not one."""
+    """Read a .vtf.  Raises :class:`FormatError` when it is not one.
+
+    With `want_mips` off only the full-size image is kept, which is what a
+    GPU upload with its own mip generation needs.
+    """
     reader = Reader(data, name)
     if reader.size < 64:
         raise FormatError(f"{name}: too small to be a texture ({reader.size} bytes)")
@@ -262,19 +266,18 @@ def _read_mips(reader: Reader, vtf: VtfFile, start: int, faces: int, want_mips: 
 
     offset = start
     found: Dict[int, bytes] = {}
-    slices = vtf.frames * faces * max(1, vtf.depth)
     for level in reversed(range(levels)):          # smallest first on disk
         per_slice = sizes[level]
-        block = per_slice * slices
+        # a volume texture loses depth with each mip, like width and height
+        block = per_slice * vtf.frames * faces * max(1, vtf.depth >> level)
         if offset + per_slice > reader.size:
             vtf.warnings.append(
                 f"image data ends early: mip {level} needs {per_slice} bytes at {offset}, "
                 f"file is {reader.size}")
             break
-        found[level] = reader.data[offset:offset + per_slice]     # first frame, first face
+        if want_mips or level == 0:
+            found[level] = reader.data[offset:offset + per_slice]     # first frame, first face
         offset += block
-        if not want_mips and level == 0:
-            break
 
     if not found:
         vtf.warnings.append("no usable image data")
