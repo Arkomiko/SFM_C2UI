@@ -124,13 +124,24 @@ class Dag(View):
 
     def walk(self, parent_matrix: Mat34 = IDENTITY, include_hidden: bool = False
              ) -> Iterator[Tuple["Dag", Mat34]]:
-        """Every node under this one, depth first, with its world matrix."""
+        """Every node under this one, depth first, with its world matrix.
+        A hidden node hides everything under it."""
         if not include_hidden and not self.visible:
             return
         world = multiply(parent_matrix, self.local_matrix())
         yield self, world
         for child in self.children:
             yield from child.walk(world, include_hidden)
+
+    def walk_visibility(self, parent_matrix: Mat34 = IDENTITY, parent_visible: bool = True
+                        ) -> Iterator[Tuple["Dag", Mat34, bool]]:
+        """Every node with its world matrix and whether it is shown, hidden
+        ancestors included."""
+        visible = parent_visible and self.visible
+        world = multiply(parent_matrix, self.local_matrix())
+        yield self, world, visible
+        for child in self.children:
+            yield from child.walk_visibility(world, visible)
 
     def world_matrix(self, parent_matrix: Mat34 = IDENTITY) -> Mat34:
         return multiply(parent_matrix, self.local_matrix())
@@ -299,12 +310,14 @@ class FilmClip(Clip):
         shots.sort(key=lambda c: c.time_frame.start.ticks)
         return shots
 
-    def game_models(self) -> List[Tuple[GameModel, Mat34]]:
-        """Every visible game model in the scene with its world matrix."""
+    def game_models(self, include_hidden: bool = False) -> List[Tuple[GameModel, Mat34]]:
+        """Every game model in the scene with its world matrix; hidden ones
+        too when asked, since animation can show them later."""
         scene = self.scene
         if scene is None:
             return []
-        return [(node, world) for node, world in scene.walk() if isinstance(node, GameModel)]
+        return [(node, world) for node, world in scene.walk(include_hidden=include_hidden)
+                if isinstance(node, GameModel)]
 
 
 class Track(View):

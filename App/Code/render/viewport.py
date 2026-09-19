@@ -41,6 +41,8 @@ class Viewport(QOpenGLWidget):
     failed = Signal(str)
     #: emitted after a scene is uploaded, with the scene summary
     scene_ready = Signal(str)
+    #: emitted when the user takes hold of the camera
+    camera_taken = Signal()
 
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
@@ -118,6 +120,8 @@ class Viewport(QOpenGLWidget):
     def mousePressEvent(self, event) -> None:
         self._last = event.position().toPoint()
         self.setFocus()
+        if event.buttons() & (Qt.LeftButton | Qt.MiddleButton):
+            self.camera_taken.emit()
 
     def mouseMoveEvent(self, event) -> None:
         pos = event.position().toPoint()
@@ -134,6 +138,7 @@ class Viewport(QOpenGLWidget):
 
     def wheelEvent(self, event) -> None:
         self.camera.dolly(event.angleDelta().y() / 120.0)
+        self.camera_taken.emit()
         self.update()
 
     def keyPressEvent(self, event) -> None:

@@ -114,6 +114,8 @@ class Renderer:
         # opaque surfaces of every instance first, then the blended ones over them
         for blended in (False, True):
             for instance in self.scene.instances:
+                if not instance.visible:
+                    continue
                 meshes = self.meshes.get(instance.loaded.rel, [])
                 if not any(item.blended == blended for item, _m in meshes):
                     continue

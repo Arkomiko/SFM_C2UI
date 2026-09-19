@@ -13,7 +13,7 @@ import math
 from pathlib import Path
 from typing import Callable, Optional
 
-from PySide6.QtCore import QByteArray, QThread, Qt, Signal, Slot
+from PySide6.QtCore import QByteArray, QElapsedTimer, QThread, QTimer, Qt, Signal, Slot
 from PySide6.QtGui import QAction, QKeySequence
 from PySide6.QtWidgets import (QDockWidget, QFileDialog, QLabel, QLineEdit, QListWidget,
                                QListWidgetItem, QMainWindow, QMessageBox, QStatusBar,
@@ -21,11 +21,12 @@ from PySide6.QtWidgets import (QDockWidget, QFileDialog, QLabel, QLineEdit, QLis
 
 from Core.API.dmx import Time
 from Core.API.session import Camera, Dag, FilmClip, Session
+from Core.Code.animation import Evaluator
 from Core.Code.formats import FormatError, load_dmx
 from Core.Code.transform import apply, apply_direction
 
 from .content_library import ContentLibrary
-from .render.scene import Scene, build_scene, build_shot_scene
+from .render.scene import Scene, build_scene, build_shot_scene, refresh_shot_scene
 from .render.viewport import Viewport
 from .settings import Settings
 from .ui.session_tree import SessionTree
@@ -64,6 +65,14 @@ class MainWindow(QMainWindow):
         self.session_path: Optional[Path] = None
         self.current_shot: Optional[FilmClip] = None
         self._loader: Optional[_SceneLoader] = None
+        self.evaluator = Evaluator()
+        #: whether the viewport keeps looking through the shot's camera as time moves
+        self.follow_camera = True
+        self._play_timer = QTimer(self)
+        self._play_timer.setInterval(1000 // 60)
+        self._play_timer.timeout.connect(self._tick)
+        self._play_clock = QElapsedTimer()
+        self._play_from = Time(0)
         self.setWindowTitle("C2UI")
         self.resize(1400, 860)
 
@@ -101,6 +110,7 @@ class MainWindow(QMainWindow):
         self.results.itemActivated.connect(self._open_item)
         self.results.currentItemChanged.connect(lambda cur, _prev: self._open_item(cur))
         self.viewport.failed.connect(self._viewport_failed)
+        self.viewport.camera_taken.connect(self._camera_taken)
         self.viewport.scene_ready.connect(self.statusBar().showMessage)
         self.tree.shot_selected.connect(self.show_shot)
         self.tree.node_selected.connect(self._node_selected)
@@ -143,6 +153,20 @@ class MainWindow(QMainWindow):
         shot_cam.setShortcut("C")
         shot_cam.triggered.connect(self.use_shot_camera)
         view_menu.addAction(shot_cam)
+
+        play_menu = bar.addMenu("&Playback")
+        play = QAction("&Play / Pause", self)
+        play.setShortcut("Space")
+        play.triggered.connect(self.toggle_play)
+        play_menu.addAction(play)
+        stop = QAction("&Stop", self)
+        stop.setShortcut("Escape")
+        stop.triggered.connect(self.stop)
+        play_menu.addAction(stop)
+        home = QAction("Go to &Start", self)
+        home.setShortcut("Ctrl+Home")
+        home.triggered.connect(lambda: self.timeline.set_time(Time(0)))
+        play_menu.addAction(home)
 
     # -- content -------------------------------------------------------------------
     def open_content(self) -> bool:
@@ -232,10 +256,12 @@ class MainWindow(QMainWindow):
         first = next((s for s in shots if s.scene is not None), shots[0] if shots else None)
         if first is not None:
             self.tree.select_shot(first)
+            self.timeline.set_time(first.time_frame.start, emit=False)
             self.show_shot(first)
         return True
 
     def close_session(self) -> None:
+        self._play_timer.stop()
         self.session = None
         self.session_path = None
         self.current_shot = None
@@ -279,7 +305,11 @@ class MainWindow(QMainWindow):
     def use_shot_camera(self) -> None:
         shot = self.current_shot
         if shot is not None and shot.camera is not None:
+            self.follow_camera = True
             self._look_through(shot, shot.camera)
+
+    def _camera_taken(self) -> None:
+        self.follow_camera = False
 
     def _look_through(self, shot: FilmClip, camera: Camera) -> None:
         """Put the orbit camera where a session camera is, looking along its +X."""
@@ -299,8 +329,65 @@ class MainWindow(QMainWindow):
         self.viewport.camera.look_from(eye, target, fov_y=fov_y)
         self.viewport.update()
 
+    # -- time ----------------------------------------------------------------------
     def _time_changed(self, time: Time) -> None:
-        self.statusBar().showMessage(f"time {time.seconds:.3f} s")
+        session = self.session
+        if session is None or session.active_clip is None:
+            return
+        clip = session.active_clip
+        self.evaluator.evaluate(clip, time)
+        shot = self._shot_at(time)
+        if shot is not None and shot is not self.current_shot:
+            self.tree.select_shot(shot)
+            self.show_shot(shot)
+            return
+        self._refresh_pose()
+        if not self._play_timer.isActive():
+            self.statusBar().showMessage(
+                f"time {time.seconds:.3f} s   {self.evaluator.channels_run} channels")
+
+    def _shot_at(self, time: Time) -> Optional[FilmClip]:
+        clip = self.session.active_clip if self.session else None
+        if clip is None:
+            return None
+        for shot in clip.shots:
+            frame = shot.time_frame
+            if frame.start.ticks <= time.ticks < frame.end.ticks:
+                return shot
+        return None
+
+    def _refresh_pose(self) -> None:
+        scene = self.viewport.scene
+        shot = self.current_shot
+        if scene is None or shot is None or not scene.up_axis:
+            return
+        refresh_shot_scene(scene, shot)
+        if self.follow_camera and shot.camera is not None:
+            self._look_through(shot, shot.camera)
+        self.viewport.update()
+
+    def toggle_play(self) -> None:
+        if self._play_timer.isActive():
+            self._play_timer.stop()
+            self.statusBar().showMessage(f"paused at {self.timeline.time.seconds:.3f} s")
+        elif self.session is not None:
+            self._play_from = self.timeline.time
+            self._play_clock.start()
+            self._play_timer.start()
+
+    def stop(self) -> None:
+        if self._play_timer.isActive():
+            self._play_timer.stop()
+            self.timeline.set_time(self._play_from)
+
+    def _tick(self) -> None:
+        elapsed = self._play_clock.elapsed() / 1000.0
+        time = Time(self._play_from.ticks + round(elapsed * Time.PER_SECOND))
+        clip = self.session.active_clip if self.session else None
+        if clip is not None and time.ticks >= clip.time_frame.duration.ticks:
+            self._play_timer.stop()
+            time = clip.time_frame.duration
+        self.timeline.set_time(time)
 
     # -- loading -------------------------------------------------------------------
     def _start_load(self, build: Callable[[], Scene], label: str) -> None:
@@ -321,9 +408,14 @@ class MainWindow(QMainWindow):
             self.info.setText(error)
             return
         shot = self.current_shot
+        if shot is not None and scene.up_axis:
+            # the scene was built from the session as saved; bring it to the cursor
+            self.evaluator.evaluate(self.session.active_clip, self.timeline.time)
+            refresh_shot_scene(scene, shot)
         through_camera = shot is not None and scene.up_axis and shot.camera is not None
         self.viewport.set_scene(scene, frame=not through_camera)
         if through_camera:
+            self.follow_camera = True
             self._look_through(shot, shot.camera)
         lines = [scene.model.summary() if scene.model is not None else scene.summary()]
         if scene.warnings:

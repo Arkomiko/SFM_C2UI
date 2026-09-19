@@ -30,7 +30,7 @@ from Core.Code.transform import IDENTITY as IDENTITY34, Mat34, apply, to_column_
 from .math3d import IDENTITY, Mat4
 
 __all__ = ["DrawItem", "LoadedModel", "SceneInstance", "Scene", "build_scene", "build_shot_scene",
-           "SceneSource"]
+           "refresh_shot_scene", "SceneSource"]
 
 
 class SceneSource(Protocol):
@@ -77,6 +77,7 @@ class SceneInstance:
     bones: List[Mat34] = field(default_factory=list)
     #: the session element this came from, when any
     source: Optional[GameModel] = None
+    visible: bool = True
 
     @property
     def model(self) -> Model:
@@ -137,7 +138,7 @@ class Scene:
 
     @property
     def bounds(self):
-        boxes = [i.bounds() for i in self.instances]
+        boxes = [i.bounds() for i in self.instances if i.visible]
         boxes = [b for b in boxes if b[0] != b[1]]
         if not boxes:
             return (0.0, 0.0, 0.0), (0.0, 0.0, 0.0)
@@ -170,22 +171,48 @@ def build_shot_scene(source: SceneSource, shot: FilmClip) -> Scene:
     """Every visible game model of a shot, placed and posed as the session says.
     A model that cannot be read is a warning; the shot still shows."""
     scene = Scene(title=shot.name, up_axis="z")
-    for game_model, world in shot.game_models():
-        rel = game_model.model_name
-        if not rel:
+    if shot.scene is None:
+        scene.warnings.append("the shot has no scene")
+        return scene
+    for node, world, visible in shot.scene.walk_visibility():
+        if not isinstance(node, GameModel):
             continue
+        rel = node.model_name
+        if not rel or rel.startswith("*"):
+            continue                              # a map brush, not a file
         try:
-            loaded = _load(source, scene, rel, 0, game_model.body)
+            loaded = _load(source, scene, rel, 0, node.body)
         except FormatError as exc:
-            scene.warnings.append(f"{game_model.name}: {exc}")
+            scene.warnings.append(f"{node.name}: {exc}")
             continue
-        bones = skin_matrices(loaded.model, game_model.bones) if loaded.model.bones else []
+        bones = skin_matrices(loaded.model, node.bones) if loaded.model.bones else []
         scene.instances.append(SceneInstance(
-            loaded, name=game_model.name, world=to_column_major_4x4(world), bones=bones,
-            source=game_model))
+            loaded, name=node.name, world=to_column_major_4x4(world), bones=bones,
+            source=node, visible=visible))
     if not scene.instances and not scene.warnings:
-        scene.warnings.append("the shot has no visible game models")
+        scene.warnings.append("the shot has no game models")
     return scene
+
+
+def refresh_shot_scene(scene: Scene, shot: FilmClip) -> None:
+    """Re-read every instance's transform, pose and visibility from the
+    session - what to do after the session was evaluated at a new time."""
+    if shot.scene is None:
+        return
+    state = {node.element: (world, visible)
+             for node, world, visible in shot.scene.walk_visibility() if isinstance(node, GameModel)}
+    for instance in scene.instances:
+        if instance.source is None:
+            continue
+        found = state.get(instance.source.element)
+        if found is None:
+            instance.visible = False
+            continue
+        world, visible = found
+        instance.world = to_column_major_4x4(world)
+        instance.visible = visible
+        if instance.model.bones:
+            instance.bones = skin_matrices(instance.model, instance.source.bones)
 
 
 def _load(source: SceneSource, scene: Scene, rel: str, lod: int, body: int) -> LoadedModel:
