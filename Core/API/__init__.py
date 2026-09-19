@@ -9,6 +9,7 @@ breaking anything.
     from Core.API import SourceBridge, MountSet, Availability
 """
 from .bridge import BridgeInfo, SourceBridge
+from .dmx import AttrType, Attribute, DmxDocument, Element, Time
 from .material import Material, as_bool, as_float, as_vec, texture_path
 from .model import Bone, Mesh, Model, ModelInfo
 from .types import CONTENT_DIRS, Availability, Mount, MountSet, ProbeResult, order_mounts
@@ -23,4 +24,5 @@ __all__ = [
     "CONTENT_DIRS", "order_mounts",
     "Model", "ModelInfo", "Mesh", "Bone",
     "Material", "texture_path", "as_float", "as_vec", "as_bool",
+    "DmxDocument", "Element", "Attribute", "AttrType", "Time",
 ]

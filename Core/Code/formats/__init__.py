@@ -10,6 +10,7 @@ Source Filmmaker, Garry's Mod, anything else on the engine - shares them.
     texture = parse_vtf(library.read_bytes(material.base_texture))
 """
 from .binary import FormatError, Reader
+from .dmx import load_dmx, parse_dmx, save_dmx, serialise_dmx
 from .mdl import MdlFile, parse_mdl
 from .studio import build_model, find_model_files, load_model
 from .vmt import load_material, parse_vmt
@@ -25,4 +26,5 @@ __all__ = [
     "load_model", "build_model", "find_model_files",
     "parse_vmt", "load_material",
     "VtfFile", "parse_vtf",
+    "parse_dmx", "serialise_dmx", "load_dmx", "save_dmx",
 ]
