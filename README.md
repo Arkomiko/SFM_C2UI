@@ -7,7 +7,7 @@
   <a href="#running-it"><img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white"></a>
   <a href="#running-it"><img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white"></a>
   <a href="#running-it"><img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white"></a>
-  <a href="Testing"><img alt="tests" src="https://img.shields.io/badge/tests-291%20passing-66c0f4?style=flat-square"></a>
+  <a href="Testing"><img alt="tests" src="https://img.shields.io/badge/tests-316%20passing-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/platform-Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -61,13 +61,15 @@ then the things SFM never got.
 | Sessions — `.dmx` | ✅ read / write | Binary 1–5 and KeyValues2. Every session and particle file in the install writes back **byte for byte**. |
 | Session on screen | 🟡 basic | Open a session: shots and sound tracks on a timeline, the element tree, each shot's scene through its own camera with every model in the pose the session stores. |
 | Viewport | 🟡 basic | Textured models, orbit camera, wireframe, up-axis control. No Source shading (phong, rim, lightwarp) yet. |
-| Animation | 🟡 basic | Channels and logs are evaluated at the time cursor: scrub or play (<kbd>Space</kbd>) and every bone, transform and camera follows the session. Rigs, constraints, expression operators and facial flexes are not evaluated yet. |
-| Rigs, IK, motion editor | ⬜ planned | |
+| Animation | ✅ playback | Channels and logs evaluated at the time cursor; scrub or play (<kbd>Space</kbd>) and every bone, transform, camera, face and rig follows the session. |
+| Faces | ✅ done | Flex controllers, the compiled rule programs and vertex animation — characters talk and emote. |
+| Rigs | 🟡 basic | Expression operators, point/orient/parent/aim constraints and two-bone IK. Not yet: the full operator dependency graph, and rig *creation*. |
+| Motion editor & editing | ⬜ next | Nothing can be changed yet — only seen. |
 | Rendering to video / poster | ⬜ planned | |
 | Plugins (`.c2plg`) | ⬜ planned | |
 | Themes & workspaces | ⬜ deliberately later | One default look until the editor does something worth theming. |
 
-**Release readiness: not yet.** Roughly a quarter of the way. The foundation —
+**Release readiness: not yet.** Roughly a third of the way. The foundation —
 every file format SFM uses, read correctly and verified against the whole
 installation — is in place and tested. What is missing is the editor itself:
 you can browse and look, you cannot yet *make* anything. I am not putting a
@@ -152,17 +154,16 @@ C2UI_SDK/
 │   ├── Cache/         regenerable
 │   └── Temporary/     cleared on start
 ├── Tools/             localisation, UI tooling, plugin scaffolding (later)
-└── Testing/           291 tests, byte-exact fixtures, one runner
+└── Testing/           316 tests, byte-exact fixtures, one runner
 ```
 
 ## Roadmap
 
-1. **Faces and rigs** — flex controllers on the mesh, constraint and expression operators, IK rigs.
+1. **Editing** — transforms, curves, the motion editor; save back exactly.
 2. **Source shading** — VertexLitGeneric as SFM draws it: phong, rim, lightwarp, sheen.
-3. **Editing** — transforms, curves, the motion editor; save back exactly.
-4. **Maps** — `.bsp` for backgrounds.
-5. **Output** — image and video export.
-6. **Plugins** — the `.c2plg` format; then themes and workspaces.
+3. **Maps** — `.bsp` for backgrounds.
+4. **Output** — image and video export.
+5. **Plugins** — the `.c2plg` format; then themes and workspaces.
 
 ## Licence & credits
 
@@ -190,12 +191,13 @@ rights reserved. Issues and pull requests are welcome all the same.
 (`.mdl/.vvd/.vtx`), материалы (`.vmt`), текстуры (`.vtf`), чтение и
 побайтово точная запись сессий (`.dmx`), вьюпорт с текстурами и скиннингом,
 открытие сессии: таймлайн с шотами и звуком, дерево, сцена шота через его камеру,
-анимация по каналам и логам — скраббинг и воспроизведение.
+анимация по каналам и логам — скраббинг и воспроизведение, лицевая
+анимация (flex), риги: выражения, констрейнты, двухзвенный IK.
 Каждый формат проверен на всей установке.
 
-**Чего нет:** лицевой анимации (flex), ригов и констрейнтов, редактирования, рендера в видео.
+**Чего нет:** редактирования (пока только просмотр), рендера в видео, карт.
 Сессию можно открыть и посмотреть, но не изменить. **К релизу не готов** —
-примерно четверть пути. Номер версии появится, когда сессию можно будет
+примерно треть пути. Номер версии появится, когда сессию можно будет
 открыть, изменить и сохранить.
 
 Запуск: см. раздел *Running it*. Тесты: `python Testing/run.py`.

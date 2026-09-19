@@ -27,6 +27,7 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 from Core.API.dmx import ARRAY_OFFSET, AttrType, Element, Time
 from Core.API.session import Channel, ChannelsClip, Clip, FilmClip, Log
 
+from .operators import OperatorRunner
 from .transform import quaternion_slerp
 
 __all__ = ["Evaluator", "sample_log", "interpolate"]
@@ -117,30 +118,51 @@ class Evaluator:
 
     def __init__(self) -> None:
         self._cache: Dict[int, Optional[_Keys]] = {}
+        self._runners: Dict[int, OperatorRunner] = {}
         self.channels_run = 0
+        self.operators_run = 0
+        self.errors: List[str] = []
 
     def invalidate(self) -> None:
         self._cache.clear()
+        self._runners.clear()
 
     # -- clips -----------------------------------------------------------------------
     def evaluate(self, clip: Clip, time: Time) -> None:
         """Evaluate `clip` at its own local `time`, then whichever of its
         shots covers that time at the shot's local time."""
         self.channels_run = 0
+        self.operators_run = 0
         self._evaluate_clip(clip, time, depth=0)
 
     def _evaluate_clip(self, clip: Clip, time: Time, depth: int) -> None:
         if depth > 8:
             return
-        for group in clip.track_groups:
-            for track in group.tracks:
-                if track.mute:
-                    continue
-                for child in track.clips:
-                    if isinstance(child, ChannelsClip) and not child.mute:
-                        self._evaluate_channels(child, child.time_frame.to_child_time(time))
+        channel_clips = [(child, child.time_frame.to_child_time(time))
+                         for group in clip.track_groups
+                         for track in group.tracks if not track.mute
+                         for child in track.clips
+                         if isinstance(child, ChannelsClip) and not child.mute]
+        for child, child_time in channel_clips:
+            self._evaluate_channels(child, child_time)
         if isinstance(clip, FilmClip):
             self._run_flex_operators(clip)
+            if clip.animation_sets:
+                # expressions and rig constraints, then the channels that carry
+                # their results onward
+                runner = self._runners.get(id(clip.element))
+                if runner is None:
+                    runner = OperatorRunner(clip)
+                    self._runners[id(clip.element)] = runner
+                runner.run(time)
+                self.operators_run += runner.operators_run
+                if runner.errors:
+                    self.errors.extend(runner.errors[-5:])
+                    runner.errors.clear()
+                for child, child_time in channel_clips:
+                    for channel in child.channels:
+                        if channel.mode == MODE_PASS:
+                            self.evaluate_channel(channel, child_time)
             for shot in clip.shots:
                 frame = shot.time_frame
                 if frame.start.ticks <= time.ticks < frame.end.ticks:

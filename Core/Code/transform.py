@@ -16,7 +16,8 @@ from typing import List, Sequence, Tuple
 
 __all__ = ["Mat34", "IDENTITY", "matrix_from", "multiply", "apply", "apply_direction",
            "invert", "quaternion_to_matrix", "quaternion_multiply", "quaternion_normalize",
-           "quaternion_from_angles", "quaternion_slerp", "to_column_major_4x4", "translation_of"]
+           "quaternion_from_angles", "quaternion_slerp", "to_column_major_4x4", "translation_of",
+           "matrix_to_quaternion", "quaternion_inverse", "rotation_between", "rotate_vector"]
 
 Mat34 = Tuple[float, ...]            # 12 values: r0c0 r0c1 r0c2 r0c3  r1c0 ...  r2c3
 Quat = Tuple[float, float, float, float]
@@ -82,6 +83,59 @@ def quaternion_slerp(a: Quat, b: Quat, t: float) -> Quat:
     wa = math.sin((1 - t) * theta) / s
     wb = math.sin(t * theta) / s
     return (ax * wa + bx * wb, ay * wa + by * wb, az * wa + bz * wb, aw * wa + bw * wb)
+
+
+def matrix_to_quaternion(m: Mat34) -> Quat:
+    """The rotation of a rigid matrix as x, y, z, w (Shepperd's method)."""
+    r00, r01, r02 = m[0], m[1], m[2]
+    r10, r11, r12 = m[4], m[5], m[6]
+    r20, r21, r22 = m[8], m[9], m[10]
+    trace = r00 + r11 + r22
+    if trace > 0.0:
+        s = math.sqrt(trace + 1.0) * 2.0
+        return quaternion_normalize(((r21 - r12) / s, (r02 - r20) / s, (r10 - r01) / s, 0.25 * s))
+    if r00 > r11 and r00 > r22:
+        s = math.sqrt(1.0 + r00 - r11 - r22) * 2.0
+        return quaternion_normalize((0.25 * s, (r01 + r10) / s, (r02 + r20) / s, (r21 - r12) / s))
+    if r11 > r22:
+        s = math.sqrt(1.0 + r11 - r00 - r22) * 2.0
+        return quaternion_normalize(((r01 + r10) / s, 0.25 * s, (r12 + r21) / s, (r02 - r20) / s))
+    s = math.sqrt(1.0 + r22 - r00 - r11) * 2.0
+    return quaternion_normalize(((r02 + r20) / s, (r12 + r21) / s, 0.25 * s, (r10 - r01) / s))
+
+
+def quaternion_inverse(q: Quat) -> Quat:
+    x, y, z, w = quaternion_normalize(q)
+    return (-x, -y, -z, w)
+
+
+def rotation_between(a: Vec3, b: Vec3) -> Quat:
+    """The shortest rotation taking direction `a` onto direction `b`."""
+    ax, ay, az = a
+    bx, by, bz = b
+    la = math.sqrt(ax * ax + ay * ay + az * az)
+    lb = math.sqrt(bx * bx + by * by + bz * bz)
+    if la < 1e-9 or lb < 1e-9:
+        return (0.0, 0.0, 0.0, 1.0)
+    ax, ay, az = ax / la, ay / la, az / la
+    bx, by, bz = bx / lb, by / lb, bz / lb
+    d = ax * bx + ay * by + az * bz
+    if d < -0.999999:
+        # opposite: turn half a circle about any perpendicular axis
+        px, py, pz = (0.0, -az, ay) if abs(ax) < 0.9 else (-az, 0.0, ax)
+        n = math.sqrt(px * px + py * py + pz * pz) or 1.0
+        return (px / n, py / n, pz / n, 0.0)
+    cx = ay * bz - az * by
+    cy = az * bx - ax * bz
+    cz = ax * by - ay * bx
+    return quaternion_normalize((cx, cy, cz, 1.0 + d))
+
+
+def rotate_vector(q: Quat, v: Vec3) -> Vec3:
+    m = quaternion_to_matrix(q)
+    return (m[0] * v[0] + m[1] * v[1] + m[2] * v[2],
+            m[3] * v[0] + m[4] * v[1] + m[5] * v[2],
+            m[6] * v[0] + m[7] * v[1] + m[8] * v[2])
 
 
 def matrix_from(position: Vec3, rotation: Quat) -> Mat34:
