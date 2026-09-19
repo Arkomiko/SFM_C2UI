@@ -163,5 +163,27 @@ class ContentLibrary:
     def read_text(self, rel: str) -> Optional[str]:
         return self.vfs.read_text(rel) if self.vfs else None
 
+    def disk_source(self) -> "DiskSource":
+        """A reader that never touches the index, safe to use from another
+        thread.  The SQLite connection belongs to the thread that opened it;
+        the virtual file system is plain Python and resolves the same paths."""
+        return DiskSource(self.vfs)
+
     def __repr__(self) -> str:
         return f"<ContentLibrary {self.state.summary()}>"
+
+
+class DiskSource:
+    """Content reads through the mounts alone - see ContentLibrary.disk_source."""
+
+    def __init__(self, vfs: VirtualFileSystem) -> None:
+        self.vfs = vfs
+
+    def resolve(self, rel: str) -> Optional[Path]:
+        return self.vfs.resolve(rel)
+
+    def read_bytes(self, rel: str) -> Optional[bytes]:
+        return self.vfs.read_bytes(rel)
+
+    def read_text(self, rel: str) -> Optional[str]:
+        return self.vfs.read_text(rel)
