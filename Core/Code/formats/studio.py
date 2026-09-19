@@ -24,6 +24,9 @@ from Core.API.model import Mesh, Model
 from .binary import FormatError
 from .mdl import MdlFile, parse_mdl
 from .vtx import VTX_SUFFIXES, VtxFile, parse_vtx
+
+#: model version from which the .vtx strip headers carry the topology fields
+EXTENDED_VTX_FROM_VERSION = 49
 from .vvd import VvdFile, parse_vvd
 
 log = logging.getLogger("c2ui.studio")
@@ -91,7 +94,8 @@ def load_model(source: ModelSource, rel: str, lod: int = 0) -> Model:
         warnings.append("no .vtx beside this model: it has no triangles")
     else:
         try:
-            vtx = parse_vtx(source.read_bytes(vtx_rel) or b"", vtx_rel.rsplit("/", 1)[-1], lod)
+            vtx = parse_vtx(source.read_bytes(vtx_rel) or b"", vtx_rel.rsplit("/", 1)[-1], lod,
+                            extended=mdl.info.version >= EXTENDED_VTX_FROM_VERSION)
         except FormatError as exc:
             warnings.append(f"index data unusable ({exc})")
 
@@ -124,29 +128,42 @@ def build_model(mdl: MdlFile, vvd: Optional[VvdFile], vtx: Optional[VtxFile],
         model.warnings.append("vertex data was compiled from a different model; geometry may be wrong")
 
     total_vertices = vvd.vertex_count
+    lod = vvd.lod
+    # At level 0 every mesh sits where the .mdl says. At lower levels the
+    # fixup table has compacted the array, and the engine (Studio_SetRootLOD)
+    # re-derives every offset as a running total of numLODVertexes[lod] over
+    # all meshes of all models. A file with no fixups is never compacted, so
+    # there the level-0 offsets stay and only the counts shrink.
+    compacted = lod > 0 and vvd.has_fixups
+    cursor = 0
     for part_index, part in enumerate(mdl.body_parts):
         vtx_part = vtx.body_parts[part_index] if part_index < len(vtx.body_parts) else []
         for model_index, sub in enumerate(part.models):
             vtx_model = vtx_part[model_index] if model_index < len(vtx_part) else []
+            model_base = cursor if compacted else sub.first_vertex
+            mesh_cursor = 0
             for mesh_index, mdl_mesh in enumerate(sub.meshes):
+                count = mdl_mesh.vertices_at(lod)
+                base = model_base + (mesh_cursor if compacted else mdl_mesh.vertex_offset)
+                mesh_cursor += count
                 if mesh_index >= len(vtx_model):
                     continue                      # no index data for this mesh
                 vtx_mesh = vtx_model[mesh_index]
                 if not vtx_mesh.indices:
                     continue
-                mesh = _build_mesh(model, part, sub, mdl_mesh, vtx_mesh, vvd, total_vertices)
+                mesh = _build_mesh(model, part, sub, mdl_mesh, vtx_mesh, vvd, total_vertices,
+                                   base, count)
                 if mesh is not None:
                     model.meshes.append(mesh)
+            cursor += mesh_cursor
 
     model.info.mesh_count = len(model.meshes)
     return model
 
 
 def _build_mesh(model: Model, part, sub, mdl_mesh, vtx_mesh, vvd: VvdFile,
-                total_vertices: int) -> Optional[Mesh]:
+                total_vertices: int, base: int, count: int) -> Optional[Mesh]:
     """Copy one mesh's slice of the vertex array and rebase its indices."""
-    base = sub.first_vertex + mdl_mesh.vertex_offset
-    count = mdl_mesh.vertex_count
     if count <= 0:
         return None
     if base < 0 or base + count > total_vertices:

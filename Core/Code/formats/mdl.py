@@ -65,6 +65,7 @@ _MESH_STRIDE = 116
 _MESH_MATERIAL = 0
 _MESH_NUM_VERTICES = 8
 _MESH_VERTEX_OFFSET = 12
+_MESH_LOD_VERTICES = 52         # numLODVertexes[8]
 
 _POSE_TO_BONE = struct.Struct("<12f")
 
@@ -75,7 +76,23 @@ class MdlMesh:
 
     material_index: int
     vertex_count: int
-    vertex_offset: int          # relative to the owning model's vertices
+    vertex_offset: int          # relative to the owning model's vertices, at level 0
+    #: how many of this mesh's vertices each level of detail keeps
+    lod_vertex_counts: Tuple[int, ...] = ()
+
+    def vertices_at(self, lod: int) -> int:
+        """Vertices this mesh has at a level.
+
+        A mesh with no vertices at level 0 has none at any level - the
+        compiler leaves a copy of a neighbour's table in such meshes, and
+        trusting it would shift every mesh after them. The level-0 count is
+        used when the table is absent or empty.
+        """
+        if self.vertex_count <= 0:
+            return 0
+        if 0 <= lod < len(self.lod_vertex_counts) and any(self.lod_vertex_counts):
+            return max(0, self.lod_vertex_counts[lod])
+        return self.vertex_count
 
 
 @dataclass
@@ -230,5 +247,6 @@ def _parse_model(reader: Reader, cur: Cursor, warnings: List[str]) -> MdlModel:
                 material_index=mesh_cur.i32(_MESH_MATERIAL),
                 vertex_count=mesh_cur.i32(_MESH_NUM_VERTICES),
                 vertex_offset=mesh_cur.i32(_MESH_VERTEX_OFFSET),
+                lod_vertex_counts=tuple(mesh_cur.i32(_MESH_LOD_VERTICES + 4 * i) for i in range(8)),
             ))
     return model

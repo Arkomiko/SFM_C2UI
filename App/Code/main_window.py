@@ -131,7 +131,7 @@ class MainWindow(QMainWindow):
             return
         rel = item.data(Qt.UserRole)
         if self._loader is not None and self._loader.isRunning():
-            self._loader.done.disconnect()
+            # let it finish on its own; its result is ignored (see _scene_built)
             self._loader.finished.connect(self._loader.deleteLater)
         self.statusBar().showMessage(f"loading {rel}...")
         self._loader = _SceneLoader(self.library, rel, self)
@@ -140,6 +140,8 @@ class MainWindow(QMainWindow):
 
     @Slot(object, str)
     def _scene_built(self, scene: Optional[Scene], error: str) -> None:
+        if self.sender() is not self._loader:
+            return                                   # a superseded request
         if scene is None:
             self.statusBar().showMessage(error)
             self.info.setText(error)

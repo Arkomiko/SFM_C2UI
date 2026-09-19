@@ -44,6 +44,9 @@ class VvdFile:
     checksum: int = 0
     lod_count: int = 1
     lod: int = 0
+    #: whether the file carries a fixup table; without one every level shares
+    #: the stored array and the vertex offsets of level 0 stay valid
+    has_fixups: bool = False
     positions: array = field(default_factory=lambda: array("f"))
     normals: array = field(default_factory=lambda: array("f"))
     uvs: array = field(default_factory=lambda: array("f"))
@@ -85,7 +88,7 @@ def parse_vvd(data: bytes, name: str = "model.vvd", lod: int = 0) -> VvdFile:
     runs = _runs_for_lod(reader, fixup_count, fixup_offset, lod, wanted, warnings)
 
     out = VvdFile(version=version, checksum=reader.i32_at(_H_CHECKSUM),
-                  lod_count=lod_count, lod=lod, warnings=warnings)
+                  lod_count=lod_count, lod=lod, has_fixups=fixup_count > 0, warnings=warnings)
     _read_runs(reader, vertex_offset, runs, out)
     return out
 

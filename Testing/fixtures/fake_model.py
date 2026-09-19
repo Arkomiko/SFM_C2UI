@@ -178,6 +178,9 @@ def build_mdl(name: str = "test/fake.mdl",
     b.i32(model_start - len(b) + 4)                       # 4  modelindex (unused here)
     b.i32(vertex_count)                                   # 8  numvertices
     b.i32(0)                                              # 12 vertexoffset
+    b.pad(52 - (len(b) - mesh_start))
+    for level in range(8):                                # 52 numLODVertexes[8]
+        b.i32(vertex_count)
     b.pad(116 - (len(b) - mesh_start))
 
     b.patch(part_name_slot, len(b) - part_start)
@@ -229,9 +232,18 @@ def build_vvd(vertices: Sequence[FakeVertex] = tuple(DEFAULT_VERTICES),
 
 def build_vtx(triangles: Sequence[Tuple[int, int, int]] = tuple(DEFAULT_TRIANGLES),
               vertex_count: int = 4, strip_flags: int = 0x01,
-              indices: Sequence[int] = ()) -> bytes:
-    """A .vtx with one body part, model, level, mesh and strip group."""
+              indices: Sequence[int] = (), extended: bool = MDL_VERSION >= 49,
+              groups: int = 1) -> bytes:
+    """A .vtx with one body part, model, level and mesh.
+
+    `groups` strip groups are written, each holding the same triangles, so a
+    reader that steps through groups with the wrong stride reads garbage from
+    the second one. `extended` writes the model-49 layout with the two extra
+    topology fields in every group and strip header.
+    """
     flat: List[int] = list(indices) if indices else [i for tri in triangles for i in tri]
+    group_size = 33 if extended else 25
+    strip_size = 35 if extended else 27
 
     b = _Blob()
     b.i32(7)                                              # 0  version
@@ -262,41 +274,55 @@ def build_vtx(triangles: Sequence[Tuple[int, int, int]] = tuple(DEFAULT_TRIANGLE
 
     b.patch(mesh_slot, len(b) - lod_start)
     mesh_start = len(b)
-    b.i32(1)                                              # numStripGroups
+    b.i32(groups)                                         # numStripGroups
     group_slot = b.i32(0)
     b.write(b"\0")                                        # flags
 
     b.patch(group_slot, len(b) - mesh_start)
-    group_start = len(b)
-    b.i32(vertex_count)                                   # 0  numVerts
-    group_vert_slot = b.i32(0)                            # 4  vertOffset
-    b.i32(len(flat))                                      # 8  numIndices
-    group_index_slot = b.i32(0)                           # 12 indexOffset
-    b.i32(1)                                              # 16 numStrips
-    group_strip_slot = b.i32(0)                           # 20 stripOffset
-    b.write(b"\0")                                        # 24 flags
+    # the group headers sit together; each one's data follows all of them
+    group_starts = []
+    slots = []
+    for _g in range(groups):
+        group_start = len(b)
+        group_starts.append(group_start)
+        b.i32(vertex_count)                               # 0  numVerts
+        vert_slot = b.i32(0)                              # 4  vertOffset
+        b.i32(len(flat))                                  # 8  numIndices
+        index_slot = b.i32(0)                             # 12 indexOffset
+        b.i32(1)                                          # 16 numStrips
+        strip_slot = b.i32(0)                             # 20 stripOffset
+        b.write(b"\0")                                    # 24 flags
+        if extended:
+            b.i32(0)                                      # 25 numTopologyIndices
+            b.i32(0)                                      # 29 topologyOffset
+        assert len(b) - group_start == group_size
+        slots.append((vert_slot, index_slot, strip_slot))
 
-    b.patch(group_vert_slot, len(b) - group_start)
-    for i in range(vertex_count):
-        b.write(bytes((0, 0, 0, 1)))                      # boneWeightIndex[3], numBones
-        b.write(struct.pack("<H", i))                     # origMeshVertID
-        b.write(bytes((0, 0, 0)))                         # boneID[3]
+    for group_start, (vert_slot, index_slot, strip_slot) in zip(group_starts, slots):
+        b.patch(vert_slot, len(b) - group_start)
+        for i in range(vertex_count):
+            b.write(bytes((0, 0, 0, 1)))                  # boneWeightIndex[3], numBones
+            b.write(struct.pack("<H", i))                 # origMeshVertID
+            b.write(bytes((0, 0, 0)))                     # boneID[3]
 
-    b.patch(group_index_slot, len(b) - group_start)
-    for index in flat:
-        b.write(struct.pack("<H", index))
+        b.patch(index_slot, len(b) - group_start)
+        for index in flat:
+            b.write(struct.pack("<H", index))
 
-    b.patch(group_strip_slot, len(b) - group_start)
-    strip_start = len(b)
-    b.i32(len(flat))                                      # 0  numIndices
-    b.i32(0)                                              # 4  indexOffset
-    b.i32(vertex_count)                                   # 8  numVerts
-    b.i32(0)                                              # 12 vertOffset
-    b.write(struct.pack("<h", 0))                         # 16 numBones
-    b.write(bytes((strip_flags,)))                        # 18 flags
-    b.i32(0)                                              # 19 numBoneStateChanges
-    b.i32(0)                                              # 23 boneStateChangeOffset
-    b.pad(27 - (len(b) - strip_start))
+        b.patch(strip_slot, len(b) - group_start)
+        strip_start = len(b)
+        b.i32(len(flat))                                  # 0  numIndices
+        b.i32(0)                                          # 4  indexOffset
+        b.i32(vertex_count)                               # 8  numVerts
+        b.i32(0)                                          # 12 vertOffset
+        b.write(struct.pack("<h", 0))                     # 16 numBones
+        b.write(bytes((strip_flags,)))                    # 18 flags
+        b.i32(0)                                          # 19 numBoneStateChanges
+        b.i32(0)                                          # 23 boneStateChangeOffset
+        if extended:
+            b.i32(0)                                      # 27 numTopologyIndices
+            b.i32(0)                                      # 31 topologyOffset
+        b.pad(strip_size - (len(b) - strip_start))
     return bytes(b.data)
 
 

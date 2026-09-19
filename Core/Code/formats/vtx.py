@@ -5,11 +5,18 @@ Geometry lives in .vvd, but the order the hardware draws it in lives here, split
 by level of detail and grouped into strips. Its nesting mirrors the .mdl exactly
 - body part, model, mesh - which is what lets the two be zipped together.
 
-Two details make this file awkward, and both are handled below:
+Three details make this file awkward, and all are handled below:
 
 * every offset is relative to the struct that holds it, not to the file;
 * its vertices are indirections - each names a vertex of the *mesh*, which the
-  caller turns into an index into the model's vertex array.
+  caller turns into an index into the model's vertex array;
+* the file version never changed, but the engine branch that introduced model
+  version 49 added two fields (topology indices) to both the strip group and
+  the strip header. Nothing in the .vtx says which layout it uses; the caller
+  passes `extended=True` for a version 49 model. Reading a 49 file with the
+  short layout looks fine until a mesh has a second strip group, which then
+  starts eight bytes early and comes out as garbage - the vortigaunt lost
+  three quarters of its triangles that way.
 
 The usual name is `<model>.dx90.vtx`; `.dx80.vtx` and `.sw.vtx` hold the same
 layout for older hardware.
@@ -41,6 +48,9 @@ _LOD_STRIDE = 12
 _MESH_STRIDE = 9
 _STRIP_GROUP_STRIDE = 25
 _STRIP_STRIDE = 27
+#: with numTopologyIndices/topologyOffset, model version 49 and later
+_STRIP_GROUP_STRIDE_EXT = 33
+_STRIP_STRIDE_EXT = 35
 _VTX_VERTEX_STRIDE = 9
 _VTX_VERTEX_ORIG_ID = 4        # offset of origMeshVertID inside Vertex_t
 
@@ -80,8 +90,13 @@ class VtxFile:
                    for part in self.body_parts for model in part for mesh in model)
 
 
-def parse_vtx(data: bytes, name: str = "model.vtx", lod: int = 0) -> VtxFile:
-    """Read a .vtx and return the triangle lists for `lod`."""
+def parse_vtx(data: bytes, name: str = "model.vtx", lod: int = 0,
+              extended: bool = False) -> VtxFile:
+    """Read a .vtx and return the triangle lists for `lod`.
+
+    `extended` selects the strip layout of model version 49 and later; see
+    the module notes. :func:`studio.load_model` sets it from the .mdl.
+    """
     reader = Reader(data, name)
     if reader.size < _HEADER_SIZE:
         raise FormatError(f"{name}: too small to be index data ({reader.size} bytes)")
@@ -97,28 +112,36 @@ def parse_vtx(data: bytes, name: str = "model.vtx", lod: int = 0) -> VtxFile:
         lod = 0
 
     out = VtxFile(version=version, lod_count=lod_count, lod=lod, warnings=warnings)
+    layout = _Layout(extended)
     part_count = reader.i32_at(_H_NUM_BODY_PARTS)
     part_offset = reader.i32_at(_H_BODY_PART_OFFSET)
     if part_count <= 0 or part_offset <= 0:
         return out
 
     for part_cur in reader.array(part_offset, part_count, _BODY_PART_STRIDE, "body parts"):
-        out.body_parts.append(_parse_body_part(reader, part_cur, lod, warnings))
+        out.body_parts.append(_parse_body_part(reader, part_cur, lod, warnings, layout))
     return out
 
 
-def _parse_body_part(reader: Reader, cur: Cursor, lod: int, warnings: List[str]):
+class _Layout:
+    def __init__(self, extended: bool) -> None:
+        self.group_stride = _STRIP_GROUP_STRIDE_EXT if extended else _STRIP_GROUP_STRIDE
+        self.strip_stride = _STRIP_STRIDE_EXT if extended else _STRIP_STRIDE
+
+
+def _parse_body_part(reader: Reader, cur: Cursor, lod: int, warnings: List[str], layout: _Layout):
     models = []
     count = cur.i32(0)
     offset = cur.i32(4)
     if count <= 0 or offset <= 0:
         return models
     for model_cur in reader.array(cur.start + offset, count, _MODEL_STRIDE, "models"):
-        models.append(_parse_model(reader, model_cur, lod, warnings))
+        models.append(_parse_model(reader, model_cur, lod, warnings, layout))
     return models
 
 
-def _parse_model(reader: Reader, cur: Cursor, lod: int, warnings: List[str]) -> List[VtxMesh]:
+def _parse_model(reader: Reader, cur: Cursor, lod: int, warnings: List[str],
+                 layout: _Layout) -> List[VtxMesh]:
     lod_count = cur.i32(0)
     lod_offset = cur.i32(4)
     if lod_count <= 0 or lod_offset <= 0:
@@ -132,23 +155,24 @@ def _parse_model(reader: Reader, cur: Cursor, lod: int, warnings: List[str]) -> 
     if mesh_count <= 0 or mesh_offset <= 0:
         return meshes
     for mesh_cur in reader.array(lod_cur.start + mesh_offset, mesh_count, _MESH_STRIDE, "meshes"):
-        meshes.append(_parse_mesh(reader, mesh_cur, warnings))
+        meshes.append(_parse_mesh(reader, mesh_cur, warnings, layout))
     return meshes
 
 
-def _parse_mesh(reader: Reader, cur: Cursor, warnings: List[str]) -> VtxMesh:
+def _parse_mesh(reader: Reader, cur: Cursor, warnings: List[str], layout: _Layout) -> VtxMesh:
     mesh = VtxMesh()
     group_count = cur.i32(0)
     group_offset = cur.i32(4)
     if group_count <= 0 or group_offset <= 0:
         return mesh
     for group_cur in reader.array(cur.start + group_offset, group_count,
-                                  _STRIP_GROUP_STRIDE, "strip groups"):
-        _parse_strip_group(reader, group_cur, mesh, warnings)
+                                  layout.group_stride, "strip groups"):
+        _parse_strip_group(reader, group_cur, mesh, warnings, layout)
     return mesh
 
 
-def _parse_strip_group(reader: Reader, cur: Cursor, mesh: VtxMesh, warnings: List[str]) -> None:
+def _parse_strip_group(reader: Reader, cur: Cursor, mesh: VtxMesh, warnings: List[str],
+                       layout: _Layout) -> None:
     vertex_count = cur.i32(0)
     vertex_offset = cur.i32(4)
     index_count = cur.i32(8)
@@ -180,7 +204,7 @@ def _parse_strip_group(reader: Reader, cur: Cursor, mesh: VtxMesh, warnings: Lis
         _emit_list(reader, index_base, 0, index_count, mapping, mesh, warnings)
         return
 
-    for strip_cur in reader.array(cur.start + strip_offset, strip_count, _STRIP_STRIDE, "strips"):
+    for strip_cur in reader.array(cur.start + strip_offset, strip_count, layout.strip_stride, "strips"):
         strip_indices = strip_cur.i32(0)
         strip_start = strip_cur.i32(4)
         flags = strip_cur.u8(18)

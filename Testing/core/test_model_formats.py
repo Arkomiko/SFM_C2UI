@@ -186,6 +186,30 @@ def test_indices_past_the_group_are_dropped_not_fatal():
     assert any("outside" in w for w in vtx.warnings), vtx.warnings
 
 
+def test_both_strip_layouts_read_every_group():
+    """Model version 49 grew two fields in the group and strip headers. With
+    the wrong stride the second group is read from the wrong place."""
+    for extended in (False, True):
+        vtx = parse_vtx(build_vtx(groups=3, extended=extended), "g.vtx", extended=extended)
+        mesh = vtx.body_parts[0][0][0]
+        assert list(mesh.indices) == [0, 1, 2, 0, 2, 3] * 3, extended
+        assert vtx.warnings == []
+
+
+def test_wrong_layout_is_what_lost_the_vortigaunt():
+    vtx = parse_vtx(build_vtx(groups=2, extended=True), "g.vtx", extended=False)
+    mesh = vtx.body_parts[0][0][0]
+    assert mesh.triangle_count != 4 or vtx.warnings           # garbage or complaint, never silent success
+
+
+def test_load_model_picks_the_layout_from_the_model_version():
+    for version, extended in ((48, False), (49, True), (44, False)):
+        source, rel = _source(mdl=build_mdl(version=version), vvd=build_vvd(),
+                              vtx=build_vtx(groups=2, extended=extended))
+        model = load_model(source, rel)
+        assert model.triangle_count == 4, (version, model.warnings)
+
+
 def test_rejects_an_unsupported_version():
     raw = bytearray(build_vtx())
     struct.pack_into("<i", raw, 0, 6)
@@ -308,3 +332,59 @@ def test_vtx_flavours_are_tried_in_order():
     _, found_vvd, found_vtx = find_model_files(source, "models/test/fake.mdl")
     assert found_vvd == "models/test/fake.vvd"
     assert found_vtx == "models/test/fake.dx80.vtx"
+
+
+# ------------------------------------------------------------- levels of detail
+def _two_mesh_model(lod, has_fixups, vertex_count):
+    """Two meshes of 4 and 2 vertices at level 0; level 1 keeps 2 and 2."""
+    from array import array
+    from Core.API.model import ModelInfo
+    from Core.Code.formats.mdl import MdlBodyPart, MdlFile, MdlMesh, MdlModel
+    from Core.Code.formats.vtx import VtxFile, VtxMesh
+    from Core.Code.formats.vvd import VvdFile
+    from Core.Code.formats import build_model
+
+    meshes = [MdlMesh(0, 4, 0, (4, 2, 0, 0, 0, 0, 0, 0)),
+              MdlMesh(0, 2, 4, (2, 2, 0, 0, 0, 0, 0, 0))]
+    mdl = MdlFile(info=ModelInfo(name="t"), material_names=["m"],
+                  body_parts=[MdlBodyPart("p", [MdlModel("m", 6, 0, meshes)])])
+    vvd = VvdFile(lod=lod, has_fixups=has_fixups)
+    vvd.positions = array("f", [float(i) for i in range(vertex_count * 3)])
+    vvd.normals = array("f", [0.0] * (vertex_count * 3))
+    vvd.uvs = array("f", [0.0] * (vertex_count * 2))
+    vvd.bone_indices = array("B", [0] * (vertex_count * 3))
+    vvd.bone_weights = array("f", [1.0] * (vertex_count * 3))
+    tri = VtxMesh(indices=array("I", [0, 1, 0]))
+    vtx = VtxFile(body_parts=[[[tri, VtxMesh(indices=array("I", [0, 1, 1]))]]])
+    return build_model(mdl, vvd, vtx)
+
+
+def test_level_zero_uses_the_offsets_in_the_file():
+    model = _two_mesh_model(lod=0, has_fixups=True, vertex_count=6)
+    assert [m.vertex_count for m in model.meshes] == [4, 2]
+    assert model.meshes[1].positions[0] == 4 * 3          # second mesh starts at vertex 4
+
+
+def test_lower_levels_are_compacted_when_fixups_exist():
+    # level 1 array holds 2 + 2 vertices; the second mesh now starts at 2
+    model = _two_mesh_model(lod=1, has_fixups=True, vertex_count=4)
+    assert [m.vertex_count for m in model.meshes] == [2, 2]
+    assert model.meshes[1].positions[0] == 2 * 3
+    assert model.warnings == []
+
+
+def test_lower_levels_keep_offsets_without_fixups():
+    # no fixup table: the whole array is shared, only the counts shrink
+    model = _two_mesh_model(lod=1, has_fixups=False, vertex_count=6)
+    assert [m.vertex_count for m in model.meshes] == [2, 2]
+    assert model.meshes[1].positions[0] == 4 * 3
+
+
+def test_an_empty_mesh_takes_no_room_at_any_level():
+    from Core.Code.formats.mdl import MdlMesh
+    ghost = MdlMesh(0, 0, 0, (2147, 2147, 2147, 0, 0, 0, 0, 0))     # as compiled into bomb_eotl_red
+    assert ghost.vertices_at(0) == 0 and ghost.vertices_at(1) == 0
+    real = MdlMesh(0, 10, 0, (10, 4, 0, 0, 0, 0, 0, 0))
+    assert real.vertices_at(1) == 4 and real.vertices_at(7) == 0
+    untabled = MdlMesh(0, 10, 0, (0,) * 8)
+    assert untabled.vertices_at(3) == 10

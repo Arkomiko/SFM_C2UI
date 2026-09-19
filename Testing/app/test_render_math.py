@@ -104,6 +104,15 @@ def test_frame_fits_the_bounds_and_guesses_up():
     assert cam.distance > radius / math.sin(cam.fov_y / 2)
 
 
+def test_up_axis_prefers_the_axis_the_model_stands_on():
+    # a wide pose: arms span 90 along X, height 71 along Z, feet at z=0
+    assert OrbitCamera.guess_up_axis(((-45, -20, -0.2), (45, 15, 71))) == "z"
+    # the same shape centred on its origin gives no hint: tallest wins
+    assert OrbitCamera.guess_up_axis(((-45, -20, -35), (45, 15, 36))) == "x"
+    # a Y-up character with feet at y=0
+    assert OrbitCamera.guess_up_axis(((-15, 0, -16), (15, 82, 7))) == "y"
+
+
 def test_frame_of_nothing_still_gives_a_usable_camera():
     cam = OrbitCamera()
     cam.frame(((0, 0, 0), (0, 0, 0)))
