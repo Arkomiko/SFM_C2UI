@@ -21,7 +21,46 @@ from array import array
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Sequence, Tuple
 
-__all__ = ["Bone", "Mesh", "Model", "ModelInfo"]
+__all__ = ["Bone", "Mesh", "Model", "ModelInfo", "FlexController", "FlexRule", "MeshFlex"]
+
+
+@dataclass
+class FlexController:
+    """A face control the model exposes: a name and the range its value spans."""
+    name: str
+    min: float = 0.0
+    max: float = 1.0
+    type: str = ""
+
+
+@dataclass
+class FlexRule:
+    """How one flex target's weight is computed from the controllers: a
+    program for a small stack machine, as the compiler wrote it."""
+    desc: int
+    #: (op, integer operand, float operand) - which one is meant depends on the op
+    ops: Tuple[Tuple[int, int, float], ...] = ()
+
+
+@dataclass
+class MeshFlex:
+    """Vertex offsets one flex target applies to one mesh.
+
+    `indices` are mesh-local vertex numbers; `deltas` and `normal_deltas`
+    hold three floats per entry; `sides` (0-255) split a paired target
+    between `desc` and `pair` across the face.
+    """
+    desc: int
+    targets: Tuple[float, float, float, float] = (0.0, 1.0, 10.0, 11.0)
+    pair: int = -1
+    indices: array = field(default_factory=lambda: array("H"))
+    sides: array = field(default_factory=lambda: array("B"))
+    deltas: array = field(default_factory=lambda: array("f"))
+    normal_deltas: array = field(default_factory=lambda: array("f"))
+
+    @property
+    def count(self) -> int:
+        return len(self.indices)
 
 
 @dataclass
@@ -53,6 +92,8 @@ class Mesh:
     bone_indices: array = field(default_factory=lambda: array("B"))
     bone_weights: array = field(default_factory=lambda: array("f"))
     indices: array = field(default_factory=lambda: array("I"))
+    #: face targets touching this mesh; empty for anything but a face
+    flexes: List[MeshFlex] = field(default_factory=list)
 
     @property
     def vertex_count(self) -> int:
@@ -108,6 +149,10 @@ class Model:
     material_names: List[str] = field(default_factory=list)
     #: folders to search for those materials, from the model's cdtextures
     material_dirs: List[str] = field(default_factory=list)
+    #: face controls, targets and the rules joining them; empty for most models
+    flex_controllers: List[FlexController] = field(default_factory=list)
+    flex_descs: List[str] = field(default_factory=list)
+    flex_rules: List[FlexRule] = field(default_factory=list)
     warnings: List[str] = field(default_factory=list)
 
     @property
@@ -144,6 +189,13 @@ class Model:
 
     def bone_map(self) -> Dict[str, int]:
         return {bone.name: i for i, bone in enumerate(self.bones)}
+
+    @property
+    def has_flexes(self) -> bool:
+        return any(m.flexes for m in self.meshes)
+
+    def flex_controller_map(self) -> Dict[str, int]:
+        return {c.name: i for i, c in enumerate(self.flex_controllers)}
 
     def material_candidates(self, material: str) -> List[str]:
         """Content-relative paths to try for a material, best first.

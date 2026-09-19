@@ -34,6 +34,8 @@ class Renderer:
         self.scene: Optional[Scene] = None
         #: GPU meshes by model path, in the model's item order
         self.meshes: Dict[str, List[Tuple[DrawItem, GLMesh]]] = {}
+        #: per-instance copies of meshes a face moves: (instance id, item index) -> mesh
+        self.morphed: Dict[Tuple[int, int], Tuple[GLMesh, int]] = {}
         self.textures: Dict[str, GLTexture] = {}
         self.background = (0.16, 0.17, 0.19, 1.0)
         self.model_matrix = IDENTITY
@@ -73,6 +75,9 @@ class Renderer:
         for meshes in self.meshes.values():
             for _item, mesh in meshes:
                 mesh.release()
+        for mesh, _version in self.morphed.values():
+            mesh.release()
+        self.morphed = {}
         for texture in self.textures.values():
             texture.release()
         self.meshes = {}
@@ -120,9 +125,11 @@ class Renderer:
                 if not any(item.blended == blended for item, _m in meshes):
                     continue
                 self._apply_instance(instance)
-                for item, mesh in meshes:
+                for index, (item, mesh) in enumerate(meshes):
                     if item.blended != blended:
                         continue
+                    if index in instance.morphs:
+                        mesh = self._morphed_mesh(instance, index, item)
                     self._apply_state(item)
                     texture = self.textures.get(item.texture_key)
                     if texture is not None:
@@ -135,6 +142,18 @@ class Renderer:
         GL.glDepthMask(GL.GL_TRUE)
         GL.glEnable(GL.GL_CULL_FACE)
         GL.glUseProgram(0)
+
+    def _morphed_mesh(self, instance: SceneInstance, index: int, item: DrawItem) -> GLMesh:
+        key = (id(instance), index)
+        entry = self.morphed.get(key)
+        if entry is None:
+            entry = (GLMesh(item.mesh), -1)
+        mesh, version = entry
+        if version != instance.morph_version:
+            positions, normals = instance.morphs[index]
+            mesh.update(positions, normals)
+            self.morphed[key] = (mesh, instance.morph_version)
+        return mesh
 
     def _apply_instance(self, instance: SceneInstance) -> None:
         u = self.uniforms

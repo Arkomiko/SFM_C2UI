@@ -116,6 +116,9 @@ def build_model(mdl: MdlFile, vvd: Optional[VvdFile], vtx: Optional[VtxFile],
         bones=list(mdl.bones),
         material_names=list(mdl.material_names),
         material_dirs=list(mdl.material_dirs),
+        flex_controllers=list(mdl.flex_controllers),
+        flex_descs=list(mdl.flex_descs),
+        flex_rules=list(mdl.flex_rules),
         warnings=list(mdl.warnings),
     )
     if extra_warnings:
@@ -188,6 +191,9 @@ def _build_mesh(model: Model, part, sub, mdl_mesh, vtx_mesh, vvd: VvdFile,
         material = model.material_names[material_index]
 
     mesh = Mesh(material=material, material_index=material_index, body_part=part.name)
+    if vvd.lod == 0:
+        # vertex animations index level-0 vertices; lower levels reorder them
+        mesh.flexes = [f for f in mdl_mesh.flexes if f.count and max(f.indices) < count]
     mesh.positions = vvd.positions[base * 3:(base + count) * 3]
     mesh.normals = vvd.normals[base * 3:(base + count) * 3]
     mesh.uvs = vvd.uvs[base * 2:(base + count) * 2]

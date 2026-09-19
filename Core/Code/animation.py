@@ -140,11 +140,37 @@ class Evaluator:
                     if isinstance(child, ChannelsClip) and not child.mute:
                         self._evaluate_channels(child, child.time_frame.to_child_time(time))
         if isinstance(clip, FilmClip):
+            self._run_flex_operators(clip)
             for shot in clip.shots:
                 frame = shot.time_frame
                 if frame.start.ticks <= time.ticks < frame.end.ticks:
                     self._evaluate_clip(shot, frame.to_child_time(time), depth + 1)
                     break
+
+    @staticmethod
+    def _run_flex_operators(clip: FilmClip) -> None:
+        """A DmeGlobalFlexControllerOperator carries a face control's value;
+        the operator copies it into its game model's flexWeights slot, which is
+        what the model reads. Matching is by name, since a model may have
+        gained or lost controls since the session was made."""
+        scene = clip.scene
+        if scene is None:
+            return
+        for node, _world, _visible in scene.walk_visibility():
+            names = node.element.get("flexnames")
+            weights = node.element.attribute("flexWeights")
+            operators = node.element.get("globalFlexControllers")
+            if not names or weights is None or not operators:
+                continue
+            slots = {name: i for i, name in enumerate(names)}
+            values = weights.value
+            for op in operators:
+                if not isinstance(op, Element):
+                    continue
+                i = slots.get(op.name)
+                value = op.get("flexWeight")
+                if i is not None and i < len(values) and isinstance(value, (int, float)):
+                    values[i] = float(value)
 
     def _evaluate_channels(self, clip: ChannelsClip, time: Time) -> None:
         for channel in clip.channels:

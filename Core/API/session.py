@@ -18,7 +18,7 @@ views only name the attributes those types have.
 """
 from __future__ import annotations
 
-from typing import Iterator, List, Optional, Sequence, Tuple
+from typing import Dict, Iterator, List, Optional, Sequence, Tuple
 
 from Core.Code.transform import IDENTITY, Mat34, matrix_from, multiply
 
@@ -175,6 +175,21 @@ class GameModel(Dag):
     @property
     def flex_names(self) -> List[str]:
         return list(self._get("flexnames", []))
+
+    @property
+    def flex_operators(self) -> List[Element]:
+        """DmeGlobalFlexControllerOperator elements: one per face control,
+        named after it, holding the animated `flexWeight` (0..1)."""
+        return self._elements("globalFlexControllers")
+
+    def flex_values(self) -> Dict[str, float]:
+        """Face control values by name, as the operators hold them."""
+        out: Dict[str, float] = {}
+        for op in self.flex_operators:
+            value = op.get("flexWeight")
+            if isinstance(value, (int, float)):
+                out[op.name] = float(value)
+        return out
 
 
 class Camera(Dag):

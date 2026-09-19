@@ -135,6 +135,14 @@ class GLMesh:
         GL.glEnableVertexAttribArray(location)
         GL.glVertexAttribIPointer(location, components, GL.GL_UNSIGNED_BYTE, 0, ctypes.c_void_p(0))
 
+    def update(self, positions, normals) -> None:
+        """Replace positions and normals in place, for a face that moved."""
+        for location, data in ((0, positions), (1, normals)):
+            raw = data.tobytes()
+            GL.glBindBuffer(GL.GL_ARRAY_BUFFER, self.buffers[location])
+            GL.glBufferData(GL.GL_ARRAY_BUFFER, len(raw), raw, GL.GL_DYNAMIC_DRAW)
+        GL.glBindBuffer(GL.GL_ARRAY_BUFFER, 0)
+
     def draw(self) -> None:
         if not self.index_count:
             return

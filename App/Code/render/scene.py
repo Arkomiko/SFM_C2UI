@@ -16,6 +16,7 @@ them. Nothing here touches OpenGL, which keeps it testable with fake content.
 """
 from __future__ import annotations
 
+from array import array
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Protocol, Tuple
 
@@ -24,6 +25,7 @@ from Core.API.model import Mesh, Model
 from Core.API.session import FilmClip, GameModel
 from Core.Code.formats import FormatError, load_material, load_model, parse_vtf
 from Core.Code.formats.vtf import VtfFile
+from Core.Code.flex import controller_values, morph, run_rules
 from Core.Code.pose import skin_matrices
 from Core.Code.transform import IDENTITY as IDENTITY34, Mat34, apply, to_column_major_4x4
 
@@ -78,6 +80,10 @@ class SceneInstance:
     #: the session element this came from, when any
     source: Optional[GameModel] = None
     visible: bool = True
+    #: morphed (positions, normals) by item index, for meshes a face moved
+    morphs: Dict[int, Tuple[array, array]] = field(default_factory=dict)
+    #: bumped whenever `morphs` changes, so the renderer knows to re-upload
+    morph_version: int = 0
 
     @property
     def model(self) -> Model:
@@ -93,10 +99,14 @@ class SceneInstance:
         hi = [float("-inf")] * 3
         m = self.loaded.model
         world34 = _to_34(self.world)
-        for mesh in m.meshes:
+        for index, item in enumerate(self.loaded.items):
+            mesh = item.mesh
             positions = mesh.positions
             count = mesh.vertex_count
             step = max(1, count // 400)
+            morphed = self.morphs.get(index)
+            if morphed is not None:
+                positions = morphed[0]
             for v in range(0, count, step):
                 p = (positions[v * 3], positions[v * 3 + 1], positions[v * 3 + 2])
                 if self.bones:
@@ -186,9 +196,11 @@ def build_shot_scene(source: SceneSource, shot: FilmClip) -> Scene:
             scene.warnings.append(f"{node.name}: {exc}")
             continue
         bones = skin_matrices(loaded.model, node.bones) if loaded.model.bones else []
-        scene.instances.append(SceneInstance(
+        instance = SceneInstance(
             loaded, name=node.name, world=to_column_major_4x4(world), bones=bones,
-            source=node, visible=visible))
+            source=node, visible=visible)
+        _apply_face(instance)
+        scene.instances.append(instance)
     if not scene.instances and not scene.warnings:
         scene.warnings.append("the shot has no game models")
     return scene
@@ -213,6 +225,24 @@ def refresh_shot_scene(scene: Scene, shot: FilmClip) -> None:
         instance.visible = visible
         if instance.model.bones:
             instance.bones = skin_matrices(instance.model, instance.source.bones)
+        if visible:
+            _apply_face(instance)
+
+
+def _apply_face(instance: SceneInstance) -> None:
+    """Move the face meshes to the session's control values."""
+    model = instance.model
+    if not model.has_flexes or instance.source is None:
+        return
+    weights = run_rules(model, controller_values(model, instance.source.flex_values()))
+    morphs: Dict[int, Tuple[array, array]] = {}
+    for index, item in enumerate(instance.items):
+        if item.mesh.flexes:
+            result = morph(item.mesh, weights)
+            if result is not None:
+                morphs[index] = result
+    instance.morphs = morphs
+    instance.morph_version += 1
 
 
 def _load(source: SceneSource, scene: Scene, rel: str, lod: int, body: int) -> LoadedModel:
