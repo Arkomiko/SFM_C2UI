@@ -9,6 +9,8 @@ breaking anything.
     from Core.API import SourceBridge, MountSet, Availability
 """
 from .bridge import BridgeInfo, SourceBridge
+from .material import Material, as_bool, as_float, as_vec, texture_path
+from .model import Bone, Mesh, Model, ModelInfo
 from .types import CONTENT_DIRS, Availability, Mount, MountSet, ProbeResult, order_mounts
 
 #: Bumped when anything in this package changes shape. Plugins check it.
@@ -19,4 +21,6 @@ __all__ = [
     "SourceBridge", "BridgeInfo",
     "Availability", "Mount", "MountSet", "ProbeResult",
     "CONTENT_DIRS", "order_mounts",
+    "Model", "ModelInfo", "Mesh", "Bone",
+    "Material", "texture_path", "as_float", "as_vec", "as_bool",
 ]
