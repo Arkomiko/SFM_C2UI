@@ -21,14 +21,17 @@ from PySide6.QtWidgets import (QDockWidget, QFileDialog, QLabel, QLineEdit, QLis
 
 from Core.API.dmx import Time
 from Core.API.session import Camera, Dag, FilmClip, Session
+from Core.API.dmx import Element
 from Core.Code.animation import Evaluator
-from Core.Code.formats import FormatError, load_dmx
+from Core.Code.editing import UndoStack, channel_index, record_edit
+from Core.Code.formats import FormatError, load_dmx, save_dmx
 from Core.Code.transform import apply, apply_direction
 
 from .content_library import ContentLibrary
 from .render.scene import Scene, build_scene, build_shot_scene, refresh_shot_scene
 from .render.viewport import Viewport
 from .settings import Settings
+from .ui.inspector import Inspector
 from .ui.session_tree import SessionTree
 from .ui.timeline import Timeline
 
@@ -66,6 +69,10 @@ class MainWindow(QMainWindow):
         self.current_shot: Optional[FilmClip] = None
         self._loader: Optional[_SceneLoader] = None
         self.evaluator = Evaluator()
+        self.undo = UndoStack()
+        self.undo.changed.append(self._undo_changed)
+        self._channel_index: dict = {}
+        self._channel_index_shot: Optional[FilmClip] = None
         #: whether the viewport keeps looking through the shot's camera as time moves
         self.follow_camera = True
         self._play_timer = QTimer(self)
@@ -99,9 +106,12 @@ class MainWindow(QMainWindow):
         # session
         self.tree = SessionTree()
         self.tree_dock = self._dock("Session", self.tree, Qt.RightDockWidgetArea)
+        self.inspector = Inspector()
+        self.inspector_dock = self._dock("Element", self.inspector, Qt.RightDockWidgetArea)
         self.timeline = Timeline()
         self.timeline_dock = self._dock("Timeline", self.timeline, Qt.BottomDockWidgetArea)
-        self.resizeDocks([self.browser_dock, self.tree_dock], [300, 340], Qt.Horizontal)
+        self.resizeDocks([self.browser_dock, self.tree_dock], [300, 380], Qt.Horizontal)
+        self.resizeDocks([self.tree_dock, self.inspector_dock], [420, 320], Qt.Vertical)
         self.resizeDocks([self.timeline_dock], [200], Qt.Vertical)
 
         self._menus()
@@ -114,6 +124,9 @@ class MainWindow(QMainWindow):
         self.viewport.scene_ready.connect(self.statusBar().showMessage)
         self.tree.shot_selected.connect(self.show_shot)
         self.tree.node_selected.connect(self._node_selected)
+        self.tree.element_selected.connect(self.inspector.set_element)
+        self.inspector.edited.connect(self._inspector_edited)
+        self.inspector.navigate.connect(self.inspector.set_element)
         self.timeline.shot_selected.connect(self._timeline_shot)
         self.timeline.time_changed.connect(self._time_changed)
 
@@ -132,6 +145,14 @@ class MainWindow(QMainWindow):
         open_action.setShortcut(QKeySequence.Open)
         open_action.triggered.connect(self.open_session_dialog)
         file_menu.addAction(open_action)
+        self.save_action = QAction("&Save", self)
+        self.save_action.setShortcut(QKeySequence.Save)
+        self.save_action.triggered.connect(self.save_session)
+        file_menu.addAction(self.save_action)
+        save_as = QAction("Save &As...", self)
+        save_as.setShortcut(QKeySequence.SaveAs)
+        save_as.triggered.connect(self.save_session_as)
+        file_menu.addAction(save_as)
         close_action = QAction("&Close Session", self)
         close_action.triggered.connect(self.close_session)
         file_menu.addAction(close_action)
@@ -141,8 +162,19 @@ class MainWindow(QMainWindow):
         quit_action.triggered.connect(self.close)
         file_menu.addAction(quit_action)
 
+        edit_menu = bar.addMenu("&Edit")
+        self.undo_action = QAction("&Undo", self)
+        self.undo_action.setShortcut(QKeySequence.Undo)
+        self.undo_action.triggered.connect(self.undo_edit)
+        edit_menu.addAction(self.undo_action)
+        self.redo_action = QAction("&Redo", self)
+        self.redo_action.setShortcuts([QKeySequence.Redo, QKeySequence("Ctrl+Shift+Z")])
+        self.redo_action.triggered.connect(self.redo_edit)
+        edit_menu.addAction(self.redo_action)
+        self._undo_changed()
+
         view_menu = bar.addMenu("&View")
-        for dock in (self.browser_dock, self.tree_dock, self.timeline_dock):
+        for dock in (self.browser_dock, self.tree_dock, self.inspector_dock, self.timeline_dock):
             view_menu.addAction(dock.toggleViewAction())
         view_menu.addSeparator()
         frame = QAction("&Frame Scene", self)
@@ -233,6 +265,8 @@ class MainWindow(QMainWindow):
             self.open_session(Path(path))
 
     def open_session(self, path: Path) -> bool:
+        if not self._confirm_discard():
+            return False
         self.statusBar().showMessage(f"reading {path.name}...")
         try:
             session = Session(load_dmx(path))
@@ -247,6 +281,11 @@ class MainWindow(QMainWindow):
         self.session = session
         self.session_path = path
         self.current_shot = None
+        self.undo.clear()
+        self.evaluator.invalidate()
+        self._channel_index = {}
+        self._channel_index_shot = None
+        self.inspector.set_element(None)
         self.settings.set("session.last_folder", str(path.parent))
         self.tree.set_session(session)
         self.timeline.set_session(session)
@@ -261,7 +300,11 @@ class MainWindow(QMainWindow):
         return True
 
     def close_session(self) -> None:
+        if not self._confirm_discard():
+            return
         self._play_timer.stop()
+        self.undo.clear()
+        self.inspector.set_element(None)
         self.session = None
         self.session_path = None
         self.current_shot = None
@@ -269,6 +312,113 @@ class MainWindow(QMainWindow):
         self.timeline.set_session(None)
         self.viewport.set_scene(None)
         self.setWindowTitle(f"C2UI - {self.library.state.title}" if self.library.ready else "C2UI")
+
+    # -- saving and editing --------------------------------------------------------
+    def save_session(self) -> bool:
+        if self.session is None:
+            return False
+        if self.session_path is None:
+            return self.save_session_as()
+        return self._save_to(self.session_path)
+
+    def save_session_as(self) -> bool:
+        if self.session is None:
+            return False
+        start = str(self.session_path) if self.session_path else self.sessions_folder()
+        path, _filter = QFileDialog.getSaveFileName(self, "Save Session As", start,
+                                                    "Source Filmmaker sessions (*.dmx)")
+        if not path:
+            return False
+        if not path.lower().endswith(".dmx"):
+            path += ".dmx"
+        return self._save_to(Path(path))
+
+    def _save_to(self, path: Path) -> bool:
+        try:
+            save_dmx(self.session.document, path)
+        except (OSError, FormatError) as exc:
+            QMessageBox.critical(self, "C2UI", f"Could not save {path.name}:\n{exc}")
+            return False
+        self.session_path = path
+        self.undo.mark_clean()
+        self.statusBar().showMessage(f"saved {path}")
+        return True
+
+    def _confirm_discard(self) -> bool:
+        """True when it is fine to drop the open session."""
+        if self.session is None or not self.undo.dirty:
+            return True
+        answer = QMessageBox.question(
+            self, "C2UI", f"Save changes to {self.session_path.name if self.session_path else 'the session'}?",
+            QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel, QMessageBox.Save)
+        if answer == QMessageBox.Save:
+            return self.save_session()
+        return answer == QMessageBox.Discard
+
+    def _undo_changed(self) -> None:
+        self.undo_action.setEnabled(self.undo.can_undo)
+        self.undo_action.setText(f"&Undo {self.undo.undo_label}" if self.undo.can_undo else "&Undo")
+        self.redo_action.setEnabled(self.undo.can_redo)
+        self.redo_action.setText(f"&Redo {self.undo.redo_label}" if self.undo.can_redo else "&Redo")
+        title = "C2UI"
+        if self.session_path is not None:
+            title += f" - {self.session_path.name}"
+        elif self.library.ready:
+            title += f" - {self.library.state.title}"
+        if self.undo.dirty:
+            title += " *"
+        self.setWindowTitle(title)
+
+    def undo_edit(self) -> None:
+        if self.undo.undo() is not None:
+            self._after_edit()
+
+    def redo_edit(self) -> None:
+        if self.undo.redo() is not None:
+            self._after_edit()
+
+    def _after_edit(self) -> None:
+        """Bring the scene and panels up to date after the document changed."""
+        self.evaluator.invalidate()
+        if self.session is not None and self.session.active_clip is not None:
+            self.evaluator.evaluate(self.session.active_clip, self.timeline.time)
+        self._refresh_pose()
+        self.inspector.refresh()
+
+    def _shot_time(self, shot: FilmClip) -> Time:
+        return shot.time_frame.to_child_time(self.timeline.time)
+
+    def _inspector_edited(self, element: Element, name: str, index: int, value) -> None:
+        if name == "name":
+            old = element.name
+            from Core.Code.editing import Command
+
+            class Rename(Command):
+                label = "rename"
+
+                def apply(self_inner) -> None:
+                    element.name = value
+
+                def revert(self_inner) -> None:
+                    element.name = old
+            self.undo.push(Rename())
+            self.tree.set_session(self.session)
+            return
+        shot = self.current_shot
+        if shot is not None and self._channel_index_shot is not shot:
+            self._channel_index = channel_index(shot)
+            self._channel_index_shot = shot
+        try:
+            if shot is not None:
+                command = record_edit(self._channel_index, element, name, value, self._shot_time(shot), index)
+            else:
+                from Core.Code.editing import SetAttribute
+                command = SetAttribute(element, name, value, index)
+        except KeyError as exc:
+            self.statusBar().showMessage(str(exc))
+            return
+        self.undo.push(command)
+        self._after_edit()
 
     def show_shot(self, shot: FilmClip) -> None:
         if shot is self.current_shot:
@@ -429,6 +579,9 @@ class MainWindow(QMainWindow):
 
     # -- lifecycle -----------------------------------------------------------------
     def closeEvent(self, event) -> None:
+        if not self._confirm_discard():
+            event.ignore()
+            return
         self.settings.set("window.geometry", bytes(self.saveGeometry().toBase64()).decode("ascii"))
         self.settings.set("window.state", bytes(self.saveState().toBase64()).decode("ascii"))
         try:

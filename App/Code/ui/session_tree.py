@@ -21,6 +21,7 @@ ROLE_VIEW = Qt.UserRole + 1
 class SessionTree(QTreeWidget):
     shot_selected = Signal(object)          # FilmClip
     node_selected = Signal(object, object)  # FilmClip, Dag (or None)
+    element_selected = Signal(object)       # the Element behind whatever was picked
 
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
@@ -88,6 +89,9 @@ class SessionTree(QTreeWidget):
             return
         role = current.data(0, ROLE_KIND)
         payload = current.data(0, ROLE_VIEW)
+        picked = payload[1] if isinstance(payload, tuple) else payload
+        if picked is not None and hasattr(picked, "element"):
+            self.element_selected.emit(picked.element)
         if role == "shot":
             self.shot_selected.emit(payload)
         elif role in ("node", "scene"):
