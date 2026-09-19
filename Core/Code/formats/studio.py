@@ -64,8 +64,9 @@ def find_model_files(source: ModelSource, rel: str) -> tuple[str, Optional[str],
     return rel, vvd, vtx
 
 
-def load_model(source: ModelSource, rel: str, lod: int = 0) -> Model:
-    """Load a model out of mounted content.
+def load_model(source: ModelSource, rel: str, lod: int = 0, body: int = 0) -> Model:
+    """Load a model out of mounted content, at a level of detail and with a
+    body group selection (`body`, as a session's DmeGameModel stores it).
 
     Raises :class:`FormatError` only when the .mdl itself cannot be read; a
     missing or broken .vvd/.vtx yields a model with bones and a warning, because
@@ -99,12 +100,17 @@ def load_model(source: ModelSource, rel: str, lod: int = 0) -> Model:
         except FormatError as exc:
             warnings.append(f"index data unusable ({exc})")
 
-    return build_model(mdl, vvd, vtx, extra_warnings=warnings)
+    return build_model(mdl, vvd, vtx, extra_warnings=warnings, body=body)
 
 
 def build_model(mdl: MdlFile, vvd: Optional[VvdFile], vtx: Optional[VtxFile],
-                extra_warnings: Optional[List[str]] = None) -> Model:
-    """Zip the three files together into one model."""
+                extra_warnings: Optional[List[str]] = None, body: int = 0) -> Model:
+    """Zip the three files together into one model.
+
+    Every body group contributes exactly one of its alternatives, chosen by
+    `body`; the others are skipped but still counted, because the vertex
+    array holds them all.
+    """
     model = Model(
         info=mdl.info,
         bones=list(mdl.bones),
@@ -136,8 +142,10 @@ def build_model(mdl: MdlFile, vvd: Optional[VvdFile], vtx: Optional[VtxFile],
     # there the level-0 offsets stay and only the counts shrink.
     compacted = lod > 0 and vvd.has_fixups
     cursor = 0
+    model.info.body = body
     for part_index, part in enumerate(mdl.body_parts):
         vtx_part = vtx.body_parts[part_index] if part_index < len(vtx.body_parts) else []
+        chosen = part.chosen(body)
         for model_index, sub in enumerate(part.models):
             vtx_model = vtx_part[model_index] if model_index < len(vtx_part) else []
             model_base = cursor if compacted else sub.first_vertex
@@ -146,6 +154,8 @@ def build_model(mdl: MdlFile, vvd: Optional[VvdFile], vtx: Optional[VtxFile],
                 count = mdl_mesh.vertices_at(lod)
                 base = model_base + (mesh_cursor if compacted else mdl_mesh.vertex_offset)
                 mesh_cursor += count
+                if model_index != chosen:
+                    continue                      # another alternative of this group
                 if mesh_index >= len(vtx_model):
                     continue                      # no index data for this mesh
                 vtx_mesh = vtx_model[mesh_index]

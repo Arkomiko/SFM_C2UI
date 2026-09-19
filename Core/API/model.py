@@ -86,6 +86,8 @@ class ModelInfo:
     bone_count: int = 0
     mesh_count: int = 0
     lod_count: int = 1
+    #: the body group selection this model was built with
+    body: int = 0
     #: The *movement* hull the engine collides with, in game space. It is not
     #: the size of the geometry and routinely disagrees with it - measured over
     #: 271 shipped models, the mesh fits inside this box in 5% of cases. Use

@@ -169,3 +169,13 @@ def test_up_axis_is_respected_by_the_view():
     top = m.transform_point(view, (0, 1, 0))
     centre = m.transform_point(view, (0, 0, 0))
     assert top[1] > centre[1]
+
+
+def test_look_from_reproduces_the_eye():
+    cam = OrbitCamera()
+    cam.up_axis = "z"
+    for eye, target in (((100, 0, 40), (0, 0, 40)), ((-30, 50, 90), (10, -5, 20)), ((0, 0, 200), (0, 0, 0))):
+        cam.look_from(eye, target, fov_y=1.0)
+        assert _close(cam.eye(), eye, 1e-6), (eye, cam.eye())
+        assert _close(cam.target, target)
+    assert cam.fov_y == 1.0

@@ -14,10 +14,10 @@ and `frame()` can guess it from the model's shape.
 from __future__ import annotations
 
 import math
-from typing import Tuple
+from typing import Optional, Tuple
 
-from .math3d import (Mat4, Vec3, add, cross, length, look_at, normalize, perspective, scale,
-                     sub)
+from .math3d import (Mat4, Vec3, add, cross, dot, length, look_at, normalize, perspective,
+                     scale, sub)
 
 __all__ = ["OrbitCamera", "UP_AXES"]
 
@@ -77,6 +77,20 @@ class OrbitCamera:
         # the sphere must fit the narrower field of view; add a little air
         self.distance = radius / math.sin(self.fov_y / 2.0) * 1.1
         self.distance = min(max(self.distance, self.min_distance), self.max_distance)
+
+    def look_from(self, eye: Vec3, target: Vec3, fov_y: Optional[float] = None) -> None:
+        """Place the orbit so the view matches a camera at `eye` looking at `target`."""
+        self.target = tuple(target)
+        offset = sub(eye, target)
+        self.distance = min(max(length(offset), self.min_distance), self.max_distance)
+        if self.distance <= 0.0:
+            return
+        d = scale(offset, 1.0 / length(offset))
+        forward, right = self._basis()
+        self.pitch = math.asin(max(-1.0, min(1.0, dot(d, self.up))))
+        self.yaw = math.atan2(dot(d, right), dot(d, forward))
+        if fov_y is not None:
+            self.fov_y = fov_y
 
     # -- basis -------------------------------------------------------------------
     @property

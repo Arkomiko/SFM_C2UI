@@ -388,3 +388,48 @@ def test_an_empty_mesh_takes_no_room_at_any_level():
     assert real.vertices_at(1) == 4 and real.vertices_at(7) == 0
     untabled = MdlMesh(0, 10, 0, (0,) * 8)
     assert untabled.vertices_at(3) == 10
+
+
+# ------------------------------------------------------------------ body groups
+def _grouped_model(body):
+    """Part 'body' with one model; part 'hat' with two alternatives (blank, hat)."""
+    from array import array
+    from Core.API.model import ModelInfo
+    from Core.Code.formats.mdl import MdlBodyPart, MdlFile, MdlMesh, MdlModel
+    from Core.Code.formats.vtx import VtxFile, VtxMesh
+    from Core.Code.formats.vvd import VvdFile
+    from Core.Code.formats import build_model
+
+    torso = MdlModel("torso", 3, 0, [MdlMesh(0, 3, 0, (3,) + (0,) * 7)])
+    blank = MdlModel("", 0, 3 * 48, [])
+    hat = MdlModel("hat", 3, 3 * 48, [MdlMesh(1, 3, 0, (3,) + (0,) * 7)])
+    mdl = MdlFile(info=ModelInfo(name="g"), material_names=["skin", "felt"],
+                  body_parts=[MdlBodyPart("body", [torso], base=1),
+                              MdlBodyPart("hat", [blank, hat], base=1)])
+    vvd = VvdFile()
+    vvd.positions = array("f", [float(i) for i in range(6 * 3)])
+    vvd.normals = array("f", [0.0] * 18)
+    vvd.uvs = array("f", [0.0] * 12)
+    vvd.bone_indices = array("B", [0] * 18)
+    vvd.bone_weights = array("f", [1.0] * 18)
+    tri = lambda: VtxMesh(indices=array("I", [0, 1, 2]))
+    vtx = VtxFile(body_parts=[[[tri()]], [[], [tri()]]])
+    return build_model(mdl, vvd, vtx, body=body)
+
+
+def test_body_zero_shows_the_first_alternative_of_every_group():
+    model = _grouped_model(body=0)
+    assert [m.material for m in model.meshes] == ["skin"]           # the blank hat draws nothing
+
+
+def test_body_selects_the_alternative():
+    model = _grouped_model(body=1)
+    assert [m.material for m in model.meshes] == ["skin", "felt"]
+    assert model.meshes[1].positions[0] == 3 * 3                     # the hat's vertices, not the torso's
+    assert model.info.body == 1
+
+
+def test_body_group_choice_uses_the_base():
+    from Core.Code.formats.mdl import MdlBodyPart, MdlModel
+    part = MdlBodyPart("hat", [MdlModel("a", 0, 0), MdlModel("b", 0, 0), MdlModel("c", 0, 0)], base=2)
+    assert [part.chosen(b) for b in (0, 1, 2, 3, 4, 5, 6)] == [0, 0, 1, 1, 2, 2, 0]

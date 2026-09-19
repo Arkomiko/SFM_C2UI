@@ -52,6 +52,7 @@ _TEXTURE_STRIDE = 64
 
 _BODYPART_STRIDE = 16
 _BODYPART_NUM_MODELS = 4
+_BODYPART_BASE = 8
 _BODYPART_MODEL_INDEX = 12
 
 _MODEL_STRIDE = 148
@@ -112,8 +113,20 @@ class MdlModel:
 
 @dataclass
 class MdlBodyPart:
+    """A body group: alternatives of which exactly one is shown.
+
+    A model's `body` value picks one alternative per group: this group's
+    choice is ``(body // base) % len(models)``, with `base` the product of
+    the group counts before it, as the compiler wrote it.
+    """
     name: str
     models: List[MdlModel] = field(default_factory=list)
+    base: int = 1
+
+    def chosen(self, body: int) -> int:
+        if not self.models:
+            return -1
+        return (body // max(1, self.base)) % len(self.models)
 
 
 @dataclass
@@ -222,7 +235,7 @@ def _parse_body_parts(reader: Reader, warnings: List[str]) -> List[MdlBodyPart]:
         return []
     parts: List[MdlBodyPart] = []
     for part_cur in reader.array(offset, count, _BODYPART_STRIDE, "body parts"):
-        part = MdlBodyPart(name=part_cur.string(0))
+        part = MdlBodyPart(name=part_cur.string(0), base=max(1, part_cur.i32(_BODYPART_BASE)))
         model_count = part_cur.i32(_BODYPART_NUM_MODELS)
         model_offset = part_cur.i32(_BODYPART_MODEL_INDEX)
         if model_count > 0 and model_offset:

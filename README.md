@@ -7,7 +7,7 @@
   <a href="#running-it"><img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white"></a>
   <a href="#running-it"><img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white"></a>
   <a href="#running-it"><img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white"></a>
-  <a href="Testing"><img alt="tests" src="https://img.shields.io/badge/tests-259%20passing-66c0f4?style=flat-square"></a>
+  <a href="Testing"><img alt="tests" src="https://img.shields.io/badge/tests-279%20passing-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/platform-Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -45,8 +45,8 @@ then the things SFM never got.
 ## Where it stands
 
 <p align="center">
-  <img src=".github/assets/editor.png" alt="The editor: content browser beside the viewport" width="100%">
-  <br><sub>The editor today: a content search beside an OpenGL viewport. Every model in the installation loads with its textures.</sub>
+  <img src=".github/assets/editor.png" alt="The editor with Meet the Heavy open" width="100%">
+  <br><sub>The editor today, with Valve's <i>Meet the Heavy</i> session open: shots and sound on the timeline, the session tree, and the first shot seen through its own camera - every model in the pose the session stores.</sub>
 </p>
 
 ### Status
@@ -59,15 +59,15 @@ then the things SFM never got.
 | Materials — `.vmt` | ✅ done | All 19 554 shipped materials parse; `patch`, DX-level blocks, proxies. |
 | Textures — `.vtf` | ✅ done | Versions 7.0–7.5, DXT1/3/5 and every uncompressed format, cubemaps, mips. |
 | Sessions — `.dmx` | ✅ read / write | Binary 1–5 and KeyValues2. Every session and particle file in the install writes back **byte for byte**. |
+| Session on screen | 🟡 basic | Open a session: shots and sound tracks on a timeline, the element tree, each shot's scene through its own camera with every model in the pose the session stores. |
 | Viewport | 🟡 basic | Textured models, orbit camera, wireframe, up-axis control. No Source shading (phong, rim, lightwarp) yet. |
-| Session in the UI | ⬜ next | The data is loaded; the timeline, animation sets and element tree are not drawn yet. |
-| Animation & skinning | ⬜ planned | Bones are read; nothing moves yet. |
+| Animation | ⬜ next | Skinning is on the GPU and poses come from the session; the channels and logs that move them over time are not evaluated yet. |
 | Rigs, IK, motion editor | ⬜ planned | |
 | Rendering to video / poster | ⬜ planned | |
 | Plugins (`.c2plg`) | ⬜ planned | |
 | Themes & workspaces | ⬜ deliberately later | One default look until the editor does something worth theming. |
 
-**Release readiness: not yet.** Roughly a fifth of the way. The foundation —
+**Release readiness: not yet.** Roughly a quarter of the way. The foundation —
 every file format SFM uses, read correctly and verified against the whole
 installation — is in place and tested. What is missing is the editor itself:
 you can browse and look, you cannot yet *make* anything. I am not putting a
@@ -126,6 +126,7 @@ python -m venv .venv
 ```
 
 On first start it looks for SFM through Steam; if it cannot find it, it asks.
+<kbd>Ctrl</kbd>+<kbd>O</kbd> opens a session (`game/usermod/elements/sessions`); <kbd>C</kbd> looks through the shot's camera.
 Type in the search box, pick a model, drag to orbit, wheel to zoom, middle-drag
 to pan, <kbd>F</kbd> to frame, <kbd>W</kbd> for wireframe, <kbd>X</kbd> <kbd>Y</kbd> <kbd>Z</kbd> to set the up axis.
 
@@ -151,18 +152,17 @@ C2UI_SDK/
 │   ├── Cache/         regenerable
 │   └── Temporary/     cleared on start
 ├── Tools/             localisation, UI tooling, plugin scaffolding (later)
-└── Testing/           259 tests, byte-exact fixtures, one runner
+└── Testing/           279 tests, byte-exact fixtures, one runner
 ```
 
 ## Roadmap
 
-1. **Session on screen** — element tree, timeline, animation sets, from a real `.dmx`.
-2. **Animation** — channels and logs evaluated, bones posed, skinned in the viewport.
-3. **Source shading** — VertexLitGeneric as SFM draws it: phong, rim, lightwarp, sheen.
-4. **Editing** — transforms, curves, the motion editor; save back exactly.
-5. **Maps** — `.bsp` for backgrounds.
-6. **Output** — image and video export.
-7. **Plugins** — the `.c2plg` format; then themes and workspaces.
+1. **Animation** — channels and logs evaluated over time, the time cursor moving the scene.
+2. **Source shading** — VertexLitGeneric as SFM draws it: phong, rim, lightwarp, sheen.
+3. **Editing** — transforms, curves, the motion editor; save back exactly.
+4. **Maps** — `.bsp` for backgrounds.
+5. **Output** — image and video export.
+6. **Plugins** — the `.c2plg` format; then themes and workspaces.
 
 ## Licence & credits
 
@@ -188,12 +188,13 @@ rights reserved. Issues and pull requests are welcome all the same.
 
 **Что готово:** поиск и монтирование SFM, индекс контента, модели
 (`.mdl/.vvd/.vtx`), материалы (`.vmt`), текстуры (`.vtf`), чтение и
-побайтово точная запись сессий (`.dmx`), базовый вьюпорт с текстурами.
+побайтово точная запись сессий (`.dmx`), вьюпорт с текстурами и скиннингом,
+открытие сессии: таймлайн с шотами и звуком, дерево, сцена шота через его камеру.
 Каждый формат проверен на всей установке.
 
-**Чего нет:** самого редактора — таймлайна, анимации, рига, рендера в видео.
-Данные загружаются, но редактировать пока нечего. **К релизу не готов** —
-примерно пятая часть пути. Номер версии появится, когда сессию можно будет
+**Чего нет:** анимации во времени, редактирования, рига, рендера в видео.
+Сессию можно открыть и посмотреть, но не изменить. **К релизу не готов** —
+примерно четверть пути. Номер версии появится, когда сессию можно будет
 открыть, изменить и сохранить.
 
 Запуск: см. раздел *Running it*. Тесты: `python Testing/run.py`.

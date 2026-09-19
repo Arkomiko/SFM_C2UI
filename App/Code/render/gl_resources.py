@@ -6,8 +6,9 @@ DXT1/3/5 are S3TC, which every desktop GPU has supported for twenty years, so
 the pixels never pass through Python. Anything else is decoded to RGBA first.
 All stored mips are uploaded, so nothing has to be generated.
 
-A mesh becomes one vertex array with three buffers - positions, normals, UVs -
-taken straight from the model's flat arrays, plus an index buffer.
+A mesh becomes one vertex array with five buffers - positions, normals, UVs,
+bone indices, bone weights - taken straight from the model's flat arrays, plus
+an index buffer.
 
 Both know how to free themselves; the renderer owns them and does so when the
 scene changes or the context goes away.
@@ -104,12 +105,14 @@ class GLMesh:
     def __init__(self, mesh: Mesh) -> None:
         self.index_count = len(mesh.indices)
         self.vao = int(GL.glGenVertexArrays(1))
-        self.buffers = [int(b) for b in GL.glGenBuffers(4)]
+        self.buffers = [int(b) for b in GL.glGenBuffers(6)]
         GL.glBindVertexArray(self.vao)
         self._attribute(0, mesh.positions, 3)
         self._attribute(1, mesh.normals, 3)
         self._attribute(2, mesh.uvs, 2)
-        GL.glBindBuffer(GL.GL_ELEMENT_ARRAY_BUFFER, self.buffers[3])
+        self._integer_attribute(3, mesh.bone_indices, 3)
+        self._attribute(4, mesh.bone_weights, 3)
+        GL.glBindBuffer(GL.GL_ELEMENT_ARRAY_BUFFER, self.buffers[5])
         raw = mesh.indices.tobytes()
         GL.glBufferData(GL.GL_ELEMENT_ARRAY_BUFFER, len(raw), raw, GL.GL_STATIC_DRAW)
         GL.glBindVertexArray(0)
@@ -123,6 +126,14 @@ class GLMesh:
         GL.glEnableVertexAttribArray(location)
         GL.glVertexAttribPointer(location, components, GL.GL_FLOAT, GL.GL_FALSE, 0,
                                  ctypes.c_void_p(0))
+
+    def _integer_attribute(self, location: int, data, components: int) -> None:
+        """Bone indices stay integers: the shader indexes an array with them."""
+        raw = data.tobytes() if len(data) else bytes(components)
+        GL.glBindBuffer(GL.GL_ARRAY_BUFFER, self.buffers[location])
+        GL.glBufferData(GL.GL_ARRAY_BUFFER, len(raw), raw, GL.GL_STATIC_DRAW)
+        GL.glEnableVertexAttribArray(location)
+        GL.glVertexAttribIPointer(location, components, GL.GL_UNSIGNED_BYTE, 0, ctypes.c_void_p(0))
 
     def draw(self) -> None:
         if not self.index_count:

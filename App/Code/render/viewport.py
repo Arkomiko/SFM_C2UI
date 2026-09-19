@@ -67,9 +67,18 @@ class Viewport(QOpenGLWidget):
         return self.renderer.scene
 
     def frame_scene(self) -> None:
-        if self.renderer.scene is not None:
-            self.camera.frame(self.renderer.scene.bounds)
+        scene = self.renderer.scene
+        if scene is not None:
+            self._frame(scene)
             self.update()
+
+    def _frame(self, scene: Scene) -> None:
+        """Fit the scene; a session says which way is up, a lone model does not."""
+        if scene.up_axis:
+            self.camera.up_axis = scene.up_axis
+            self.camera.frame(scene.bounds, guess_up=False)
+        else:
+            self.camera.frame(scene.bounds)
 
     # -- GL ------------------------------------------------------------------------
     def initializeGL(self) -> None:
@@ -95,7 +104,7 @@ class Viewport(QOpenGLWidget):
             scene, self._pending = self._pending, None
             self.renderer.set_scene(scene)
             if scene is not None and self._pending_frame:
-                self.camera.frame(scene.bounds)
+                self._frame(scene)
             self._pending_frame = False
             if self.renderer.errors:
                 self.failed.emit("\n".join(self.renderer.errors))
