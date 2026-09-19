@@ -110,3 +110,22 @@ def test_clear_cache_never_touches_user_data():
         assert marker.is_file(), "clearing Cache must not reach into User"
     finally:
         marker.unlink(missing_ok=True)
+
+
+def test_cleaning_keeps_the_placeholders_that_hold_the_folders():
+    # .gitkeep is what makes these folders exist in a fresh checkout; wiping the
+    # cache must not quietly remove them from the project
+    locations.ensure_dirs()
+    keepers = []
+    for folder in (locations.CONTENT_CACHE, locations.THUMBNAIL_CACHE,
+                   locations.MATERIAL_CACHE, locations.SHADER_CACHE, locations.TEMPORARY):
+        placeholder = folder / ".gitkeep"
+        if not placeholder.exists():
+            placeholder.write_text("", encoding="utf-8")
+        keepers.append(placeholder)
+
+    locations.clear_cache()
+    locations.clear_temporary()
+
+    for placeholder in keepers:
+        assert placeholder.is_file(), f"{placeholder} was removed by cleaning"

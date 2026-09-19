@@ -65,6 +65,15 @@ def new_session_dir() -> Path:
     return folder
 
 
+def _is_placeholder(entry: Path) -> bool:
+    """Dot-files such as .gitkeep keep an empty folder present in the project.
+
+    Cleaning must never remove them: the folders themselves are part of the
+    application, only their contents are disposable.
+    """
+    return entry.name.startswith(".")
+
+
 def clear_temporary(keep: Iterable[Path] = ()) -> int:
     """Remove session folders left behind, including by a crashed run.
 
@@ -76,7 +85,7 @@ def clear_temporary(keep: Iterable[Path] = ()) -> int:
     removed = 0
     for entry in TEMPORARY.iterdir():
         try:
-            if entry.resolve() in protect:
+            if _is_placeholder(entry) or entry.resolve() in protect:
                 continue
             if entry.is_dir():
                 shutil.rmtree(entry, ignore_errors=True)
@@ -96,6 +105,8 @@ def clear_cache() -> int:
             continue
         for entry in folder.iterdir():
             try:
+                if _is_placeholder(entry):
+                    continue
                 if entry.is_dir():
                     removed += sum(1 for _ in entry.rglob("*") if _.is_file())
                     shutil.rmtree(entry, ignore_errors=True)
