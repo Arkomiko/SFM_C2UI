@@ -22,7 +22,7 @@ from .camera import OrbitCamera
 from .gl_resources import GLMesh, GLTexture
 from .math3d import IDENTITY, multiply, normalize, sub
 from .scene import DrawItem, Scene, SceneInstance
-from .shaders import MAX_BONES, MODEL_FRAG, MODEL_VERT, build_program
+from .shaders import ID_FRAG, LINE_FRAG, LINE_VERT, MAX_BONES, MODEL_FRAG, MODEL_VERT, build_program
 
 __all__ = ["Renderer"]
 
@@ -38,6 +38,13 @@ class Renderer:
         self.morphed: Dict[Tuple[int, int], Tuple[GLMesh, int]] = {}
         self.textures: Dict[str, GLTexture] = {}
         self.background = (0.16, 0.17, 0.19, 1.0)
+        self.line_program = 0
+        self.id_program = 0
+        self._line_vao = 0
+        self._line_vbo = 0
+        #: line segments to draw over the scene: [(a, b, (r, g, b, a)), ...]
+        self.overlay_lines: List[Tuple[Tuple[float, float, float], Tuple[float, float, float],
+                                       Tuple[float, float, float, float]]] = []
         self.model_matrix = IDENTITY
         self.wireframe = False
         #: Source winds triangles clockwise when seen from outside
@@ -52,6 +59,15 @@ class Renderer:
             self.uniforms[name] = GL.glGetUniformLocation(self.program, name)
         GL.glEnable(GL.GL_DEPTH_TEST)
         GL.glDepthFunc(GL.GL_LEQUAL)
+        self.line_program = build_program(LINE_VERT, LINE_FRAG)
+        self.id_program = build_program(MODEL_VERT, ID_FRAG)
+        self._line_vao = int(GL.glGenVertexArrays(1))
+        self._line_vbo = int(GL.glGenBuffers(1))
+        GL.glBindVertexArray(self._line_vao)
+        GL.glBindBuffer(GL.GL_ARRAY_BUFFER, self._line_vbo)
+        GL.glEnableVertexAttribArray(0)
+        GL.glVertexAttribPointer(0, 3, GL.GL_FLOAT, GL.GL_FALSE, 0, None)
+        GL.glBindVertexArray(0)
 
     def set_scene(self, scene: Optional[Scene]) -> None:
         self._release_scene()
@@ -86,9 +102,14 @@ class Renderer:
 
     def release(self) -> None:
         self._release_scene()
-        if self.program:
-            GL.glDeleteProgram(self.program)
-            self.program = 0
+        for name in ("program", "line_program", "id_program"):
+            if getattr(self, name):
+                GL.glDeleteProgram(getattr(self, name))
+                setattr(self, name, 0)
+        if self._line_vao:
+            GL.glDeleteVertexArrays(1, [self._line_vao])
+            GL.glDeleteBuffers(1, [self._line_vbo])
+            self._line_vao = self._line_vbo = 0
 
     # -- drawing -----------------------------------------------------------------
     def draw(self, camera: OrbitCamera, width: int, height: int) -> None:
@@ -142,6 +163,96 @@ class Renderer:
         GL.glDepthMask(GL.GL_TRUE)
         GL.glEnable(GL.GL_CULL_FACE)
         GL.glUseProgram(0)
+        if self.overlay_lines:
+            self._draw_lines(view_proj)
+
+    def _draw_lines(self, view_proj) -> None:
+        """Overlay lines (manipulators), on top of everything."""
+        import struct
+        GL.glUseProgram(self.line_program)
+        GL.glUniformMatrix4fv(GL.glGetUniformLocation(self.line_program, "u_view_proj"), 1, GL.GL_FALSE, view_proj)
+        colour_location = GL.glGetUniformLocation(self.line_program, "u_color")
+        GL.glDisable(GL.GL_DEPTH_TEST)
+        GL.glLineWidth(1.0)                      # core profiles allow nothing wider
+        GL.glBindVertexArray(self._line_vao)
+        GL.glBindBuffer(GL.GL_ARRAY_BUFFER, self._line_vbo)
+        # group by colour to keep the draw count small
+        groups: Dict[Tuple[float, float, float, float], List[float]] = {}
+        for a, b, colour in self.overlay_lines:
+            groups.setdefault(colour, []).extend((*a, *b))
+        for colour, floats in groups.items():
+            raw = struct.pack(f"<{len(floats)}f", *floats)
+            GL.glBufferData(GL.GL_ARRAY_BUFFER, len(raw), raw, GL.GL_STREAM_DRAW)
+            GL.glUniform4f(colour_location, *colour)
+            GL.glDrawArrays(GL.GL_LINES, 0, len(floats) // 3)
+        GL.glBindVertexArray(0)
+        GL.glEnable(GL.GL_DEPTH_TEST)
+        GL.glUseProgram(0)
+
+    def draw_ids(self, camera: OrbitCamera, width: int, height: int) -> None:
+        """Draw every visible instance in a colour that encodes its index, for
+        picking; the caller reads the pixel back with `instance_at`."""
+        GL.glViewport(0, 0, max(1, width), max(1, height))
+        GL.glClearColor(0.0, 0.0, 0.0, 0.0)
+        GL.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT)
+        if self.scene is None or not self.meshes or not self.id_program:
+            return
+        view_proj = multiply(camera.projection(width / max(1, height)), camera.view())
+        program = self.id_program
+        GL.glUseProgram(program)
+        loc = lambda name: GL.glGetUniformLocation(program, name)
+        GL.glUniformMatrix4fv(loc("u_view_proj"), 1, GL.GL_FALSE, view_proj)
+        GL.glUniform1i(loc("u_texture"), 0)
+        GL.glFrontFace(GL.GL_CCW if self.front_face_ccw else GL.GL_CW)
+        GL.glDisable(GL.GL_BLEND)
+        GL.glDepthMask(GL.GL_TRUE)
+        for index, instance in enumerate(self.scene.instances):
+            if not instance.visible:
+                continue
+            meshes = self.meshes.get(instance.loaded.rel, [])
+            if not meshes:
+                continue
+            code = index + 1
+            GL.glUniform4f(loc("u_color"), (code & 0xFF) / 255.0, ((code >> 8) & 0xFF) / 255.0,
+                           ((code >> 16) & 0xFF) / 255.0, 1.0)
+            GL.glUniformMatrix4fv(loc("u_model"), 1, GL.GL_FALSE, multiply(self.model_matrix, instance.world))
+            if instance.bones:
+                rows = []
+                for m in instance.bones[:MAX_BONES]:
+                    rows.extend(m)
+                GL.glUniform4fv(loc("u_bones"), len(rows) // 4, rows)
+                GL.glUniform1i(loc("u_skinned"), 1)
+            else:
+                GL.glUniform1i(loc("u_skinned"), 0)
+            for item_index, (item, mesh) in enumerate(meshes):
+                if item.two_sided:
+                    GL.glDisable(GL.GL_CULL_FACE)
+                else:
+                    GL.glEnable(GL.GL_CULL_FACE)
+                    GL.glCullFace(GL.GL_BACK)
+                texture = self.textures.get(item.texture_key)
+                if texture is not None:
+                    texture.bind(0)
+                GL.glUniform1i(loc("u_textured"), 1 if texture is not None else 0)
+                GL.glUniform1i(loc("u_alpha_test"), 1 if item.alpha_test else 0)
+                if item_index in instance.morphs:
+                    mesh = self._morphed_mesh(instance, item_index, item)
+                mesh.draw()
+        GL.glEnable(GL.GL_CULL_FACE)
+        GL.glUseProgram(0)
+
+    def instance_at(self, x: int, y: int, width: int, height: int) -> Optional[SceneInstance]:
+        """The instance under a pixel of the id pass just drawn (y from the top)."""
+        if self.scene is None:
+            return None
+        if not (0 <= x < width and 0 <= y < height):
+            return None
+        GL.glPixelStorei(GL.GL_PACK_ALIGNMENT, 1)
+        raw = bytes(GL.glReadPixels(x, height - 1 - y, 1, 1, GL.GL_RGBA, GL.GL_UNSIGNED_BYTE))
+        code = raw[0] | (raw[1] << 8) | (raw[2] << 16)
+        if code == 0 or code > len(self.scene.instances):
+            return None
+        return self.scene.instances[code - 1]
 
     def _morphed_mesh(self, instance: SceneInstance, index: int, item: DrawItem) -> GLMesh:
         key = (id(instance), index)

@@ -7,7 +7,7 @@
   <a href="#running-it"><img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white"></a>
   <a href="#running-it"><img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white"></a>
   <a href="#running-it"><img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white"></a>
-  <a href="Testing"><img alt="tests" src="https://img.shields.io/badge/tests-326%20passing-66c0f4?style=flat-square"></a>
+  <a href="Testing"><img alt="tests" src="https://img.shields.io/badge/tests-332%20passing-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/platform-Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -64,7 +64,7 @@ then the things SFM never got.
 | Animation | ✅ playback | Channels and logs evaluated at the time cursor; scrub or play (<kbd>Space</kbd>) and every bone, transform, camera, face and rig follows the session. |
 | Faces | ✅ done | Flex controllers, the compiled rule programs and vertex animation — characters talk and emote. |
 | Rigs | 🟡 basic | Expression operators, point/orient/parent/aim constraints and two-bone IK. Not yet: the full operator dependency graph, and rig *creation*. |
-| Editing | 🟡 basic | Any attribute of any element in the inspector; a change to an animated value becomes a key at the time cursor. Undo/redo, Save and Save As, byte-exact. No viewport manipulator or motion editor yet. |
+| Editing | 🟡 basic | Click a model to select it, move or rotate it with the manipulator (<kbd>T</kbd> / <kbd>R</kbd>), or edit any attribute in the inspector; a change to an animated value becomes a key at the time cursor. Undo/redo, Save and Save As, byte-exact. No motion editor or graph editor yet. |
 | Rendering to video / poster | ⬜ planned | |
 | Plugins (`.c2plg`) | ⬜ planned | |
 | Themes & workspaces | ⬜ deliberately later | One default look until the editor does something worth theming. |
@@ -129,7 +129,7 @@ python -m venv .venv
 ```
 
 On first start it looks for SFM through Steam; if it cannot find it, it asks.
-<kbd>Ctrl</kbd>+<kbd>O</kbd> opens a session (`game/usermod/elements/sessions`); <kbd>C</kbd> looks through the shot's camera; <kbd>Space</kbd> plays, drag the timeline to scrub. Pick anything in the Session tree and edit its attributes in the Element panel — an animated value gets a key at the cursor. <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes, <kbd>Ctrl</kbd>+<kbd>S</kbd> saves.
+<kbd>Ctrl</kbd>+<kbd>O</kbd> opens a session (`game/usermod/elements/sessions`); <kbd>C</kbd> looks through the shot's camera; <kbd>Space</kbd> plays, drag the timeline to scrub. Click a model in the viewport (or pick it in the Session tree) and drag the manipulator's axes to move it, <kbd>R</kbd> for rotation rings, <kbd>T</kbd> back to moving; or edit any attribute in the Element panel. An animated value gets a key at the cursor. <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes, <kbd>Ctrl</kbd>+<kbd>S</kbd> saves.
 Type in the search box, pick a model, drag to orbit, wheel to zoom, middle-drag
 to pan, <kbd>F</kbd> to frame, <kbd>W</kbd> for wireframe, <kbd>X</kbd> <kbd>Y</kbd> <kbd>Z</kbd> to set the up axis.
 
@@ -155,12 +155,12 @@ C2UI_SDK/
 │   ├── Cache/         regenerable
 │   └── Temporary/     cleared on start
 ├── Tools/             localisation, UI tooling, plugin scaffolding (later)
-└── Testing/           326 tests, byte-exact fixtures, one runner
+└── Testing/           332 tests, byte-exact fixtures, one runner
 ```
 
 ## Roadmap
 
-1. **Manipulators** — move and rotate in the viewport; the motion editor's time selection.
+1. **Motion editor** — the time selection, falloff and the graph editor.
 2. **Source shading** — VertexLitGeneric as SFM draws it: phong, rim, lightwarp, sheen.
 3. **Maps** — `.bsp` for backgrounds.
 4. **Output** — image and video export.
@@ -196,8 +196,7 @@ rights reserved. Issues and pull requests are welcome all the same.
 анимация (flex), риги: выражения, констрейнты, двухзвенный IK.
 Каждый формат проверен на всей установке.
 
-**Чего нет:** манипулятора во вьюпорте и motion editor (править можно только
-через инспектор), рендера в видео, карт.
+**Чего нет:** motion editor и graph editor, рендера в видео, карт.
 Сессию можно открыть и посмотреть, но не изменить. **К релизу не готов** —
 примерно треть пути. Номер версии появится, когда сессию можно будет
 открыть, изменить и сохранить.

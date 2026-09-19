@@ -103,6 +103,20 @@ class SessionTree(QTreeWidget):
         elif role == "sets":
             self.shot_selected.emit(payload)
 
+    def select_element(self, element) -> bool:
+        """Make the item for a session element current; False when none shows it."""
+        stack = [self.topLevelItem(i) for i in range(self.topLevelItemCount())]
+        while stack:
+            item = stack.pop()
+            payload = item.data(0, ROLE_VIEW)
+            picked = payload[1] if isinstance(payload, tuple) else payload
+            if picked is not None and getattr(picked, "element", None) is element:
+                self.setCurrentItem(item)
+                self.scrollToItem(item)
+                return True
+            stack.extend(item.child(i) for i in range(item.childCount()))
+        return False
+
     def select_shot(self, shot: FilmClip) -> None:
         root = self.topLevelItem(0)
         if root is None:

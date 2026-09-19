@@ -17,7 +17,8 @@ from typing import List, Sequence, Tuple
 __all__ = ["Mat34", "IDENTITY", "matrix_from", "multiply", "apply", "apply_direction",
            "invert", "quaternion_to_matrix", "quaternion_multiply", "quaternion_normalize",
            "quaternion_from_angles", "quaternion_slerp", "to_column_major_4x4", "translation_of",
-           "matrix_to_quaternion", "quaternion_inverse", "rotation_between", "rotate_vector"]
+           "matrix_to_quaternion", "quaternion_inverse", "rotation_between", "rotate_vector",
+           "quaternion_from_axis_angle"]
 
 Mat34 = Tuple[float, ...]            # 12 values: r0c0 r0c1 r0c2 r0c3  r1c0 ...  r2c3
 Quat = Tuple[float, float, float, float]
@@ -129,6 +130,15 @@ def rotation_between(a: Vec3, b: Vec3) -> Quat:
     cy = az * bx - ax * bz
     cz = ax * by - ay * bx
     return quaternion_normalize((cx, cy, cz, 1.0 + d))
+
+
+def quaternion_from_axis_angle(axis: Vec3, angle: float) -> Quat:
+    x, y, z = axis
+    n = math.sqrt(x * x + y * y + z * z)
+    if n < 1e-12:
+        return (0.0, 0.0, 0.0, 1.0)
+    s = math.sin(angle / 2.0) / n
+    return (x * s, y * s, z * s, math.cos(angle / 2.0))
 
 
 def rotate_vector(q: Quat, v: Vec3) -> Vec3:

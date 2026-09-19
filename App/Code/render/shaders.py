@@ -12,7 +12,8 @@ from __future__ import annotations
 
 from OpenGL import GL
 
-__all__ = ["MODEL_VERT", "MODEL_FRAG", "MAX_BONES", "build_program", "ShaderError"]
+__all__ = ["MODEL_VERT", "MODEL_FRAG", "LINE_VERT", "LINE_FRAG", "ID_FRAG", "MAX_BONES",
+           "build_program", "ShaderError"]
 
 
 class ShaderError(RuntimeError):
@@ -114,6 +115,38 @@ void main() {
     // an opaque surface's alpha is a mask for other shaders (phong, cloak),
     // not coverage; writing it to the frame would punch holes in a capture
     out_color = vec4(base.rgb * shade, u_blended ? base.a : 1.0);
+}
+"""
+
+
+LINE_VERT = """
+#version 330 core
+layout(location = 0) in vec3 in_position;
+uniform mat4 u_view_proj;
+void main() { gl_Position = u_view_proj * vec4(in_position, 1.0); }
+"""
+
+LINE_FRAG = """
+#version 330 core
+uniform vec4 u_color;
+out vec4 out_color;
+void main() { out_color = u_color; }
+"""
+
+#: draws every surface in one flat colour: the picking pass
+ID_FRAG = """
+#version 330 core
+uniform vec4 u_color;
+uniform sampler2D u_texture;
+uniform bool u_textured;
+uniform bool u_alpha_test;
+in vec2 v_uv;
+in vec3 v_normal;
+in vec3 v_world;
+out vec4 out_color;
+void main() {
+    if (u_alpha_test && u_textured && texture(u_texture, v_uv).a < 0.5) discard;
+    out_color = u_color;
 }
 """
 

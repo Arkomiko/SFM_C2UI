@@ -25,7 +25,10 @@ from Core.API.dmx import Element
 from Core.Code.animation import Evaluator
 from Core.Code.editing import UndoStack, channel_index, record_edit
 from Core.Code.formats import FormatError, load_dmx, save_dmx
-from Core.Code.transform import apply, apply_direction
+from Core.Code.editing import Group
+from Core.Code.transform import (apply, apply_direction, invert, matrix_to_quaternion, multiply,
+                                 quaternion_from_axis_angle, quaternion_multiply,
+                                 quaternion_normalize, translation_of)
 
 from .content_library import ContentLibrary
 from .render.scene import Scene, build_scene, build_shot_scene, refresh_shot_scene
@@ -59,6 +62,12 @@ class _SceneLoader(QThread):
             self.done.emit(None, f"{type(exc).__name__}: {exc}")
 
 
+def _same(a, b) -> bool:
+    """Views are made fresh on every access; two are the same when they wrap
+    the same element."""
+    return a is not None and b is not None and a.element is b.element
+
+
 class MainWindow(QMainWindow):
     def __init__(self, settings: Settings) -> None:
         super().__init__()
@@ -73,6 +82,11 @@ class MainWindow(QMainWindow):
         self.undo.changed.append(self._undo_changed)
         self._channel_index: dict = {}
         self._channel_index_shot: Optional[FilmClip] = None
+        #: the dag the manipulator acts on, with its world and parent-world matrices
+        self.selected: Optional[Dag] = None
+        self._selected_world = None
+        self._selected_parent = None
+        self._drag_start = None
         #: whether the viewport keeps looking through the shot's camera as time moves
         self.follow_camera = True
         self._play_timer = QTimer(self)
@@ -121,6 +135,10 @@ class MainWindow(QMainWindow):
         self.results.currentItemChanged.connect(lambda cur, _prev: self._open_item(cur))
         self.viewport.failed.connect(self._viewport_failed)
         self.viewport.camera_taken.connect(self._camera_taken)
+        self.viewport.picked.connect(self._picked)
+        self.viewport.manipulate_begin.connect(self._manipulate_begin)
+        self.viewport.manipulated.connect(self._manipulated)
+        self.viewport.manipulate_end.connect(self._manipulate_end)
         self.viewport.scene_ready.connect(self.statusBar().showMessage)
         self.tree.shot_selected.connect(self.show_shot)
         self.tree.node_selected.connect(self._node_selected)
@@ -177,10 +195,14 @@ class MainWindow(QMainWindow):
         for dock in (self.browser_dock, self.tree_dock, self.inspector_dock, self.timeline_dock):
             view_menu.addAction(dock.toggleViewAction())
         view_menu.addSeparator()
-        frame = QAction("&Frame Scene", self)
+        frame = QAction("&Frame Selection", self)
         frame.setShortcut("F")
-        frame.triggered.connect(self.viewport.frame_scene)
+        frame.triggered.connect(self.frame_selection)
         view_menu.addAction(frame)
+        frame_all = QAction("Frame &All", self)
+        frame_all.setShortcut("Shift+F")
+        frame_all.triggered.connect(self.viewport.frame_scene)
+        view_menu.addAction(frame_all)
         shot_cam = QAction("Shot &Camera", self)
         shot_cam.setShortcut("C")
         shot_cam.triggered.connect(self.use_shot_camera)
@@ -405,7 +427,7 @@ class MainWindow(QMainWindow):
             self.tree.set_session(self.session)
             return
         shot = self.current_shot
-        if shot is not None and self._channel_index_shot is not shot:
+        if shot is not None and not _same(self._channel_index_shot, shot):
             self._channel_index = channel_index(shot)
             self._channel_index_shot = shot
         try:
@@ -421,7 +443,7 @@ class MainWindow(QMainWindow):
         self._after_edit()
 
     def show_shot(self, shot: FilmClip) -> None:
-        if shot is self.current_shot:
+        if _same(shot, self.current_shot):
             return
         self.current_shot = shot
         self.timeline.select_clip(shot)
@@ -433,14 +455,40 @@ class MainWindow(QMainWindow):
         self.show_shot(shot)
 
     def _node_selected(self, shot: FilmClip, node: Optional[Dag]) -> None:
-        if shot is not self.current_shot:
+        if not _same(shot, self.current_shot):
             self.show_shot(shot)
+            self.selected = node
             return
+        self.selected = node
+        self._place_manipulator()
+
+    def _place_manipulator(self) -> None:
+        """Put the manipulator on the selected node, in its own frame."""
+        node = self.selected
+        shot = self.current_shot
+        if node is None or shot is None or shot.scene is None or node.transform is None:
+            self.viewport.manipulator.hide()
+            self.viewport.update()
+            return
+        world = None
+        for candidate, m, _visible in shot.scene.walk_visibility():
+            if candidate.element is node.element:
+                world = m
+                break
+        if world is None:
+            self.viewport.manipulator.hide()
+            self.viewport.update()
+            return
+        self._selected_world = world
+        self._selected_parent = multiply(world, invert(node.local_matrix()))
+        self.viewport.manipulator.place(translation_of(world), matrix_to_quaternion(world))
+        self.viewport.update()
+
+    def frame_selection(self) -> None:
         scene = self.viewport.scene
+        node = self.selected
         if scene is None or node is None:
-            return
-        if isinstance(node, Camera):
-            self._look_through(shot, node)
+            self.viewport.frame_scene()
             return
         wanted = {n.element for n, _m in node.walk(include_hidden=True)}
         boxes = [i.bounds() for i in scene.instances
@@ -450,7 +498,87 @@ class MainWindow(QMainWindow):
             lo = tuple(min(b[0][a] for b in boxes) for a in range(3))
             hi = tuple(max(b[1][a] for b in boxes) for a in range(3))
             self.viewport.camera.frame((lo, hi), guess_up=False)
+        elif self._selected_world is not None:
+            o = translation_of(self._selected_world)
+            self.viewport.camera.frame(((o[0] - 10, o[1] - 10, o[2] - 10), (o[0] + 10, o[1] + 10, o[2] + 10)), guess_up=False)
+        self.follow_camera = False
+        self.viewport.update()
+
+    def _picked(self, instance) -> None:
+        if instance is None or instance.source is None:
+            self.selected = None
+            self.viewport.manipulator.hide()
             self.viewport.update()
+            return
+        if not self.tree.select_element(instance.source.element):
+            self.selected = instance.source
+            self._place_manipulator()
+
+    # -- manipulating --------------------------------------------------------------
+    def _manipulate_begin(self) -> None:
+        node = self.selected
+        if node is None or node.transform is None:
+            return
+        t = node.transform
+        self._drag_start = (t.position, t.orientation)
+
+    def _manipulated(self, delta) -> None:
+        node = self.selected
+        if node is None or node.transform is None or self._drag_start is None or self._selected_parent is None:
+            return
+        start_position, start_orientation = self._drag_start
+        transform = node.transform
+        parent_inverse = invert(self._selected_parent)
+        if isinstance(delta[0], (int, float)):
+            origin = translation_of(self._selected_world)
+            world_position = (origin[0] + delta[0], origin[1] + delta[1], origin[2] + delta[2])
+            transform.position = apply(parent_inverse, world_position)
+        else:
+            axis, angle = delta
+            world_rotation = matrix_to_quaternion(self._selected_world)
+            turned = quaternion_multiply(quaternion_from_axis_angle(axis, angle), world_rotation)
+            parent_rotation = matrix_to_quaternion(parent_inverse)
+            transform.orientation = quaternion_normalize(quaternion_multiply(parent_rotation, turned))
+        self._refresh_pose_only()
+
+    def _manipulate_end(self) -> None:
+        node = self.selected
+        if node is None or node.transform is None or self._drag_start is None:
+            return
+        transform = node.transform
+        start_position, start_orientation = self._drag_start
+        final_position, final_orientation = transform.position, transform.orientation
+        self._drag_start = None
+        # restore, then apply through the undo stack as one recorded edit
+        transform.position = start_position
+        transform.orientation = start_orientation
+        shot = self.current_shot
+        commands = []
+        if final_position != start_position:
+            commands.append(self._edit_command(transform.element, "position", final_position, shot))
+        if final_orientation != start_orientation:
+            commands.append(self._edit_command(transform.element, "orientation", final_orientation, shot))
+        if commands:
+            self.undo.push(Group(commands, f"move {node.name}") if len(commands) > 1 else commands[0])
+            self._after_edit()
+        self._place_manipulator()
+
+    def _edit_command(self, element: Element, name: str, value, shot: Optional[FilmClip]):
+        if shot is not None:
+            if not _same(self._channel_index_shot, shot):
+                self._channel_index = channel_index(shot)
+                self._channel_index_shot = shot
+            return record_edit(self._channel_index, element, name, value, self._shot_time(shot))
+        from Core.Code.editing import SetAttribute
+        return SetAttribute(element, name, value)
+
+    def _refresh_pose_only(self) -> None:
+        """Re-pose from the elements as they are, without evaluating (a drag in progress)."""
+        scene = self.viewport.scene
+        shot = self.current_shot
+        if scene is not None and shot is not None and scene.up_axis:
+            refresh_shot_scene(scene, shot)
+        self.viewport.update()
 
     def use_shot_camera(self) -> None:
         shot = self.current_shot
@@ -487,7 +615,7 @@ class MainWindow(QMainWindow):
         clip = session.active_clip
         self.evaluator.evaluate(clip, time)
         shot = self._shot_at(time)
-        if shot is not None and shot is not self.current_shot:
+        if shot is not None and not _same(shot, self.current_shot):
             self.tree.select_shot(shot)
             self.show_shot(shot)
             return
@@ -514,6 +642,8 @@ class MainWindow(QMainWindow):
         refresh_shot_scene(scene, shot)
         if self.follow_camera and shot.camera is not None:
             self._look_through(shot, shot.camera)
+        if self.selected is not None and self._drag_start is None:
+            self._place_manipulator()
         self.viewport.update()
 
     def toggle_play(self) -> None:
