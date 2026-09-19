@@ -35,6 +35,7 @@ from .content_library import ContentLibrary
 from .render.scene import Scene, build_scene, build_shot_scene, refresh_shot_scene
 from .render.viewport import Viewport
 from .settings import Settings
+from .ui.docking import Docking
 from .ui.inspector import Inspector
 from .ui.session_tree import SessionTree
 from .ui.timeline import Timeline
@@ -130,6 +131,7 @@ class MainWindow(QMainWindow):
         self.resizeDocks([self.timeline_dock], [200], Qt.Vertical)
 
         self._menus()
+        self.docking = Docking(self)
 
         self.search.textChanged.connect(self._search)
         self.results.itemActivated.connect(self._open_item)
