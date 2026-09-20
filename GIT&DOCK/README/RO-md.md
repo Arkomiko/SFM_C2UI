@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/teste-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/teste-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Primul obiectiv este compatibilitatea deplină cu SFM, inclusiv oase și rig-uri
 
 <img align="right" src="../assets/RO-md/sidebar.svg" alt="Grad de pregătire" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Pregătire generală pentru lansare: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Pregătire generală pentru lansare: 41%</b>
 
 Fiecare zonă se deschide: ce funcționează deja și ce nu există încă. Procentele sunt o estimare față de posibilitățile SFM.
 
@@ -90,14 +90,19 @@ Controlere flex, regulile compilate și animația de vârfuri — personajele vo
 Expresii, constrângeri point/orient/parent/aim, IK cu două oase. Încă nu: graful complet al operatorilor, crearea de rig-uri.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Editare</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Editare</b></summary>
 
-Selectare prin clic, manipulator de mutare/rotire, inspector pentru orice atribut, cheie la cursor, anulare/refacere, salvare exactă la octet. Încă nu: editorul de grafice.
+Selectare prin clic, manipulator de mutare/rotire, inspector pentru orice atribut, cheie la cursor, anulare/refacere, salvare exactă la octet.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
 
 Selecție de timp cu hold și falloff pe riglă; o modificare se întinde peste ea ca în SFM. Încă nu: presetări, straturi.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Editor de grafice</b></summary>
+
+Curbele fiecărui log al elementului selectat: X/Y/Z, pitch/yaw/roll, scalari. Cheile se trag în timp și valoare cu previzualizare live, dublu clic inserează, Delete șterge; axa timpului e cea a cronologiei. Încă nu: tangente și tipuri de curbe, scalarea unui grup de chei.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Andocarea panourilor</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## Plan
 
-1. **Editor de grafice** — curbe și chei, văzute.
-2. **Umbrire Source** — VertexLitGeneric așa cum îl desenează SFM: phong, rim, lightwarp, lumini de scenă.
-3. **Hărți** — `.bsp` pentru fundal.
-4. **Export** — imagine și video.
-5. **Plugin-uri** — formatul `.c2plg`; apoi teme și spații de lucru.
+1. **Umbrire Source** — VertexLitGeneric așa cum îl desenează SFM: phong, rim, lightwarp, lumini de scenă.
+2. **Hărți** — `.bsp` pentru fundal.
+3. **Export** — imagine și video.
+4. **Plugin-uri** — formatul `.c2plg`; apoi teme și spații de lucru.
 
 ## Licență și mulțumiri
 

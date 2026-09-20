@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AC%AA%E0%AC%B0%E0%AD%80%E0%AC%95%E0%AD%8D%E0%AC%B7%E0%AC%BE-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AC%AA%E0%AC%B0%E0%AD%80%E0%AC%95%E0%AD%8D%E0%AC%B7%E0%AC%BE-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Source Filmmaker ଏକ ଶକ୍ତିଶାଳୀ ଉପକରଣ ଯାହା
 
 <img align="right" src="../assets/OR-in/sidebar.svg" alt="ପ୍ରସ୍ତୁତି" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 41%</b>
 
 ପ୍ରତ୍ୟେକ କ୍ଷେତ୍ର ଖୋଲାଯାଏ: କଣ ପୂର୍ବରୁ କାମ କରେ ଓ କଣ ଏବେ ନାହିଁ। ପ୍ରତିଶତ SFM ର କ୍ଷମତା ତୁଳନାରେ ଆକଳନ।
 
@@ -90,14 +90,19 @@ Flex କଣ୍ଟ୍ରୋଲର, କମ୍ପାଇଲ ନିୟମ ଓ ଭର�
 ଏକ୍ସପ୍ରେସନ, point/orient/parent/aim କନ୍‌ଷ୍ଟ୍ରେଣ୍ଟ, ଦୁଇ-ହାଡ IK। ଏବେ ନାହିଁ: ପୂର୍ଣ୍ଣ ଅପରେଟର ନିର୍ଭରତା ଗ୍ରାଫ, ରିଗ ନିର୍ମାଣ।
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>ସମ୍ପାଦନା</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>ସମ୍ପାଦନା</b></summary>
 
-କ୍ଲିକରେ ଚୟନ, ମୁଭ/ରୋଟେଟ ମ୍ୟାନିପୁଲେଟର, ଯେକୌଣସି ଆଟ୍ରିବ୍ୟୁଟର ଇନ୍‌ସ୍ପେକ୍ଟର, କର୍ସରରେ କି, ଅନଡୁ/ରିଡୁ, ବାଇଟ-ସଠିକ ସେଭ। ଏବେ ନାହିଁ: ଗ୍ରାଫ ଏଡିଟର।
+କ୍ଲିକରେ ଚୟନ, ମୁଭ/ରୋଟେଟ ମ୍ୟାନିପୁଲେଟର, ଯେକୌଣସି ଆଟ୍ରିବ୍ୟୁଟର ଇନ୍‌ସ୍ପେକ୍ଟର, କର୍ସରରେ କି, ଅନଡୁ/ରିଡୁ, ବାଇଟ-ସଠିକ ସେଭ।
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>ମୋସନ ଏଡିଟର</b></summary>
 
 ରୁଲରରେ ହୋଲ୍ଡ ଓ ଫଲଅଫ ସହ ସମୟ ଚୟନ; ସମ୍ପାଦନା SFM ପରି ତାହା ଉପରେ ବ୍ୟାପେ। ଏବେ ନାହିଁ: ପ୍ରିସେଟ, ଲେୟର।
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>ଗ୍ରାଫ ଏଡିଟର</b></summary>
+
+ଚୟନିତ ଏଲିମେଣ୍ଟ ଚଳାଉଥିବା ପ୍ରତ୍ୟେକ ଲଗର ବକ୍ର: X/Y/Z, pitch/yaw/roll, ସ୍କେଲାର। କି ଲାଇଭ ପ୍ରିଭ୍ୟୁ ସହ ସମୟ ଓ ମୂଲ୍ୟରେ ଟଣାଯାଏ, ଡବଲ-କ୍ଲିକ ଯୋଡ଼େ, Delete ହଟାଏ; ସମୟ ଅକ୍ଷ ଟାଇମଲାଇନର। ଏବେ ନାହିଁ: ଟାଞ୍ଜେଣ୍ଟ ଓ ବକ୍ର ପ୍ରକାର, କି ଗୋଷ୍ଠୀ ସ୍କେଲିଂ।
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>ପ୍ୟାନେଲ ଡକିଂ</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## ରୋଡମ୍ୟାପ
 
-୧. **ଗ୍ରାଫ ଏଡିଟର** — ବକ୍ର ଓ କି, ଆଖି ଆଗରେ।
-୨. **Source ସେଡିଂ** — SFM ଆଙ୍କିବା ପରି VertexLitGeneric: phong, rim, lightwarp, ଦୃଶ୍ୟ ଆଲୋକ।
-୩. **ମ୍ୟାପ** — ପୃଷ୍ଠଭୂମି ପାଇଁ `.bsp`।
-୪. **ଆଉଟପୁଟ** — ଚିତ୍ର ଓ ଭିଡିଓ ଏକ୍ସପୋର୍ଟ।
-୫. **ପ୍ଲଗଇନ** — `.c2plg` ଫର୍ମାଟ; ତାପରେ ଥିମ ଓ ୱାର୍କସ୍ପେସ।
+୧. **Source ସେଡିଂ** — SFM ଆଙ୍କିବା ପରି VertexLitGeneric: phong, rim, lightwarp, ଦୃଶ୍ୟ ଆଲୋକ।
+୨. **ମ୍ୟାପ** — ପୃଷ୍ଠଭୂମି ପାଇଁ `.bsp`।
+୩. **ଆଉଟପୁଟ** — ଚିତ୍ର ଓ ଭିଡିଓ ଏକ୍ସପୋର୍ଟ।
+୪. **ପ୍ଲଗଇନ** — `.c2plg` ଫର୍ମାଟ; ତାପରେ ଥିମ ଓ ୱାର୍କସ୍ପେସ।
 
 ## ଲାଇସେନ୍ସ ଓ କୃତଜ୍ଞତା
 

@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/testov-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/testov-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Prvi cilj je polna združljivost s SFM, vključno s kostmi in rigi. Potem tisto,
 
 <img align="right" src="../assets/SL-si/sidebar.svg" alt="Pripravljenost" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Skupna pripravljenost za izdajo: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Skupna pripravljenost za izdajo: 41%</b>
 
 Vsako področje se razpre: kaj že deluje in česa še ni. Odstotki so ocena glede na zmožnosti SFM.
 
@@ -90,14 +90,19 @@ Flex kontrolniki, prevedena pravila in animacija oglišč — liki govorijo in k
 Izrazi, omejitve point/orient/parent/aim, dvokostni IK. Še ne: celoten graf odvisnosti operatorjev, ustvarjanje rigov.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Urejanje</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Urejanje</b></summary>
 
-Izbira s klikom, manipulator za premik/vrtenje, inšpektor za vsak atribut, ključ pri kazalcu, razveljavi/ponovi, bajtno natančno shranjevanje. Še ne: urejevalnik grafov.
+Izbira s klikom, manipulator za premik/vrtenje, inšpektor za vsak atribut, ključ pri kazalcu, razveljavi/ponovi, bajtno natančno shranjevanje.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
 
 Časovna izbira s hold in falloff na ravnilu; sprememba se razporedi čez njo kot v SFM. Še ne: prednastavitve, plasti.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Urejevalnik grafov</b></summary>
+
+Krivulje vsakega dnevnika izbranega elementa: X/Y/Z, pitch/yaw/roll, skalarji. Ključi se vlečejo po času in vrednosti s predogledom v živo, dvojni klik vstavi, Delete briše; časovna os je časovnica. Še ne: tangente in vrste krivulj, skaliranje skupine ključev.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Sidranje plošč</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## Načrt
 
-1. **Urejevalnik grafov** — krivulje in ključi na očeh.
-2. **Senčenje Source** — VertexLitGeneric, kot ga riše SFM: phong, rim, lightwarp, luči prizora.
-3. **Zemljevidi** — `.bsp` za ozadje.
-4. **Izvoz** — slika in video.
-5. **Vtičniki** — format `.c2plg`; nato teme in delovni prostori.
+1. **Senčenje Source** — VertexLitGeneric, kot ga riše SFM: phong, rim, lightwarp, luči prizora.
+2. **Zemljevidi** — `.bsp` za ozadje.
+3. **Izvoz** — slika in video.
+4. **Vtičniki** — format `.c2plg`; nato teme in delovni prostori.
 
 ## Licenca in zasluge
 

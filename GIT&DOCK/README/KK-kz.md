@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D1%82%D0%B5%D1%81%D1%82-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D1%82%D0%B5%D1%81%D1%82-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Source Filmmaker — интерфейсі 2012 жылда қалған күшт�
 
 <img align="right" src="../assets/KK-kz/sidebar.svg" alt="Дайындық" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Релизге жалпы дайындық: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Релизге жалпы дайындық: 41%</b>
 
 Әр аймақ ашылады: не жұмыс істейді және не әлі жоқ. Пайыздар — SFM мүмкіндіктеріне қатысты баға.
 
@@ -90,14 +90,19 @@ Flex-контроллерлер, компиляцияланған ережеле
 Өрнектер, point/orient/parent/aim-констрейнттер, екі сүйекті IK. Жоқ: операторлардың толық тәуелділік графы, риг жасау.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Өңдеу</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Өңдеу</b></summary>
 
-Шертумен таңдау, жылжыту/бұру манипуляторы, кез келген атрибут инспекторы, курсордағы кілт, болдырмау/қайталау, байт-дәлдікпен сақтау. Жоқ: graph editor.
+Шертумен таңдау, жылжыту/бұру манипуляторы, кез келген атрибут инспекторы, курсордағы кілт, болдырмау/қайталау, байт-дәлдікпен сақтау.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
 
 Сызғыштағы hold және falloff бар уақыт бөлектеуі; өзгеріс SFM-дегідей бөлектеуге таралады. Жоқ: пресеттер, қабаттар.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Graph editor</b></summary>
+
+Таңдалған элементтің әр логының қисықтары: X/Y/Z, pitch/yaw/roll, скалярлар. Кілттер уақыт пен мән бойынша тірі алдын ала қараумен сүйреледі, қос шерту кірістіреді, Delete өшіреді; уақыт осі таймлайнмен ортақ. Жоқ: жанамалар мен қисық түрлері, кілттер тобын масштабтау.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Панельдерді бекіту</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## Жол картасы
 
-1. **Graph editor** — қисықтар мен кілттер көз алдында.
-2. **Source шейдингі** — VertexLitGeneric SFM салғандай: phong, rim, lightwarp, сахна жарығы.
-3. **Карталар** — фон үшін `.bsp`.
-4. **Экспорт** — сурет және бейне.
-5. **Плагиндер** — `.c2plg` форматы; содан кейін тақырыптар мен жұмыс кеңістіктері.
+1. **Source шейдингі** — VertexLitGeneric SFM салғандай: phong, rim, lightwarp, сахна жарығы.
+2. **Карталар** — фон үшін `.bsp`.
+3. **Экспорт** — сурет және бейне.
+4. **Плагиндер** — `.c2plg` форматы; содан кейін тақырыптар мен жұмыс кеңістіктері.
 
 ## Лицензия және алғыс
 

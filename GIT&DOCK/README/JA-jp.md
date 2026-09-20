@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E3%83%86%E3%82%B9%E3%83%88-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E3%83%86%E3%82%B9%E3%83%88-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Source Filmmaker は強力なツールですが、インターフェースは 20
 
 <img align="right" src="../assets/JA-jp/sidebar.svg" alt="完成度" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>リリースへの全体的な完成度: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>リリースへの全体的な完成度: 41%</b>
 
 各領域を開くと、すでに動くものとまだないものが分かります。パーセントは SFM の機能に対する目安です。
 
@@ -90,14 +90,19 @@ Flex コントローラ、コンパイル済みルール、頂点アニメーシ
 式、point/orient/parent/aim コンストレイント、2 ボーン IK。未対応: 完全なオペレータ依存グラフ、リグ作成。
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>編集</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>編集</b></summary>
 
-クリックで選択、移動/回転マニピュレータ、任意の属性のインスペクタ、カーソル位置のキー、元に戻す/やり直し、バイト単位で正確な保存。未対応: グラフエディタ。
+クリックで選択、移動/回転マニピュレータ、任意の属性のインスペクタ、カーソル位置のキー、元に戻す/やり直し、バイト単位で正確な保存。
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>モーションエディタ</b></summary>
 
 ルーラー上のホールドとフォールオフ付き時間選択。編集は SFM と同じように選択範囲に広がります。未対応: プリセット、レイヤー。
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>グラフエディタ</b></summary>
+
+選択要素を駆動するすべてのログの曲線: X/Y/Z、pitch/yaw/roll、スカラー。キーはライブプレビュー付きで時間と値にドラッグ、ダブルクリックで挿入、Delete で削除。時間軸はタイムラインと共有。未対応: タンジェントとカーブタイプ、キー群のスケーリング。
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>パネルのドッキング</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## ロードマップ
 
-1. **グラフエディタ** — カーブとキーを目で見る。
-2. **Source シェーディング** — SFM が描く VertexLitGeneric: phong、rim、lightwarp、シーンライト。
-3. **マップ** — 背景用の `.bsp`。
-4. **出力** — 画像と動画の書き出し。
-5. **プラグイン** — `.c2plg` 形式。その後テーマとワークスペース。
+1. **Source シェーディング** — SFM が描く VertexLitGeneric: phong、rim、lightwarp、シーンライト。
+2. **マップ** — 背景用の `.bsp`。
+3. **出力** — 画像と動画の書き出し。
+4. **プラグイン** — `.c2plg` 形式。その後テーマとワークスペース。
 
 ## ライセンスとクレジット
 

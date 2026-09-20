@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D9%B9%DB%8C%D8%B3%D9%B9-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D9%B9%DB%8C%D8%B3%D9%B9-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Source Filmmaker ایک مضبوط ٹول ہے جس کا انٹرفیس 2012 م�
 
 <img align="right" src="../assets/UR-pk/sidebar.svg" alt="تیاری" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 41%</b>
 
 ہر حصہ کھلتا ہے: کیا پہلے سے کام کرتا ہے اور کیا ابھی نہیں۔ فیصد SFM کی صلاحیتوں کے مقابلے ایک اندازہ ہے۔
 
@@ -90,14 +90,19 @@ Flex کنٹرولر، کمپائل شدہ قواعد اور ورٹیکس این�
 ایکسپریشن، point/orient/parent/aim کنسٹرینٹ، دو ہڈی IK۔ ابھی نہیں: مکمل آپریٹر انحصار گراف، رگ بنانا۔
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>ایڈیٹنگ</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>ایڈیٹنگ</b></summary>
 
-کلک سے انتخاب، موو/روٹیٹ مینیپولیٹر، کسی بھی ایٹریبیوٹ کا انسپکٹر، کرسر پر کی، انڈو/ریڈو، بائٹ درست سیو۔ ابھی نہیں: گراف ایڈیٹر۔
+کلک سے انتخاب، موو/روٹیٹ مینیپولیٹر، کسی بھی ایٹریبیوٹ کا انسپکٹر، کرسر پر کی، انڈو/ریڈو، بائٹ درست سیو۔
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>موشن ایڈیٹر</b></summary>
 
 رولر پر ہولڈ اور فال آف کے ساتھ وقت کا انتخاب؛ ترمیم SFM کی طرح اس پر پھیلتی ہے۔ ابھی نہیں: پری سیٹ، لیئر۔
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>گراف ایڈیٹر</b></summary>
+
+منتخب ایلیمنٹ چلانے والے ہر لاگ کے کرو: X/Y/Z، pitch/yaw/roll، اسکیلر۔ کیز وقت اور قدر میں لائیو پیش نظارہ کے ساتھ گھسیٹی جاتی ہیں، ڈبل کلک شامل کرتا ہے، Delete ہٹاتا ہے؛ وقت کا محور ٹائم لائن کا ہے۔ ابھی نہیں: ٹینجنٹ اور کرو کی اقسام، کیز کے گروپ کی اسکیلنگ۔
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>پینل ڈاکنگ</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## روڈ میپ
 
-1. **گراف ایڈیٹر** — کرو اور کیز، آنکھوں کے سامنے۔
-2. **Source شیڈنگ** — VertexLitGeneric جیسے SFM بناتا ہے: phong، rim، lightwarp، منظر کی روشنیاں۔
-3. **نقشے** — پس منظر کے لیے `.bsp`۔
-4. **آؤٹ پٹ** — تصویر اور ویڈیو ایکسپورٹ۔
-5. **پلگ ان** — `.c2plg` فارمیٹ؛ پھر تھیم اور ورک اسپیس۔
+1. **Source شیڈنگ** — VertexLitGeneric جیسے SFM بناتا ہے: phong، rim، lightwarp، منظر کی روشنیاں۔
+2. **نقشے** — پس منظر کے لیے `.bsp`۔
+3. **آؤٹ پٹ** — تصویر اور ویڈیو ایکسپورٹ۔
+4. **پلگ ان** — `.c2plg` فارمیٹ؛ پھر تھیم اور ورک اسپیس۔
 
 ## لائسنس اور اعتراف
 

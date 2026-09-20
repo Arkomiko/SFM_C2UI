@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%B0%AA%E0%B0%B0%E0%B1%80%E0%B0%95%E0%B1%8D%E0%B0%B7%E0%B0%B2%E0%B1%81-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%B0%AA%E0%B0%B0%E0%B1%80%E0%B0%95%E0%B1%8D%E0%B0%B7%E0%B0%B2%E0%B1%81-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Source Filmmaker బలమైన సాధనం, కానీ దాని ఇ�
 
 <img align="right" src="../assets/TE-in/sidebar.svg" alt="సిద్ధత" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>విడుదలకు మొత్తం సిద్ధత: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>విడుదలకు మొత్తం సిద్ధత: 41%</b>
 
 ప్రతి విభాగం విస్తరిస్తుంది: ఇప్పటికే ఏది పనిచేస్తుంది, ఏది ఇంకా లేదు. శాతాలు SFM సామర్థ్యాలకు సాపేక్షంగా అంచనా.
 
@@ -90,14 +90,19 @@ Flex కంట్రోలర్లు, కంపైల్ చేసిన న�
 ఎక్స్‌ప్రెషన్లు, point/orient/parent/aim కన్‌స్ట్రెయింట్లు, రెండు-ఎముకల IK. ఇంకా లేదు: పూర్తి ఆపరేటర్ డిపెండెన్సీ గ్రాఫ్, రిగ్ సృష్టి.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>ఎడిటింగ్</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>ఎడిటింగ్</b></summary>
 
-క్లిక్ ఎంపిక, మూవ్/రొటేట్ మానిప్యులేటర్, ఏ అట్రిబ్యూట్‌కైనా ఇన్‌స్పెక్టర్, కర్సర్ వద్ద కీ, అన్‌డు/రీడు, బైట్-ఖచ్చిత సేవ్. ఇంకా లేదు: గ్రాఫ్ ఎడిటర్.
+క్లిక్ ఎంపిక, మూవ్/రొటేట్ మానిప్యులేటర్, ఏ అట్రిబ్యూట్‌కైనా ఇన్‌స్పెక్టర్, కర్సర్ వద్ద కీ, అన్‌డు/రీడు, బైట్-ఖచ్చిత సేవ్.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>మోషన్ ఎడిటర్</b></summary>
 
 రూలర్‌పై హోల్డ్ మరియు ఫాల్ఆఫ్‌తో సమయ ఎంపిక; ఎడిట్ SFM లాగా దానిపై వ్యాపిస్తుంది. ఇంకా లేదు: ప్రీసెట్లు, లేయర్లు.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>గ్రాఫ్ ఎడిటర్</b></summary>
+
+ఎంచుకున్న ఎలిమెంట్‌ను నడిపే ప్రతి లాగ్ వక్రాలు: X/Y/Z, pitch/yaw/roll, స్కేలార్లు. కీలు లైవ్ ప్రివ్యూతో సమయం, విలువలో లాగవచ్చు, డబుల్-క్లిక్ చేరుస్తుంది, Delete తొలగిస్తుంది; సమయ అక్షం టైమ్‌లైన్‌ది. ఇంకా లేదు: టాంజెంట్లు, వక్ర రకాలు, కీల సమూహ స్కేలింగ్.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>ప్యానెల్ డాకింగ్</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## రోడ్‌మ్యాప్
 
-1. **గ్రాఫ్ ఎడిటర్** — వక్రాలు మరియు కీలు, కంటికి.
-2. **Source షేడింగ్** — SFM గీసినట్లు VertexLitGeneric: phong, rim, lightwarp, సీన్ లైట్లు.
-3. **మ్యాప్‌లు** — నేపథ్యాల కోసం `.bsp`.
-4. **అవుట్‌పుట్** — చిత్రం మరియు వీడియో ఎగుమతి.
-5. **ప్లగిన్‌లు** — `.c2plg` ఫార్మాట్; తర్వాత థీమ్‌లు మరియు వర్క్‌స్పేస్‌లు.
+1. **Source షేడింగ్** — SFM గీసినట్లు VertexLitGeneric: phong, rim, lightwarp, సీన్ లైట్లు.
+2. **మ్యాప్‌లు** — నేపథ్యాల కోసం `.bsp`.
+3. **అవుట్‌పుట్** — చిత్రం మరియు వీడియో ఎగుమతి.
+4. **ప్లగిన్‌లు** — `.c2plg` ఫార్మాట్; తర్వాత థీమ్‌లు మరియు వర్క్‌స్పేస్‌లు.
 
 ## లైసెన్స్ మరియు కృతజ్ఞతలు
 

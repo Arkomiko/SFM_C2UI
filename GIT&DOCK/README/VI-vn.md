@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/ki%E1%BB%83m_th%E1%BB%AD-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/ki%E1%BB%83m_th%E1%BB%AD-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Mục tiêu đầu tiên là tương thích hoàn toàn với SFM, kể cả xư
 
 <img align="right" src="../assets/VI-vn/sidebar.svg" alt="Mức sẵn sàng" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 41%</b>
 
 Mỗi mảng có thể mở ra: cái gì đã chạy và cái gì chưa có. Phần trăm là ước lượng so với khả năng của SFM.
 
@@ -90,14 +90,19 @@ Bộ điều khiển flex, quy tắc biên dịch và hoạt ảnh đỉnh — n
 Biểu thức, ràng buộc point/orient/parent/aim, IK hai xương. Chưa có: đồ thị phụ thuộc toán tử đầy đủ, tạo rig.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Chỉnh sửa</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Chỉnh sửa</b></summary>
 
-Nhấp để chọn, bộ thao tác di chuyển/xoay, trình kiểm tra mọi thuộc tính, khóa tại con trỏ, hoàn tác/làm lại, lưu chính xác từng byte. Chưa có: trình biên tập đồ thị.
+Nhấp để chọn, bộ thao tác di chuyển/xoay, trình kiểm tra mọi thuộc tính, khóa tại con trỏ, hoàn tác/làm lại, lưu chính xác từng byte.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
 
 Chọn thời gian với hold và falloff trên thước; chỉnh sửa lan ra như trong SFM. Chưa có: preset, lớp.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Trình biên tập đồ thị</b></summary>
+
+Đường cong của mọi log điều khiển phần tử được chọn: X/Y/Z, pitch/yaw/roll, vô hướng. Khóa kéo theo thời gian và giá trị với xem trước trực tiếp, nhấp đúp chèn, Delete xóa; trục thời gian là của dòng thời gian. Chưa có: tiếp tuyến và kiểu đường cong, co giãn nhóm khóa.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Gắn bảng</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## Lộ trình
 
-1. **Trình biên tập đồ thị** — đường cong và khóa, nhìn thấy được.
-2. **Tô bóng Source** — VertexLitGeneric như SFM vẽ: phong, rim, lightwarp, đèn cảnh.
-3. **Bản đồ** — `.bsp` làm nền.
-4. **Đầu ra** — xuất ảnh và video.
-5. **Plugin** — định dạng `.c2plg`; rồi chủ đề và không gian làm việc.
+1. **Tô bóng Source** — VertexLitGeneric như SFM vẽ: phong, rim, lightwarp, đèn cảnh.
+2. **Bản đồ** — `.bsp` làm nền.
+3. **Đầu ra** — xuất ảnh và video.
+4. **Plugin** — định dạng `.c2plg`; rồi chủ đề và không gian làm việc.
 
 ## Giấy phép và ghi công
 

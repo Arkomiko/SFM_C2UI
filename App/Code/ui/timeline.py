@@ -63,6 +63,7 @@ class Timeline(QWidget):
     time_changed = Signal(object)        # Time
     shot_selected = Signal(object)       # FilmClip
     selection_changed = Signal(object)   # TimeSelection
+    view_changed = Signal()              # zoom or pan: the graph editor follows
 
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
@@ -167,6 +168,19 @@ class Timeline(QWidget):
         self._scale = width / self._duration
         self._origin = 0.0
         self.update()
+        self.view_changed.emit()
+
+    # the graph editor shares this axis
+    @property
+    def origin(self) -> float:
+        return self._origin
+
+    @property
+    def scale(self) -> float:
+        return self._scale
+
+    def tick_step(self) -> float:
+        return self._tick_step()
 
     # -- geometry ----------------------------------------------------------------------
     def _x(self, seconds: float) -> float:
@@ -381,6 +395,7 @@ class Timeline(QWidget):
             self._scale = min(5000.0, max(2.0, self._scale * (1.15 ** delta)))
             self._origin = max(0.0, anchor - (event.position().x() - HEADER_W) / self._scale)
         self.update()
+        self.view_changed.emit()
 
     def keyPressEvent(self, event) -> None:
         if event.key() == Qt.Key_Home:

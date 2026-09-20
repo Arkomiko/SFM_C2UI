@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D1%82%D0%B5%D1%81%D1%82%D1%96%D0%B2-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D1%82%D0%B5%D1%81%D1%82%D1%96%D0%B2-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Source Filmmaker — сильний інструмент, інтерфейс я�
 
 <img align="right" src="../assets/UK-ua/sidebar.svg" alt="Готовність" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Загальна готовність до релізу: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Загальна готовність до релізу: 41%</b>
 
 Кожна область розгортається: що вже працює і чого поки немає. Відсотки — оцінка відносно можливостей SFM.
 
@@ -90,14 +90,19 @@ Flex-контролери, скомпільовані правила і верш
 Вирази, point/orient/parent/aim-констрейнти, дволанковий IK. Немає: повного графа залежностей операторів, створення ригів.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Редагування</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Редагування</b></summary>
 
-Вибір кліком, маніпулятор переміщення/повороту, інспектор будь-якого атрибута, ключ на курсорі, скасування/повтор, побайтово точне збереження. Немає: graph editor.
+Вибір кліком, маніпулятор переміщення/повороту, інспектор будь-якого атрибута, ключ на курсорі, скасування/повтор, побайтово точне збереження.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
 
 Виділення часу з hold і falloff на лінійці; правка розтікається по виділенню, як у SFM. Немає: пресетів, шарів.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Graph editor</b></summary>
+
+Криві кожного логу вибраного елемента: X/Y/Z, pitch/yaw/roll, скаляри. Ключі рухаються мишею за часом і значенням з живим переглядом, вставляються подвійним кліком, видаляються; вісь часу спільна з таймлайном. Немає: дотичних і типів кривих, масштабування групи ключів.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Докінг панелей</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## Дорожня карта
 
-1. **Graph editor** — криві та ключі на очах.
-2. **Шейдинг Source** — VertexLitGeneric як малює SFM: phong, rim, lightwarp, освітлення сцени.
-3. **Карти** — `.bsp` для фону.
-4. **Експорт** — зображення і відео.
-5. **Плагіни** — формат `.c2plg`; потім теми і робочі простори.
+1. **Шейдинг Source** — VertexLitGeneric як малює SFM: phong, rim, lightwarp, освітлення сцени.
+2. **Карти** — `.bsp` для фону.
+3. **Експорт** — зображення і відео.
+4. **Плагіни** — формат `.c2plg`; потім теми і робочі простори.
 
 ## Ліцензія і подяки
 

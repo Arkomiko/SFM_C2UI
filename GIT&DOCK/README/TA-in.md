@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AE%9A%E0%AF%8B%E0%AE%A4%E0%AE%A9%E0%AF%88%E0%AE%95%E0%AE%B3%E0%AF%8D-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AE%9A%E0%AF%8B%E0%AE%A4%E0%AE%A9%E0%AF%88%E0%AE%95%E0%AE%B3%E0%AF%8D-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Source Filmmaker ஒரு வலுவான கருவி, ஆனால் �
 
 <img align="right" src="../assets/TA-in/sidebar.svg" alt="தயார்நிலை" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>வெளியீட்டுக்கான மொத்த தயார்நிலை: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>வெளியீட்டுக்கான மொத்த தயார்நிலை: 41%</b>
 
 ஒவ்வொரு பகுதியும் விரிகிறது: ஏற்கனவே என்ன வேலை செய்கிறது, என்ன இன்னும் இல்லை. சதவீதங்கள் SFM திறன்களுக்கு ஒப்பிட்ட மதிப்பீடு.
 
@@ -90,14 +90,19 @@ Flex கட்டுப்படுத்திகள், தொகுக்க�
 வெளிப்பாடுகள், point/orient/parent/aim கட்டுப்பாடுகள், இரு-எலும்பு IK. இன்னும் இல்லை: முழு ஆபரேட்டர் சார்பு வரைபடம், ரிக் உருவாக்கம்.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>திருத்தம்</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>திருத்தம்</b></summary>
 
-கிளிக் தேர்வு, நகர்த்து/சுழற்று மானிபுலேட்டர், எந்த பண்புக்கும் இன்ஸ்பெக்டர், கர்சரில் கீ, செயல்தவிர்/மீண்டும், பைட்-துல்லிய சேமிப்பு. இன்னும் இல்லை: கிராஃப் எடிட்டர்.
+கிளிக் தேர்வு, நகர்த்து/சுழற்று மானிபுலேட்டர், எந்த பண்புக்கும் இன்ஸ்பெக்டர், கர்சரில் கீ, செயல்தவிர்/மீண்டும், பைட்-துல்லிய சேமிப்பு.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>மோஷன் எடிட்டர்</b></summary>
 
 ரூலரில் ஹோல்ட் மற்றும் ஃபால்ஆஃப் உடன் நேர தேர்வு; திருத்தம் SFM போல அதன் மேல் பரவுகிறது. இன்னும் இல்லை: முன்னமைவுகள், அடுக்குகள்.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>கிராஃப் எடிட்டர்</b></summary>
+
+தேர்ந்த உறுப்பை இயக்கும் ஒவ்வொரு பதிவின் வளைவுகள்: X/Y/Z, pitch/yaw/roll, ஸ்கேலர்கள். கீகள் நேரடி முன்னோட்டத்துடன் நேரம் மற்றும் மதிப்பில் இழுக்கப்படும், இரட்டை கிளிக் சேர்க்கும், Delete நீக்கும்; நேர அச்சு காலக்கோட்டினது. இன்னும் இல்லை: தொடுகோடுகள், வளைவு வகைகள், கீ குழு அளவிடல்.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>பேனல் டாக்கிங்</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## வழித்திட்டம்
 
-1. **கிராஃப் எடிட்டர்** — வளைவுகள் மற்றும் கீகள், கண்ணுக்கு.
-2. **Source ஷேடிங்** — SFM வரைவது போல VertexLitGeneric: phong, rim, lightwarp, காட்சி ஒளிகள்.
-3. **வரைபடங்கள்** — பின்னணிக்கு `.bsp`.
-4. **வெளியீடு** — படம் மற்றும் வீடியோ ஏற்றுமதி.
-5. **செருகுநிரல்கள்** — `.c2plg` வடிவம்; பின்னர் தீம்கள் மற்றும் பணியிடங்கள்.
+1. **Source ஷேடிங்** — SFM வரைவது போல VertexLitGeneric: phong, rim, lightwarp, காட்சி ஒளிகள்.
+2. **வரைபடங்கள்** — பின்னணிக்கு `.bsp`.
+3. **வெளியீடு** — படம் மற்றும் வீடியோ ஏற்றுமதி.
+4. **செருகுநிரல்கள்** — `.c2plg` வடிவம்; பின்னர் தீம்கள் மற்றும் பணியிடங்கள்.
 
 ## உரிமம் மற்றும் நன்றி
 

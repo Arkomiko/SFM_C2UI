@@ -23,7 +23,8 @@ from Core.API.dmx import Time
 from Core.API.session import Camera, Dag, FilmClip, Session
 from Core.API.dmx import Element
 from Core.Code.animation import Evaluator
-from Core.Code.editing import UndoStack, channel_index, record_edit
+from Core.Code.editing import UndoStack, channel_index, record_edit, value_type_of
+from Core.Code.keys import components
 from Core.Code.operators import constrained_attributes
 from Core.Code.formats import FormatError, load_dmx, save_dmx
 from Core.Code.editing import Group
@@ -40,6 +41,7 @@ from .ui.docking import Docking
 from .ui.inspector import Inspector
 from .ui.session_tree import SessionTree
 from .ui.timeline import Timeline
+from .ui.graph_editor import Curve, GraphEditor
 
 log = logging.getLogger("c2ui.window")
 
@@ -128,6 +130,10 @@ class MainWindow(QMainWindow):
         self.inspector_dock = self._dock("Element", self.inspector, Qt.RightDockWidgetArea)
         self.timeline = Timeline()
         self.timeline_dock = self._dock("Timeline", self.timeline, Qt.BottomDockWidgetArea)
+        self.graph = GraphEditor()
+        self.graph_dock = self._dock("Graph Editor", self.graph, Qt.BottomDockWidgetArea)
+        self.tabifyDockWidget(self.timeline_dock, self.graph_dock)   # SFM's own pairing at the bottom
+        self.timeline_dock.raise_()
         self.resizeDocks([self.browser_dock, self.tree_dock], [300, 380], Qt.Horizontal)
         self.resizeDocks([self.tree_dock, self.inspector_dock], [420, 320], Qt.Vertical)
         self.resizeDocks([self.timeline_dock], [200], Qt.Vertical)
@@ -148,10 +154,15 @@ class MainWindow(QMainWindow):
         self.tree.shot_selected.connect(self.show_shot)
         self.tree.node_selected.connect(self._node_selected)
         self.tree.element_selected.connect(self.inspector.set_element)
+        self.tree.element_selected.connect(self.show_curves)
         self.inspector.edited.connect(self._inspector_edited)
         self.inspector.navigate.connect(self.inspector.set_element)
         self.timeline.shot_selected.connect(self._timeline_shot)
         self.timeline.time_changed.connect(self._time_changed)
+        self.graph.follow(self.timeline)
+        self.graph.time_changed.connect(self.timeline.set_time)
+        self.graph.edited.connect(self._graph_edited)
+        self.graph.previewed.connect(self._preview_pose)
 
     def _dock(self, title: str, widget: QWidget, area) -> QDockWidget:
         dock = QDockWidget(title, self)
@@ -207,9 +218,13 @@ class MainWindow(QMainWindow):
         self._undo_changed()
 
         view_menu = bar.addMenu("&View")
-        for dock in (self.browser_dock, self.tree_dock, self.inspector_dock, self.timeline_dock):
+        for dock in (self.browser_dock, self.tree_dock, self.inspector_dock, self.timeline_dock, self.graph_dock):
             view_menu.addAction(dock.toggleViewAction())
         view_menu.addSeparator()
+        graph = QAction("&Graph Editor", self)
+        graph.setShortcut("G")
+        graph.triggered.connect(self.show_graph_editor)
+        view_menu.addAction(graph)
         frame = QAction("&Frame Selection", self)
         frame.setShortcut("F")
         frame.triggered.connect(self.frame_selection)
@@ -348,6 +363,7 @@ class MainWindow(QMainWindow):
         self.current_shot = None
         self.tree.set_session(None)
         self.timeline.set_session(None)
+        self.graph.set_curves([])
         self.viewport.set_scene(None)
         self.setWindowTitle(f"C2UI - {self.library.state.title}" if self.library.ready else "C2UI")
 
@@ -422,6 +438,53 @@ class MainWindow(QMainWindow):
             self.evaluator.evaluate(self.session.active_clip, self.timeline.time)
         self._refresh_pose()
         self.inspector.refresh()
+        self.graph.refresh()
+
+    def _preview_pose(self) -> None:
+        """The logs changed under a graph-editor drag: re-pose without touching the panels."""
+        self.evaluator.invalidate()
+        if self.session is not None and self.session.active_clip is not None:
+            self.evaluator.evaluate(self.session.active_clip, self.timeline.time)
+        self._refresh_pose()
+
+    def _graph_edited(self, command) -> None:
+        self.undo.push(command)
+        self._after_edit()
+
+    def show_graph_editor(self) -> None:
+        self.graph_dock.show()
+        self.graph_dock.raise_()
+        self.graph.setFocus()
+
+    def show_curves(self, element: Optional[Element]) -> None:
+        """Put every log that drives `element` on the graph editor, one curve per component."""
+        shot = self.current_shot
+        if element is None or shot is None:
+            self.graph.set_curves([])
+            return
+        self._indices(shot)
+        curves = []
+        driven = [(key, d) for key, d in self._channel_index.items() if key[0] == id(element)]
+        for (_eid, attribute, _slot), d in sorted(driven, key=lambda item: (item[0][1] != "position", item[0][1])):
+            log = d.channel.log
+            kind = value_type_of(log) if log is not None else None
+            names = components(kind)
+            if not names:
+                continue
+            clip_frame, shot_frame = d.clip.time_frame, shot.time_frame
+
+            def to_log(time: Time, cf=clip_frame, sf=shot_frame) -> Time:
+                return cf.to_child_time(sf.to_child_time(time))
+
+            def to_session(time: Time, cf=clip_frame, sf=shot_frame) -> Time:
+                return sf.to_parent_time(cf.to_parent_time(time))
+
+            for i, name in enumerate(names):
+                label = name if len(driven) == 1 or attribute in ("position", "orientation") else f"{attribute} {name}"
+                if len(names) == 1:
+                    label = attribute
+                curves.append(Curve(log, kind, i, label, to_log, to_session))
+        self.graph.set_curves(curves)
 
     def _shot_time(self, shot: FilmClip) -> Time:
         return shot.time_frame.to_child_time(self.timeline.time)
@@ -507,6 +570,7 @@ class MainWindow(QMainWindow):
             return
         self.selected = node
         self._place_manipulator()
+        self.show_curves(node.transform.element if node is not None and node.transform is not None else None)
 
     def _place_manipulator(self) -> None:
         """Put the manipulator on the selected node, in its own frame."""
@@ -559,6 +623,8 @@ class MainWindow(QMainWindow):
         if not self.tree.select_element(instance.source.element):
             self.selected = instance.source
             self._place_manipulator()
+            transform = instance.source.transform
+            self.show_curves(transform.element if transform is not None else None)
 
     # -- manipulating --------------------------------------------------------------
     def _manipulate_begin(self) -> None:
@@ -664,6 +730,7 @@ class MainWindow(QMainWindow):
             return
         clip = session.active_clip
         self.evaluator.evaluate(clip, time)
+        self.graph.set_time(time)
         shot = self._shot_at(time)
         if shot is not None and not _same(shot, self.current_shot):
             self.tree.select_shot(shot)

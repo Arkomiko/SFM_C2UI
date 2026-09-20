@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tester-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tester-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Första målet är full kompatibilitet med SFM, ben och riggar inräknade. Däre
 
 <img align="right" src="../assets/SV-se/sidebar.svg" alt="Mognad" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Total mognad för release: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Total mognad för release: 41%</b>
 
 Varje område kan fällas ut: vad som redan fungerar och vad som inte finns än. Procenten är en uppskattning mot vad SFM kan.
 
@@ -90,14 +90,19 @@ Flex-kontroller, de kompilerade reglerna och vertexanimation — karaktärer pra
 Uttryck, point/orient/parent/aim-begränsningar, tvåbens-IK. Inte ännu: hela operatorberoendegrafen, riggskapande.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Redigering</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Redigering</b></summary>
 
-Klicka för att välja, en flytta/rotera-manipulator, en inspektör för alla attribut, en nyckel vid markören, ångra/gör om, byteexakt sparning. Inte ännu: grafredigeraren.
+Klicka för att välja, en flytta/rotera-manipulator, en inspektör för alla attribut, en nyckel vid markören, ångra/gör om, byteexakt sparning.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
 
 Ett tidsurval med hold och falloff på linjalen; en ändring sprids över det som i SFM. Inte ännu: förinställningar, lager.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Grafredigerare</b></summary>
+
+Kurvor för varje logg som styr det valda elementet: X/Y/Z, pitch/yaw/roll, skalärer. Nycklar dras i tid och värde med förhandsvisning, dubbelklick lägger till, Delete tar bort; tidsaxeln är tidslinjens. Inte ännu: tangenter och kurvtyper, skalning av en grupp nycklar.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Paneldockning</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## Färdplan
 
-1. **Grafredigerare** — kurvor och nycklar, synliga.
-2. **Source-skuggning** — VertexLitGeneric som SFM ritar det: phong, rim, lightwarp, scenljus.
-3. **Kartor** — `.bsp` för bakgrunder.
-4. **Utdata** — bild- och videoexport.
-5. **Insticksprogram** — formatet `.c2plg`; sedan teman och arbetsytor.
+1. **Source-skuggning** — VertexLitGeneric som SFM ritar det: phong, rim, lightwarp, scenljus.
+2. **Kartor** — `.bsp` för bakgrunder.
+3. **Utdata** — bild- och videoexport.
+4. **Insticksprogram** — formatet `.c2plg`; sedan teman och arbetsytor.
 
 ## Licens och tack
 

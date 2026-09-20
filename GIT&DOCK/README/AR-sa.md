@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Source Filmmaker أداة قوية بقيت واجهتها في عام 2012. ل�
 
 <img align="right" src="../assets/AR-sa/sidebar.svg" alt="الجاهزية" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>الجاهزية الإجمالية للإصدار: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>الجاهزية الإجمالية للإصدار: 41%</b>
 
 كل مجال قابل للفتح: ما يعمل بالفعل وما لم يوجد بعد. النسب تقدير مقابل ما يستطيعه SFM.
 
@@ -90,14 +90,19 @@ Source Filmmaker أداة قوية بقيت واجهتها في عام 2012. ل�
 التعبيرات، قيود point/orient/parent/aim، IK بعظمتين. ليس بعد: مخطط اعتماديات المشغّلات الكامل، إنشاء الريغات.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>التحرير</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>التحرير</b></summary>
 
-النقر للتحديد، مُعالج تحريك/تدوير، مفتّش لأي خاصية، مفتاح عند المؤشر، تراجع/إعادة، حفظ دقيق بالبايت. ليس بعد: محرّر الرسوم.
+النقر للتحديد، مُعالج تحريك/تدوير، مفتّش لأي خاصية، مفتاح عند المؤشر، تراجع/إعادة، حفظ دقيق بالبايت.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>محرّر الحركة</b></summary>
 
 تحديد زمني مع hold وfalloff على المسطرة؛ التعديل ينتشر عليه كما في SFM. ليس بعد: الإعدادات المسبقة، الطبقات.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>محرّر الرسوم</b></summary>
+
+منحنيات كل سجل يحرّك العنصر المحدد: X/Y/Z وpitch/yaw/roll والقيم العددية. تُسحب المفاتيح في الزمن والقيمة مع معاينة حية، والنقر المزدوج يُدرج، وDelete يحذف؛ محور الزمن هو محور الخط الزمني. ليس بعد: المماسات وأنواع المنحنيات، تحجيم مجموعة مفاتيح.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>إرساء اللوحات</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## خارطة الطريق
 
-1. **محرّر الرسوم** — المنحنيات والمفاتيح أمام العين.
-2. **تظليل Source** — VertexLitGeneric كما يرسمه SFM: phong، rim، lightwarp، أضواء المشهد.
-3. **الخرائط** — `.bsp` للخلفيات.
-4. **الإخراج** — تصدير صورة وفيديو.
-5. **الإضافات** — صيغة `.c2plg`؛ ثم السمات ومساحات العمل.
+1. **تظليل Source** — VertexLitGeneric كما يرسمه SFM: phong، rim، lightwarp، أضواء المشهد.
+2. **الخرائط** — `.bsp` للخلفيات.
+3. **الإخراج** — تصدير صورة وفيديو.
+4. **الإضافات** — صيغة `.c2plg`؛ ثم السمات ومساحات العمل.
 
 ## الترخيص والشكر
 

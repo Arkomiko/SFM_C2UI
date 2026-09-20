@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tes-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tes-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Tujuan pisanan yaiku kompatibilitas lengkap karo SFM, kalebu balung lan rig. Sab
 
 <img align="right" src="../assets/JV-id/sidebar.svg" alt="Kesiapan" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Kesiapan sakabèhé kanggo rilis: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Kesiapan sakabèhé kanggo rilis: 41%</b>
 
 Saben wilayah bisa dibukak: apa sing wis mlaku lan apa sing durung ana. Persentase iku prakiraan dibandhing kemampuan SFM.
 
@@ -90,14 +90,19 @@ Pengontrol flex, aturan sing dikompilasi lan animasi verteks — karakter ngomon
 Ekspresi, batasan point/orient/parent/aim, IK rong balung. Durung: grafik ketergantungan operator lengkap, nggawe rig.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Nyunting</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Nyunting</b></summary>
 
-Klik kanggo milih, manipulator pindhah/puter, inspektur kanggo atribut apa wae, kunci ing kursor, batal/baleni, simpen presisi bait. Durung: editor grafik.
+Klik kanggo milih, manipulator pindhah/puter, inspektur kanggo atribut apa wae, kunci ing kursor, batal/baleni, simpen presisi bait.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
 
 Pilihan wektu karo hold lan falloff ing garisan; suntingan nyebar kaya ing SFM. Durung: preset, lapisan.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Editor grafik</b></summary>
+
+Kurva saben log sing nglakokake unsur sing dipilih: X/Y/Z, pitch/yaw/roll, skalar. Kunci diseret ing wektu lan nilai kanthi pratinjau langsung, klik kaping pindho nambah, Delete mbusak; sumbu wektu padha karo garis wektu. Durung: tangen lan jinis kurva, skala klompok kunci.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Docking panel</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## Peta dalan
 
-1. **Editor grafik** — kurva lan kunci, katon.
-2. **Shading Source** — VertexLitGeneric kaya sing digambar SFM: phong, rim, lightwarp, cahya adegan.
-3. **Peta** — `.bsp` kanggo latar.
-4. **Output** — ekspor gambar lan video.
-5. **Plugin** — format `.c2plg`; banjur tema lan ruang kerja.
+1. **Shading Source** — VertexLitGeneric kaya sing digambar SFM: phong, rim, lightwarp, cahya adegan.
+2. **Peta** — `.bsp` kanggo latar.
+3. **Output** — ekspor gambar lan video.
+4. **Plugin** — format `.c2plg`; banjur tema lan ruang kerja.
 
 ## Lisensi lan panuwun
 

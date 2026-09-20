@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tests-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tests-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Das erste Ziel ist volle Kompatibilität mit SFM, Knochen und Rigs eingeschlosse
 
 <img align="right" src="../assets/DE-de/sidebar.svg" alt="Reifegrad" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Gesamtreife für eine Veröffentlichung: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Gesamtreife für eine Veröffentlichung: 41%</b>
 
 Jeder Bereich lässt sich aufklappen: was schon funktioniert und was noch fehlt. Die Prozente sind eine Einschätzung gegenüber dem, was SFM kann.
 
@@ -90,14 +90,19 @@ Flex-Controller, die kompilierten Regeln und Vertex-Animation — Figuren sprech
 Ausdrücke, Point/Orient/Parent/Aim-Constraints, Zwei-Knochen-IK. Noch nicht: der volle Operator-Abhängigkeitsgraph, Rig-Erstellung.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Bearbeiten</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Bearbeiten</b></summary>
 
-Klick zum Auswählen, Manipulator zum Verschieben/Drehen, Inspektor für jedes Attribut, Key am Cursor, Rückgängig/Wiederholen, byteexaktes Speichern. Noch nicht: der Graph-Editor.
+Klick zum Auswählen, Manipulator zum Verschieben/Drehen, Inspektor für jedes Attribut, Key am Cursor, Rückgängig/Wiederholen, byteexaktes Speichern.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion-Editor</b></summary>
 
 Zeitauswahl mit Hold und Falloff auf dem Lineal; eine Änderung verteilt sich darüber wie in SFM. Noch nicht: Presets, Ebenen.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Graph-Editor</b></summary>
+
+Kurven jedes Logs des gewählten Elements: X/Y/Z, Pitch/Yaw/Roll, Skalare. Keys werden in Zeit und Wert mit Live-Vorschau gezogen, Doppelklick fügt ein, Entf löscht; die Zeitachse ist die der Zeitleiste. Noch nicht: Tangenten und Kurventypen, Skalieren einer Key-Gruppe.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Panel-Docking</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## Fahrplan
 
-1. **Graph-Editor** — Kurven und Keys sichtbar.
-2. **Source-Shading** — VertexLitGeneric wie SFM es zeichnet: Phong, Rim, Lightwarp, Szenenlichter.
-3. **Karten** — `.bsp` als Hintergrund.
-4. **Export** — Bild und Video.
-5. **Plugins** — das `.c2plg`-Format; dann Themes und Arbeitsbereiche.
+1. **Source-Shading** — VertexLitGeneric wie SFM es zeichnet: Phong, Rim, Lightwarp, Szenenlichter.
+2. **Karten** — `.bsp` als Hintergrund.
+3. **Export** — Bild und Video.
+4. **Plugins** — das `.c2plg`-Format; dann Themes und Arbeitsbereiche.
 
 ## Lizenz und Dank
 

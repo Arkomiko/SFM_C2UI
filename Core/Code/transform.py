@@ -18,7 +18,7 @@ __all__ = ["Mat34", "IDENTITY", "matrix_from", "multiply", "apply", "apply_direc
            "invert", "quaternion_to_matrix", "quaternion_multiply", "quaternion_normalize",
            "quaternion_from_angles", "quaternion_slerp", "to_column_major_4x4", "translation_of",
            "matrix_to_quaternion", "quaternion_inverse", "rotation_between", "rotate_vector",
-           "quaternion_from_axis_angle"]
+           "quaternion_from_axis_angle", "angles_from_quaternion"]
 
 Mat34 = Tuple[float, ...]            # 12 values: r0c0 r0c1 r0c2 r0c3  r1c0 ...  r2c3
 Quat = Tuple[float, float, float, float]
@@ -67,6 +67,24 @@ def quaternion_from_angles(pitch: float, yaw: float, roll: float) -> Quat:
             cr * sp * cy + sr * cp * sy,
             cr * cp * sy - sr * sp * cy,
             cr * cp * cy + sr * sp * sy)
+
+
+def angles_from_quaternion(q: Quat) -> Tuple[float, float, float]:
+    """The QAngle (pitch, yaw, roll in degrees) a rotation came from; Source's MatrixAngles."""
+    m = quaternion_to_matrix(q)
+    forward = (m[0], m[3], m[6])                         # first column
+    left = (m[1], m[4], m[7])
+    up_z = m[8]
+    xy = math.sqrt(forward[0] * forward[0] + forward[1] * forward[1])
+    if xy > 0.001:
+        yaw = math.atan2(forward[1], forward[0])
+        pitch = math.atan2(-forward[2], xy)
+        roll = math.atan2(left[2], up_z)
+    else:                                                # looking straight up or down: roll is folded into yaw
+        yaw = math.atan2(-left[0], left[1])
+        pitch = math.atan2(-forward[2], xy)
+        roll = 0.0
+    return (math.degrees(pitch), math.degrees(yaw), math.degrees(roll))
 
 
 def quaternion_slerp(a: Quat, b: Quat, t: float) -> Quat:

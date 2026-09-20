@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/test-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/test-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Birinchi maqsad — suyaklar va riglar bilan birga SFM bilan toʻliq moslik. Key
 
 <img align="right" src="../assets/UZ-uz/sidebar.svg" alt="Tayyorlik" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Relizga umumiy tayyorlik: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Relizga umumiy tayyorlik: 41%</b>
 
 Har bir soha ochiladi: nima allaqachon ishlaydi va nima hali yoʻq. Foizlar — SFM imkoniyatlariga nisbatan baho.
 
@@ -90,14 +90,19 @@ Flex kontrollerlar, kompilyatsiya qilingan qoidalar va vertex animatsiya — per
 Ifodalar, point/orient/parent/aim cheklovlari, ikki suyakli IK. Hali yoʻq: toʻliq operator bogʻliqlik grafi, rig yaratish.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Tahrirlash</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Tahrirlash</b></summary>
 
-Bosib tanlash, koʻchirish/aylantirish manipulyatori, istalgan atribut uchun inspektor, kursorda kalit, bekor qilish/qaytarish, baytgacha aniq saqlash. Hali yoʻq: graf muharriri.
+Bosib tanlash, koʻchirish/aylantirish manipulyatori, istalgan atribut uchun inspektor, kursorda kalit, bekor qilish/qaytarish, baytgacha aniq saqlash.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
 
 Chizgʻichda hold va falloff bilan vaqt tanlovi; tahrir SFM dagidek unga yoyiladi. Hali yoʻq: presetlar, qatlamlar.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Graf muharriri</b></summary>
+
+Tanlangan elementni boshqaradigan har bir logning egri chiziqlari: X/Y/Z, pitch/yaw/roll, skalyarlar. Kalitlar jonli koʻrish bilan vaqt va qiymat boʻyicha tortiladi, ikki marta bosish qoʻshadi, Delete oʻchiradi; vaqt oʻqi taymlaynniki. Hali yoʻq: urinmalar va egri turlari, kalitlar guruhini masshtablash.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Panellarni ulash</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## Yoʻl xaritasi
 
-1. **Graf muharriri** — egri chiziqlar va kalitlar koʻz oldida.
-2. **Source sheyding** — SFM chizganidek VertexLitGeneric: phong, rim, lightwarp, sahna yorugʻliklari.
-3. **Xaritalar** — fon uchun `.bsp`.
-4. **Eksport** — rasm va video.
-5. **Plaginlar** — `.c2plg` formati; keyin mavzular va ish maydonlari.
+1. **Source sheyding** — SFM chizganidek VertexLitGeneric: phong, rim, lightwarp, sahna yorugʻliklari.
+2. **Xaritalar** — fon uchun `.bsp`.
+3. **Eksport** — rasm va video.
+4. **Plaginlar** — `.c2plg` formati; keyin mavzular va ish maydonlari.
 
 ## Litsenziya va minnatdorchilik
 

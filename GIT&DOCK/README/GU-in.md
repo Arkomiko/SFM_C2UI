@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AA%AA%E0%AA%B0%E0%AB%80%E0%AA%95%E0%AB%8D%E0%AA%B7%E0%AA%A3%E0%AB%8B-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AA%AA%E0%AA%B0%E0%AB%80%E0%AA%95%E0%AB%8D%E0%AA%B7%E0%AA%A3%E0%AB%8B-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Source Filmmaker એક મજબૂત સાધન છે જેનું ઇ�
 
 <img align="right" src="../assets/GU-in/sidebar.svg" alt="તૈયારી" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 41%</b>
 
 દરેક ક્ષેત્ર ખુલે છે: શું પહેલેથી કામ કરે છે અને શું હજુ નથી. ટકાવારી SFM ની ક્ષમતાઓની સાપેક્ષ અંદાજ છે.
 
@@ -90,14 +90,19 @@ Flex કંટ્રોલર, કમ્પાઇલ કરેલા નિય�
 એક્સપ્રેશન, point/orient/parent/aim કન્સ્ટ્રેન્ટ, બે-હાડકાં IK. હજુ નહીં: સંપૂર્ણ ઓપરેટર નિર્ભરતા ગ્રાફ, રિગ બનાવવું.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>એડિટિંગ</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>એડિટિંગ</b></summary>
 
-ક્લિકથી પસંદગી, મૂવ/રોટેટ મેનિપ્યુલેટર, કોઈપણ એટ્રિબ્યુટનો ઇન્સ્પેક્ટર, કર્સર પર કી, અનડુ/રીડુ, બાઇટ-ચોક્કસ સેવ. હજુ નહીં: ગ્રાફ એડિટર.
+ક્લિકથી પસંદગી, મૂવ/રોટેટ મેનિપ્યુલેટર, કોઈપણ એટ્રિબ્યુટનો ઇન્સ્પેક્ટર, કર્સર પર કી, અનડુ/રીડુ, બાઇટ-ચોક્કસ સેવ.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>મોશન એડિટર</b></summary>
 
 રૂલર પર હોલ્ડ અને ફોલઓફ સાથે સમય પસંદગી; ફેરફાર SFM જેમ તેના પર ફેલાય છે. હજુ નહીં: પ્રીસેટ, લેયર.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>ગ્રાફ એડિટર</b></summary>
+
+પસંદ કરેલા એલિમેન્ટને ચલાવતા દરેક લોગના વળાંક: X/Y/Z, pitch/yaw/roll, સ્કેલર. કી લાઇવ પ્રીવ્યૂ સાથે સમય અને મૂલ્યમાં ખેંચાય છે, ડબલ-ક્લિક ઉમેરે છે, Delete દૂર કરે છે; સમય અક્ષ ટાઇમલાઇનનો. હજુ નહીં: ટેન્જન્ટ અને વળાંક પ્રકાર, કી જૂથનું સ્કેલિંગ.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>પેનલ ડોકિંગ</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## રોડમેપ
 
-1. **ગ્રાફ એડિટર** — વળાંક અને કી, નજર સામે.
-2. **Source શેડિંગ** — VertexLitGeneric જેમ SFM દોરે છે: phong, rim, lightwarp, દૃશ્યની લાઇટ.
-3. **નકશા** — પૃષ્ઠભૂમિ માટે `.bsp`.
-4. **આઉટપુટ** — છબી અને વિડિયો નિકાસ.
-5. **પ્લગઇન** — `.c2plg` ફોર્મેટ; પછી થીમ અને વર્કસ્પેસ.
+1. **Source શેડિંગ** — VertexLitGeneric જેમ SFM દોરે છે: phong, rim, lightwarp, દૃશ્યની લાઇટ.
+2. **નકશા** — પૃષ્ઠભૂમિ માટે `.bsp`.
+3. **આઉટપુટ** — છબી અને વિડિયો નિકાસ.
+4. **પ્લગઇન** — `.c2plg` ફોર્મેટ; પછી થીમ અને વર્કસ્પેસ.
 
 ## લાઇસન્સ અને આભાર
 

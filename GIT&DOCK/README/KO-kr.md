@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%ED%85%8C%EC%8A%A4%ED%8A%B8-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%ED%85%8C%EC%8A%A4%ED%8A%B8-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Source Filmmaker는 강력한 도구이지만 인터페이스는 2012년에 머�
 
 <img align="right" src="../assets/KO-kr/sidebar.svg" alt="완성도" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>릴리스 전체 준비도: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>릴리스 전체 준비도: 41%</b>
 
 각 영역을 펼치면 이미 동작하는 것과 아직 없는 것이 보입니다. 백분율은 SFM의 기능 대비 추정치입니다.
 
@@ -90,14 +90,19 @@ Flex 컨트롤러, 컴파일된 규칙, 정점 애니메이션 — 캐릭터가 
 표현식, point/orient/parent/aim 제약, 2본 IK. 아직 없음: 전체 연산자 의존 그래프, 리그 생성.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>편집</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>편집</b></summary>
 
-클릭 선택, 이동/회전 매니퓰레이터, 모든 속성의 인스펙터, 커서 위치 키, 실행 취소/다시 실행, 바이트 정확 저장. 아직 없음: 그래프 편집기.
+클릭 선택, 이동/회전 매니퓰레이터, 모든 속성의 인스펙터, 커서 위치 키, 실행 취소/다시 실행, 바이트 정확 저장.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>모션 편집기</b></summary>
 
 룰러의 홀드·폴오프 시간 선택; 편집이 SFM처럼 선택 범위로 퍼집니다. 아직 없음: 프리셋, 레이어.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>그래프 편집기</b></summary>
+
+선택한 요소를 구동하는 모든 로그의 커브: X/Y/Z, pitch/yaw/roll, 스칼라. 키는 실시간 미리보기와 함께 시간·값으로 드래그, 더블클릭으로 삽입, Delete로 삭제; 시간 축은 타임라인과 공유. 아직 없음: 탄젠트와 커브 유형, 키 그룹 스케일링.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>패널 도킹</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## 로드맵
 
-1. **그래프 편집기** — 커브와 키를 눈으로.
-2. **Source 셰이딩** — SFM이 그리는 VertexLitGeneric: phong, rim, lightwarp, 씬 라이트.
-3. **맵** — 배경용 `.bsp`.
-4. **출력** — 이미지와 비디오 내보내기.
-5. **플러그인** — `.c2plg` 형식; 그다음 테마와 워크스페이스.
+1. **Source 셰이딩** — SFM이 그리는 VertexLitGeneric: phong, rim, lightwarp, 씬 라이트.
+2. **맵** — 배경용 `.bsp`.
+3. **출력** — 이미지와 비디오 내보내기.
+4. **플러그인** — `.c2plg` 형식; 그다음 테마와 워크스페이스.
 
 ## 라이선스와 크레딧
 

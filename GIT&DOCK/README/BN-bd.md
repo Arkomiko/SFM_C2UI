@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%A6%AA%E0%A6%B0%E0%A7%80%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%A6%AA%E0%A6%B0%E0%A7%80%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Source Filmmaker একটি শক্তিশালী টুল, যার �
 
 <img align="right" src="../assets/BN-bd/sidebar.svg" alt="প্রস্তুতি" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>রিলিজের জন্য সামগ্রিক প্রস্তুতি: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>রিলিজের জন্য সামগ্রিক প্রস্তুতি: 41%</b>
 
 প্রতিটি ক্ষেত্র খোলা যায়: কী ইতিমধ্যে কাজ করে আর কী এখনো নেই। শতাংশ SFM-এর সক্ষমতার তুলনায় একটি অনুমান।
 
@@ -90,14 +90,19 @@ Flex কন্ট্রোলার, কম্পাইল করা নিয�
 এক্সপ্রেশন, point/orient/parent/aim কনস্ট্রেইন্ট, দুই-হাড় IK। এখনো নয়: পূর্ণ অপারেটর নির্ভরতা গ্রাফ, রিগ তৈরি।
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>সম্পাদনা</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>সম্পাদনা</b></summary>
 
-ক্লিকে নির্বাচন, মুভ/রোটেট ম্যানিপুলেটর, যেকোনো অ্যাট্রিবিউটের ইন্সপেক্টর, কার্সরে কী, আনডু/রিডু, বাইট-নিখুঁত সেভ। এখনো নয়: গ্রাফ এডিটর।
+ক্লিকে নির্বাচন, মুভ/রোটেট ম্যানিপুলেটর, যেকোনো অ্যাট্রিবিউটের ইন্সপেক্টর, কার্সরে কী, আনডু/রিডু, বাইট-নিখুঁত সেভ।
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>মোশন এডিটর</b></summary>
 
 রুলারে হোল্ড ও ফলঅফ সহ সময় নির্বাচন; সম্পাদনা SFM-এর মতো তার উপর ছড়ায়। এখনো নয়: প্রিসেট, লেয়ার।
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>গ্রাফ এডিটর</b></summary>
+
+নির্বাচিত এলিমেন্ট চালানো প্রতিটি লগের কার্ভ: X/Y/Z, pitch/yaw/roll, স্কেলার। কী লাইভ প্রিভিউ সহ সময় ও মানে টানা যায়, ডাবল-ক্লিকে যোগ, Delete-এ মুছে; সময় অক্ষ টাইমলাইনের। এখনো নয়: ট্যানজেন্ট ও কার্ভ টাইপ, কী গ্রুপ স্কেলিং।
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>প্যানেল ডকিং</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## রোডম্যাপ
 
-১. **গ্রাফ এডিটর** — কার্ভ ও কী, চোখের সামনে।
-২. **Source শেডিং** — VertexLitGeneric যেভাবে SFM আঁকে: phong, rim, lightwarp, দৃশ্যের আলো।
-৩. **ম্যাপ** — পটভূমির জন্য `.bsp`।
-৪. **আউটপুট** — ছবি ও ভিডিও এক্সপোর্ট।
-৫. **প্লাগইন** — `.c2plg` ফরম্যাট; তারপর থিম ও ওয়ার্কস্পেস।
+১. **Source শেডিং** — VertexLitGeneric যেভাবে SFM আঁকে: phong, rim, lightwarp, দৃশ্যের আলো।
+২. **ম্যাপ** — পটভূমির জন্য `.bsp`।
+৩. **আউটপুট** — ছবি ও ভিডিও এক্সপোর্ট।
+৪. **প্লাগইন** — `.c2plg` ফরম্যাট; তারপর থিম ও ওয়ার্কস্পেস।
 
 ## লাইসেন্স ও কৃতজ্ঞতা
 

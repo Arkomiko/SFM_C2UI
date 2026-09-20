@@ -250,6 +250,11 @@ class TimeFrame(View):
         """A time in the containing clip, expressed inside this one."""
         return Time(round((parent_time.ticks - self.start.ticks) * self.scale) + self.offset.ticks)
 
+    def to_parent_time(self, child_time: Time) -> Time:
+        """The inverse: a time inside this clip, expressed in the containing one."""
+        scale = self.scale or 1.0
+        return Time(round((child_time.ticks - self.offset.ticks) / scale) + self.start.ticks)
+
 
 class Clip(View):
     TYPE = "DmeClip"

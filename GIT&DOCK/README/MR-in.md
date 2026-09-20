@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%A4%9A%E0%A4%BE%E0%A4%9A%E0%A4%A3%E0%A5%8D%E0%A4%AF%E0%A4%BE-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%A4%9A%E0%A4%BE%E0%A4%9A%E0%A4%A3%E0%A5%8D%E0%A4%AF%E0%A4%BE-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Source Filmmaker हे सशक्त साधन आहे, पण त्य
 
 <img align="right" src="../assets/MR-in/sidebar.svg" alt="तयारी" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>रिलीजसाठी एकूण तयारी: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>रिलीजसाठी एकूण तयारी: 41%</b>
 
 प्रत्येक क्षेत्र उघडता येते: काय आधीच काम करते आणि काय अजून नाही. टक्केवारी SFM च्या क्षमतांच्या तुलनेत अंदाज आहे.
 
@@ -90,14 +90,19 @@ Flex कंट्रोलर, संकलित नियम आणि व्�
 एक्सप्रेशन, point/orient/parent/aim कन्स्ट्रेंट, दोन-हाडांचा IK. अजून नाही: पूर्ण ऑपरेटर अवलंबित्व आलेख, रिग निर्मिती.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>संपादन</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>संपादन</b></summary>
 
-क्लिकने निवड, मूव्ह/रोटेट मॅनिप्युलेटर, कोणत्याही अॅट्रिब्यूटसाठी इन्स्पेक्टर, कर्सरवर की, अनडू/रीडू, बाइट-अचूक सेव्ह. अजून नाही: ग्राफ एडिटर.
+क्लिकने निवड, मूव्ह/रोटेट मॅनिप्युलेटर, कोणत्याही अॅट्रिब्यूटसाठी इन्स्पेक्टर, कर्सरवर की, अनडू/रीडू, बाइट-अचूक सेव्ह.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>मोशन एडिटर</b></summary>
 
 रूलरवर होल्ड आणि फॉलऑफसह वेळ निवड; संपादन SFM प्रमाणे त्यावर पसरते. अजून नाही: प्रीसेट, लेयर.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>ग्राफ एडिटर</b></summary>
+
+निवडलेल्या एलिमेंटला चालवणाऱ्या प्रत्येक लॉगचे वक्र: X/Y/Z, pitch/yaw/roll, स्केलर. की लाइव्ह पूर्वावलोकनासह वेळ आणि मूल्यात ओढता येतात, डबल-क्लिक जोडते, Delete काढते; वेळ अक्ष टाइमलाइनचा. अजून नाही: टँजंट आणि वक्र प्रकार, की गटाचे स्केलिंग.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>पॅनेल डॉकिंग</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## रोडमॅप
 
-१. **ग्राफ एडिटर** — वक्र आणि की, डोळ्यांसमोर.
-२. **Source शेडिंग** — SFM काढते तसे VertexLitGeneric: phong, rim, lightwarp, दृश्य प्रकाश.
-३. **नकाशे** — पार्श्वभूमीसाठी `.bsp`.
-४. **आउटपुट** — प्रतिमा आणि व्हिडिओ निर्यात.
-५. **प्लगइन** — `.c2plg` फॉरमॅट; मग थीम आणि वर्कस्पेस.
+१. **Source शेडिंग** — SFM काढते तसे VertexLitGeneric: phong, rim, lightwarp, दृश्य प्रकाश.
+२. **नकाशे** — पार्श्वभूमीसाठी `.bsp`.
+३. **आउटपुट** — प्रतिमा आणि व्हिडिओ निर्यात.
+४. **प्लगइन** — `.c2plg` फॉरमॅट; मग थीम आणि वर्कस्पेस.
 
 ## परवाना आणि आभार
 

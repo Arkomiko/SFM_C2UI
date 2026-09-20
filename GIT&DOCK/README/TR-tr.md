@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/test-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/test-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Düzenleyici kurulu SFM'yi bulur, onu bir içerik kitaplığı olarak bağlar �
 
 <img align="right" src="../assets/TR-tr/sidebar.svg" alt="Hazırlık" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Yayın için genel hazırlık: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Yayın için genel hazırlık: 41%</b>
 
 Her alan açılabilir: neyin zaten çalıştığı ve neyin henüz olmadığı. Yüzdeler, SFM'nin yapabildiklerine göre bir tahmindir.
 
@@ -90,14 +90,19 @@ Flex denetleyicileri, derlenmiş kurallar ve köşe animasyonu — karakterler k
 İfadeler, point/orient/parent/aim kısıtları, iki kemikli IK. Henüz yok: tam operatör bağımlılık grafiği, rig oluşturma.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Düzenleme</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Düzenleme</b></summary>
 
-Tıklayarak seçim, taşı/döndür manipülatörü, her öznitelik için denetçi, imleçte anahtar, geri al/yinele, bayt düzeyinde kayıt. Henüz yok: grafik düzenleyici.
+Tıklayarak seçim, taşı/döndür manipülatörü, her öznitelik için denetçi, imleçte anahtar, geri al/yinele, bayt düzeyinde kayıt.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
 
 Cetvelde hold ve falloff ile zaman seçimi; düzenleme SFM'deki gibi üzerine yayılır. Henüz yok: ön ayarlar, katmanlar.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Grafik düzenleyici</b></summary>
+
+Seçili öğeyi süren her logun eğrileri: X/Y/Z, pitch/yaw/roll, skalerler. Anahtarlar canlı önizlemeyle zaman ve değerde sürüklenir, çift tık ekler, Delete siler; zaman ekseni zaman çizelgesinindir. Henüz yok: teğetler ve eğri türleri, anahtar grubunu ölçekleme.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Panel yerleştirme</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## Yol haritası
 
-1. **Grafik düzenleyici** — eğriler ve anahtarlar, görünür.
-2. **Source gölgelendirme** — SFM'nin çizdiği gibi VertexLitGeneric: phong, rim, lightwarp, sahne ışıkları.
-3. **Haritalar** — arka plan için `.bsp`.
-4. **Çıktı** — görüntü ve video dışa aktarma.
-5. **Eklentiler** — `.c2plg` biçimi; sonra temalar ve çalışma alanları.
+1. **Source gölgelendirme** — SFM'nin çizdiği gibi VertexLitGeneric: phong, rim, lightwarp, sahne ışıkları.
+2. **Haritalar** — arka plan için `.bsp`.
+3. **Çıktı** — görüntü ve video dışa aktarma.
+4. **Eklentiler** — `.c2plg` biçimi; sonra temalar ve çalışma alanları.
 
 ## Lisans ve teşekkür
 

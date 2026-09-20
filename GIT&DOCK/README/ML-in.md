@@ -7,7 +7,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%B4%9F%E0%B5%86%E0%B4%B8%E0%B5%8D%E0%B4%B1%E0%B5%8D%E0%B4%B1%E0%B5%81%E0%B4%95%E0%B5%BE-340-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%B4%9F%E0%B5%86%E0%B4%B8%E0%B5%8D%E0%B4%B1%E0%B5%8D%E0%B4%B1%E0%B5%81%E0%B4%95%E0%B5%BE-351-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -36,7 +36,7 @@ Source Filmmaker ശക്തമായ ഒരു ഉപകരണമാണ്, �
 
 <img align="right" src="../assets/ML-in/sidebar.svg" alt="തയ്യാറെടുപ്പ്" width="300">
 
-<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>റിലീസിനുള്ള മൊത്തം തയ്യാറെടുപ്പ്: 38%</b>
+<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>റിലീസിനുള്ള മൊത്തം തയ്യാറെടുപ്പ്: 41%</b>
 
 ഓരോ മേഖലയും വികസിപ്പിക്കാം: ഇപ്പോൾ തന്നെ പ്രവർത്തിക്കുന്നതും ഇതുവരെ ഇല്ലാത്തതും. ശതമാനങ്ങൾ SFM-ന്റെ കഴിവുകളുമായി താരതമ്യപ്പെടുത്തിയ കണക്കാണ്.
 
@@ -90,14 +90,19 @@ Flex കൺട്രോളറുകൾ, കംപൈൽ ചെയ്ത നി�
 എക്സ്പ്രഷനുകൾ, point/orient/parent/aim കൺസ്ട്രെയിന്റുകൾ, രണ്ട്-എല്ല് IK. ഇതുവരെ ഇല്ല: പൂർണ്ണ ഓപ്പറേറ്റർ ആശ്രിതത്വ ഗ്രാഫ്, റിഗ് നിർമ്മാണം.
 
 </details>
-<details><summary><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>എഡിറ്റിംഗ്</b></summary>
+<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>എഡിറ്റിംഗ്</b></summary>
 
-ക്ലിക്ക് ചെയ്ത് തിരഞ്ഞെടുക്കൽ, മൂവ്/റൊട്ടേറ്റ് മാനിപ്പുലേറ്റർ, ഏത് ആട്രിബ്യൂട്ടിനും ഇൻസ്പെക്ടർ, കഴ്‌സറിൽ കീ, അൻഡു/റീഡു, ബൈറ്റ്-കൃത്യമായ സേവ്. ഇതുവരെ ഇല്ല: ഗ്രാഫ് എഡിറ്റർ.
+ക്ലിക്ക് ചെയ്ത് തിരഞ്ഞെടുക്കൽ, മൂവ്/റൊട്ടേറ്റ് മാനിപ്പുലേറ്റർ, ഏത് ആട്രിബ്യൂട്ടിനും ഇൻസ്പെക്ടർ, കഴ്‌സറിൽ കീ, അൻഡു/റീഡു, ബൈറ്റ്-കൃത്യമായ സേവ്.
 
 </details>
 <details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>മോഷൻ എഡിറ്റർ</b></summary>
 
 റൂളറിൽ ഹോൾഡും ഫോൾഓഫുമുള്ള സമയ തിരഞ്ഞെടുപ്പ്; എഡിറ്റ് SFM പോലെ അതിൽ പരക്കുന്നു. ഇതുവരെ ഇല്ല: പ്രീസെറ്റുകൾ, ലെയറുകൾ.
+
+</details>
+<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>ഗ്രാഫ് എഡിറ്റർ</b></summary>
+
+തിരഞ്ഞെടുത്ത എലമെന്റിനെ നയിക്കുന്ന ഓരോ ലോഗിന്റെയും വളവുകൾ: X/Y/Z, pitch/yaw/roll, സ്കെയിലറുകൾ. കീകൾ ലൈവ് പ്രിവ്യൂവോടെ സമയത്തിലും മൂല്യത്തിലും വലിക്കാം, ഡബിൾ-ക്ലിക്ക് ചേർക്കുന്നു, Delete നീക്കുന്നു; സമയ അക്ഷം ടൈംലൈനിന്റേത്. ഇതുവരെ ഇല്ല: ടാൻജെന്റുകളും വളവ് തരങ്ങളും, കീ ഗ്രൂപ്പ് സ്കെയിലിംഗ്.
 
 </details>
 <details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>പാനൽ ഡോക്കിംഗ്</b></summary>
@@ -177,11 +182,10 @@ C2UI_SDK/
 
 ## റോഡ്‌മാപ്പ്
 
-1. **ഗ്രാഫ് എഡിറ്റർ** — വളവുകളും കീകളും, കണ്ണിന് മുന്നിൽ.
-2. **Source ഷേഡിംഗ്** — SFM വരയ്ക്കുന്നതുപോലെ VertexLitGeneric: phong, rim, lightwarp, രംഗ വെളിച്ചങ്ങൾ.
-3. **മാപ്പുകൾ** — പശ്ചാത്തലത്തിന് `.bsp`.
-4. **ഔട്ട്‌പുട്ട്** — ചിത്രവും വീഡിയോയും എക്സ്പോർട്ട്.
-5. **പ്ലഗിനുകൾ** — `.c2plg` ഫോർമാറ്റ്; പിന്നെ തീമുകളും വർക്ക്‌സ്‌പേസുകളും.
+1. **Source ഷേഡിംഗ്** — SFM വരയ്ക്കുന്നതുപോലെ VertexLitGeneric: phong, rim, lightwarp, രംഗ വെളിച്ചങ്ങൾ.
+2. **മാപ്പുകൾ** — പശ്ചാത്തലത്തിന് `.bsp`.
+3. **ഔട്ട്‌പുട്ട്** — ചിത്രവും വീഡിയോയും എക്സ്പോർട്ട്.
+4. **പ്ലഗിനുകൾ** — `.c2plg` ഫോർമാറ്റ്; പിന്നെ തീമുകളും വർക്ക്‌സ്‌പേസുകളും.
 
 ## ലൈസൻസും കടപ്പാടും
 
