@@ -337,7 +337,7 @@ def _map_light(scene: Scene, instance: SceneInstance, point) -> None:
     if bsp is None:
         return
     cached = getattr(instance, "_light_point", None)
-    if cached is not None and sum((cached[a] - point[a]) ** 2 for a in range(3)) < 16.0:
+    if cached is not None and sum((cached[a] - point[a]) ** 2 for a in range(3)) < 24.0 ** 2:
         return
     instance._light_point = point
     cube = bsp.ambient_at(point)

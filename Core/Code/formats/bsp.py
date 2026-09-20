@@ -149,7 +149,20 @@ class BspFile:
         return light.intensity if light is not None else None
 
     def lights_at(self, point: Vec3, count: int = 4) -> List[WorldLight]:
-        """The sun plus the strongest few point and spot lights at a point."""
+        """The sun plus the strongest few point and spot lights at a point.  Answered per
+        64-unit cell and remembered: a scene asks for every model every frame."""
+        cell = (int(point[0] // 64), int(point[1] // 64), int(point[2] // 64), count)
+        cache = self.__dict__.setdefault("_lights_cache", {})
+        found = cache.get(cell)
+        if found is not None:
+            return found
+        if len(cache) > 20000:
+            cache.clear()
+        found = self._lights_at(point, count)
+        cache[cell] = found
+        return found
+
+    def _lights_at(self, point: Vec3, count: int) -> List[WorldLight]:
         out = [l for l in self.world_lights if l.kind == EMIT_SKYLIGHT][:1]
         local = [l for l in self.world_lights if l.kind in (EMIT_POINT, EMIT_SPOTLIGHT)]
         local.sort(key=lambda l: -l.strength_at(point))
