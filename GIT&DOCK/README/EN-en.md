@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/EN-en/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <b>🇬🇧 English</b> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — is my rebuild of Source Filmmaker's editor: the same content, the same session format, the same data model, inside a shell that borrows its look from the Steam library and its layout from the Unreal Engine 5 editor.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — the Source Filmmaker editor in a modern shell: the same content, the same session format, the same data model, with an interface in the spirit of the Steam library and the Unreal Engine 5 editor.</p>
 
 ---
 
 ## The idea
 
-Source Filmmaker is a great tool wearing a 2012 interface. I do not want a skin over `sfm.exe`, and I do not want to reverse-engineer its windows one at a time. I want an editor that **asks where SFM is installed**, mounts that installation the way Garry's Mod mounts Counter-Strike, and does everything itself on top of those files — models, materials, textures, sessions, animation — while never launching SFM at all.
+Source Filmmaker is a strong tool whose interface stayed in 2012. C2UI does not replace or remake it: the goal is simply to make SFM a little more modern and more comfortable.
 
-The target is **feature parity with SFM, one to one** (including bones and rigs), then the things SFM never got.
+The editor finds the installed SFM, attaches it as a content library — models, materials, textures, sessions — and works with the same files in the same format. Anything made in SFM opens in C2UI, and the other way round.
+
+The first goal is full compatibility with SFM, bones and rigs included. After that, what SFM was missing.
 
 ```
   ┌──────────────┐    "where is SFM?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ The target is **feature parity with SFM, one to one** (including bones and rigs)
 
 ## Readiness
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Overall readiness for release: 38%</b></p>
+<img align="right" src="../assets/EN-en/sidebar.svg" alt="Readiness" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="The editor with Meet the Heavy open" width="100%"><br><sub>The editor today, with Valve's Meet the Heavy open: shots and sound on the timeline, the session tree, the first shot seen through its own camera, characters posed and facing as the session says.</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Overall readiness for release: 38%</b>
 
-Expand an area to see exactly what is done and what is not. The percentages are my honest estimate against what SFM can do.
+Each area expands: what already works and what does not yet. The percentages are an estimate against what SFM can do.
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Finding and mounting SFM</b></summary>
 
@@ -131,6 +133,10 @@ Deliberately later: one look until the editor has something worth theming.
 
 **Not ready for release.** The foundation — every file format SFM uses, read correctly and verified against the whole installation — is in place and tested, and a session can be opened, played, changed and saved. What is missing is the *comfort* of working: the graph editor, Source shading, maps, export. No version number until an animator can do a day's work in it.
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="The editor with Meet the Heavy open" width="100%"><br><sub>The editor today, with Valve's Meet the Heavy open: shots and sound on the timeline, the session tree, the first shot seen through its own camera, characters posed and facing as the session says.</sub></p>
+
 ## What makes it different
 
 - **Portable.** Nothing is written outside the application folder: settings under `App/User`, caches under `App/Cache`, scratch under `App/Temporary`. Delete the folder and it is gone.
@@ -183,4 +189,4 @@ Source Filmmaker, Team Fortress 2 and the Source engine are Valve's. This projec
 
 The licence for C2UI's own code has not been chosen yet — until it is, all rights reserved. Issues and pull requests are welcome all the same.
 
-<p align="center"><img src="../../.github/assets/models.png" alt="64 models rendered straight from the installation" width="60%"><br><sub>Sixty-four models picked at random from the installation, rendered by C2UI's own renderer.</sub></p>
+<p align="center"><img src="../assets/models.png" alt="64 models rendered straight from the installation" width="60%"><br><sub>Sixty-four models picked at random from the installation, rendered by C2UI's own renderer.</sub></p>

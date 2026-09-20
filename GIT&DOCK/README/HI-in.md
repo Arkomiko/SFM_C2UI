@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/HI-in/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <b>🇮🇳 हिन्दी</b> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — Source Filmmaker के एडिटर का मेरा पुनर्निर्माण है: वही कंटेंट, वही सेशन फ़ॉर्मैट, वही डेटा मॉडल — एक ऐसे खोल में जो अपना रूप Steam लाइब्रेरी से और अपना लेआउट Unreal Engine 5 एडिटर से लेता है।</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — आधुनिक खोल में Source Filmmaker का एडिटर: वही कंटेंट, वही सेशन फ़ॉर्मैट, वही डेटा मॉडल, और Steam लाइब्रेरी व Unreal Engine 5 एडिटर की शैली का इंटरफ़ेस।</p>
 
 ---
 
 ## विचार
 
-Source Filmmaker 2012 के इंटरफ़ेस में एक शानदार टूल है। मैं `sfm.exe` पर स्किन नहीं चढ़ाना चाहता, और न ही उसकी विंडो एक-एक करके हथियाना चाहता हूँ। मुझे ऐसा एडिटर चाहिए जो **पूछे कि SFM कहाँ इंस्टॉल है**, उस इंस्टॉलेशन को वैसे माउंट करे जैसे Garry's Mod Counter-Strike को माउंट करता है, और उन फ़ाइलों के ऊपर सब कुछ खुद करे — मॉडल, मटीरियल, टेक्सचर, सेशन, एनिमेशन — SFM को कभी लॉन्च किए बिना।
+Source Filmmaker एक मज़बूत टूल है जिसका इंटरफ़ेस 2012 में ही रह गया। C2UI उसे बदलता या दोबारा नहीं बनाता: लक्ष्य बस SFM को थोड़ा आधुनिक और सुविधाजनक बनाना है।
 
-लक्ष्य है **SFM के साथ एक-से-एक फ़ीचर समानता** (हड्डियाँ और रिग समेत), फिर वह जो SFM को कभी नहीं मिला।
+एडिटर इंस्टॉल किए गए SFM को ढूँढता है, उसे कंटेंट लाइब्रेरी की तरह जोड़ता है — मॉडल, मटीरियल, टेक्सचर, सेशन — और उन्हीं फ़ाइलों के साथ उसी फ़ॉर्मैट में काम करता है। SFM में बनाई हर चीज़ C2UI में खुलती है, और इसके विपरीत भी।
+
+पहला लक्ष्य SFM के साथ पूर्ण संगतता है, हड्डियों और रिग समेत। उसके बाद — जो SFM में कमी थी।
 
 ```
   ┌──────────────┐    "SFM कहाँ है?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ Source Filmmaker 2012 के इंटरफ़ेस में एक शान
 
 ## तैयारी
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>रिलीज़ के लिए कुल तैयारी: 38%</b></p>
+<img align="right" src="../assets/HI-in/sidebar.svg" alt="तैयारी" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="Meet the Heavy खुला हुआ एडिटर" width="100%"><br><sub>आज का एडिटर, Valve का Meet the Heavy खुला हुआ: टाइमलाइन पर शॉट और ध्वनि, सेशन ट्री, पहला शॉट उसके अपने कैमरे से, सेशन के अनुसार पोज़ और चेहरों वाले किरदार।</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>रिलीज़ के लिए कुल तैयारी: 38%</b>
 
-यह देखने के लिए कि क्या बना है और क्या नहीं, किसी क्षेत्र को खोलें। प्रतिशत SFM की क्षमताओं के मुकाबले मेरा ईमानदार अनुमान है।
+हर क्षेत्र खुलता है: क्या पहले से काम करता है और क्या अभी नहीं है। प्रतिशत SFM की क्षमताओं के सापेक्ष अनुमान हैं।
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>SFM खोजना और माउंट करना</b></summary>
 
@@ -131,6 +133,10 @@ UE5 और Visual Studio की तरह, पूर्वावलोकन क
 
 **रिलीज़ के लिए तैयार नहीं।** नींव — SFM का हर फ़ाइल फ़ॉर्मैट, सही पढ़ा और पूरे इंस्टॉलेशन पर जाँचा — मौजूद और परीक्षित है; सेशन खोला, चलाया, बदला और सहेजा जा सकता है। कमी है काम की *सुविधा* की: ग्राफ़ एडिटर, Source शेडिंग, मैप, एक्सपोर्ट। जब तक कोई एनिमेटर इसमें एक दिन का काम न कर सके, कोई संस्करण संख्या नहीं।
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="Meet the Heavy खुला हुआ एडिटर" width="100%"><br><sub>आज का एडिटर, Valve का Meet the Heavy खुला हुआ: टाइमलाइन पर शॉट और ध्वनि, सेशन ट्री, पहला शॉट उसके अपने कैमरे से, सेशन के अनुसार पोज़ और चेहरों वाले किरदार।</sub></p>
+
 ## इसे अलग क्या बनाता है
 
 - **पोर्टेबल।** एप्लिकेशन फ़ोल्डर के बाहर कुछ नहीं लिखा जाता: सेटिंग `App/User` में, कैश `App/Cache` में, अस्थायी `App/Temporary` में। फ़ोल्डर मिटाएँ और कोई निशान नहीं।
@@ -183,4 +189,4 @@ Source Filmmaker, Team Fortress 2 और Source इंजन Valve के है
 
 C2UI के अपने कोड का लाइसेंस अभी चुना नहीं गया — तब तक सर्वाधिकार सुरक्षित। Issues और pull requests का फिर भी स्वागत है।
 
-<p align="center"><img src="../../.github/assets/models.png" alt="इंस्टॉलेशन से सीधे रेंडर किए 64 मॉडल" width="60%"><br><sub>इंस्टॉलेशन से यादृच्छिक चुने चौंसठ मॉडल, C2UI के अपने रेंडरर से बनाए गए।</sub></p>
+<p align="center"><img src="../assets/models.png" alt="इंस्टॉलेशन से सीधे रेंडर किए 64 मॉडल" width="60%"><br><sub>इंस्टॉलेशन से यादृच्छिक चुने चौंसठ मॉडल, C2UI के अपने रेंडरर से बनाए गए।</sub></p>

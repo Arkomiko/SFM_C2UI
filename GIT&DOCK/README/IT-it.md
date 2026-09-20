@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/IT-it/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <b>🇮🇹 Italiano</b> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — è la mia ricostruzione dell'editor di Source Filmmaker: lo stesso contenuto, lo stesso formato di sessione, lo stesso modello di dati, dentro un guscio che prende l'aspetto dalla libreria di Steam e la disposizione dall'editor di Unreal Engine 5.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — l'editor di Source Filmmaker in un guscio moderno: lo stesso contenuto, lo stesso formato di sessione, lo stesso modello di dati, un'interfaccia nello spirito della libreria di Steam e dell'editor di Unreal Engine 5.</p>
 
 ---
 
 ## L'idea
 
-Source Filmmaker è uno strumento eccellente con un'interfaccia del 2012. Non voglio una skin sopra `sfm.exe`, né voglio dirottarne le finestre una alla volta. Voglio un editor che **chieda dove è installato SFM**, monti quell'installazione come Garry's Mod monta Counter-Strike, e faccia tutto da sé su quei file — modelli, materiali, texture, sessioni, animazione — senza mai avviare SFM.
+Source Filmmaker è uno strumento solido la cui interfaccia è rimasta al 2012. C2UI non lo sostituisce né lo rifà: l'obiettivo è semplicemente rendere SFM un po' più moderno e comodo.
 
-L'obiettivo è la **parità di funzioni con SFM, uno a uno** (ossa e rig compresi), poi ciò che SFM non ha mai avuto.
+L'editor trova l'SFM installato, lo collega come libreria di contenuti — modelli, materiali, texture, sessioni — e lavora con gli stessi file nello stesso formato. Tutto ciò che è stato fatto in SFM si apre in C2UI, e viceversa.
+
+Il primo obiettivo è la piena compatibilità con SFM, ossa e rig compresi. Poi, ciò che a SFM mancava.
 
 ```
   ┌──────────────┐    "dov'è SFM?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ L'obiettivo è la **parità di funzioni con SFM, uno a uno** (ossa e rig compres
 
 ## Stato di avanzamento
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Avanzamento complessivo verso il rilascio: 38%</b></p>
+<img align="right" src="../assets/IT-it/sidebar.svg" alt="Stato di avanzamento" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="L'editor con Meet the Heavy aperto" width="100%"><br><sub>L'editor oggi, con Meet the Heavy di Valve aperto: inquadrature e audio sulla timeline, l'albero della sessione, la prima inquadratura vista dalla sua camera, personaggi in posa e con le espressioni dettate dalla sessione.</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Avanzamento complessivo verso il rilascio: 38%</b>
 
-Espandi un'area per vedere esattamente cosa è fatto e cosa no. Le percentuali sono la mia stima onesta rispetto a ciò che sa fare SFM.
+Ogni area si espande: cosa funziona già e cosa non c'è ancora. Le percentuali sono una stima rispetto a ciò che sa fare SFM.
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Trovare e montare SFM</b></summary>
 
@@ -131,6 +133,10 @@ Volutamente dopo: un solo aspetto finché l'editor non ha qualcosa che meriti un
 
 **Non pronto per il rilascio.** Le fondamenta — ogni formato di file usato da SFM, letto correttamente e verificato su tutta l'installazione — ci sono e sono testate; una sessione si apre, si riproduce, si modifica e si salva. Manca la *comodità* del lavoro: graph editor, shading Source, mappe, esportazione. Nessun numero di versione finché un animatore non può farci una giornata di lavoro.
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="L'editor con Meet the Heavy aperto" width="100%"><br><sub>L'editor oggi, con Meet the Heavy di Valve aperto: inquadrature e audio sulla timeline, l'albero della sessione, la prima inquadratura vista dalla sua camera, personaggi in posa e con le espressioni dettate dalla sessione.</sub></p>
+
 ## Cosa lo rende diverso
 
 - **Portatile.** Nulla viene scritto fuori dalla cartella dell'applicazione: impostazioni in `App/User`, cache in `App/Cache`, temporanei in `App/Temporary`. Elimina la cartella e non resta nulla.
@@ -183,4 +189,4 @@ Source Filmmaker, Team Fortress 2 e il motore Source appartengono a Valve. Quest
 
 La licenza del codice proprio di C2UI non è ancora stata scelta — fino ad allora, tutti i diritti riservati. Issue e pull request sono comunque benvenuti.
 
-<p align="center"><img src="../../.github/assets/models.png" alt="64 modelli renderizzati direttamente dall'installazione" width="60%"><br><sub>Sessantaquattro modelli scelti a caso dall'installazione, disegnati dal renderer di C2UI.</sub></p>
+<p align="center"><img src="../assets/models.png" alt="64 modelli renderizzati direttamente dall'installazione" width="60%"><br><sub>Sessantaquattro modelli scelti a caso dall'installazione, disegnati dal renderer di C2UI.</sub></p>

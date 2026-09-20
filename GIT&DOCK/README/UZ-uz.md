@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/UZ-uz/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <b>🇺🇿 Oʻzbekcha</b> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — Source Filmmaker muharririning men tomonimdan qayta qurilgani: xuddi shu kontent, xuddi shu sessiya formati, xuddi shu maʼlumotlar modeli — koʻrinishini Steam kutubxonasidan, joylashuvini Unreal Engine 5 muharriridan olgan qobiq ichida.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — zamonaviy qobiqdagi Source Filmmaker muharriri: xuddi shu kontent, xuddi shu sessiya formati, xuddi shu maʼlumotlar modeli, Steam kutubxonasi va Unreal Engine 5 muharriri ruhidagi interfeys.</p>
 
 ---
 
 ## Gʻoya
 
-Source Filmmaker — 2012 yil interfeysidagi ajoyib vosita. Men `sfm.exe` ustiga skin qoplamoqchi emasman, uning oynalarini birma-bir egallab olmoqchi ham emasman. Menga **SFM qayerda oʻrnatilganini soʻraydigan**, oʻsha oʻrnatmani Garry's Mod Counter-Strike ni ulagandek ulaydigan va oʻsha fayllar ustida hamma narsani oʻzi qiladigan — modellar, materiallar, teksturalar, sessiyalar, animatsiya — SFM ni hech qachon ishga tushirmaydigan muharrir kerak.
+Source Filmmaker — interfeysi 2012 yilda qolib ketgan kuchli vosita. C2UI uni almashtirmaydi va qayta yasamaydi: maqsad — SFM ni biroz zamonaviyroq va qulayroq qilish.
 
-Maqsad — **SFM bilan birga-bir funksional tenglik** (suyaklar va riglar bilan), keyin SFM da hech qachon boʻlmaganlar.
+Muharrir oʻrnatilgan SFM ni topadi, uni kontent kutubxonasi sifatida ulaydi — modellar, materiallar, teksturalar, sessiyalar — va xuddi shu fayllar bilan xuddi shu formatda ishlaydi. SFM da qilingan hamma narsa C2UI da ochiladi, aksincha ham.
+
+Birinchi maqsad — suyaklar va riglar bilan birga SFM bilan toʻliq moslik. Keyin — SFM da yetishmagan narsalar.
 
 ```
   ┌──────────────┐    "SFM qayerda?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ Maqsad — **SFM bilan birga-bir funksional tenglik** (suyaklar va riglar bilan)
 
 ## Tayyorlik
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Relizga umumiy tayyorlik: 38%</b></p>
+<img align="right" src="../assets/UZ-uz/sidebar.svg" alt="Tayyorlik" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="Meet the Heavy ochilgan muharrir" width="100%"><br><sub>Bugungi muharrir, Valve ning Meet the Heavy sessiyasi ochiq: taymlaynda shotlar va ovoz, sessiya daraxti, birinchi shot oʻz kamerasi orqali, sessiyadagi holat va yuz ifodalari bilan personajlar.</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Relizga umumiy tayyorlik: 38%</b>
 
-Nima tayyor va nima tayyor emasligini koʻrish uchun sohani oching. Foizlar — SFM qila oladigan narsalarga nisbatan mening halol bahom.
+Har bir soha ochiladi: nima allaqachon ishlaydi va nima hali yoʻq. Foizlar — SFM imkoniyatlariga nisbatan baho.
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>SFM ni topish va ulash</b></summary>
 
@@ -131,6 +133,10 @@ Ataylab keyinga: muharrirda bezashga arzigulik narsa boʻlmaguncha bitta koʻrin
 
 **Relizga tayyor emas.** Asos — SFM ishlatadigan har bir fayl formati, toʻgʻri oʻqilgan va butun oʻrnatmada tekshirilgan — mavjud va testlangan; sessiyani ochish, ijro etish, oʻzgartirish va saqlash mumkin. Yetishmayotgani — ish *qulayligi*: graf muharriri, Source sheyding, xaritalar, eksport. Animator unda bir kunlik ish qila olmaguncha versiya raqami boʻlmaydi.
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="Meet the Heavy ochilgan muharrir" width="100%"><br><sub>Bugungi muharrir, Valve ning Meet the Heavy sessiyasi ochiq: taymlaynda shotlar va ovoz, sessiya daraxti, birinchi shot oʻz kamerasi orqali, sessiyadagi holat va yuz ifodalari bilan personajlar.</sub></p>
+
 ## Nimasi bilan farq qiladi
 
 - **Koʻchma.** Ilova papkasidan tashqarida hech narsa yozilmaydi: sozlamalar `App/User`, kesh `App/Cache`, vaqtinchalik `App/Temporary`. Papkani oʻchirsangiz — iz qolmaydi.
@@ -183,4 +189,4 @@ Source Filmmaker, Team Fortress 2 va Source dvigateli Valve ga tegishli. Loyiha 
 
 C2UI oʻz kodining litsenziyasi hali tanlanmagan — ungacha barcha huquqlar himoyalangan. Issues va pull requestlar xush kelibsiz.
 
-<p align="center"><img src="../../.github/assets/models.png" alt="Oʻrnatmadan toʻgʻridan-toʻgʻri renderlangan 64 model" width="60%"><br><sub>Oʻrnatmadan tasodifiy tanlangan oltmish toʻrt model, C2UI ning oʻz rendereri bilan chizilgan.</sub></p>
+<p align="center"><img src="../assets/models.png" alt="Oʻrnatmadan toʻgʻridan-toʻgʻri renderlangan 64 model" width="60%"><br><sub>Oʻrnatmadan tasodifiy tanlangan oltmish toʻrt model, C2UI ning oʻz rendereri bilan chizilgan.</sub></p>

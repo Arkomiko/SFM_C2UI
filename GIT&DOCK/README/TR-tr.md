@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/TR-tr/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <b>🇹🇷 Türkçe</b> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — Source Filmmaker düzenleyicisinin benim tarafımdan yeniden inşasıdır: aynı içerik, aynı oturum biçimi, aynı veri modeli — görünümünü Steam kitaplığından, yerleşimini Unreal Engine 5 düzenleyicisinden ödünç alan bir kabuk içinde.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — modern bir kabuk içinde Source Filmmaker düzenleyicisi: aynı içerik, aynı oturum biçimi, aynı veri modeli, Steam kitaplığı ve Unreal Engine 5 düzenleyicisi ruhunda bir arayüz.</p>
 
 ---
 
 ## Fikir
 
-Source Filmmaker, 2012 arayüzü giymiş harika bir araç. `sfm.exe` üzerine bir kaplama istemiyorum, pencerelerini tek tek ele geçirmek de istemiyorum. **SFM'nin nereye kurulu olduğunu soran**, o kurulumu Garry's Mod'un Counter-Strike'ı bağladığı gibi bağlayan ve o dosyaların üzerinde her şeyi kendi yapan — modeller, malzemeler, dokular, oturumlar, animasyon — SFM'yi hiç başlatmayan bir düzenleyici istiyorum.
+Source Filmmaker, arayüzü 2012'de kalmış güçlü bir araçtır. C2UI onun yerini almaz ve onu yeniden yapmaz: amaç yalnızca SFM'yi biraz daha modern ve rahat hale getirmektir.
 
-Hedef **SFM ile bire bir özellik eşitliği** (kemikler ve rig'ler dahil), sonra SFM'nin hiç sahip olmadığı şeyler.
+Düzenleyici kurulu SFM'yi bulur, onu bir içerik kitaplığı olarak bağlar — modeller, malzemeler, dokular, oturumlar — ve aynı dosyalarla aynı biçimde çalışır. SFM'de yapılan her şey C2UI'de açılır, tersi de geçerlidir.
+
+İlk hedef, kemikler ve rig'ler dahil SFM ile tam uyumluluktur. Sonrası, SFM'de eksik olanlar.
 
 ```
   ┌──────────────┐    "SFM nerede?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ Hedef **SFM ile bire bir özellik eşitliği** (kemikler ve rig'ler dahil), sonr
 
 ## Hazırlık
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Yayın için genel hazırlık: 38%</b></p>
+<img align="right" src="../assets/TR-tr/sidebar.svg" alt="Hazırlık" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="Meet the Heavy açık düzenleyici" width="100%"><br><sub>Bugünkü düzenleyici, Valve'ın Meet the Heavy'si açık: zaman çizelgesinde çekimler ve ses, oturum ağacı, ilk çekim kendi kamerasından, oturumun dediği gibi pozlanmış ve yüz ifadeli karakterler.</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Yayın için genel hazırlık: 38%</b>
 
-Neyin bitmiş neyin bitmemiş olduğunu görmek için bir alanı açın. Yüzdeler, SFM'nin yapabildiklerine karşı dürüst tahminimdir.
+Her alan açılabilir: neyin zaten çalıştığı ve neyin henüz olmadığı. Yüzdeler, SFM'nin yapabildiklerine göre bir tahmindir.
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>SFM'yi bulma ve bağlama</b></summary>
 
@@ -131,6 +133,10 @@ Bilerek sonra: düzenleyicide temalanmaya değer bir şey olana dek tek görün�
 
 **Yayına hazır değil.** Temel — SFM'nin kullandığı her dosya biçimi, doğru okunmuş ve tüm kurulumda doğrulanmış — yerinde ve test edilmiş; bir oturum açılabilir, oynatılabilir, değiştirilebilir ve kaydedilebilir. Eksik olan çalışmanın *rahatlığı*: grafik düzenleyici, Source gölgelendirme, haritalar, dışa aktarma. Bir animatör içinde bir günlük iş yapabilene dek sürüm numarası yok.
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="Meet the Heavy açık düzenleyici" width="100%"><br><sub>Bugünkü düzenleyici, Valve'ın Meet the Heavy'si açık: zaman çizelgesinde çekimler ve ses, oturum ağacı, ilk çekim kendi kamerasından, oturumun dediği gibi pozlanmış ve yüz ifadeli karakterler.</sub></p>
+
 ## Onu farklı kılan
 
 - **Taşınabilir.** Uygulama klasörü dışına hiçbir şey yazılmaz: ayarlar `App/User`, önbellek `App/Cache`, geçici `App/Temporary`. Klasörü silin, iz kalmaz.
@@ -183,4 +189,4 @@ Source Filmmaker, Team Fortress 2 ve Source motoru Valve'a aittir. Bu proje onla
 
 C2UI'nin kendi kodunun lisansı henüz seçilmedi — o zamana dek tüm hakları saklıdır. Issue'lar ve pull request'ler yine de hoş karşılanır.
 
-<p align="center"><img src="../../.github/assets/models.png" alt="Kurulumdan doğrudan render edilen 64 model" width="60%"><br><sub>Kurulumdan rastgele seçilen altmış dört model, C2UI'nin kendi renderer'ı ile çizildi.</sub></p>
+<p align="center"><img src="../assets/models.png" alt="Kurulumdan doğrudan render edilen 64 model" width="60%"><br><sub>Kurulumdan rastgele seçilen altmış dört model, C2UI'nin kendi renderer'ı ile çizildi.</sub></p>

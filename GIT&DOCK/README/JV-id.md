@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/JV-id/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <b>🇮🇩 Basa Jawa</b> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — yaiku bangunan ulang editor Source Filmmaker gaweanku: isi sing padha, format sesi sing padha, model data sing padha — ing cangkang sing nyilih tampilan saka pustaka Steam lan tata letak saka editor Unreal Engine 5.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — editor Source Filmmaker ing cangkang modern: isi sing padha, format sesi sing padha, model data sing padha, antarmuka kanthi semangat pustaka Steam lan editor Unreal Engine 5.</p>
 
 ---
 
 ## Gagasan
 
-Source Filmmaker iku piranti apik nganggo antarmuka taun 2012. Aku ora kepengin nempelake kulit ing `sfm.exe`, lan ora kepengin ngrebut jendhelane siji-siji. Aku kepengin editor sing **takon SFM dipasang ing endi**, masang instalasi kuwi kaya Garry's Mod masang Counter-Strike, lan nindakake kabeh dhewe ing ndhuwur file kuwi — model, materi, tekstur, sesi, animasi — tanpa tau mbukak SFM.
+Source Filmmaker iku piranti kuwat sing antarmukané kandheg ing taun 2012. C2UI ora ngganti lan ora mbangun ulang: tujuané mung nggawé SFM luwih modern lan luwih kepenak sithik.
 
-Targeté **kesetaraan fitur karo SFM, siji lawan siji** (kalebu balung lan rig), banjur apa sing ora tau diduweni SFM.
+Editor nemokake SFM sing wis dipasang, nyambungake minangka pustaka isi — model, materi, tekstur, sesi — lan nyambut gawe karo file sing padha ing format sing padha. Kabeh sing digawé ing SFM bisa dibukak ing C2UI, lan sewaliké.
+
+Tujuan pisanan yaiku kompatibilitas lengkap karo SFM, kalebu balung lan rig. Sabanjuré, apa sing kurang ing SFM.
 
 ```
   ┌──────────────┐    "SFM ing endi?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ Targeté **kesetaraan fitur karo SFM, siji lawan siji** (kalebu balung lan rig),
 
 ## Kesiapan
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Kesiapan sakabèhé kanggo rilis: 38%</b></p>
+<img align="right" src="../assets/JV-id/sidebar.svg" alt="Kesiapan" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="Editor karo Meet the Heavy dibukak" width="100%"><br><sub>Editor saiki, karo Meet the Heavy saka Valve dibukak: shot lan swara ing garis wektu, wit sesi, shot pisanan liwat kamerané dhewe, karakter mapan lan raine kaya sing diomongake sesi.</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Kesiapan sakabèhé kanggo rilis: 38%</b>
 
-Bukak sawijining wilayah kanggo ndeleng persis apa sing wis rampung lan apa sing durung. Persentase iku prakiraan jujurku dibandhing apa sing bisa ditindakake SFM.
+Saben wilayah bisa dibukak: apa sing wis mlaku lan apa sing durung ana. Persentase iku prakiraan dibandhing kemampuan SFM.
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Nemokake lan masang SFM</b></summary>
 
@@ -131,6 +133,10 @@ Sengaja mengko: siji tampilan nganti editor duwe sing pantes ditemani.
 
 **Durung siap dirilis.** Dhasaré — saben format file sing dienggo SFM, diwaca kanthi bener lan diverifikasi ing kabeh instalasi — wis ana lan dites; sesi bisa dibukak, diputer, diowahi lan disimpen. Sing kurang yaiku *kepenaké* nyambut gawe: editor grafik, shading Source, peta, ekspor. Ora ana nomer versi nganti animator bisa nyambut gawe sedina ing kono.
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="Editor karo Meet the Heavy dibukak" width="100%"><br><sub>Editor saiki, karo Meet the Heavy saka Valve dibukak: shot lan swara ing garis wektu, wit sesi, shot pisanan liwat kamerané dhewe, karakter mapan lan raine kaya sing diomongake sesi.</sub></p>
+
 ## Apa bedané
 
 - **Portabel.** Ora ana sing ditulis ing njaba folder aplikasi: setelan ing `App/User`, cache ing `App/Cache`, sauntara ing `App/Temporary`. Busak folderé lan ora ana tilas.
@@ -183,4 +189,4 @@ Source Filmmaker, Team Fortress 2 lan mesin Source iku duweké Valve. Proyek iki
 
 Lisensi kode C2UI dhewe durung dipilih — nganti kuwi, kabeh hak dilindhungi. Issue lan pull request tetep ditampa.
 
-<p align="center"><img src="../../.github/assets/models.png" alt="64 model dirender langsung saka instalasi" width="60%"><br><sub>Sewidak papat model dipilih acak saka instalasi, digambar dening renderer C2UI dhewe.</sub></p>
+<p align="center"><img src="../assets/models.png" alt="64 model dirender langsung saka instalasi" width="60%"><br><sub>Sewidak papat model dipilih acak saka instalasi, digambar dening renderer C2UI dhewe.</sub></p>

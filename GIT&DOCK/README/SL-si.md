@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/SL-si/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <b>🇸🇮 Slovenščina</b> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — je moja prenova urejevalnika Source Filmmaker: ista vsebina, isti format seje, isti podatkovni model — v lupini, ki si videz sposodi od knjižnice Steam, postavitev pa od urejevalnika Unreal Engine 5.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — urejevalnik Source Filmmaker v sodobni lupini: ista vsebina, isti format seje, isti podatkovni model, vmesnik v duhu knjižnice Steam in urejevalnika Unreal Engine 5.</p>
 
 ---
 
 ## Zamisel
 
-Source Filmmaker je odlično orodje v vmesniku iz leta 2012. Nočem preobleke čez `sfm.exe` in nočem prevzemati njegovih oken enega za drugim. Hočem urejevalnik, ki **vpraša, kje je SFM nameščen**, to namestitev priklopi tako, kot Garry's Mod priklopi Counter-Strike, in vse naredi sam na teh datotekah — modeli, materiali, teksture, seje, animacija — ne da bi SFM sploh kdaj zagnal.
+Source Filmmaker je močno orodje, katerega vmesnik je ostal v letu 2012. C2UI ga ne nadomešča in ne predeluje: cilj je preprosto narediti SFM malo sodobnejši in udobnejši.
 
-Cilj je **enakovredna funkcionalnost s SFM, ena proti ena** (vključno s kostmi in rigi), potem pa tisto, česar SFM nikoli ni dobil.
+Urejevalnik najde nameščeni SFM, ga priključi kot knjižnico vsebine — modeli, materiali, teksture, seje — in dela z istimi datotekami v istem formatu. Vse, kar je nastalo v SFM, se odpre v C2UI, in obratno.
+
+Prvi cilj je polna združljivost s SFM, vključno s kostmi in rigi. Potem tisto, česar je SFM manjkalo.
 
 ```
   ┌──────────────┐    "kje je SFM?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ Cilj je **enakovredna funkcionalnost s SFM, ena proti ena** (vključno s kostmi 
 
 ## Pripravljenost
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Skupna pripravljenost za izdajo: 38%</b></p>
+<img align="right" src="../assets/SL-si/sidebar.svg" alt="Pripravljenost" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="Urejevalnik z odprto sejo Meet the Heavy" width="100%"><br><sub>Urejevalnik danes, z odprto Valvovo sejo »Meet the Heavy«: posnetki in zvok na časovnici, drevo seje, prvi posnetek skozi lastno kamero, liki v pozah in z obrazi iz seje.</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Skupna pripravljenost za izdajo: 38%</b>
 
-Razprite področje, da vidite, kaj točno je narejeno in kaj ne. Odstotki so moja poštena ocena glede na to, kar zmore SFM.
+Vsako področje se razpre: kaj že deluje in česa še ni. Odstotki so ocena glede na zmožnosti SFM.
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Iskanje in priklop SFM</b></summary>
 
@@ -131,6 +133,10 @@ Namerno pozneje: en videz, dokler urejevalnik nima česa oblikovati.
 
 **Ni pripravljen za izdajo.** Temelj — vsak format datotek, ki ga SFM uporablja, pravilno prebran in preverjen na celotni namestitvi — stoji in je testiran; sejo je mogoče odpreti, predvajati, spremeniti in shraniti. Manjka *udobje* dela: urejevalnik grafov, senčenje Source, zemljevidi, izvoz. Brez številke različice, dokler animator v njem ne more opraviti dneva dela.
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="Urejevalnik z odprto sejo Meet the Heavy" width="100%"><br><sub>Urejevalnik danes, z odprto Valvovo sejo »Meet the Heavy«: posnetki in zvok na časovnici, drevo seje, prvi posnetek skozi lastno kamero, liki v pozah in z obrazi iz seje.</sub></p>
+
 ## Po čem se razlikuje
 
 - **Prenosljiv.** Nič se ne zapiše zunaj mape programa: nastavitve v `App/User`, predpomnilnik v `App/Cache`, začasno v `App/Temporary`. Izbrišite mapo in ni sledu.
@@ -183,4 +189,4 @@ Source Filmmaker, Team Fortress 2 in pogon Source so Valvovi. Projekt bere njiho
 
 Licenca za lastno kodo C2UI še ni izbrana — do takrat so vse pravice pridržane. Issues in pull requesti so kljub temu dobrodošli.
 
-<p align="center"><img src="../../.github/assets/models.png" alt="64 modelov, upodobljenih naravnost iz namestitve" width="60%"><br><sub>Štiriinšestdeset naključnih modelov iz namestitve, ki jih je narisal lastni upodabljalnik C2UI.</sub></p>
+<p align="center"><img src="../assets/models.png" alt="64 modelov, upodobljenih naravnost iz namestitve" width="60%"><br><sub>Štiriinšestdeset naključnih modelov iz namestitve, ki jih je narisal lastni upodabljalnik C2UI.</sub></p>

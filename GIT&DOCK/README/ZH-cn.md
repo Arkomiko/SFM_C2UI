@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/ZH-cn/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <b>🇨🇳 中文</b> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — 是我对 Source Filmmaker 编辑器的重建：同样的内容、同样的会话格式、同样的数据模型，放在一个外观借自 Steam 库、布局借自 Unreal Engine 5 编辑器的外壳里。</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — 是放在现代外壳中的 Source Filmmaker 编辑器：同样的内容、同样的会话格式、同样的数据模型，界面延续 Steam 库与 Unreal Engine 5 编辑器的风格。</p>
 
 ---
 
 ## 想法
 
-Source Filmmaker 是一款披着 2012 年界面的优秀工具。我不想给 `sfm.exe` 套一层皮肤，也不想逐个劫持它的窗口。我想要一个**询问 SFM 安装在哪里**的编辑器，像 Garry's Mod 挂载 Counter-Strike 那样挂载这份安装，并在这些文件之上自己完成一切——模型、材质、纹理、会话、动画——而从不启动 SFM。
+Source Filmmaker 是一款强大的工具，但界面停留在 2012 年。C2UI 不取代它，也不重做它：目标只是让 SFM 更现代、更顺手一点。
 
-目标是**与 SFM 一比一的功能对等**（包括骨骼和绑定），然后是 SFM 从未有过的东西。
+编辑器会找到已安装的 SFM，把它作为内容库接入——模型、材质、纹理、会话——并以同样的格式处理同样的文件。在 SFM 里做的一切都能在 C2UI 中打开，反之亦然。
+
+第一个目标是与 SFM 完全兼容，包括骨骼和绑定。之后再补上 SFM 一直缺少的东西。
 
 ```
   ┌──────────────┐    "SFM 在哪?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ Source Filmmaker 是一款披着 2012 年界面的优秀工具。我不想给 `s
 
 ## 完成度
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>整体发布就绪度：38%</b></p>
+<img align="right" src="../assets/ZH-cn/sidebar.svg" alt="完成度" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="打开 Meet the Heavy 的编辑器" width="100%"><br><sub>今天的编辑器，打开了 Valve 的《Meet the Heavy》：时间线上的镜头和声音、会话树、通过自身相机看到的第一个镜头、按会话摆好姿势和表情的角色。</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>整体发布就绪度：38%</b>
 
-展开一个领域即可看到具体完成了什么、没完成什么。百分比是我对照 SFM 能力的诚实估计。
+每个领域都可以展开：已经能用的和暂时还没有的。百分比是相对于 SFM 能力的估计。
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>查找并挂载 SFM</b></summary>
 
@@ -131,6 +133,10 @@ Flex 控制器、编译后的规则和顶点动画——角色会说话和做表
 
 **尚未准备好发布。** 基础——SFM 使用的每种文件格式，正确读取并对整个安装验证——已经就位并通过测试；会话可以打开、播放、修改和保存。缺少的是工作的*舒适度*：曲线编辑器、Source 着色、地图、导出。在动画师能在其中工作一整天之前不会有版本号。
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="打开 Meet the Heavy 的编辑器" width="100%"><br><sub>今天的编辑器，打开了 Valve 的《Meet the Heavy》：时间线上的镜头和声音、会话树、通过自身相机看到的第一个镜头、按会话摆好姿势和表情的角色。</sub></p>
+
 ## 有何不同
 
 - **便携。** 应用程序文件夹之外不写入任何内容：设置在 `App/User`，缓存在 `App/Cache`，临时文件在 `App/Temporary`。删掉文件夹就不留痕迹。
@@ -183,4 +189,4 @@ Source Filmmaker、Team Fortress 2 和 Source 引擎属于 Valve。本项目读�
 
 C2UI 自身代码的许可证尚未选定——在此之前保留所有权利。仍然欢迎 Issue 和 Pull Request。
 
-<p align="center"><img src="../../.github/assets/models.png" alt="直接从安装渲染的 64 个模型" width="60%"><br><sub>从安装中随机挑选的六十四个模型，由 C2UI 自己的渲染器绘制。</sub></p>
+<p align="center"><img src="../assets/models.png" alt="直接从安装渲染的 64 个模型" width="60%"><br><sub>从安装中随机挑选的六十四个模型，由 C2UI 自己的渲染器绘制。</sub></p>

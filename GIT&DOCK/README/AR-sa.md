@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/AR-sa/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <b>🇸🇦 العربية</b> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — هو إعادة بنائي لمحرّر Source Filmmaker: المحتوى نفسه، صيغة الجلسات نفسها، نموذج البيانات نفسه — داخل غلاف يستعير مظهره من مكتبة Steam وتخطيطه من محرّر Unreal Engine 5.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — محرّر Source Filmmaker في غلاف حديث: المحتوى نفسه، صيغة الجلسات نفسها، نموذج البيانات نفسه، وواجهة بروح مكتبة Steam ومحرّر Unreal Engine 5.</p>
 
 ---
 
 ## الفكرة
 
-Source Filmmaker أداة رائعة بواجهة من عام 2012. لا أريد قشرة فوق `sfm.exe`، ولا أريد اختطاف نوافذه واحدةً واحدة. أريد محرّرًا **يسأل أين ثُبّت SFM**، ويحمّل ذلك التثبيت كما يحمّل Garry's Mod لعبة Counter-Strike، ويفعل كل شيء بنفسه فوق تلك الملفات — النماذج والمواد والقوام والجلسات والتحريك — دون تشغيل SFM أبدًا.
+Source Filmmaker أداة قوية بقيت واجهتها في عام 2012. لا يستبدله C2UI ولا يعيد صنعه: الهدف ببساطة جعل SFM أكثر حداثة وراحة قليلًا.
 
-الهدف هو **تكافؤ الميزات مع SFM واحدًا لواحد** (بما فيها العظام والريغات)، ثم ما لم يحصل عليه SFM يومًا.
+يجد المحرّر SFM المثبّت، ويربطه كمكتبة محتوى — النماذج والمواد والقوام والجلسات — ويعمل مع الملفات نفسها بالصيغة نفسها. كل ما صُنع في SFM يُفتح في C2UI، والعكس صحيح.
+
+الهدف الأول هو التوافق الكامل مع SFM بما فيه العظام والريغات. بعد ذلك، ما كان ينقص SFM.
 
 ```
   ┌──────────────┐    "أين SFM؟"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ Source Filmmaker أداة رائعة بواجهة من عام 2012. لا أري�
 
 ## الجاهزية
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>الجاهزية الإجمالية للإصدار: 38%</b></p>
+<img align="right" src="../assets/AR-sa/sidebar.svg" alt="الجاهزية" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="المحرّر وفيه Meet the Heavy مفتوح" width="100%"><br><sub>المحرّر اليوم، وفيه Meet the Heavy من Valve مفتوح: اللقطات والصوت على الخط الزمني، شجرة الجلسة، اللقطة الأولى من كاميرتها، والشخصيات بوضعياتها وتعابيرها كما تقول الجلسة.</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>الجاهزية الإجمالية للإصدار: 38%</b>
 
-افتح مجالًا لترى بالضبط ما أُنجز وما لم يُنجز. النسب هي تقديري الصادق مقابل ما يستطيعه SFM.
+كل مجال قابل للفتح: ما يعمل بالفعل وما لم يوجد بعد. النسب تقدير مقابل ما يستطيعه SFM.
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>إيجاد SFM وتحميله</b></summary>
 
@@ -131,6 +133,10 @@ Source Filmmaker أداة رائعة بواجهة من عام 2012. لا أري�
 
 **غير جاهز للإصدار.** الأساس — كل صيغة ملف يستخدمها SFM، مقروءة بشكل صحيح ومُتحقَّق منها على التثبيت كله — موجود ومُختبَر؛ يمكن فتح جلسة وتشغيلها وتعديلها وحفظها. ما ينقص هو *راحة* العمل: محرّر الرسوم، تظليل Source، الخرائط، التصدير. لا رقم إصدار حتى يستطيع محرّك رسوم قضاء يوم عمل فيه.
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="المحرّر وفيه Meet the Heavy مفتوح" width="100%"><br><sub>المحرّر اليوم، وفيه Meet the Heavy من Valve مفتوح: اللقطات والصوت على الخط الزمني، شجرة الجلسة، اللقطة الأولى من كاميرتها، والشخصيات بوضعياتها وتعابيرها كما تقول الجلسة.</sub></p>
+
 ## ما الذي يميّزه
 
 - **محمول.** لا يُكتب شيء خارج مجلد التطبيق: الإعدادات في `App/User`، الذاكرة المخبأة في `App/Cache`، المؤقت في `App/Temporary`. احذف المجلد ولا يبقى أثر.
@@ -183,4 +189,4 @@ Source Filmmaker وTeam Fortress 2 ومحرّك Source ملك Valve. يقرأ ه
 
 لم يُختر ترخيص كود C2UI الخاص بعد — حتى ذلك الحين، جميع الحقوق محفوظة. المشكلات وطلبات السحب مرحّب بها.
 
-<p align="center"><img src="../../.github/assets/models.png" alt="64 نموذجًا مُصيَّرة مباشرة من التثبيت" width="60%"><br><sub>أربعة وستون نموذجًا اختيرت عشوائيًا من التثبيت، رسمها مُصيِّر C2UI الخاص.</sub></p>
+<p align="center"><img src="../assets/models.png" alt="64 نموذجًا مُصيَّرة مباشرة من التثبيت" width="60%"><br><sub>أربعة وستون نموذجًا اختيرت عشوائيًا من التثبيت، رسمها مُصيِّر C2UI الخاص.</sub></p>

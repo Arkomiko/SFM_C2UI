@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/JA-jp/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <b>🇯🇵 日本語</b> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — は Source Filmmaker のエディタを私が作り直したものです。同じコンテンツ、同じセッション形式、同じデータモデルを、Steam ライブラリの見た目と Unreal Engine 5 エディタのレイアウトを借りたシェルの中に収めました。</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — は、モダンなシェルに収めた Source Filmmaker のエディタです。同じコンテンツ、同じセッション形式、同じデータモデルに、Steam ライブラリと Unreal Engine 5 エディタの雰囲気を持つインターフェースを組み合わせています。</p>
 
 ---
 
 ## アイデア
 
-Source Filmmaker は 2012 年のインターフェースをまとった優れたツールです。`sfm.exe` にスキンを被せたくはないし、そのウィンドウを一つずつ乗っ取りたくもありません。欲しいのは、**SFM がどこにインストールされているかを尋ね**、Garry's Mod が Counter-Strike をマウントするようにそのインストールをマウントし、モデル・マテリアル・テクスチャ・セッション・アニメーションのすべてをそのファイルの上で自力で行い、SFM を一度も起動しないエディタです。
+Source Filmmaker は強力なツールですが、インターフェースは 2012 年のままです。C2UI はそれを置き換えたり作り直したりはしません。目的は、SFM を少しだけ現代的で使いやすくすることです。
 
-目標は **SFM と一対一の機能同等性**（ボーンとリグを含む）、その先に SFM が持たなかったものです。
+エディタはインストール済みの SFM を見つけ、コンテンツライブラリとして接続し — モデル、マテリアル、テクスチャ、セッション — 同じファイルを同じ形式のまま扱います。SFM で作ったものは C2UI で開け、その逆も同じです。
+
+最初の目標はボーンとリグを含む SFM との完全な互換性。その先に、SFM に足りなかったものを加えます。
 
 ```
   ┌──────────────┐    "SFM はどこ?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ Source Filmmaker は 2012 年のインターフェースをまとった優れた
 
 ## 完成度
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>リリースへの全体的な完成度: 38%</b></p>
+<img align="right" src="../assets/JA-jp/sidebar.svg" alt="完成度" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="Meet the Heavy を開いたエディタ" width="100%"><br><sub>現在のエディタ。Valve の「Meet the Heavy」を開いた状態: タイムラインにショットと音声、セッションツリー、最初のショットを自身のカメラから、セッション通りのポーズと表情のキャラクター。</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>リリースへの全体的な完成度: 38%</b>
 
-領域を開くと、何ができていて何ができていないかが分かります。パーセントは SFM の能力に対する私の正直な見積もりです。
+各領域を開くと、すでに動くものとまだないものが分かります。パーセントは SFM の機能に対する目安です。
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>SFM の検出とマウント</b></summary>
 
@@ -131,6 +133,10 @@ UE5 や Visual Studio のように、プレビュー付きのターゲットコ�
 
 **リリースの準備はできていません。** 基盤 — SFM が使うすべてのファイル形式を正しく読み、インストール全体で検証したもの — は整い、テストされています。セッションを開き、再生し、変更し、保存できます。足りないのは作業の *快適さ*: グラフエディタ、Source シェーディング、マップ、書き出し。アニメーターが一日の仕事をこなせるまでバージョン番号は付けません。
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="Meet the Heavy を開いたエディタ" width="100%"><br><sub>現在のエディタ。Valve の「Meet the Heavy」を開いた状態: タイムラインにショットと音声、セッションツリー、最初のショットを自身のカメラから、セッション通りのポーズと表情のキャラクター。</sub></p>
+
 ## 何が違うのか
 
 - **ポータブル。** アプリケーションフォルダの外には何も書きません: 設定は `App/User`、キャッシュは `App/Cache`、一時ファイルは `App/Temporary`。フォルダを消せば跡形もありません。
@@ -183,4 +189,4 @@ Source Filmmaker、Team Fortress 2、Source エンジンは Valve のもので�
 
 C2UI 自身のコードのライセンスはまだ決めていません — それまでは全著作権を留保します。Issue と Pull Request は歓迎します。
 
-<p align="center"><img src="../../.github/assets/models.png" alt="インストールから直接描画した 64 モデル" width="60%"><br><sub>インストールから無作為に選んだ 64 のモデルを C2UI 独自のレンダラで描画。</sub></p>
+<p align="center"><img src="../assets/models.png" alt="インストールから直接描画した 64 モデル" width="60%"><br><sub>インストールから無作為に選んだ 64 のモデルを C2UI 独自のレンダラで描画。</sub></p>

@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/RO-md/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <b>🇲🇩 Moldovenească</b> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — este reconstrucția mea a editorului Source Filmmaker: același conținut, același format de sesiune, același model de date — într-o coajă care își ia aspectul de la biblioteca Steam și aranjarea de la editorul Unreal Engine 5.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — editorul Source Filmmaker într-o coajă modernă: același conținut, același format de sesiune, același model de date, o interfață în spiritul bibliotecii Steam și al editorului Unreal Engine 5.</p>
 
 ---
 
 ## Ideea
 
-Source Filmmaker este un instrument excelent într-o interfață din 2012. Nu vreau un skin peste `sfm.exe` și nu vreau să-i capturez ferestrele una câte una. Vreau un editor care **întreabă unde este instalat SFM**, montează acea instalare așa cum Garry's Mod montează Counter-Strike și face totul singur peste acele fișiere — modele, materiale, texturi, sesiuni, animație — fără să pornească vreodată SFM.
+Source Filmmaker este un instrument puternic a cărui interfață a rămas în 2012. C2UI nu îl înlocuiește și nu îl reface: scopul este pur și simplu să facă SFM puțin mai modern și mai comod.
 
-Ținta este **paritate de funcții cu SFM, unu la unu** (inclusiv oase și rig-uri), apoi lucrurile pe care SFM nu le-a avut niciodată.
+Editorul găsește SFM-ul instalat, îl atașează ca bibliotecă de conținut — modele, materiale, texturi, sesiuni — și lucrează cu aceleași fișiere în același format. Tot ce a fost făcut în SFM se deschide în C2UI, și invers.
+
+Primul obiectiv este compatibilitatea deplină cu SFM, inclusiv oase și rig-uri. Apoi — ceea ce i-a lipsit SFM-ului.
 
 ```
   ┌──────────────┐    "unde e SFM?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ Source Filmmaker este un instrument excelent într-o interfață din 2012. Nu vr
 
 ## Grad de pregătire
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Pregătire generală pentru lansare: 38%</b></p>
+<img align="right" src="../assets/RO-md/sidebar.svg" alt="Grad de pregătire" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="Editorul cu Meet the Heavy deschis" width="100%"><br><sub>Editorul azi, cu sesiunea Valve „Meet the Heavy” deschisă: cadre și sunet pe cronologie, arborele sesiunii, primul cadru văzut prin propria cameră, personaje în pozele și cu fețele din sesiune.</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Pregătire generală pentru lansare: 38%</b>
 
-Deschideți o zonă ca să vedeți exact ce este gata și ce nu. Procentele sunt estimarea mea sinceră față de ce poate SFM.
+Fiecare zonă se deschide: ce funcționează deja și ce nu există încă. Procentele sunt o estimare față de posibilitățile SFM.
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Găsirea și montarea SFM</b></summary>
 
@@ -131,6 +133,10 @@ Amânat intenționat: un singur aspect până când editorul are ce stiliza.
 
 **Nu este gata de lansare.** Fundația — fiecare format de fișier folosit de SFM, citit corect și verificat pe întreaga instalare — există și este testată; o sesiune poate fi deschisă, redată, modificată și salvată. Lipsește *confortul* lucrului: editorul de grafice, umbrirea Source, hărțile, exportul. Fără număr de versiune până când un animator poate lucra o zi întreagă în el.
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="Editorul cu Meet the Heavy deschis" width="100%"><br><sub>Editorul azi, cu sesiunea Valve „Meet the Heavy” deschisă: cadre și sunet pe cronologie, arborele sesiunii, primul cadru văzut prin propria cameră, personaje în pozele și cu fețele din sesiune.</sub></p>
+
 ## Prin ce diferă
 
 - **Portabil.** Nimic nu se scrie în afara folderului aplicației: setări în `App/User`, cache în `App/Cache`, temporare în `App/Temporary`. Ștergeți folderul și nu rămâne nimic.
@@ -183,4 +189,4 @@ Source Filmmaker, Team Fortress 2 și motorul Source aparțin Valve. Proiectul c
 
 Licența pentru codul propriu C2UI nu a fost încă aleasă — până atunci, toate drepturile rezervate. Issues și pull requests sunt binevenite.
 
-<p align="center"><img src="../../.github/assets/models.png" alt="64 de modele randate direct din instalare" width="60%"><br><sub>Șaizeci și patru de modele alese la întâmplare din instalare, desenate de renderer-ul propriu al C2UI.</sub></p>
+<p align="center"><img src="../assets/models.png" alt="64 de modele randate direct din instalare" width="60%"><br><sub>Șaizeci și patru de modele alese la întâmplare din instalare, desenate de renderer-ul propriu al C2UI.</sub></p>

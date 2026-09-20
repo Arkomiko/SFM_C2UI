@@ -1,4 +1,4 @@
-<p align="center"><img src=".github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="GIT%26DOCK/assets/RU-ru/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><b>🇷🇺 Русский</b> · <a href="GIT%26DOCK/README/EN-en.md">🇬🇧 English</a> · <a href="GIT%26DOCK/README/PL-pl.md">🇵🇱 Polski</a> · <a href="GIT%26DOCK/README/UK-ua.md">🇺🇦 Українська</a> · <a href="GIT%26DOCK/README/DE-de.md">🇩🇪 Deutsch</a> · <a href="GIT%26DOCK/README/RO-md.md">🇲🇩 Moldovenească</a> · <a href="GIT%26DOCK/README/SL-si.md">🇸🇮 Slovenščina</a> · <a href="GIT%26DOCK/README/BE-by.md">🇧🇾 Беларуская</a> · <a href="GIT%26DOCK/README/KK-kz.md">🇰🇿 Қазақша</a> · <a href="GIT%26DOCK/README/JA-jp.md">🇯🇵 日本語</a> · <a href="GIT%26DOCK/README/ZH-cn.md">🇨🇳 中文</a> · <a href="GIT%26DOCK/README/SV-se.md">🇸🇪 Svenska</a> · <a href="GIT%26DOCK/README/ES-es.md">🇪🇸 Español</a> · <a href="GIT%26DOCK/README/HI-in.md">🇮🇳 हिन्दी</a> · <a href="GIT%26DOCK/README/PT-pt.md">🇵🇹 Português</a> · <a href="GIT%26DOCK/README/BN-bd.md">🇧🇩 বাংলা</a> · <a href="GIT%26DOCK/README/FR-fr.md">🇫🇷 Français</a> · <a href="GIT%26DOCK/README/TE-in.md">🇮🇳 తెలుగు</a> · <a href="GIT%26DOCK/README/MR-in.md">🇮🇳 मराठी</a> · <a href="GIT%26DOCK/README/TA-in.md">🇮🇳 தமிழ்</a> · <a href="GIT%26DOCK/README/TR-tr.md">🇹🇷 Türkçe</a> · <a href="GIT%26DOCK/README/UR-pk.md">🇵🇰 اردو</a> · <a href="GIT%26DOCK/README/VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GIT%26DOCK/README/GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="GIT%26DOCK/README/IT-it.md">🇮🇹 Italiano</a> · <a href="GIT%26DOCK/README/KO-kr.md">🇰🇷 한국어</a> · <a href="GIT%26DOCK/README/AR-sa.md">🇸🇦 العربية</a> · <a href="GIT%26DOCK/README/JV-id.md">🇮🇩 Basa Jawa</a> · <a href="GIT%26DOCK/README/ML-in.md">🇮🇳 മലയാളം</a> · <a href="GIT%26DOCK/README/NE-np.md">🇳🇵 नेपाली</a> · <a href="GIT%26DOCK/README/UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="GIT%26DOCK/README/OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — это моя пересборка редактора Source Filmmaker: тот же контент, тот же формат сессий, та же модель данных — в оболочке, которая берёт внешний вид от библиотеки Steam, а компоновку от редактора Unreal Engine 5.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — редактор Source Filmmaker в современной оболочке: тот же контент, тот же формат сессий, та же модель данных, интерфейс в духе библиотеки Steam и редактора Unreal Engine 5.</p>
 
 ---
 
 ## Идея
 
-Source Filmmaker — отличный инструмент в интерфейсе 2012 года. Я не хочу натягивать скин на `sfm.exe` и не хочу перехватывать его окна по одному. Я хочу редактор, который **спрашивает, где установлен SFM**, монтирует эту установку так, как Garry's Mod монтирует Counter-Strike, и всё делает сам поверх этих файлов — модели, материалы, текстуры, сессии, анимацию — никогда не запуская SFM.
+Source Filmmaker — сильный инструмент, интерфейс которого остался в 2012 году. C2UI не заменяет его и не переделывает: задача — сделать SFM немного современнее и удобнее.
 
-Цель — **функциональность SFM один в один** (включая кости и риги), а дальше то, чего в SFM никогда не было.
+Редактор находит установленный SFM, подключает его как библиотеку контента — модели, материалы, текстуры, сессии — и работает с теми же файлами в том же формате. Всё, что сделано в SFM, открывается в C2UI, и наоборот.
+
+Первая цель — полная совместимость с SFM, включая кости и риги. Дальше — то, чего в SFM не хватало.
 
 ```
   ┌──────────────┐    "где SFM?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ Source Filmmaker — отличный инструмент в интерфейс
 
 ## Готовность
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Общая готовность к релизу: 38%</b></p>
+<img align="right" src="GIT%26DOCK/assets/RU-ru/sidebar.svg" alt="Готовность" width="300">
 
-<p align="center"><img src=".github/assets/editor.png" alt="Редактор с открытой сессией Meet the Heavy" width="100%"><br><sub>Редактор сегодня: открыта сессия Valve «Meet the Heavy» — шоты и звук на таймлайне, дерево сессии, первый шот через его собственную камеру, персонажи в позах и с лицами из сессии.</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Общая готовность к релизу: 38%</b>
 
-Раскройте область, чтобы увидеть, что именно готово, а что нет. Проценты — мои честные оценки относительно того, что умеет SFM.
+Каждая область раскрывается: что уже работает и чего пока нет. Проценты — оценка относительно возможностей SFM.
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Поиск и монтирование SFM</b></summary>
 
@@ -131,6 +133,10 @@ Flex-контроллеры, скомпилированные правила и 
 
 **К релизу не готов.** Фундамент — каждый формат SFM, прочитанный верно и проверенный на всей установке, — есть и покрыт тестами; сессию можно открыть, проиграть, изменить и сохранить. Не хватает *удобства* работы: graph editor, шейдинг Source, карты, экспорт. Номер версии появится, когда аниматор сможет отработать в нём день.
 
+<br clear="all">
+
+<p align="center"><img src="GIT%26DOCK/assets/editor.png" alt="Редактор с открытой сессией Meet the Heavy" width="100%"><br><sub>Редактор сегодня: открыта сессия Valve «Meet the Heavy» — шоты и звук на таймлайне, дерево сессии, первый шот через его собственную камеру, персонажи в позах и с лицами из сессии.</sub></p>
+
 ## Чем отличается
 
 - **Переносимый.** Ничего не пишется вне папки программы: настройки в `App/User`, кэш в `App/Cache`, временное в `App/Temporary`. Удалили папку — не осталось следа.
@@ -183,4 +189,4 @@ Source Filmmaker, Team Fortress 2 и движок Source принадлежат 
 
 Лицензия собственного кода C2UI ещё не выбрана — до тех пор все права защищены. Issues и pull requests приветствуются.
 
-<p align="center"><img src=".github/assets/models.png" alt="64 модели, отрендеренные прямо из установки" width="60%"><br><sub>Шестьдесят четыре случайные модели из установки, нарисованные собственным рендерером C2UI.</sub></p>
+<p align="center"><img src="GIT%26DOCK/assets/models.png" alt="64 модели, отрендеренные прямо из установки" width="60%"><br><sub>Шестьдесят четыре случайные модели из установки, нарисованные собственным рендерером C2UI.</sub></p>

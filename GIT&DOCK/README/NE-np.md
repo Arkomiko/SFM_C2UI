@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/NE-np/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <b>🇳🇵 नेपाली</b> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — Source Filmmaker को सम्पादकको मेरो पुनर्निर्माण हो: उही सामग्री, उही सेसन ढाँचा, उही डेटा मोडेल — Steam पुस्तकालयबाट रूप र Unreal Engine 5 सम्पादकबाट लेआउट लिएको खोलभित्र।</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — आधुनिक खोलमा Source Filmmaker को सम्पादक: उही सामग्री, उही सेसन ढाँचा, उही डेटा मोडेल, र Steam पुस्तकालय तथा Unreal Engine 5 सम्पादकको शैलीको इन्टरफेस।</p>
 
 ---
 
 ## विचार
 
-Source Filmmaker २०१२ को इन्टरफेसमा रहेको उत्कृष्ट उपकरण हो। म `sfm.exe` माथि स्किन लगाउन चाहन्न, र यसका विन्डोहरू एक-एक गरी कब्जा गर्न पनि चाहन्न। मलाई त्यस्तो सम्पादक चाहिन्छ जसले **SFM कहाँ स्थापित छ भनेर सोध्छ**, त्यो स्थापनालाई Garry's Mod ले Counter-Strike माउन्ट गरेजस्तै माउन्ट गर्छ, र ती फाइलहरूमाथि सबै आफैँ गर्छ — मोडेल, सामग्री, टेक्सचर, सेसन, एनिमेसन — SFM कहिल्यै नखोलेर।
+Source Filmmaker एक बलियो उपकरण हो जसको इन्टरफेस २०१२ मै रह्यो। C2UI ले यसलाई प्रतिस्थापन वा पुनर्निर्माण गर्दैन: लक्ष्य केवल SFM लाई अलि आधुनिक र सहज बनाउनु हो।
 
-लक्ष्य **SFM सँग एक-एक सुविधा समानता** (हड्डी र रिगसहित), त्यसपछि SFM ले कहिल्यै नपाएका कुराहरू।
+सम्पादकले स्थापित SFM फेला पार्छ, यसलाई सामग्री पुस्तकालयका रूपमा जोड्छ — मोडेल, सामग्री, टेक्सचर, सेसन — र उही फाइलहरूसँग उही ढाँचामा काम गर्छ। SFM मा बनेको सबै C2UI मा खुल्छ, र उल्टो पनि।
+
+पहिलो लक्ष्य हड्डी र रिगसहित SFM सँग पूर्ण अनुकूलता हो। त्यसपछि — SFM मा जे कमी थियो।
 
 ```
   ┌──────────────┐    "SFM कहाँ?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ Source Filmmaker २०१२ को इन्टरफेसमा रहेक
 
 ## तयारी
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>रिलिजका लागि समग्र तयारी: 38%</b></p>
+<img align="right" src="../assets/NE-np/sidebar.svg" alt="तयारी" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="Meet the Heavy खोलिएको सम्पादक" width="100%"><br><sub>आजको सम्पादक, Valve को Meet the Heavy खोलिएको: टाइमलाइनमा शट र आवाज, सेसन ट्री, पहिलो शट आफ्नै क्यामेराबाट, सेसनअनुसार पोज र अनुहार भएका पात्रहरू।</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>रिलिजका लागि समग्र तयारी: 38%</b>
 
-के भयो र के भएन ठ्याक्कै हेर्न कुनै क्षेत्र खोल्नुहोस्। प्रतिशत SFM ले गर्न सक्ने कुराको तुलनामा मेरो इमानदार अनुमान हो।
+हरेक क्षेत्र खुल्छ: के पहिले नै काम गर्छ र के अझै छैन। प्रतिशत SFM को क्षमताको तुलनामा अनुमान हो।
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>SFM खोज्ने र माउन्ट गर्ने</b></summary>
 
@@ -131,6 +133,10 @@ UE5 र Visual Studio जस्तै, पूर्वावलोकनसह�
 
 **रिलिजका लागि तयार छैन।** जग — SFM ले प्रयोग गर्ने हरेक फाइल ढाँचा, सही पढिएको र पूरै स्थापनामा प्रमाणित — छ र परीक्षण गरिएको छ; सेसन खोल्न, चलाउन, बदल्न र सेभ गर्न सकिन्छ। कमी छ कामको *सहजता*: ग्राफ सम्पादक, Source शेडिङ, नक्सा, निर्यात। एनिमेटरले यसमा एक दिनको काम गर्न नसक्दासम्म संस्करण नम्बर छैन।
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="Meet the Heavy खोलिएको सम्पादक" width="100%"><br><sub>आजको सम्पादक, Valve को Meet the Heavy खोलिएको: टाइमलाइनमा शट र आवाज, सेसन ट्री, पहिलो शट आफ्नै क्यामेराबाट, सेसनअनुसार पोज र अनुहार भएका पात्रहरू।</sub></p>
+
 ## के फरक छ
 
 - **पोर्टेबल।** एप्लिकेसन फोल्डरबाहिर केही लेखिँदैन: सेटिङ `App/User` मा, क्यास `App/Cache` मा, अस्थायी `App/Temporary` मा। फोल्डर मेट्नुहोस्, कुनै छाप छैन।
@@ -183,4 +189,4 @@ Source Filmmaker, Team Fortress 2 र Source इन्जिन Valve का ह
 
 C2UI को आफ्नै कोडको इजाजतपत्र अझै छानिएको छैन — त्यसबेलासम्म सर्वाधिकार सुरक्षित। Issues र pull requests स्वागत छ।
 
-<p align="center"><img src="../../.github/assets/models.png" alt="स्थापनाबाट सिधै रेन्डर गरिएका ६४ मोडेल" width="60%"><br><sub>स्थापनाबाट अनियमित छानिएका चौसठ्ठी मोडेल, C2UI को आफ्नै रेन्डररले कोरेका।</sub></p>
+<p align="center"><img src="../assets/models.png" alt="स्थापनाबाट सिधै रेन्डर गरिएका ६४ मोडेल" width="60%"><br><sub>स्थापनाबाट अनियमित छानिएका चौसठ्ठी मोडेल, C2UI को आफ्नै रेन्डररले कोरेका।</sub></p>

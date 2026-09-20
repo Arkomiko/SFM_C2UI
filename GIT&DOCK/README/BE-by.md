@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/BE-by/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <b>🇧🇾 Беларуская</b> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — гэта мая перазборка рэдактара Source Filmmaker: той самы кантэнт, той самы фармат сесій, тая самая мадэль даных — у абалонцы, якая бярэ выгляд ад бібліятэкі Steam, а кампаноўку ад рэдактара Unreal Engine 5.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — рэдактар Source Filmmaker у сучаснай абалонцы: той самы кантэнт, той самы фармат сесій, тая самая мадэль даных, інтэрфейс у духу бібліятэкі Steam і рэдактара Unreal Engine 5.</p>
 
 ---
 
 ## Ідэя
 
-Source Filmmaker — выдатны інструмент у інтэрфейсе 2012 года. Я не хачу нацягваць скін на `sfm.exe` і не хачу перахапляць яго вокны па адным. Я хачу рэдактар, які **пытаецца, дзе ўсталяваны SFM**, мантуе гэтую ўстаноўку так, як Garry's Mod мантуе Counter-Strike, і ўсё робіць сам паверх гэтых файлаў — мадэлі, матэрыялы, тэкстуры, сесіі, анімацыю — ніколі не запускаючы SFM.
+Source Filmmaker — моцны інструмент, інтэрфейс якога застаўся ў 2012 годзе. C2UI не замяняе яго і не перарабляе: задача — зрабіць SFM крыху сучаснейшым і зручнейшым.
 
-Мэта — **функцыянальнасць SFM адзін у адзін** (уключна з косткамі і рыгамі), а далей тое, чаго ў SFM ніколі не было.
+Рэдактар знаходзіць усталяваны SFM, падключае яго як бібліятэку кантэнту — мадэлі, матэрыялы, тэкстуры, сесіі — і працуе з тымі самымі файламі ў тым самым фармаце. Усё, што зроблена ў SFM, адкрываецца ў C2UI, і наадварот.
+
+Першая мэта — поўная сумяшчальнасць з SFM, уключна з косткамі і рыгамі. Далей — тое, чаго ў SFM не хапала.
 
 ```
   ┌──────────────┐    "дзе SFM?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ Source Filmmaker — выдатны інструмент у інтэрфейсе
 
 ## Гатоўнасць
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Агульная гатоўнасць да рэлізу: 38%</b></p>
+<img align="right" src="../assets/BE-by/sidebar.svg" alt="Гатоўнасць" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="Рэдактар з адкрытай сесіяй Meet the Heavy" width="100%"><br><sub>Рэдактар сёння: адкрыта сесія Valve «Meet the Heavy» — шоты і гук на таймлайне, дрэва сесіі, першы шот праз яго ўласную камеру, персанажы ў позах і з тварамі з сесіі.</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Агульная гатоўнасць да рэлізу: 38%</b>
 
-Разгарніце вобласць, каб убачыць, што менавіта гатова, а што не. Працэнты — мая сумленная ацэнка адносна магчымасцей SFM.
+Кожная вобласць разгортваецца: што ўжо працуе і чаго пакуль няма. Працэнты — ацэнка адносна магчымасцей SFM.
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Пошук і мантаванне SFM</b></summary>
 
@@ -131,6 +133,10 @@ Flex-кантролеры, скампіляваныя правілы і вярш
 
 **Да рэлізу не гатовы.** Падмурак — кожны фармат SFM, прачытаны правільна і правераны на ўсёй устаноўцы, — ёсць і пакрыты тэстамі; сесію можна адкрыць, прайграць, змяніць і захаваць. Не хапае *зручнасці* працы: graph editor, шэйдынгу Source, карт, экспарту. Нумар версіі з'явіцца, калі аніматар зможа адпрацаваць у ім дзень.
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="Рэдактар з адкрытай сесіяй Meet the Heavy" width="100%"><br><sub>Рэдактар сёння: адкрыта сесія Valve «Meet the Heavy» — шоты і гук на таймлайне, дрэва сесіі, першы шот праз яго ўласную камеру, персанажы ў позах і з тварамі з сесіі.</sub></p>
+
 ## Чым адрозніваецца
 
 - **Пераносны.** Нічога не пішацца па-за папкай праграмы: налады ў `App/User`, кэш у `App/Cache`, часовае ў `App/Temporary`. Выдалілі папку — следу не засталося.
@@ -183,4 +189,4 @@ Source Filmmaker, Team Fortress 2 і рухавік Source належаць Valv
 
 Ліцэнзія ўласнага кода C2UI яшчэ не абраная — да таго часу ўсе правы абароненыя. Issues і pull requests вітаюцца.
 
-<p align="center"><img src="../../.github/assets/models.png" alt="64 мадэлі, адрэндараныя проста з устаноўкі" width="60%"><br><sub>Шэсцьдзясят чатыры выпадковыя мадэлі з устаноўкі, намаляваныя ўласным рэндарарам C2UI.</sub></p>
+<p align="center"><img src="../assets/models.png" alt="64 мадэлі, адрэндараныя проста з устаноўкі" width="60%"><br><sub>Шэсцьдзясят чатыры выпадковыя мадэлі з устаноўкі, намаляваныя ўласным рэндарарам C2UI.</sub></p>

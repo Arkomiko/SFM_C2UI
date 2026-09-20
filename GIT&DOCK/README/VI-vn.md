@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/VI-vn/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <b>🇻🇳 Tiếng Việt</b> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — là bản dựng lại trình biên tập Source Filmmaker của tôi: cùng nội dung, cùng định dạng phiên, cùng mô hình dữ liệu — trong một lớp vỏ mượn giao diện từ thư viện Steam và bố cục từ trình biên tập Unreal Engine 5.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — trình biên tập Source Filmmaker trong một lớp vỏ hiện đại: cùng nội dung, cùng định dạng phiên, cùng mô hình dữ liệu, giao diện theo tinh thần thư viện Steam và trình biên tập Unreal Engine 5.</p>
 
 ---
 
 ## Ý tưởng
 
-Source Filmmaker là một công cụ tuyệt vời khoác giao diện năm 2012. Tôi không muốn một lớp da phủ lên `sfm.exe`, cũng không muốn chiếm từng cửa sổ của nó. Tôi muốn một trình biên tập **hỏi SFM được cài ở đâu**, gắn kết bản cài đó như Garry's Mod gắn kết Counter-Strike, và tự làm mọi thứ trên những tập tin đó — mô hình, vật liệu, kết cấu, phiên, hoạt ảnh — mà không bao giờ khởi chạy SFM.
+Source Filmmaker là một công cụ mạnh nhưng giao diện dừng lại ở năm 2012. C2UI không thay thế hay làm lại nó: mục tiêu chỉ là làm SFM hiện đại và thoải mái hơn một chút.
 
-Mục tiêu là **tương đương tính năng với SFM, một đối một** (kể cả xương và rig), rồi đến những gì SFM chưa từng có.
+Trình biên tập tìm SFM đã cài, gắn nó như một thư viện nội dung — mô hình, vật liệu, kết cấu, phiên — và làm việc với cùng những tập tin đó ở cùng định dạng. Mọi thứ làm trong SFM đều mở được trong C2UI, và ngược lại.
+
+Mục tiêu đầu tiên là tương thích hoàn toàn với SFM, kể cả xương và rig. Sau đó là những gì SFM còn thiếu.
 
 ```
   ┌──────────────┐    "SFM ở đâu?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ Mục tiêu là **tương đương tính năng với SFM, một đối một** (
 
 ## Mức sẵn sàng
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 38%</b></p>
+<img align="right" src="../assets/VI-vn/sidebar.svg" alt="Mức sẵn sàng" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="Trình biên tập đang mở Meet the Heavy" width="100%"><br><sub>Trình biên tập hôm nay, mở Meet the Heavy của Valve: các cảnh và âm thanh trên dòng thời gian, cây phiên, cảnh đầu nhìn qua camera riêng của nó, nhân vật tạo dáng và biểu cảm đúng như phiên.</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 38%</b>
 
-Mở một mảng để xem chính xác cái gì đã xong và cái gì chưa. Phần trăm là ước lượng trung thực của tôi so với những gì SFM làm được.
+Mỗi mảng có thể mở ra: cái gì đã chạy và cái gì chưa có. Phần trăm là ước lượng so với khả năng của SFM.
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Tìm và gắn kết SFM</b></summary>
 
@@ -131,6 +133,10 @@ Cố ý để sau: một giao diện cho đến khi trình biên tập có gì �
 
 **Chưa sẵn sàng phát hành.** Nền tảng — mọi định dạng tập tin SFM dùng, đọc đúng và kiểm chứng trên toàn bản cài — đã có và được kiểm thử; có thể mở, phát, sửa và lưu một phiên. Thiếu là *sự thoải mái* khi làm việc: trình biên tập đồ thị, tô bóng Source, bản đồ, xuất. Không có số phiên bản cho đến khi một nhà hoạt hình làm được một ngày việc trong đó.
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="Trình biên tập đang mở Meet the Heavy" width="100%"><br><sub>Trình biên tập hôm nay, mở Meet the Heavy của Valve: các cảnh và âm thanh trên dòng thời gian, cây phiên, cảnh đầu nhìn qua camera riêng của nó, nhân vật tạo dáng và biểu cảm đúng như phiên.</sub></p>
+
 ## Điểm khác biệt
 
 - **Di động.** Không ghi gì ngoài thư mục ứng dụng: thiết lập trong `App/User`, cache trong `App/Cache`, tạm trong `App/Temporary`. Xóa thư mục là hết dấu vết.
@@ -183,4 +189,4 @@ Source Filmmaker, Team Fortress 2 và engine Source thuộc Valve. Dự án này
 
 Giấy phép cho mã riêng của C2UI chưa được chọn — cho đến lúc đó, bảo lưu mọi quyền. Vẫn hoan nghênh issue và pull request.
 
-<p align="center"><img src="../../.github/assets/models.png" alt="64 mô hình kết xuất trực tiếp từ bản cài" width="60%"><br><sub>Sáu mươi bốn mô hình chọn ngẫu nhiên từ bản cài, vẽ bằng renderer riêng của C2UI.</sub></p>
+<p align="center"><img src="../assets/models.png" alt="64 mô hình kết xuất trực tiếp từ bản cài" width="60%"><br><sub>Sáu mươi bốn mô hình chọn ngẫu nhiên từ bản cài, vẽ bằng renderer riêng của C2UI.</sub></p>

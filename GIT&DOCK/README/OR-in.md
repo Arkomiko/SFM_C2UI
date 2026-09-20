@@ -1,4 +1,4 @@
-<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../assets/OR-in/banner.png" alt="C2UI" width="100%"></p>
 
 <p align="center"><a href="../../README.md">🇷🇺 Русский</a> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <b>🇮🇳 ଓଡ଼ିଆ</b></p>
 
@@ -11,15 +11,17 @@
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — Source Filmmaker ଏଡିଟରର ମୋର ପୁନଃନିର୍ମାଣ: ସମାନ କଣ୍ଟେଣ୍ଟ, ସମାନ ସେସନ ଫର୍ମାଟ, ସମାନ ଡାଟା ମଡେଲ — ଏକ ଶେଲ ଭିତରେ ଯାହା Steam ଲାଇବ୍ରେରୀରୁ ରୂପ ଏବଂ Unreal Engine 5 ଏଡିଟରରୁ ଲେଆଉଟ ନେଇଛି।</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — ଆଧୁନିକ ଶେଲରେ Source Filmmaker ଏଡିଟର: ସମାନ କଣ୍ଟେଣ୍ଟ, ସମାନ ସେସନ ଫର୍ମାଟ, ସମାନ ଡାଟା ମଡେଲ, ଏବଂ Steam ଲାଇବ୍ରେରୀ ଓ Unreal Engine 5 ଏଡିଟର ଶୈଳୀର ଇଣ୍ଟରଫେସ।</p>
 
 ---
 
 ## ଧାରଣା
 
-Source Filmmaker ୨୦୧୨ ଇଣ୍ଟରଫେସରେ ଏକ ଉତ୍ତମ ଉପକରଣ। ମୁଁ `sfm.exe` ଉପରେ ସ୍କିନ ଲଗାଇବାକୁ ଚାହେଁ ନାହିଁ, ଏବଂ ଏହାର ୱିଣ୍ଡୋ ଗୋଟିଏ ଗୋଟିଏ କରି ଅଧିକାର କରିବାକୁ ମଧ୍ୟ ଚାହେଁ ନାହିଁ। ମୁଁ ଏପରି ଏଡିଟର ଚାହେଁ ଯାହା **SFM କେଉଁଠି ଇନ୍‌ଷ୍ଟଲ ଅଛି ପଚାରେ**, ସେହି ଇନ୍‌ଷ୍ଟଲେସନକୁ Garry's Mod ଯେପରି Counter-Strike ମାଉଣ୍ଟ କରେ ସେପରି ମାଉଣ୍ଟ କରେ, ଏବଂ ସେହି ଫାଇଲ ଉପରେ ସବୁ ନିଜେ କରେ — ମଡେଲ, ମ୍ୟାଟେରିଆଲ, ଟେକ୍ସଚର, ସେସନ, ଆନିମେସନ — SFM କେବେ ଚଲାଇ ନ ଦେଇ।
+Source Filmmaker ଏକ ଶକ୍ତିଶାଳୀ ଉପକରଣ ଯାହାର ଇଣ୍ଟରଫେସ ୨୦୧୨ ରେ ରହିଗଲା। C2UI ଏହାକୁ ବଦଳାଏ ନାହିଁ କି ପୁଣି ତିଆରି କରେ ନାହିଁ: ଲକ୍ଷ୍ୟ କେବଳ SFM କୁ ଟିକିଏ ଆଧୁନିକ ଓ ସୁବିଧାଜନକ କରିବା।
 
-ଲକ୍ଷ୍ୟ **SFM ସହ ଏକ-ଏକ ଫିଚର ସମାନତା** (ହାଡ ଓ ରିଗ ସହିତ), ତାପରେ ଯାହା SFM କେବେ ପାଇନଥିଲା।
+ଏଡିଟର ଇନ୍‌ଷ୍ଟଲ ହୋଇଥିବା SFM ଖୋଜେ, ଏହାକୁ କଣ୍ଟେଣ୍ଟ ଲାଇବ୍ରେରୀ ଭାବେ ଯୋଡ଼େ — ମଡେଲ, ମ୍ୟାଟେରିଆଲ, ଟେକ୍ସଚର, ସେସନ — ଏବଂ ସମାନ ଫାଇଲ ସହ ସମାନ ଫର୍ମାଟରେ କାମ କରେ। SFM ରେ ତିଆରି ସବୁ C2UI ରେ ଖୋଲେ, ଓ ଓଲଟା ମଧ୍ୟ।
+
+ପ୍ରଥମ ଲକ୍ଷ୍ୟ ହାଡ ଓ ରିଗ ସହିତ SFM ସହ ପୂର୍ଣ୍ଣ ସୁସଙ୍ଗତତା। ତାପରେ — SFM ରେ ଯାହା ଅଭାବ ଥିଲା।
 
 ```
   ┌──────────────┐    "SFM କେଉଁଠି?"    ┌──────────────────────────────┐
@@ -32,11 +34,11 @@ Source Filmmaker ୨୦୧୨ ଇଣ୍ଟରଫେସରେ ଏକ ଉତ୍ତ
 
 ## ପ୍ରସ୍ତୁତି
 
-<p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 38%</b></p>
+<img align="right" src="../assets/OR-in/sidebar.svg" alt="ପ୍ରସ୍ତୁତି" width="300">
 
-<p align="center"><img src="../../.github/assets/editor.png" alt="Meet the Heavy ଖୋଲା ଥିବା ଏଡିଟର" width="100%"><br><sub>ଆଜିର ଏଡିଟର, Valve ର Meet the Heavy ଖୋଲା: ଟାଇମଲାଇନରେ ଶଟ ଓ ଶବ୍ଦ, ସେସନ ଟ୍ରୀ, ପ୍ରଥମ ଶଟ ନିଜ କ୍ୟାମେରାରୁ, ସେସନ ଅନୁସାରେ ପୋଜ ଓ ମୁହଁ ସହ ଚରିତ୍ର।</sub></p>
+<img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 38%</b>
 
-ଠିକ୍ କଣ ହୋଇଛି ଓ କଣ ହୋଇନାହିଁ ଦେଖିବାକୁ ଏକ କ୍ଷେତ୍ର ଖୋଲନ୍ତୁ। ପ୍ରତିଶତ SFM କଣ କରିପାରେ ତାହା ତୁଳନାରେ ମୋର ସଚ୍ଚୋଟ ଆକଳନ।
+ପ୍ରତ୍ୟେକ କ୍ଷେତ୍ର ଖୋଲାଯାଏ: କଣ ପୂର୍ବରୁ କାମ କରେ ଓ କଣ ଏବେ ନାହିଁ। ପ୍ରତିଶତ SFM ର କ୍ଷମତା ତୁଳନାରେ ଆକଳନ।
 
 <details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>SFM ଖୋଜିବା ଓ ମାଉଣ୍ଟ କରିବା</b></summary>
 
@@ -131,6 +133,10 @@ UE5 ଓ Visual Studio ପରି, ପ୍ରିଭ୍ୟୁ ସହ ଲକ୍ଷ୍
 
 **ରିଲିଜ ପାଇଁ ପ୍ରସ୍ତୁତ ନୁହେଁ।** ମୂଳଦୁଆ — SFM ବ୍ୟବହାର କରୁଥିବା ପ୍ରତ୍ୟେକ ଫାଇଲ ଫର୍ମାଟ, ଠିକ୍ ପଢ଼ା ଓ ସମ୍ପୂର୍ଣ୍ଣ ଇନ୍‌ଷ୍ଟଲେସନରେ ଯାଞ୍ଚ — ଅଛି ଓ ପରୀକ୍ଷିତ; ସେସନ ଖୋଲି, ଚଲାଇ, ବଦଳାଇ ଓ ସେଭ କରିହେବ। ଅଭାବ କାମର *ସୁବିଧା*: ଗ୍ରାଫ ଏଡିଟର, Source ସେଡିଂ, ମ୍ୟାପ, ଏକ୍ସପୋର୍ଟ। ଆନିମେଟର ଏଥିରେ ଏକ ଦିନର କାମ କରି ନ ପାରିବା ପର୍ଯ୍ୟନ୍ତ ସଂସ୍କରଣ ନମ୍ବର ନାହିଁ।
 
+<br clear="all">
+
+<p align="center"><img src="../assets/editor.png" alt="Meet the Heavy ଖୋଲା ଥିବା ଏଡିଟର" width="100%"><br><sub>ଆଜିର ଏଡିଟର, Valve ର Meet the Heavy ଖୋଲା: ଟାଇମଲାଇନରେ ଶଟ ଓ ଶବ୍ଦ, ସେସନ ଟ୍ରୀ, ପ୍ରଥମ ଶଟ ନିଜ କ୍ୟାମେରାରୁ, ସେସନ ଅନୁସାରେ ପୋଜ ଓ ମୁହଁ ସହ ଚରିତ୍ର।</sub></p>
+
 ## କଣ ଭିନ୍ନ
 
 - **ପୋର୍ଟେବଲ।** ଆପ୍ଲିକେସନ ଫୋଲ୍ଡର ବାହାରେ କିଛି ଲେଖା ହୁଏ ନାହିଁ: ସେଟିଂ `App/User`, କ୍ୟାସ `App/Cache`, ଅସ୍ଥାୟୀ `App/Temporary`। ଫୋଲ୍ଡର ଡିଲିଟ କରନ୍ତୁ, କୌଣସି ଚିହ୍ନ ନାହିଁ।
@@ -183,4 +189,4 @@ Source Filmmaker, Team Fortress 2 ଓ Source ଇଞ୍ଜିନ Valve ର। ଏ
 
 C2UI ର ନିଜ କୋଡର ଲାଇସେନ୍ସ ଏବେ ବଛା ହୋଇନାହିଁ — ସେ ପର୍ଯ୍ୟନ୍ତ ସର୍ବସ୍ୱତ୍ୱ ସଂରକ୍ଷିତ। Issues ଓ pull requests ସ୍ୱାଗତ।
 
-<p align="center"><img src="../../.github/assets/models.png" alt="ଇନ୍‌ଷ୍ଟଲେସନରୁ ସିଧା ରେଣ୍ଡର ୬୪ ମଡେଲ" width="60%"><br><sub>ଇନ୍‌ଷ୍ଟଲେସନରୁ ଅନିୟମିତ ବଛା ଚଉଷଠି ମଡେଲ, C2UI ର ନିଜ ରେଣ୍ଡରର ଆଙ୍କିଛି।</sub></p>
+<p align="center"><img src="../assets/models.png" alt="ଇନ୍‌ଷ୍ଟଲେସନରୁ ସିଧା ରେଣ୍ଡର ୬୪ ମଡେଲ" width="60%"><br><sub>ଇନ୍‌ଷ୍ଟଲେସନରୁ ଅନିୟମିତ ବଛା ଚଉଷଠି ମଡେଲ, C2UI ର ନିଜ ରେଣ୍ଡରର ଆଙ୍କିଛି।</sub></p>
