@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="तैयारी" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>रिलीज़ के लिए कुल तैयारी: 49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>रिलीज़ के लिए कुल तैयारी: 51%</b></p>
 
 हर क्षेत्र खुलता है: क्या पहले से काम करता है और क्या अभी नहीं है। प्रतिशत SFM की क्षमताओं के सापेक्ष अनुमान हैं।
 
@@ -73,11 +73,11 @@ Flex कंट्रोलर, संकलित नियम और वर्�
 
 UE5 और Visual Studio की तरह, पूर्वावलोकन के साथ लक्ष्यों के कम्पास पर पैनल खींचें। अभी नहीं: सहेजे लेआउट, थीम।
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source शेडिंग
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source शेडिंग
 
 सेशन लाइट (DmeProjectedLight): फ्रस्टम, Source क्षीणन, maxDistance तक फीका; हाफ-लैम्बर्ट, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum। मैप की दुनिया लाइटमैप से। अभी नहीं: छायाएँ, गोबो टेक्सचर, $bumpmap, $envmap, एम्बिएंट क्यूब, स्काईबॉक्स।
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> मैप — <code>.bsp</code>
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> मैप — <code>.bsp</code>
 
 संस्करण 19–21: विश्व ज्यामिति, डिस्प्लेसमेंट भूभाग, ब्रश एंटिटी, स्थिर प्रॉप, मैप के अपने pak मटीरियल। फ्रस्टम कलिंग। अभी नहीं: लाइटमैप, स्काईबॉक्स, पानी, prop_dynamic।
 

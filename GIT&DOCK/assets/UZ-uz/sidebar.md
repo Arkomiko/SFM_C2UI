@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Tayyorlik" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Relizga umumiy tayyorlik: 49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Relizga umumiy tayyorlik: 51%</b></p>
 
 Har bir soha ochiladi: nima allaqachon ishlaydi va nima hali yoʻq. Foizlar — SFM imkoniyatlariga nisbatan baho.
 
@@ -73,11 +73,11 @@ Tanlangan elementni boshqaradigan har bir logning egri chiziqlari: X/Y/Z, pitch/
 
 UE5 va Visual Studio dagidek, panellarni oldindan koʻrish bilan maqsadlar kompasiga torting. Hali yoʻq: saqlangan joylashuvlar, mavzular.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source sheyding
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source sheyding
 
 Sessiya chiroqlari (DmeProjectedLight): frustum, Source soʻnishi, maxDistance gacha xiralashuv; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Xarita olami laytmaplar bilan. Hali yoʻq: soyalar, gobo teksturalari, $bumpmap, $envmap, ambient kublar, skybox.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Xaritalar — <code>.bsp</code>
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Xaritalar — <code>.bsp</code>
 
 19–21 versiyalar: dunyo geometriyasi, displacement relyefi, brush-entitilar, statik proplar, xaritaning oʻz pak materiallari. Frustum culling. Hali yoʻq: laytmaplar, skybox, suv, prop_dynamic.
 

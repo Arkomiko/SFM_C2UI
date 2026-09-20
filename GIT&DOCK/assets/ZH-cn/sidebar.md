@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="完成度" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>整体发布就绪度：49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>整体发布就绪度：51%</b></p>
 
 每个领域都可以展开：已经能用的和暂时还没有的。百分比是相对于 SFM 能力的估计。
 
@@ -73,11 +73,11 @@ Flex 控制器、编译后的规则和顶点动画——角色会说话和做表
 
 像 UE5 和 Visual Studio 一样，把面板拖到带预览的目标罗盘上。尚无：保存布局、主题。
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source 着色
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source 着色
 
 会话灯光（DmeProjectedLight）：视锥、Source 衰减、到 maxDistance 的淡出；半兰伯特、$lightwarptexture、phong（$phongexponent/boost/fresnelranges）、$rimlight、$selfillum。地图世界按光照贴图。尚无：阴影、gobo 纹理、$bumpmap、$envmap、环境立方体、天空盒。
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> 地图 — <code>.bsp</code>
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> 地图 — <code>.bsp</code>
 
 版本 19–21：世界几何、置换地形、笔刷实体、静态道具、地图自带 pak 材质。视锥剔除。尚无：光照贴图、天空盒、水、prop_dynamic。
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Estado" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Prontidão geral para lançamento: 49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Prontidão geral para lançamento: 51%</b></p>
 
 Cada área expande-se: o que já funciona e o que ainda não existe. As percentagens são uma estimativa face ao que o SFM consegue.
 
@@ -73,11 +73,11 @@ Curvas de cada log que move o elemento selecionado: X/Y/Z, pitch/yaw/roll, escal
 
 Arraste painéis para uma bússola de alvos com pré-visualização, como no UE5 e no Visual Studio. Ainda não: disposições guardadas, temas.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Sombreamento Source
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Sombreamento Source
 
 Luzes da sessão (DmeProjectedLight): frustum, atenuação Source, desvanecimento até maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. O mundo do mapa pelos lightmaps. Ainda não: sombras, texturas gobo, $bumpmap, $envmap, cubos de ambiente, skybox.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Mapas — <code>.bsp</code>
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Mapas — <code>.bsp</code>
 
 Versões 19–21: geometria do mundo, terreno displacement, entidades brush, props estáticos, materiais do pak do mapa. Recorte por frustum. Ainda não: lightmaps, skybox, água, prop_dynamic.
 

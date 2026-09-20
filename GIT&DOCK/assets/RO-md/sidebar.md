@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Grad de pregătire" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Pregătire generală pentru lansare: 49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Pregătire generală pentru lansare: 51%</b></p>
 
 Fiecare zonă se deschide: ce funcționează deja și ce nu există încă. Procentele sunt o estimare față de posibilitățile SFM.
 
@@ -73,11 +73,11 @@ Curbele fiecărui log al elementului selectat: X/Y/Z, pitch/yaw/roll, scalari. C
 
 Trageți panourile pe o busolă de ținte cu previzualizare, ca în UE5 și Visual Studio. Încă nu: aranjări salvate, teme.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Umbrire Source
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Umbrire Source
 
 Luminile sesiunii (DmeProjectedLight): frustum, atenuarea Source, estompare până la maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Lumea hărții prin lightmap-uri. Încă nu: umbre, texturi gobo, $bumpmap, $envmap, cuburi ambientale, skybox.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Hărți — <code>.bsp</code>
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Hărți — <code>.bsp</code>
 
 Versiunile 19–21: geometria lumii, teren displacement, entități brush, prop-uri statice, materialele din pak-ul hărții. Eliminare în afara camerei. Încă nu: lightmap-uri, skybox, apă, prop_dynamic.
 

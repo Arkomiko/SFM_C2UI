@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Дайындық" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Релизге жалпы дайындық: 49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Релизге жалпы дайындық: 51%</b></p>
 
 Әр аймақ ашылады: не жұмыс істейді және не әлі жоқ. Пайыздар — SFM мүмкіндіктеріне қатысты баға.
 
@@ -73,11 +73,11 @@ Flex-контроллерлер, компиляцияланған ережеле
 
 UE5 және Visual Studio сияқты, панельдерді алдын ала қараумен мақсаттар крестовинасына сүйреу. Жоқ: сақталған орналасулар, тақырыптар.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source шейдингі
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source шейдингі
 
 Сессия жарықтары (DmeProjectedLight): фрустум, Source өшуі, maxDistance-қа дейін сөну; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Карта әлемі лайтмаптармен. Жоқ: көлеңкелер, гобо текстуралары, $bumpmap, $envmap, ambient кубтары, скайбокс.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Карталар — <code>.bsp</code>
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Карталар — <code>.bsp</code>
 
 19–21 нұсқалары: әлем геометриясы, displacement жер бедері, brush-энтитилер, статикалық проптар, картаның pak материалдары. Камера пирамидасы бойынша кесу. Жоқ: лайтмаптар, скайбокс, су, prop_dynamic.
 

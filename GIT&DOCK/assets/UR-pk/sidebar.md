@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="تیاری" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 51%</b></p>
 
 ہر حصہ کھلتا ہے: کیا پہلے سے کام کرتا ہے اور کیا ابھی نہیں۔ فیصد SFM کی صلاحیتوں کے مقابلے ایک اندازہ ہے۔
 
@@ -73,11 +73,11 @@ Flex کنٹرولر، کمپائل شدہ قواعد اور ورٹیکس این�
 
 UE5 اور Visual Studio کی طرح، پیش نظارہ کے ساتھ اہداف کے کمپاس پر پینل گھسیٹیں۔ ابھی نہیں: محفوظ لے آؤٹ، تھیم۔
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source شیڈنگ
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source شیڈنگ
 
 سیشن لائٹس (DmeProjectedLight): فرسٹم، Source تخفیف، maxDistance تک دھندلاہٹ؛ ہاف لیمبرٹ، $lightwarptexture، phong ($phongexponent/boost/fresnelranges)، $rimlight، $selfillum۔ نقشے کی دنیا لائٹ میپس سے۔ ابھی نہیں: سائے، گوبو ٹیکسچر، $bumpmap، $envmap، ایمبیئنٹ کیوبز، اسکائی باکس۔
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> نقشے — <code>.bsp</code>
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> نقشے — <code>.bsp</code>
 
 ورژن 19–21: دنیا کی جیومیٹری، ڈسپلیسمنٹ زمین، برش اینٹیٹی، جامد پراپس، نقشے کے اپنے pak میٹیریل۔ فرسٹم کلنگ۔ ابھی نہیں: لائٹ میپ، اسکائی باکس، پانی، prop_dynamic۔
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="તૈયારી" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 51%</b></p>
 
 દરેક ક્ષેત્ર ખુલે છે: શું પહેલેથી કામ કરે છે અને શું હજુ નથી. ટકાવારી SFM ની ક્ષમતાઓની સાપેક્ષ અંદાજ છે.
 
@@ -73,11 +73,11 @@ Flex કંટ્રોલર, કમ્પાઇલ કરેલા નિય�
 
 UE5 અને Visual Studio જેમ, પ્રીવ્યૂ સાથે લક્ષ્યોના કંપાસ પર પેનલ ખેંચો. હજુ નહીં: સાચવેલા લેઆઉટ, થીમ.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source શેડિંગ
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source શેડિંગ
 
 સેશન લાઇટ (DmeProjectedLight): ફ્રસ્ટમ, Source ક્ષીણતા, maxDistance સુધી ઝાંખું; હાફ-લેમ્બર્ટ, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. નકશાની દુનિયા લાઇટમેપથી. હજુ નહીં: છાયા, ગોબો ટેક્સચર, $bumpmap, $envmap, એમ્બિયન્ટ ક્યુબ, સ્કાયબોક્સ.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> નકશા — <code>.bsp</code>
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> નકશા — <code>.bsp</code>
 
 વર્ઝન 19–21: વિશ્વ ભૂમિતિ, ડિસ્પ્લેસમેન્ટ ભૂપ્રદેશ, બ્રશ એન્ટિટી, સ્થિર પ્રોપ, નકશાના પોતાના pak મટીરિયલ. ફ્રસ્ટમ કલિંગ. હજુ નહીં: લાઇટમેપ, સ્કાયબોક્સ, પાણી, prop_dynamic.
 

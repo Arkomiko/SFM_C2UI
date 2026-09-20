@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Gotowość" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Ogólna gotowość do wydania: 49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Ogólna gotowość do wydania: 51%</b></p>
 
 Każdy obszar można rozwinąć: co już działa, a czego jeszcze nie ma. Procenty to ocena względem możliwości SFM.
 
@@ -73,11 +73,11 @@ Krzywe każdego logu wybranego elementu: X/Y/Z, pitch/yaw/roll, skalary. Klucze 
 
 Przeciąganie paneli na kompas celów z podglądem, jak w UE5 i Visual Studio. Brak: zapisanych układów, motywów.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Cieniowanie Source
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Cieniowanie Source
 
 Światła sesji (DmeProjectedLight): frustum, tłumienie Source, zanik do maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Świat mapy z lightmap. Brak: cieni, tekstur gobo, $bumpmap, $envmap, kostek ambient, skyboxu.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Mapy — <code>.bsp</code>
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Mapy — <code>.bsp</code>
 
 Wersje 19–21: geometria świata, teren displacement, encje brush, statyczne propy, materiały z paka mapy. Odcinanie poza kamerą. Brak: lightmap, skyboxu, wody, prop_dynamic.
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Готовность" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Общая готовность к релизу: 49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Общая готовность к релизу: 51%</b></p>
 
 Каждая область раскрывается: что уже работает и чего пока нет. Проценты — оценка относительно возможностей SFM.
 
@@ -73,11 +73,11 @@ Flex-контроллеры, скомпилированные правила и 
 
 Перетаскивание панелей с крестовиной целей и предпросмотром, как в UE5 и Visual Studio. Нет: сохранённых раскладок и тем.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Шейдинг Source
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Шейдинг Source
 
 Свет сессии (DmeProjectedLight): фрустум, затухание Source, спад к maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Мир карты — по лайтмапам. Нет: теней, гобо-текстур, $bumpmap, $envmap, ambient-кубов, скайбокса.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Карты — <code>.bsp</code>
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Карты — <code>.bsp</code>
 
 Версии 19–21: геометрия мира, displacement-рельеф, brush-энтити, статичные пропы, материалы из pak-лампа карты. Отсекание по пирамиде камеры. Лайтмапы мира. Нет: скайбокса, воды, prop_dynamic.
 

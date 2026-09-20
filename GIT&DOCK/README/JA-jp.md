@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E3%83%86%E3%82%B9%E3%83%88-361-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E3%83%86%E3%82%B9%E3%83%88-363-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -28,7 +28,7 @@
 
 <p align="center"><img src="../assets/JA-jp/sidebar.svg" alt="完成度" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>リリースへの全体的な完成度: 49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>リリースへの全体的な完成度: 51%</b></p>
 
 <p align="center"><a href="../assets/JA-jp/sidebar.md"><img alt="完成度の詳細" src="https://img.shields.io/badge/%E5%AE%8C%E6%88%90%E5%BA%A6%E3%81%AE%E8%A9%B3%E7%B4%B0-66c0f4?style=for-the-badge"></a></p>
 

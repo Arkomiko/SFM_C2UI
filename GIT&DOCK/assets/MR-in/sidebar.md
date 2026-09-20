@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="तयारी" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>रिलीजसाठी एकूण तयारी: 49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>रिलीजसाठी एकूण तयारी: 51%</b></p>
 
 प्रत्येक क्षेत्र उघडता येते: काय आधीच काम करते आणि काय अजून नाही. टक्केवारी SFM च्या क्षमतांच्या तुलनेत अंदाज आहे.
 
@@ -73,11 +73,11 @@ Flex कंट्रोलर, संकलित नियम आणि व्�
 
 UE5 आणि Visual Studio प्रमाणे, पूर्वावलोकनासह लक्ष्यांच्या कंपासवर पॅनेल ओढा. अजून नाही: जतन केलेली मांडणी, थीम.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source शेडिंग
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source शेडिंग
 
 सेशन लाइट (DmeProjectedLight): फ्रस्टम, Source क्षीणन, maxDistance पर्यंत फिका; हाफ-लॅम्बर्ट, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. नकाशाचे जग लाइटमॅपने. अजून नाही: सावल्या, गोबो टेक्सचर, $bumpmap, $envmap, अँबियंट क्यूब, स्कायबॉक्स.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> नकाशे — <code>.bsp</code>
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> नकाशे — <code>.bsp</code>
 
 आवृत्त्या 19–21: जग भूमिती, डिस्प्लेसमेंट भूभाग, ब्रश एंटिटी, स्थिर प्रॉप, नकाशाचे स्वतःचे pak मटेरियल. फ्रस्टम कलिंग. अजून नाही: लाइटमॅप, स्कायबॉक्स, पाणी, prop_dynamic.
 

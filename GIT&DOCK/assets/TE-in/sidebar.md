@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="సిద్ధత" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>విడుదలకు మొత్తం సిద్ధత: 49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>విడుదలకు మొత్తం సిద్ధత: 51%</b></p>
 
 ప్రతి విభాగం విస్తరిస్తుంది: ఇప్పటికే ఏది పనిచేస్తుంది, ఏది ఇంకా లేదు. శాతాలు SFM సామర్థ్యాలకు సాపేక్షంగా అంచనా.
 
@@ -73,11 +73,11 @@ Flex కంట్రోలర్లు, కంపైల్ చేసిన న�
 
 UE5 మరియు Visual Studio లాగా, ప్రివ్యూతో లక్ష్యాల కంపాస్‌పై ప్యానెల్‌లను లాగండి. ఇంకా లేదు: సేవ్ చేసిన లేఅవుట్లు, థీమ్‌లు.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source షేడింగ్
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source షేడింగ్
 
 సెషన్ లైట్లు (DmeProjectedLight): ఫ్రస్టమ్, Source క్షీణత, maxDistance వరకు మసకబారడం; హాఫ్-లాంబర్ట్, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. మ్యాప్ ప్రపంచం లైట్‌మ్యాప్‌లతో. ఇంకా లేదు: నీడలు, గోబో టెక్స్చర్లు, $bumpmap, $envmap, యాంబియంట్ క్యూబ్‌లు, స్కైబాక్స్.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> మ్యాప్‌లు — <code>.bsp</code>
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> మ్యాప్‌లు — <code>.bsp</code>
 
 వెర్షన్లు 19–21: ప్రపంచ జ్యామితి, డిస్‌ప్లేస్‌మెంట్ భూభాగం, బ్రష్ ఎంటిటీలు, స్థిర ప్రాప్‌లు, మ్యాప్ సొంత pak మెటీరియల్స్. ఫ్రస్టమ్ కల్లింగ్. ఇంకా లేదు: లైట్‌మ్యాప్‌లు, స్కైబాక్స్, నీరు, prop_dynamic.
 

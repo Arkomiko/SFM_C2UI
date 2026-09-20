@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Kesiapan" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Kesiapan sakabèhé kanggo rilis: 49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Kesiapan sakabèhé kanggo rilis: 51%</b></p>
 
 Saben wilayah bisa dibukak: apa sing wis mlaku lan apa sing durung ana. Persentase iku prakiraan dibandhing kemampuan SFM.
 
@@ -73,11 +73,11 @@ Kurva saben log sing nglakokake unsur sing dipilih: X/Y/Z, pitch/yaw/roll, skala
 
 Seret panel menyang kompas target karo pratinjau, kaya ing UE5 lan Visual Studio. Durung: tata letak sing disimpen, tema.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Shading Source
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Shading Source
 
 Cahya sesi (DmeProjectedLight): frustum, pelemahan Source, surut nganti maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Donya peta saka lightmap. Durung: ayang-ayang, tekstur gobo, $bumpmap, $envmap, kubus ambient, skybox.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Peta — <code>.bsp</code>
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Peta — <code>.bsp</code>
 
 Versi 19–21: geometri donya, medan displacement, entitas brush, prop statis, materi pak peta dhewe. Frustum culling. Durung: lightmap, skybox, banyu, prop_dynamic.
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Avancement" width="320"></p>
 
-<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Avancement global vers la sortie : 49%</b></p>
+<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Avancement global vers la sortie : 51%</b></p>
 
 Chaque domaine se déplie : ce qui fonctionne déjà et ce qui n'existe pas encore. Les pourcentages sont une estimation par rapport à ce que sait faire SFM.
 
@@ -73,11 +73,11 @@ Courbes de chaque log pilotant l'élément sélectionné : X/Y/Z, pitch/yaw/roll
 
 Glissez les panneaux sur une boussole de cibles avec aperçu, comme dans UE5 et Visual Studio. Pas encore : dispositions enregistrées, thèmes.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Ombrage Source
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Ombrage Source
 
 Lumières de la session (DmeProjectedLight) : frustum, atténuation Source, fondu jusqu'à maxDistance ; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Le monde de la carte par ses lightmaps. Pas encore : ombres, textures gobo, $bumpmap, $envmap, cubes d'ambiance, skybox.
 
-### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Cartes — <code>.bsp</code>
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Cartes — <code>.bsp</code>
 
 Versions 19–21 : géométrie du monde, terrain displacement, entités brush, props statiques, matériaux du pak de la carte. Élimination hors champ. Pas encore : lightmaps, skybox, eau, prop_dynamic.
 
