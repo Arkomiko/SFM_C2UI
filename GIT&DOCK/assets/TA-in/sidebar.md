@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="தயார்நிலை" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>வெளியீட்டுக்கான மொத்த தயார்நிலை: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>வெளியீட்டுக்கான மொத்த தயார்நிலை: 44%</b></p>
 
 ஒவ்வொரு பகுதியும் விரிகிறது: ஏற்கனவே என்ன வேலை செய்கிறது, என்ன இன்னும் இல்லை. சதவீதங்கள் SFM திறன்களுக்கு ஒப்பிட்ட மதிப்பீடு.
 
@@ -77,9 +77,9 @@ UE5 மற்றும் Visual Studio போல, முன்னோட்ட�
 
 அமைப்பு மற்றும் எளிய ஒளி மட்டும். இன்னும் இல்லை: phong, rim, lightwarp, காட்சி ஒளிகள், நிழல்கள்.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> வரைபடங்கள் — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> வரைபடங்கள் — <code>.bsp</code>
 
-தொடங்கவில்லை.
+பதிப்புகள் 19–21: உலக வடிவியல், டிஸ்ப்ளேஸ்மென்ட் நிலப்பரப்பு, பிரஷ் என்டிட்டிகள், நிலையான ப்ராப்கள், வரைபடத்தின் சொந்த pak பொருட்கள். ஃப்ரஸ்டம் கல்லிங். இன்னும் இல்லை: லைட்மேப், ஸ்கைபாக்ஸ், நீர், prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> படம் மற்றும் வீடியோவாக ரெண்டர்
 

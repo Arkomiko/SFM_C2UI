@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Mognad" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Total mognad för release: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Total mognad för release: 44%</b></p>
 
 Varje område kan fällas ut: vad som redan fungerar och vad som inte finns än. Procenten är en uppskattning mot vad SFM kan.
 
@@ -77,9 +77,9 @@ Dra paneler till en kompass av mål med förhandsvisning, som i UE5 och Visual S
 
 Bara textur och ett enkelt ljus. Inte ännu: phong, rim, lightwarp, scenljus, skuggor.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Kartor — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Kartor — <code>.bsp</code>
 
-Inte påbörjat.
+Version 19–21: världsgeometri, displacement-terräng, brush-entiteter, statiska props, kartans egna pak-material. Frustum-culling. Inte ännu: lightmaps, skybox, vatten, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Rendering till bild och video
 

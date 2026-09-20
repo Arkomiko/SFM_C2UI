@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Stato di avanzamento" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Avanzamento complessivo verso il rilascio: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Avanzamento complessivo verso il rilascio: 44%</b></p>
 
 Ogni area si espande: cosa funziona già e cosa non c'è ancora. Le percentuali sono una stima rispetto a ciò che sa fare SFM.
 
@@ -77,9 +77,9 @@ Trascina i pannelli su una bussola di destinazioni con anteprima, come in UE5 e 
 
 Solo texture e una luce semplice. Non ancora: phong, rim, lightwarp, luci di scena, ombre.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Mappe — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Mappe — <code>.bsp</code>
 
-Non iniziato.
+Versioni 19–21: geometria del mondo, terreno displacement, entità brush, prop statici, materiali del pak della mappa. Frustum culling. Non ancora: lightmap, skybox, acqua, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Render in immagine e video
 

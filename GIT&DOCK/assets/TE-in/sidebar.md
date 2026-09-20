@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="సిద్ధత" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>విడుదలకు మొత్తం సిద్ధత: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>విడుదలకు మొత్తం సిద్ధత: 44%</b></p>
 
 ప్రతి విభాగం విస్తరిస్తుంది: ఇప్పటికే ఏది పనిచేస్తుంది, ఏది ఇంకా లేదు. శాతాలు SFM సామర్థ్యాలకు సాపేక్షంగా అంచనా.
 
@@ -77,9 +77,9 @@ UE5 మరియు Visual Studio లాగా, ప్రివ్యూతో �
 
 టెక్స్చర్ మరియు సాధారణ కాంతి మాత్రమే. ఇంకా లేదు: phong, rim, lightwarp, సీన్ లైట్లు, నీడలు.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> మ్యాప్‌లు — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> మ్యాప్‌లు — <code>.bsp</code>
 
-ప్రారంభించలేదు.
+వెర్షన్లు 19–21: ప్రపంచ జ్యామితి, డిస్‌ప్లేస్‌మెంట్ భూభాగం, బ్రష్ ఎంటిటీలు, స్థిర ప్రాప్‌లు, మ్యాప్ సొంత pak మెటీరియల్స్. ఫ్రస్టమ్ కల్లింగ్. ఇంకా లేదు: లైట్‌మ్యాప్‌లు, స్కైబాక్స్, నీరు, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> చిత్రం మరియు వీడియోకు రెండర్
 

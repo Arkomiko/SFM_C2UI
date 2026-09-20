@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Reifegrad" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Gesamtreife für eine Veröffentlichung: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Gesamtreife für eine Veröffentlichung: 44%</b></p>
 
 Jeder Bereich lässt sich aufklappen: was schon funktioniert und was noch fehlt. Die Prozente sind eine Einschätzung gegenüber dem, was SFM kann.
 
@@ -77,9 +77,9 @@ Panels auf einen Zielkompass mit Vorschau ziehen, wie in UE5 und Visual Studio. 
 
 Nur Textur und ein einfaches Licht. Noch nicht: Phong, Rim, Lightwarp, Szenenlichter, Schatten.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Karten — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Karten — <code>.bsp</code>
 
-Nicht begonnen.
+Versionen 19–21: Weltgeometrie, Displacement-Gelände, Brush-Entities, statische Props, die Pak-Materialien der Karte. Frustum-Culling. Noch nicht: Lightmaps, Skybox, Wasser, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Rendern in Bild und Video
 

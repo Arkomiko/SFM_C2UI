@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="完成度" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>整体发布就绪度：41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>整体发布就绪度：44%</b></p>
 
 每个领域都可以展开：已经能用的和暂时还没有的。百分比是相对于 SFM 能力的估计。
 
@@ -77,9 +77,9 @@ Flex 控制器、编译后的规则和顶点动画——角色会说话和做表
 
 仅纹理和简单光照。尚无：phong、rim、lightwarp、场景灯光、阴影。
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> 地图 — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> 地图 — <code>.bsp</code>
 
-未开始。
+版本 19–21：世界几何、置换地形、笔刷实体、静态道具、地图自带 pak 材质。视锥剔除。尚无：光照贴图、天空盒、水、prop_dynamic。
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> 渲染为图像和视频
 

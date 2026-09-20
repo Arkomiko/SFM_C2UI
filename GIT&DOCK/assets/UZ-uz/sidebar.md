@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Tayyorlik" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Relizga umumiy tayyorlik: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Relizga umumiy tayyorlik: 44%</b></p>
 
 Har bir soha ochiladi: nima allaqachon ishlaydi va nima hali yoʻq. Foizlar — SFM imkoniyatlariga nisbatan baho.
 
@@ -77,9 +77,9 @@ UE5 va Visual Studio dagidek, panellarni oldindan koʻrish bilan maqsadlar kompa
 
 Faqat tekstura va oddiy yorugʻlik. Hali yoʻq: phong, rim, lightwarp, sahna yorugʻliklari, soyalar.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Xaritalar — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Xaritalar — <code>.bsp</code>
 
-Boshlanmagan.
+19–21 versiyalar: dunyo geometriyasi, displacement relyefi, brush-entitilar, statik proplar, xaritaning oʻz pak materiallari. Frustum culling. Hali yoʻq: laytmaplar, skybox, suv, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Rasm va videoga render
 

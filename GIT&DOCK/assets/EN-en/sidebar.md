@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Readiness" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Overall readiness for release: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Overall readiness for release: 44%</b></p>
 
 Each area expands: what already works and what does not yet. The percentages are an estimate against what SFM can do.
 
@@ -77,9 +77,9 @@ Drag panels onto a compass of targets with a preview, as in UE5 and Visual Studi
 
 Texture and a simple light only. Not yet: phong, rim, lightwarp, scene lights, shadows.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Maps — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Maps — <code>.bsp</code>
 
-Not started.
+Versions 19–21: world geometry, displacement terrain, brush entities, static props, the map's own pak materials. Frustum culling. Not yet: lightmaps, skybox, water, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Rendering to image and video
 

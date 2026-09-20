@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/ki%E1%BB%83m_th%E1%BB%AD-351-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/ki%E1%BB%83m_th%E1%BB%AD-359-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -28,7 +28,7 @@
 
 <p align="center"><img src="../assets/VI-vn/sidebar.svg" alt="Mức sẵn sàng" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 44%</b></p>
 
 <p align="center"><a href="../assets/VI-vn/sidebar.md"><img alt="Mức sẵn sàng chi tiết" src="https://img.shields.io/badge/M%E1%BB%A9c_s%E1%BA%B5n_s%C3%A0ng_chi_ti%E1%BA%BFt-66c0f4?style=for-the-badge"></a></p>
 

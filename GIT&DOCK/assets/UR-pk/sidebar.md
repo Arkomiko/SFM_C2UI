@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="تیاری" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 44%</b></p>
 
 ہر حصہ کھلتا ہے: کیا پہلے سے کام کرتا ہے اور کیا ابھی نہیں۔ فیصد SFM کی صلاحیتوں کے مقابلے ایک اندازہ ہے۔
 
@@ -77,9 +77,9 @@ UE5 اور Visual Studio کی طرح، پیش نظارہ کے ساتھ اہدا�
 
 صرف ٹیکسچر اور سادہ روشنی۔ ابھی نہیں: phong، rim، lightwarp، منظر کی روشنیاں، سائے۔
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> نقشے — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> نقشے — <code>.bsp</code>
 
-شروع نہیں ہوا۔
+ورژن 19–21: دنیا کی جیومیٹری، ڈسپلیسمنٹ زمین، برش اینٹیٹی، جامد پراپس، نقشے کے اپنے pak میٹیریل۔ فرسٹم کلنگ۔ ابھی نہیں: لائٹ میپ، اسکائی باکس، پانی، prop_dynamic۔
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> تصویر اور ویڈیو میں رینڈر
 

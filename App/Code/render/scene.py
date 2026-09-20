@@ -24,10 +24,12 @@ from Core.API.material import Material
 from Core.API.model import Mesh, Model
 from Core.API.session import FilmClip, GameModel
 from Core.Code.formats import FormatError, load_material, load_model, parse_vtf
+from Core.Code.formats.bsp import BspFile, map_path, parse_bsp
 from Core.Code.formats.vtf import VtfFile
 from Core.Code.flex import controller_values, morph, run_rules
 from Core.Code.pose import skin_matrices
-from Core.Code.transform import IDENTITY as IDENTITY34, Mat34, apply, to_column_major_4x4
+from Core.Code.transform import (IDENTITY as IDENTITY34, Mat34, apply, matrix_from, quaternion_from_angles,
+                                 to_column_major_4x4)
 
 from .math3d import IDENTITY, Mat4
 
@@ -177,13 +179,17 @@ def build_scene(source: SceneSource, rel: str, lod: int = 0) -> Scene:
     return scene
 
 
-def build_shot_scene(source: SceneSource, shot: FilmClip) -> Scene:
-    """Every visible game model of a shot, placed and posed as the session says.
+def build_shot_scene(source: SceneSource, shot: FilmClip, map_name: str = "") -> Scene:
+    """Every visible game model of a shot, placed and posed as the session says,
+    on the map the shot (or, failing that, `map_name` - the sequence's) names.
     A model that cannot be read is a warning; the shot still shows."""
     scene = Scene(title=shot.name, up_axis="z")
     if shot.scene is None:
         scene.warnings.append("the shot has no scene")
         return scene
+    map_name = shot.map_name or map_name
+    if map_name:
+        _load_map(source, scene, map_name)
     for node, world, visible in shot.scene.walk_visibility():
         if not isinstance(node, GameModel):
             continue
@@ -204,6 +210,79 @@ def build_shot_scene(source: SceneSource, shot: FilmClip) -> Scene:
     if not scene.instances and not scene.warnings:
         scene.warnings.append("the shot has no game models")
     return scene
+
+
+def _load_map(source: SceneSource, scene: Scene, name: str) -> None:
+    """The shot's map: the world's faces as one model (a mesh per material) and the
+    static props as instances.  A missing map is a warning, as SFM's own message is."""
+    rel = map_path(name)
+    data = source.read_bytes(rel)
+    if data is None:
+        scene.warnings.append(f"map {rel} not found")
+        return
+    try:
+        bsp = parse_bsp(data, rel)
+    except FormatError as exc:
+        scene.warnings.append(str(exc))
+        return
+    scene.warnings.extend(f"{rel}: {w}" for w in bsp.warnings)
+    pak = bsp.pak_files()
+    if pak:
+        source = _WithPak(source, pak)                # the map's own materials come first
+    world = Model()
+    world.info.name = rel
+    world.material_dirs = [""]
+    by_material: Dict[str, Mesh] = {}
+    for face in bsp.faces:
+        mesh = by_material.get(face.material)
+        if mesh is None:
+            mesh = by_material[face.material] = Mesh(material=face.material)
+        base = mesh.vertex_count
+        n = face.normal
+        for p, uv in zip(face.positions, face.uvs):
+            mesh.positions.extend(p)
+            mesh.normals.extend(n)
+            mesh.uvs.extend(uv)
+        mesh.indices.extend(base + i for i in face.indices)
+    world.meshes = list(by_material.values())
+    loaded = LoadedModel(rel=rel, model=world)
+    for mesh in world.meshes:
+        item = _item_for(source, scene, world, mesh)
+        item.lit = True                               # the world is shaded like a model until lightmaps
+        item.two_sided = True                         # brush winding is not the model convention
+        loaded.items.append(item)
+    loaded.items.sort(key=lambda item: item.blended)
+    scene.models[rel] = loaded
+    scene.instances.append(SceneInstance(loaded, name=rel, world=to_column_major_4x4(IDENTITY34)))
+    for prop in bsp.static_props:
+        try:
+            prop_model = _load(source, scene, prop.model, 0, 0)
+        except FormatError as exc:
+            scene.warnings.append(f"{prop.model}: {exc}")
+            continue
+        pitch, yaw, roll = prop.angles
+        placement = matrix_from(prop.origin, quaternion_from_angles(pitch, yaw, roll))
+        # a static prop stays in its bind pose: no skin to upload, positions are used as stored
+        scene.instances.append(SceneInstance(prop_model, name=f"prop_static {prop.model}",
+                                             world=to_column_major_4x4(placement)))
+
+
+class _WithPak:
+    """A content source with a map's embedded files in front of it."""
+
+    def __init__(self, source: SceneSource, files: Dict[str, bytes]) -> None:
+        self._source = source
+        self._files = files
+
+    def read_bytes(self, rel: str) -> Optional[bytes]:
+        data = self._files.get(rel.replace("\\", "/").lower())
+        return data if data is not None else self._source.read_bytes(rel)
+
+    def read_text(self, rel: str) -> Optional[str]:
+        data = self._files.get(rel.replace("\\", "/").lower())
+        if data is not None:
+            return data.decode("utf-8", "replace")
+        return self._source.read_text(rel)
 
 
 def refresh_shot_scene(scene: Scene, shot: FilmClip) -> None:

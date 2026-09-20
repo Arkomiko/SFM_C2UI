@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Estado" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Preparación general para el lanzamiento: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Preparación general para el lanzamiento: 44%</b></p>
 
 Cada área se despliega: qué funciona ya y qué no existe todavía. Los porcentajes son una estimación frente a lo que puede hacer SFM.
 
@@ -77,9 +77,9 @@ Arrastra paneles a una brújula de destinos con vista previa, como en UE5 y Visu
 
 Solo textura y una luz simple. Aún no: phong, rim, lightwarp, luces de escena, sombras.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Mapas — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Mapas — <code>.bsp</code>
 
-No iniciado.
+Versiones 19–21: geometría del mundo, terreno displacement, entidades brush, props estáticos, materiales del pak del mapa. Recorte por frustum. Aún no: lightmaps, skybox, agua, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Render a imagen y vídeo
 

@@ -36,6 +36,12 @@ class Renderer:
         self.meshes: Dict[str, List[Tuple[DrawItem, GLMesh]]] = {}
         #: per-instance copies of meshes a face moves: (instance id, item index) -> mesh
         self.morphed: Dict[Tuple[int, int], Tuple[GLMesh, int]] = {}
+        #: per-instance uniform arrays, rebuilt when the placement or skin objects change
+        self._instance_cache: Dict[int, tuple] = {}
+        self._bounds_cache: Dict[int, tuple] = {}
+        self.drawn_instances = 0
+        self._item_state = None
+        self._int_state: Dict[str, int] = {}
         self.textures: Dict[str, GLTexture] = {}
         self.background = (0.16, 0.17, 0.19, 1.0)
         self.line_program = 0
@@ -136,12 +142,28 @@ class Renderer:
         GL.glUniform1i(u["u_texture"], 0)
         GL.glPolygonMode(GL.GL_FRONT_AND_BACK, GL.GL_LINE if self.wireframe else GL.GL_FILL)
         GL.glFrontFace(GL.GL_CCW if self.front_face_ccw else GL.GL_CW)
+        self._item_state = None
+        self._int_state = {}
+        if len(self._instance_cache) > 4 * max(1, len(self.scene.instances)):
+            self._instance_cache = {}             # instances came and went: start over
+            self._bounds_cache = {}
+
+        # what the camera cannot see is not drawn: a map is mostly out of view at any moment
+        planes = frustum_planes(view_proj)
+        shown = []
+        for instance in self.scene.instances:
+            if not instance.visible:
+                continue
+            if instance.source is None and not instance.bones:
+                box = self._static_bounds(instance)
+                if box is not None and not box_in_frustum(box, planes):
+                    continue
+            shown.append(instance)
+        self.drawn_instances = len(shown)
 
         # opaque surfaces of every instance first, then the blended ones over them
         for blended in (False, True):
-            for instance in self.scene.instances:
-                if not instance.visible:
-                    continue
+            for instance in shown:
                 meshes = self.meshes.get(instance.loaded.rel, [])
                 if not any(item.blended == blended for item, _m in meshes):
                     continue
@@ -155,7 +177,7 @@ class Renderer:
                     texture = self.textures.get(item.texture_key)
                     if texture is not None:
                         texture.bind(0)
-                    GL.glUniform1i(u["u_textured"], 1 if texture is not None else 0)
+                    self._set_int("u_textured", 1 if texture is not None else 0)
                     mesh.draw()
 
         GL.glPolygonMode(GL.GL_FRONT_AND_BACK, GL.GL_FILL)
@@ -267,25 +289,63 @@ class Renderer:
         return mesh
 
     def _apply_instance(self, instance: SceneInstance) -> None:
+        """Upload the instance's placement and skin.  The arrays are built once per
+        placement (a static prop keeps its own for the scene's whole life) and handed
+        to GL as ctypes, which skips PyOpenGL's per-call conversion - that conversion was
+        most of a frame on a map with two thousand props."""
         u = self.uniforms
-        GL.glUniformMatrix4fv(u["u_model"], 1, GL.GL_FALSE,
-                              multiply(self.model_matrix, instance.world))
-        if instance.bones:
-            rows = []
-            for m in instance.bones[:MAX_BONES]:
-                rows.extend(m)                    # three rows of four, as stored
-            GL.glUniform4fv(u["u_bones"], len(rows) // 4, rows)
-            GL.glUniform1i(u["u_skinned"], 1)
+        cached = self._instance_cache.get(id(instance))
+        if cached is None or cached[0] is not instance.world or cached[1] is not instance.bones or cached[2] is not self.model_matrix:
+            model = (GL.GLfloat * 16)(*multiply(self.model_matrix, instance.world))
+            bones = None
+            if instance.bones:
+                rows: List[float] = []
+                for m in instance.bones[:MAX_BONES]:
+                    rows.extend(m)                # three rows of four, as stored
+                bones = (GL.GLfloat * len(rows))(*rows)
+            cached = (instance.world, instance.bones, self.model_matrix, model, bones)
+            self._instance_cache[id(instance)] = cached
+        GL.glUniformMatrix4fv(u["u_model"], 1, GL.GL_FALSE, cached[3])
+        if cached[4] is not None:
+            GL.glUniform4fv(u["u_bones"], len(cached[4]) // 4, cached[4])
+            self._set_int("u_skinned", 1)
         else:
-            GL.glUniform1i(u["u_skinned"], 0)
+            self._set_int("u_skinned", 0)
+
+    def _static_bounds(self, instance: SceneInstance):
+        """World bounds of an unskinned instance from its model's box, kept per placement."""
+        cached = self._bounds_cache.get(id(instance))
+        if cached is not None and cached[0] is instance.world:
+            return cached[1]
+        lo, hi = instance.loaded.model.bounds()
+        if lo == hi:
+            box = None
+        else:
+            w = instance.world
+            corners = [(x, y, z) for x in (lo[0], hi[0]) for y in (lo[1], hi[1]) for z in (lo[2], hi[2])]
+            pts = [(w[0] * x + w[4] * y + w[8] * z + w[12], w[1] * x + w[5] * y + w[9] * z + w[13],
+                    w[2] * x + w[6] * y + w[10] * z + w[14]) for x, y, z in corners]
+            box = (tuple(min(p[a] for p in pts) for a in range(3)), tuple(max(p[a] for p in pts) for a in range(3)))
+        self._bounds_cache[id(instance)] = (instance.world, box)
+        return box
+
+    def _set_int(self, name: str, value: int) -> None:
+        if self._int_state.get(name) != value:
+            GL.glUniform1i(self.uniforms[name], value)
+            self._int_state[name] = value
 
     def _apply_state(self, item: DrawItem) -> None:
+        """Per-surface state, set only when it differs from the last surface drawn."""
         u = self.uniforms
+        key = (item.color, item.alpha, item.lit, item.alpha_test, item.blended, item.two_sided, item.additive)
+        if key == self._item_state:
+            return
+        self._item_state = key
         GL.glUniform3f(u["u_color"], *item.color)
         GL.glUniform1f(u["u_alpha"], item.alpha)
-        GL.glUniform1i(u["u_lit"], 1 if item.lit else 0)
-        GL.glUniform1i(u["u_alpha_test"], 1 if item.alpha_test else 0)
-        GL.glUniform1i(u["u_blended"], 1 if item.blended else 0)
+        self._set_int("u_lit", 1 if item.lit else 0)
+        self._set_int("u_alpha_test", 1 if item.alpha_test else 0)
+        self._set_int("u_blended", 1 if item.blended else 0)
         if item.two_sided:
             GL.glDisable(GL.GL_CULL_FACE)
         else:
@@ -309,3 +369,24 @@ class Renderer:
         raw = bytes(raw)
         stride = width * 4
         return b"".join(raw[y * stride:(y + 1) * stride] for y in reversed(range(height)))
+
+
+def frustum_planes(m):
+    """The six planes (a, b, c, d) of a column-major clip matrix; inside is ax+by+cz+d >= 0."""
+    r = lambda i: (m[i], m[4 + i], m[8 + i], m[12 + i])      # row i of the matrix
+    r0, r1, r2, r3 = r(0), r(1), r(2), r(3)
+    return [tuple(r3[k] + r0[k] for k in range(4)), tuple(r3[k] - r0[k] for k in range(4)),
+            tuple(r3[k] + r1[k] for k in range(4)), tuple(r3[k] - r1[k] for k in range(4)),
+            tuple(r3[k] + r2[k] for k in range(4)), tuple(r3[k] - r2[k] for k in range(4))]
+
+
+def box_in_frustum(box, planes) -> bool:
+    """False only when the whole box is beyond one plane."""
+    lo, hi = box
+    for a, b, c, d in planes:
+        x = hi[0] if a >= 0 else lo[0]
+        y = hi[1] if b >= 0 else lo[1]
+        z = hi[2] if c >= 0 else lo[2]
+        if a * x + b * y + c * z + d < 0:
+            return False
+    return True

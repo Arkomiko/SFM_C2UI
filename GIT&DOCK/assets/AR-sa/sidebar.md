@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="الجاهزية" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>الجاهزية الإجمالية للإصدار: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>الجاهزية الإجمالية للإصدار: 44%</b></p>
 
 كل مجال قابل للفتح: ما يعمل بالفعل وما لم يوجد بعد. النسب تقدير مقابل ما يستطيعه SFM.
 
@@ -77,9 +77,9 @@
 
 القوام وضوء بسيط فقط. ليس بعد: phong، rim، lightwarp، أضواء المشهد، الظلال.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> الخرائط — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> الخرائط — <code>.bsp</code>
 
-لم يبدأ.
+الإصدارات 19–21: هندسة العالم، تضاريس الإزاحة، كيانات الفرش، الدعائم الثابتة، مواد pak الخاصة بالخريطة. قطع خارج مجال الرؤية. ليس بعد: خرائط الإضاءة، صندوق السماء، الماء، prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> العرض إلى صورة وفيديو
 

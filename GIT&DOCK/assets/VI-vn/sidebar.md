@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Mức sẵn sàng" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 44%</b></p>
 
 Mỗi mảng có thể mở ra: cái gì đã chạy và cái gì chưa có. Phần trăm là ước lượng so với khả năng của SFM.
 
@@ -77,9 +77,9 @@ Kéo bảng lên la bàn mục tiêu có xem trước, như UE5 và Visual Studi
 
 Chỉ kết cấu và ánh sáng đơn giản. Chưa có: phong, rim, lightwarp, đèn cảnh, bóng.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Bản đồ — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Bản đồ — <code>.bsp</code>
 
-Chưa bắt đầu.
+Phiên bản 19–21: hình học thế giới, địa hình displacement, thực thể brush, prop tĩnh, vật liệu pak riêng của bản đồ. Loại bỏ ngoài khung nhìn. Chưa có: lightmap, skybox, nước, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Kết xuất ảnh và video
 

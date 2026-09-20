@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="തയ്യാറെടുപ്പ്" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>റിലീസിനുള്ള മൊത്തം തയ്യാറെടുപ്പ്: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>റിലീസിനുള്ള മൊത്തം തയ്യാറെടുപ്പ്: 44%</b></p>
 
 ഓരോ മേഖലയും വികസിപ്പിക്കാം: ഇപ്പോൾ തന്നെ പ്രവർത്തിക്കുന്നതും ഇതുവരെ ഇല്ലാത്തതും. ശതമാനങ്ങൾ SFM-ന്റെ കഴിവുകളുമായി താരതമ്യപ്പെടുത്തിയ കണക്കാണ്.
 
@@ -77,9 +77,9 @@ UE5-ലും Visual Studio-യിലും പോലെ, പ്രിവ്യ�
 
 ടെക്സ്ചറും ലളിതമായ വെളിച്ചവും മാത്രം. ഇതുവരെ ഇല്ല: phong, rim, lightwarp, രംഗ വെളിച്ചങ്ങൾ, നിഴലുകൾ.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> മാപ്പുകൾ — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> മാപ്പുകൾ — <code>.bsp</code>
 
-തുടങ്ങിയിട്ടില്ല.
+പതിപ്പുകൾ 19–21: ലോക ജ്യാമിതി, ഡിസ്‌പ്ലേസ്‌മെന്റ് ഭൂപ്രകൃതി, ബ്രഷ് എന്റിറ്റികൾ, സ്ഥിര പ്രോപ്പുകൾ, മാപ്പിന്റെ സ്വന്തം pak മെറ്റീരിയലുകൾ. ഫ്രസ്റ്റം കള്ളിംഗ്. ഇതുവരെ ഇല്ല: ലൈറ്റ്മാപ്പ്, സ്കൈബോക്സ്, വെള്ളം, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> ചിത്രത്തിലേക്കും വീഡിയോയിലേക്കും റെൻഡർ
 

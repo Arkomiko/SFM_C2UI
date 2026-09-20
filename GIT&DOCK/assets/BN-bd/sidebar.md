@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="প্রস্তুতি" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>রিলিজের জন্য সামগ্রিক প্রস্তুতি: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>রিলিজের জন্য সামগ্রিক প্রস্তুতি: 44%</b></p>
 
 প্রতিটি ক্ষেত্র খোলা যায়: কী ইতিমধ্যে কাজ করে আর কী এখনো নেই। শতাংশ SFM-এর সক্ষমতার তুলনায় একটি অনুমান।
 
@@ -77,9 +77,9 @@ UE5 ও Visual Studio-র মতো, প্রিভিউ সহ লক্ষ�
 
 শুধু টেক্সচার আর সাধারণ আলো। এখনো নয়: phong, rim, lightwarp, দৃশ্যের আলো, ছায়া।
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> ম্যাপ — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> ম্যাপ — <code>.bsp</code>
 
-শুরু হয়নি।
+সংস্করণ ১৯–২১: বিশ্ব জ্যামিতি, ডিসপ্লেসমেন্ট ভূমি, ব্রাশ এনটিটি, স্থির প্রপ, ম্যাপের নিজস্ব pak ম্যাটেরিয়াল। ফ্রাস্টাম কালিং। এখনো নয়: লাইটম্যাপ, স্কাইবক্স, জল, prop_dynamic।
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> ছবি ও ভিডিওতে রেন্ডার
 

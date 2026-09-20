@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Дайындық" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Релизге жалпы дайындық: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Релизге жалпы дайындық: 44%</b></p>
 
 Әр аймақ ашылады: не жұмыс істейді және не әлі жоқ. Пайыздар — SFM мүмкіндіктеріне қатысты баға.
 
@@ -77,9 +77,9 @@ UE5 және Visual Studio сияқты, панельдерді алдын ал�
 
 Әзірге тек текстура және қарапайым жарық. Жоқ: phong, rim, lightwarp, сахна жарығы, көлеңкелер.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Карталар — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Карталар — <code>.bsp</code>
 
-Басталмаған.
+19–21 нұсқалары: әлем геометриясы, displacement жер бедері, brush-энтитилер, статикалық проптар, картаның pak материалдары. Камера пирамидасы бойынша кесу. Жоқ: лайтмаптар, скайбокс, су, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Сурет пен бейнеге рендер
 

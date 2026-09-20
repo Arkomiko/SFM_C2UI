@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Pripravljenost" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Skupna pripravljenost za izdajo: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Skupna pripravljenost za izdajo: 44%</b></p>
 
 Vsako področje se razpre: kaj že deluje in česa še ni. Odstotki so ocena glede na zmožnosti SFM.
 
@@ -77,9 +77,9 @@ Vlečenje plošč na kompas ciljev s predogledom, kot v UE5 in Visual Studiu. Š
 
 Samo tekstura in preprosta luč. Še ne: phong, rim, lightwarp, luči prizora, sence.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Zemljevidi — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Zemljevidi — <code>.bsp</code>
 
-Ni začeto.
+Različice 19–21: geometrija sveta, displacement teren, brush entitete, statični propi, materiali iz pak zemljevida. Izločanje zunaj kamere. Še ne: lightmapi, skybox, voda, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Upodabljanje v sliko in video
 

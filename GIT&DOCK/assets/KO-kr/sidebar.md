@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="완성도" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>릴리스 전체 준비도: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>릴리스 전체 준비도: 44%</b></p>
 
 각 영역을 펼치면 이미 동작하는 것과 아직 없는 것이 보입니다. 백분율은 SFM의 기능 대비 추정치입니다.
 
@@ -77,9 +77,9 @@ UE5와 Visual Studio처럼 미리보기가 있는 대상 컴퍼스로 패널을 
 
 텍스처와 단순 조명만. 아직 없음: phong, rim, lightwarp, 씬 라이트, 그림자.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> 맵 — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> 맵 — <code>.bsp</code>
 
-시작 안 함.
+버전 19–21: 월드 지오메트리, 디스플레이스먼트 지형, 브러시 엔티티, 정적 프롭, 맵 자체 pak 머티리얼. 절두체 컬링. 아직 없음: 라이트맵, 스카이박스, 물, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> 이미지·비디오 렌더
 

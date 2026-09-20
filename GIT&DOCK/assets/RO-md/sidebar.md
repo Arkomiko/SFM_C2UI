@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Grad de pregătire" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Pregătire generală pentru lansare: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Pregătire generală pentru lansare: 44%</b></p>
 
 Fiecare zonă se deschide: ce funcționează deja și ce nu există încă. Procentele sunt o estimare față de posibilitățile SFM.
 
@@ -77,9 +77,9 @@ Trageți panourile pe o busolă de ținte cu previzualizare, ca în UE5 și Visu
 
 Doar textură și o lumină simplă. Încă nu: phong, rim, lightwarp, lumini de scenă, umbre.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Hărți — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Hărți — <code>.bsp</code>
 
-Neînceput.
+Versiunile 19–21: geometria lumii, teren displacement, entități brush, prop-uri statice, materialele din pak-ul hărții. Eliminare în afara camerei. Încă nu: lightmap-uri, skybox, apă, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Randare în imagine și video
 

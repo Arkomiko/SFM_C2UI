@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Готовність" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Загальна готовність до релізу: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Загальна готовність до релізу: 44%</b></p>
 
 Кожна область розгортається: що вже працює і чого поки немає. Відсотки — оцінка відносно можливостей SFM.
 
@@ -77,9 +77,9 @@ Flex-контролери, скомпільовані правила і верш
 
 Поки лише текстура і просте світло. Немає: phong, rim, lightwarp, освітлення сцени, тіней.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Карти — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Карти — <code>.bsp</code>
 
-Не розпочато.
+Версії 19–21: геометрія світу, displacement-рельєф, brush-ентіті, статичні пропи, матеріали з pak-лампа карти. Відсікання за пірамідою камери. Немає: лайтмап, скайбоксу, води, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Рендер у зображення і відео
 

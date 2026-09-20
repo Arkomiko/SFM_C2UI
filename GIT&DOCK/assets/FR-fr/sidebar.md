@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Avancement" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Avancement global vers la sortie : 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Avancement global vers la sortie : 44%</b></p>
 
 Chaque domaine se déplie : ce qui fonctionne déjà et ce qui n'existe pas encore. Les pourcentages sont une estimation par rapport à ce que sait faire SFM.
 
@@ -77,9 +77,9 @@ Glissez les panneaux sur une boussole de cibles avec aperçu, comme dans UE5 et 
 
 Texture et lumière simple seulement. Pas encore : phong, rim, lightwarp, lumières de scène, ombres.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Cartes — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Cartes — <code>.bsp</code>
 
-Pas commencé.
+Versions 19–21 : géométrie du monde, terrain displacement, entités brush, props statiques, matériaux du pak de la carte. Élimination hors champ. Pas encore : lightmaps, skybox, eau, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Rendu en image et vidéo
 

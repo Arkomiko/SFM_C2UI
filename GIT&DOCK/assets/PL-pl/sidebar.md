@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Gotowość" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Ogólna gotowość do wydania: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Ogólna gotowość do wydania: 44%</b></p>
 
 Każdy obszar można rozwinąć: co już działa, a czego jeszcze nie ma. Procenty to ocena względem możliwości SFM.
 
@@ -77,9 +77,9 @@ Przeciąganie paneli na kompas celów z podglądem, jak w UE5 i Visual Studio. B
 
 Tylko tekstura i proste światło. Brak: phong, rim, lightwarp, świateł sceny, cieni.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Mapy — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Mapy — <code>.bsp</code>
 
-Nie rozpoczęte.
+Wersje 19–21: geometria świata, teren displacement, encje brush, statyczne propy, materiały z paka mapy. Odcinanie poza kamerą. Brak: lightmap, skyboxu, wody, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Render do obrazu i wideo
 

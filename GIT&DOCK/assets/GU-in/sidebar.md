@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="તૈયારી" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 44%</b></p>
 
 દરેક ક્ષેત્ર ખુલે છે: શું પહેલેથી કામ કરે છે અને શું હજુ નથી. ટકાવારી SFM ની ક્ષમતાઓની સાપેક્ષ અંદાજ છે.
 
@@ -77,9 +77,9 @@ UE5 અને Visual Studio જેમ, પ્રીવ્યૂ સાથે લ
 
 ફક્ત ટેક્સચર અને સાદો પ્રકાશ. હજુ નહીં: phong, rim, lightwarp, દૃશ્યની લાઇટ, છાયા.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> નકશા — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> નકશા — <code>.bsp</code>
 
-શરૂ થયું નથી.
+વર્ઝન 19–21: વિશ્વ ભૂમિતિ, ડિસ્પ્લેસમેન્ટ ભૂપ્રદેશ, બ્રશ એન્ટિટી, સ્થિર પ્રોપ, નકશાના પોતાના pak મટીરિયલ. ફ્રસ્ટમ કલિંગ. હજુ નહીં: લાઇટમેપ, સ્કાયબોક્સ, પાણી, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> છબી અને વિડિયોમાં રેન્ડર
 

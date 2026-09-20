@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Hazırlık" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Yayın için genel hazırlık: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Yayın için genel hazırlık: 44%</b></p>
 
 Her alan açılabilir: neyin zaten çalıştığı ve neyin henüz olmadığı. Yüzdeler, SFM'nin yapabildiklerine göre bir tahmindir.
 
@@ -77,9 +77,9 @@ UE5 ve Visual Studio'daki gibi panelleri önizlemeli hedef pusulasına sürükle
 
 Sadece doku ve basit ışık. Henüz yok: phong, rim, lightwarp, sahne ışıkları, gölgeler.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Haritalar — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Haritalar — <code>.bsp</code>
 
-Başlanmadı.
+Sürüm 19–21: dünya geometrisi, displacement arazi, brush varlıkları, statik prop'lar, haritanın kendi pak malzemeleri. Frustum ayıklama. Henüz yok: lightmap, skybox, su, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Görüntü ve videoya render
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="ପ୍ରସ୍ତୁତି" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 44%</b></p>
 
 ପ୍ରତ୍ୟେକ କ୍ଷେତ୍ର ଖୋଲାଯାଏ: କଣ ପୂର୍ବରୁ କାମ କରେ ଓ କଣ ଏବେ ନାହିଁ। ପ୍ରତିଶତ SFM ର କ୍ଷମତା ତୁଳନାରେ ଆକଳନ।
 
@@ -77,9 +77,9 @@ UE5 ଓ Visual Studio ପରି, ପ୍ରିଭ୍ୟୁ ସହ ଲକ୍ଷ୍
 
 କେବଳ ଟେକ୍ସଚର ଓ ସରଳ ଆଲୋକ। ଏବେ ନାହିଁ: phong, rim, lightwarp, ଦୃଶ୍ୟ ଆଲୋକ, ଛାଇ।
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> ମ୍ୟାପ — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> ମ୍ୟାପ — <code>.bsp</code>
 
-ଆରମ୍ଭ ହୋଇନାହିଁ।
+ସଂସ୍କରଣ 19–21: ବିଶ୍ୱ ଜ୍ୟାମିତି, ଡିସପ୍ଲେସମେଣ୍ଟ ଭୂଭାଗ, ବ୍ରଶ ଏଣ୍ଟିଟି, ସ୍ଥିର ପ୍ରପ, ମ୍ୟାପର ନିଜ pak ମ୍ୟାଟେରିଆଲ। ଫ୍ରଷ୍ଟମ କଲିଂ। ଏବେ ନାହିଁ: ଲାଇଟମ୍ୟାପ, ସ୍କାଇବକ୍ସ, ପାଣି, prop_dynamic।
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> ଚିତ୍ର ଓ ଭିଡିଓରେ ରେଣ୍ଡର
 

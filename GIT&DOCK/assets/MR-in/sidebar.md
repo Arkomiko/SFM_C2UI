@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="तयारी" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>रिलीजसाठी एकूण तयारी: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>रिलीजसाठी एकूण तयारी: 44%</b></p>
 
 प्रत्येक क्षेत्र उघडता येते: काय आधीच काम करते आणि काय अजून नाही. टक्केवारी SFM च्या क्षमतांच्या तुलनेत अंदाज आहे.
 
@@ -77,9 +77,9 @@ UE5 आणि Visual Studio प्रमाणे, पूर्वावलो�
 
 फक्त टेक्सचर आणि साधा प्रकाश. अजून नाही: phong, rim, lightwarp, दृश्य प्रकाश, सावल्या.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> नकाशे — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> नकाशे — <code>.bsp</code>
 
-सुरू केले नाही.
+आवृत्त्या 19–21: जग भूमिती, डिस्प्लेसमेंट भूभाग, ब्रश एंटिटी, स्थिर प्रॉप, नकाशाचे स्वतःचे pak मटेरियल. फ्रस्टम कलिंग. अजून नाही: लाइटमॅप, स्कायबॉक्स, पाणी, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> प्रतिमा आणि व्हिडिओमध्ये रेंडर
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Kesiapan" width="320"></p>
 
-<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Kesiapan sakabèhé kanggo rilis: 41%</b></p>
+<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Kesiapan sakabèhé kanggo rilis: 44%</b></p>
 
 Saben wilayah bisa dibukak: apa sing wis mlaku lan apa sing durung ana. Persentase iku prakiraan dibandhing kemampuan SFM.
 
@@ -77,9 +77,9 @@ Seret panel menyang kompas target karo pratinjau, kaya ing UE5 lan Visual Studio
 
 Mung tekstur lan cahya prasaja. Durung: phong, rim, lightwarp, cahya adegan, ayang-ayang.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Peta — <code>.bsp</code>
+### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Peta — <code>.bsp</code>
 
-Durung diwiwiti.
+Versi 19–21: geometri donya, medan displacement, entitas brush, prop statis, materi pak peta dhewe. Frustum culling. Durung: lightmap, skybox, banyu, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Render menyang gambar lan video
 

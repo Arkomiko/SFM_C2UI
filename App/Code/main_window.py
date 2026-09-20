@@ -557,7 +557,8 @@ class MainWindow(QMainWindow):
         self.current_shot = shot
         self.timeline.select_clip(shot)
         source = self.library.disk_source()
-        self._start_load(lambda: build_shot_scene(source, shot), shot.name)
+        sequence_map = self.session.active_clip.map_name if self.session and self.session.active_clip else ""
+        self._start_load(lambda: build_shot_scene(source, shot, sequence_map), shot.name)
 
     def _timeline_shot(self, shot: FilmClip) -> None:
         self.tree.select_shot(shot)
