@@ -32,7 +32,8 @@ import struct
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
 
-__all__ = ["BspFile", "WorldFace", "StaticProp", "parse_bsp", "map_path"]
+__all__ = ["BspFile", "WorldFace", "StaticProp", "WorldLight", "parse_bsp", "map_path",
+           "EMIT_POINT", "EMIT_SPOTLIGHT", "EMIT_SKYLIGHT", "EMIT_SKYAMBIENT"]
 
 Vec3 = Tuple[float, float, float]
 
@@ -42,7 +43,9 @@ LUMP_TEXINFO, LUMP_FACES, LUMP_LIGHTING = 6, 7, 8
 LUMP_LIGHTING_HDR = 53
 LUMP_EDGES, LUMP_SURFEDGES, LUMP_MODELS = 12, 13, 14
 LUMP_DISPINFO, LUMP_DISP_VERTS, LUMP_GAME_LUMP = 26, 33, 35
+LUMP_NODES, LUMP_LEAFS, LUMP_WORLDLIGHTS = 5, 10, 15
 LUMP_PAKFILE = 40
+LUMP_LEAF_AMBIENT_INDEX, LUMP_LEAF_AMBIENT_LIGHTING = 52, 56
 LUMP_TEXDATA_STRING_DATA, LUMP_TEXDATA_STRING_TABLE = 43, 44
 
 # texinfo flags that mean "not a drawn surface"
@@ -82,6 +85,41 @@ class StaticProp:
     skin: int = 0
 
 
+EMIT_SURFACE, EMIT_POINT, EMIT_SPOTLIGHT, EMIT_SKYLIGHT, EMIT_QUAKELIGHT, EMIT_SKYAMBIENT = range(6)
+
+
+@dataclass
+class WorldLight:
+    """A light the map was compiled with (lump 15): what lights a model in the game."""
+    kind: int                                  # EMIT_*
+    origin: Vec3
+    intensity: Vec3                            # linear colour x brightness
+    normal: Vec3                               # the way a spot or the sun shines
+    stopdot: float = 0.0                       # spot: cos of the inner and outer cone
+    stopdot2: float = 0.0
+    exponent: float = 0.0
+    attenuation: Tuple[float, float, float] = (1.0, 0.0, 0.0)   # constant, linear, quadratic over distance
+
+    def strength_at(self, point: Vec3) -> float:
+        """How much this light matters at a point, for choosing the nearest few."""
+        if self.kind == EMIT_SKYLIGHT:
+            return sum(self.intensity)
+        if self.kind not in (EMIT_POINT, EMIT_SPOTLIGHT):
+            return 0.0
+        d2 = sum((self.origin[a] - point[a]) ** 2 for a in range(3))
+        d = math.sqrt(d2)
+        c, l, q = self.attenuation
+        denominator = c + l * d + q * d2
+        if denominator <= 1e-6:
+            return sum(self.intensity)
+        if self.kind == EMIT_SPOTLIGHT and d > 1e-3:
+            to_point = tuple((point[a] - self.origin[a]) / d for a in range(3))
+            cos = sum(to_point[a] * self.normal[a] for a in range(3))
+            if cos < self.stopdot2:
+                return 0.0
+        return sum(self.intensity) / denominator
+
+
 @dataclass
 class BspFile:
     name: str
@@ -93,6 +131,50 @@ class BspFile:
     warnings: List[str] = field(default_factory=list)
     #: the map's own zip of files (cubemap-patched materials, embedded textures), raw
     pakfile: bytes = b""
+    #: the BSP tree for point lookups: (plane normal, dist, child front, child back); a child
+    #: below zero is -(leaf + 1)
+    nodes: List[Tuple[Vec3, float, int, int]] = field(default_factory=list)
+    #: per leaf, its ambient samples: [(x, y, z, cube)] with cube = six RGB floats (linear), +x -x +y -y +z -z
+    leaf_ambient: List[List[Tuple[Vec3, Tuple[Vec3, ...]]]] = field(default_factory=list)
+    sky_name: str = ""
+    world_lights: List[WorldLight] = field(default_factory=list)
+
+    @property
+    def sky_light(self) -> Optional[WorldLight]:
+        return next((l for l in self.world_lights if l.kind == EMIT_SKYLIGHT), None)
+
+    @property
+    def sky_ambient(self) -> Optional[Vec3]:
+        light = next((l for l in self.world_lights if l.kind == EMIT_SKYAMBIENT), None)
+        return light.intensity if light is not None else None
+
+    def lights_at(self, point: Vec3, count: int = 4) -> List[WorldLight]:
+        """The sun plus the strongest few point and spot lights at a point."""
+        out = [l for l in self.world_lights if l.kind == EMIT_SKYLIGHT][:1]
+        local = [l for l in self.world_lights if l.kind in (EMIT_POINT, EMIT_SPOTLIGHT)]
+        local.sort(key=lambda l: -l.strength_at(point))
+        out.extend(l for l in local[:count] if l.strength_at(point) > 0.002)
+        return out
+
+    def ambient_at(self, point: Vec3) -> Optional[Tuple[Vec3, ...]]:
+        """The ambient cube nearest a point: what the engine lights a model with from the map."""
+        if not self.nodes or not self.leaf_ambient:
+            return None
+        i = 0
+        depth = 0
+        while i >= 0 and depth < 512:
+            normal, dist, front, back = self.nodes[i]
+            i = front if normal[0] * point[0] + normal[1] * point[1] + normal[2] * point[2] - dist >= 0 else back
+            depth += 1
+        leaf = -(i + 1)
+        if not 0 <= leaf < len(self.leaf_ambient):
+            return None
+        samples = self.leaf_ambient[leaf]
+        if not samples:
+            # an empty leaf (solid or unlit): take the nearest lit sample anywhere near
+            return None
+        best = min(samples, key=lambda s: sum((s[0][a] - point[a]) ** 2 for a in range(3)))
+        return best[1]
 
     def pak_files(self) -> Dict[str, bytes]:
         """Every file the map carries inside itself, by lower-case content path."""
@@ -257,7 +339,82 @@ def parse_bsp(data: bytes, name: str = "") -> BspFile:
 
     bsp.static_props = _static_props(lump(LUMP_GAME_LUMP), data, bsp.warnings)
     bsp.pakfile = lump(LUMP_PAKFILE)
+    for entity in bsp.entities:
+        if entity.get("classname") == "worldspawn":
+            bsp.sky_name = entity.get("skyname", "")
+            break
+    _ambient(bsp, lump(LUMP_NODES), lump(LUMP_LEAFS), lumps[LUMP_LEAFS][2], lump(LUMP_LEAF_AMBIENT_INDEX),
+             lump(LUMP_LEAF_AMBIENT_LIGHTING), planes)
+    bsp.world_lights = _world_lights(lump(LUMP_WORLDLIGHTS), lumps[LUMP_WORLDLIGHTS][2])
     return bsp
+
+
+def _world_lights(raw: bytes, version: int) -> List[WorldLight]:
+    """dworldlight_t: 88 bytes, or 100 with the shadow cast offset of version 1."""
+    if not raw:
+        return []
+    stride = 100 if version >= 1 and len(raw) % 100 == 0 else 88
+    out = []
+    for i in range(len(raw) // stride):
+        at = i * stride
+        origin = struct.unpack_from("<3f", raw, at)
+        intensity = struct.unpack_from("<3f", raw, at + 12)
+        normal = struct.unpack_from("<3f", raw, at + 24)
+        base = at + (48 if stride == 100 else 36)
+        _cluster, kind, _style = struct.unpack_from("<iii", raw, base)
+        stopdot, stopdot2, exponent, _radius, c, l, q = struct.unpack_from("<7f", raw, base + 12)
+        out.append(WorldLight(kind, origin, intensity, normal, stopdot, stopdot2, exponent, (c, l, q)))
+    return out
+
+
+_NODE = struct.Struct("<iii6h HHh2x")            # planenum, children[2], mins[3], maxs[3], firstface, numfaces, area, pad
+_AMBIENT_INDEX = struct.Struct("<HH")           # sample count, first sample
+_AMBIENT_SAMPLE = 28                            # six ColorRGBExp32 + x y z (bytes of the leaf's box) + pad
+
+
+def _ambient(bsp: "BspFile", nodes_raw: bytes, leafs_raw: bytes, leaf_version: int, index_raw: bytes,
+             samples_raw: bytes, planes) -> None:
+    """The BSP tree and each leaf's ambient light samples (maps of version 20 and up)."""
+    if not nodes_raw or not leafs_raw:
+        return
+    for raw in _chunks(nodes_raw, _NODE.size):
+        planenum, c0, c1 = struct.unpack_from("<iii", raw, 0)
+        if 0 <= planenum < len(planes):
+            n = planes[planenum]
+            bsp.nodes.append(((n[0], n[1], n[2]), n[3], c0, c1))
+        else:
+            bsp.nodes.append(((0.0, 0.0, 1.0), 0.0, c0, c1))
+    leaf_size = 32 if leaf_version >= 1 else 56
+    leaf_count = len(leafs_raw) // leaf_size
+    boxes = []
+    for i in range(leaf_count):
+        mins = struct.unpack_from("<3h", leafs_raw, i * leaf_size + 8)
+        maxs = struct.unpack_from("<3h", leafs_raw, i * leaf_size + 14)
+        boxes.append((mins, maxs))
+    bsp.leaf_ambient = [[] for _ in range(leaf_count)]
+    if not index_raw or not samples_raw:
+        return
+    for leaf, raw in enumerate(_chunks(index_raw, _AMBIENT_INDEX.size)):
+        if leaf >= leaf_count:
+            break
+        count, first = _AMBIENT_INDEX.unpack_from(raw, 0)
+        mins, maxs = boxes[leaf]
+        for s in range(first, first + count):
+            at = s * _AMBIENT_SAMPLE
+            if at + _AMBIENT_SAMPLE > len(samples_raw):
+                break
+            cube = tuple(_rgbexp(samples_raw, at + k * 4) for k in range(6))
+            x, y, z = samples_raw[at + 24], samples_raw[at + 25], samples_raw[at + 26]
+            pos = tuple(mins[a] + (maxs[a] - mins[a]) * (v / 255.0) for a, v in enumerate((x, y, z)))
+            bsp.leaf_ambient[leaf].append((pos, cube))
+
+
+def _rgbexp(raw: bytes, at: int) -> Vec3:
+    """An ambient sample's ColorRGBExp32: linear light where 1.0 is full (unlike the
+    lightmaps, whose r * 2^e sits on a 0..255 scale)."""
+    r, g, b, e = raw[at], raw[at + 1], raw[at + 2], raw[at + 3]
+    scale = 2.0 ** (e - 256 if e > 127 else e)
+    return (r * scale, g * scale, b * scale)
 
 
 _GAMMA = bytes(int(round(255.0 * (i / 255.0) ** (1.0 / 2.2))) for i in range(256))

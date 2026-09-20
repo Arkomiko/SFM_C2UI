@@ -40,6 +40,8 @@ class Renderer:
         self.lightmap: Optional[GLTexture] = None
         #: per-instance uniform arrays, rebuilt when the placement or skin objects change
         self._instance_cache: Dict[int, tuple] = {}
+        self._light_cache: Dict[tuple, tuple] = {}
+        self._lights_key = None
         self._bounds_cache: Dict[int, tuple] = {}
         self.drawn_instances = 0
         self._item_state = None
@@ -67,7 +69,8 @@ class Renderer:
                      "u_lightwarp", "u_halflambert", "u_has_lightwarp", "u_phong", "u_phong_exponent",
                      "u_phong_boost", "u_fresnel", "u_rim", "u_rim_exponent", "u_rim_boost", "u_self_illum",
                      "u_light_count", "u_light_pos", "u_light_dirs", "u_light_color", "u_light_atten",
-                     "u_light_range", "u_ambient", "u_lightmap", "u_lightmapped"):
+                     "u_light_range", "u_ambient", "u_lightmap", "u_lightmapped", "u_light_kind",
+                     "u_ambient_cube", "u_has_cube"):
             self.uniforms[name] = GL.glGetUniformLocation(self.program, name)
         GL.glEnable(GL.GL_DEPTH_TEST)
         GL.glDepthFunc(GL.GL_LEQUAL)
@@ -160,7 +163,7 @@ class Renderer:
         GL.glUniform1i(u["u_texture"], 0)
         GL.glUniform1i(u["u_lightwarp"], 1)
         GL.glUniform1i(u["u_lightmap"], 2)
-        self._apply_lights()
+        self._lights_key = None
         if self.lightmap is not None:
             self.lightmap.bind(2)
         GL.glPolygonMode(GL.GL_FRONT_AND_BACK, GL.GL_LINE if self.wireframe else GL.GL_FILL)
@@ -191,6 +194,7 @@ class Renderer:
                 if not any(item.blended == blended for item, _m in meshes):
                     continue
                 self._apply_instance(instance)
+                self._apply_lights(instance)
                 for index, (item, mesh) in enumerate(meshes):
                     if item.blended != blended:
                         continue
@@ -335,29 +339,55 @@ class Renderer:
         else:
             self._set_int("u_skinned", 0)
 
-    def _apply_lights(self) -> None:
-        """The session's lights (up to MAX_LIGHTS) and the ambient they leave."""
+    def _apply_lights(self, instance: SceneInstance) -> None:
+        """The lights on an instance: the session's, then the map's at its place; and the
+        map's ambient cube.  Arrays are built once per (lights, cube) pair and reused."""
         u = self.uniforms
-        lights = (self.scene.lights if self.scene is not None else [])[:MAX_LIGHTS]
-        GL.glUniform1i(u["u_light_count"], len(lights))
-        ambient = [0.0, 0.0, 0.0]
-        if lights:
-            pos = (GL.GLfloat * (3 * len(lights)))(*[c for l in lights for c in l.position])
-            dirs = (GL.GLfloat * (3 * len(lights)))(*[c for l in lights for c in l.direction])
-            col = (GL.GLfloat * (3 * len(lights)))(*[c for l in lights for c in l.color])
-            att = (GL.GLfloat * (4 * len(lights)))(*[c for l in lights for c in (*l.attenuation, l.cone_cos)])
-            rng = (GL.GLfloat * (3 * len(lights)))(*[c for l in lights for c in (l.near, l.fade_from, l.far)])
-            GL.glUniform3fv(u["u_light_pos"], len(lights), pos)
-            GL.glUniform3fv(u["u_light_dirs"], len(lights), dirs)
-            GL.glUniform3fv(u["u_light_color"], len(lights), col)
-            GL.glUniform4fv(u["u_light_atten"], len(lights), att)
-            GL.glUniform3fv(u["u_light_range"], len(lights), rng)
-            for l in lights:
-                for a in range(3):
-                    ambient[a] += l.color[a] * l.ambient
-            # a floor so nothing is pitch black, as the map's own ambient will supply later
-            ambient = [min(0.12 + a, 1.0) for a in ambient]
-        GL.glUniform3f(u["u_ambient"], *ambient)
+        session = self.scene.lights if self.scene is not None else []
+        key = (id(session), len(session), id(instance.map_lights), id(instance.ambient_cube))
+        if key == self._lights_key:
+            return
+        self._lights_key = key
+        cached = self._light_cache.get(key)
+        if cached is None:
+            lights = (list(session) + list(instance.map_lights))[:MAX_LIGHTS]
+            n = len(lights)
+            arrays = None
+            if n:
+                arrays = ((GL.GLfloat * (3 * n))(*[c for l in lights for c in l.position]),
+                          (GL.GLfloat * (3 * n))(*[c for l in lights for c in l.direction]),
+                          (GL.GLfloat * (3 * n))(*[c for l in lights for c in l.color]),
+                          (GL.GLfloat * (4 * n))(*[c for l in lights for c in (*l.attenuation, l.cone_cos)]),
+                          (GL.GLfloat * (3 * n))(*[c for l in lights for c in (l.near, l.fade_from, l.far)]),
+                          (GL.GLfloat * (4 * n))(*[c for l in lights for c in (float(l.kind), l.cone_inner_cos, 0.0, 0.0)]))
+            ambient = [0.0, 0.0, 0.0]
+            if session:
+                for l in session:
+                    for a in range(3):
+                        ambient[a] += l.color[a] * l.ambient
+            if instance.ambient_cube is None:
+                # no map: a floor so nothing is pitch black
+                ambient = [min(0.12 + a, 1.0) for a in ambient]
+            cube = None
+            if instance.ambient_cube is not None:
+                cube = (GL.GLfloat * 18)(*[min(v + a, 1.0) for face in instance.ambient_cube for v, a in zip(face, ambient)])
+            cached = (n, arrays, (GL.GLfloat * 3)(*ambient), cube)
+            if len(self._light_cache) > 4096:
+                self._light_cache = {}
+            self._light_cache[key] = cached
+        n, arrays, ambient, cube = cached
+        GL.glUniform1i(u["u_light_count"], n)
+        if arrays is not None:
+            GL.glUniform3fv(u["u_light_pos"], n, arrays[0])
+            GL.glUniform3fv(u["u_light_dirs"], n, arrays[1])
+            GL.glUniform3fv(u["u_light_color"], n, arrays[2])
+            GL.glUniform4fv(u["u_light_atten"], n, arrays[3])
+            GL.glUniform3fv(u["u_light_range"], n, arrays[4])
+            GL.glUniform4fv(u["u_light_kind"], n, arrays[5])
+        GL.glUniform3fv(u["u_ambient"], 1, ambient)
+        if cube is not None:
+            GL.glUniform3fv(u["u_ambient_cube"], 6, cube)
+        self._set_int("u_has_cube", 1 if cube is not None else 0)
 
     def _static_bounds(self, instance: SceneInstance):
         """World bounds of an unskinned instance from its model's box, kept per placement."""

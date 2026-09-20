@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from Core.Code.formats.bsp import FormatError, map_path, parse_bsp
+from Core.Code.formats.bsp import EMIT_POINT, EMIT_SKYLIGHT, EMIT_SPOTLIGHT, FormatError, map_path, parse_bsp
 
 # ------------------------------------------------------------------- a tiny map
 def _texinfo(width_dir, height_dir, flags, texdata, lm_s=(0, 0, 0, 0), lm_t=(0, 0, 0, 0)):
@@ -22,9 +22,11 @@ def _face(first_edge, num_edges, texinfo, dispinfo=-1, planenum=0, side=0, light
 
 
 def _build(faces, texinfos, texdata_names, vertexes, edges, surfedges, dispinfo=b"", dispverts=b"",
-           entities="", props=None, pak=None, version=20, models=None, lighting=b""):
+           entities="", props=None, pak=None, version=20, models=None, lighting=b"", extra=None):
     lumps = {}
     lumps[8] = lighting
+    if extra:
+        lumps.update(extra)
     lumps[1] = struct.pack("<3ffi", 0, 0, 1, 0, 0)                          # one plane, +z
     names = b"".join(n.encode() + b"\0" for n in texdata_names)
     offsets, at = [], 0
@@ -187,3 +189,49 @@ def test_lightmap_decodes_to_gamma_bytes_with_luxel_coordinates():
 def test_no_lighting_lump_means_no_lightmap():
     face = parse_bsp(_quad_map(), "quad").faces[0]
     assert face.lightmap is None and face.lightmap_uvs == []
+
+
+def _worldlight(kind, origin, intensity, normal=(0, 0, -1), atten=(1, 0, 0), stopdot=0.0, stopdot2=0.0):
+    return (struct.pack("<3f3f3f", *origin, *intensity, *normal) + struct.pack("<iii", 0, kind, 0)
+            + struct.pack("<7f", stopdot, stopdot2, 0.0, 0.0, *atten) + struct.pack("<iii", 0, 0, 0))
+
+
+def test_world_lights_sun_and_nearest_point_lights():
+    lights = (_worldlight(EMIT_SKYLIGHT, (0, 0, 0), (1.0, 0.8, 0.6), normal=(-0.6, 0, -0.8))
+              + _worldlight(5, (0, 0, 0), (0.2, 0.3, 0.4))                             # sky ambient
+              + _worldlight(EMIT_POINT, (10, 0, 0), (500, 500, 500), atten=(200, 0, 1))
+              + _worldlight(EMIT_POINT, (1000, 0, 0), (500, 500, 500), atten=(200, 0, 1))
+              + _worldlight(EMIT_SPOTLIGHT, (0, 50, 0), (500, 500, 500), normal=(0, -1, 0), atten=(1, 0, 0), stopdot=0.9, stopdot2=0.8))
+    bsp = parse_bsp(_quad_map(extra={15: lights}), "lit")
+    assert len(bsp.world_lights) == 5
+    assert bsp.sky_light is not None and all(abs(a - b) < 1e-6 for a, b in zip(bsp.sky_light.intensity, (1.0, 0.8, 0.6)))
+    assert all(abs(a - b) < 1e-6 for a, b in zip(bsp.sky_ambient, (0.2, 0.3, 0.4)))
+    near = bsp.lights_at((0, 0, 0))
+    assert near[0].kind == EMIT_SKYLIGHT
+    kinds = [(l.kind, l.origin) for l in near[1:]]
+    assert (EMIT_POINT, (10, 0, 0)) in kinds                            # the near one is there
+    assert all(o != (1000, 0, 0) for _k, o in kinds)                   # the far one is too weak
+    assert (EMIT_SPOTLIGHT, (0, 50, 0)) in kinds                       # in its cone (it points at the origin)
+    assert not [l for l in bsp.lights_at((0, 100, 0)) if l.kind == EMIT_SPOTLIGHT]   # behind the spot
+
+
+def test_ambient_cube_by_leaf():
+    # a tree of one node splitting on x = 32: front (x >= 32) leaf 0, back leaf 1
+    plane_split = struct.pack("<3ffi", 1, 0, 0, 32, 0)
+    nodes = struct.pack("<iii6hHHh2x", 1, -1, -2, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    leaf = lambda: struct.pack("<ihh3h3hHHHHh2x", 0, 0, 0, 0, 0, 0, 64, 64, 64, 0, 0, 0, 0, 0)
+    leaves = leaf() + leaf()
+    index = struct.pack("<HH", 1, 0) + struct.pack("<HH", 1, 1)
+    def sample(r):
+        return bytes([r, 0, 0, 0] * 6) + bytes([128, 128, 128, 0])   # six faces the same, at the box centre
+    samples = sample(128) + sample(64)                                  # leaf 0 bright, leaf 1 dim
+    data = _quad_map(extra={5: nodes, 10: leaves, 52: index, 56: samples})
+    data = bytearray(data)
+    struct.pack_into("<iiii", data, 8 + 10 * 16, *struct.unpack_from("<iiii", data, 8 + 10 * 16)[:2], 1, 0)   # leaf lump v1
+    # the plane lump of _quad_map holds one plane (+z); add ours as plane 1
+    bsp = parse_bsp(bytes(data), "amb")
+    assert bsp.nodes and len(bsp.leaf_ambient) == 2
+    assert bsp.ambient_at((100, 0, 0)) is not None
+    cube_hi = bsp.ambient_at((100, 0, 0))
+    cube_lo = bsp.ambient_at((-100, 0, 0))
+    assert cube_hi is not None and cube_lo is not None

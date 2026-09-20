@@ -25,7 +25,8 @@ from Core.API.model import Mesh, Model
 from Core.API.material import as_bool, as_float, as_vec
 from Core.API.session import FilmClip, GameModel, ProjectedLight
 from Core.Code.formats import FormatError, load_material, load_model, parse_vtf
-from Core.Code.formats.bsp import BspFile, map_path, parse_bsp
+from Core.Code.formats.bsp import (EMIT_POINT, EMIT_SKYLIGHT, EMIT_SPOTLIGHT, BspFile, WorldLight, map_path,
+                                   parse_bsp)
 from Core.Code.formats.vtf import VtfFile
 from Core.Code.flex import controller_values, morph, run_rules
 from Core.Code.pose import skin_matrices
@@ -98,6 +99,10 @@ class SceneInstance:
     #: the session element this came from, when any
     source: Optional[GameModel] = None
     visible: bool = True
+    #: the map's light at this instance: its ambient cube (six RGB, +x -x +y -y +z -z) and the
+    #: sun and nearest world lights - None on a scene without a map
+    ambient_cube: Optional[Tuple[Tuple[float, float, float], ...]] = None
+    map_lights: List["LightState"] = field(default_factory=list)
     #: morphed (positions, normals) by item index, for meshes a face moved
     morphs: Dict[int, Tuple[array, array]] = field(default_factory=dict)
     #: bumped whenever `morphs` changes, so the renderer knows to re-upload
@@ -140,9 +145,13 @@ class SceneInstance:
         return tuple(lo), tuple(hi)
 
 
+# how a LightState lights: the session's projected frustum, or the map's point / spot / sun
+LIGHT_PROJECTED, LIGHT_POINT, LIGHT_SPOT, LIGHT_SUN = 0, 1, 2, 3
+
+
 @dataclass
 class LightState:
-    """A session light, world-placed for the current time."""
+    """A light, world-placed for the current time: a session light or one of the map's."""
     position: Tuple[float, float, float]
     direction: Tuple[float, float, float]           # the way it shines, unit
     color: Tuple[float, float, float]               # colour x intensity
@@ -153,6 +162,8 @@ class LightState:
     cone_cos: float                                 # cos of the half-angle of the frustum
     ambient: float = 0.0
     source: Optional[ProjectedLight] = None
+    kind: int = LIGHT_PROJECTED
+    cone_inner_cos: float = 1.0                     # spot: full inside this, off beyond cone_cos
 
 
 @dataclass
@@ -162,6 +173,8 @@ class Scene:
     lights: List[LightState] = field(default_factory=list)
     #: the map's lightmaps packed into one RGB image: (width, height, bytes)
     lightmap_atlas: Optional[Tuple[int, int, bytes]] = None
+    #: the map, kept for light lookups as instances move
+    bsp: Optional[BspFile] = None
     #: models by content path, each loaded once
     models: Dict[str, LoadedModel] = field(default_factory=dict)
     #: textures by content path, each parsed once however many meshes use it
@@ -245,6 +258,7 @@ def build_shot_scene(source: SceneSource, shot: FilmClip, map_name: str = "") ->
             loaded, name=node.name, world=to_column_major_4x4(world), bones=bones,
             source=node, visible=visible)
         _apply_face(instance)
+        _map_light(scene, instance, apply(world, (0.0, 0.0, 0.0)))
         scene.instances.append(instance)
     if not scene.instances and not scene.warnings:
         scene.warnings.append("the shot has no game models")
@@ -265,6 +279,7 @@ def _load_map(source: SceneSource, scene: Scene, name: str) -> None:
         scene.warnings.append(str(exc))
         return
     scene.warnings.extend(f"{rel}: {w}" for w in bsp.warnings)
+    scene.bsp = bsp
     pak = bsp.pak_files()
     if pak:
         source = _WithPak(source, pak)                # the map's own materials come first
@@ -311,8 +326,46 @@ def _load_map(source: SceneSource, scene: Scene, name: str) -> None:
         pitch, yaw, roll = prop.angles
         placement = matrix_from(prop.origin, quaternion_from_angles(pitch, yaw, roll))
         # a static prop stays in its bind pose: no skin to upload, positions are used as stored
-        scene.instances.append(SceneInstance(prop_model, name=f"prop_static {prop.model}",
-                                             world=to_column_major_4x4(placement)))
+        instance = SceneInstance(prop_model, name=f"prop_static {prop.model}", world=to_column_major_4x4(placement))
+        _map_light(scene, instance, prop.origin)
+        scene.instances.append(instance)
+
+
+def _map_light(scene: Scene, instance: SceneInstance, point) -> None:
+    """The map's light at a point, cached until the instance moves more than a few units."""
+    bsp = scene.bsp
+    if bsp is None:
+        return
+    cached = getattr(instance, "_light_point", None)
+    if cached is not None and sum((cached[a] - point[a]) ** 2 for a in range(3)) < 16.0:
+        return
+    instance._light_point = point
+    cube = bsp.ambient_at(point)
+    if cube is None:
+        # inside something solid, or a map without ambient data: use the sky's ambient dimmed
+        sky = bsp.sky_ambient
+        cube = tuple(tuple(v * 0.5 for v in sky) for _ in range(6)) if sky is not None else None
+    instance.ambient_cube = cube
+    lights: List[LightState] = []
+    sky_ambient = bsp.sky_ambient
+    for light in bsp.lights_at(point):
+        if light.kind == EMIT_SKYLIGHT:
+            # no sky trace yet: the ambient's brightness says how much of the sky the point sees
+            weight = 1.0
+            if cube is not None and sky_ambient is not None and sum(sky_ambient) > 1e-6:
+                # the brightest face of the cube against the sky's own ambient: open sky gives ~1
+                brightest = max(sum(f) for f in cube)
+                weight = min(1.0, brightest / sum(sky_ambient))
+            n = light.normal
+            lights.append(LightState(point, n, tuple(v * weight for v in light.intensity), (1.0, 0.0, 0.0),
+                                     0.0, 1e9, 1e9, -1.0, kind=LIGHT_SUN))
+        elif light.kind == EMIT_SPOTLIGHT:
+            lights.append(LightState(light.origin, light.normal, light.intensity, light.attenuation,
+                                     0.0, 1e9, 1e9, light.stopdot2, kind=LIGHT_SPOT, cone_inner_cos=light.stopdot))
+        else:
+            lights.append(LightState(light.origin, (0.0, 0.0, 1.0), light.intensity, light.attenuation,
+                                     0.0, 1e9, 1e9, -1.0, kind=LIGHT_POINT))
+    instance.map_lights = lights
 
 
 class _LightmapAtlas:
@@ -409,6 +462,7 @@ def refresh_shot_scene(scene: Scene, shot: FilmClip) -> None:
             instance.bones = skin_matrices(instance.model, instance.source.bones)
         if visible:
             _apply_face(instance)
+            _map_light(scene, instance, apply(world, (0.0, 0.0, 0.0)))
 
 
 def _apply_face(instance: SceneInstance) -> None:

@@ -26,8 +26,8 @@ class ShaderError(RuntimeError):
 
 #: bones a single draw can address; Source itself allows 128 per model
 MAX_BONES = 128
-#: session lights a surface takes at once
-MAX_LIGHTS = 8
+#: lights a surface takes at once: the session's and the map's nearest
+MAX_LIGHTS = 12
 
 MODEL_VERT = """
 #version 330 core
@@ -123,9 +123,20 @@ uniform int u_light_count;
 uniform vec3 u_light_pos[MAX_LIGHTS];
 uniform vec3 u_light_dirs[MAX_LIGHTS];    // the way each shines, unit
 uniform vec3 u_light_color[MAX_LIGHTS];   // colour x intensity
-uniform vec4 u_light_atten[MAX_LIGHTS];   // constant, linear, quadratic, cos of the cone half-angle
+uniform vec4 u_light_atten[MAX_LIGHTS];   // constant, linear, quadratic, cos of the cone edge
 uniform vec3 u_light_range[MAX_LIGHTS];   // near, fade-from, far
+uniform vec4 u_light_kind[MAX_LIGHTS];    // kind (0 projected, 1 point, 2 spot, 3 sun), inner cone cos
 uniform vec3 u_ambient;
+uniform vec3 u_ambient_cube[6];           // +x -x +y -y +z -z, the map's ambient at the model
+uniform bool u_has_cube;
+
+vec3 ambient_light(vec3 n) {
+    if (!u_has_cube) return u_ambient;
+    vec3 sq = n * n;
+    return sq.x * (n.x >= 0.0 ? u_ambient_cube[0] : u_ambient_cube[1])
+         + sq.y * (n.y >= 0.0 ? u_ambient_cube[2] : u_ambient_cube[3])
+         + sq.z * (n.z >= 0.0 ? u_ambient_cube[4] : u_ambient_cube[5]);
+}
 
 out vec4 out_color;
 
@@ -162,23 +173,42 @@ void main() {
         float l = dot(n, u_light_dir) * 0.5 + 0.5;
         color *= 0.25 + 0.75 * l * l;
     } else if (u_lit) {
-        vec3 lit = u_ambient;
+        vec3 lit = ambient_light(n);
         vec3 spec = vec3(0.0);
         float ndotv = max(dot(n, v), 0.0);
         // Source's fresnel: three ranges over the view angle
         float f = 1.0 - ndotv;
         float fresnel = f < 0.5 ? mix(u_fresnel.x, u_fresnel.y, f * 2.0) : mix(u_fresnel.y, u_fresnel.z, (f - 0.5) * 2.0);
         for (int i = 0; i < u_light_count; ++i) {
-            vec3 to_light = u_light_pos[i] - v_world;
-            float d = length(to_light);
-            vec3 l = to_light / max(d, 1e-4);
-            vec3 range = u_light_range[i];
-            if (d < range.x || d > range.z) continue;
-            // the frustum: a cone with a soft edge; fade to nothing towards maxDistance
-            float cone = smoothstep(u_light_atten[i].w, u_light_atten[i].w + 0.03, dot(-l, u_light_dirs[i]));
-            float fade = range.z > range.y ? 1.0 - clamp((d - range.y) / (range.z - range.y), 0.0, 1.0) : 1.0;
-            float atten = u_light_atten[i].x + u_light_atten[i].y / d + u_light_atten[i].z / (d * d);
-            vec3 radiance = u_light_color[i] * min(atten, 4.0) * cone * fade;
+            int kind = int(u_light_kind[i].x + 0.5);
+            vec3 l;
+            vec3 radiance;
+            if (kind == 3) {
+                // the sun: parallel, no falloff
+                l = -u_light_dirs[i];
+                radiance = u_light_color[i];
+            } else {
+                vec3 to_light = u_light_pos[i] - v_world;
+                float d = length(to_light);
+                l = to_light / max(d, 1e-4);
+                if (kind == 0) {
+                    vec3 range = u_light_range[i];
+                    if (d < range.x || d > range.z) continue;
+                    // the projected frustum: a cone with a soft edge; fade to nothing towards maxDistance
+                    float cone = smoothstep(u_light_atten[i].w, u_light_atten[i].w + 0.03, dot(-l, u_light_dirs[i]));
+                    float fade = range.z > range.y ? 1.0 - clamp((d - range.y) / (range.z - range.y), 0.0, 1.0) : 1.0;
+                    float atten = u_light_atten[i].x + u_light_atten[i].y / d + u_light_atten[i].z / (d * d);
+                    radiance = u_light_color[i] * min(atten, 4.0) * cone * fade;
+                } else {
+                    // the map's point and spot lights: intensity over (c + l d + q d^2), as vrad's
+                    float denominator = max(u_light_atten[i].x + u_light_atten[i].y * d + u_light_atten[i].z * d * d, 1e-3);
+                    radiance = u_light_color[i] / denominator;
+                    if (kind == 2) {
+                        float cos_angle = dot(-l, u_light_dirs[i]);
+                        radiance *= smoothstep(u_light_atten[i].w, max(u_light_kind[i].y, u_light_atten[i].w + 1e-3), cos_angle);
+                    }
+                }
+            }
             float ndotl = dot(n, l);
             lit += radiance * diffuse_term(ndotl);
             if (u_phong && ndotl > 0.0) {
@@ -188,9 +218,11 @@ void main() {
         }
         if (u_rim) {
             // rim light: the ambient wrapping the silhouette
-            spec += u_ambient * pow(1.0 - ndotv, u_rim_exponent) * u_rim_boost;
+            spec += ambient_light(v) * pow(1.0 - ndotv, u_rim_exponent) * u_rim_boost;
         }
-        color = base.rgb * lit + spec;
+        // Source lights in linear space and writes gamma: the texture comes in as gamma
+        vec3 albedo = pow(base.rgb, vec3(2.2));
+        color = pow(max(albedo * lit + spec, vec3(0.0)), vec3(1.0 / 2.2));
         if (u_self_illum) color = max(color, base.rgb * base.a);
     }
     // an opaque surface's alpha is a mask for other shaders (phong, cloak),
