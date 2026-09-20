@@ -11,19 +11,20 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from Core.Code.formats.bsp import FormatError, map_path, parse_bsp
 
 # ------------------------------------------------------------------- a tiny map
-def _texinfo(width_dir, height_dir, flags, texdata):
-    # textureVecs s, t; then the lightmap's two, unused here
-    return struct.pack("<16fii", *width_dir, *height_dir, 0, 0, 0, 0, 0, 0, 0, 0, flags, texdata)
+def _texinfo(width_dir, height_dir, flags, texdata, lm_s=(0, 0, 0, 0), lm_t=(0, 0, 0, 0)):
+    # textureVecs s, t; then the lightmap's two
+    return struct.pack("<16fii", *width_dir, *height_dir, *lm_s, *lm_t, flags, texdata)
 
 
-def _face(first_edge, num_edges, texinfo, dispinfo=-1, planenum=0, side=0):
+def _face(first_edge, num_edges, texinfo, dispinfo=-1, planenum=0, side=0, lightofs=-1, lm_size=(0, 0)):
     return struct.pack("<HBBihhhh4BifiiiiiHHI", planenum, side, 0, first_edge, num_edges, texinfo, dispinfo,
-                       -1, 0, 0, 0, 0, -1, 1.0, 0, 0, 0, 0, 0, 0, 0, 0)
+                       -1, 0, 0, 0, 0, lightofs, 1.0, 0, 0, lm_size[0], lm_size[1], 0, 0, 0, 0)
 
 
 def _build(faces, texinfos, texdata_names, vertexes, edges, surfedges, dispinfo=b"", dispverts=b"",
-           entities="", props=None, pak=None, version=20, models=None):
+           entities="", props=None, pak=None, version=20, models=None, lighting=b""):
     lumps = {}
+    lumps[8] = lighting
     lumps[1] = struct.pack("<3ffi", 0, 0, 1, 0, 0)                          # one plane, +z
     names = b"".join(n.encode() + b"\0" for n in texdata_names)
     offsets, at = [], 0
@@ -164,3 +165,25 @@ def test_brush_entities_are_shifted_to_their_origin():
     assert len(bsp.faces) == 2
     assert bsp.faces[0].positions[0] == (0, 0, 0)
     assert bsp.faces[1].positions[0] == (100, 0, 50)
+
+
+def test_lightmap_decodes_to_gamma_bytes_with_luxel_coordinates():
+    verts = [(0, 0, 0), (64, 0, 0), (64, 64, 0), (0, 64, 0)]
+    edges = [(0, 1), (1, 2), (2, 3), (3, 0)]
+    # a 2x2 lightmap (size 1x1 luxels): red at full, half green, an exponent of +1 on blue, black
+    lighting = bytes([255, 0, 0, 0, 0, 128, 0, 0, 0, 0, 64, 1, 0, 0, 0, 0])
+    info = _texinfo((1, 0, 0, 0), (0, 1, 0, 0), 0, 0, lm_s=(1 / 64, 0, 0, 0), lm_t=(0, 1 / 64, 0, 0))
+    data = _build([_face(0, 4, 0, lightofs=0, lm_size=(1, 1))], [info], ["a"], verts, edges, [0, 1, 2, 3], lighting=lighting)
+    face = parse_bsp(data, "lit").faces[0]
+    w, h, rgb = face.lightmap
+    assert (w, h) == (2, 2)
+    assert rgb[0:3] == bytes([255, 0, 0])
+    assert rgb[3:6] == bytes([0, 186, 0])                    # 128/255 in gamma 2.2 is 186
+    assert rgb[6:9] == bytes([0, 0, 186])                    # 64 * 2^1 = 128
+    assert rgb[9:12] == bytes([0, 0, 0])
+    assert face.lightmap_uvs == [(0, 0), (1, 0), (1, 1), (0, 1)]
+
+
+def test_no_lighting_lump_means_no_lightmap():
+    face = parse_bsp(_quad_map(), "quad").faces[0]
+    assert face.lightmap is None and face.lightmap_uvs == []

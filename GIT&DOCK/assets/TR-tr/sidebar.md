@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Hazırlık" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Yayın için genel hazırlık: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Yayın için genel hazırlık: 49%</b></p>
 
 Her alan açılabilir: neyin zaten çalıştığı ve neyin henüz olmadığı. Yüzdeler, SFM'nin yapabildiklerine göre bir tahmindir.
 
@@ -73,11 +73,11 @@ Seçili öğeyi süren her logun eğrileri: X/Y/Z, pitch/yaw/roll, skalerler. An
 
 UE5 ve Visual Studio'daki gibi panelleri önizlemeli hedef pusulasına sürükleyin. Henüz yok: kayıtlı yerleşimler, temalar.
 
-### <img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> Source gölgelendirme
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source gölgelendirme
 
-Sadece doku ve basit ışık. Henüz yok: phong, rim, lightwarp, sahne ışıkları, gölgeler.
+Oturum ışıkları (DmeProjectedLight): frustum, Source zayıflaması, maxDistance'a kadar sönme; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Haritanın dünyası lightmap'leriyle. Henüz yok: gölgeler, gobo dokular, $bumpmap, $envmap, ortam küpleri, skybox.
 
-### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Haritalar — <code>.bsp</code>
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Haritalar — <code>.bsp</code>
 
 Sürüm 19–21: dünya geometrisi, displacement arazi, brush varlıkları, statik prop'lar, haritanın kendi pak malzemeleri. Frustum ayıklama. Henüz yok: lightmap, skybox, su, prop_dynamic.
 

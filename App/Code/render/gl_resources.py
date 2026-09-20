@@ -51,15 +51,22 @@ def s3tc_available() -> bool:
 
 
 class GLTexture:
-    def __init__(self, vtf: VtfFile, name: str = "") -> None:
+    def __init__(self, vtf: Optional[VtfFile], name: str = "", rgb: Optional[Tuple[int, int, bytes]] = None) -> None:
+        """A texture from a parsed .vtf, or from raw RGB bytes (`rgb` = width, height, data)."""
         self.name = name
-        self.width = vtf.width
-        self.height = vtf.height
         self.compressed = False
         self.id = int(GL.glGenTextures(1))
         GL.glBindTexture(GL.GL_TEXTURE_2D, self.id)
         GL.glPixelStorei(GL.GL_UNPACK_ALIGNMENT, 1)
-        levels = self._upload(vtf)
+        if rgb is not None:
+            self.width, self.height, data = rgb
+            GL.glTexImage2D(GL.GL_TEXTURE_2D, 0, GL.GL_RGB8, self.width, self.height, 0,
+                            GL.GL_RGB, GL.GL_UNSIGNED_BYTE, data)
+            levels = 1
+        else:
+            self.width = vtf.width
+            self.height = vtf.height
+            levels = self._upload(vtf)
         GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MAX_LEVEL, max(0, levels - 1))
         GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MIN_FILTER,
                            GL.GL_LINEAR_MIPMAP_LINEAR if levels > 1 else GL.GL_LINEAR)
@@ -105,13 +112,14 @@ class GLMesh:
     def __init__(self, mesh: Mesh) -> None:
         self.index_count = len(mesh.indices)
         self.vao = int(GL.glGenVertexArrays(1))
-        self.buffers = [int(b) for b in GL.glGenBuffers(6)]
+        self.buffers = [int(b) for b in GL.glGenBuffers(7)]
         GL.glBindVertexArray(self.vao)
         self._attribute(0, mesh.positions, 3)
         self._attribute(1, mesh.normals, 3)
         self._attribute(2, mesh.uvs, 2)
         self._integer_attribute(3, mesh.bone_indices, 3)
         self._attribute(4, mesh.bone_weights, 3)
+        self._attribute(6, mesh.lightmap_uvs, 2)      # buffer 5 is the index buffer
         GL.glBindBuffer(GL.GL_ELEMENT_ARRAY_BUFFER, self.buffers[5])
         raw = mesh.indices.tobytes()
         GL.glBufferData(GL.GL_ELEMENT_ARRAY_BUFFER, len(raw), raw, GL.GL_STATIC_DRAW)

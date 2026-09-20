@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Reifegrad" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Gesamtreife für eine Veröffentlichung: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Gesamtreife für eine Veröffentlichung: 49%</b></p>
 
 Jeder Bereich lässt sich aufklappen: was schon funktioniert und was noch fehlt. Die Prozente sind eine Einschätzung gegenüber dem, was SFM kann.
 
@@ -73,11 +73,11 @@ Kurven jedes Logs des gewählten Elements: X/Y/Z, Pitch/Yaw/Roll, Skalare. Keys 
 
 Panels auf einen Zielkompass mit Vorschau ziehen, wie in UE5 und Visual Studio. Noch nicht: gespeicherte Layouts, Themes.
 
-### <img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> Source-Shading
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source-Shading
 
-Nur Textur und ein einfaches Licht. Noch nicht: Phong, Rim, Lightwarp, Szenenlichter, Schatten.
+Sitzungslichter (DmeProjectedLight): Frustum, Source-Abschwächung, Ausblenden bis maxDistance; Half-Lambert, $lightwarptexture, Phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Die Welt der Karte über ihre Lightmaps. Noch nicht: Schatten, Gobo-Texturen, $bumpmap, $envmap, Ambient-Cubes, Skybox.
 
-### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Karten — <code>.bsp</code>
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Karten — <code>.bsp</code>
 
 Versionen 19–21: Weltgeometrie, Displacement-Gelände, Brush-Entities, statische Props, die Pak-Materialien der Karte. Frustum-Culling. Noch nicht: Lightmaps, Skybox, Wasser, prop_dynamic.
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Readiness" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Overall readiness for release: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Overall readiness for release: 49%</b></p>
 
 Each area expands: what already works and what does not yet. The percentages are an estimate against what SFM can do.
 
@@ -73,13 +73,13 @@ Curves of every log driving the selected element: X/Y/Z, pitch/yaw/roll, scalars
 
 Drag panels onto a compass of targets with a preview, as in UE5 and Visual Studio. Not yet: saved layouts, themes.
 
-### <img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> Source shading
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source shading
 
-Texture and a simple light only. Not yet: phong, rim, lightwarp, scene lights, shadows.
+Session lights (DmeProjectedLight): frustum, Source's attenuation, fade to maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. The map's world by its lightmaps. Not yet: shadows, gobo textures, $bumpmap, $envmap, ambient cubes, skybox.
 
-### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Maps — <code>.bsp</code>
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Maps — <code>.bsp</code>
 
-Versions 19–21: world geometry, displacement terrain, brush entities, static props, the map's own pak materials. Frustum culling. Not yet: lightmaps, skybox, water, prop_dynamic.
+Versions 19–21: world geometry, displacement terrain, brush entities, static props, the map's own pak materials. Frustum culling. World lightmaps. Not yet: skybox, water, prop_dynamic.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Rendering to image and video
 

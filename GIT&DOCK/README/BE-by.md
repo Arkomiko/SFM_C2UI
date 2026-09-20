@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D1%82%D1%8D%D1%81%D1%82%D0%B0%D1%9E-359-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D1%82%D1%8D%D1%81%D1%82%D0%B0%D1%9E-361-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -28,7 +28,7 @@
 
 <p align="center"><img src="../assets/BE-by/sidebar.svg" alt="Гатоўнасць" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Агульная гатоўнасць да рэлізу: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Агульная гатоўнасць да рэлізу: 49%</b></p>
 
 <p align="center"><a href="../assets/BE-by/sidebar.md"><img alt="Гатоўнасць падрабязна" src="https://img.shields.io/badge/%D0%93%D0%B0%D1%82%D0%BE%D1%9E%D0%BD%D0%B0%D1%81%D1%86%D1%8C_%D0%BF%D0%B0%D0%B4%D1%80%D0%B0%D0%B1%D1%8F%D0%B7%D0%BD%D0%B0-66c0f4?style=for-the-badge"></a></p>
 

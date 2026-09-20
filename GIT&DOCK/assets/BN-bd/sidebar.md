@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="প্রস্তুতি" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>রিলিজের জন্য সামগ্রিক প্রস্তুতি: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>রিলিজের জন্য সামগ্রিক প্রস্তুতি: 49%</b></p>
 
 প্রতিটি ক্ষেত্র খোলা যায়: কী ইতিমধ্যে কাজ করে আর কী এখনো নেই। শতাংশ SFM-এর সক্ষমতার তুলনায় একটি অনুমান।
 
@@ -73,11 +73,11 @@ Flex কন্ট্রোলার, কম্পাইল করা নিয�
 
 UE5 ও Visual Studio-র মতো, প্রিভিউ সহ লক্ষ্যের কম্পাসে প্যানেল টানুন। এখনো নয়: সংরক্ষিত লেআউট, থিম।
 
-### <img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> Source শেডিং
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source শেডিং
 
-শুধু টেক্সচার আর সাধারণ আলো। এখনো নয়: phong, rim, lightwarp, দৃশ্যের আলো, ছায়া।
+সেশন লাইট (DmeProjectedLight): ফ্রাস্টাম, Source ক্ষীণতা, maxDistance পর্যন্ত ম্লান; হাফ-ল্যাম্বার্ট, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum। ম্যাপের জগৎ লাইটম্যাপে। এখনো নয়: ছায়া, গোবো টেক্সচার, $bumpmap, $envmap, অ্যাম্বিয়েন্ট কিউব, স্কাইবক্স।
 
-### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> ম্যাপ — <code>.bsp</code>
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> ম্যাপ — <code>.bsp</code>
 
 সংস্করণ ১৯–২১: বিশ্ব জ্যামিতি, ডিসপ্লেসমেন্ট ভূমি, ব্রাশ এনটিটি, স্থির প্রপ, ম্যাপের নিজস্ব pak ম্যাটেরিয়াল। ফ্রাস্টাম কালিং। এখনো নয়: লাইটম্যাপ, স্কাইবক্স, জল, prop_dynamic।
 

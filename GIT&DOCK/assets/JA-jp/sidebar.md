@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="完成度" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>リリースへの全体的な完成度: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>リリースへの全体的な完成度: 49%</b></p>
 
 各領域を開くと、すでに動くものとまだないものが分かります。パーセントは SFM の機能に対する目安です。
 
@@ -73,11 +73,11 @@ Flex コントローラ、コンパイル済みルール、頂点アニメーシ
 
 UE5 や Visual Studio のように、プレビュー付きのターゲットコンパスにパネルをドラッグ。未対応: レイアウト保存、テーマ。
 
-### <img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> Source シェーディング
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source シェーディング
 
-テクスチャと単純なライトのみ。未対応: phong、rim、lightwarp、シーンライト、影。
+セッションのライト (DmeProjectedLight): 視錐台、Source の減衰、maxDistance へのフェード; ハーフランバート、$lightwarptexture、フォン ($phongexponent/boost/fresnelranges)、$rimlight、$selfillum。マップのワールドはライトマップで。未対応: 影、ゴボテクスチャ、$bumpmap、$envmap、アンビエントキューブ、スカイボックス。
 
-### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> マップ — <code>.bsp</code>
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> マップ — <code>.bsp</code>
 
 バージョン 19–21: ワールド形状、ディスプレイスメント地形、ブラシエンティティ、静的プロップ、マップ内蔵 pak のマテリアル。視錐台カリング。未対応: ライトマップ、スカイボックス、水、prop_dynamic。
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="الجاهزية" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>الجاهزية الإجمالية للإصدار: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>الجاهزية الإجمالية للإصدار: 49%</b></p>
 
 كل مجال قابل للفتح: ما يعمل بالفعل وما لم يوجد بعد. النسب تقدير مقابل ما يستطيعه SFM.
 
@@ -73,11 +73,11 @@
 
 اسحب اللوحات إلى بوصلة أهداف مع معاينة، كما في UE5 وVisual Studio. ليس بعد: التخطيطات المحفوظة، السمات.
 
-### <img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> تظليل Source
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> تظليل Source
 
-القوام وضوء بسيط فقط. ليس بعد: phong، rim، lightwarp، أضواء المشهد، الظلال.
+أضواء الجلسة (DmeProjectedLight): هرم الرؤية، توهين Source، تلاشٍ حتى maxDistance؛ half-lambert، $lightwarptexture، phong ($phongexponent/boost/fresnelranges)، $rimlight، $selfillum. عالم الخريطة عبر خرائط الإضاءة. ليس بعد: الظلال، قوام gobo، $bumpmap، $envmap، مكعبات الإضاءة المحيطة، صندوق السماء.
 
-### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> الخرائط — <code>.bsp</code>
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> الخرائط — <code>.bsp</code>
 
 الإصدارات 19–21: هندسة العالم، تضاريس الإزاحة، كيانات الفرش، الدعائم الثابتة، مواد pak الخاصة بالخريطة. قطع خارج مجال الرؤية. ليس بعد: خرائط الإضاءة، صندوق السماء، الماء، prop_dynamic.
 

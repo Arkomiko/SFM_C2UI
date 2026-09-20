@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Pripravljenost" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Skupna pripravljenost za izdajo: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Skupna pripravljenost za izdajo: 49%</b></p>
 
 Vsako področje se razpre: kaj že deluje in česa še ni. Odstotki so ocena glede na zmožnosti SFM.
 
@@ -73,11 +73,11 @@ Krivulje vsakega dnevnika izbranega elementa: X/Y/Z, pitch/yaw/roll, skalarji. K
 
 Vlečenje plošč na kompas ciljev s predogledom, kot v UE5 in Visual Studiu. Še ne: shranjene postavitve, teme.
 
-### <img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> Senčenje Source
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Senčenje Source
 
-Samo tekstura in preprosta luč. Še ne: phong, rim, lightwarp, luči prizora, sence.
+Luči seje (DmeProjectedLight): frustum, slabljenje Source, pojemanje do maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Svet zemljevida po lightmapih. Še ne: sence, gobo teksture, $bumpmap, $envmap, ambientne kocke, skybox.
 
-### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Zemljevidi — <code>.bsp</code>
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Zemljevidi — <code>.bsp</code>
 
 Različice 19–21: geometrija sveta, displacement teren, brush entitete, statični propi, materiali iz pak zemljevida. Izločanje zunaj kamere. Še ne: lightmapi, skybox, voda, prop_dynamic.
 

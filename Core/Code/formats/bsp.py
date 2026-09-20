@@ -14,8 +14,10 @@ exactly that:
 Lumps read: planes 1, texdata 2, vertexes 3, texinfo 6, faces 7, edges 12,
 surfedges 13, models 14, dispinfo 26, disp verts 33, game lump 35 (static
 props), pakfile 40 (the zip of the map's own materials), texdata string
-data/table 43/44, entities 0.  Lighting (8) is
-located but not decoded yet - see `lightmap_offset` on a face.
+data/table 43/44, entities 0, lighting 8 (or its HDR twin 53 when the map
+has only that): each face's luxels decoded from RGBExp32 to gamma-space
+bytes, with per-vertex luxel coordinates from the texinfo's lightmap
+vectors (a displacement's cover its grid).
 
 Faces that are never drawn (sky, nodraw, hint, skip, trigger, the tool
 textures) are dropped.  A face with a displacement is replaced by the
@@ -37,6 +39,7 @@ Vec3 = Tuple[float, float, float]
 IDENT = b"VBSP"
 LUMP_ENTITIES, LUMP_PLANES, LUMP_TEXDATA, LUMP_VERTEXES = 0, 1, 2, 3
 LUMP_TEXINFO, LUMP_FACES, LUMP_LIGHTING = 6, 7, 8
+LUMP_LIGHTING_HDR = 53
 LUMP_EDGES, LUMP_SURFEDGES, LUMP_MODELS = 12, 13, 14
 LUMP_DISPINFO, LUMP_DISP_VERTS, LUMP_GAME_LUMP = 26, 33, 35
 LUMP_PAKFILE = 40
@@ -65,6 +68,10 @@ class WorldFace:
     indices: List[int]
     lightmap_offset: int = -1
     displacement: bool = False
+    #: the face's compiled light: width, height in luxels and RGB bytes (gamma space),
+    #: with `lightmap_uvs` in luxels for every position; None when the map has no light
+    lightmap: Optional[Tuple[int, int, bytes]] = None
+    lightmap_uvs: List[Tuple[float, float]] = field(default_factory=list)
 
 
 @dataclass
@@ -170,6 +177,7 @@ def parse_bsp(data: bytes, name: str = "") -> BspFile:
     disp_verts = [_DISPVERT.unpack_from(raw, 0) for raw in _chunks(lump(LUMP_DISP_VERTS), _DISPVERT.size)]
     disp_raw = lump(LUMP_DISPINFO)
     dispinfo = [_disp(disp_raw, i * _DISP_STRIDE) for i in range(len(disp_raw) // _DISP_STRIDE)]
+    lighting = lump(LUMP_LIGHTING) or lump(LUMP_LIGHTING_HDR)
 
     bsp.entities = _entities(lump(LUMP_ENTITIES))
     # the world is model 0; the others are brush entities ("*1" - doors, func_brush), whose
@@ -195,6 +203,7 @@ def parse_bsp(data: bytes, name: str = "") -> BspFile:
         face = faces[f]
         planenum, side, _on_node, first_edge, num_edges, ti, di = face[0], face[1], face[2], face[3], face[4], face[5], face[6]
         light_offset = face[12]
+        lm_mins, lm_size = (face[14], face[15]), (face[16], face[17])
         if not 0 <= ti < len(texinfo) or num_edges < 3:
             continue
         info = texinfo[ti]
@@ -229,15 +238,48 @@ def parse_bsp(data: bytes, name: str = "") -> BspFile:
                 world.material = material
                 world.normal = normal
                 world.lightmap_offset = light_offset
+                world.lightmap = _lightmap(lighting, light_offset, lm_size)
+                if world.lightmap is not None:
+                    side = int(round(math.sqrt(len(world.positions))))
+                    world.lightmap_uvs = [((c / (side - 1)) * lm_size[0], (r / (side - 1)) * lm_size[1])
+                                          for r in range(side) for c in range(side)]
                 bsp.faces.append(world)
             continue
         uvs = [_uv(info, p, width, height) for p in polygon]
         indices = [i for k in range(1, len(polygon) - 1) for i in (0, k, k + 1)]
-        bsp.faces.append(WorldFace(material, polygon, uvs, normal, indices, light_offset))
+        world = WorldFace(material, polygon, uvs, normal, indices, light_offset)
+        world.lightmap = _lightmap(lighting, light_offset, lm_size)
+        if world.lightmap is not None:
+            world.lightmap_uvs = [(info[8] * p[0] + info[9] * p[1] + info[10] * p[2] + info[11] - lm_mins[0],
+                                   info[12] * p[0] + info[13] * p[1] + info[14] * p[2] + info[15] - lm_mins[1])
+                                  for p in polygon]
+        bsp.faces.append(world)
 
     bsp.static_props = _static_props(lump(LUMP_GAME_LUMP), data, bsp.warnings)
     bsp.pakfile = lump(LUMP_PAKFILE)
     return bsp
+
+
+_GAMMA = bytes(int(round(255.0 * (i / 255.0) ** (1.0 / 2.2))) for i in range(256))
+
+
+def _lightmap(lighting: bytes, offset: int, size: Tuple[int, int]) -> Optional[Tuple[int, int, bytes]]:
+    """A face's first lightstyle as gamma-space RGB bytes, (width, height, data)."""
+    if offset < 0 or not lighting:
+        return None
+    w, h = size[0] + 1, size[1] + 1
+    count = w * h
+    if count <= 0 or count > 1 << 20 or offset + count * 4 > len(lighting):
+        return None
+    out = bytearray(count * 3)
+    for i in range(count):
+        r, g, b, e = lighting[offset + i * 4:offset + i * 4 + 4]
+        scale = 2.0 ** (e - 256 if e > 127 else e)
+        # RGBExp32 is linear light; the engine writes it to its lightmap in gamma space
+        out[i * 3] = _GAMMA[min(255, int(r * scale))]
+        out[i * 3 + 1] = _GAMMA[min(255, int(g * scale))]
+        out[i * 3 + 2] = _GAMMA[min(255, int(b * scale))]
+    return w, h, bytes(out)
 
 
 def _chunks(raw: bytes, size: int):

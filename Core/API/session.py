@@ -26,7 +26,7 @@ from .dmx import ARRAY_OFFSET, AttrType, DmxDocument, Element, Time
 
 __all__ = [
     "Session", "FilmClip", "ChannelsClip", "SoundClip", "Clip", "TimeFrame", "TrackGroup",
-    "Track", "Dag", "GameModel", "Camera", "Transform", "AnimationSet", "Channel", "Log",
+    "Track", "Dag", "GameModel", "Camera", "ProjectedLight", "Transform", "AnimationSet", "Channel", "Log",
     "LogLayer", "wrap",
 ]
 
@@ -210,6 +210,55 @@ class Camera(Dag):
     @property
     def focal_distance(self) -> float:
         return float(self._get("focalDistance", 72.0))
+
+
+class ProjectedLight(Dag):
+    """SFM's spot light: a projected texture with a frustum, colour, intensity and
+    Source's flashlight attenuation (constant + linear / d + quadratic / d^2)."""
+    TYPE = "DmeProjectedLight"
+
+    @property
+    def color(self) -> Tuple[float, float, float]:
+        c = self._get("color", (255, 255, 255, 255))
+        return (c[0] / 255.0, c[1] / 255.0, c[2] / 255.0)
+
+    @property
+    def intensity(self) -> float:
+        return float(self._get("intensity", 1.0))
+
+    @property
+    def attenuation(self) -> Tuple[float, float, float]:
+        return (float(self._get("constantAttenuation", 1.0)), float(self._get("linearAttenuation", 0.0)),
+                float(self._get("quadraticAttenuation", 0.0)))
+
+    @property
+    def min_distance(self) -> float:
+        return float(self._get("minDistance", 4.0))
+
+    @property
+    def max_distance(self) -> float:
+        return float(self._get("maxDistance", 750.0))
+
+    @property
+    def far_z_atten(self) -> float:
+        return float(self._get("farZAtten", self.max_distance))
+
+    @property
+    def horizontal_fov(self) -> float:
+        return float(self._get("horizontalFOV", 45.0))
+
+    @property
+    def vertical_fov(self) -> float:
+        return float(self._get("verticalFOV", 45.0))
+
+    @property
+    def ambient_intensity(self) -> float:
+        return float(self._get("ambientIntensity", 0.0))
+
+    @property
+    def casts_shadows(self) -> bool:
+        return bool(self._get("castsShadows", True))
+
 
 
 # ---------------------------------------------------------------------------
@@ -479,7 +528,7 @@ class Session(View):
 _VIEWS = {
     "DmeDag": Dag, "DmeGameModel": GameModel, "DmeCamera": Camera, "DmeRig": Dag,
     "DmeRigHandle": Dag, "DmeJoint": Dag, "DmeGameSprite": Dag, "DmeGameParticleSystem": Dag,
-    "DmeProjectedLight": Dag, "DmeModel": Dag,
+    "DmeProjectedLight": ProjectedLight, "DmeModel": Dag,
     "DmeFilmClip": FilmClip, "DmeChannelsClip": ChannelsClip, "DmeSoundClip": SoundClip,
     "DmeClip": Clip, "DmeTrack": Track, "DmeTrackGroup": TrackGroup, "DmeTimeFrame": TimeFrame,
     "DmeTransform": Transform, "DmeAnimationSet": AnimationSet, "DmeChannel": Channel,

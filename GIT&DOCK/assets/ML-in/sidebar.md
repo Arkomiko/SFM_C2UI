@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="തയ്യാറെടുപ്പ്" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>റിലീസിനുള്ള മൊത്തം തയ്യാറെടുപ്പ്: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>റിലീസിനുള്ള മൊത്തം തയ്യാറെടുപ്പ്: 49%</b></p>
 
 ഓരോ മേഖലയും വികസിപ്പിക്കാം: ഇപ്പോൾ തന്നെ പ്രവർത്തിക്കുന്നതും ഇതുവരെ ഇല്ലാത്തതും. ശതമാനങ്ങൾ SFM-ന്റെ കഴിവുകളുമായി താരതമ്യപ്പെടുത്തിയ കണക്കാണ്.
 
@@ -73,11 +73,11 @@ Flex കൺട്രോളറുകൾ, കംപൈൽ ചെയ്ത നി�
 
 UE5-ലും Visual Studio-യിലും പോലെ, പ്രിവ്യൂവുള്ള ലക്ഷ്യ കോമ്പസിലേക്ക് പാനലുകൾ വലിച്ചിടുക. ഇതുവരെ ഇല്ല: സേവ് ചെയ്ത ലേഔട്ടുകൾ, തീമുകൾ.
 
-### <img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> Source ഷേഡിംഗ്
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source ഷേഡിംഗ്
 
-ടെക്സ്ചറും ലളിതമായ വെളിച്ചവും മാത്രം. ഇതുവരെ ഇല്ല: phong, rim, lightwarp, രംഗ വെളിച്ചങ്ങൾ, നിഴലുകൾ.
+സെഷൻ ലൈറ്റുകൾ (DmeProjectedLight): ഫ്രസ്റ്റം, Source ക്ഷയം, maxDistance വരെ മങ്ങൽ; ഹാഫ്-ലാംബർട്ട്, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. മാപ്പിന്റെ ലോകം ലൈറ്റ്മാപ്പുകളാൽ. ഇതുവരെ ഇല്ല: നിഴലുകൾ, ഗോബോ ടെക്സ്ചറുകൾ, $bumpmap, $envmap, ആംബിയന്റ് ക്യൂബുകൾ, സ്കൈബോക്സ്.
 
-### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> മാപ്പുകൾ — <code>.bsp</code>
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> മാപ്പുകൾ — <code>.bsp</code>
 
 പതിപ്പുകൾ 19–21: ലോക ജ്യാമിതി, ഡിസ്‌പ്ലേസ്‌മെന്റ് ഭൂപ്രകൃതി, ബ്രഷ് എന്റിറ്റികൾ, സ്ഥിര പ്രോപ്പുകൾ, മാപ്പിന്റെ സ്വന്തം pak മെറ്റീരിയലുകൾ. ഫ്രസ്റ്റം കള്ളിംഗ്. ഇതുവരെ ഇല്ല: ലൈറ്റ്മാപ്പ്, സ്കൈബോക്സ്, വെള്ളം, prop_dynamic.
 

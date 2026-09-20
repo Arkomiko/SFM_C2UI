@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AA%AA%E0%AA%B0%E0%AB%80%E0%AA%95%E0%AB%8D%E0%AA%B7%E0%AA%A3%E0%AB%8B-359-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AA%AA%E0%AA%B0%E0%AB%80%E0%AA%95%E0%AB%8D%E0%AA%B7%E0%AA%A3%E0%AB%8B-361-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -28,7 +28,7 @@
 
 <p align="center"><img src="../assets/GU-in/sidebar.svg" alt="તૈયારી" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 49%</b></p>
 
 <p align="center"><a href="../assets/GU-in/sidebar.md"><img alt="તૈયારી વિગતવાર" src="https://img.shields.io/badge/%E0%AA%A4%E0%AB%88%E0%AA%AF%E0%AA%BE%E0%AA%B0%E0%AB%80_%E0%AA%B5%E0%AA%BF%E0%AA%97%E0%AA%A4%E0%AA%B5%E0%AA%BE%E0%AA%B0-66c0f4?style=for-the-badge"></a></p>
 

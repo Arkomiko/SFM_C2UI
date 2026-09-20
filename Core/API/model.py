@@ -92,6 +92,8 @@ class Mesh:
     bone_indices: array = field(default_factory=lambda: array("B"))
     bone_weights: array = field(default_factory=lambda: array("f"))
     indices: array = field(default_factory=lambda: array("I"))
+    #: lightmap coordinates, only for a map's faces; empty for a model
+    lightmap_uvs: array = field(default_factory=lambda: array("f"))
     #: face targets touching this mesh; empty for anything but a face
     flexes: List[MeshFlex] = field(default_factory=list)
 

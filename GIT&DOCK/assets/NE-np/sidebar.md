@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="तयारी" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>रिलिजका लागि समग्र तयारी: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>रिलिजका लागि समग्र तयारी: 49%</b></p>
 
 हरेक क्षेत्र खुल्छ: के पहिले नै काम गर्छ र के अझै छैन। प्रतिशत SFM को क्षमताको तुलनामा अनुमान हो।
 
@@ -73,11 +73,11 @@ Flex नियन्त्रक, कम्पाइल गरिएका न�
 
 UE5 र Visual Studio जस्तै, पूर्वावलोकनसहित लक्ष्यहरूको कम्पासमा प्यानल तान्नुहोस्। अझै छैन: सुरक्षित लेआउट, थिम।
 
-### <img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> Source शेडिङ
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source शेडिङ
 
-टेक्सचर र साधारण प्रकाश मात्र। अझै छैन: phong, rim, lightwarp, दृश्य प्रकाश, छाया।
+सेसन बत्ती (DmeProjectedLight): फ्रस्टम, Source क्षीणन, maxDistance सम्म फिका; हाफ-ल्याम्बर्ट, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum। नक्साको संसार लाइटम्यापबाट। अझै छैन: छाया, गोबो टेक्सचर, $bumpmap, $envmap, एम्बियन्ट क्युब, स्काइबक्स।
 
-### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> नक्सा — <code>.bsp</code>
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> नक्सा — <code>.bsp</code>
 
 संस्करण 19–21: विश्व ज्यामिति, डिस्प्लेसमेन्ट भूभाग, ब्रश एन्टिटी, स्थिर प्रप, नक्साको आफ्नै pak सामग्री। फ्रस्टम कलिङ। अझै छैन: लाइटम्याप, स्काइबक्स, पानी, prop_dynamic।
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Mognad" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Total mognad för release: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Total mognad för release: 49%</b></p>
 
 Varje område kan fällas ut: vad som redan fungerar och vad som inte finns än. Procenten är en uppskattning mot vad SFM kan.
 
@@ -73,11 +73,11 @@ Kurvor för varje logg som styr det valda elementet: X/Y/Z, pitch/yaw/roll, skal
 
 Dra paneler till en kompass av mål med förhandsvisning, som i UE5 och Visual Studio. Inte ännu: sparade layouter, teman.
 
-### <img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> Source-skuggning
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source-skuggning
 
-Bara textur och ett enkelt ljus. Inte ännu: phong, rim, lightwarp, scenljus, skuggor.
+Sessionens ljus (DmeProjectedLight): frustum, Source-dämpning, toning till maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Kartans värld via lightmaps. Inte ännu: skuggor, gobo-texturer, $bumpmap, $envmap, ambient-kuber, skybox.
 
-### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Kartor — <code>.bsp</code>
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Kartor — <code>.bsp</code>
 
 Version 19–21: världsgeometri, displacement-terräng, brush-entiteter, statiska props, kartans egna pak-material. Frustum-culling. Inte ännu: lightmaps, skybox, vatten, prop_dynamic.
 

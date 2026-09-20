@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="ପ୍ରସ୍ତୁତି" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 49%</b></p>
 
 ପ୍ରତ୍ୟେକ କ୍ଷେତ୍ର ଖୋଲାଯାଏ: କଣ ପୂର୍ବରୁ କାମ କରେ ଓ କଣ ଏବେ ନାହିଁ। ପ୍ରତିଶତ SFM ର କ୍ଷମତା ତୁଳନାରେ ଆକଳନ।
 
@@ -73,11 +73,11 @@ Flex କଣ୍ଟ୍ରୋଲର, କମ୍ପାଇଲ ନିୟମ ଓ ଭର�
 
 UE5 ଓ Visual Studio ପରି, ପ୍ରିଭ୍ୟୁ ସହ ଲକ୍ଷ୍ୟ କମ୍ପାସରେ ପ୍ୟାନେଲ ଟାଣନ୍ତୁ। ଏବେ ନାହିଁ: ସେଭ ଲେଆଉଟ, ଥିମ।
 
-### <img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> Source ସେଡିଂ
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source ସେଡିଂ
 
-କେବଳ ଟେକ୍ସଚର ଓ ସରଳ ଆଲୋକ। ଏବେ ନାହିଁ: phong, rim, lightwarp, ଦୃଶ୍ୟ ଆଲୋକ, ଛାଇ।
+ସେସନ ଲାଇଟ (DmeProjectedLight): ଫ୍ରଷ୍ଟମ, Source କ୍ଷୀଣତା, maxDistance ପର୍ଯ୍ୟନ୍ତ ଫିକା; ହାଫ-ଲାମ୍ବର୍ଟ, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum। ମ୍ୟାପର ଜଗତ ଲାଇଟମ୍ୟାପରେ। ଏବେ ନାହିଁ: ଛାଇ, ଗୋବୋ ଟେକ୍ସଚର, $bumpmap, $envmap, ଆମ୍ବିଏଣ୍ଟ କ୍ୟୁବ, ସ୍କାଇବକ୍ସ।
 
-### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> ମ୍ୟାପ — <code>.bsp</code>
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> ମ୍ୟାପ — <code>.bsp</code>
 
 ସଂସ୍କରଣ 19–21: ବିଶ୍ୱ ଜ୍ୟାମିତି, ଡିସପ୍ଲେସମେଣ୍ଟ ଭୂଭାଗ, ବ୍ରଶ ଏଣ୍ଟିଟି, ସ୍ଥିର ପ୍ରପ, ମ୍ୟାପର ନିଜ pak ମ୍ୟାଟେରିଆଲ। ଫ୍ରଷ୍ଟମ କଲିଂ। ଏବେ ନାହିଁ: ଲାଇଟମ୍ୟାପ, ସ୍କାଇବକ୍ସ, ପାଣି, prop_dynamic।
 

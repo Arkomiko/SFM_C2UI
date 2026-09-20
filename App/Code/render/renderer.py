@@ -22,7 +22,8 @@ from .camera import OrbitCamera
 from .gl_resources import GLMesh, GLTexture
 from .math3d import IDENTITY, multiply, normalize, sub
 from .scene import DrawItem, Scene, SceneInstance
-from .shaders import ID_FRAG, LINE_FRAG, LINE_VERT, MAX_BONES, MODEL_FRAG, MODEL_VERT, build_program
+from .shaders import (ID_FRAG, LINE_FRAG, LINE_VERT, MAX_BONES, MAX_LIGHTS, MODEL_FRAG, MODEL_VERT,
+                      build_program)
 
 __all__ = ["Renderer"]
 
@@ -36,6 +37,7 @@ class Renderer:
         self.meshes: Dict[str, List[Tuple[DrawItem, GLMesh]]] = {}
         #: per-instance copies of meshes a face moves: (instance id, item index) -> mesh
         self.morphed: Dict[Tuple[int, int], Tuple[GLMesh, int]] = {}
+        self.lightmap: Optional[GLTexture] = None
         #: per-instance uniform arrays, rebuilt when the placement or skin objects change
         self._instance_cache: Dict[int, tuple] = {}
         self._bounds_cache: Dict[int, tuple] = {}
@@ -61,7 +63,11 @@ class Renderer:
     def initialize(self) -> None:
         self.program = build_program(MODEL_VERT, MODEL_FRAG)
         for name in ("u_view_proj", "u_model", "u_skinned", "u_bones", "u_texture", "u_textured",
-                     "u_lit", "u_alpha_test", "u_blended", "u_color", "u_alpha", "u_light_dir", "u_eye"):
+                     "u_lit", "u_alpha_test", "u_blended", "u_color", "u_alpha", "u_light_dir", "u_eye",
+                     "u_lightwarp", "u_halflambert", "u_has_lightwarp", "u_phong", "u_phong_exponent",
+                     "u_phong_boost", "u_fresnel", "u_rim", "u_rim_exponent", "u_rim_boost", "u_self_illum",
+                     "u_light_count", "u_light_pos", "u_light_dirs", "u_light_color", "u_light_atten",
+                     "u_light_range", "u_ambient", "u_lightmap", "u_lightmapped"):
             self.uniforms[name] = GL.glGetUniformLocation(self.program, name)
         GL.glEnable(GL.GL_DEPTH_TEST)
         GL.glDepthFunc(GL.GL_LEQUAL)
@@ -85,6 +91,15 @@ class Renderer:
                 self.textures[key] = GLTexture(vtf, key)
             except Exception as exc:                        # noqa: BLE001 - driver errors vary
                 self.errors.append(f"texture {key}: {exc}")
+        if scene.lightmap_atlas is not None:
+            try:
+                self.lightmap = GLTexture(None, "lightmap", rgb=scene.lightmap_atlas)
+                GL.glBindTexture(GL.GL_TEXTURE_2D, self.lightmap.id)
+                GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_S, GL.GL_CLAMP_TO_EDGE)
+                GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_T, GL.GL_CLAMP_TO_EDGE)
+                GL.glBindTexture(GL.GL_TEXTURE_2D, 0)
+            except Exception as exc:                        # noqa: BLE001
+                self.errors.append(f"lightmap atlas: {exc}")
         for key, loaded in scene.models.items():
             self.meshes[key] = [(item, GLMesh(item.mesh)) for item in loaded.items
                                 if item.mesh.indices]
@@ -102,6 +117,9 @@ class Renderer:
         self.morphed = {}
         for texture in self.textures.values():
             texture.release()
+        if self.lightmap is not None:
+            self.lightmap.release()
+            self.lightmap = None
         self.meshes = {}
         self.textures = {}
         self.scene = None
@@ -140,6 +158,11 @@ class Renderer:
         GL.glUniform3f(u["u_light_dir"], *light)
         GL.glUniform3f(u["u_eye"], *eye)
         GL.glUniform1i(u["u_texture"], 0)
+        GL.glUniform1i(u["u_lightwarp"], 1)
+        GL.glUniform1i(u["u_lightmap"], 2)
+        self._apply_lights()
+        if self.lightmap is not None:
+            self.lightmap.bind(2)
         GL.glPolygonMode(GL.GL_FRONT_AND_BACK, GL.GL_LINE if self.wireframe else GL.GL_FILL)
         GL.glFrontFace(GL.GL_CCW if self.front_face_ccw else GL.GL_CW)
         self._item_state = None
@@ -312,6 +335,30 @@ class Renderer:
         else:
             self._set_int("u_skinned", 0)
 
+    def _apply_lights(self) -> None:
+        """The session's lights (up to MAX_LIGHTS) and the ambient they leave."""
+        u = self.uniforms
+        lights = (self.scene.lights if self.scene is not None else [])[:MAX_LIGHTS]
+        GL.glUniform1i(u["u_light_count"], len(lights))
+        ambient = [0.0, 0.0, 0.0]
+        if lights:
+            pos = (GL.GLfloat * (3 * len(lights)))(*[c for l in lights for c in l.position])
+            dirs = (GL.GLfloat * (3 * len(lights)))(*[c for l in lights for c in l.direction])
+            col = (GL.GLfloat * (3 * len(lights)))(*[c for l in lights for c in l.color])
+            att = (GL.GLfloat * (4 * len(lights)))(*[c for l in lights for c in (*l.attenuation, l.cone_cos)])
+            rng = (GL.GLfloat * (3 * len(lights)))(*[c for l in lights for c in (l.near, l.fade_from, l.far)])
+            GL.glUniform3fv(u["u_light_pos"], len(lights), pos)
+            GL.glUniform3fv(u["u_light_dirs"], len(lights), dirs)
+            GL.glUniform3fv(u["u_light_color"], len(lights), col)
+            GL.glUniform4fv(u["u_light_atten"], len(lights), att)
+            GL.glUniform3fv(u["u_light_range"], len(lights), rng)
+            for l in lights:
+                for a in range(3):
+                    ambient[a] += l.color[a] * l.ambient
+            # a floor so nothing is pitch black, as the map's own ambient will supply later
+            ambient = [min(0.12 + a, 1.0) for a in ambient]
+        GL.glUniform3f(u["u_ambient"], *ambient)
+
     def _static_bounds(self, instance: SceneInstance):
         """World bounds of an unskinned instance from its model's box, kept per placement."""
         cached = self._bounds_cache.get(id(instance))
@@ -337,13 +384,29 @@ class Renderer:
     def _apply_state(self, item: DrawItem) -> None:
         """Per-surface state, set only when it differs from the last surface drawn."""
         u = self.uniforms
-        key = (item.color, item.alpha, item.lit, item.alpha_test, item.blended, item.two_sided, item.additive)
+        key = (item.color, item.alpha, item.lit, item.alpha_test, item.blended, item.two_sided, item.additive,
+               item.lightmapped, item.halflambert, item.phong, item.phong_exponent, item.phong_boost, item.fresnel, item.rim,
+               item.rim_exponent, item.rim_boost, item.self_illum, item.lightwarp_key)
         if key == self._item_state:
             return
         self._item_state = key
         GL.glUniform3f(u["u_color"], *item.color)
         GL.glUniform1f(u["u_alpha"], item.alpha)
         self._set_int("u_lit", 1 if item.lit else 0)
+        self._set_int("u_halflambert", 1 if item.halflambert else 0)
+        self._set_int("u_phong", 1 if item.phong else 0)
+        self._set_int("u_rim", 1 if item.rim else 0)
+        self._set_int("u_self_illum", 1 if item.self_illum else 0)
+        GL.glUniform1f(u["u_phong_exponent"], item.phong_exponent)
+        GL.glUniform1f(u["u_phong_boost"], item.phong_boost)
+        GL.glUniform3f(u["u_fresnel"], *item.fresnel)
+        GL.glUniform1f(u["u_rim_exponent"], item.rim_exponent)
+        GL.glUniform1f(u["u_rim_boost"], item.rim_boost)
+        warp = self.textures.get(item.lightwarp_key) if item.lightwarp_key else None
+        if warp is not None:
+            warp.bind(1)
+        self._set_int("u_has_lightwarp", 1 if warp is not None else 0)
+        self._set_int("u_lightmapped", 1 if item.lightmapped and self.lightmap is not None else 0)
         self._set_int("u_alpha_test", 1 if item.alpha_test else 0)
         self._set_int("u_blended", 1 if item.blended else 0)
         if item.two_sided:

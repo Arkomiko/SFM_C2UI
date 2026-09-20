@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="완성도" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>릴리스 전체 준비도: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>릴리스 전체 준비도: 49%</b></p>
 
 각 영역을 펼치면 이미 동작하는 것과 아직 없는 것이 보입니다. 백분율은 SFM의 기능 대비 추정치입니다.
 
@@ -73,11 +73,11 @@ Flex 컨트롤러, 컴파일된 규칙, 정점 애니메이션 — 캐릭터가 
 
 UE5와 Visual Studio처럼 미리보기가 있는 대상 컴퍼스로 패널을 끌어다 놓기. 아직 없음: 저장된 레이아웃, 테마.
 
-### <img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> Source 셰이딩
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source 셰이딩
 
-텍스처와 단순 조명만. 아직 없음: phong, rim, lightwarp, 씬 라이트, 그림자.
+세션 조명(DmeProjectedLight): 절두체, Source 감쇠, maxDistance까지 페이드; 하프 램버트, $lightwarptexture, 퐁($phongexponent/boost/fresnelranges), $rimlight, $selfillum. 맵의 월드는 라이트맵으로. 아직 없음: 그림자, 고보 텍스처, $bumpmap, $envmap, 앰비언트 큐브, 스카이박스.
 
-### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> 맵 — <code>.bsp</code>
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> 맵 — <code>.bsp</code>
 
 버전 19–21: 월드 지오메트리, 디스플레이스먼트 지형, 브러시 엔티티, 정적 프롭, 맵 자체 pak 머티리얼. 절두체 컬링. 아직 없음: 라이트맵, 스카이박스, 물, prop_dynamic.
 

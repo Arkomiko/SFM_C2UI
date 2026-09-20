@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="தயார்நிலை" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>வெளியீட்டுக்கான மொத்த தயார்நிலை: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>வெளியீட்டுக்கான மொத்த தயார்நிலை: 49%</b></p>
 
 ஒவ்வொரு பகுதியும் விரிகிறது: ஏற்கனவே என்ன வேலை செய்கிறது, என்ன இன்னும் இல்லை. சதவீதங்கள் SFM திறன்களுக்கு ஒப்பிட்ட மதிப்பீடு.
 
@@ -73,11 +73,11 @@ Flex கட்டுப்படுத்திகள், தொகுக்க�
 
 UE5 மற்றும் Visual Studio போல, முன்னோட்டத்துடன் இலக்குகளின் திசைகாட்டியில் பேனல்களை இழுக்கவும். இன்னும் இல்லை: சேமித்த அமைப்புகள், தீம்கள்.
 
-### <img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> Source ஷேடிங்
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Source ஷேடிங்
 
-அமைப்பு மற்றும் எளிய ஒளி மட்டும். இன்னும் இல்லை: phong, rim, lightwarp, காட்சி ஒளிகள், நிழல்கள்.
+அமர்வு விளக்குகள் (DmeProjectedLight): விழுகோணம், Source குறைவு, maxDistance வரை மங்கல்; ஹாஃப்-லாம்பர்ட், $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. வரைபட உலகம் லைட்மேப்களால். இன்னும் இல்லை: நிழல்கள், கோபோ அமைப்புகள், $bumpmap, $envmap, சுற்றுச்சூழல் கனசதுரங்கள், ஸ்கைபாக்ஸ்.
 
-### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> வரைபடங்கள் — <code>.bsp</code>
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> வரைபடங்கள் — <code>.bsp</code>
 
 பதிப்புகள் 19–21: உலக வடிவியல், டிஸ்ப்ளேஸ்மென்ட் நிலப்பரப்பு, பிரஷ் என்டிட்டிகள், நிலையான ப்ராப்கள், வரைபடத்தின் சொந்த pak பொருட்கள். ஃப்ரஸ்டம் கல்லிங். இன்னும் இல்லை: லைட்மேப், ஸ்கைபாக்ஸ், நீர், prop_dynamic.
 

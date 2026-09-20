@@ -13,7 +13,7 @@
 
 <p align="center"><img src="sidebar.svg" alt="Гатоўнасць" width="320"></p>
 
-<p align="center"><img alt="44%" src="https://img.shields.io/badge/44%25-e0a800?style=flat-square"> <b>Агульная гатоўнасць да рэлізу: 44%</b></p>
+<p align="center"><img alt="49%" src="https://img.shields.io/badge/49%25-e0a800?style=flat-square"> <b>Агульная гатоўнасць да рэлізу: 49%</b></p>
 
 Кожная вобласць разгортваецца: што ўжо працуе і чаго пакуль няма. Працэнты — ацэнка адносна магчымасцей SFM.
 
@@ -73,11 +73,11 @@ Flex-кантролеры, скампіляваныя правілы і вярш
 
 Перацягванне панэляў на крыжавіну мэт з папярэднім праглядам, як у UE5 і Visual Studio. Няма: захаваных раскладак, тэм.
 
-### <img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> Шэйдынг Source
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Шэйдынг Source
 
-Пакуль толькі тэкстура і простае святло. Няма: phong, rim, lightwarp, асвятлення сцэны, ценяў.
+Святло сесіі (DmeProjectedLight): фрустум, згасанне Source, спад да maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Свет карты — па лайтмапах. Няма: ценяў, гоба-тэкстур, $bumpmap, $envmap, ambient-кубаў, скайбокса.
 
-### <img alt="45%" src="https://img.shields.io/badge/45%25-e0a800?style=flat-square"> Карты — <code>.bsp</code>
+### <img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> Карты — <code>.bsp</code>
 
 Версіі 19–21: геаметрыя свету, displacement-рэльеф, brush-энтыці, статычныя пропы, матэрыялы з pak-лампа карты. Адсячэнне па пірамідзе камеры. Няма: лайтмап, скайбокса, вады, prop_dynamic.
 
