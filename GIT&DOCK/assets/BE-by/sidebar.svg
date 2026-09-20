@@ -159,7 +159,7 @@
   </g>
   <g class="head" style="animation-delay:1.51s">
     <line x1="20" y1="750" x2="300" y2="750" stroke="#2a475e"/>
-    <text x="20" y="774" font-size="11" fill="#8fa5b8">339 тэстаў</text>
+    <text x="20" y="774" font-size="11" fill="#8fa5b8">340 тэстаў</text>
     <text x="300" y="774" font-size="11" fill="#8fa5b8" text-anchor="end">Windows · Python 3.13 · Qt 6</text>
   </g>
 </svg>

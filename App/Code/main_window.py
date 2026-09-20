@@ -24,6 +24,7 @@ from Core.API.session import Camera, Dag, FilmClip, Session
 from Core.API.dmx import Element
 from Core.Code.animation import Evaluator
 from Core.Code.editing import UndoStack, channel_index, record_edit
+from Core.Code.operators import constrained_attributes
 from Core.Code.formats import FormatError, load_dmx, save_dmx
 from Core.Code.editing import Group
 from Core.Code.motion import TimeSelection
@@ -83,6 +84,7 @@ class MainWindow(QMainWindow):
         self.undo = UndoStack()
         self.undo.changed.append(self._undo_changed)
         self._channel_index: dict = {}
+        self._constrained: dict = {}
         self._channel_index_shot: Optional[FilmClip] = None
         #: the dag the manipulator acts on, with its world and parent-world matrices
         self.selected: Optional[Dag] = None
@@ -319,6 +321,7 @@ class MainWindow(QMainWindow):
         self.undo.clear()
         self.evaluator.invalidate()
         self._channel_index = {}
+        self._constrained = {}
         self._channel_index_shot = None
         self.inspector.set_element(None)
         self.settings.set("session.last_folder", str(path.parent))
@@ -453,11 +456,11 @@ class MainWindow(QMainWindow):
             self.tree.set_session(self.session)
             return
         shot = self.current_shot
-        if shot is not None and not _same(self._channel_index_shot, shot):
-            self._channel_index = channel_index(shot)
-            self._channel_index_shot = shot
         try:
             if shot is not None:
+                self._indices(shot)
+                if self._refuse_constrained(element, name):
+                    return
                 command = record_edit(self._channel_index, element, name, value, self._shot_time(shot), index,
                                       selection=self._selection_for(shot))
             else:
@@ -468,6 +471,22 @@ class MainWindow(QMainWindow):
             return
         self.undo.push(command)
         self._after_edit()
+
+    def _indices(self, shot: FilmClip) -> None:
+        """Channel and constraint lookups for the shot, rebuilt when the shot changes."""
+        if not _same(self._channel_index_shot, shot):
+            self._channel_index = channel_index(shot)
+            self._constrained = constrained_attributes(shot)
+            self._channel_index_shot = shot
+
+    def _refuse_constrained(self, element: Element, name: str) -> bool:
+        """A constraint would put its own value back on the next evaluation; say so instead
+        of recording an edit that does nothing (SFM moves rigged bones through their handles)."""
+        op = self._constrained.get((id(element), name))
+        if op is None:
+            return False
+        self.statusBar().showMessage(f"{element.name}.{name} is driven by {op.type} {op.name!r} - move the rig handle instead")
+        return True
 
     def show_shot(self, shot: FilmClip) -> None:
         if _same(shot, self.current_shot):
@@ -585,16 +604,19 @@ class MainWindow(QMainWindow):
             commands.append(self._edit_command(transform.element, "position", final_position, shot))
         if final_orientation != start_orientation:
             commands.append(self._edit_command(transform.element, "orientation", final_orientation, shot))
+        commands = [c for c in commands if c is not None]
         if commands:
             self.undo.push(Group(commands, f"move {node.name}") if len(commands) > 1 else commands[0])
             self._after_edit()
+        else:
+            self._refresh_pose_only()                    # nothing recorded: show the restored pose
         self._place_manipulator()
 
     def _edit_command(self, element: Element, name: str, value, shot: Optional[FilmClip]):
         if shot is not None:
-            if not _same(self._channel_index_shot, shot):
-                self._channel_index = channel_index(shot)
-                self._channel_index_shot = shot
+            self._indices(shot)
+            if self._refuse_constrained(element, name):
+                return None
             return record_edit(self._channel_index, element, name, value, self._shot_time(shot),
                                selection=self._selection_for(shot))
         from Core.Code.editing import SetAttribute

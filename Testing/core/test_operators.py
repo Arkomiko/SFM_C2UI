@@ -10,7 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from Core.API.dmx import ARRAY_OFFSET, AttrType, DmxDocument, Element, Time
 from Core.API.session import FilmClip
 from Core.Code.expression import ExpressionError, evaluate
-from Core.Code.operators import OperatorRunner
+from Core.Code.operators import OperatorRunner, constrained_attributes
 from Core.Code.transform import apply, apply_direction, translation_of
 
 
@@ -230,3 +230,31 @@ def test_a_broken_operator_is_reported_and_the_rest_still_run():
     runner.run(Time(0))
     assert good["vector"] == (4.0, 5.0, 6.0)
     assert len(runner.errors) == 1 and "bad" in runner.errors[0]
+
+
+# ------------------------------------------------------------------- what a rig owns
+def test_constrained_attributes_name_what_each_constraint_writes():
+    doc = DmxDocument()
+    handle = _dag(doc, "handle", pos=(10, 20, 30))
+    pelvis = _dag(doc, "pelvis")
+    head = _dag(doc, "head")
+    foot = _dag(doc, "foot", pos=(10, 0, 0))
+    knee = _dag(doc, "knee", pos=(10, 0, 0), children=[foot])
+    hip = _dag(doc, "hip", children=[knee])
+    free = _dag(doc, "free")
+    scene = _dag(doc, "scene", children=[handle, pelvis, head, hip, free])
+    point = _op(doc, "DmeRigPointConstraintOperator", "point", targets=[_target(doc, handle)], slave=_slave(doc, pelvis))
+    orient = _op(doc, "DmeRigOrientConstraintOperator", "orient", targets=[_target(doc, handle)], slave=_slave(doc, head))
+    ik = _op(doc, "DmeRigIKConstraintOperator", "ik", targets=[_target(doc, handle)],
+             startJoint=_slave(doc, hip), midJoint=_slave(doc, knee), endJoint=_slave(doc, foot))
+    owned = constrained_attributes(_shot(doc, scene, [point, orient, ik]))
+
+    def key(dag, attribute):
+        return (id(dag["transform"]), attribute)
+    assert owned[key(pelvis, "position")] is point
+    assert key(pelvis, "orientation") not in owned                       # a point constraint leaves rotation alone
+    assert owned[key(head, "orientation")] is orient
+    assert key(head, "position") not in owned
+    assert owned[key(hip, "orientation")] is ik and owned[key(knee, "orientation")] is ik
+    assert key(foot, "orientation") not in owned and key(foot, "position") not in owned   # the end joint is read, not written
+    assert not any(k[0] == id(free["transform"]) for k in owned)

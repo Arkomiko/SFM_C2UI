@@ -293,6 +293,36 @@ def run_operators(shot: FilmClip, time: Time) -> OperatorRunner:
     return runner
 
 
+# what each constraint writes: (slave key, transform attribute)
+_WRITES = {
+    "DmeRigPointConstraintOperator": (("slave", "position"),),
+    "DmeRigOrientConstraintOperator": (("slave", "orientation"),),
+    "DmeRigParentConstraintOperator": (("slave", "position"), ("slave", "orientation")),
+    "DmeRigAimConstraintOperator": (("slave", "orientation"),),
+    "DmeRigIKConstraintOperator": (("startJoint", "orientation"), ("midJoint", "orientation")),
+}
+
+
+def constrained_attributes(shot: FilmClip) -> Dict[Tuple[int, str], Element]:
+    """(id(transform), attribute) -> the constraint that writes it.
+
+    Setting such an attribute by hand has no lasting effect: the operator
+    puts its own value back on the next evaluation. SFM behaves the same
+    way - a rigged bone is moved through its rig handle, not directly.
+    """
+    out: Dict[Tuple[int, str], Element] = {}
+    for aset in shot.animation_sets:
+        for op in aset.element.get("operators") or []:
+            if not isinstance(op, Element):
+                continue
+            for key, attribute in _WRITES.get(op.type, ()):
+                _slave, dag = OperatorRunner._slave(op, key)
+                transform = dag.get("transform") if dag is not None else None
+                if isinstance(transform, Element):
+                    out[(id(transform), attribute)] = op
+    return out
+
+
 # -- small vector helpers -----------------------------------------------------------
 def _sub(a: Vec3, b: Vec3) -> Vec3:
     return (a[0] - b[0], a[1] - b[1], a[2] - b[2])
