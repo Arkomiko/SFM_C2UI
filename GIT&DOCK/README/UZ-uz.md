@@ -48,22 +48,22 @@ Steam reyestri → `libraryfolders.vdf` → `gameinfo.txt` qidiruv yoʻllari, dv
 70 199 fayl 1,1 s sovuq / 0,02 s keshdan; ulanishlar orasidagi qayta belgilashlar dvigateldagidek hal qilinadi.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Modellar — <code></code> <code></code> <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Modellar — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
 
 Versiyalar 44, 48, 49. Skelet, meshlar, barcha detal darajalari, body-guruhlar. 1 500 model yuklandi, 0 xato.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Materiallar — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Materiallar — <code>.vmt</code></b></summary>
 
 Barcha 19 554 material oʻqiladi; `patch`, DX bloklari, proksilar.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Teksturalar — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Teksturalar — <code>.vtf</code></b></summary>
 
 Versiyalar 7.0–7.5, DXT1/3/5 va barcha siqilmagan formatlar, kubmaplar, miplar. DXT dekodlanmasdan GPU ga boradi.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sessiyalar — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sessiyalar — <code>.dmx</code></b></summary>
 
 Binary 1–5 va KeyValues2. Oʻrnatmadagi har bir sessiya va zarralar fayli **baytma-bayt** qayta yoziladi.
 
@@ -108,7 +108,7 @@ UE5 va Visual Studio dagidek, panellarni oldindan koʻrish bilan maqsadlar kompa
 Faqat tekstura va oddiy yorugʻlik. Hali yoʻq: phong, rim, lightwarp, sahna yorugʻliklari, soyalar.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Xaritalar — <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Xaritalar — <code>.bsp</code></b></summary>
 
 Boshlanmagan.
 
@@ -118,7 +118,7 @@ Boshlanmagan.
 Boshlanmagan.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Plaginlar <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Plaginlar <code>.c2plg</code></b></summary>
 
 Boshlanmagan.
 

@@ -48,22 +48,22 @@ Registro di Steam → `libraryfolders.vdf` → i percorsi di ricerca di `gameinf
 70 199 file in 1,1 s a freddo / 0,02 s dalla cache; le sovrascritture tra montaggi risolte esattamente come fa il motore.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Modelli — <code></code> <code></code> <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Modelli — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
 
 Versioni 44, 48, 49. Scheletro, mesh, ogni livello di dettaglio, gruppi del corpo. 1 500 modelli caricati, 0 errori.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Materiali — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Materiali — <code>.vmt</code></b></summary>
 
 Tutti i 19 554 materiali inclusi si leggono; `patch`, blocchi DX, proxy.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Texture — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Texture — <code>.vtf</code></b></summary>
 
 Versioni 7.0–7.5, DXT1/3/5 e tutti i formati non compressi, cubemap, mip. Il DXT va alla GPU senza decodifica.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sessioni — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sessioni — <code>.dmx</code></b></summary>
 
 Binario 1–5 e KeyValues2. Ogni sessione e file di particelle dell'installazione si riscrive **byte per byte**.
 
@@ -108,7 +108,7 @@ Trascina i pannelli su una bussola di destinazioni con anteprima, come in UE5 e 
 Solo texture e una luce semplice. Non ancora: phong, rim, lightwarp, luci di scena, ombre.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Mappe — <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Mappe — <code>.bsp</code></b></summary>
 
 Non iniziato.
 
@@ -118,7 +118,7 @@ Non iniziato.
 Non iniziato.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Plugin <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Plugin <code>.c2plg</code></b></summary>
 
 Non iniziato.
 

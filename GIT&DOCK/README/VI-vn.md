@@ -48,22 +48,22 @@ Registry Steam → `libraryfolders.vdf` → đường dẫn tìm kiếm của `g
 70 199 tập tin trong 1,1 s lạnh / 0,02 s từ cache; ghi đè giữa các điểm gắn kết được giải quyết đúng như engine.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Mô hình — <code></code> <code></code> <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Mô hình — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
 
 Phiên bản 44, 48, 49. Bộ xương, lưới, mọi mức chi tiết, nhóm thân. 1 500 mô hình đã tải, 0 lỗi.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Vật liệu — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Vật liệu — <code>.vmt</code></b></summary>
 
 Toàn bộ 19 554 vật liệu kèm theo đều đọc được; `patch`, khối DX, proxy.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Kết cấu — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Kết cấu — <code>.vtf</code></b></summary>
 
 Phiên bản 7.0–7.5, DXT1/3/5 và mọi định dạng không nén, cubemap, mip. DXT lên GPU không cần giải mã.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Phiên — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Phiên — <code>.dmx</code></b></summary>
 
 Nhị phân 1–5 và KeyValues2. Mọi phiên và tập tin hạt trong bản cài ghi lại **từng byte** giống hệt.
 
@@ -108,7 +108,7 @@ Kéo bảng lên la bàn mục tiêu có xem trước, như UE5 và Visual Studi
 Chỉ kết cấu và ánh sáng đơn giản. Chưa có: phong, rim, lightwarp, đèn cảnh, bóng.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Bản đồ — <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Bản đồ — <code>.bsp</code></b></summary>
 
 Chưa bắt đầu.
 
@@ -118,7 +118,7 @@ Chưa bắt đầu.
 Chưa bắt đầu.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Plugin <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Plugin <code>.c2plg</code></b></summary>
 
 Chưa bắt đầu.
 

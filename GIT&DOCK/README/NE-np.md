@@ -48,22 +48,22 @@ Steam रजिस्ट्री → `libraryfolders.vdf` → `gameinfo.txt` �
 ७० १९९ फाइल १.१ से चिसो / ०.०२ से क्यासबाट; माउन्टबीचका ओभरराइड इन्जिनजस्तै समाधान हुन्छन्।
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>मोडेल — <code></code> <code></code> <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>मोडेल — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
 
 संस्करण ४४, ४८, ४९। कंकाल, मेश, सबै विवरण स्तर, बडी समूह। १ ५०० मोडेल लोड, ० असफलता।
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>सामग्री — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>सामग्री — <code>.vmt</code></b></summary>
 
 सबै १९ ५५४ सामग्री पढिन्छन्; `patch`, DX ब्लक, प्रोक्सी।
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>टेक्सचर — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>टेक्सचर — <code>.vtf</code></b></summary>
 
 संस्करण ७.०–७.५, DXT1/3/5 र सबै असंकुचित ढाँचा, क्युबम्याप, मिप। DXT डिकोड नगरी GPU मा जान्छ।
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>सेसन — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>सेसन — <code>.dmx</code></b></summary>
 
 बाइनरी १–५ र KeyValues2। स्थापनाको हरेक सेसन र पार्टिकल फाइल **बाइट-बाइट** फिर्ता लेखिन्छ।
 
@@ -108,7 +108,7 @@ UE5 र Visual Studio जस्तै, पूर्वावलोकनसह�
 टेक्सचर र साधारण प्रकाश मात्र। अझै छैन: phong, rim, lightwarp, दृश्य प्रकाश, छाया।
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>नक्सा — <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>नक्सा — <code>.bsp</code></b></summary>
 
 सुरु भएको छैन।
 
@@ -118,7 +118,7 @@ UE5 र Visual Studio जस्तै, पूर्वावलोकनसह�
 सुरु भएको छैन।
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>प्लगइन <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>प्लगइन <code>.c2plg</code></b></summary>
 
 सुरु भएको छैन।
 

@@ -48,22 +48,22 @@ Steam രജിസ്ട്രി → `libraryfolders.vdf` → `gameinfo.txt`-�
 70 199 ഫയലുകൾ 1.1 സെ തണുത്ത / 0.02 സെ കാഷിൽ നിന്ന്; മൗണ്ടുകൾക്കിടയിലെ ഓവർറൈഡുകൾ എഞ്ചിൻ പോലെ തന്നെ പരിഹരിക്കുന്നു.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>മോഡലുകൾ — <code></code> <code></code> <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>മോഡലുകൾ — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
 
 പതിപ്പുകൾ 44, 48, 49. അസ്ഥികൂടം, മെഷുകൾ, എല്ലാ വിശദാംശ തലങ്ങളും, ബോഡി ഗ്രൂപ്പുകൾ. 1 500 മോഡലുകൾ ലോഡ്, 0 പരാജയങ്ങൾ.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>മെറ്റീരിയലുകൾ — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>മെറ്റീരിയലുകൾ — <code>.vmt</code></b></summary>
 
 എല്ലാ 19 554 മെറ്റീരിയലുകളും വായിക്കുന്നു; `patch`, DX ബ്ലോക്കുകൾ, പ്രോക്സികൾ.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ടെക്സ്ചറുകൾ — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ടെക്സ്ചറുകൾ — <code>.vtf</code></b></summary>
 
 പതിപ്പുകൾ 7.0–7.5, DXT1/3/5 ഉം എല്ലാ കംപ്രസ് ചെയ്യാത്ത ഫോർമാറ്റുകളും, ക്യൂബ്മാപ്പുകൾ, മിപ്പുകൾ. DXT ഡീകോഡ് ചെയ്യാതെ GPU-ലേക്ക്.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>സെഷനുകൾ — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>സെഷനുകൾ — <code>.dmx</code></b></summary>
 
 ബൈനറി 1–5 ഉം KeyValues2 ഉം. ഇൻസ്റ്റാളിലെ ഓരോ സെഷനും പാർട്ടിക്കിൽ ഫയലും **ബൈറ്റ് ബൈ ബൈറ്റ്** തിരികെ എഴുതുന്നു.
 
@@ -108,7 +108,7 @@ UE5-ലും Visual Studio-യിലും പോലെ, പ്രിവ്യ�
 ടെക്സ്ചറും ലളിതമായ വെളിച്ചവും മാത്രം. ഇതുവരെ ഇല്ല: phong, rim, lightwarp, രംഗ വെളിച്ചങ്ങൾ, നിഴലുകൾ.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>മാപ്പുകൾ — <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>മാപ്പുകൾ — <code>.bsp</code></b></summary>
 
 തുടങ്ങിയിട്ടില്ല.
 
@@ -118,7 +118,7 @@ UE5-ലും Visual Studio-യിലും പോലെ, പ്രിവ്യ�
 തുടങ്ങിയിട്ടില്ല.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>പ്ലഗിനുകൾ <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>പ്ലഗിനുകൾ <code>.c2plg</code></b></summary>
 
 തുടങ്ങിയിട്ടില്ല.
 

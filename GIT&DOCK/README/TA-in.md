@@ -48,22 +48,22 @@ Steam பதிவகம் → `libraryfolders.vdf` → `gameinfo.txt` தே�
 70 199 கோப்புகள் 1.1 வி குளிர் / 0.02 வி கேஷிலிருந்து; ஏற்றங்களுக்கு இடையிலான மேலெழுதல்கள் எஞ்சின் போலவே தீர்க்கப்படுகின்றன.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>மாதிரிகள் — <code></code> <code></code> <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>மாதிரிகள் — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
 
 பதிப்புகள் 44, 48, 49. எலும்புக்கூடு, மெஷ்கள், எல்லா விவர நிலைகள், உடல் குழுக்கள். 1 500 மாதிரிகள் ஏற்றப்பட்டன, 0 தோல்விகள்.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>பொருட்கள் — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>பொருட்கள் — <code>.vmt</code></b></summary>
 
 எல்லா 19 554 பொருட்களும் படிக்கப்படுகின்றன; `patch`, DX தொகுதிகள், ப்ராக்ஸிகள்.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>அமைப்புகள் — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>அமைப்புகள் — <code>.vtf</code></b></summary>
 
 பதிப்புகள் 7.0–7.5, DXT1/3/5 மற்றும் எல்லா அழுத்தப்படாத வடிவங்கள், கியூப்மேப்கள், மிப்கள். DXT டிகோட் இல்லாமல் GPU க்கு செல்கிறது.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>அமர்வுகள் — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>அமர்வுகள் — <code>.dmx</code></b></summary>
 
 பைனரி 1–5 மற்றும் KeyValues2. நிறுவலின் ஒவ்வொரு அமர்வும் துகள் கோப்பும் **பைட் பைட்டாக** திரும்ப எழுதப்படுகிறது.
 
@@ -108,7 +108,7 @@ UE5 மற்றும் Visual Studio போல, முன்னோட்ட�
 அமைப்பு மற்றும் எளிய ஒளி மட்டும். இன்னும் இல்லை: phong, rim, lightwarp, காட்சி ஒளிகள், நிழல்கள்.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>வரைபடங்கள் — <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>வரைபடங்கள் — <code>.bsp</code></b></summary>
 
 தொடங்கவில்லை.
 
@@ -118,7 +118,7 @@ UE5 மற்றும் Visual Studio போல, முன்னோட்ட�
 தொடங்கவில்லை.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>செருகுநிரல்கள் <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>செருகுநிரல்கள் <code>.c2plg</code></b></summary>
 
 தொடங்கவில்லை.
 

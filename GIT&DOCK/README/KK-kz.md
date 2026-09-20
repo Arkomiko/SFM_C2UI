@@ -48,22 +48,22 @@ Steam реестрі → `libraryfolders.vdf` → `gameinfo.txt` жолдары 
 70 199 файл 1,1 с суық / 0,02 с кэштен; жалғаулар арасындағы қайта анықтаулар қозғалтқыштағыдай шешіледі.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Модельдер — <code></code> <code></code> <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Модельдер — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
 
 44, 48, 49 нұсқалары. Қаңқа, мештер, барлық детализация деңгейлері, body-топтар. 1 500 модель жүктелді, 0 сәтсіздік.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Материалдар — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Материалдар — <code>.vmt</code></b></summary>
 
 Орнатудағы барлық 19 554 материал оқылады; `patch`, DX-блоктар, прокси.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Текстуралар — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Текстуралар — <code>.vtf</code></b></summary>
 
 7.0–7.5 нұсқалары, DXT1/3/5 және барлық сығылмаған форматтар, кубмаптар, mip-деңгейлер. DXT GPU-ға ашылмай кетеді.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Сессиялар — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Сессиялар — <code>.dmx</code></b></summary>
 
 Binary 1–5 және KeyValues2. Орнатудағы әрбір сессия мен бөлшектер файлы **байт-байтымен** бірдей қайта жазылады.
 
@@ -108,7 +108,7 @@ UE5 және Visual Studio сияқты, панельдерді алдын ал�
 Әзірге тек текстура және қарапайым жарық. Жоқ: phong, rim, lightwarp, сахна жарығы, көлеңкелер.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Карталар — <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Карталар — <code>.bsp</code></b></summary>
 
 Басталмаған.
 
@@ -118,7 +118,7 @@ UE5 және Visual Studio сияқты, панельдерді алдын ал�
 Басталмаған.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Плагиндер <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Плагиндер <code>.c2plg</code></b></summary>
 
 Басталмаған.
 

@@ -48,22 +48,22 @@ Steam 注册表 → `libraryfolders.vdf` → `gameinfo.txt` 的搜索路径，�
 70 199 个文件冷启动 1.1 秒 / 缓存 0.02 秒；挂载间的覆盖完全按引擎方式解析。
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>模型 — <code></code> <code></code> <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>模型 — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
 
 版本 44、48、49。骨架、网格、所有细节层级、身体组。已加载 1 500 个模型，0 失败。
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>材质 — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>材质 — <code>.vmt</code></b></summary>
 
 全部 19 554 个自带材质均可解析；`patch`、DX 级别块、代理。
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>纹理 — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>纹理 — <code>.vtf</code></b></summary>
 
 版本 7.0–7.5，DXT1/3/5 和所有未压缩格式、立方体贴图、mip。DXT 无需解码直接进 GPU。
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>会话 — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>会话 — <code>.dmx</code></b></summary>
 
 二进制 1–5 和 KeyValues2。安装中的每个会话和粒子文件都能**逐字节**写回。
 
@@ -108,7 +108,7 @@ Flex 控制器、编译后的规则和顶点动画——角色会说话和做表
 仅纹理和简单光照。尚无：phong、rim、lightwarp、场景灯光、阴影。
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>地图 — <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>地图 — <code>.bsp</code></b></summary>
 
 未开始。
 
@@ -118,7 +118,7 @@ Flex 控制器、编译后的规则和顶点动画——角色会说话和做表
 未开始。
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>插件 <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>插件 <code>.c2plg</code></b></summary>
 
 未开始。
 

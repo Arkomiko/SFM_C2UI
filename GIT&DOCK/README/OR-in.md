@@ -48,22 +48,22 @@ Steam ରେଜିଷ୍ଟ୍ରି → `libraryfolders.vdf` → `gameinfo.txt`
 ୭୦ ୧୯୯ ଫାଇଲ ୧.୧ ସେ ଥଣ୍ଡା / ୦.୦୨ ସେ କ୍ୟାସରୁ; ମାଉଣ୍ଟ ମଧ୍ୟରେ ଓଭରରାଇଡ ଇଞ୍ଜିନ ପରି ସମାଧାନ।
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ମଡେଲ — <code></code> <code></code> <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ମଡେଲ — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
 
 ସଂସ୍କରଣ ୪୪, ୪୮, ୪୯। କଙ୍କାଳ, ମେସ, ସବୁ ବିବରଣୀ ସ୍ତର, ବଡି ଗ୍ରୁପ। ୧ ୫୦୦ ମଡେଲ ଲୋଡ, ୦ ବିଫଳତା।
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ମ୍ୟାଟେରିଆଲ — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ମ୍ୟାଟେରିଆଲ — <code>.vmt</code></b></summary>
 
 ସବୁ ୧୯ ୫୫୪ ମ୍ୟାଟେରିଆଲ ପଢ଼ାହୁଏ; `patch`, DX ବ୍ଲକ, ପ୍ରକ୍ସି।
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ଟେକ୍ସଚର — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ଟେକ୍ସଚର — <code>.vtf</code></b></summary>
 
 ସଂସ୍କରଣ ୭.୦–୭.୫, DXT1/3/5 ଓ ସବୁ ଅସଙ୍କୁଚିତ ଫର୍ମାଟ, କ୍ୟୁବମ୍ୟାପ, ମିପ। DXT ଡିକୋଡ ବିନା GPU କୁ ଯାଏ।
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ସେସନ — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ସେସନ — <code>.dmx</code></b></summary>
 
 ବାଇନାରୀ ୧–୫ ଓ KeyValues2। ଇନ୍‌ଷ୍ଟଲର ପ୍ରତ୍ୟେକ ସେସନ ଓ ପାର୍ଟିକଲ ଫାଇଲ **ବାଇଟ ବାଇଟ** ଫେରି ଲେଖାହୁଏ।
 
@@ -108,7 +108,7 @@ UE5 ଓ Visual Studio ପରି, ପ୍ରିଭ୍ୟୁ ସହ ଲକ୍ଷ୍
 କେବଳ ଟେକ୍ସଚର ଓ ସରଳ ଆଲୋକ। ଏବେ ନାହିଁ: phong, rim, lightwarp, ଦୃଶ୍ୟ ଆଲୋକ, ଛାଇ।
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>ମ୍ୟାପ — <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>ମ୍ୟାପ — <code>.bsp</code></b></summary>
 
 ଆରମ୍ଭ ହୋଇନାହିଁ।
 
@@ -118,7 +118,7 @@ UE5 ଓ Visual Studio ପରି, ପ୍ରିଭ୍ୟୁ ସହ ଲକ୍ଷ୍
 ଆରମ୍ଭ ହୋଇନାହିଁ।
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>ପ୍ଲଗଇନ <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>ପ୍ଲଗଇନ <code>.c2plg</code></b></summary>
 
 ଆରମ୍ଭ ହୋଇନାହିଁ।
 

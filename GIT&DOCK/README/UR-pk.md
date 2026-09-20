@@ -48,22 +48,22 @@ Steam رجسٹری → `libraryfolders.vdf` → `gameinfo.txt` کے سرچ پا�
 70 199 فائلیں 1.1 سیکنڈ ٹھنڈا / 0.02 سیکنڈ کیش سے؛ ماؤنٹس کے درمیان اوور رائیڈ بالکل انجن کی طرح حل ہوتے ہیں۔
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ماڈل — <code></code> <code></code> <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ماڈل — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
 
 ورژن 44، 48، 49۔ ڈھانچہ، میش، تمام تفصیلی سطحیں، باڈی گروپ۔ 1 500 ماڈل لوڈ، 0 ناکامی۔
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>میٹیریل — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>میٹیریل — <code>.vmt</code></b></summary>
 
 تمام 19 554 میٹیریل پڑھے جاتے ہیں؛ `patch`، DX بلاک، پراکسی۔
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ٹیکسچر — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ٹیکسچر — <code>.vtf</code></b></summary>
 
 ورژن 7.0–7.5، DXT1/3/5 اور تمام غیر کمپریسڈ فارمیٹ، کیوب میپ، مِپ۔ DXT بغیر ڈی کوڈ GPU میں جاتا ہے۔
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>سیشن — <code></code></b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>سیشن — <code>.dmx</code></b></summary>
 
 بائنری 1–5 اور KeyValues2۔ انسٹال کا ہر سیشن اور پارٹیکل فائل **بائٹ بہ بائٹ** واپس لکھی جاتی ہے۔
 
@@ -108,7 +108,7 @@ UE5 اور Visual Studio کی طرح، پیش نظارہ کے ساتھ اہدا�
 صرف ٹیکسچر اور سادہ روشنی۔ ابھی نہیں: phong، rim، lightwarp، منظر کی روشنیاں، سائے۔
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>نقشے — <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>نقشے — <code>.bsp</code></b></summary>
 
 شروع نہیں ہوا۔
 
@@ -118,7 +118,7 @@ UE5 اور Visual Studio کی طرح، پیش نظارہ کے ساتھ اہدا�
 شروع نہیں ہوا۔
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>پلگ ان <code></code></b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>پلگ ان <code>.c2plg</code></b></summary>
 
 شروع نہیں ہوا۔
 
