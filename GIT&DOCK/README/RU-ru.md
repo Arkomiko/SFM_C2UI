@@ -1,13 +1,13 @@
-<p align="center"><img src=".github/assets/banner.png" alt="C2UI" width="100%"></p>
+<p align="center"><img src="../../.github/assets/banner.png" alt="C2UI" width="100%"></p>
 
-<p align="center"><b>🇷🇺 Русский</b> · <a href="GIT%26DOCK/README/EN-en.md">🇬🇧 English</a> · <a href="GIT%26DOCK/README/PL-pl.md">🇵🇱 Polski</a> · <a href="GIT%26DOCK/README/UK-ua.md">🇺🇦 Українська</a> · <a href="GIT%26DOCK/README/DE-de.md">🇩🇪 Deutsch</a> · <a href="GIT%26DOCK/README/RO-md.md">🇲🇩 Moldovenească</a> · <a href="GIT%26DOCK/README/SL-si.md">🇸🇮 Slovenščina</a> · <a href="GIT%26DOCK/README/BE-by.md">🇧🇾 Беларуская</a> · <a href="GIT%26DOCK/README/KK-kz.md">🇰🇿 Қазақша</a> · <a href="GIT%26DOCK/README/JA-jp.md">🇯🇵 日本語</a> · <a href="GIT%26DOCK/README/ZH-cn.md">🇨🇳 中文</a> · <a href="GIT%26DOCK/README/SV-se.md">🇸🇪 Svenska</a> · <a href="GIT%26DOCK/README/ES-es.md">🇪🇸 Español</a> · <a href="GIT%26DOCK/README/HI-in.md">🇮🇳 हिन्दी</a> · <a href="GIT%26DOCK/README/PT-pt.md">🇵🇹 Português</a> · <a href="GIT%26DOCK/README/BN-bd.md">🇧🇩 বাংলা</a> · <a href="GIT%26DOCK/README/FR-fr.md">🇫🇷 Français</a> · <a href="GIT%26DOCK/README/TE-in.md">🇮🇳 తెలుగు</a> · <a href="GIT%26DOCK/README/MR-in.md">🇮🇳 मराठी</a> · <a href="GIT%26DOCK/README/TA-in.md">🇮🇳 தமிழ்</a> · <a href="GIT%26DOCK/README/TR-tr.md">🇹🇷 Türkçe</a> · <a href="GIT%26DOCK/README/UR-pk.md">🇵🇰 اردو</a> · <a href="GIT%26DOCK/README/VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GIT%26DOCK/README/GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="GIT%26DOCK/README/IT-it.md">🇮🇹 Italiano</a> · <a href="GIT%26DOCK/README/KO-kr.md">🇰🇷 한국어</a> · <a href="GIT%26DOCK/README/AR-sa.md">🇸🇦 العربية</a> · <a href="GIT%26DOCK/README/JV-id.md">🇮🇩 Basa Jawa</a> · <a href="GIT%26DOCK/README/ML-in.md">🇮🇳 മലയാളം</a> · <a href="GIT%26DOCK/README/NE-np.md">🇳🇵 नेपाली</a> · <a href="GIT%26DOCK/README/UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="GIT%26DOCK/README/OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
+<p align="center"><b>🇷🇺 Русский</b> · <a href="EN-en.md">🇬🇧 English</a> · <a href="PL-pl.md">🇵🇱 Polski</a> · <a href="UK-ua.md">🇺🇦 Українська</a> · <a href="DE-de.md">🇩🇪 Deutsch</a> · <a href="RO-md.md">🇲🇩 Moldovenească</a> · <a href="SL-si.md">🇸🇮 Slovenščina</a> · <a href="BE-by.md">🇧🇾 Беларуская</a> · <a href="KK-kz.md">🇰🇿 Қазақша</a> · <a href="JA-jp.md">🇯🇵 日本語</a> · <a href="ZH-cn.md">🇨🇳 中文</a> · <a href="SV-se.md">🇸🇪 Svenska</a> · <a href="ES-es.md">🇪🇸 Español</a> · <a href="HI-in.md">🇮🇳 हिन्दी</a> · <a href="PT-pt.md">🇵🇹 Português</a> · <a href="BN-bd.md">🇧🇩 বাংলা</a> · <a href="FR-fr.md">🇫🇷 Français</a> · <a href="TE-in.md">🇮🇳 తెలుగు</a> · <a href="MR-in.md">🇮🇳 मराठी</a> · <a href="TA-in.md">🇮🇳 தமிழ்</a> · <a href="TR-tr.md">🇹🇷 Türkçe</a> · <a href="UR-pk.md">🇵🇰 اردو</a> · <a href="VI-vn.md">🇻🇳 Tiếng Việt</a> · <a href="GU-in.md">🇮🇳 ગુજરાતી</a> · <a href="IT-it.md">🇮🇹 Italiano</a> · <a href="KO-kr.md">🇰🇷 한국어</a> · <a href="AR-sa.md">🇸🇦 العربية</a> · <a href="JV-id.md">🇮🇩 Basa Jawa</a> · <a href="ML-in.md">🇮🇳 മലയാളം</a> · <a href="NE-np.md">🇳🇵 नेपाली</a> · <a href="UZ-uz.md">🇺🇿 Oʻzbekcha</a> · <a href="OR-in.md">🇮🇳 ଓଡ଼ିଆ</a></p>
 
 <p align="center">
   <img alt="status" src="https://img.shields.io/badge/%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81-%D0%BF%D1%80%D0%B5--%D0%B0%D0%BB%D1%8C%D1%84%D0%B0-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="Testing"><img alt="tests" src="https://img.shields.io/badge/%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2-339-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2-339-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
 </p>
 
@@ -34,7 +34,7 @@ Source Filmmaker — отличный инструмент в интерфейс
 
 <p align="center"><img alt="38%" src="https://img.shields.io/badge/38%25-e07b39?style=flat-square"> <b>Общая готовность к релизу: 38%</b></p>
 
-<p align="center"><img src=".github/assets/editor.png" alt="Редактор с открытой сессией Meet the Heavy" width="100%"><br><sub>Редактор сегодня: открыта сессия Valve «Meet the Heavy» — шоты и звук на таймлайне, дерево сессии, первый шот через его собственную камеру, персонажи в позах и с лицами из сессии.</sub></p>
+<p align="center"><img src="../../.github/assets/editor.png" alt="Редактор с открытой сессией Meet the Heavy" width="100%"><br><sub>Редактор сегодня: открыта сессия Valve «Meet the Heavy» — шоты и звук на таймлайне, дерево сессии, первый шот через его собственную камеру, персонажи в позах и с лицами из сессии.</sub></p>
 
 Раскройте область, чтобы увидеть, что именно готово, а что нет. Проценты — мои честные оценки относительно того, что умеет SFM.
 
@@ -183,4 +183,4 @@ Source Filmmaker, Team Fortress 2 и движок Source принадлежат 
 
 Лицензия собственного кода C2UI ещё не выбрана — до тех пор все права защищены. Issues и pull requests приветствуются.
 
-<p align="center"><img src=".github/assets/models.png" alt="64 модели, отрендеренные прямо из установки" width="60%"><br><sub>Шестьдесят четыре случайные модели из установки, нарисованные собственным рендерером C2UI.</sub></p>
+<p align="center"><img src="../../.github/assets/models.png" alt="64 модели, отрендеренные прямо из установки" width="60%"><br><sub>Шестьдесят четыре случайные модели из установки, нарисованные собственным рендерером C2UI.</sub></p>
