@@ -71,7 +71,7 @@ python -m venv .venv
 .venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
-On first start it looks for SFM through Steam; if it cannot find it, it asks. <kbd>Ctrl</kbd>+<kbd>O</kbd> opens a session, <kbd>Space</kbd> plays, <kbd>C</kbd> looks through the shot camera, <kbd>T</kbd>/<kbd>R</kbd> move/rotate, <kbd>M</kbd> the motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes, <kbd>Ctrl</kbd>+<kbd>S</kbd> saves. Panels are dragged by their title. The tests need nothing at all:
+On first start it looks for SFM through Steam; if it cannot find it, it asks. <kbd>Ctrl</kbd>+<kbd>O</kbd> opens a session, <kbd>Space</kbd> plays, <kbd>C</kbd> looks through the shot camera, <kbd>T</kbd>/<kbd>R</kbd> move/rotate, <kbd>M</kbd> the motion editor, <kbd>G</kbd> the graph editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes, <kbd>Ctrl</kbd>+<kbd>S</kbd> saves. The camera works as in SFM: right button looks around, with it held <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <kbd>Z</kbd><kbd>X</kbd> fly (<kbd>Shift</kbd> faster), middle pans, the wheel dollies, <kbd>Alt</kbd>+left orbits. Clicking a character picks the bone under the cursor (or its rig handle). Panels are dragged by their title. The tests need nothing at all:
 
 ```bash
 python Testing/run.py

@@ -71,7 +71,7 @@ python -m venv .venv
 .venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
-При первом запуске SFM ищется через Steam; если не нашёлся — программа спросит. <kbd>Ctrl</kbd>+<kbd>O</kbd> открывает сессию, <kbd>Space</kbd> — воспроизведение, <kbd>C</kbd> — камера шота, <kbd>T</kbd>/<kbd>R</kbd> — перемещение/поворот, <kbd>M</kbd> — motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> — отмена, <kbd>Ctrl</kbd>+<kbd>S</kbd> — сохранить. Панели перетаскиваются за заголовок. Тесты не требуют ничего:
+При первом запуске SFM ищется через Steam; если не нашёлся — программа спросит. <kbd>Ctrl</kbd>+<kbd>O</kbd> открывает сессию, <kbd>Space</kbd> — воспроизведение, <kbd>C</kbd> — камера шота, <kbd>T</kbd>/<kbd>R</kbd> — перемещение/поворот, <kbd>M</kbd> — motion editor, <kbd>G</kbd> — graph editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> — отмена, <kbd>Ctrl</kbd>+<kbd>S</kbd> — сохранить. Камера как в SFM: правая кнопка — осмотр, с зажатой правой <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <kbd>Z</kbd><kbd>X</kbd> — полёт (<kbd>Shift</kbd> быстрее), средняя — панорама, колесо — наезд, <kbd>Alt</kbd>+левая — орбита. Клик по персонажу выбирает кость под курсором (или её ручку рига). Панели перетаскиваются за заголовок. Тесты не требуют ничего:
 
 ```bash
 python Testing/run.py

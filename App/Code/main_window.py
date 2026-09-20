@@ -20,12 +20,12 @@ from PySide6.QtWidgets import (QDockWidget, QFileDialog, QLabel, QLineEdit, QLis
                                QVBoxLayout, QWidget)
 
 from Core.API.dmx import Time
-from Core.API.session import Camera, Dag, FilmClip, Session
+from Core.API.session import Camera, Dag, FilmClip, GameModel, Session
 from Core.API.dmx import Element
 from Core.Code.animation import Evaluator
 from Core.Code.editing import UndoStack, channel_index, record_edit, value_type_of
 from Core.Code.keys import components
-from Core.Code.operators import constrained_attributes
+from Core.Code.operators import constrained_attributes, constraint_handle
 from Core.Code.formats import FormatError, load_dmx, save_dmx
 from Core.Code.editing import Group
 from Core.Code.motion import TimeSelection
@@ -614,17 +614,45 @@ class MainWindow(QMainWindow):
         self.follow_camera = False
         self.viewport.update()
 
-    def _picked(self, instance) -> None:
+    def _picked(self, hit) -> None:
+        """A click in the viewport: the bone under the cursor, its rig handle when a
+        constraint owns that bone (SFM moves rigged bones by their handles), else the model."""
+        instance, bone = hit if isinstance(hit, tuple) else (hit, -1)
         if instance is None or instance.source is None:
             self.selected = None
             self.viewport.manipulator.hide()
             self.viewport.update()
+            self.show_curves(None)
             return
-        if not self.tree.select_element(instance.source.element):
-            self.selected = instance.source
+        node = self._bone_node(instance.source, bone) or instance.source
+        if not self.tree.select_element(node.element):
+            self.selected = node
             self._place_manipulator()
-            transform = instance.source.transform
-            self.show_curves(transform.element if transform is not None else None)
+            self.show_curves(node.transform.element if node.transform is not None else None)
+
+    def _bone_node(self, model: GameModel, bone: int) -> Optional[Dag]:
+        """The dag of a model's bone by index, redirected to a rig handle when constrained."""
+        if bone < 0:
+            return None
+        bones = model.bones
+        if bone >= len(bones):
+            return None
+        transform = bones[bone].element
+        node = next((d for d, _m, _v in model.walk_visibility()
+                     if d.transform is not None and d.transform.element is transform), None)
+        if node is None:
+            return None
+        shot = self.current_shot
+        if shot is not None:
+            self._indices(shot)
+            op = self._constrained.get((id(transform), "position")) or self._constrained.get((id(transform), "orientation"))
+            if op is not None:
+                handle = constraint_handle(op)
+                if handle is not None and shot.scene is not None:
+                    handle_node = next((d for d, _m, _v in shot.scene.walk_visibility() if d.element is handle), None)
+                    if handle_node is not None:
+                        return handle_node
+        return node
 
     # -- manipulating --------------------------------------------------------------
     def _manipulate_begin(self) -> None:

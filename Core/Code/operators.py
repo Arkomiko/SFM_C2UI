@@ -347,3 +347,13 @@ def _length(a: Vec3) -> float:
 def _normalize(a: Vec3) -> Vec3:
     n = _length(a)
     return _scale(a, 1.0 / n) if n > 1e-12 else (0.0, 0.0, 0.0)
+
+
+def constraint_handle(op: Element) -> Optional[Element]:
+    """The dag a constraint follows - the rig handle to move instead of the bone it owns."""
+    for target in op.get("targets") or []:
+        if isinstance(target, Element):
+            dag = target.get("target")
+            if isinstance(dag, Element):
+                return dag
+    return None

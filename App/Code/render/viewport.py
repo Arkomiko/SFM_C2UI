@@ -17,7 +17,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from PySide6.QtCore import QPoint, Qt, Signal
+from PySide6.QtCore import QElapsedTimer, QPoint, Qt, QTimer, Signal
 from PySide6.QtGui import QSurfaceFormat
 from PySide6.QtOpenGL import QOpenGLFramebufferObject, QOpenGLFramebufferObjectFormat
 from PySide6.QtOpenGLWidgets import QOpenGLWidget
@@ -48,7 +48,8 @@ class Viewport(QOpenGLWidget):
     scene_ready = Signal(str)
     #: emitted when the user takes hold of the camera
     camera_taken = Signal()
-    #: emitted with the instance under a click (or None for empty space)
+    #: emitted with (instance, bone index) under a click, or (None, -1) for empty space;
+    #: the bone is the one weighting the nearest vertex, -1 when the model has none
     picked = Signal(object)
     #: manipulator drags: begin, a delta (Vec3 or (axis, angle)), end
     manipulate_begin = Signal()
@@ -73,6 +74,13 @@ class Viewport(QOpenGLWidget):
         self._pick_fbo: Optional[QOpenGLFramebufferObject] = None
         #: manipulator size in pixels
         self.manipulator_pixels = 90
+        # SFM's flight: keys held while the right button is down move the camera
+        self._keys_down: set = set()
+        self._fly_timer = QTimer(self)
+        self._fly_timer.setInterval(16)
+        self._fly_timer.timeout.connect(self._fly_tick)
+        self._fly_clock = QElapsedTimer()
+        self._looking = False
 
     # -- scene ---------------------------------------------------------------------
     def set_scene(self, scene: Optional[Scene], frame: bool = True) -> None:
@@ -180,21 +188,76 @@ class Viewport(QOpenGLWidget):
             self.doneCurrent()
         return found
 
-    # -- input ---------------------------------------------------------------------
+    def pick_bone(self, instance: SceneInstance, x: int, y: int) -> int:
+        """The bone weighting the vertex nearest the pixel, on the CPU from the posed
+        skinning matrices; -1 when the model has no bones or nothing projects."""
+        if not instance.bones:
+            return -1
+        best, best_d = -1, 24.0 ** 2                      # within 24 px, else it is not that bone
+        world = instance.world
+        bones = instance.bones
+        for item in instance.loaded.items:
+            mesh = item.mesh
+            pos, idx, wgt = mesh.positions, mesh.bone_indices, mesh.bone_weights
+            n = len(pos) // 3
+            if len(idx) < n * 3 or len(wgt) < n * 3:
+                continue
+            for v in range(0, n, 2):                      # every other vertex is plenty
+                px, py, pz = pos[3 * v], pos[3 * v + 1], pos[3 * v + 2]
+                sx = sy = sz = 0.0
+                heaviest, heaviest_w = -1, 0.0
+                for k in range(3):
+                    w = wgt[3 * v + k]
+                    if w <= 0.0:
+                        continue
+                    b = idx[3 * v + k]
+                    if b >= len(bones):
+                        continue
+                    m = bones[b]
+                    sx += w * (m[0] * px + m[1] * py + m[2] * pz + m[3])
+                    sy += w * (m[4] * px + m[5] * py + m[6] * pz + m[7])
+                    sz += w * (m[8] * px + m[9] * py + m[10] * pz + m[11])
+                    if w > heaviest_w:
+                        heaviest, heaviest_w = b, w
+                if heaviest < 0:
+                    continue
+                wx = world[0] * sx + world[4] * sy + world[8] * sz + world[12]
+                wy = world[1] * sx + world[5] * sy + world[9] * sz + world[13]
+                wz = world[2] * sx + world[6] * sy + world[10] * sz + world[14]
+                screen = self.project((wx, wy, wz))
+                if screen is None:
+                    continue
+                d = (screen[0] - x) ** 2 + (screen[1] - y) ** 2
+                if d < best_d:
+                    best, best_d = heaviest, d
+        return best
+
+    # -- input: SFM's scheme -------------------------------------------------------
+    #   left click      select what is under the cursor (a bone of a model)
+    #   left drag       the manipulator, when the press lands on it
+    #   right drag      look around from where the camera is; hold it and fly with
+    #                   W A S D (forward, left, back, right), Z / X (down, up),
+    #                   Shift faster, Ctrl slower
+    #   middle drag     pan;  Alt + left drag  orbit the target;  wheel  dolly
     def mousePressEvent(self, event) -> None:
         pos = event.position().toPoint()
         self._last = pos
         self._press = pos
         self._dragged = False
         self.setFocus()
-        if event.button() == Qt.LeftButton and not (event.modifiers() & Qt.ShiftModifier):
+        if event.button() == Qt.LeftButton and not (event.modifiers() & Qt.AltModifier):
             axis = self.manipulator.hit(pos.x(), pos.y(), self.project, self._manipulator_size())
             if axis is not None:
                 self.manipulator.begin(axis, pos.x(), pos.y(), self.project)
                 self.manipulate_begin.emit()
                 self.update()
                 return
-        if event.buttons() & (Qt.LeftButton | Qt.MiddleButton):
+        if event.button() == Qt.RightButton:
+            self._looking = True
+            self._fly_clock.start()
+            self._fly_timer.start()
+            self.camera_taken.emit()
+        elif event.button() == Qt.MiddleButton or (event.button() == Qt.LeftButton and event.modifiers() & Qt.AltModifier):
             self.camera_taken.emit()
 
     def mouseMoveEvent(self, event) -> None:
@@ -210,32 +273,72 @@ class Viewport(QOpenGLWidget):
                 self.manipulated.emit(delta)
             self.update()
             return
-        if buttons & Qt.MiddleButton or (buttons & Qt.LeftButton and event.modifiers() & Qt.ShiftModifier):
+        if buttons & Qt.RightButton:
+            self.camera.look(dx, dy)
+        elif buttons & Qt.MiddleButton:
             self.camera.pan(dx, dy, self.height())
-        elif buttons & Qt.LeftButton:
+        elif buttons & Qt.LeftButton and event.modifiers() & Qt.AltModifier:
             self.camera.orbit(dx, dy)
         else:
             return
         self.update()
 
     def mouseReleaseEvent(self, event) -> None:
+        if event.button() == Qt.RightButton:
+            self._looking = False
+            if not self._keys_down:
+                self._fly_timer.stop()
         if self.manipulator.active is not None:
             self.manipulator.end()
             self.manipulate_end.emit()
             self.update()
             return
-        if event.button() == Qt.LeftButton and not self._dragged:
+        if event.button() == Qt.LeftButton and not self._dragged and not (event.modifiers() & Qt.AltModifier):
             pos = event.position().toPoint()
-            self.picked.emit(self.pick(pos.x(), pos.y()))
+            instance = self.pick(pos.x(), pos.y())
+            bone = self.pick_bone(instance, pos.x(), pos.y()) if instance is not None else -1
+            self.picked.emit((instance, bone))
 
     def wheelEvent(self, event) -> None:
         self.camera.dolly(event.angleDelta().y() / 120.0)
         self.camera_taken.emit()
         self.update()
 
+    def _fly_tick(self) -> None:
+        """Move while the right button is held and flight keys are down."""
+        seconds = self._fly_clock.restart() / 1000.0
+        if not self._looking or not self._keys_down:
+            return
+        keys = self._keys_down
+        forward = (Qt.Key_W in keys) - (Qt.Key_S in keys)
+        right = (Qt.Key_D in keys) - (Qt.Key_A in keys)
+        up = (Qt.Key_X in keys or Qt.Key_E in keys) - (Qt.Key_Z in keys or Qt.Key_Q in keys)
+        if not (forward or right or up):
+            return
+        speed = self.camera.distance * 1.5                # units per second, scaled to the scene
+        if Qt.Key_Shift in keys:
+            speed *= 4.0
+        if Qt.Key_Control in keys:
+            speed *= 0.25
+        step = speed * min(seconds, 0.1)
+        self.camera.fly(forward * step, right * step, up * step)
+        self.update()
+
+    def keyReleaseEvent(self, event) -> None:
+        self._keys_down.discard(event.key())
+        if not self._keys_down and not self._looking:
+            self._fly_timer.stop()
+        super().keyReleaseEvent(event)
+
     def keyPressEvent(self, event) -> None:
         key = event.key()
-        if key == Qt.Key_W:
+        self._keys_down.add(key)
+        if self._looking:
+            if not self._fly_timer.isActive():
+                self._fly_clock.start()
+                self._fly_timer.start()
+            return                                        # flight keys never reach the shortcuts
+        if key == Qt.Key_F3:
             self.renderer.wireframe = not self.renderer.wireframe
             self.update()
         elif key == Qt.Key_T:

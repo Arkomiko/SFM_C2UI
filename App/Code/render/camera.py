@@ -147,6 +147,28 @@ class OrbitCamera:
         self.target = add(self.target, scale(screen_right, -dx * per_pixel))
         self.target = add(self.target, scale(screen_up, dy * per_pixel))
 
+    # -- SFM's camera: look from where the eye is, fly through the scene --------------
+    def look(self, dx: float, dy: float, speed: float = 0.004) -> None:
+        """Turn the camera about its own eye (right-drag in SFM); the target follows."""
+        eye = self.eye()
+        self.yaw -= dx * speed
+        self.pitch -= dy * speed
+        self.pitch = max(-self._pitch_limit, min(self._pitch_limit, self.pitch))
+        offset = sub(self.eye(), self.target)             # the new eye-from-target offset
+        self.target = sub(eye, offset)                    # keep the eye where it was
+
+    def screen_axes(self) -> Tuple[Vec3, Vec3, Vec3]:
+        """Forward, right and up as the viewer sees them."""
+        forward = normalize(sub(self.target, self.eye()))
+        right = normalize(cross(forward, self.up))
+        return forward, right, cross(right, forward)
+
+    def fly(self, forward: float, right: float, up: float) -> None:
+        """Move eye and target together by world units along the view axes (WASD in SFM)."""
+        f, r, u = self.screen_axes()
+        step = add(add(scale(f, forward), scale(r, right)), scale(u, up))
+        self.target = add(self.target, step)
+
     def describe(self) -> str:
         return (f"target {tuple(round(v, 1) for v in self.target)} dist {self.distance:.1f} "
                 f"yaw {math.degrees(self.yaw):.0f} pitch {math.degrees(self.pitch):.0f} up {self.up_axis}")
