@@ -15,6 +15,14 @@
 
 ---
 
+## تیاری
+
+<p align="center"><img src="../assets/UR-pk/sidebar.svg" alt="تیاری" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 41%</b></p>
+
+<p align="center"><a href="../assets/UR-pk/sidebar.md"><img alt="تیاری تفصیل سے" src="https://img.shields.io/badge/%D8%AA%DB%8C%D8%A7%D8%B1%DB%8C_%D8%AA%D9%81%D8%B5%DB%8C%D9%84_%D8%B3%DB%92-66c0f4?style=for-the-badge"></a></p>
+
 ## خیال
 
 Source Filmmaker ایک مضبوط ٹول ہے جس کا انٹرفیس 2012 میں رہ گیا۔ C2UI اسے بدلتا یا دوبارہ نہیں بناتا: مقصد بس SFM کو تھوڑا جدید اور آسان بنانا ہے۔
@@ -31,114 +39,6 @@ Source Filmmaker ایک مضبوط ٹول ہے جس کا انٹرفیس 2012 م�
   │  اپنا رینڈر  │       صرف پڑھنا       │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## تیاری
-
-<img align="right" src="../assets/UR-pk/sidebar.svg" alt="تیاری" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 41%</b>
-
-ہر حصہ کھلتا ہے: کیا پہلے سے کام کرتا ہے اور کیا ابھی نہیں۔ فیصد SFM کی صلاحیتوں کے مقابلے ایک اندازہ ہے۔
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>SFM تلاش کرنا اور ماؤنٹ کرنا</b></summary>
-
-Steam رجسٹری → `libraryfolders.vdf` → `gameinfo.txt` کے سرچ پاتھ، انجن کی ترتیب میں۔ معیاری انسٹال پر چھ ماؤنٹ۔ ایپلیکیشن فولڈر کے باہر کچھ نہیں لکھا جاتا۔
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>مواد کا انڈیکس</b></summary>
-
-70 199 فائلیں 1.1 سیکنڈ ٹھنڈا / 0.02 سیکنڈ کیش سے؛ ماؤنٹس کے درمیان اوور رائیڈ بالکل انجن کی طرح حل ہوتے ہیں۔
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ماڈل — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-ورژن 44، 48، 49۔ ڈھانچہ، میش، تمام تفصیلی سطحیں، باڈی گروپ۔ 1 500 ماڈل لوڈ، 0 ناکامی۔
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>میٹیریل — <code>.vmt</code></b></summary>
-
-تمام 19 554 میٹیریل پڑھے جاتے ہیں؛ `patch`، DX بلاک، پراکسی۔
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ٹیکسچر — <code>.vtf</code></b></summary>
-
-ورژن 7.0–7.5، DXT1/3/5 اور تمام غیر کمپریسڈ فارمیٹ، کیوب میپ، مِپ۔ DXT بغیر ڈی کوڈ GPU میں جاتا ہے۔
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>سیشن — <code>.dmx</code></b></summary>
-
-بائنری 1–5 اور KeyValues2۔ انسٹال کا ہر سیشن اور پارٹیکل فائل **بائٹ بہ بائٹ** واپس لکھی جاتی ہے۔
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>اسکرین پر سیشن</b></summary>
-
-ٹائم لائن پر شاٹس اور ساؤنڈ ٹریک، ایلیمنٹ ٹری، ہر شاٹ کا منظر اس کے کیمرے سے۔ ابھی نہیں: نقشے، پارٹیکل، آواز۔
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>اینیمیشن</b></summary>
-
-کرسر پر چینل اور لاگ کا اندازہ؛ اسکرب اور پلے۔ ہڈیاں، کیمرے اور مرئیت سیشن کی پیروی کرتے ہیں۔
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>چہرے</b></summary>
-
-Flex کنٹرولر، کمپائل شدہ قواعد اور ورٹیکس اینیمیشن — کردار بولتے اور تاثرات دکھاتے ہیں۔ ابھی نہیں: جھریوں کے نقشے۔
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>رگز</b></summary>
-
-ایکسپریشن، point/orient/parent/aim کنسٹرینٹ، دو ہڈی IK۔ ابھی نہیں: مکمل آپریٹر انحصار گراف، رگ بنانا۔
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>ایڈیٹنگ</b></summary>
-
-کلک سے انتخاب، موو/روٹیٹ مینیپولیٹر، کسی بھی ایٹریبیوٹ کا انسپکٹر، کرسر پر کی، انڈو/ریڈو، بائٹ درست سیو۔
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>موشن ایڈیٹر</b></summary>
-
-رولر پر ہولڈ اور فال آف کے ساتھ وقت کا انتخاب؛ ترمیم SFM کی طرح اس پر پھیلتی ہے۔ ابھی نہیں: پری سیٹ، لیئر۔
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>گراف ایڈیٹر</b></summary>
-
-منتخب ایلیمنٹ چلانے والے ہر لاگ کے کرو: X/Y/Z، pitch/yaw/roll، اسکیلر۔ کیز وقت اور قدر میں لائیو پیش نظارہ کے ساتھ گھسیٹی جاتی ہیں، ڈبل کلک شامل کرتا ہے، Delete ہٹاتا ہے؛ وقت کا محور ٹائم لائن کا ہے۔ ابھی نہیں: ٹینجنٹ اور کرو کی اقسام، کیز کے گروپ کی اسکیلنگ۔
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>پینل ڈاکنگ</b></summary>
-
-UE5 اور Visual Studio کی طرح، پیش نظارہ کے ساتھ اہداف کے کمپاس پر پینل گھسیٹیں۔ ابھی نہیں: محفوظ لے آؤٹ، تھیم۔
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Source شیڈنگ</b></summary>
-
-صرف ٹیکسچر اور سادہ روشنی۔ ابھی نہیں: phong، rim، lightwarp، منظر کی روشنیاں، سائے۔
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>نقشے — <code>.bsp</code></b></summary>
-
-شروع نہیں ہوا۔
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>تصویر اور ویڈیو میں رینڈر</b></summary>
-
-شروع نہیں ہوا۔
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>پلگ ان <code>.c2plg</code></b></summary>
-
-شروع نہیں ہوا۔
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>تھیم اور ورک اسپیس</b></summary>
-
-جان بوجھ کر بعد میں: ایک ہی شکل جب تک ایڈیٹر میں سجانے کے قابل کچھ نہ ہو۔
-
-</details>
-
-**ریلیز کے لیے تیار نہیں۔** بنیاد — SFM کا ہر فائل فارمیٹ، صحیح پڑھا اور پوری انسٹالیشن پر جانچا گیا — موجود اور ٹیسٹ شدہ ہے؛ سیشن کھولا، چلایا، بدلا اور محفوظ کیا جا سکتا ہے۔ کمی ہے کام کی *سہولت* کی: گراف ایڈیٹر، Source شیڈنگ، نقشے، ایکسپورٹ۔ جب تک کوئی اینیمیٹر اس میں ایک دن کا کام نہ کر سکے، کوئی ورژن نمبر نہیں۔
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="Meet the Heavy کھلا ہوا ایڈیٹر" width="100%"><br><sub>آج کا ایڈیٹر، Valve کا Meet the Heavy کھلا ہوا: ٹائم لائن پر شاٹس اور آواز، سیشن ٹری، پہلا شاٹ اپنے کیمرے سے، سیشن کے مطابق پوز اور چہروں والے کردار۔</sub></p>
 
@@ -158,8 +58,8 @@ Windows، Python 3.13 اور Source Filmmaker انسٹالیشن درکار۔
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 پہلی بار Steam سے SFM تلاش کرتا ہے؛ نہ ملے تو پوچھتا ہے۔ <kbd>Ctrl</kbd>+<kbd>O</kbd> سیشن کھولتا ہے، <kbd>Space</kbd> پلے، <kbd>C</kbd> شاٹ کیمرہ، <kbd>T</kbd>/<kbd>R</kbd> موو/روٹیٹ، <kbd>M</kbd> موشن ایڈیٹر، <kbd>Ctrl</kbd>+<kbd>Z</kbd> انڈو، <kbd>Ctrl</kbd>+<kbd>S</kbd> سیو۔ پینل عنوان سے گھسیٹے جاتے ہیں۔ ٹیسٹ کو کچھ نہیں چاہیے:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            لانچر
+├── README.md
 ├── Core/              انجن: فارمیٹ، ورچوئل فائل سسٹم، انڈیکس، برج
 ├── App/               ایڈیٹر: مواد لائبریری، رینڈرر، ونڈو
 ├── Tools/             لوکلائزیشن، UI ٹولز، پلگ ان (بعد میں)
+│   └── Launcher/      لانچر
 ├── Testing/           ٹیسٹ، بائٹ درست فکسچر، ایک رنر
-└── GIT&DOCK/README/   یہ README دیگر زبانوں میں
+└── GIT&DOCK/          یہ README دیگر زبانوں میں
 ```
 
 ## روڈ میپ
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## لائسنس اور اعتراف
 
-Source Filmmaker، Team Fortress 2 اور Source انجن Valve کے ہیں۔ یہ پروجیکٹ ان کے فائل فارمیٹ پڑھتا ہے، ان کی کوئی فائل شامل نہیں کرتا، اور صرف Steam سے آپ کی اپنی SFM کاپی کے ساتھ کام کرتا ہے۔
+C2UI کا اپنا کوڈ **C2UI لائسنس** کے تحت ہے: ذاتی اور غیر تجارتی استعمال کے لیے آزاد؛ تجارتی استعمال صرف مصنف کی تحریری رضامندی سے؛ ترمیم شدہ ورژن میں اصل پروجیکٹ اور اس کے مصنف Arkomiko کا ذکر لازم۔ پلگ ان اور ایڈ آن **C2UI — Plugins & Addons (C2UI‑Pl&AD)** لائسنس کے تحت ہیں۔
 
-C2UI کے اپنے کوڈ کا لائسنس ابھی منتخب نہیں ہوا — تب تک جملہ حقوق محفوظ۔ Issues اور pull requests پھر بھی خوش آمدید۔
+Source Filmmaker، Team Fortress 2 اور Source انجن Valve کے ہیں؛ پروجیکٹ ان کے فارمیٹ پڑھتا ہے، ان کی کوئی فائل شامل نہیں کرتا، اور صرف Steam سے آپ کی اپنی SFM کاپی کے ساتھ کام کرتا ہے۔
+
+<p align="center"><a href="../LICENSE/UR-pk.md"><img alt="لائسنس کا متن" src="https://img.shields.io/badge/%D9%84%D8%A7%D8%A6%D8%B3%D9%86%D8%B3_%DA%A9%D8%A7_%D9%85%D8%AA%D9%86-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="انسٹالیشن سے براہ راست رینڈر کیے 64 ماڈل" width="60%"><br><sub>انسٹالیشن سے بے ترتیب چنے چونسٹھ ماڈل، C2UI کے اپنے رینڈرر سے بنائے گئے۔</sub></p>

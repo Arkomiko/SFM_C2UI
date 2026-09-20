@@ -15,6 +15,14 @@
 
 ---
 
+## Grad de pregătire
+
+<p align="center"><img src="../assets/RO-md/sidebar.svg" alt="Grad de pregătire" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Pregătire generală pentru lansare: 41%</b></p>
+
+<p align="center"><a href="../assets/RO-md/sidebar.md"><img alt="Pregătirea în detaliu" src="https://img.shields.io/badge/Preg%C4%83tirea_%C3%AEn_detaliu-66c0f4?style=for-the-badge"></a></p>
+
 ## Ideea
 
 Source Filmmaker este un instrument puternic a cărui interfață a rămas în 2012. C2UI nu îl înlocuiește și nu îl reface: scopul este pur și simplu să facă SFM puțin mai modern și mai comod.
@@ -31,114 +39,6 @@ Primul obiectiv este compatibilitatea deplină cu SFM, inclusiv oase și rig-uri
   │  render prop. │      doar citire      │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## Grad de pregătire
-
-<img align="right" src="../assets/RO-md/sidebar.svg" alt="Grad de pregătire" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Pregătire generală pentru lansare: 41%</b>
-
-Fiecare zonă se deschide: ce funcționează deja și ce nu există încă. Procentele sunt o estimare față de posibilitățile SFM.
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Găsirea și montarea SFM</b></summary>
-
-Registrul Steam → `libraryfolders.vdf` → căile din `gameinfo.txt` în ordinea motorului. Șase montări pe o instalare standard. Nimic nu se scrie în afara folderului aplicației.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Index de conținut</b></summary>
-
-70 199 fișiere în 1,1 s la rece / 0,02 s din cache; suprascrierile între montări sunt rezolvate exact ca în motor.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Modele — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-Versiunile 44, 48, 49. Schelet, mesh-uri, toate nivelurile de detaliu, grupuri de corp. 1 500 de modele încărcate, 0 eșecuri.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Materiale — <code>.vmt</code></b></summary>
-
-Toate cele 19 554 de materiale livrate se citesc; `patch`, blocuri DX, proxy-uri.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Texturi — <code>.vtf</code></b></summary>
-
-Versiunile 7.0–7.5, DXT1/3/5 și toate formatele necomprimate, cubemap-uri, mip-uri. DXT merge pe GPU fără decodare.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sesiuni — <code>.dmx</code></b></summary>
-
-Binar 1–5 și KeyValues2. Fiecare sesiune și fișier de particule din instalare se rescrie **octet cu octet** identic.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Sesiunea pe ecran</b></summary>
-
-Cadre și piste de sunet pe cronologie, arborele elementelor, scena fiecărui cadru prin camera sa. Încă nu: hărți, particule, sunet.
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>Animație</b></summary>
-
-Canale și loguri evaluate la cursor; derulare și redare. Oasele, camerele și vizibilitatea urmează sesiunea.
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>Fețe</b></summary>
-
-Controlere flex, regulile compilate și animația de vârfuri — personajele vorbesc și au expresii. Încă nu: hărți de riduri.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Rig-uri</b></summary>
-
-Expresii, constrângeri point/orient/parent/aim, IK cu două oase. Încă nu: graful complet al operatorilor, crearea de rig-uri.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Editare</b></summary>
-
-Selectare prin clic, manipulator de mutare/rotire, inspector pentru orice atribut, cheie la cursor, anulare/refacere, salvare exactă la octet.
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
-
-Selecție de timp cu hold și falloff pe riglă; o modificare se întinde peste ea ca în SFM. Încă nu: presetări, straturi.
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Editor de grafice</b></summary>
-
-Curbele fiecărui log al elementului selectat: X/Y/Z, pitch/yaw/roll, scalari. Cheile se trag în timp și valoare cu previzualizare live, dublu clic inserează, Delete șterge; axa timpului e cea a cronologiei. Încă nu: tangente și tipuri de curbe, scalarea unui grup de chei.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Andocarea panourilor</b></summary>
-
-Trageți panourile pe o busolă de ținte cu previzualizare, ca în UE5 și Visual Studio. Încă nu: aranjări salvate, teme.
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Umbrire Source</b></summary>
-
-Doar textură și o lumină simplă. Încă nu: phong, rim, lightwarp, lumini de scenă, umbre.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Hărți — <code>.bsp</code></b></summary>
-
-Neînceput.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Randare în imagine și video</b></summary>
-
-Neînceput.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Plugin-uri <code>.c2plg</code></b></summary>
-
-Neînceput.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Teme și spații de lucru</b></summary>
-
-Amânat intenționat: un singur aspect până când editorul are ce stiliza.
-
-</details>
-
-**Nu este gata de lansare.** Fundația — fiecare format de fișier folosit de SFM, citit corect și verificat pe întreaga instalare — există și este testată; o sesiune poate fi deschisă, redată, modificată și salvată. Lipsește *confortul* lucrului: editorul de grafice, umbrirea Source, hărțile, exportul. Fără număr de versiune până când un animator poate lucra o zi întreagă în el.
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="Editorul cu Meet the Heavy deschis" width="100%"><br><sub>Editorul azi, cu sesiunea Valve „Meet the Heavy” deschisă: cadre și sunet pe cronologie, arborele sesiunii, primul cadru văzut prin propria cameră, personaje în pozele și cu fețele din sesiune.</sub></p>
 
@@ -158,8 +58,8 @@ Necesită Windows, Python 3.13 și o instalare Source Filmmaker.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 La prima pornire SFM este căutat prin Steam; dacă nu este găsit, programul întreabă. <kbd>Ctrl</kbd>+<kbd>O</kbd> deschide o sesiune, <kbd>Space</kbd> redă, <kbd>C</kbd> privește prin camera cadrului, <kbd>T</kbd>/<kbd>R</kbd> mută/rotește, <kbd>M</kbd> motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> anulează, <kbd>Ctrl</kbd>+<kbd>S</kbd> salvează. Panourile se trag de titlu. Testele nu au nevoie de nimic:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            lansatorul
+├── README.md
 ├── Core/              motor: formate, sistem de fișiere virtual, index, punți
 ├── App/               editorul: biblioteca de conținut, renderer, fereastră
 ├── Tools/             localizare, unelte UI, plugin-uri (mai târziu)
+│   └── Launcher/      lansatorul
 ├── Testing/           teste, fixture-uri exacte la octet, un singur runner
-└── GIT&DOCK/README/   acest README în alte limbi
+└── GIT&DOCK/          acest README în alte limbi
 ```
 
 ## Plan
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## Licență și mulțumiri
 
-Source Filmmaker, Team Fortress 2 și motorul Source aparțin Valve. Proiectul citește formatele lor de fișiere, nu livrează niciun fișier de-al lor și funcționează doar cu copia de SFM pe care o aveți deja prin Steam.
+Codul propriu C2UI este sub **licența C2UI**: liber pentru uz personal și necomercial; uz comercial doar cu acordul scris al autorului; versiunile modificate trebuie să indice proiectul original și autorul său, Arkomiko. Plugin-urile și addon-urile sunt sub licența **C2UI — Plugins & Addons (C2UI‑Pl&AD)**.
 
-Licența pentru codul propriu C2UI nu a fost încă aleasă — până atunci, toate drepturile rezervate. Issues și pull requests sunt binevenite.
+Source Filmmaker, Team Fortress 2 și motorul Source aparțin Valve; proiectul citește formatele lor, nu conține fișierele lor și funcționează doar cu copia ta de SFM din Steam.
+
+<p align="center"><a href="../LICENSE/RO-md.md"><img alt="Textul licenței" src="https://img.shields.io/badge/Textul_licen%C8%9Bei-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="64 de modele randate direct din instalare" width="60%"><br><sub>Șaizeci și patru de modele alese la întâmplare din instalare, desenate de renderer-ul propriu al C2UI.</sub></p>

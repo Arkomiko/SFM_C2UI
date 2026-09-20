@@ -15,6 +15,14 @@
 
 ---
 
+## തയ്യാറെടുപ്പ്
+
+<p align="center"><img src="../assets/ML-in/sidebar.svg" alt="തയ്യാറെടുപ്പ്" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>റിലീസിനുള്ള മൊത്തം തയ്യാറെടുപ്പ്: 41%</b></p>
+
+<p align="center"><a href="../assets/ML-in/sidebar.md"><img alt="തയ്യാറെടുപ്പ് വിശദമായി" src="https://img.shields.io/badge/%E0%B4%A4%E0%B4%AF%E0%B5%8D%E0%B4%AF%E0%B4%BE%E0%B4%B1%E0%B5%86%E0%B4%9F%E0%B5%81%E0%B4%AA%E0%B5%8D%E0%B4%AA%E0%B5%8D_%E0%B4%B5%E0%B4%BF%E0%B4%B6%E0%B4%A6%E0%B4%AE%E0%B4%BE%E0%B4%AF%E0%B4%BF-66c0f4?style=for-the-badge"></a></p>
+
 ## ആശയം
 
 Source Filmmaker ശക്തമായ ഒരു ഉപകരണമാണ്, പക്ഷേ അതിന്റെ ഇന്റർഫേസ് 2012-ൽ തന്നെ നിൽക്കുന്നു. C2UI അതിനെ മാറ്റിസ്ഥാപിക്കുകയോ പുനർനിർമ്മിക്കുകയോ ചെയ്യുന്നില്ല: ലക്ഷ്യം SFM-നെ അൽപ്പം കൂടി ആധുനികവും സൗകര്യപ്രദവുമാക്കുക മാത്രം.
@@ -31,114 +39,6 @@ Source Filmmaker ശക്തമായ ഒരു ഉപകരണമാണ്, �
   │  സ്വന്തം റെൻഡർ │      വായന മാത്രം       │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## തയ്യാറെടുപ്പ്
-
-<img align="right" src="../assets/ML-in/sidebar.svg" alt="തയ്യാറെടുപ്പ്" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>റിലീസിനുള്ള മൊത്തം തയ്യാറെടുപ്പ്: 41%</b>
-
-ഓരോ മേഖലയും വികസിപ്പിക്കാം: ഇപ്പോൾ തന്നെ പ്രവർത്തിക്കുന്നതും ഇതുവരെ ഇല്ലാത്തതും. ശതമാനങ്ങൾ SFM-ന്റെ കഴിവുകളുമായി താരതമ്യപ്പെടുത്തിയ കണക്കാണ്.
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>SFM കണ്ടെത്തലും മൗണ്ടിംഗും</b></summary>
-
-Steam രജിസ്ട്രി → `libraryfolders.vdf` → `gameinfo.txt`-ന്റെ തിരയൽ പാതകൾ, എഞ്ചിന്റെ ക്രമത്തിൽ. സാധാരണ ഇൻസ്റ്റാളിൽ ആറ് മൗണ്ടുകൾ. ആപ്ലിക്കേഷൻ ഫോൾഡറിന് പുറത്ത് ഒന്നും എഴുതുന്നില്ല.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ഉള്ളടക്ക സൂചിക</b></summary>
-
-70 199 ഫയലുകൾ 1.1 സെ തണുത്ത / 0.02 സെ കാഷിൽ നിന്ന്; മൗണ്ടുകൾക്കിടയിലെ ഓവർറൈഡുകൾ എഞ്ചിൻ പോലെ തന്നെ പരിഹരിക്കുന്നു.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>മോഡലുകൾ — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-പതിപ്പുകൾ 44, 48, 49. അസ്ഥികൂടം, മെഷുകൾ, എല്ലാ വിശദാംശ തലങ്ങളും, ബോഡി ഗ്രൂപ്പുകൾ. 1 500 മോഡലുകൾ ലോഡ്, 0 പരാജയങ്ങൾ.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>മെറ്റീരിയലുകൾ — <code>.vmt</code></b></summary>
-
-എല്ലാ 19 554 മെറ്റീരിയലുകളും വായിക്കുന്നു; `patch`, DX ബ്ലോക്കുകൾ, പ്രോക്സികൾ.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ടെക്സ്ചറുകൾ — <code>.vtf</code></b></summary>
-
-പതിപ്പുകൾ 7.0–7.5, DXT1/3/5 ഉം എല്ലാ കംപ്രസ് ചെയ്യാത്ത ഫോർമാറ്റുകളും, ക്യൂബ്മാപ്പുകൾ, മിപ്പുകൾ. DXT ഡീകോഡ് ചെയ്യാതെ GPU-ലേക്ക്.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>സെഷനുകൾ — <code>.dmx</code></b></summary>
-
-ബൈനറി 1–5 ഉം KeyValues2 ഉം. ഇൻസ്റ്റാളിലെ ഓരോ സെഷനും പാർട്ടിക്കിൽ ഫയലും **ബൈറ്റ് ബൈ ബൈറ്റ്** തിരികെ എഴുതുന്നു.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>സ്ക്രീനിലെ സെഷൻ</b></summary>
-
-ടൈംലൈനിൽ ഷോട്ടുകളും സൗണ്ട് ട്രാക്കുകളും, എലമെന്റ് ട്രീ, ഓരോ ഷോട്ടിന്റെ രംഗം അതിന്റെ കാമറയിലൂടെ. ഇതുവരെ ഇല്ല: മാപ്പുകൾ, പാർട്ടിക്കിളുകൾ, ശബ്ദം.
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>ആനിമേഷൻ</b></summary>
-
-കഴ്‌സറിൽ ചാനലുകളും ലോഗുകളും വിലയിരുത്തുന്നു; സ്ക്രബും പ്ലേയും. എല്ലുകൾ, കാമറകൾ, ദൃശ്യത സെഷനെ പിന്തുടരുന്നു.
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>മുഖങ്ങൾ</b></summary>
-
-Flex കൺട്രോളറുകൾ, കംപൈൽ ചെയ്ത നിയമങ്ങൾ, വെർട്ടക്സ് ആനിമേഷൻ — കഥാപാത്രങ്ങൾ സംസാരിക്കുന്നു, ഭാവങ്ങൾ കാണിക്കുന്നു. ഇതുവരെ ഇല്ല: ചുളിവ് മാപ്പുകൾ.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>റിഗുകൾ</b></summary>
-
-എക്സ്പ്രഷനുകൾ, point/orient/parent/aim കൺസ്ട്രെയിന്റുകൾ, രണ്ട്-എല്ല് IK. ഇതുവരെ ഇല്ല: പൂർണ്ണ ഓപ്പറേറ്റർ ആശ്രിതത്വ ഗ്രാഫ്, റിഗ് നിർമ്മാണം.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>എഡിറ്റിംഗ്</b></summary>
-
-ക്ലിക്ക് ചെയ്ത് തിരഞ്ഞെടുക്കൽ, മൂവ്/റൊട്ടേറ്റ് മാനിപ്പുലേറ്റർ, ഏത് ആട്രിബ്യൂട്ടിനും ഇൻസ്പെക്ടർ, കഴ്‌സറിൽ കീ, അൻഡു/റീഡു, ബൈറ്റ്-കൃത്യമായ സേവ്.
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>മോഷൻ എഡിറ്റർ</b></summary>
-
-റൂളറിൽ ഹോൾഡും ഫോൾഓഫുമുള്ള സമയ തിരഞ്ഞെടുപ്പ്; എഡിറ്റ് SFM പോലെ അതിൽ പരക്കുന്നു. ഇതുവരെ ഇല്ല: പ്രീസെറ്റുകൾ, ലെയറുകൾ.
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>ഗ്രാഫ് എഡിറ്റർ</b></summary>
-
-തിരഞ്ഞെടുത്ത എലമെന്റിനെ നയിക്കുന്ന ഓരോ ലോഗിന്റെയും വളവുകൾ: X/Y/Z, pitch/yaw/roll, സ്കെയിലറുകൾ. കീകൾ ലൈവ് പ്രിവ്യൂവോടെ സമയത്തിലും മൂല്യത്തിലും വലിക്കാം, ഡബിൾ-ക്ലിക്ക് ചേർക്കുന്നു, Delete നീക്കുന്നു; സമയ അക്ഷം ടൈംലൈനിന്റേത്. ഇതുവരെ ഇല്ല: ടാൻജെന്റുകളും വളവ് തരങ്ങളും, കീ ഗ്രൂപ്പ് സ്കെയിലിംഗ്.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>പാനൽ ഡോക്കിംഗ്</b></summary>
-
-UE5-ലും Visual Studio-യിലും പോലെ, പ്രിവ്യൂവുള്ള ലക്ഷ്യ കോമ്പസിലേക്ക് പാനലുകൾ വലിച്ചിടുക. ഇതുവരെ ഇല്ല: സേവ് ചെയ്ത ലേഔട്ടുകൾ, തീമുകൾ.
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Source ഷേഡിംഗ്</b></summary>
-
-ടെക്സ്ചറും ലളിതമായ വെളിച്ചവും മാത്രം. ഇതുവരെ ഇല്ല: phong, rim, lightwarp, രംഗ വെളിച്ചങ്ങൾ, നിഴലുകൾ.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>മാപ്പുകൾ — <code>.bsp</code></b></summary>
-
-തുടങ്ങിയിട്ടില്ല.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>ചിത്രത്തിലേക്കും വീഡിയോയിലേക്കും റെൻഡർ</b></summary>
-
-തുടങ്ങിയിട്ടില്ല.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>പ്ലഗിനുകൾ <code>.c2plg</code></b></summary>
-
-തുടങ്ങിയിട്ടില്ല.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>തീമുകളും വർക്ക്‌സ്‌പേസുകളും</b></summary>
-
-മനഃപൂർവ്വം പിന്നീട്: എഡിറ്ററിൽ അലങ്കരിക്കാൻ യോഗ്യമായത് വരുന്നതുവരെ ഒരു രൂപം.
-
-</details>
-
-**റിലീസിന് തയ്യാറല്ല.** അടിത്തറ — SFM ഉപയോഗിക്കുന്ന ഓരോ ഫയൽ ഫോർമാറ്റും, ശരിയായി വായിച്ച് മുഴുവൻ ഇൻസ്റ്റാളേഷനിലും പരിശോധിച്ചത് — ഉണ്ട്, ടെസ്റ്റ് ചെയ്തിട്ടുണ്ട്; ഒരു സെഷൻ തുറക്കാം, പ്ലേ ചെയ്യാം, മാറ്റാം, സേവ് ചെയ്യാം. ഇല്ലാത്തത് ജോലിയുടെ *സൗകര്യം*: ഗ്രാഫ് എഡിറ്റർ, Source ഷേഡിംഗ്, മാപ്പുകൾ, എക്സ്പോർട്ട്. ഒരു ആനിമേറ്റർ ഇതിൽ ഒരു ദിവസത്തെ ജോലി ചെയ്യാനാവുന്നതുവരെ വേർഷൻ നമ്പർ ഇല്ല.
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="Meet the Heavy തുറന്ന എഡിറ്റർ" width="100%"><br><sub>ഇന്നത്തെ എഡിറ്റർ, Valve-ന്റെ Meet the Heavy തുറന്ന്: ടൈംലൈനിൽ ഷോട്ടുകളും ശബ്ദവും, സെഷൻ ട്രീ, സ്വന്തം കാമറയിലൂടെ ആദ്യ ഷോട്ട്, സെഷൻ പറയുന്നതുപോലെ പോസും മുഖഭാവവുമുള്ള കഥാപാത്രങ്ങൾ.</sub></p>
 
@@ -158,8 +58,8 @@ Windows, Python 3.13, Source Filmmaker ഇൻസ്റ്റാളേഷൻ ആ�
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 ആദ്യ തുടക്കത്തിൽ Steam വഴി SFM തിരയുന്നു; കിട്ടിയില്ലെങ്കിൽ ചോദിക്കുന്നു. <kbd>Ctrl</kbd>+<kbd>O</kbd> സെഷൻ തുറക്കുന്നു, <kbd>Space</kbd> പ്ലേ, <kbd>C</kbd> ഷോട്ട് കാമറ, <kbd>T</kbd>/<kbd>R</kbd> മൂവ്/റൊട്ടേറ്റ്, <kbd>M</kbd> മോഷൻ എഡിറ്റർ, <kbd>Ctrl</kbd>+<kbd>Z</kbd> അൻഡു, <kbd>Ctrl</kbd>+<kbd>S</kbd> സേവ്. പാനലുകൾ തലക്കെട്ടിൽ പിടിച്ച് വലിക്കുന്നു. ടെസ്റ്റുകൾക്ക് ഒന്നും വേണ്ട:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            ലോഞ്ചർ
+├── README.md
 ├── Core/              എഞ്ചിൻ: ഫോർമാറ്റുകൾ, വെർച്വൽ ഫയൽ സിസ്റ്റം, സൂചിക, പാലങ്ങൾ
 ├── App/               എഡിറ്റർ: ഉള്ളടക്ക ലൈബ്രറി, റെൻഡറർ, വിൻഡോ
 ├── Tools/             പ്രാദേശികവൽക്കരണം, UI ഉപകരണങ്ങൾ, പ്ലഗിനുകൾ (പിന്നീട്)
+│   └── Launcher/      ലോഞ്ചർ
 ├── Testing/           ടെസ്റ്റുകൾ, ബൈറ്റ്-കൃത്യ ഫിക്സ്ചറുകൾ, ഒരു റണ്ണർ
-└── GIT&DOCK/README/   ഈ README മറ്റ് ഭാഷകളിൽ
+└── GIT&DOCK/          ഈ README മറ്റ് ഭാഷകളിൽ
 ```
 
 ## റോഡ്‌മാപ്പ്
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## ലൈസൻസും കടപ്പാടും
 
-Source Filmmaker, Team Fortress 2, Source എഞ്ചിൻ Valve-ന്റേതാണ്. ഈ പ്രോജക്റ്റ് അവരുടെ ഫയൽ ഫോർമാറ്റുകൾ വായിക്കുന്നു, അവരുടെ ഒരു ഫയലും ഉൾപ്പെടുത്തുന്നില്ല, Steam വഴി നിങ്ങൾക്ക് ഇതിനകം ഉള്ള SFM പകർപ്പുമായി മാത്രം പ്രവർത്തിക്കുന്നു.
+C2UI-യുടെ സ്വന്തം കോഡ് **C2UI ലൈസൻസിന്** കീഴിലാണ്: വ്യക്തിഗതവും വാണിജ്യേതരവുമായ ഉപയോഗത്തിന് സ്വതന്ത്രം; വാണിജ്യ ഉപയോഗം രചയിതാവിന്റെ രേഖാമൂലമുള്ള സമ്മതത്തോടെ മാത്രം; പരിഷ്കരിച്ച പതിപ്പുകൾ യഥാർത്ഥ പ്രോജക്റ്റിനെയും രചയിതാവ് Arkomiko-യെയും പരാമർശിക്കണം. പ്ലഗിനുകളും ആഡ്ഓണുകളും **C2UI — Plugins & Addons (C2UI‑Pl&AD)** ലൈസൻസിന് കീഴിൽ.
 
-C2UI-യുടെ സ്വന്തം കോഡിന്റെ ലൈസൻസ് ഇതുവരെ തിരഞ്ഞെടുത്തിട്ടില്ല — അതുവരെ എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം. Issues ഉം pull requests ഉം സ്വാഗതം.
+Source Filmmaker, Team Fortress 2, Source എഞ്ചിൻ Valve-ന്റേതാണ്; പ്രോജക്റ്റ് അവയുടെ ഫോർമാറ്റുകൾ വായിക്കുന്നു, അവയുടെ ഫയലുകൾ ഉൾപ്പെടുത്തുന്നില്ല, Steam-ൽ നിന്നുള്ള നിങ്ങളുടെ സ്വന്തം SFM പകർപ്പുമായി മാത്രം പ്രവർത്തിക്കുന്നു.
+
+<p align="center"><a href="../LICENSE/ML-in.md"><img alt="ലൈസൻസ് പാഠം" src="https://img.shields.io/badge/%E0%B4%B2%E0%B5%88%E0%B4%B8%E0%B5%BB%E0%B4%B8%E0%B5%8D_%E0%B4%AA%E0%B4%BE%E0%B4%A0%E0%B4%82-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="ഇൻസ്റ്റാളേഷനിൽ നിന്ന് നേരിട്ട് റെൻഡർ ചെയ്ത 64 മോഡലുകൾ" width="60%"><br><sub>ഇൻസ്റ്റാളേഷനിൽ നിന്ന് ക്രമരഹിതമായി തിരഞ്ഞെടുത്ത അറുപത്തിനാല് മോഡലുകൾ, C2UI-യുടെ സ്വന്തം റെൻഡറർ വരച്ചത്.</sub></p>

@@ -1,10 +1,12 @@
 """
 Start the editor.
 
-    .venv/Scripts/python.exe c2ui.py
+    .venv/Scripts/python.exe Tools/Launcher/c2ui.py
 
 Runs from the project folder and writes only inside it: settings under
-App/User, caches under App/Cache, the log under App/Temporary.
+App/User, caches under App/Cache, the log under App/Temporary.  The
+project root holds nothing but folders and the README, so the launcher
+lives here and finds the root two folders up.
 """
 from __future__ import annotations
 
@@ -12,7 +14,7 @@ import logging
 import sys
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parent
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 

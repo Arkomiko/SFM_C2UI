@@ -15,6 +15,14 @@
 
 ---
 
+## Pripravljenost
+
+<p align="center"><img src="../assets/SL-si/sidebar.svg" alt="Pripravljenost" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Skupna pripravljenost za izdajo: 41%</b></p>
+
+<p align="center"><a href="../assets/SL-si/sidebar.md"><img alt="Pripravljenost podrobno" src="https://img.shields.io/badge/Pripravljenost_podrobno-66c0f4?style=for-the-badge"></a></p>
+
 ## Zamisel
 
 Source Filmmaker je močno orodje, katerega vmesnik je ostal v letu 2012. C2UI ga ne nadomešča in ne predeluje: cilj je preprosto narediti SFM malo sodobnejši in udobnejši.
@@ -31,114 +39,6 @@ Prvi cilj je polna združljivost s SFM, vključno s kostmi in rigi. Potem tisto,
   │  lastni render │      samo branje      │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## Pripravljenost
-
-<img align="right" src="../assets/SL-si/sidebar.svg" alt="Pripravljenost" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Skupna pripravljenost za izdajo: 41%</b>
-
-Vsako področje se razpre: kaj že deluje in česa še ni. Odstotki so ocena glede na zmožnosti SFM.
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Iskanje in priklop SFM</b></summary>
-
-Register Steam → `libraryfolders.vdf` → poti iz `gameinfo.txt` v vrstnem redu pogona. Šest priklopov na običajni namestitvi. Nič se ne zapiše zunaj mape programa.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Kazalo vsebine</b></summary>
-
-70 199 datotek v 1,1 s hladno / 0,02 s iz predpomnilnika; prekrivanja med priklopi se razrešijo kot v pogonu.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Modeli — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-Različice 44, 48, 49. Okostje, mreže, vse ravni podrobnosti, skupine telesa. 1 500 modelov naloženih, 0 napak.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Materiali — <code>.vmt</code></b></summary>
-
-Vseh 19 554 priloženih materialov se prebere; `patch`, bloki DX, proxyji.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Teksture — <code>.vtf</code></b></summary>
-
-Različice 7.0–7.5, DXT1/3/5 in vsi nestisnjeni formati, cubemapi, mipi. DXT gre na GPU brez dekodiranja.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Seje — <code>.dmx</code></b></summary>
-
-Binarno 1–5 in KeyValues2. Vsaka seja in datoteka delcev iz namestitve se zapiše nazaj **bajt za bajtom** enako.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Seja na zaslonu</b></summary>
-
-Posnetki in zvočne steze na časovnici, drevo elementov, prizor vsakega posnetka skozi njegovo kamero. Še ne: zemljevidi, delci, zvok.
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>Animacija</b></summary>
-
-Kanali in dnevniki ovrednoteni pri kazalcu; drsenje in predvajanje. Kosti, kamere in vidnost sledijo seji.
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>Obrazi</b></summary>
-
-Flex kontrolniki, prevedena pravila in animacija oglišč — liki govorijo in kažejo čustva. Še ne: zemljevidi gub.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Rigi</b></summary>
-
-Izrazi, omejitve point/orient/parent/aim, dvokostni IK. Še ne: celoten graf odvisnosti operatorjev, ustvarjanje rigov.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Urejanje</b></summary>
-
-Izbira s klikom, manipulator za premik/vrtenje, inšpektor za vsak atribut, ključ pri kazalcu, razveljavi/ponovi, bajtno natančno shranjevanje.
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
-
-Časovna izbira s hold in falloff na ravnilu; sprememba se razporedi čez njo kot v SFM. Še ne: prednastavitve, plasti.
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Urejevalnik grafov</b></summary>
-
-Krivulje vsakega dnevnika izbranega elementa: X/Y/Z, pitch/yaw/roll, skalarji. Ključi se vlečejo po času in vrednosti s predogledom v živo, dvojni klik vstavi, Delete briše; časovna os je časovnica. Še ne: tangente in vrste krivulj, skaliranje skupine ključev.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Sidranje plošč</b></summary>
-
-Vlečenje plošč na kompas ciljev s predogledom, kot v UE5 in Visual Studiu. Še ne: shranjene postavitve, teme.
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Senčenje Source</b></summary>
-
-Samo tekstura in preprosta luč. Še ne: phong, rim, lightwarp, luči prizora, sence.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Zemljevidi — <code>.bsp</code></b></summary>
-
-Ni začeto.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Upodabljanje v sliko in video</b></summary>
-
-Ni začeto.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Vtičniki <code>.c2plg</code></b></summary>
-
-Ni začeto.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Teme in delovni prostori</b></summary>
-
-Namerno pozneje: en videz, dokler urejevalnik nima česa oblikovati.
-
-</details>
-
-**Ni pripravljen za izdajo.** Temelj — vsak format datotek, ki ga SFM uporablja, pravilno prebran in preverjen na celotni namestitvi — stoji in je testiran; sejo je mogoče odpreti, predvajati, spremeniti in shraniti. Manjka *udobje* dela: urejevalnik grafov, senčenje Source, zemljevidi, izvoz. Brez številke različice, dokler animator v njem ne more opraviti dneva dela.
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="Urejevalnik z odprto sejo Meet the Heavy" width="100%"><br><sub>Urejevalnik danes, z odprto Valvovo sejo »Meet the Heavy«: posnetki in zvok na časovnici, drevo seje, prvi posnetek skozi lastno kamero, liki v pozah in z obrazi iz seje.</sub></p>
 
@@ -158,8 +58,8 @@ Potrebuje Windows, Python 3.13 in nameščen Source Filmmaker.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 Ob prvem zagonu se SFM poišče prek Steama; če ga ne najde, program vpraša. <kbd>Ctrl</kbd>+<kbd>O</kbd> odpre sejo, <kbd>Preslednica</kbd> predvaja, <kbd>C</kbd> pogleda skozi kamero posnetka, <kbd>T</kbd>/<kbd>R</kbd> premik/vrtenje, <kbd>M</kbd> motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> razveljavi, <kbd>Ctrl</kbd>+<kbd>S</kbd> shrani. Plošče se vlečejo za naslov. Testi ne potrebujejo ničesar:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            zaganjalnik
+├── README.md
 ├── Core/              pogon: formati, navidezni datotečni sistem, kazalo, mostovi
 ├── App/               urejevalnik: knjižnica vsebine, upodabljalnik, okno
 ├── Tools/             lokalizacija, orodja UI, vtičniki (pozneje)
+│   └── Launcher/      zaganjalnik
 ├── Testing/           testi, bajtno natančne fiksture, en zaganjalnik
-└── GIT&DOCK/README/   ta README v drugih jezikih
+└── GIT&DOCK/          ta README v drugih jezikih
 ```
 
 ## Načrt
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## Licenca in zasluge
 
-Source Filmmaker, Team Fortress 2 in pogon Source so Valvovi. Projekt bere njihove formate datotek, ne prilaga nobene njihove datoteke in deluje le z vašo kopijo SFM iz Steama.
+Lastna koda C2UI je pod **licenco C2UI**: prosto za osebno in nekomercialno rabo; komercialna raba le s pisnim soglasjem avtorja; spremenjene različice morajo navesti izvirni projekt in njegovega avtorja Arkomiko. Vtičniki in dodatki so pod licenco **C2UI — Plugins & Addons (C2UI‑Pl&AD)**.
 
-Licenca za lastno kodo C2UI še ni izbrana — do takrat so vse pravice pridržane. Issues in pull requesti so kljub temu dobrodošli.
+Source Filmmaker, Team Fortress 2 in pogon Source so Valvovi; projekt bere njihove formate, ne vsebuje njihovih datotek in deluje le z vašo kopijo SFM iz Steama.
+
+<p align="center"><a href="../LICENSE/SL-si.md"><img alt="Besedilo licence" src="https://img.shields.io/badge/Besedilo_licence-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="64 modelov, upodobljenih naravnost iz namestitve" width="60%"><br><sub>Štiriinšestdeset naključnih modelov iz namestitve, ki jih je narisal lastni upodabljalnik C2UI.</sub></p>

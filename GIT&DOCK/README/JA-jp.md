@@ -15,6 +15,14 @@
 
 ---
 
+## 完成度
+
+<p align="center"><img src="../assets/JA-jp/sidebar.svg" alt="完成度" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>リリースへの全体的な完成度: 41%</b></p>
+
+<p align="center"><a href="../assets/JA-jp/sidebar.md"><img alt="完成度の詳細" src="https://img.shields.io/badge/%E5%AE%8C%E6%88%90%E5%BA%A6%E3%81%AE%E8%A9%B3%E7%B4%B0-66c0f4?style=for-the-badge"></a></p>
+
 ## アイデア
 
 Source Filmmaker は強力なツールですが、インターフェースは 2012 年のままです。C2UI はそれを置き換えたり作り直したりはしません。目的は、SFM を少しだけ現代的で使いやすくすることです。
@@ -31,114 +39,6 @@ Source Filmmaker は強力なツールですが、インターフェースは 20
   │  独自描画    │      読み取り専用      │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## 完成度
-
-<img align="right" src="../assets/JA-jp/sidebar.svg" alt="完成度" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>リリースへの全体的な完成度: 41%</b>
-
-各領域を開くと、すでに動くものとまだないものが分かります。パーセントは SFM の機能に対する目安です。
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>SFM の検出とマウント</b></summary>
-
-Steam レジストリ → `libraryfolders.vdf` → `gameinfo.txt` の検索パスをエンジンと同じ順序で。標準インストールで 6 つのマウント。アプリケーションフォルダの外には何も書き込みません。
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>コンテンツインデックス</b></summary>
-
-70 199 ファイルをコールド 1.1 秒 / キャッシュ 0.02 秒で。マウント間の上書きはエンジンと同じように解決。
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>モデル — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-バージョン 44、48、49。スケルトン、メッシュ、全 LOD、ボディグループ。1 500 モデルを読み込み、失敗 0。
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>マテリアル — <code>.vmt</code></b></summary>
-
-同梱の 19 554 マテリアルすべてを解析。`patch`、DX ブロック、プロキシ。
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>テクスチャ — <code>.vtf</code></b></summary>
-
-バージョン 7.0–7.5、DXT1/3/5 とすべての非圧縮形式、キューブマップ、ミップ。DXT はデコードせずに GPU へ。
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>セッション — <code>.dmx</code></b></summary>
-
-バイナリ 1–5 と KeyValues2。インストール内のすべてのセッションとパーティクルファイルが **バイト単位で同一** に書き戻されます。
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>画面上のセッション</b></summary>
-
-タイムラインのショットと音声トラック、要素ツリー、各ショットのシーンをそのカメラから。未対応: マップ、パーティクル、音声。
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>アニメーション</b></summary>
-
-チャンネルとログをカーソル位置で評価。スクラブと再生。ボーン、カメラ、可視性はセッションに従います。
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>表情</b></summary>
-
-Flex コントローラ、コンパイル済みルール、頂点アニメーション — キャラクターが話し、表情を作ります。未対応: しわマップ。
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>リグ</b></summary>
-
-式、point/orient/parent/aim コンストレイント、2 ボーン IK。未対応: 完全なオペレータ依存グラフ、リグ作成。
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>編集</b></summary>
-
-クリックで選択、移動/回転マニピュレータ、任意の属性のインスペクタ、カーソル位置のキー、元に戻す/やり直し、バイト単位で正確な保存。
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>モーションエディタ</b></summary>
-
-ルーラー上のホールドとフォールオフ付き時間選択。編集は SFM と同じように選択範囲に広がります。未対応: プリセット、レイヤー。
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>グラフエディタ</b></summary>
-
-選択要素を駆動するすべてのログの曲線: X/Y/Z、pitch/yaw/roll、スカラー。キーはライブプレビュー付きで時間と値にドラッグ、ダブルクリックで挿入、Delete で削除。時間軸はタイムラインと共有。未対応: タンジェントとカーブタイプ、キー群のスケーリング。
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>パネルのドッキング</b></summary>
-
-UE5 や Visual Studio のように、プレビュー付きのターゲットコンパスにパネルをドラッグ。未対応: レイアウト保存、テーマ。
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Source シェーディング</b></summary>
-
-テクスチャと単純なライトのみ。未対応: phong、rim、lightwarp、シーンライト、影。
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>マップ — <code>.bsp</code></b></summary>
-
-未着手。
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>画像・動画への書き出し</b></summary>
-
-未着手。
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>プラグイン <code>.c2plg</code></b></summary>
-
-未着手。
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>テーマとワークスペース</b></summary>
-
-意図的に後回し。エディタに飾る価値のあるものができるまで一つの見た目。
-
-</details>
-
-**リリースの準備はできていません。** 基盤 — SFM が使うすべてのファイル形式を正しく読み、インストール全体で検証したもの — は整い、テストされています。セッションを開き、再生し、変更し、保存できます。足りないのは作業の *快適さ*: グラフエディタ、Source シェーディング、マップ、書き出し。アニメーターが一日の仕事をこなせるまでバージョン番号は付けません。
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="Meet the Heavy を開いたエディタ" width="100%"><br><sub>現在のエディタ。Valve の「Meet the Heavy」を開いた状態: タイムラインにショットと音声、セッションツリー、最初のショットを自身のカメラから、セッション通りのポーズと表情のキャラクター。</sub></p>
 
@@ -158,8 +58,8 @@ Windows、Python 3.13、Source Filmmaker のインストールが必要です。
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 初回起動時に Steam 経由で SFM を探します。見つからなければ尋ねます。<kbd>Ctrl</kbd>+<kbd>O</kbd> でセッションを開く、<kbd>Space</kbd> で再生、<kbd>C</kbd> でショットカメラ、<kbd>T</kbd>/<kbd>R</kbd> で移動/回転、<kbd>M</kbd> でモーションエディタ、<kbd>Ctrl</kbd>+<kbd>Z</kbd> で元に戻す、<kbd>Ctrl</kbd>+<kbd>S</kbd> で保存。パネルはタイトルをドラッグします。テストには何も必要ありません:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            ランチャー
+├── README.md
 ├── Core/              エンジン: 形式、仮想ファイルシステム、インデックス、ブリッジ
 ├── App/               エディタ: コンテンツライブラリ、レンダラ、ウィンドウ
 ├── Tools/             ローカライズ、UI ツール、プラグイン (後日)
+│   └── Launcher/      ランチャー
 ├── Testing/           テスト、バイト単位のフィクスチャ、単一ランナー
-└── GIT&DOCK/README/   この README の他言語版
+└── GIT&DOCK/          この README の他言語版
 ```
 
 ## ロードマップ
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## ライセンスとクレジット
 
-Source Filmmaker、Team Fortress 2、Source エンジンは Valve のものです。このプロジェクトはそれらのファイル形式を読むだけで、ファイルは一切同梱せず、Steam で既にお持ちの SFM でのみ動作します。
+C2UI 自身のコードは **C2UI ライセンス** に従います: 個人的・非商用利用は自由、商用利用は作者の書面による同意が必要、改変版は元プロジェクトと作者 Arkomiko を明記すること。プラグインとアドオンは **C2UI — Plugins & Addons (C2UI‑Pl&AD)** ライセンスに従います。
 
-C2UI 自身のコードのライセンスはまだ決めていません — それまでは全著作権を留保します。Issue と Pull Request は歓迎します。
+Source Filmmaker、Team Fortress 2、Source エンジンは Valve のものです。本プロジェクトはそれらの形式を読むだけで、ファイルは一切同梱せず、Steam で所有する自分の SFM とのみ動作します。
+
+<p align="center"><a href="../LICENSE/JA-jp.md"><img alt="ライセンス全文" src="https://img.shields.io/badge/%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%E5%85%A8%E6%96%87-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="インストールから直接描画した 64 モデル" width="60%"><br><sub>インストールから無作為に選んだ 64 のモデルを C2UI 独自のレンダラで描画。</sub></p>

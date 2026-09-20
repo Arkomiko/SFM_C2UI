@@ -15,6 +15,14 @@
 
 ---
 
+## Гатоўнасць
+
+<p align="center"><img src="../assets/BE-by/sidebar.svg" alt="Гатоўнасць" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Агульная гатоўнасць да рэлізу: 41%</b></p>
+
+<p align="center"><a href="../assets/BE-by/sidebar.md"><img alt="Гатоўнасць падрабязна" src="https://img.shields.io/badge/%D0%93%D0%B0%D1%82%D0%BE%D1%9E%D0%BD%D0%B0%D1%81%D1%86%D1%8C_%D0%BF%D0%B0%D0%B4%D1%80%D0%B0%D0%B1%D1%8F%D0%B7%D0%BD%D0%B0-66c0f4?style=for-the-badge"></a></p>
+
 ## Ідэя
 
 Source Filmmaker — моцны інструмент, інтэрфейс якога застаўся ў 2012 годзе. C2UI не замяняе яго і не перарабляе: задача — зрабіць SFM крыху сучаснейшым і зручнейшым.
@@ -31,114 +39,6 @@ Source Filmmaker — моцны інструмент, інтэрфейс яко�
   │  свой рэндар │      толькі чытанне      │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## Гатоўнасць
-
-<img align="right" src="../assets/BE-by/sidebar.svg" alt="Гатоўнасць" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Агульная гатоўнасць да рэлізу: 41%</b>
-
-Кожная вобласць разгортваецца: што ўжо працуе і чаго пакуль няма. Працэнты — ацэнка адносна магчымасцей SFM.
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Пошук і мантаванне SFM</b></summary>
-
-Рэестр Steam → `libraryfolders.vdf` → шляхі з `gameinfo.txt` у парадку рухавіка. Шэсць мантаванняў на стандартнай устаноўцы. Нічога не пішацца па-за папкай праграмы.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Індэкс кантэнту</b></summary>
-
-70 199 файлаў за 1,1 с холадна / 0,02 с з кэшу; перавызначэнні паміж мантаваннямі вырашаюцца як у рухавіку.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Мадэлі — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-Версіі 44, 48, 49. Шкілет, мешы, усе ўзроўні дэталізацыі, body-групы. 1 500 мадэляў загружана, 0 збояў.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Матэрыялы — <code>.vmt</code></b></summary>
-
-Усе 19 554 матэрыялы ўстаноўкі чытаюцца; `patch`, DX-блокі, проксі.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Тэкстуры — <code>.vtf</code></b></summary>
-
-Версіі 7.0–7.5, DXT1/3/5 і ўсе несціснутыя фарматы, кубмапы, mip-узроўні. DXT ідзе ў GPU без распакоўкі.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Сесіі — <code>.dmx</code></b></summary>
-
-Binary 1–5 і KeyValues2. Кожная сесія і файл часціц устаноўкі запісваюцца назад **пабайтава ідэнтычна**.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Сесія на экране</b></summary>
-
-Шоты і гукавыя дарожкі на таймлайне, дрэва элементаў, сцэна шота праз яго камеру. Няма: карт, часціц, гуку.
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>Анімацыя</b></summary>
-
-Каналы і логі вылічаюцца на курсоры; скрабінг і прайграванне. Косткі, камеры, бачнасць ідуць за сесіяй.
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>Твары</b></summary>
-
-Flex-кантролеры, скампіляваныя правілы і вяршынныя дэльты — персанажы гавораць і грымаснічаюць. Няма: wrinkle-карт.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Рыгі</b></summary>
-
-Выразы, point/orient/parent/aim-канстрэйнты, двухзвённы IK. Няма: поўнага графа залежнасцей аператараў, стварэння рыгаў.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Рэдагаванне</b></summary>
-
-Выбар клікам, маніпулятар перамяшчэння/павароту, інспектар любога атрыбута, ключ на курсоры, адмена/паўтор, пабайтава дакладнае захаванне.
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
-
-Вылучэнне часу з hold і falloff на лінейцы; праўка расцякаецца па вылучэнні, як у SFM. Няма: прэсэтаў, слаёў.
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Graph editor</b></summary>
-
-Крывыя кожнага лога выбранага элемента: X/Y/Z, pitch/yaw/roll, скаляры. Ключы рухаюцца мышшу па часе і значэнні з жывым праглядам, устаўляюцца падвойным клікам, выдаляюцца; вось часу агульная з таймлайнам. Няма: датычных і тыпаў крывых, маштабавання групы ключоў.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Докінг панэляў</b></summary>
-
-Перацягванне панэляў на крыжавіну мэт з папярэднім праглядам, як у UE5 і Visual Studio. Няма: захаваных раскладак, тэм.
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Шэйдынг Source</b></summary>
-
-Пакуль толькі тэкстура і простае святло. Няма: phong, rim, lightwarp, асвятлення сцэны, ценяў.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Карты — <code>.bsp</code></b></summary>
-
-Не пачата.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Рэндар у выяву і відэа</b></summary>
-
-Не пачата.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Плагіны <code>.c2plg</code></b></summary>
-
-Не пачата.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Тэмы і працоўныя прасторы</b></summary>
-
-Свядома адкладзена: адна тэма, пакуль рэдактару няма чаго афармляць.
-
-</details>
-
-**Да рэлізу не гатовы.** Падмурак — кожны фармат SFM, прачытаны правільна і правераны на ўсёй устаноўцы, — ёсць і пакрыты тэстамі; сесію можна адкрыць, прайграць, змяніць і захаваць. Не хапае *зручнасці* працы: graph editor, шэйдынгу Source, карт, экспарту. Нумар версіі з'явіцца, калі аніматар зможа адпрацаваць у ім дзень.
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="Рэдактар з адкрытай сесіяй Meet the Heavy" width="100%"><br><sub>Рэдактар сёння: адкрыта сесія Valve «Meet the Heavy» — шоты і гук на таймлайне, дрэва сесіі, першы шот праз яго ўласную камеру, персанажы ў позах і з тварамі з сесіі.</sub></p>
 
@@ -158,8 +58,8 @@ Flex-кантролеры, скампіляваныя правілы і вярш
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 Пры першым запуску SFM шукаецца праз Steam; калі не знайшоўся — праграма спытае. <kbd>Ctrl</kbd>+<kbd>O</kbd> адкрывае сесію, <kbd>Space</kbd> — прайграванне, <kbd>C</kbd> — камера шота, <kbd>T</kbd>/<kbd>R</kbd> — перамяшчэнне/паварот, <kbd>M</kbd> — motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> — адмена, <kbd>Ctrl</kbd>+<kbd>S</kbd> — захаваць. Панэлі перацягваюцца за загаловак. Тэсты не патрабуюць нічога:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            лаўнчар
+├── README.md
 ├── Core/              ядро: фарматы, віртуальная ФС, індэкс, масты да ўстановак
 ├── App/               рэдактар: бібліятэка кантэнту, рэндар, акно
 ├── Tools/             лакалізацыя, інструменты UI, плагіны (пазней)
+│   └── Launcher/      лаўнчар
 ├── Testing/           тэсты, пабайтавыя фікстуры, адзін ранер
-└── GIT&DOCK/README/   гэты README на іншых мовах
+└── GIT&DOCK/          гэты README на іншых мовах
 ```
 
 ## Дарожная карта
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## Ліцэнзія і падзякі
 
-Source Filmmaker, Team Fortress 2 і рухавік Source належаць Valve. Праект чытае іх фарматы, не змяшчае іх файлаў і працуе толькі з вашай копіяй SFM са Steam.
+Уласны код C2UI распаўсюджваецца па **ліцэнзіі C2UI**: свабодна для асабістых і некамерцыйных патрэб; камерцыйнае выкарыстанне — толькі з пісьмовай згоды аўтара; змененыя версіі мусяць спасылацца на арыгінальны праект і яго аўтара Arkomiko. Плагіны і адоны — па ліцэнзіі **C2UI — Plugins & Addons (C2UI‑Pl&AD)**.
 
-Ліцэнзія ўласнага кода C2UI яшчэ не абраная — да таго часу ўсе правы абароненыя. Issues і pull requests вітаюцца.
+Source Filmmaker, Team Fortress 2 і рухавік Source належаць Valve; праект чытае іх фарматы, не змяшчае іх файлаў і працуе толькі з вашай копіяй SFM са Steam.
+
+<p align="center"><a href="../LICENSE/BE-by.md"><img alt="Тэкст ліцэнзіі" src="https://img.shields.io/badge/%D0%A2%D1%8D%D0%BA%D1%81%D1%82_%D0%BB%D1%96%D1%86%D1%8D%D0%BD%D0%B7%D1%96%D1%96-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="64 мадэлі, адрэндараныя проста з устаноўкі" width="60%"><br><sub>Шэсцьдзясят чатыры выпадковыя мадэлі з устаноўкі, намаляваныя ўласным рэндарарам C2UI.</sub></p>

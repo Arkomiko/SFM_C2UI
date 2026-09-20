@@ -15,6 +15,14 @@
 
 ---
 
+## तयारी
+
+<p align="center"><img src="../assets/NE-np/sidebar.svg" alt="तयारी" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>रिलिजका लागि समग्र तयारी: 41%</b></p>
+
+<p align="center"><a href="../assets/NE-np/sidebar.md"><img alt="तयारी विस्तृत" src="https://img.shields.io/badge/%E0%A4%A4%E0%A4%AF%E0%A4%BE%E0%A4%B0%E0%A5%80_%E0%A4%B5%E0%A4%BF%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%83%E0%A4%A4-66c0f4?style=for-the-badge"></a></p>
+
 ## विचार
 
 Source Filmmaker एक बलियो उपकरण हो जसको इन्टरफेस २०१२ मै रह्यो। C2UI ले यसलाई प्रतिस्थापन वा पुनर्निर्माण गर्दैन: लक्ष्य केवल SFM लाई अलि आधुनिक र सहज बनाउनु हो।
@@ -31,114 +39,6 @@ Source Filmmaker एक बलियो उपकरण हो जसको इ�
   │  आफ्नै रेन्डर  │       पढ्ने मात्र       │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## तयारी
-
-<img align="right" src="../assets/NE-np/sidebar.svg" alt="तयारी" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>रिलिजका लागि समग्र तयारी: 41%</b>
-
-हरेक क्षेत्र खुल्छ: के पहिले नै काम गर्छ र के अझै छैन। प्रतिशत SFM को क्षमताको तुलनामा अनुमान हो।
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>SFM खोज्ने र माउन्ट गर्ने</b></summary>
-
-Steam रजिस्ट्री → `libraryfolders.vdf` → `gameinfo.txt` का खोज पथ, इन्जिनको क्रममा। मानक स्थापनामा छ माउन्ट। एप्लिकेसन फोल्डरबाहिर केही लेखिँदैन।
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>सामग्री सूचकांक</b></summary>
-
-७० १९९ फाइल १.१ से चिसो / ०.०२ से क्यासबाट; माउन्टबीचका ओभरराइड इन्जिनजस्तै समाधान हुन्छन्।
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>मोडेल — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-संस्करण ४४, ४८, ४९। कंकाल, मेश, सबै विवरण स्तर, बडी समूह। १ ५०० मोडेल लोड, ० असफलता।
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>सामग्री — <code>.vmt</code></b></summary>
-
-सबै १९ ५५४ सामग्री पढिन्छन्; `patch`, DX ब्लक, प्रोक्सी।
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>टेक्सचर — <code>.vtf</code></b></summary>
-
-संस्करण ७.०–७.५, DXT1/3/5 र सबै असंकुचित ढाँचा, क्युबम्याप, मिप। DXT डिकोड नगरी GPU मा जान्छ।
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>सेसन — <code>.dmx</code></b></summary>
-
-बाइनरी १–५ र KeyValues2। स्थापनाको हरेक सेसन र पार्टिकल फाइल **बाइट-बाइट** फिर्ता लेखिन्छ।
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>स्क्रिनमा सेसन</b></summary>
-
-टाइमलाइनमा शट र साउन्ड ट्र्याक, एलिमेन्ट ट्री, हरेक शटको दृश्य आफ्नै क्यामेराबाट। अझै छैन: नक्सा, पार्टिकल, आवाज।
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>एनिमेसन</b></summary>
-
-कर्सरमा च्यानल र लग मूल्याङ्कन; स्क्रब र प्ले। हड्डी, क्यामेरा र दृश्यता सेसनलाई पछ्याउँछन्।
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>अनुहार</b></summary>
-
-Flex नियन्त्रक, कम्पाइल गरिएका नियम र भर्टेक्स एनिमेसन — पात्रहरू बोल्छन् र भाव देखाउँछन्। अझै छैन: चाउरी नक्सा।
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>रिग</b></summary>
-
-अभिव्यक्ति, point/orient/parent/aim बाधा, दुई-हड्डी IK। अझै छैन: पूर्ण अपरेटर निर्भरता ग्राफ, रिग निर्माण।
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>सम्पादन</b></summary>
-
-क्लिकबाट चयन, मुभ/रोटेट म्यानिपुलेटर, कुनै पनि एट्रिब्युटको इन्स्पेक्टर, कर्सरमा की, अन्डु/रिडु, बाइट-सटीक सेभ।
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>मोशन सम्पादक</b></summary>
-
-रुलरमा होल्ड र फलअफसहित समय चयन; सम्पादन SFM जस्तै त्यसमा फैलिन्छ। अझै छैन: प्रिसेट, तह।
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>ग्राफ सम्पादक</b></summary>
-
-चयनित एलिमेन्ट चलाउने हरेक लगका वक्र: X/Y/Z, pitch/yaw/roll, स्केलर। की लाइभ पूर्वावलोकनसहित समय र मानमा तानिन्छन्, डबल-क्लिकले थप्छ, Delete ले हटाउँछ; समय अक्ष टाइमलाइनको। अझै छैन: ट्यान्जेन्ट र वक्र प्रकार, की समूहको स्केलिङ।
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>प्यानल डकिङ</b></summary>
-
-UE5 र Visual Studio जस्तै, पूर्वावलोकनसहित लक्ष्यहरूको कम्पासमा प्यानल तान्नुहोस्। अझै छैन: सुरक्षित लेआउट, थिम।
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Source शेडिङ</b></summary>
-
-टेक्सचर र साधारण प्रकाश मात्र। अझै छैन: phong, rim, lightwarp, दृश्य प्रकाश, छाया।
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>नक्सा — <code>.bsp</code></b></summary>
-
-सुरु भएको छैन।
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>तस्बिर र भिडियोमा रेन्डर</b></summary>
-
-सुरु भएको छैन।
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>प्लगइन <code>.c2plg</code></b></summary>
-
-सुरु भएको छैन।
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>थिम र कार्यस्थान</b></summary>
-
-जानीजानी पछि: सम्पादकमा सजाउन योग्य केही नआउँदासम्म एउटै रूप।
-
-</details>
-
-**रिलिजका लागि तयार छैन।** जग — SFM ले प्रयोग गर्ने हरेक फाइल ढाँचा, सही पढिएको र पूरै स्थापनामा प्रमाणित — छ र परीक्षण गरिएको छ; सेसन खोल्न, चलाउन, बदल्न र सेभ गर्न सकिन्छ। कमी छ कामको *सहजता*: ग्राफ सम्पादक, Source शेडिङ, नक्सा, निर्यात। एनिमेटरले यसमा एक दिनको काम गर्न नसक्दासम्म संस्करण नम्बर छैन।
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="Meet the Heavy खोलिएको सम्पादक" width="100%"><br><sub>आजको सम्पादक, Valve को Meet the Heavy खोलिएको: टाइमलाइनमा शट र आवाज, सेसन ट्री, पहिलो शट आफ्नै क्यामेराबाट, सेसनअनुसार पोज र अनुहार भएका पात्रहरू।</sub></p>
 
@@ -158,8 +58,8 @@ Windows, Python 3.13 र Source Filmmaker स्थापना आवश्य�
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 पहिलो पटक Steam मार्फत SFM खोज्छ; नपाए सोध्छ। <kbd>Ctrl</kbd>+<kbd>O</kbd> सेसन खोल्छ, <kbd>Space</kbd> प्ले, <kbd>C</kbd> शट क्यामेरा, <kbd>T</kbd>/<kbd>R</kbd> मुभ/रोटेट, <kbd>M</kbd> मोशन सम्पादक, <kbd>Ctrl</kbd>+<kbd>Z</kbd> अन्डु, <kbd>Ctrl</kbd>+<kbd>S</kbd> सेभ। प्यानल शीर्षकबाट तानिन्छन्। परीक्षणलाई केही चाहिँदैन:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            लन्चर
+├── README.md
 ├── Core/              इन्जिन: ढाँचा, भर्चुअल फाइल प्रणाली, सूचकांक, पुल
 ├── App/               सम्पादक: सामग्री पुस्तकालय, रेन्डरर, विन्डो
 ├── Tools/             स्थानीयकरण, UI उपकरण, प्लगइन (पछि)
+│   └── Launcher/      लन्चर
 ├── Testing/           परीक्षण, बाइट-सटीक फिक्स्चर, एक रनर
-└── GIT&DOCK/README/   यो README अन्य भाषामा
+└── GIT&DOCK/          यो README अन्य भाषामा
 ```
 
 ## रोडम्याप
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## इजाजतपत्र र आभार
 
-Source Filmmaker, Team Fortress 2 र Source इन्जिन Valve का हुन्। यो परियोजना तिनका फाइल ढाँचा पढ्छ, तिनको कुनै फाइल समावेश गर्दैन, र Steam मार्फत तपाईंसँग भएको SFM प्रतिसँग मात्र काम गर्छ।
+C2UI को आफ्नै कोड **C2UI इजाजतपत्र** अन्तर्गत छ: व्यक्तिगत र गैर-व्यावसायिक प्रयोगका लागि स्वतन्त्र; व्यावसायिक प्रयोग लेखकको लिखित सहमतिमा मात्र; परिमार्जित संस्करणहरूले मूल परियोजना र यसका लेखक Arkomiko उल्लेख गर्नुपर्छ। प्लगइन र एडअन **C2UI — Plugins & Addons (C2UI‑Pl&AD)** इजाजतपत्र अन्तर्गत।
 
-C2UI को आफ्नै कोडको इजाजतपत्र अझै छानिएको छैन — त्यसबेलासम्म सर्वाधिकार सुरक्षित। Issues र pull requests स्वागत छ।
+Source Filmmaker, Team Fortress 2 र Source इन्जिन Valve का हुन्; परियोजनाले तिनका ढाँचा पढ्छ, तिनको कुनै फाइल समावेश गर्दैन, र Steam बाट तपाईंको आफ्नै SFM प्रतिसँग मात्र काम गर्छ।
+
+<p align="center"><a href="../LICENSE/NE-np.md"><img alt="इजाजतपत्रको पाठ" src="https://img.shields.io/badge/%E0%A4%87%E0%A4%9C%E0%A4%BE%E0%A4%9C%E0%A4%A4%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%95%E0%A5%8B_%E0%A4%AA%E0%A4%BE%E0%A4%A0-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="स्थापनाबाट सिधै रेन्डर गरिएका ६४ मोडेल" width="60%"><br><sub>स्थापनाबाट अनियमित छानिएका चौसठ्ठी मोडेल, C2UI को आफ्नै रेन्डररले कोरेका।</sub></p>

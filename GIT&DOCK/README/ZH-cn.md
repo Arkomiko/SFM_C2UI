@@ -15,6 +15,14 @@
 
 ---
 
+## 完成度
+
+<p align="center"><img src="../assets/ZH-cn/sidebar.svg" alt="完成度" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>整体发布就绪度：41%</b></p>
+
+<p align="center"><a href="../assets/ZH-cn/sidebar.md"><img alt="完成度详情" src="https://img.shields.io/badge/%E5%AE%8C%E6%88%90%E5%BA%A6%E8%AF%A6%E6%83%85-66c0f4?style=for-the-badge"></a></p>
+
 ## 想法
 
 Source Filmmaker 是一款强大的工具，但界面停留在 2012 年。C2UI 不取代它，也不重做它：目标只是让 SFM 更现代、更顺手一点。
@@ -31,114 +39,6 @@ Source Filmmaker 是一款强大的工具，但界面停留在 2012 年。C2UI �
   │  自有渲染    │         只读          │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## 完成度
-
-<img align="right" src="../assets/ZH-cn/sidebar.svg" alt="完成度" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>整体发布就绪度：41%</b>
-
-每个领域都可以展开：已经能用的和暂时还没有的。百分比是相对于 SFM 能力的估计。
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>查找并挂载 SFM</b></summary>
-
-Steam 注册表 → `libraryfolders.vdf` → `gameinfo.txt` 的搜索路径，按引擎自身顺序。标准安装下六个挂载点。应用程序文件夹之外不写入任何内容。
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>内容索引</b></summary>
-
-70 199 个文件冷启动 1.1 秒 / 缓存 0.02 秒；挂载间的覆盖完全按引擎方式解析。
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>模型 — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-版本 44、48、49。骨架、网格、所有细节层级、身体组。已加载 1 500 个模型，0 失败。
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>材质 — <code>.vmt</code></b></summary>
-
-全部 19 554 个自带材质均可解析；`patch`、DX 级别块、代理。
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>纹理 — <code>.vtf</code></b></summary>
-
-版本 7.0–7.5，DXT1/3/5 和所有未压缩格式、立方体贴图、mip。DXT 无需解码直接进 GPU。
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>会话 — <code>.dmx</code></b></summary>
-
-二进制 1–5 和 KeyValues2。安装中的每个会话和粒子文件都能**逐字节**写回。
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>屏幕上的会话</b></summary>
-
-时间线上的镜头和音轨、元素树、每个镜头通过其相机的场景。尚无：地图、粒子、声音。
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>动画</b></summary>
-
-在光标处求值通道和日志；拖动和播放。骨骼、相机和可见性跟随会话。
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>面部</b></summary>
-
-Flex 控制器、编译后的规则和顶点动画——角色会说话和做表情。尚无：皱纹贴图。
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>绑定</b></summary>
-
-表达式、point/orient/parent/aim 约束、双骨 IK。尚无：完整的操作符依赖图、绑定创建。
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>编辑</b></summary>
-
-点击选择、移动/旋转操纵器、任意属性的检查器、光标处打关键帧、撤销/重做、逐字节精确保存。
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>运动编辑器</b></summary>
-
-标尺上带保持和衰减的时间选择；编辑像 SFM 一样扩散到选区。尚无：预设、图层。
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>曲线编辑器</b></summary>
-
-驱动所选元素的每个日志的曲线：X/Y/Z、pitch/yaw/roll、标量。关键帧可在时间和值上拖动并实时预览，双击插入，Delete 删除；时间轴与时间线共享。尚无：切线和曲线类型、成组缩放关键帧。
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>面板停靠</b></summary>
-
-像 UE5 和 Visual Studio 一样，把面板拖到带预览的目标罗盘上。尚无：保存布局、主题。
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Source 着色</b></summary>
-
-仅纹理和简单光照。尚无：phong、rim、lightwarp、场景灯光、阴影。
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>地图 — <code>.bsp</code></b></summary>
-
-未开始。
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>渲染为图像和视频</b></summary>
-
-未开始。
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>插件 <code>.c2plg</code></b></summary>
-
-未开始。
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>主题和工作区</b></summary>
-
-有意推后：在编辑器有值得美化的东西之前只用一种外观。
-
-</details>
-
-**尚未准备好发布。** 基础——SFM 使用的每种文件格式，正确读取并对整个安装验证——已经就位并通过测试；会话可以打开、播放、修改和保存。缺少的是工作的*舒适度*：曲线编辑器、Source 着色、地图、导出。在动画师能在其中工作一整天之前不会有版本号。
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="打开 Meet the Heavy 的编辑器" width="100%"><br><sub>今天的编辑器，打开了 Valve 的《Meet the Heavy》：时间线上的镜头和声音、会话树、通过自身相机看到的第一个镜头、按会话摆好姿势和表情的角色。</sub></p>
 
@@ -158,8 +58,8 @@ Flex 控制器、编译后的规则和顶点动画——角色会说话和做表
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 首次启动时通过 Steam 查找 SFM；找不到则询问。<kbd>Ctrl</kbd>+<kbd>O</kbd> 打开会话，<kbd>Space</kbd> 播放，<kbd>C</kbd> 通过镜头相机观看，<kbd>T</kbd>/<kbd>R</kbd> 移动/旋转，<kbd>M</kbd> 运动编辑器，<kbd>Ctrl</kbd>+<kbd>Z</kbd> 撤销，<kbd>Ctrl</kbd>+<kbd>S</kbd> 保存。面板按标题拖动。测试不需要任何东西：
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            启动器
+├── README.md
 ├── Core/              引擎：格式、虚拟文件系统、索引、桥接
 ├── App/               编辑器：内容库、渲染器、窗口
 ├── Tools/             本地化、UI 工具、插件（稍后）
+│   └── Launcher/      启动器
 ├── Testing/           测试、逐字节夹具、单一运行器
-└── GIT&DOCK/README/   本 README 的其他语言版本
+└── GIT&DOCK/          本 README 的其他语言版本
 ```
 
 ## 路线图
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## 许可与致谢
 
-Source Filmmaker、Team Fortress 2 和 Source 引擎属于 Valve。本项目读取它们的文件格式，不附带它们的任何文件，只与你已通过 Steam 拥有的 SFM 副本一起工作。
+C2UI 自身代码采用 **C2UI 许可证**：个人及非商业用途可自由使用；商业用途须获得作者书面同意；修改版本必须注明原项目及其作者 Arkomiko。插件和附加组件采用 **C2UI — Plugins & Addons (C2UI‑Pl&AD)** 许可证。
 
-C2UI 自身代码的许可证尚未选定——在此之前保留所有权利。仍然欢迎 Issue 和 Pull Request。
+Source Filmmaker、Team Fortress 2 和 Source 引擎属于 Valve；本项目读取它们的格式，不附带它们的任何文件，只与你从 Steam 获得的 SFM 副本一起工作。
+
+<p align="center"><a href="../LICENSE/ZH-cn.md"><img alt="许可证全文" src="https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF%E8%AF%81%E5%85%A8%E6%96%87-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="直接从安装渲染的 64 个模型" width="60%"><br><sub>从安装中随机挑选的六十四个模型，由 C2UI 自己的渲染器绘制。</sub></p>

@@ -1,0 +1,8 @@
+# Runtime data: generated next to the app, never committed
+Cache/*/*
+Temporary/*
+User/*/*
+!User/*/.gitkeep
+!Cache/*/.gitkeep
+*.log
+__pycache__/

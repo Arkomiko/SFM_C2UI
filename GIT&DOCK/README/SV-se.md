@@ -15,6 +15,14 @@
 
 ---
 
+## Mognad
+
+<p align="center"><img src="../assets/SV-se/sidebar.svg" alt="Mognad" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Total mognad för release: 41%</b></p>
+
+<p align="center"><a href="../assets/SV-se/sidebar.md"><img alt="Mognad i detalj" src="https://img.shields.io/badge/Mognad_i_detalj-66c0f4?style=for-the-badge"></a></p>
+
 ## Idén
 
 Source Filmmaker är ett starkt verktyg vars gränssnitt stannade i 2012. C2UI ersätter det inte och gör inte om det: målet är helt enkelt att göra SFM lite modernare och bekvämare.
@@ -31,114 +39,6 @@ Första målet är full kompatibilitet med SFM, ben och riggar inräknade. Däre
   │  egen render │      skrivskyddad      │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## Mognad
-
-<img align="right" src="../assets/SV-se/sidebar.svg" alt="Mognad" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Total mognad för release: 41%</b>
-
-Varje område kan fällas ut: vad som redan fungerar och vad som inte finns än. Procenten är en uppskattning mot vad SFM kan.
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Hitta och montera SFM</b></summary>
-
-Steam-registret → `libraryfolders.vdf` → sökvägarna i `gameinfo.txt`, i motorns egen ordning. Sex monteringar på en standardinstallation. Inget skrivs utanför programmappen.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Innehållsindex</b></summary>
-
-70 199 filer på 1,1 s kallt / 0,02 s varmt; överskuggningar mellan monteringar löses exakt som motorn gör.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Modeller — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-Version 44, 48, 49. Skelett, meshar, alla detaljnivåer, kroppsgrupper. 1 500 modeller laddade, 0 fel.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Material — <code>.vmt</code></b></summary>
-
-Alla 19 554 medföljande material tolkas; `patch`, DX-block, proxyer.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Texturer — <code>.vtf</code></b></summary>
-
-Version 7.0–7.5, DXT1/3/5 och alla okomprimerade format, kubkartor, mippar. DXT går till GPU:n utan avkodning.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sessioner — <code>.dmx</code></b></summary>
-
-Binär 1–5 och KeyValues2. Varje session och partikelfil i installationen skrivs tillbaka **byte för byte**.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Session på skärmen</b></summary>
-
-Shots och ljudspår på en tidslinje, elementträdet, varje shots scen genom sin kamera. Inte ännu: kartor, partiklar, ljud.
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>Animation</b></summary>
-
-Kanaler och loggar utvärderas vid markören; scrubba och spela. Ben, kameror och synlighet följer sessionen.
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>Ansikten</b></summary>
-
-Flex-kontroller, de kompilerade reglerna och vertexanimation — karaktärer pratar och visar känslor. Inte ännu: rynkkartor.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Riggar</b></summary>
-
-Uttryck, point/orient/parent/aim-begränsningar, tvåbens-IK. Inte ännu: hela operatorberoendegrafen, riggskapande.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Redigering</b></summary>
-
-Klicka för att välja, en flytta/rotera-manipulator, en inspektör för alla attribut, en nyckel vid markören, ångra/gör om, byteexakt sparning.
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
-
-Ett tidsurval med hold och falloff på linjalen; en ändring sprids över det som i SFM. Inte ännu: förinställningar, lager.
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Grafredigerare</b></summary>
-
-Kurvor för varje logg som styr det valda elementet: X/Y/Z, pitch/yaw/roll, skalärer. Nycklar dras i tid och värde med förhandsvisning, dubbelklick lägger till, Delete tar bort; tidsaxeln är tidslinjens. Inte ännu: tangenter och kurvtyper, skalning av en grupp nycklar.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Paneldockning</b></summary>
-
-Dra paneler till en kompass av mål med förhandsvisning, som i UE5 och Visual Studio. Inte ännu: sparade layouter, teman.
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Source-skuggning</b></summary>
-
-Bara textur och ett enkelt ljus. Inte ännu: phong, rim, lightwarp, scenljus, skuggor.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Kartor — <code>.bsp</code></b></summary>
-
-Inte påbörjat.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Rendering till bild och video</b></summary>
-
-Inte påbörjat.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Insticksprogram <code>.c2plg</code></b></summary>
-
-Inte påbörjat.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Teman och arbetsytor</b></summary>
-
-Medvetet senare: ett utseende tills redigeraren har något värt att tema.
-
-</details>
-
-**Inte redo för release.** Grunden — varje filformat SFM använder, korrekt läst och verifierat mot hela installationen — finns och är testad; en session kan öppnas, spelas, ändras och sparas. Det som saknas är *bekvämligheten* i arbetet: grafredigeraren, Source-skuggning, kartor, export. Inget versionsnummer förrän en animatör kan göra en dags arbete i den.
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="Redigeraren med Meet the Heavy öppen" width="100%"><br><sub>Redigeraren idag, med Valves Meet the Heavy öppen: shots och ljud på tidslinjen, sessionsträdet, första shoten sedd genom sin egen kamera, karaktärer poserade och med ansikten enligt sessionen.</sub></p>
 
@@ -158,8 +58,8 @@ Kräver Windows, Python 3.13 och en Source Filmmaker-installation.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 Vid första start söks SFM via Steam; hittas det inte frågar programmet. <kbd>Ctrl</kbd>+<kbd>O</kbd> öppnar en session, <kbd>Mellanslag</kbd> spelar, <kbd>C</kbd> tittar genom shotkameran, <kbd>T</kbd>/<kbd>R</kbd> flytta/rotera, <kbd>M</kbd> motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> ångrar, <kbd>Ctrl</kbd>+<kbd>S</kbd> sparar. Paneler dras i sin titel. Testerna behöver ingenting alls:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            startaren
+├── README.md
 ├── Core/              motor: format, virtuellt filsystem, index, bryggor
 ├── App/               redigeraren: innehållsbibliotek, renderare, fönster
 ├── Tools/             lokalisering, UI-verktyg, insticksprogram (senare)
+│   └── Launcher/      startaren
 ├── Testing/           tester, byteexakta fixturer, en körare
-└── GIT&DOCK/README/   denna README på andra språk
+└── GIT&DOCK/          denna README på andra språk
 ```
 
 ## Färdplan
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## Licens och tack
 
-Source Filmmaker, Team Fortress 2 och Source-motorn tillhör Valve. Projektet läser deras filformat, levererar inga av deras filer och fungerar bara med en kopia av SFM du redan har via Steam.
+C2UI:s egen kod är under **C2UI-licensen**: fri för personligt och icke-kommersiellt bruk; kommersiellt bruk endast med upphovspersonens skriftliga medgivande; ändrade versioner måste ange originalprojektet och dess upphovsperson Arkomiko. Insticksprogram och tillägg är under licensen **C2UI — Plugins & Addons (C2UI‑Pl&AD)**.
 
-Licensen för C2UI:s egen kod är inte vald ännu — tills dess, alla rättigheter förbehållna. Issues och pull requests är ändå välkomna.
+Source Filmmaker, Team Fortress 2 och Source-motorn tillhör Valve; projektet läser deras format, innehåller inga av deras filer och fungerar bara med din egen kopia av SFM från Steam.
+
+<p align="center"><a href="../LICENSE/SV-se.md"><img alt="Licenstext" src="https://img.shields.io/badge/Licenstext-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="64 modeller renderade direkt från installationen" width="60%"><br><sub>Sextiofyra slumpvis valda modeller från installationen, ritade av C2UI:s egen renderare.</sub></p>

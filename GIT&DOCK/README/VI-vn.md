@@ -15,6 +15,14 @@
 
 ---
 
+## Mức sẵn sàng
+
+<p align="center"><img src="../assets/VI-vn/sidebar.svg" alt="Mức sẵn sàng" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 41%</b></p>
+
+<p align="center"><a href="../assets/VI-vn/sidebar.md"><img alt="Mức sẵn sàng chi tiết" src="https://img.shields.io/badge/M%E1%BB%A9c_s%E1%BA%B5n_s%C3%A0ng_chi_ti%E1%BA%BFt-66c0f4?style=for-the-badge"></a></p>
+
 ## Ý tưởng
 
 Source Filmmaker là một công cụ mạnh nhưng giao diện dừng lại ở năm 2012. C2UI không thay thế hay làm lại nó: mục tiêu chỉ là làm SFM hiện đại và thoải mái hơn một chút.
@@ -31,114 +39,6 @@ Mục tiêu đầu tiên là tương thích hoàn toàn với SFM, kể cả xư
   │  render riêng │        chỉ đọc        │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## Mức sẵn sàng
-
-<img align="right" src="../assets/VI-vn/sidebar.svg" alt="Mức sẵn sàng" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 41%</b>
-
-Mỗi mảng có thể mở ra: cái gì đã chạy và cái gì chưa có. Phần trăm là ước lượng so với khả năng của SFM.
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Tìm và gắn kết SFM</b></summary>
-
-Registry Steam → `libraryfolders.vdf` → đường dẫn tìm kiếm của `gameinfo.txt`, theo đúng thứ tự engine. Sáu điểm gắn kết trên bản cài chuẩn. Không ghi gì ngoài thư mục ứng dụng.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Chỉ mục nội dung</b></summary>
-
-70 199 tập tin trong 1,1 s lạnh / 0,02 s từ cache; ghi đè giữa các điểm gắn kết được giải quyết đúng như engine.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Mô hình — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-Phiên bản 44, 48, 49. Bộ xương, lưới, mọi mức chi tiết, nhóm thân. 1 500 mô hình đã tải, 0 lỗi.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Vật liệu — <code>.vmt</code></b></summary>
-
-Toàn bộ 19 554 vật liệu kèm theo đều đọc được; `patch`, khối DX, proxy.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Kết cấu — <code>.vtf</code></b></summary>
-
-Phiên bản 7.0–7.5, DXT1/3/5 và mọi định dạng không nén, cubemap, mip. DXT lên GPU không cần giải mã.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Phiên — <code>.dmx</code></b></summary>
-
-Nhị phân 1–5 và KeyValues2. Mọi phiên và tập tin hạt trong bản cài ghi lại **từng byte** giống hệt.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Phiên trên màn hình</b></summary>
-
-Cảnh và rãnh âm thanh trên dòng thời gian, cây phần tử, khung cảnh mỗi cảnh qua camera của nó. Chưa có: bản đồ, hạt, âm thanh.
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>Hoạt ảnh</b></summary>
-
-Kênh và log được tính tại con trỏ; kéo và phát. Xương, camera và hiển thị theo phiên.
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>Khuôn mặt</b></summary>
-
-Bộ điều khiển flex, quy tắc biên dịch và hoạt ảnh đỉnh — nhân vật nói và biểu cảm. Chưa có: bản đồ nếp nhăn.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Rig</b></summary>
-
-Biểu thức, ràng buộc point/orient/parent/aim, IK hai xương. Chưa có: đồ thị phụ thuộc toán tử đầy đủ, tạo rig.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Chỉnh sửa</b></summary>
-
-Nhấp để chọn, bộ thao tác di chuyển/xoay, trình kiểm tra mọi thuộc tính, khóa tại con trỏ, hoàn tác/làm lại, lưu chính xác từng byte.
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
-
-Chọn thời gian với hold và falloff trên thước; chỉnh sửa lan ra như trong SFM. Chưa có: preset, lớp.
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Trình biên tập đồ thị</b></summary>
-
-Đường cong của mọi log điều khiển phần tử được chọn: X/Y/Z, pitch/yaw/roll, vô hướng. Khóa kéo theo thời gian và giá trị với xem trước trực tiếp, nhấp đúp chèn, Delete xóa; trục thời gian là của dòng thời gian. Chưa có: tiếp tuyến và kiểu đường cong, co giãn nhóm khóa.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Gắn bảng</b></summary>
-
-Kéo bảng lên la bàn mục tiêu có xem trước, như UE5 và Visual Studio. Chưa có: bố cục đã lưu, chủ đề.
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Tô bóng Source</b></summary>
-
-Chỉ kết cấu và ánh sáng đơn giản. Chưa có: phong, rim, lightwarp, đèn cảnh, bóng.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Bản đồ — <code>.bsp</code></b></summary>
-
-Chưa bắt đầu.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Kết xuất ảnh và video</b></summary>
-
-Chưa bắt đầu.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Plugin <code>.c2plg</code></b></summary>
-
-Chưa bắt đầu.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Chủ đề và không gian làm việc</b></summary>
-
-Cố ý để sau: một giao diện cho đến khi trình biên tập có gì đáng trang trí.
-
-</details>
-
-**Chưa sẵn sàng phát hành.** Nền tảng — mọi định dạng tập tin SFM dùng, đọc đúng và kiểm chứng trên toàn bản cài — đã có và được kiểm thử; có thể mở, phát, sửa và lưu một phiên. Thiếu là *sự thoải mái* khi làm việc: trình biên tập đồ thị, tô bóng Source, bản đồ, xuất. Không có số phiên bản cho đến khi một nhà hoạt hình làm được một ngày việc trong đó.
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="Trình biên tập đang mở Meet the Heavy" width="100%"><br><sub>Trình biên tập hôm nay, mở Meet the Heavy của Valve: các cảnh và âm thanh trên dòng thời gian, cây phiên, cảnh đầu nhìn qua camera riêng của nó, nhân vật tạo dáng và biểu cảm đúng như phiên.</sub></p>
 
@@ -158,8 +58,8 @@ Cần Windows, Python 3.13 và một bản cài Source Filmmaker.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 Lần đầu chạy sẽ tìm SFM qua Steam; không thấy thì hỏi. <kbd>Ctrl</kbd>+<kbd>O</kbd> mở phiên, <kbd>Space</kbd> phát, <kbd>C</kbd> camera cảnh, <kbd>T</kbd>/<kbd>R</kbd> di chuyển/xoay, <kbd>M</kbd> motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> hoàn tác, <kbd>Ctrl</kbd>+<kbd>S</kbd> lưu. Bảng kéo bằng tiêu đề. Kiểm thử không cần gì:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            trình khởi chạy
+├── README.md
 ├── Core/              engine: định dạng, hệ tập tin ảo, chỉ mục, cầu nối
 ├── App/               trình biên tập: thư viện nội dung, renderer, cửa sổ
 ├── Tools/             bản địa hóa, công cụ UI, plugin (sau)
+│   └── Launcher/      trình khởi chạy
 ├── Testing/           kiểm thử, fixture chính xác từng byte, một runner
-└── GIT&DOCK/README/   README này bằng ngôn ngữ khác
+└── GIT&DOCK/          README này bằng ngôn ngữ khác
 ```
 
 ## Lộ trình
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## Giấy phép và ghi công
 
-Source Filmmaker, Team Fortress 2 và engine Source thuộc Valve. Dự án này đọc định dạng tập tin của họ, không kèm tập tin nào của họ, và chỉ hoạt động với bản SFM bạn đã có qua Steam.
+Mã riêng của C2UI theo **giấy phép C2UI**: tự do cho mục đích cá nhân và phi thương mại; sử dụng thương mại chỉ khi có sự đồng ý bằng văn bản của tác giả; các phiên bản sửa đổi phải ghi nhận dự án gốc và tác giả Arkomiko. Plugin và addon theo giấy phép **C2UI — Plugins & Addons (C2UI‑Pl&AD)**.
 
-Giấy phép cho mã riêng của C2UI chưa được chọn — cho đến lúc đó, bảo lưu mọi quyền. Vẫn hoan nghênh issue và pull request.
+Source Filmmaker, Team Fortress 2 và engine Source thuộc Valve; dự án đọc định dạng của họ, không kèm tập tin nào của họ và chỉ hoạt động với bản SFM bạn có từ Steam.
+
+<p align="center"><a href="../LICENSE/VI-vn.md"><img alt="Văn bản giấy phép" src="https://img.shields.io/badge/V%C4%83n_b%E1%BA%A3n_gi%E1%BA%A5y_ph%C3%A9p-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="64 mô hình kết xuất trực tiếp từ bản cài" width="60%"><br><sub>Sáu mươi bốn mô hình chọn ngẫu nhiên từ bản cài, vẽ bằng renderer riêng của C2UI.</sub></p>

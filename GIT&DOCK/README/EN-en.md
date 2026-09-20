@@ -15,6 +15,14 @@
 
 ---
 
+## Readiness
+
+<p align="center"><img src="../assets/EN-en/sidebar.svg" alt="Readiness" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Overall readiness for release: 41%</b></p>
+
+<p align="center"><a href="../assets/EN-en/sidebar.md"><img alt="Readiness in detail" src="https://img.shields.io/badge/Readiness_in_detail-66c0f4?style=for-the-badge"></a></p>
+
 ## The idea
 
 Source Filmmaker is a strong tool whose interface stayed in 2012. C2UI does not replace or remake it: the goal is simply to make SFM a little more modern and more comfortable.
@@ -31,114 +39,6 @@ The first goal is full compatibility with SFM, bones and rigs included. After th
   │  own render  │       read only       │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## Readiness
-
-<img align="right" src="../assets/EN-en/sidebar.svg" alt="Readiness" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Overall readiness for release: 41%</b>
-
-Each area expands: what already works and what does not yet. The percentages are an estimate against what SFM can do.
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Finding and mounting SFM</b></summary>
-
-Steam registry → `libraryfolders.vdf` → the search paths of `gameinfo.txt`, in the engine's own order. Six mounts on a stock install. Nothing is written outside the application folder.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Content index</b></summary>
-
-70 199 files in 1.1 s cold / 0.02 s warm; overrides between mounts resolved exactly as the engine does.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Models — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-Versions 44, 48, 49. Skeleton, meshes, every level of detail, body groups. 1 500 models loaded, 0 failures.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Materials — <code>.vmt</code></b></summary>
-
-All 19 554 shipped materials parse; `patch`, DX-level blocks, proxies.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Textures — <code>.vtf</code></b></summary>
-
-Versions 7.0–7.5, DXT1/3/5 and every uncompressed format, cubemaps, mips. DXT goes to the GPU without decoding.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sessions — <code>.dmx</code></b></summary>
-
-Binary 1–5 and KeyValues2. Every session and particle file in the install writes back **byte for byte**.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Session on screen</b></summary>
-
-Shots and sound tracks on a timeline, the element tree, each shot's scene through its camera. Not yet: maps, particles, sound.
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>Animation</b></summary>
-
-Channels and logs evaluated at the cursor; scrub and play. Bones, cameras and visibility follow the session.
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>Faces</b></summary>
-
-Flex controllers, the compiled rules and vertex animation — characters talk and emote. Not yet: wrinkle maps.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Rigs</b></summary>
-
-Expressions, point/orient/parent/aim constraints, two-bone IK. Not yet: the full operator dependency graph, rig creation.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Editing</b></summary>
-
-Click to select, a move/rotate manipulator, an inspector for any attribute, a key at the cursor, undo/redo, byte-exact save.
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
-
-A time selection with hold and falloff on the ruler; an edit spreads over it as in SFM. Not yet: presets, layers.
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Graph editor</b></summary>
-
-Curves of every log driving the selected element: X/Y/Z, pitch/yaw/roll, scalars. Keys drag in time and value with a live preview, double-click inserts, Delete removes; the time axis is the timeline's. Not yet: tangents and curve types, scaling a group of keys.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Panel docking</b></summary>
-
-Drag panels onto a compass of targets with a preview, as in UE5 and Visual Studio. Not yet: saved layouts, themes.
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Source shading</b></summary>
-
-Texture and a simple light only. Not yet: phong, rim, lightwarp, scene lights, shadows.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Maps — <code>.bsp</code></b></summary>
-
-Not started.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Rendering to image and video</b></summary>
-
-Not started.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Plugins <code>.c2plg</code></b></summary>
-
-Not started.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Themes and workspaces</b></summary>
-
-Deliberately later: one look until the editor has something worth theming.
-
-</details>
-
-**Not ready for release.** The foundation — every file format SFM uses, read correctly and verified against the whole installation — is in place and tested, and a session can be opened, played, changed and saved. What is missing is the *comfort* of working: the graph editor, Source shading, maps, export. No version number until an animator can do a day's work in it.
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="The editor with Meet the Heavy open" width="100%"><br><sub>The editor today, with Valve's Meet the Heavy open: shots and sound on the timeline, the session tree, the first shot seen through its own camera, characters posed and facing as the session says.</sub></p>
 
@@ -158,8 +58,8 @@ Requires Windows, Python 3.13 and a Source Filmmaker installation.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 On first start it looks for SFM through Steam; if it cannot find it, it asks. <kbd>Ctrl</kbd>+<kbd>O</kbd> opens a session, <kbd>Space</kbd> plays, <kbd>C</kbd> looks through the shot camera, <kbd>T</kbd>/<kbd>R</kbd> move/rotate, <kbd>M</kbd> the motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes, <kbd>Ctrl</kbd>+<kbd>S</kbd> saves. Panels are dragged by their title. The tests need nothing at all:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            the launcher
+├── README.md
 ├── Core/              engine: formats, virtual file system, index, bridges
 ├── App/               the editor: content library, renderer, window
 ├── Tools/             localisation, UI tooling, plugins (later)
+│   └── Launcher/      the launcher
 ├── Testing/           tests, byte-exact fixtures, one runner
-└── GIT&DOCK/README/   this README in other languages
+└── GIT&DOCK/          this README in other languages
 ```
 
 ## Roadmap
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## Licence and credits
 
-Source Filmmaker, Team Fortress 2 and the Source engine are Valve's. This project reads their file formats, ships none of their files, and works only with a copy of SFM you already have through Steam.
+C2UI's own code is under the **C2UI licence**: free for personal and non-commercial use; commercial use only with the author's written consent; modified versions must credit the original project and its author, Arkomiko. Plugins and addons are under the **C2UI — Plugins & Addons (C2UI‑Pl&AD)** licence.
 
-The licence for C2UI's own code has not been chosen yet — until it is, all rights reserved. Issues and pull requests are welcome all the same.
+Source Filmmaker, Team Fortress 2 and the Source engine are Valve's; this project reads their formats, ships none of their files and works only with your own copy of SFM from Steam.
+
+<p align="center"><a href="../LICENSE/EN-en.md"><img alt="Licence text" src="https://img.shields.io/badge/Licence_text-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="64 models rendered straight from the installation" width="60%"><br><sub>Sixty-four models picked at random from the installation, rendered by C2UI's own renderer.</sub></p>

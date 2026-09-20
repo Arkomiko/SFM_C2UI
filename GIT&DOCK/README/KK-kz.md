@@ -15,6 +15,14 @@
 
 ---
 
+## Дайындық
+
+<p align="center"><img src="../assets/KK-kz/sidebar.svg" alt="Дайындық" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Релизге жалпы дайындық: 41%</b></p>
+
+<p align="center"><a href="../assets/KK-kz/sidebar.md"><img alt="Дайындық толығырақ" src="https://img.shields.io/badge/%D0%94%D0%B0%D0%B9%D1%8B%D0%BD%D0%B4%D1%8B%D2%9B_%D1%82%D0%BE%D0%BB%D1%8B%D2%93%D1%8B%D1%80%D0%B0%D2%9B-66c0f4?style=for-the-badge"></a></p>
+
 ## Идея
 
 Source Filmmaker — интерфейсі 2012 жылда қалған күшті құрал. C2UI оны алмастырмайды және қайта жасамайды: мақсат — SFM-ді сәл заманауи әрі ыңғайлы ету.
@@ -31,114 +39,6 @@ Source Filmmaker — интерфейсі 2012 жылда қалған күшт�
   │  өз рендер   │        тек оқу        │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## Дайындық
-
-<img align="right" src="../assets/KK-kz/sidebar.svg" alt="Дайындық" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Релизге жалпы дайындық: 41%</b>
-
-Әр аймақ ашылады: не жұмыс істейді және не әлі жоқ. Пайыздар — SFM мүмкіндіктеріне қатысты баға.
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>SFM-ді табу және жалғау</b></summary>
-
-Steam реестрі → `libraryfolders.vdf` → `gameinfo.txt` жолдары қозғалтқыш ретімен. Стандартты орнатуда алты жалғау. Бағдарлама папкасынан тыс ештеңе жазылмайды.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Контент индексі</b></summary>
-
-70 199 файл 1,1 с суық / 0,02 с кэштен; жалғаулар арасындағы қайта анықтаулар қозғалтқыштағыдай шешіледі.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Модельдер — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-44, 48, 49 нұсқалары. Қаңқа, мештер, барлық детализация деңгейлері, body-топтар. 1 500 модель жүктелді, 0 сәтсіздік.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Материалдар — <code>.vmt</code></b></summary>
-
-Орнатудағы барлық 19 554 материал оқылады; `patch`, DX-блоктар, прокси.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Текстуралар — <code>.vtf</code></b></summary>
-
-7.0–7.5 нұсқалары, DXT1/3/5 және барлық сығылмаған форматтар, кубмаптар, mip-деңгейлер. DXT GPU-ға ашылмай кетеді.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Сессиялар — <code>.dmx</code></b></summary>
-
-Binary 1–5 және KeyValues2. Орнатудағы әрбір сессия мен бөлшектер файлы **байт-байтымен** бірдей қайта жазылады.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Экрандағы сессия</b></summary>
-
-Таймлайндағы шоттар мен дыбыс жолдары, элементтер ағашы, шот сахнасы оның камерасы арқылы. Жоқ: карталар, бөлшектер, дыбыс.
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>Анимация</b></summary>
-
-Арналар мен логтар курсорда есептеледі; скраббинг және ойнату. Сүйектер, камералар, көрінуі сессияға ереді.
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>Беттер</b></summary>
-
-Flex-контроллерлер, компиляцияланған ережелер және төбе дельталары — кейіпкерлер сөйлейді және ым жасайды. Жоқ: wrinkle-карталар.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Ригтер</b></summary>
-
-Өрнектер, point/orient/parent/aim-констрейнттер, екі сүйекті IK. Жоқ: операторлардың толық тәуелділік графы, риг жасау.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Өңдеу</b></summary>
-
-Шертумен таңдау, жылжыту/бұру манипуляторы, кез келген атрибут инспекторы, курсордағы кілт, болдырмау/қайталау, байт-дәлдікпен сақтау.
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
-
-Сызғыштағы hold және falloff бар уақыт бөлектеуі; өзгеріс SFM-дегідей бөлектеуге таралады. Жоқ: пресеттер, қабаттар.
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Graph editor</b></summary>
-
-Таңдалған элементтің әр логының қисықтары: X/Y/Z, pitch/yaw/roll, скалярлар. Кілттер уақыт пен мән бойынша тірі алдын ала қараумен сүйреледі, қос шерту кірістіреді, Delete өшіреді; уақыт осі таймлайнмен ортақ. Жоқ: жанамалар мен қисық түрлері, кілттер тобын масштабтау.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Панельдерді бекіту</b></summary>
-
-UE5 және Visual Studio сияқты, панельдерді алдын ала қараумен мақсаттар крестовинасына сүйреу. Жоқ: сақталған орналасулар, тақырыптар.
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Source шейдингі</b></summary>
-
-Әзірге тек текстура және қарапайым жарық. Жоқ: phong, rim, lightwarp, сахна жарығы, көлеңкелер.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Карталар — <code>.bsp</code></b></summary>
-
-Басталмаған.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Сурет пен бейнеге рендер</b></summary>
-
-Басталмаған.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Плагиндер <code>.c2plg</code></b></summary>
-
-Басталмаған.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Тақырыптар мен жұмыс кеңістіктері</b></summary>
-
-Әдейі кейінге қалдырылған: редакторда безендіретін нәрсе болғанша бір тақырып.
-
-</details>
-
-**Релизге дайын емес.** Іргетас — SFM қолданатын әрбір файл форматы, дұрыс оқылып, бүкіл орнатуда тексерілген — бар және тесттермен жабылған; сессияны ашуға, ойнатуға, өзгертуге және сақтауға болады. Жұмыстың *ыңғайлылығы* жетіспейді: graph editor, Source шейдингі, карталар, экспорт. Аниматор онда бір күн жұмыс істей алғанша нұсқа нөмірі болмайды.
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="Meet the Heavy ашылған редактор" width="100%"><br><sub>Бүгінгі редактор: Valve-тың «Meet the Heavy» сессиясы ашық — таймлайндағы шоттар мен дыбыс, сессия ағашы, өз камерасы арқылы бірінші шот, сессиядағы позалар мен беттердегі кейіпкерлер.</sub></p>
 
@@ -158,8 +58,8 @@ Windows, Python 3.13 және орнатылған Source Filmmaker қажет.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 Алғашқы іске қосуда SFM Steam арқылы ізделеді; табылмаса — бағдарлама сұрайды. <kbd>Ctrl</kbd>+<kbd>O</kbd> сессияны ашады, <kbd>Space</kbd> — ойнату, <kbd>C</kbd> — шот камерасы, <kbd>T</kbd>/<kbd>R</kbd> — жылжыту/бұру, <kbd>M</kbd> — motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> — болдырмау, <kbd>Ctrl</kbd>+<kbd>S</kbd> — сақтау. Панельдер тақырыбынан сүйреледі. Тесттерге ештеңе керек емес:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            іске қосқыш
+├── README.md
 ├── Core/              ядро: форматтар, виртуалды ФЖ, индекс, көпірлер
 ├── App/               редактор: контент кітапханасы, рендер, терезе
 ├── Tools/             локализация, UI құралдары, плагиндер (кейін)
+│   └── Launcher/      іске қосқыш
 ├── Testing/           тесттер, байт-дәл фикстуралар, бір раннер
-└── GIT&DOCK/README/   осы README басқа тілдерде
+└── GIT&DOCK/          осы README басқа тілдерде
 ```
 
 ## Жол картасы
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## Лицензия және алғыс
 
-Source Filmmaker, Team Fortress 2 және Source қозғалтқышы Valve-қа тиесілі. Жоба олардың форматтарын оқиды, файлдарын қамтымайды және тек Steam-дегі өз SFM көшірмеңізбен жұмыс істейді.
+C2UI-дің өз коды **C2UI лицензиясымен** таратылады: жеке және коммерциялық емес мақсаттарға еркін; коммерциялық пайдалану — тек автордың жазбаша келісімімен; өзгертілген нұсқалар түпнұсқа жобаға және оның авторы Arkomiko-ға сілтеме жасауы тиіс. Плагиндер мен аддондар — **C2UI — Plugins & Addons (C2UI‑Pl&AD)** лицензиясымен.
 
-C2UI өз кодының лицензиясы әлі таңдалмаған — оған дейін барлық құқықтар қорғалған. Issues мен pull request-тер қош келеді.
+Source Filmmaker, Team Fortress 2 және Source қозғалтқышы Valve-қа тиесілі; жоба олардың форматтарын оқиды, файлдарын қамтымайды және тек Steam-дегі өз SFM көшірмеңізбен жұмыс істейді.
+
+<p align="center"><a href="../LICENSE/KK-kz.md"><img alt="Лицензия мәтіні" src="https://img.shields.io/badge/%D0%9B%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F_%D0%BC%D3%99%D1%82%D1%96%D0%BD%D1%96-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="Орнатудан тікелей рендерленген 64 модель" width="60%"><br><sub>Орнатудан кездейсоқ алынған алпыс төрт модель, C2UI-дің өз рендерерімен салынған.</sub></p>

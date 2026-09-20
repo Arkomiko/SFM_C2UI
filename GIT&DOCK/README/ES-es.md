@@ -15,6 +15,14 @@
 
 ---
 
+## Estado
+
+<p align="center"><img src="../assets/ES-es/sidebar.svg" alt="Estado" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Preparación general para el lanzamiento: 41%</b></p>
+
+<p align="center"><a href="../assets/ES-es/sidebar.md"><img alt="Estado en detalle" src="https://img.shields.io/badge/Estado_en_detalle-66c0f4?style=for-the-badge"></a></p>
+
 ## La idea
 
 Source Filmmaker es una herramienta potente cuya interfaz se quedó en 2012. C2UI no lo sustituye ni lo rehace: el objetivo es simplemente hacer SFM un poco más moderno y cómodo.
@@ -31,114 +39,6 @@ El primer objetivo es la compatibilidad total con SFM, huesos y rigs incluidos. 
   │  render propio │      solo lectura      │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## Estado
-
-<img align="right" src="../assets/ES-es/sidebar.svg" alt="Estado" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Preparación general para el lanzamiento: 41%</b>
-
-Cada área se despliega: qué funciona ya y qué no existe todavía. Los porcentajes son una estimación frente a lo que puede hacer SFM.
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Encontrar y montar SFM</b></summary>
-
-Registro de Steam → `libraryfolders.vdf` → las rutas de búsqueda de `gameinfo.txt`, en el orden del motor. Seis montajes en una instalación estándar. No se escribe nada fuera de la carpeta de la aplicación.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Índice de contenido</b></summary>
-
-70 199 archivos en 1,1 s en frío / 0,02 s en caliente; las sobrescrituras entre montajes se resuelven exactamente como el motor.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Modelos — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-Versiones 44, 48, 49. Esqueleto, mallas, todos los niveles de detalle, grupos de cuerpo. 1 500 modelos cargados, 0 fallos.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Materiales — <code>.vmt</code></b></summary>
-
-Los 19 554 materiales incluidos se leen; `patch`, bloques DX, proxies.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Texturas — <code>.vtf</code></b></summary>
-
-Versiones 7.0–7.5, DXT1/3/5 y todos los formatos sin comprimir, cubemaps, mips. DXT va a la GPU sin decodificar.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sesiones — <code>.dmx</code></b></summary>
-
-Binario 1–5 y KeyValues2. Cada sesión y archivo de partículas de la instalación se reescribe **byte a byte**.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Sesión en pantalla</b></summary>
-
-Planos y pistas de sonido en una línea de tiempo, el árbol de elementos, la escena de cada plano por su cámara. Aún no: mapas, partículas, sonido.
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>Animación</b></summary>
-
-Canales y logs evaluados en el cursor; scrub y reproducción. Huesos, cámaras y visibilidad siguen la sesión.
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>Caras</b></summary>
-
-Controladores flex, las reglas compiladas y animación de vértices — los personajes hablan y gesticulan. Aún no: mapas de arrugas.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Rigs</b></summary>
-
-Expresiones, restricciones point/orient/parent/aim, IK de dos huesos. Aún no: el grafo completo de dependencias de operadores, creación de rigs.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Edición</b></summary>
-
-Clic para seleccionar, manipulador de mover/rotar, inspector de cualquier atributo, clave en el cursor, deshacer/rehacer, guardado exacto al byte.
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
-
-Selección de tiempo con hold y falloff en la regla; una edición se extiende sobre ella como en SFM. Aún no: presets, capas.
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Editor de gráficas</b></summary>
-
-Curvas de cada log que mueve el elemento seleccionado: X/Y/Z, pitch/yaw/roll, escalares. Las claves se arrastran en tiempo y valor con vista previa en vivo, doble clic inserta, Supr borra; el eje de tiempo es el de la línea de tiempo. Aún no: tangentes y tipos de curva, escalar un grupo de claves.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Acoplamiento de paneles</b></summary>
-
-Arrastra paneles a una brújula de destinos con vista previa, como en UE5 y Visual Studio. Aún no: diseños guardados, temas.
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Sombreado Source</b></summary>
-
-Solo textura y una luz simple. Aún no: phong, rim, lightwarp, luces de escena, sombras.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Mapas — <code>.bsp</code></b></summary>
-
-No iniciado.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Render a imagen y vídeo</b></summary>
-
-No iniciado.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Plugins <code>.c2plg</code></b></summary>
-
-No iniciado.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Temas y espacios de trabajo</b></summary>
-
-Deliberadamente después: un solo aspecto hasta que el editor tenga algo que merezca tematizarse.
-
-</details>
-
-**No está listo para el lanzamiento.** La base — cada formato de archivo que usa SFM, leído correctamente y verificado contra toda la instalación — está y está probada; una sesión se puede abrir, reproducir, cambiar y guardar. Lo que falta es la *comodidad* del trabajo: el editor de gráficas, el sombreado Source, mapas, exportación. Sin número de versión hasta que un animador pueda hacer un día de trabajo en él.
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="El editor con Meet the Heavy abierto" width="100%"><br><sub>El editor hoy, con Meet the Heavy de Valve abierto: planos y sonido en la línea de tiempo, el árbol de la sesión, el primer plano visto por su propia cámara, personajes posados y con las caras que dice la sesión.</sub></p>
 
@@ -158,8 +58,8 @@ Requiere Windows, Python 3.13 y una instalación de Source Filmmaker.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 Al primer arranque busca SFM a través de Steam; si no lo encuentra, pregunta. <kbd>Ctrl</kbd>+<kbd>O</kbd> abre una sesión, <kbd>Espacio</kbd> reproduce, <kbd>C</kbd> mira por la cámara del plano, <kbd>T</kbd>/<kbd>R</kbd> mover/rotar, <kbd>M</kbd> motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> deshace, <kbd>Ctrl</kbd>+<kbd>S</kbd> guarda. Los paneles se arrastran por su título. Las pruebas no necesitan nada:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            el lanzador
+├── README.md
 ├── Core/              motor: formatos, sistema de archivos virtual, índice, puentes
 ├── App/               el editor: biblioteca de contenido, renderizador, ventana
 ├── Tools/             localización, herramientas de UI, plugins (más adelante)
+│   └── Launcher/      el lanzador
 ├── Testing/           pruebas, fixtures exactos al byte, un runner
-└── GIT&DOCK/README/   este README en otros idiomas
+└── GIT&DOCK/          este README en otros idiomas
 ```
 
 ## Hoja de ruta
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## Licencia y créditos
 
-Source Filmmaker, Team Fortress 2 y el motor Source son de Valve. Este proyecto lee sus formatos de archivo, no incluye ninguno de sus archivos y solo funciona con la copia de SFM que ya tienes en Steam.
+El código propio de C2UI está bajo la **licencia C2UI**: libre para uso personal y no comercial; uso comercial solo con el consentimiento escrito del autor; las versiones modificadas deben citar el proyecto original y a su autor, Arkomiko. Los plugins y addons están bajo la licencia **C2UI — Plugins & Addons (C2UI‑Pl&AD)**.
 
-La licencia del código propio de C2UI aún no está elegida — hasta entonces, todos los derechos reservados. Los issues y pull requests son bienvenidos igualmente.
+Source Filmmaker, Team Fortress 2 y el motor Source son de Valve; el proyecto lee sus formatos, no incluye sus archivos y solo funciona con tu propia copia de SFM de Steam.
+
+<p align="center"><a href="../LICENSE/ES-es.md"><img alt="Texto de la licencia" src="https://img.shields.io/badge/Texto_de_la_licencia-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="64 modelos renderizados directamente desde la instalación" width="60%"><br><sub>Sesenta y cuatro modelos elegidos al azar de la instalación, dibujados por el renderizador propio de C2UI.</sub></p>

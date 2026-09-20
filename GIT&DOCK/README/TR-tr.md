@@ -15,6 +15,14 @@
 
 ---
 
+## Hazırlık
+
+<p align="center"><img src="../assets/TR-tr/sidebar.svg" alt="Hazırlık" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Yayın için genel hazırlık: 41%</b></p>
+
+<p align="center"><a href="../assets/TR-tr/sidebar.md"><img alt="Hazırlık ayrıntılı" src="https://img.shields.io/badge/Haz%C4%B1rl%C4%B1k_ayr%C4%B1nt%C4%B1l%C4%B1-66c0f4?style=for-the-badge"></a></p>
+
 ## Fikir
 
 Source Filmmaker, arayüzü 2012'de kalmış güçlü bir araçtır. C2UI onun yerini almaz ve onu yeniden yapmaz: amaç yalnızca SFM'yi biraz daha modern ve rahat hale getirmektir.
@@ -31,114 +39,6 @@ Düzenleyici kurulu SFM'yi bulur, onu bir içerik kitaplığı olarak bağlar �
   │  kendi render │      salt okunur      │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## Hazırlık
-
-<img align="right" src="../assets/TR-tr/sidebar.svg" alt="Hazırlık" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>Yayın için genel hazırlık: 41%</b>
-
-Her alan açılabilir: neyin zaten çalıştığı ve neyin henüz olmadığı. Yüzdeler, SFM'nin yapabildiklerine göre bir tahmindir.
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>SFM'yi bulma ve bağlama</b></summary>
-
-Steam kayıt defteri → `libraryfolders.vdf` → `gameinfo.txt` arama yolları, motorun kendi sırasıyla. Standart kurulumda altı bağlama. Uygulama klasörü dışına hiçbir şey yazılmaz.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>İçerik dizini</b></summary>
-
-70 199 dosya 1,1 s soğuk / 0,02 s önbellekten; bağlamalar arası geçersiz kılmalar tam motor gibi çözülür.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Modeller — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-Sürüm 44, 48, 49. İskelet, mesh'ler, tüm ayrıntı seviyeleri, gövde grupları. 1 500 model yüklendi, 0 hata.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Malzemeler — <code>.vmt</code></b></summary>
-
-Gelen 19 554 malzemenin tümü okunur; `patch`, DX blokları, proxy'ler.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Dokular — <code>.vtf</code></b></summary>
-
-Sürüm 7.0–7.5, DXT1/3/5 ve tüm sıkıştırılmamış biçimler, cubemap'ler, mip'ler. DXT kod çözme olmadan GPU'ya gider.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Oturumlar — <code>.dmx</code></b></summary>
-
-İkili 1–5 ve KeyValues2. Kurulumdaki her oturum ve parçacık dosyası **bayt bayt** geri yazılır.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Ekranda oturum</b></summary>
-
-Zaman çizelgesinde çekimler ve ses parçaları, öğe ağacı, her çekimin sahnesi kendi kamerasından. Henüz yok: haritalar, parçacıklar, ses.
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>Animasyon</b></summary>
-
-Kanallar ve günlükler imleçte değerlendirilir; kaydırma ve oynatma. Kemikler, kameralar ve görünürlük oturumu izler.
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>Yüzler</b></summary>
-
-Flex denetleyicileri, derlenmiş kurallar ve köşe animasyonu — karakterler konuşur ve ifade gösterir. Henüz yok: kırışıklık haritaları.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Rig'ler</b></summary>
-
-İfadeler, point/orient/parent/aim kısıtları, iki kemikli IK. Henüz yok: tam operatör bağımlılık grafiği, rig oluşturma.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Düzenleme</b></summary>
-
-Tıklayarak seçim, taşı/döndür manipülatörü, her öznitelik için denetçi, imleçte anahtar, geri al/yinele, bayt düzeyinde kayıt.
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>Motion editor</b></summary>
-
-Cetvelde hold ve falloff ile zaman seçimi; düzenleme SFM'deki gibi üzerine yayılır. Henüz yok: ön ayarlar, katmanlar.
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>Grafik düzenleyici</b></summary>
-
-Seçili öğeyi süren her logun eğrileri: X/Y/Z, pitch/yaw/roll, skalerler. Anahtarlar canlı önizlemeyle zaman ve değerde sürüklenir, çift tık ekler, Delete siler; zaman ekseni zaman çizelgesinindir. Henüz yok: teğetler ve eğri türleri, anahtar grubunu ölçekleme.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>Panel yerleştirme</b></summary>
-
-UE5 ve Visual Studio'daki gibi panelleri önizlemeli hedef pusulasına sürükleyin. Henüz yok: kayıtlı yerleşimler, temalar.
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Source gölgelendirme</b></summary>
-
-Sadece doku ve basit ışık. Henüz yok: phong, rim, lightwarp, sahne ışıkları, gölgeler.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Haritalar — <code>.bsp</code></b></summary>
-
-Başlanmadı.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Görüntü ve videoya render</b></summary>
-
-Başlanmadı.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Eklentiler <code>.c2plg</code></b></summary>
-
-Başlanmadı.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Temalar ve çalışma alanları</b></summary>
-
-Bilerek sonra: düzenleyicide temalanmaya değer bir şey olana dek tek görünüm.
-
-</details>
-
-**Yayına hazır değil.** Temel — SFM'nin kullandığı her dosya biçimi, doğru okunmuş ve tüm kurulumda doğrulanmış — yerinde ve test edilmiş; bir oturum açılabilir, oynatılabilir, değiştirilebilir ve kaydedilebilir. Eksik olan çalışmanın *rahatlığı*: grafik düzenleyici, Source gölgelendirme, haritalar, dışa aktarma. Bir animatör içinde bir günlük iş yapabilene dek sürüm numarası yok.
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="Meet the Heavy açık düzenleyici" width="100%"><br><sub>Bugünkü düzenleyici, Valve'ın Meet the Heavy'si açık: zaman çizelgesinde çekimler ve ses, oturum ağacı, ilk çekim kendi kamerasından, oturumun dediği gibi pozlanmış ve yüz ifadeli karakterler.</sub></p>
 
@@ -158,8 +58,8 @@ Windows, Python 3.13 ve bir Source Filmmaker kurulumu gerekir.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 İlk açılışta SFM Steam üzerinden aranır; bulunamazsa program sorar. <kbd>Ctrl</kbd>+<kbd>O</kbd> oturum açar, <kbd>Space</kbd> oynatır, <kbd>C</kbd> çekim kamerasından bakar, <kbd>T</kbd>/<kbd>R</kbd> taşı/döndür, <kbd>M</kbd> motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> geri alır, <kbd>Ctrl</kbd>+<kbd>S</kbd> kaydeder. Paneller başlıklarından sürüklenir. Testler hiçbir şey gerektirmez:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            başlatıcı
+├── README.md
 ├── Core/              motor: biçimler, sanal dosya sistemi, dizin, köprüler
 ├── App/               düzenleyici: içerik kitaplığı, renderer, pencere
 ├── Tools/             yerelleştirme, UI araçları, eklentiler (sonra)
+│   └── Launcher/      başlatıcı
 ├── Testing/           testler, bayt düzeyinde fixture'lar, tek runner
-└── GIT&DOCK/README/   bu README diğer dillerde
+└── GIT&DOCK/          bu README diğer dillerde
 ```
 
 ## Yol haritası
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## Lisans ve teşekkür
 
-Source Filmmaker, Team Fortress 2 ve Source motoru Valve'a aittir. Bu proje onların dosya biçimlerini okur, hiçbir dosyalarını içermez ve yalnızca Steam üzerinden zaten sahip olduğunuz SFM kopyasıyla çalışır.
+C2UI'nin kendi kodu **C2UI lisansı** altındadır: kişisel ve ticari olmayan kullanım serbest; ticari kullanım yalnızca yazarın yazılı onayıyla; değiştirilmiş sürümler özgün projeyi ve yazarı Arkomiko'yu belirtmelidir. Eklentiler ve ek paketler **C2UI — Plugins & Addons (C2UI‑Pl&AD)** lisansı altındadır.
 
-C2UI'nin kendi kodunun lisansı henüz seçilmedi — o zamana dek tüm hakları saklıdır. Issue'lar ve pull request'ler yine de hoş karşılanır.
+Source Filmmaker, Team Fortress 2 ve Source motoru Valve'a aittir; proje onların biçimlerini okur, hiçbir dosyalarını içermez ve yalnızca Steam'deki kendi SFM kopyanızla çalışır.
+
+<p align="center"><a href="../LICENSE/TR-tr.md"><img alt="Lisans metni" src="https://img.shields.io/badge/Lisans_metni-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="Kurulumdan doğrudan render edilen 64 model" width="60%"><br><sub>Kurulumdan rastgele seçilen altmış dört model, C2UI'nin kendi renderer'ı ile çizildi.</sub></p>

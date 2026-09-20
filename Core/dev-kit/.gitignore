@@ -1,0 +1,6 @@
+# Vendored SDKs: Valve's files are not redistributable, only the structure is
+sfm_sdk/*
+source_sdk/*
+source2_sdk/*
+steam_sdk/*
+!*/PLACE_SDK_HERE.md

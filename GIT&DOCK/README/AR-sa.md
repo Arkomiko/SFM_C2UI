@@ -15,6 +15,14 @@
 
 ---
 
+## الجاهزية
+
+<p align="center"><img src="../assets/AR-sa/sidebar.svg" alt="الجاهزية" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>الجاهزية الإجمالية للإصدار: 41%</b></p>
+
+<p align="center"><a href="../assets/AR-sa/sidebar.md"><img alt="الجاهزية بالتفصيل" src="https://img.shields.io/badge/%D8%A7%D9%84%D8%AC%D8%A7%D9%87%D8%B2%D9%8A%D8%A9_%D8%A8%D8%A7%D9%84%D8%AA%D9%81%D8%B5%D9%8A%D9%84-66c0f4?style=for-the-badge"></a></p>
+
 ## الفكرة
 
 Source Filmmaker أداة قوية بقيت واجهتها في عام 2012. لا يستبدله C2UI ولا يعيد صنعه: الهدف ببساطة جعل SFM أكثر حداثة وراحة قليلًا.
@@ -31,114 +39,6 @@ Source Filmmaker أداة قوية بقيت واجهتها في عام 2012. ل�
   │  عرض خاص     │       قراءة فقط       │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## الجاهزية
-
-<img align="right" src="../assets/AR-sa/sidebar.svg" alt="الجاهزية" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>الجاهزية الإجمالية للإصدار: 41%</b>
-
-كل مجال قابل للفتح: ما يعمل بالفعل وما لم يوجد بعد. النسب تقدير مقابل ما يستطيعه SFM.
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>إيجاد SFM وتحميله</b></summary>
-
-سجل Steam ← `libraryfolders.vdf` ← مسارات البحث في `gameinfo.txt` بترتيب المحرّك نفسه. ستة تحميلات في تثبيت قياسي. لا يُكتب شيء خارج مجلد التطبيق.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>فهرس المحتوى</b></summary>
-
-70 199 ملفًا في 1.1 ث على البارد / 0.02 ث من الذاكرة المخبأة؛ التجاوزات بين التحميلات تُحلّ تمامًا كما يفعل المحرّك.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>النماذج — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-الإصدارات 44 و48 و49. الهيكل، الشبكات، كل مستويات التفصيل، مجموعات الجسم. حُمّل 1 500 نموذج، 0 إخفاقات.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>المواد — <code>.vmt</code></b></summary>
-
-كل المواد الـ 19 554 المرفقة تُقرأ؛ `patch`، كتل DX، الوكلاء.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>القوام — <code>.vtf</code></b></summary>
-
-الإصدارات 7.0–7.5، DXT1/3/5 وكل الصيغ غير المضغوطة، خرائط المكعب، الـ mips. يذهب DXT إلى GPU دون فك تشفير.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>الجلسات — <code>.dmx</code></b></summary>
-
-ثنائي 1–5 وKeyValues2. كل جلسة وملف جسيمات في التثبيت يُكتب مجددًا **بايتًا بايتًا**.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>الجلسة على الشاشة</b></summary>
-
-اللقطات ومسارات الصوت على الخط الزمني، شجرة العناصر، مشهد كل لقطة من كاميرتها. ليس بعد: الخرائط، الجسيمات، الصوت.
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>التحريك</b></summary>
-
-القنوات والسجلات تُقيَّم عند المؤشر؛ التمرير والتشغيل. العظام والكاميرات والرؤية تتبع الجلسة.
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>الوجوه</b></summary>
-
-متحكمات Flex، القواعد المُجمَّعة وتحريك الرؤوس — الشخصيات تتكلم وتعبّر. ليس بعد: خرائط التجاعيد.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>الريغات</b></summary>
-
-التعبيرات، قيود point/orient/parent/aim، IK بعظمتين. ليس بعد: مخطط اعتماديات المشغّلات الكامل، إنشاء الريغات.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>التحرير</b></summary>
-
-النقر للتحديد، مُعالج تحريك/تدوير، مفتّش لأي خاصية، مفتاح عند المؤشر، تراجع/إعادة، حفظ دقيق بالبايت.
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>محرّر الحركة</b></summary>
-
-تحديد زمني مع hold وfalloff على المسطرة؛ التعديل ينتشر عليه كما في SFM. ليس بعد: الإعدادات المسبقة، الطبقات.
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>محرّر الرسوم</b></summary>
-
-منحنيات كل سجل يحرّك العنصر المحدد: X/Y/Z وpitch/yaw/roll والقيم العددية. تُسحب المفاتيح في الزمن والقيمة مع معاينة حية، والنقر المزدوج يُدرج، وDelete يحذف؛ محور الزمن هو محور الخط الزمني. ليس بعد: المماسات وأنواع المنحنيات، تحجيم مجموعة مفاتيح.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>إرساء اللوحات</b></summary>
-
-اسحب اللوحات إلى بوصلة أهداف مع معاينة، كما في UE5 وVisual Studio. ليس بعد: التخطيطات المحفوظة، السمات.
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>تظليل Source</b></summary>
-
-القوام وضوء بسيط فقط. ليس بعد: phong، rim، lightwarp، أضواء المشهد، الظلال.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>الخرائط — <code>.bsp</code></b></summary>
-
-لم يبدأ.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>العرض إلى صورة وفيديو</b></summary>
-
-لم يبدأ.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>الإضافات <code>.c2plg</code></b></summary>
-
-لم يبدأ.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>السمات ومساحات العمل</b></summary>
-
-مؤجّل عن قصد: مظهر واحد حتى يكون في المحرّر ما يستحق التزيين.
-
-</details>
-
-**غير جاهز للإصدار.** الأساس — كل صيغة ملف يستخدمها SFM، مقروءة بشكل صحيح ومُتحقَّق منها على التثبيت كله — موجود ومُختبَر؛ يمكن فتح جلسة وتشغيلها وتعديلها وحفظها. ما ينقص هو *راحة* العمل: محرّر الرسوم، تظليل Source، الخرائط، التصدير. لا رقم إصدار حتى يستطيع محرّك رسوم قضاء يوم عمل فيه.
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="المحرّر وفيه Meet the Heavy مفتوح" width="100%"><br><sub>المحرّر اليوم، وفيه Meet the Heavy من Valve مفتوح: اللقطات والصوت على الخط الزمني، شجرة الجلسة، اللقطة الأولى من كاميرتها، والشخصيات بوضعياتها وتعابيرها كما تقول الجلسة.</sub></p>
 
@@ -158,8 +58,8 @@ Source Filmmaker أداة قوية بقيت واجهتها في عام 2012. ل�
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 عند أول تشغيل يُبحث عن SFM عبر Steam؛ إن لم يُوجد يسأل البرنامج. <kbd>Ctrl</kbd>+<kbd>O</kbd> يفتح جلسة، <kbd>Space</kbd> تشغيل، <kbd>C</kbd> كاميرا اللقطة، <kbd>T</kbd>/<kbd>R</kbd> تحريك/تدوير، <kbd>M</kbd> محرّر الحركة، <kbd>Ctrl</kbd>+<kbd>Z</kbd> تراجع، <kbd>Ctrl</kbd>+<kbd>S</kbd> حفظ. تُسحب اللوحات من عنوانها. الاختبارات لا تحتاج شيئًا:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            المُشغِّل
+├── README.md
 ├── Core/              المحرّك: الصيغ، نظام ملفات افتراضي، الفهرس، الجسور
 ├── App/               المحرّر: مكتبة المحتوى، المُصيِّر، النافذة
 ├── Tools/             التوطين، أدوات الواجهة، الإضافات (لاحقًا)
+│   └── Launcher/      المُشغِّل
 ├── Testing/           الاختبارات، تجهيزات دقيقة بالبايت، مشغّل واحد
-└── GIT&DOCK/README/   هذا الـ README بلغات أخرى
+└── GIT&DOCK/          هذا الـ README بلغات أخرى
 ```
 
 ## خارطة الطريق
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## الترخيص والشكر
 
-Source Filmmaker وTeam Fortress 2 ومحرّك Source ملك Valve. يقرأ هذا المشروع صيغ ملفاتها، ولا يرفق أي ملف منها، ويعمل فقط مع نسخة SFM التي تملكها عبر Steam.
+كود C2UI الخاص يخضع **لرخصة C2UI**: حر للاستخدام الشخصي وغير التجاري؛ الاستخدام التجاري فقط بموافقة خطية من المؤلف؛ النسخ المعدّلة يجب أن تنسب إلى المشروع الأصلي ومؤلفه Arkomiko. الإضافات والملحقات تخضع لرخصة **C2UI — Plugins & Addons (C2UI‑Pl&AD)**.
 
-لم يُختر ترخيص كود C2UI الخاص بعد — حتى ذلك الحين، جميع الحقوق محفوظة. المشكلات وطلبات السحب مرحّب بها.
+Source Filmmaker وTeam Fortress 2 ومحرّك Source ملك Valve؛ يقرأ المشروع صيغها، ولا يرفق أي ملف منها، ويعمل فقط مع نسختك من SFM عبر Steam.
+
+<p align="center"><a href="../LICENSE/AR-sa.md"><img alt="نص الرخصة" src="https://img.shields.io/badge/%D9%86%D8%B5_%D8%A7%D9%84%D8%B1%D8%AE%D8%B5%D8%A9-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="64 نموذجًا مُصيَّرة مباشرة من التثبيت" width="60%"><br><sub>أربعة وستون نموذجًا اختيرت عشوائيًا من التثبيت، رسمها مُصيِّر C2UI الخاص.</sub></p>

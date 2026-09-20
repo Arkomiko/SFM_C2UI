@@ -15,6 +15,14 @@
 
 ---
 
+## தயார்நிலை
+
+<p align="center"><img src="../assets/TA-in/sidebar.svg" alt="தயார்நிலை" width="320"></p>
+
+<p align="center"><img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>வெளியீட்டுக்கான மொத்த தயார்நிலை: 41%</b></p>
+
+<p align="center"><a href="../assets/TA-in/sidebar.md"><img alt="தயார்நிலை விரிவாக" src="https://img.shields.io/badge/%E0%AE%A4%E0%AE%AF%E0%AE%BE%E0%AE%B0%E0%AF%8D%E0%AE%A8%E0%AE%BF%E0%AE%B2%E0%AF%88_%E0%AE%B5%E0%AE%BF%E0%AE%B0%E0%AE%BF%E0%AE%B5%E0%AE%BE%E0%AE%95-66c0f4?style=for-the-badge"></a></p>
+
 ## யோசனை
 
 Source Filmmaker ஒரு வலுவான கருவி, ஆனால் அதன் இடைமுகம் 2012-லேயே தங்கிவிட்டது. C2UI அதை மாற்றவோ மீண்டும் உருவாக்கவோ இல்லை: நோக்கம் SFM ஐ சற்று நவீனமாகவும் வசதியாகவும் ஆக்குவதே.
@@ -31,114 +39,6 @@ Source Filmmaker ஒரு வலுவான கருவி, ஆனால் �
   │  சொந்த ரெண்டர்  │      படிக்க மட்டும்      │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-## தயார்நிலை
-
-<img align="right" src="../assets/TA-in/sidebar.svg" alt="தயார்நிலை" width="300">
-
-<img alt="41%" src="https://img.shields.io/badge/41%25-e0a800?style=flat-square"> <b>வெளியீட்டுக்கான மொத்த தயார்நிலை: 41%</b>
-
-ஒவ்வொரு பகுதியும் விரிகிறது: ஏற்கனவே என்ன வேலை செய்கிறது, என்ன இன்னும் இல்லை. சதவீதங்கள் SFM திறன்களுக்கு ஒப்பிட்ட மதிப்பீடு.
-
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>SFM ஐக் கண்டறிந்து ஏற்றுதல்</b></summary>
-
-Steam பதிவகம் → `libraryfolders.vdf` → `gameinfo.txt` தேடல் பாதைகள், எஞ்சின் வரிசையில். நிலையான நிறுவலில் ஆறு ஏற்றங்கள். பயன்பாட்டு கோப்புறைக்கு வெளியே எதுவும் எழுதப்படாது.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>உள்ளடக்க அட்டவணை</b></summary>
-
-70 199 கோப்புகள் 1.1 வி குளிர் / 0.02 வி கேஷிலிருந்து; ஏற்றங்களுக்கு இடையிலான மேலெழுதல்கள் எஞ்சின் போலவே தீர்க்கப்படுகின்றன.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>மாதிரிகள் — <code>.mdl</code> <code>.vvd</code> <code>.vtx</code></b></summary>
-
-பதிப்புகள் 44, 48, 49. எலும்புக்கூடு, மெஷ்கள், எல்லா விவர நிலைகள், உடல் குழுக்கள். 1 500 மாதிரிகள் ஏற்றப்பட்டன, 0 தோல்விகள்.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>பொருட்கள் — <code>.vmt</code></b></summary>
-
-எல்லா 19 554 பொருட்களும் படிக்கப்படுகின்றன; `patch`, DX தொகுதிகள், ப்ராக்ஸிகள்.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>அமைப்புகள் — <code>.vtf</code></b></summary>
-
-பதிப்புகள் 7.0–7.5, DXT1/3/5 மற்றும் எல்லா அழுத்தப்படாத வடிவங்கள், கியூப்மேப்கள், மிப்கள். DXT டிகோட் இல்லாமல் GPU க்கு செல்கிறது.
-
-</details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>அமர்வுகள் — <code>.dmx</code></b></summary>
-
-பைனரி 1–5 மற்றும் KeyValues2. நிறுவலின் ஒவ்வொரு அமர்வும் துகள் கோப்பும் **பைட் பைட்டாக** திரும்ப எழுதப்படுகிறது.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>திரையில் அமர்வு</b></summary>
-
-காலக்கோட்டில் ஷாட்கள் மற்றும் ஒலி தடங்கள், உறுப்பு மரம், ஒவ்வொரு ஷாட்டின் காட்சி அதன் கேமரா வழியாக. இன்னும் இல்லை: வரைபடங்கள், துகள்கள், ஒலி.
-
-</details>
-<details><summary><img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> <b>அனிமேஷன்</b></summary>
-
-கர்சரில் சேனல்கள் மற்றும் பதிவுகள் மதிப்பிடப்படுகின்றன; ஸ்க்ரப் மற்றும் ப்ளே. எலும்புகள், கேமராக்கள், தெரிவுநிலை அமர்வைப் பின்பற்றுகின்றன.
-
-</details>
-<details><summary><img alt="90%" src="https://img.shields.io/badge/90%25-3b9c5b?style=flat-square"> <b>முகங்கள்</b></summary>
-
-Flex கட்டுப்படுத்திகள், தொகுக்கப்பட்ட விதிகள் மற்றும் வெர்டெக்ஸ் அனிமேஷன் — கதாபாத்திரங்கள் பேசுகின்றன, உணர்ச்சிகளைக் காட்டுகின்றன. இன்னும் இல்லை: சுருக்க வரைபடங்கள்.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>ரிக்குகள்</b></summary>
-
-வெளிப்பாடுகள், point/orient/parent/aim கட்டுப்பாடுகள், இரு-எலும்பு IK. இன்னும் இல்லை: முழு ஆபரேட்டர் சார்பு வரைபடம், ரிக் உருவாக்கம்.
-
-</details>
-<details><summary><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>திருத்தம்</b></summary>
-
-கிளிக் தேர்வு, நகர்த்து/சுழற்று மானிபுலேட்டர், எந்த பண்புக்கும் இன்ஸ்பெக்டர், கர்சரில் கீ, செயல்தவிர்/மீண்டும், பைட்-துல்லிய சேமிப்பு.
-
-</details>
-<details><summary><img alt="50%" src="https://img.shields.io/badge/50%25-e0a800?style=flat-square"> <b>மோஷன் எடிட்டர்</b></summary>
-
-ரூலரில் ஹோல்ட் மற்றும் ஃபால்ஆஃப் உடன் நேர தேர்வு; திருத்தம் SFM போல அதன் மேல் பரவுகிறது. இன்னும் இல்லை: முன்னமைவுகள், அடுக்குகள்.
-
-</details>
-<details><summary><img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> <b>கிராஃப் எடிட்டர்</b></summary>
-
-தேர்ந்த உறுப்பை இயக்கும் ஒவ்வொரு பதிவின் வளைவுகள்: X/Y/Z, pitch/yaw/roll, ஸ்கேலர்கள். கீகள் நேரடி முன்னோட்டத்துடன் நேரம் மற்றும் மதிப்பில் இழுக்கப்படும், இரட்டை கிளிக் சேர்க்கும், Delete நீக்கும்; நேர அச்சு காலக்கோட்டினது. இன்னும் இல்லை: தொடுகோடுகள், வளைவு வகைகள், கீ குழு அளவிடல்.
-
-</details>
-<details><summary><img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> <b>பேனல் டாக்கிங்</b></summary>
-
-UE5 மற்றும் Visual Studio போல, முன்னோட்டத்துடன் இலக்குகளின் திசைகாட்டியில் பேனல்களை இழுக்கவும். இன்னும் இல்லை: சேமித்த அமைப்புகள், தீம்கள்.
-
-</details>
-<details><summary><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Source ஷேடிங்</b></summary>
-
-அமைப்பு மற்றும் எளிய ஒளி மட்டும். இன்னும் இல்லை: phong, rim, lightwarp, காட்சி ஒளிகள், நிழல்கள்.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>வரைபடங்கள் — <code>.bsp</code></b></summary>
-
-தொடங்கவில்லை.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>படம் மற்றும் வீடியோவாக ரெண்டர்</b></summary>
-
-தொடங்கவில்லை.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>செருகுநிரல்கள் <code>.c2plg</code></b></summary>
-
-தொடங்கவில்லை.
-
-</details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>தீம்கள் மற்றும் பணியிடங்கள்</b></summary>
-
-வேண்டுமென்றே பின்னர்: எடிட்டரில் அலங்கரிக்கத் தகுந்தது வரும் வரை ஒரே தோற்றம்.
-
-</details>
-
-**வெளியீட்டுக்கு தயாராக இல்லை.** அடித்தளம் — SFM பயன்படுத்தும் ஒவ்வொரு கோப்பு வடிவமும், சரியாகப் படித்து முழு நிறுவலிலும் சரிபார்க்கப்பட்டது — உள்ளது மற்றும் சோதிக்கப்பட்டது; அமர்வைத் திறக்க, இயக்க, மாற்ற, சேமிக்க முடியும். இல்லாதது வேலையின் *வசதி*: கிராஃப் எடிட்டர், Source ஷேடிங், வரைபடங்கள், ஏற்றுமதி. ஒரு அனிமேட்டர் இதில் ஒரு நாள் வேலை செய்ய முடியும் வரை பதிப்பு எண் இல்லை.
-
-<br clear="all">
 
 <p align="center"><img src="../assets/editor.png" alt="Meet the Heavy திறந்த எடிட்டர்" width="100%"><br><sub>இன்றைய எடிட்டர், Valve இன் Meet the Heavy திறந்து: காலக்கோட்டில் ஷாட்கள் மற்றும் ஒலி, அமர்வு மரம், முதல் ஷாட் அதன் சொந்த கேமரா வழியாக, அமர்வின்படி நிலை மற்றும் முகங்களுடன் கதாபாத்திரங்கள்.</sub></p>
 
@@ -158,8 +58,8 @@ Windows, Python 3.13 மற்றும் Source Filmmaker நிறுவல�
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
-.venv/Scripts/python.exe c2ui.py
+.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
+.venv/Scripts/python.exe Tools/Launcher/c2ui.py
 ```
 
 முதல் தொடக்கத்தில் Steam வழியாக SFM ஐத் தேடுகிறது; கிடைக்காவிட்டால் கேட்கிறது. <kbd>Ctrl</kbd>+<kbd>O</kbd> அமர்வைத் திறக்கிறது, <kbd>Space</kbd> ப்ளே, <kbd>C</kbd> ஷாட் கேமரா, <kbd>T</kbd>/<kbd>R</kbd> நகர்த்து/சுழற்று, <kbd>M</kbd> மோஷன் எடிட்டர், <kbd>Ctrl</kbd>+<kbd>Z</kbd> செயல்தவிர், <kbd>Ctrl</kbd>+<kbd>S</kbd> சேமி. பேனல்கள் தலைப்பால் இழுக்கப்படுகின்றன. சோதனைகளுக்கு எதுவும் தேவையில்லை:
@@ -172,12 +72,13 @@ python Testing/run.py
 
 ```
 C2UI_SDK/
-├── c2ui.py            லாஞ்சர்
+├── README.md
 ├── Core/              எஞ்சின்: வடிவங்கள், மெய்நிகர் கோப்பு முறைமை, அட்டவணை, பாலங்கள்
 ├── App/               எடிட்டர்: உள்ளடக்க நூலகம், ரெண்டரர், சாளரம்
 ├── Tools/             உள்ளூர்மயமாக்கல், UI கருவிகள், செருகுநிரல்கள் (பின்னர்)
+│   └── Launcher/      லாஞ்சர்
 ├── Testing/           சோதனைகள், பைட்-துல்லிய ஃபிக்ஸ்சர்கள், ஒரு ரன்னர்
-└── GIT&DOCK/README/   இந்த README பிற மொழிகளில்
+└── GIT&DOCK/          இந்த README பிற மொழிகளில்
 ```
 
 ## வழித்திட்டம்
@@ -189,8 +90,10 @@ C2UI_SDK/
 
 ## உரிமம் மற்றும் நன்றி
 
-Source Filmmaker, Team Fortress 2 மற்றும் Source எஞ்சின் Valve க்கு சொந்தமானவை. இந்தத் திட்டம் அவற்றின் கோப்பு வடிவங்களைப் படிக்கிறது, அவற்றின் கோப்புகளைச் சேர்க்காது, Steam வழியாக உங்களிடம் ஏற்கனவே உள்ள SFM நகலுடன் மட்டுமே வேலை செய்கிறது.
+C2UI இன் சொந்தக் குறியீடு **C2UI உரிமத்தின்** கீழ்: தனிப்பட்ட மற்றும் வணிகமற்ற பயன்பாட்டுக்கு இலவசம்; வணிகப் பயன்பாடு ஆசிரியரின் எழுத்துப்பூர்வ ஒப்புதலுடன் மட்டுமே; மாற்றப்பட்ட பதிப்புகள் அசல் திட்டத்தையும் ஆசிரியர் Arkomiko ஐயும் குறிப்பிட வேண்டும். செருகுநிரல்களும் துணை நிரல்களும் **C2UI — Plugins & Addons (C2UI‑Pl&AD)** உரிமத்தின் கீழ்.
 
-C2UI இன் சொந்த குறியீட்டின் உரிமம் இன்னும் தேர்ந்தெடுக்கப்படவில்லை — அதுவரை அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை. Issues மற்றும் pull requests வரவேற்கப்படுகின்றன.
+Source Filmmaker, Team Fortress 2, Source எஞ்சின் Valve க்கு சொந்தம்; திட்டம் அவற்றின் வடிவங்களைப் படிக்கிறது, அவற்றின் கோப்புகளைச் சேர்க்காது, Steam இல் உங்கள் சொந்த SFM நகலுடன் மட்டுமே வேலை செய்கிறது.
+
+<p align="center"><a href="../LICENSE/TA-in.md"><img alt="உரிம உரை" src="https://img.shields.io/badge/%E0%AE%89%E0%AE%B0%E0%AE%BF%E0%AE%AE_%E0%AE%89%E0%AE%B0%E0%AF%88-66c0f4?style=for-the-badge"></a></p>
 
 <p align="center"><img src="../assets/models.png" alt="நிறுவலிலிருந்து நேரடியாக ரெண்டர் செய்த 64 மாதிரிகள்" width="60%"><br><sub>நிறுவலிலிருந்து சீரற்று தேர்ந்தெடுத்த அறுபத்து நான்கு மாதிரிகள், C2UI இன் சொந்த ரெண்டரரால் வரையப்பட்டவை.</sub></p>
