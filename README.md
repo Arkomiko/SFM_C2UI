@@ -48,22 +48,22 @@ Source Filmmaker — отличный инструмент в интерфейс
 70 199 файлов за 1,1 с холодно / 0,02 с из кэша; переопределения между монтированиями разрешаются как в движке.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Модели — `.mdl` `.vvd` `.vtx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Модели — <code></code> <code></code> <code></code></b></summary>
 
 Версии 44, 48, 49. Скелет, меши, все уровни детализации, body-группы. 1 500 моделей загружено, 0 сбоев.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Материалы — `.vmt`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Материалы — <code></code></b></summary>
 
 Все 19 554 материала установки читаются; `patch`, DX-блоки, прокси.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Текстуры — `.vtf`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Текстуры — <code></code></b></summary>
 
 Версии 7.0–7.5, DXT1/3/5 и все несжатые форматы, кубмапы, mip-уровни. DXT уходит в GPU без распаковки.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Сессии — `.dmx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Сессии — <code></code></b></summary>
 
 Binary 1–5 и KeyValues2. Каждая сессия и файл частиц установки записываются обратно **побайтово идентично**.
 
@@ -108,7 +108,7 @@ Flex-контроллеры, скомпилированные правила и 
 Пока только текстура и простой свет. Нет: phong, rim, lightwarp, освещения сцены, теней.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Карты — `.bsp`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Карты — <code></code></b></summary>
 
 Не начато.
 
@@ -118,7 +118,7 @@ Flex-контроллеры, скомпилированные правила и 
 Не начато.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Плагины `.c2plg`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Плагины <code></code></b></summary>
 
 Не начато.
 

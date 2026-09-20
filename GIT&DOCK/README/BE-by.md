@@ -48,22 +48,22 @@ Source Filmmaker — выдатны інструмент у інтэрфейсе
 70 199 файлаў за 1,1 с холадна / 0,02 с з кэшу; перавызначэнні паміж мантаваннямі вырашаюцца як у рухавіку.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Мадэлі — `.mdl` `.vvd` `.vtx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Мадэлі — <code></code> <code></code> <code></code></b></summary>
 
 Версіі 44, 48, 49. Шкілет, мешы, усе ўзроўні дэталізацыі, body-групы. 1 500 мадэляў загружана, 0 збояў.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Матэрыялы — `.vmt`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Матэрыялы — <code></code></b></summary>
 
 Усе 19 554 матэрыялы ўстаноўкі чытаюцца; `patch`, DX-блокі, проксі.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Тэкстуры — `.vtf`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Тэкстуры — <code></code></b></summary>
 
 Версіі 7.0–7.5, DXT1/3/5 і ўсе несціснутыя фарматы, кубмапы, mip-узроўні. DXT ідзе ў GPU без распакоўкі.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Сесіі — `.dmx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Сесіі — <code></code></b></summary>
 
 Binary 1–5 і KeyValues2. Кожная сесія і файл часціц устаноўкі запісваюцца назад **пабайтава ідэнтычна**.
 
@@ -108,7 +108,7 @@ Flex-кантролеры, скампіляваныя правілы і вярш
 Пакуль толькі тэкстура і простае святло. Няма: phong, rim, lightwarp, асвятлення сцэны, ценяў.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Карты — `.bsp`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Карты — <code></code></b></summary>
 
 Не пачата.
 
@@ -118,7 +118,7 @@ Flex-кантролеры, скампіляваныя правілы і вярш
 Не пачата.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Плагіны `.c2plg`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Плагіны <code></code></b></summary>
 
 Не пачата.
 

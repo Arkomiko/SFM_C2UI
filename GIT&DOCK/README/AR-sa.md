@@ -48,22 +48,22 @@ Source Filmmaker أداة رائعة بواجهة من عام 2012. لا أري�
 70 199 ملفًا في 1.1 ث على البارد / 0.02 ث من الذاكرة المخبأة؛ التجاوزات بين التحميلات تُحلّ تمامًا كما يفعل المحرّك.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>النماذج — `.mdl` `.vvd` `.vtx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>النماذج — <code></code> <code></code> <code></code></b></summary>
 
 الإصدارات 44 و48 و49. الهيكل، الشبكات، كل مستويات التفصيل، مجموعات الجسم. حُمّل 1 500 نموذج، 0 إخفاقات.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>المواد — `.vmt`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>المواد — <code></code></b></summary>
 
 كل المواد الـ 19 554 المرفقة تُقرأ؛ `patch`، كتل DX، الوكلاء.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>القوام — `.vtf`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>القوام — <code></code></b></summary>
 
 الإصدارات 7.0–7.5، DXT1/3/5 وكل الصيغ غير المضغوطة، خرائط المكعب، الـ mips. يذهب DXT إلى GPU دون فك تشفير.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>الجلسات — `.dmx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>الجلسات — <code></code></b></summary>
 
 ثنائي 1–5 وKeyValues2. كل جلسة وملف جسيمات في التثبيت يُكتب مجددًا **بايتًا بايتًا**.
 
@@ -108,7 +108,7 @@ Source Filmmaker أداة رائعة بواجهة من عام 2012. لا أري�
 القوام وضوء بسيط فقط. ليس بعد: phong، rim، lightwarp، أضواء المشهد، الظلال.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>الخرائط — `.bsp`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>الخرائط — <code></code></b></summary>
 
 لم يبدأ.
 
@@ -118,7 +118,7 @@ Source Filmmaker أداة رائعة بواجهة من عام 2012. لا أري�
 لم يبدأ.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>الإضافات `.c2plg`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>الإضافات <code></code></b></summary>
 
 لم يبدأ.
 

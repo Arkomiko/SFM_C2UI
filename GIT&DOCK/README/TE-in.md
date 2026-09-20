@@ -48,22 +48,22 @@ Steam రిజిస్ట్రీ → `libraryfolders.vdf` → `gameinfo.txt`
 70 199 ఫైళ్లు 1.1 సె కోల్డ్ / 0.02 సె క్యాష్ నుండి; మౌంట్ల మధ్య ఓవర్‌రైడ్‌లు ఇంజిన్ లాగానే పరిష్కరించబడతాయి.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>మోడల్స్ — `.mdl` `.vvd` `.vtx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>మోడల్స్ — <code></code> <code></code> <code></code></b></summary>
 
 వెర్షన్లు 44, 48, 49. అస్థిపంజరం, మెష్‌లు, అన్ని వివరాల స్థాయిలు, బాడీ గ్రూపులు. 1 500 మోడల్స్ లోడ్, 0 వైఫల్యాలు.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>మెటీరియల్స్ — `.vmt`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>మెటీరియల్స్ — <code></code></b></summary>
 
 అన్ని 19 554 మెటీరియల్స్ చదవబడతాయి; `patch`, DX బ్లాక్‌లు, ప్రాక్సీలు.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>టెక్స్చర్లు — `.vtf`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>టెక్స్చర్లు — <code></code></b></summary>
 
 వెర్షన్లు 7.0–7.5, DXT1/3/5 మరియు అన్ని అన్‌కంప్రెస్డ్ ఫార్మాట్లు, క్యూబ్‌మ్యాప్‌లు, మిప్‌లు. DXT డీకోడ్ లేకుండా GPU కి వెళ్తుంది.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>సెషన్లు — `.dmx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>సెషన్లు — <code></code></b></summary>
 
 బైనరీ 1–5 మరియు KeyValues2. ఇన్‌స్టాల్‌లోని ప్రతి సెషన్ మరియు పార్టికల్ ఫైల్ **బైట్ బై బైట్** తిరిగి రాయబడుతుంది.
 
@@ -108,7 +108,7 @@ UE5 మరియు Visual Studio లాగా, ప్రివ్యూతో �
 టెక్స్చర్ మరియు సాధారణ కాంతి మాత్రమే. ఇంకా లేదు: phong, rim, lightwarp, సీన్ లైట్లు, నీడలు.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>మ్యాప్‌లు — `.bsp`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>మ్యాప్‌లు — <code></code></b></summary>
 
 ప్రారంభించలేదు.
 
@@ -118,7 +118,7 @@ UE5 మరియు Visual Studio లాగా, ప్రివ్యూతో �
 ప్రారంభించలేదు.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>ప్లగిన్‌లు `.c2plg`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>ప్లగిన్‌లు <code></code></b></summary>
 
 ప్రారంభించలేదు.
 

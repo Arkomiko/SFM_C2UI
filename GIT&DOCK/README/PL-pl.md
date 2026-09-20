@@ -48,22 +48,22 @@ Rejestr Steam → `libraryfolders.vdf` → ścieżki z `gameinfo.txt` w kolejno�
 70 199 plików w 1,1 s na zimno / 0,02 s z pamięci podręcznej; nadpisania między montowaniami rozwiązywane jak w silniku.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Modele — `.mdl` `.vvd` `.vtx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Modele — <code></code> <code></code> <code></code></b></summary>
 
 Wersje 44, 48, 49. Szkielet, siatki, wszystkie poziomy szczegółów, grupy ciała. 1 500 modeli wczytanych, 0 błędów.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Materiały — `.vmt`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Materiały — <code></code></b></summary>
 
 Wszystkie 19 554 materiały z instalacji się wczytują; `patch`, bloki DX, proxy.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Tekstury — `.vtf`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Tekstury — <code></code></b></summary>
 
 Wersje 7.0–7.5, DXT1/3/5 i wszystkie formaty nieskompresowane, cubemapy, mipmapy. DXT trafia do GPU bez dekodowania.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sesje — `.dmx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sesje — <code></code></b></summary>
 
 Binary 1–5 i KeyValues2. Każda sesja i plik cząsteczek z instalacji zapisuje się z powrotem **bajt w bajt**.
 
@@ -108,7 +108,7 @@ Przeciąganie paneli na kompas celów z podglądem, jak w UE5 i Visual Studio. B
 Tylko tekstura i proste światło. Brak: phong, rim, lightwarp, świateł sceny, cieni.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Mapy — `.bsp`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Mapy — <code></code></b></summary>
 
 Nie rozpoczęte.
 
@@ -118,7 +118,7 @@ Nie rozpoczęte.
 Nie rozpoczęte.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Wtyczki `.c2plg`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Wtyczki <code></code></b></summary>
 
 Nie rozpoczęte.
 

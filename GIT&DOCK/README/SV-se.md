@@ -48,22 +48,22 @@ Steam-registret → `libraryfolders.vdf` → sökvägarna i `gameinfo.txt`, i mo
 70 199 filer på 1,1 s kallt / 0,02 s varmt; överskuggningar mellan monteringar löses exakt som motorn gör.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Modeller — `.mdl` `.vvd` `.vtx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Modeller — <code></code> <code></code> <code></code></b></summary>
 
 Version 44, 48, 49. Skelett, meshar, alla detaljnivåer, kroppsgrupper. 1 500 modeller laddade, 0 fel.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Material — `.vmt`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Material — <code></code></b></summary>
 
 Alla 19 554 medföljande material tolkas; `patch`, DX-block, proxyer.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Texturer — `.vtf`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Texturer — <code></code></b></summary>
 
 Version 7.0–7.5, DXT1/3/5 och alla okomprimerade format, kubkartor, mippar. DXT går till GPU:n utan avkodning.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sessioner — `.dmx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sessioner — <code></code></b></summary>
 
 Binär 1–5 och KeyValues2. Varje session och partikelfil i installationen skrivs tillbaka **byte för byte**.
 
@@ -108,7 +108,7 @@ Dra paneler till en kompass av mål med förhandsvisning, som i UE5 och Visual S
 Bara textur och ett enkelt ljus. Inte ännu: phong, rim, lightwarp, scenljus, skuggor.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Kartor — `.bsp`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Kartor — <code></code></b></summary>
 
 Inte påbörjat.
 
@@ -118,7 +118,7 @@ Inte påbörjat.
 Inte påbörjat.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Insticksprogram `.c2plg`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Insticksprogram <code></code></b></summary>
 
 Inte påbörjat.
 

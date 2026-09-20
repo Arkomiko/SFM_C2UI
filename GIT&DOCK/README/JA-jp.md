@@ -48,22 +48,22 @@ Steam レジストリ → `libraryfolders.vdf` → `gameinfo.txt` の検索パ�
 70 199 ファイルをコールド 1.1 秒 / キャッシュ 0.02 秒で。マウント間の上書きはエンジンと同じように解決。
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>モデル — `.mdl` `.vvd` `.vtx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>モデル — <code></code> <code></code> <code></code></b></summary>
 
 バージョン 44、48、49。スケルトン、メッシュ、全 LOD、ボディグループ。1 500 モデルを読み込み、失敗 0。
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>マテリアル — `.vmt`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>マテリアル — <code></code></b></summary>
 
 同梱の 19 554 マテリアルすべてを解析。`patch`、DX ブロック、プロキシ。
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>テクスチャ — `.vtf`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>テクスチャ — <code></code></b></summary>
 
 バージョン 7.0–7.5、DXT1/3/5 とすべての非圧縮形式、キューブマップ、ミップ。DXT はデコードせずに GPU へ。
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>セッション — `.dmx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>セッション — <code></code></b></summary>
 
 バイナリ 1–5 と KeyValues2。インストール内のすべてのセッションとパーティクルファイルが **バイト単位で同一** に書き戻されます。
 
@@ -108,7 +108,7 @@ UE5 や Visual Studio のように、プレビュー付きのターゲットコ�
 テクスチャと単純なライトのみ。未対応: phong、rim、lightwarp、シーンライト、影。
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>マップ — `.bsp`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>マップ — <code></code></b></summary>
 
 未着手。
 
@@ -118,7 +118,7 @@ UE5 や Visual Studio のように、プレビュー付きのターゲットコ�
 未着手。
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>プラグイン `.c2plg`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>プラグイン <code></code></b></summary>
 
 未着手。
 

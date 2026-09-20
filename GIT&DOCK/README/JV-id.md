@@ -48,22 +48,22 @@ Registry Steam → `libraryfolders.vdf` → dalan telusur `gameinfo.txt`, mituru
 70 199 file ing 1,1 dtk adhem / 0,02 dtk saka cache; timpa antarane pasangan dirampungake persis kaya mesin.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Model — `.mdl` `.vvd` `.vtx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Model — <code></code> <code></code> <code></code></b></summary>
 
 Versi 44, 48, 49. Balung, mesh, kabeh tingkat detail, klompok awak. 1 500 model dimuat, 0 gagal.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Materi — `.vmt`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Materi — <code></code></b></summary>
 
 Kabeh 19 554 materi bisa diwaca; `patch`, blok DX, proxy.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Tekstur — `.vtf`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Tekstur — <code></code></b></summary>
 
 Versi 7.0–7.5, DXT1/3/5 lan kabeh format tanpa kompresi, cubemap, mip. DXT menyang GPU tanpa dekode.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sesi — `.dmx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sesi — <code></code></b></summary>
 
 Binar 1–5 lan KeyValues2. Saben sesi lan file partikel ing instalasi ditulis bali **bait demi bait**.
 
@@ -108,7 +108,7 @@ Seret panel menyang kompas target karo pratinjau, kaya ing UE5 lan Visual Studio
 Mung tekstur lan cahya prasaja. Durung: phong, rim, lightwarp, cahya adegan, ayang-ayang.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Peta — `.bsp`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Peta — <code></code></b></summary>
 
 Durung diwiwiti.
 
@@ -118,7 +118,7 @@ Durung diwiwiti.
 Durung diwiwiti.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Plugin `.c2plg`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Plugin <code></code></b></summary>
 
 Durung diwiwiti.
 

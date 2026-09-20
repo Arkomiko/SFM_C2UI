@@ -48,22 +48,22 @@ Steam রেজিস্ট্রি → `libraryfolders.vdf` → `gameinfo.txt`
 ৭০ ১৯৯ ফাইল ১.১ সেকেন্ডে ঠান্ডা / ০.০২ সেকেন্ডে ক্যাশ থেকে; মাউন্টের মধ্যে ওভাররাইড ঠিক ইঞ্জিনের মতো সমাধান হয়।
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>মডেল — `.mdl` `.vvd` `.vtx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>মডেল — <code></code> <code></code> <code></code></b></summary>
 
 সংস্করণ ৪৪, ৪৮, ৪৯। কঙ্কাল, মেশ, সব ডিটেইল লেভেল, বডি গ্রুপ। ১ ৫০০ মডেল লোড, ০ ব্যর্থতা।
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ম্যাটেরিয়াল — `.vmt`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>ম্যাটেরিয়াল — <code></code></b></summary>
 
 সব ১৯ ৫৫৪টি ম্যাটেরিয়াল পড়া যায়; `patch`, DX ব্লক, প্রক্সি।
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>টেক্সচার — `.vtf`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>টেক্সচার — <code></code></b></summary>
 
 সংস্করণ ৭.০–৭.৫, DXT1/3/5 ও সব অসংকুচিত ফরম্যাট, কিউবম্যাপ, মিপ। DXT ডিকোড ছাড়াই GPU-তে যায়।
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>সেশন — `.dmx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>সেশন — <code></code></b></summary>
 
 বাইনারি ১–৫ ও KeyValues2। ইনস্টলেশনের প্রতিটি সেশন ও পার্টিকল ফাইল **বাইটে বাইটে** ফিরে লেখা হয়।
 
@@ -108,7 +108,7 @@ UE5 ও Visual Studio-র মতো, প্রিভিউ সহ লক্ষ�
 শুধু টেক্সচার আর সাধারণ আলো। এখনো নয়: phong, rim, lightwarp, দৃশ্যের আলো, ছায়া।
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>ম্যাপ — `.bsp`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>ম্যাপ — <code></code></b></summary>
 
 শুরু হয়নি।
 
@@ -118,7 +118,7 @@ UE5 ও Visual Studio-র মতো, প্রিভিউ সহ লক্ষ�
 শুরু হয়নি।
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>প্লাগইন `.c2plg`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>প্লাগইন <code></code></b></summary>
 
 শুরু হয়নি।
 

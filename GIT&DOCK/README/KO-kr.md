@@ -48,22 +48,22 @@ Steam 레지스트리 → `libraryfolders.vdf` → `gameinfo.txt`의 검색 경�
 70 199개 파일을 콜드 1.1초 / 캐시 0.02초에; 마운트 간 재정의는 엔진과 똑같이 해결.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>모델 — `.mdl` `.vvd` `.vtx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>모델 — <code></code> <code></code> <code></code></b></summary>
 
 버전 44, 48, 49. 스켈레톤, 메시, 모든 LOD, 바디 그룹. 1 500개 모델 로드, 실패 0.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>머티리얼 — `.vmt`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>머티리얼 — <code></code></b></summary>
 
 포함된 19 554개 머티리얼 전부 파싱; `patch`, DX 블록, 프록시.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>텍스처 — `.vtf`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>텍스처 — <code></code></b></summary>
 
 버전 7.0–7.5, DXT1/3/5와 모든 비압축 형식, 큐브맵, 밉. DXT는 디코딩 없이 GPU로.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>세션 — `.dmx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>세션 — <code></code></b></summary>
 
 바이너리 1–5와 KeyValues2. 설치의 모든 세션과 파티클 파일이 **바이트 단위로 동일하게** 다시 기록됩니다.
 
@@ -108,7 +108,7 @@ UE5와 Visual Studio처럼 미리보기가 있는 대상 컴퍼스로 패널을 
 텍스처와 단순 조명만. 아직 없음: phong, rim, lightwarp, 씬 라이트, 그림자.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>맵 — `.bsp`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>맵 — <code></code></b></summary>
 
 시작 안 함.
 
@@ -118,7 +118,7 @@ UE5와 Visual Studio처럼 미리보기가 있는 대상 컴퍼스로 패널을 
 시작 안 함.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>플러그인 `.c2plg`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>플러그인 <code></code></b></summary>
 
 시작 안 함.
 

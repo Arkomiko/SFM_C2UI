@@ -48,22 +48,22 @@ Steam registry → `libraryfolders.vdf` → the search paths of `gameinfo.txt`, 
 70 199 files in 1.1 s cold / 0.02 s warm; overrides between mounts resolved exactly as the engine does.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Models — `.mdl` `.vvd` `.vtx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Models — <code></code> <code></code> <code></code></b></summary>
 
 Versions 44, 48, 49. Skeleton, meshes, every level of detail, body groups. 1 500 models loaded, 0 failures.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Materials — `.vmt`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Materials — <code></code></b></summary>
 
 All 19 554 shipped materials parse; `patch`, DX-level blocks, proxies.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Textures — `.vtf`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Textures — <code></code></b></summary>
 
 Versions 7.0–7.5, DXT1/3/5 and every uncompressed format, cubemaps, mips. DXT goes to the GPU without decoding.
 
 </details>
-<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sessions — `.dmx`</b></summary>
+<details><summary><img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> <b>Sessions — <code></code></b></summary>
 
 Binary 1–5 and KeyValues2. Every session and particle file in the install writes back **byte for byte**.
 
@@ -108,7 +108,7 @@ Drag panels onto a compass of targets with a preview, as in UE5 and Visual Studi
 Texture and a simple light only. Not yet: phong, rim, lightwarp, scene lights, shadows.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Maps — `.bsp`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Maps — <code></code></b></summary>
 
 Not started.
 
@@ -118,7 +118,7 @@ Not started.
 Not started.
 
 </details>
-<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Plugins `.c2plg`</b></summary>
+<details><summary><img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> <b>Plugins <code></code></b></summary>
 
 Not started.
 
