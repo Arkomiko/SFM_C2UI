@@ -407,6 +407,7 @@ def export(session: Session, source, settings: ExportSettings,
     screen = _Offscreen(settings.width, settings.height, settings.samples)
     renderer = Renderer()
     renderer.initialize()
+    renderer.background = (0.0, 0.0, 0.0, 1.0)         # a movie has no editor grey behind it
     evaluator = Evaluator()
     camera = OrbitCamera()
     camera.up_axis = "z"
@@ -433,6 +434,7 @@ def export(session: Session, source, settings: ExportSettings,
                 current = shot
             if scene is not None and shot is not None:
                 refresh_shot_scene(scene, shot)
+                scene.fade = shot.fade_at(moment)
                 if shot.camera is not None:
                     eye, target, fov = shot_camera_pose(shot, shot.camera, settings.width / settings.height)
                     camera.look_from(eye, target, fov_y=fov)

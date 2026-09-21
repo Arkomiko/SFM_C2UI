@@ -848,6 +848,7 @@ class MainWindow(QMainWindow):
         if scene is None or shot is None or not scene.up_axis:
             return
         refresh_shot_scene(scene, shot)
+        scene.fade = shot.fade_at(self.timeline.time)
         if self.follow_camera and shot.camera is not None:
             self._look_through(shot, shot.camera)
         if self.selected is not None and self._drag_start is None:

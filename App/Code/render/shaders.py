@@ -146,6 +146,39 @@ vec3 ambient_light(vec3 n) {
 
 out vec4 out_color;
 
+// light i as seen from `world`: the direction towards it and its radiance there;
+// false when the point is outside the light's reach
+bool light_at(int i, vec3 world, out vec3 l, out vec3 radiance) {
+    int kind = int(u_light_kind[i].x + 0.5);
+    if (kind == 3) {
+        // the sun: parallel, no falloff
+        l = -u_light_dirs[i];
+        radiance = u_light_color[i];
+        return true;
+    }
+    vec3 to_light = u_light_pos[i] - world;
+    float d = length(to_light);
+    l = to_light / max(d, 1e-4);
+    if (kind == 0) {
+        vec3 range = u_light_range[i];
+        if (d < range.x || d > range.z) return false;
+        // the projected frustum: a cone with a soft edge; fade to nothing towards maxDistance
+        float cone = smoothstep(u_light_atten[i].w, u_light_atten[i].w + 0.03, dot(-l, u_light_dirs[i]));
+        float fade = range.z > range.y ? 1.0 - clamp((d - range.y) / (range.z - range.y), 0.0, 1.0) : 1.0;
+        float atten = u_light_atten[i].x + u_light_atten[i].y / d + u_light_atten[i].z / (d * d);
+        radiance = u_light_color[i] * min(atten, 4.0) * cone * fade;
+        return true;
+    }
+    // the map's point and spot lights: intensity over (c + l d + q d^2), as vrad's
+    float denominator = max(u_light_atten[i].x + u_light_atten[i].y * d + u_light_atten[i].z * d * d, 1e-3);
+    radiance = u_light_color[i] / denominator;
+    if (kind == 2) {
+        float cos_angle = dot(-l, u_light_dirs[i]);
+        radiance *= smoothstep(u_light_atten[i].w, max(u_light_kind[i].y, u_light_atten[i].w + 1e-3), cos_angle);
+    }
+    return true;
+}
+
 float diffuse_term(float ndotl) {
     if (u_has_lightwarp) {
         // the ramp is indexed by the half-lambert value, as Source does
@@ -174,6 +207,18 @@ void main() {
     if (u_lightmapped) {
         // Source's lightmaps carry twice the range: the overbright factor
         color = base.rgb * texture(u_lightmap, v_lightmap_uv).rgb * 2.0;
+        // the session's projected lights fall on the world as well, on top of what
+        // vrad baked (a set lit only by them has a black lightmap); added in linear space
+        vec3 extra = vec3(0.0);
+        for (int i = 0; i < u_light_count; ++i) {
+            if (int(u_light_kind[i].x + 0.5) != 0) continue;
+            vec3 l;
+            vec3 radiance;
+            if (light_at(i, v_world, l, radiance)) extra += radiance * max(dot(n, l), 0.0);
+        }
+        if (extra != vec3(0.0)) {
+            color = pow(pow(color, vec3(2.2)) + pow(base.rgb, vec3(2.2)) * extra, vec3(1.0 / 2.2));
+        }
     } else if (u_lit && u_light_count == 0) {
         // the browser: half-lambert keeps the dark side readable, as Source does
         float l = dot(n, u_light_dir) * 0.5 + 0.5;
@@ -186,35 +231,9 @@ void main() {
         float f = 1.0 - ndotv;
         float fresnel = f < 0.5 ? mix(u_fresnel.x, u_fresnel.y, f * 2.0) : mix(u_fresnel.y, u_fresnel.z, (f - 0.5) * 2.0);
         for (int i = 0; i < u_light_count; ++i) {
-            int kind = int(u_light_kind[i].x + 0.5);
             vec3 l;
             vec3 radiance;
-            if (kind == 3) {
-                // the sun: parallel, no falloff
-                l = -u_light_dirs[i];
-                radiance = u_light_color[i];
-            } else {
-                vec3 to_light = u_light_pos[i] - v_world;
-                float d = length(to_light);
-                l = to_light / max(d, 1e-4);
-                if (kind == 0) {
-                    vec3 range = u_light_range[i];
-                    if (d < range.x || d > range.z) continue;
-                    // the projected frustum: a cone with a soft edge; fade to nothing towards maxDistance
-                    float cone = smoothstep(u_light_atten[i].w, u_light_atten[i].w + 0.03, dot(-l, u_light_dirs[i]));
-                    float fade = range.z > range.y ? 1.0 - clamp((d - range.y) / (range.z - range.y), 0.0, 1.0) : 1.0;
-                    float atten = u_light_atten[i].x + u_light_atten[i].y / d + u_light_atten[i].z / (d * d);
-                    radiance = u_light_color[i] * min(atten, 4.0) * cone * fade;
-                } else {
-                    // the map's point and spot lights: intensity over (c + l d + q d^2), as vrad's
-                    float denominator = max(u_light_atten[i].x + u_light_atten[i].y * d + u_light_atten[i].z * d * d, 1e-3);
-                    radiance = u_light_color[i] / denominator;
-                    if (kind == 2) {
-                        float cos_angle = dot(-l, u_light_dirs[i]);
-                        radiance *= smoothstep(u_light_atten[i].w, max(u_light_kind[i].y, u_light_atten[i].w + 1e-3), cos_angle);
-                    }
-                }
-            }
+            if (!light_at(i, v_world, l, radiance)) continue;
             float ndotl = dot(n, l);
             lit += radiance * diffuse_term(ndotl);
             if (u_phong && ndotl > 0.0) {

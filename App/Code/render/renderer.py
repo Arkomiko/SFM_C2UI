@@ -41,6 +41,9 @@ class Renderer:
         self.lightmap: Optional[GLTexture] = None
         #: the sky's six faces on the GPU, drawn first around the eye
         self.sky: List[Tuple[DrawItem, GLMesh]] = []
+        #: the shot's overlay quad and a black one for fades, drawn last in clip space
+        self.overlay: Optional[GLMesh] = None
+        self._black: Optional[GLMesh] = None
         #: per-instance uniform arrays, rebuilt when the placement or skin objects change
         self._instance_cache: Dict[int, tuple] = {}
         self._light_cache: Dict[tuple, tuple] = {}
@@ -108,6 +111,8 @@ class Renderer:
         for key, loaded in scene.models.items():
             self.meshes[key] = [(item, GLMesh(item.mesh)) for item in loaded.items
                                 if item.mesh.indices]
+        if scene.overlay is not None and scene.overlay.item.mesh.indices:
+            self.overlay = GLMesh(scene.overlay.item.mesh)
         if scene.sky is not None:
             self.sky = [(item, GLMesh(item.mesh)) for item in scene.sky.items if item.mesh.indices]
             for item, _mesh in self.sky:
@@ -134,6 +139,9 @@ class Renderer:
         for _item, mesh in self.sky:
             mesh.release()
         self.sky = []
+        if self.overlay is not None:
+            self.overlay.release()
+            self.overlay = None
         self.meshes = {}
         self.textures = {}
         self.scene = None
@@ -141,6 +149,9 @@ class Renderer:
     def release(self) -> None:
         """Free every GPU object."""
         self._release_scene()
+        if self._black is not None:
+            self._black.release()
+            self._black = None
         for name in ("program", "line_program", "id_program"):
             if getattr(self, name):
                 GL.glDeleteProgram(getattr(self, name))
@@ -156,7 +167,7 @@ class Renderer:
         GL.glViewport(0, 0, max(1, width), max(1, height))
         GL.glClearColor(*self.background)
         GL.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT)
-        if self.scene is None or not self.meshes or not self.program:
+        if self.scene is None or not self.program:
             return
 
         view = camera.view()
@@ -223,6 +234,8 @@ class Renderer:
                     mesh.draw()
 
         GL.glPolygonMode(GL.GL_FRONT_AND_BACK, GL.GL_FILL)
+        if self.overlay is not None or self.scene.fade > 0.0:
+            self._draw_overlay()
         GL.glDisable(GL.GL_BLEND)
         GL.glDepthMask(GL.GL_TRUE)
         GL.glEnable(GL.GL_CULL_FACE)
@@ -251,6 +264,44 @@ class Renderer:
             self._set_int("u_textured", 1 if texture is not None else 0)
             mesh.draw()
         GL.glDepthMask(GL.GL_TRUE)
+        GL.glEnable(GL.GL_DEPTH_TEST)
+
+    def _draw_overlay(self) -> None:
+        """The shot's material overlay and its fade: quads in clip space, blended over
+        the finished frame with depth off, through the same program as everything."""
+        u = self.uniforms
+        GL.glUniformMatrix4fv(u["u_view_proj"], 1, GL.GL_FALSE, IDENTITY)
+        GL.glUniformMatrix4fv(u["u_model"], 1, GL.GL_FALSE, IDENTITY)
+        self._set_int("u_skinned", 0)
+        GL.glDisable(GL.GL_DEPTH_TEST)
+        GL.glDisable(GL.GL_CULL_FACE)
+        GL.glEnable(GL.GL_BLEND)
+        GL.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA)
+        GL.glDepthMask(GL.GL_FALSE)
+        overlay = self.scene.overlay
+        if self.overlay is not None and overlay is not None:
+            self._apply_state(overlay.item)
+            GL.glUniform3f(u["u_color"], *overlay.color[:3])
+            GL.glUniform1f(u["u_alpha"], overlay.color[3])
+            self._item_state = None                   # the tint above bypassed the cache
+            texture = self.textures.get(overlay.item.texture_key)
+            if texture is not None:
+                texture.bind(0)
+            self._set_int("u_textured", 1 if texture is not None else 0)
+            self.overlay.draw()
+        if self.scene.fade > 0.0:
+            if self._black is None:
+                self._black = GLMesh(_clip_quad())
+            self._set_int("u_lit", 0)
+            self._set_int("u_lightmapped", 0)
+            self._set_int("u_alpha_test", 0)
+            self._set_int("u_blended", 1)
+            self._set_int("u_textured", 0)
+            self._set_int("u_self_illum", 0)
+            GL.glUniform3f(u["u_color"], 0.0, 0.0, 0.0)
+            GL.glUniform1f(u["u_alpha"], min(1.0, self.scene.fade))
+            self._item_state = None
+            self._black.draw()
         GL.glEnable(GL.GL_DEPTH_TEST)
 
     def _draw_lines(self, view_proj) -> None:
@@ -500,6 +551,18 @@ class Renderer:
         raw = bytes(raw)
         stride = width * 4
         return b"".join(raw[y * stride:(y + 1) * stride] for y in reversed(range(height)))
+
+
+def _clip_quad():
+    """A mesh covering clip space, for a plain colour over the frame."""
+    from Core.API.model import Mesh
+    mesh = Mesh()
+    for x, y in ((-1.0, -1.0), (1.0, -1.0), (1.0, 1.0), (-1.0, 1.0)):
+        mesh.positions.extend((x, y, 0.0))
+        mesh.normals.extend((0.0, 0.0, 1.0))
+        mesh.uvs.extend((0.0, 0.0))
+    mesh.indices.extend((0, 1, 2, 0, 2, 3))
+    return mesh
 
 
 def frustum_planes(m):

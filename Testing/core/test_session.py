@@ -256,3 +256,31 @@ def test_shot_at_and_the_render_defaults():
     settings.set("movieSettings", AttrType.ELEMENT, movie)
     session.element.set("settings", AttrType.ELEMENT, settings)
     assert session.frame_rate == 30.0 and session.movie_size == (1920, 1080)
+
+
+def test_material_overlay_and_fades():
+    session = Session(_session())
+    doc = session.document
+    shot1 = session.active_clip.shots[0]
+    overlay = doc.add(Element("DmeMaterialOverlayFXClip", "materialOverlay"))
+    overlay.set("material", AttrType.STRING, "titles\meet_the_team\mtt_group_e.vmt")
+    overlay.set("overlaycolor", AttrType.COLOR, (255, 128, 0, 64))
+    overlay.set("fullscreen", AttrType.BOOL, False)
+    overlay.set("left", AttrType.FLOAT, 0.25)
+    overlay.set("top", AttrType.FLOAT, 0.0)
+    overlay.set("width", AttrType.FLOAT, 0.5)
+    overlay.set("height", AttrType.FLOAT, 1.0)
+    shot1.element.set("materialOverlay", AttrType.ELEMENT, overlay)
+    shot1.element.set("fadeIn", AttrType.TIME, Time(10000))
+    shot1.element.set("fadeOut", AttrType.TIME, Time(5000))
+    view = shot1.material_overlay
+    assert view is not None and view.material == "titles/meet_the_team/mtt_group_e"
+    assert view.color == (1.0, 128 / 255.0, 0.0, 64 / 255.0) and not view.fullscreen
+    assert view.rect == (0.25, 0.0, 0.5, 1.0)
+    # shot1 runs 0..50000 on the sequence; its own offset and scale do not shift the fades
+    assert shot1.fade_at(Time(0)) == 1.0
+    assert abs(shot1.fade_at(Time(5000)) - 0.5) < 1e-9
+    assert shot1.fade_at(Time(10000)) == 0.0 and shot1.fade_at(Time(30000)) == 0.0
+    assert abs(shot1.fade_at(Time(47500)) - 0.5) < 1e-9
+    assert shot1.fade_at(Time(50000)) == 1.0
+    assert session.active_clip.shots[1].fade_at(Time(50000)) == 0.0   # no fades set

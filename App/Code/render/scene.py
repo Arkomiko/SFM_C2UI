@@ -32,7 +32,7 @@ from typing import Dict, List, Optional, Protocol, Tuple
 from Core.API.material import Material
 from Core.API.model import Mesh, Model
 from Core.API.material import as_bool, as_float, as_vec
-from Core.API.session import Camera, FilmClip, GameModel, ProjectedLight
+from Core.API.session import Camera, FilmClip, GameModel, MaterialOverlay, ProjectedLight
 from Core.Code.formats import FormatError, load_material, load_model, parse_vtf
 from Core.Code.formats.bsp import EMIT_SKYLIGHT, EMIT_SPOTLIGHT, BspFile, map_path, parse_bsp
 from Core.Code.formats.vtf import VtfFile
@@ -44,7 +44,8 @@ from Core.Code.transform import (IDENTITY as IDENTITY34, Mat34, apply, apply_dir
 from .math3d import IDENTITY, Mat4
 
 __all__ = ["DrawItem", "LoadedModel", "SceneInstance", "Scene", "build_scene", "build_shot_scene",
-           "refresh_shot_scene", "shot_camera_pose", "load_sky", "sky_face_corners", "SceneSource", "SKY_FACES"]
+           "refresh_shot_scene", "shot_camera_pose", "load_sky", "sky_face_corners", "load_overlay", "OverlayState",
+           "SceneSource", "SKY_FACES"]
 
 
 class SceneSource(Protocol):
@@ -187,6 +188,14 @@ class LightState:
 
 
 @dataclass
+class OverlayState:
+    """A material drawn over the frame: the shot's overlay clip, as a draw item on a
+    quad in clip space (x, y in -1..1) plus a tint with alpha."""
+    item: DrawItem
+    color: Tuple[float, float, float, float] = (1.0, 1.0, 1.0, 1.0)
+
+
+@dataclass
 class Scene:
     """Everything the renderer needs for one shot at one time."""
     instances: List[SceneInstance] = field(default_factory=list)
@@ -200,6 +209,10 @@ class Scene:
     sky: Optional[LoadedModel] = None
     #: worldspawn's `skyname`, "" when the map has none
     sky_name: str = ""
+    #: the shot's material overlay, drawn over everything, or None
+    overlay: Optional[OverlayState] = None
+    #: how much black covers the frame right now (the shot's fade in / out), 0..1
+    fade: float = 0.0
     #: models by content path, each loaded once
     models: Dict[str, LoadedModel] = field(default_factory=dict)
     #: textures by content path, each parsed once however many meshes use it
@@ -261,6 +274,9 @@ def build_shot_scene(source: SceneSource, shot: FilmClip, map_name: str = "") ->
     on the map the shot (or, failing that, `map_name` - the sequence's) names.
     A model that cannot be read is a warning; the shot still shows."""
     scene = Scene(title=shot.name, up_axis="z")
+    overlay = shot.material_overlay
+    if overlay is not None:
+        scene.overlay = load_overlay(source, scene, overlay)
     if shot.scene is None:
         scene.warnings.append("the shot has no scene")
         return scene
@@ -484,6 +500,34 @@ def load_sky(source: SceneSource, scene: Scene, sky_name: str) -> Optional[Loade
         sky.items.append(item)
         sky.model.meshes.append(mesh)
     return sky if sky.items else None
+
+
+def load_overlay(source: SceneSource, scene: Scene, overlay: MaterialOverlay) -> Optional[OverlayState]:
+    """The overlay clip's material on a quad covering the frame (or its rectangle),
+    ready to draw in clip space after everything else.  None when the material
+    cannot be read - the warning stays in the scene."""
+    if not overlay.material:
+        return None
+    holder = Model()
+    holder.material_dirs = [""]
+    mesh = Mesh(material=overlay.material)
+    item = _item_for(source, scene, holder, mesh)
+    if item.material is None:
+        return None
+    left, top, width, height = (0.0, 0.0, 1.0, 1.0) if overlay.fullscreen else overlay.rect
+    x0, x1 = -1.0 + 2.0 * left, -1.0 + 2.0 * (left + width)
+    y0, y1 = 1.0 - 2.0 * (top + height), 1.0 - 2.0 * top          # top-left origin to clip space
+    for (x, y), (u, v) in (((x0, y0), (0.0, 1.0)), ((x1, y0), (1.0, 1.0)), ((x1, y1), (1.0, 0.0)), ((x0, y1), (0.0, 0.0))):
+        mesh.positions.extend((x, y, 0.0))
+        mesh.normals.extend((0.0, 0.0, 1.0))
+        mesh.uvs.extend((u, v))
+    mesh.indices.extend((0, 1, 2, 0, 2, 3))
+    item.lit = False
+    item.two_sided = True
+    item.alpha_test = False
+    item.translucent = True                          # always blended over the frame
+    item.additive = False
+    return OverlayState(item, overlay.color)
 
 
 class _LightmapAtlas:

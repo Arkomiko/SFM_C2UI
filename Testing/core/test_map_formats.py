@@ -236,3 +236,27 @@ def test_ambient_cube_by_leaf():
     cube_hi = bsp.ambient_at((100, 0, 0))
     cube_lo = bsp.ambient_at((-100, 0, 0))
     assert cube_hi is not None and cube_lo is not None
+
+
+def test_hdr_only_maps_fall_back_to_the_hdr_lighting_lumps():
+    # SFM's own sets: LDR worldlights empty, LDR ambient present but black, the HDR twins filled
+    lights = _worldlight(EMIT_SKYLIGHT, (0, 0, 0), (1.0, 0.8, 0.6), normal=(-0.6, 0, -0.8))
+    plane_split = struct.pack("<3ffi", 1, 0, 0, 32, 0)
+    nodes = struct.pack("<iii6hHHh2x", 1, -1, -2, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    leaf = lambda: struct.pack("<ihh3h3hHHHHh2x", 0, 0, 0, 0, 0, 0, 64, 64, 64, 0, 0, 0, 0, 0)
+    leaves = leaf() + leaf()
+    index = struct.pack("<HH", 1, 0) + struct.pack("<HH", 1, 1)
+    def sample(r):
+        return bytes([r, 0, 0, 0] * 6) + bytes([128, 128, 128, 0])
+    black = sample(0) + sample(0)
+    lit = sample(128) + sample(64)
+    data = bytearray(_quad_map(extra={5: nodes, 10: leaves, 52: index, 56: black, 51: index, 55: lit, 54: lights}))
+    struct.pack_into("<iiii", data, 8 + 10 * 16, *struct.unpack_from("<iiii", data, 8 + 10 * 16)[:2], 1, 0)
+    bsp = parse_bsp(bytes(data), "hdr")
+    assert len(bsp.world_lights) == 1 and bsp.sky_light is not None
+    cube = bsp.ambient_at((100, 0, 0))
+    assert cube is not None and cube[0][0] > 0.0                       # the HDR samples, not the black LDR ones
+    # with real LDR samples those win, as before
+    data = bytearray(_quad_map(extra={5: nodes, 10: leaves, 52: index, 56: lit, 51: index, 55: black}))
+    struct.pack_into("<iiii", data, 8 + 10 * 16, *struct.unpack_from("<iiii", data, 8 + 10 * 16)[:2], 1, 0)
+    assert parse_bsp(bytes(data), "ldr").ambient_at((100, 0, 0))[0][0] > 0.0

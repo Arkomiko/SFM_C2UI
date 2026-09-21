@@ -16,10 +16,11 @@ way the map is.  This reader gives exactly that:
     bsp.lights_at(p)   # the strongest world lights at a point
 
 Lumps read: entities 0, planes 1, texdata 2, vertexes 3, nodes 5, texinfo 6,
-faces 7, lighting 8 (or its HDR twin 53 when the map has only that), leafs 10,
-edges 12, surfedges 13, models 14, worldlights 15, dispinfo 26, disp verts 33,
-game lump 35 (static props), pakfile 40 (the zip of the map's own materials),
-texdata string data/table 43/44, leaf ambient index/lighting 52/56.  Each
+faces 7, lighting 8, leafs 10, edges 12, surfedges 13, models 14, worldlights
+15, dispinfo 26, disp verts 33, game lump 35 (static props), pakfile 40 (the
+zip of the map's own materials), texdata string data/table 43/44, leaf ambient
+index/lighting 52/56 - and the HDR twins 53, 54 and 51/55 of the lighting
+lumps when a map was compiled for HDR only, as SFM's own sets are.  Each
 face's luxels are decoded from RGBExp32 to gamma-space bytes, with per-vertex
 luxel coordinates from the texinfo's lightmap vectors (a displacement's cover
 its grid).  Brush entities (model "*N") are placed at their entity's origin.
@@ -51,6 +52,8 @@ LUMP_DISPINFO, LUMP_DISP_VERTS, LUMP_GAME_LUMP = 26, 33, 35
 LUMP_NODES, LUMP_LEAFS, LUMP_WORLDLIGHTS = 5, 10, 15
 LUMP_PAKFILE = 40
 LUMP_LEAF_AMBIENT_INDEX, LUMP_LEAF_AMBIENT_LIGHTING = 52, 56
+# a map compiled for HDR only (SFM's own sets) fills these twins and leaves the LDR lumps empty
+LUMP_WORLDLIGHTS_HDR, LUMP_LEAF_AMBIENT_INDEX_HDR, LUMP_LEAF_AMBIENT_LIGHTING_HDR = 54, 51, 55
 LUMP_TEXDATA_STRING_DATA, LUMP_TEXDATA_STRING_TABLE = 43, 44
 
 # texinfo flags that mean "not a drawn surface"
@@ -369,9 +372,15 @@ def parse_bsp(data: bytes, name: str = "") -> BspFile:
         if entity.get("classname") == "worldspawn":
             bsp.sky_name = entity.get("skyname", "")
             break
-    _ambient(bsp, lump(LUMP_NODES), lump(LUMP_LEAFS), lumps[LUMP_LEAFS][2], lump(LUMP_LEAF_AMBIENT_INDEX),
-             lump(LUMP_LEAF_AMBIENT_LIGHTING), planes)
-    bsp.world_lights = _world_lights(lump(LUMP_WORLDLIGHTS), lumps[LUMP_WORLDLIGHTS][2])
+    ambient_index = lump(LUMP_LEAF_AMBIENT_INDEX)
+    ambient_lighting = lump(LUMP_LEAF_AMBIENT_LIGHTING)
+    if not ambient_lighting or not _any_colour(ambient_lighting):
+        # compiled for HDR only: the LDR lumps are missing or there but black
+        ambient_index = lump(LUMP_LEAF_AMBIENT_INDEX_HDR)
+        ambient_lighting = lump(LUMP_LEAF_AMBIENT_LIGHTING_HDR)
+    _ambient(bsp, lump(LUMP_NODES), lump(LUMP_LEAFS), lumps[LUMP_LEAFS][2], ambient_index, ambient_lighting, planes)
+    lights_lump = LUMP_WORLDLIGHTS if lump(LUMP_WORLDLIGHTS) else LUMP_WORLDLIGHTS_HDR
+    bsp.world_lights = _world_lights(lump(lights_lump), lumps[lights_lump][2])
     return bsp
 
 
@@ -433,6 +442,15 @@ def _ambient(bsp: "BspFile", nodes_raw: bytes, leafs_raw: bytes, leaf_version: i
             x, y, z = samples_raw[at + 24], samples_raw[at + 25], samples_raw[at + 26]
             pos = tuple(mins[a] + (maxs[a] - mins[a]) * (v / 255.0) for a, v in enumerate((x, y, z)))
             bsp.leaf_ambient[leaf].append((pos, cube))
+
+
+def _any_colour(samples_raw: bytes) -> bool:
+    """True when any ambient sample carries light (the first 24 bytes of each are its
+    six colours; the last four its position, which is never all zero)."""
+    for at in range(0, len(samples_raw) - _AMBIENT_SAMPLE + 1, _AMBIENT_SAMPLE):
+        if any(samples_raw[at:at + 24]):
+            return True
+    return False
 
 
 def _rgbexp(raw: bytes, at: int) -> Vec3:

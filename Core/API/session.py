@@ -27,7 +27,7 @@ from .dmx import AttrType, DmxDocument, Element, Time
 __all__ = [
     "Session", "FilmClip", "ChannelsClip", "SoundClip", "Clip", "TimeFrame", "TrackGroup",
     "Track", "Dag", "GameModel", "Camera", "ProjectedLight", "Transform", "AnimationSet", "Channel", "Log",
-    "LogLayer", "wrap",
+    "LogLayer", "MaterialOverlay", "wrap",
 ]
 
 Vec3 = Tuple[float, float, float]
@@ -391,6 +391,36 @@ class SoundClip(Clip):
         return str(sound.get("soundname", "")) if isinstance(sound, Element) else ""
 
 
+class MaterialOverlay(Clip):
+    """DmeMaterialOverlayFXClip: a material drawn over the whole frame or a part of
+    it - the black of a slug, a title card, a vignette."""
+    TYPE = "DmeMaterialOverlayFXClip"
+
+    @property
+    def material(self) -> str:
+        """The material's path under `materials/`, forward slashes, no extension
+        (sessions write it both ways), or ""."""
+        path = str(self._get("material", "")).replace("\\", "/").strip("/")
+        return path[:-4] if path.lower().endswith(".vmt") else path
+
+    @property
+    def color(self) -> Tuple[float, float, float, float]:
+        """`overlaycolor` as 0..1 RGBA; white and opaque when unset."""
+        c = self._get("overlaycolor", (255, 255, 255, 255))
+        return (c[0] / 255.0, c[1] / 255.0, c[2] / 255.0, c[3] / 255.0)
+
+    @property
+    def fullscreen(self) -> bool:
+        """True when the overlay covers the frame regardless of its rectangle."""
+        return bool(self._get("fullscreen", True))
+
+    @property
+    def rect(self) -> Tuple[float, float, float, float]:
+        """(left, top, width, height) as fractions of the frame, top-left origin."""
+        return (float(self._get("left", 0)), float(self._get("top", 0)),
+                float(self._get("width", 1)), float(self._get("height", 1)))
+
+
 class FilmClip(Clip):
     """A film clip: the session's sequence, or one shot on its film track."""
     TYPE = "DmeFilmClip"
@@ -399,6 +429,37 @@ class FilmClip(Clip):
     def scene(self) -> Optional[Dag]:
         """The shot's scene root, or None."""
         return self._child("scene", Dag)
+
+    @property
+    def material_overlay(self) -> Optional[MaterialOverlay]:
+        """The overlay drawn over this clip's frames, or None."""
+        return self._child("materialOverlay", MaterialOverlay)
+
+    @property
+    def fade_in(self) -> Time:
+        """How long the clip fades up from black at its start; zero for none."""
+        return self._get("fadeIn", Time(0)) or Time(0)
+
+    @property
+    def fade_out(self) -> Time:
+        """How long the clip fades to black at its end; zero for none."""
+        return self._get("fadeOut", Time(0)) or Time(0)
+
+    def fade_at(self, parent_time: Time) -> float:
+        """How much black covers the frame at `parent_time` (the time of the track
+        the clip sits on): 0 in the middle, 1 at the very start of a fade-in or the
+        very end of a fade-out.  Fades run over the clip's span on its parent, so
+        the clip's own offset and scale play no part."""
+        since_start = parent_time.ticks - self.time_frame.start.ticks
+        duration = self.time_frame.duration.ticks
+        black = 0.0
+        fade_in = self.fade_in.ticks
+        if fade_in > 0 and since_start < fade_in:
+            black = max(black, 1.0 - max(0, since_start) / fade_in)
+        fade_out = self.fade_out.ticks
+        if fade_out > 0 and since_start > duration - fade_out:
+            black = max(black, 1.0 - max(0, duration - since_start) / fade_out)
+        return min(1.0, black)
 
     @property
     def camera(self) -> Optional[Camera]:
@@ -634,6 +695,7 @@ class Session(View):
 
 _VIEWS = {
     "DmeDag": Dag, "DmeGameModel": GameModel, "DmeCamera": Camera, "DmeRig": Dag,
+    "DmeMaterialOverlayFXClip": MaterialOverlay,
     "DmeRigHandle": Dag, "DmeJoint": Dag, "DmeGameSprite": Dag, "DmeGameParticleSystem": Dag,
     "DmeProjectedLight": ProjectedLight, "DmeModel": Dag,
     "DmeFilmClip": FilmClip, "DmeChannelsClip": ChannelsClip, "DmeSoundClip": SoundClip,
