@@ -1,15 +1,15 @@
-<p align="center"><img src="../assets/TE-in/banner.png" alt="C2UI" width="100%"></p>
-
 <details align="center"><summary>&nbsp;🌐 <b>🇮🇳 తెలుగు</b> &nbsp;·&nbsp; <sub>Language · Язык · 語言 · Idioma · Sprache · भाषा · لغة</sub></summary>
 
 <table align="center">
-<tr><td align="center"><a href="../../README.md">🇷🇺<br>Русский</a></td><td align="center"><a href="EN-en.md">🇬🇧<br>English</a></td><td align="center"><a href="PL-pl.md">🇵🇱<br>Polski</a></td><td align="center"><a href="UK-ua.md">🇺🇦<br>Українська</a></td><td align="center"><a href="DE-de.md">🇩🇪<br>Deutsch</a></td><td align="center"><a href="RO-md.md">🇲🇩<br>Moldovenească</a></td><td align="center"><a href="SL-si.md">🇸🇮<br>Slovenščina</a></td><td align="center"><a href="BE-by.md">🇧🇾<br>Беларуская</a></td></tr>
-<tr><td align="center"><a href="KK-kz.md">🇰🇿<br>Қазақша</a></td><td align="center"><a href="JA-jp.md">🇯🇵<br>日本語</a></td><td align="center"><a href="ZH-cn.md">🇨🇳<br>中文</a></td><td align="center"><a href="SV-se.md">🇸🇪<br>Svenska</a></td><td align="center"><a href="ES-es.md">🇪🇸<br>Español</a></td><td align="center"><a href="HI-in.md">🇮🇳<br>हिन्दी</a></td><td align="center"><a href="PT-pt.md">🇵🇹<br>Português</a></td><td align="center"><a href="BN-bd.md">🇧🇩<br>বাংলা</a></td></tr>
-<tr><td align="center"><a href="FR-fr.md">🇫🇷<br>Français</a></td><td align="center"><b>🇮🇳<br>తెలుగు</b></td><td align="center"><a href="MR-in.md">🇮🇳<br>मराठी</a></td><td align="center"><a href="TA-in.md">🇮🇳<br>தமிழ்</a></td><td align="center"><a href="TR-tr.md">🇹🇷<br>Türkçe</a></td><td align="center"><a href="UR-pk.md">🇵🇰<br>اردو</a></td><td align="center"><a href="VI-vn.md">🇻🇳<br>Tiếng Việt</a></td><td align="center"><a href="GU-in.md">🇮🇳<br>ગુજરાતી</a></td></tr>
-<tr><td align="center"><a href="IT-it.md">🇮🇹<br>Italiano</a></td><td align="center"><a href="KO-kr.md">🇰🇷<br>한국어</a></td><td align="center"><a href="AR-sa.md">🇸🇦<br>العربية</a></td><td align="center"><a href="JV-id.md">🇮🇩<br>Basa Jawa</a></td><td align="center"><a href="ML-in.md">🇮🇳<br>മലയാളം</a></td><td align="center"><a href="NE-np.md">🇳🇵<br>नेपाली</a></td><td align="center"><a href="UZ-uz.md">🇺🇿<br>Oʻzbekcha</a></td><td align="center"><a href="OR-in.md">🇮🇳<br>ଓଡ଼ିଆ</a></td></tr>
+<tr><td align="center"><a href="../../README.md">🇷🇺<br>Русский</a></td><td align="center"><a href="../README/EN-en.md">🇬🇧<br>English</a></td><td align="center"><a href="../README/PL-pl.md">🇵🇱<br>Polski</a></td><td align="center"><a href="../README/UK-ua.md">🇺🇦<br>Українська</a></td><td align="center"><a href="../README/DE-de.md">🇩🇪<br>Deutsch</a></td><td align="center"><a href="../README/RO-md.md">🇲🇩<br>Moldovenească</a></td><td align="center"><a href="../README/SL-si.md">🇸🇮<br>Slovenščina</a></td><td align="center"><a href="../README/BE-by.md">🇧🇾<br>Беларуская</a></td></tr>
+<tr><td align="center"><a href="../README/KK-kz.md">🇰🇿<br>Қазақша</a></td><td align="center"><a href="../README/JA-jp.md">🇯🇵<br>日本語</a></td><td align="center"><a href="../README/ZH-cn.md">🇨🇳<br>中文</a></td><td align="center"><a href="../README/SV-se.md">🇸🇪<br>Svenska</a></td><td align="center"><a href="../README/ES-es.md">🇪🇸<br>Español</a></td><td align="center"><a href="../README/HI-in.md">🇮🇳<br>हिन्दी</a></td><td align="center"><a href="../README/PT-pt.md">🇵🇹<br>Português</a></td><td align="center"><a href="../README/BN-bd.md">🇧🇩<br>বাংলা</a></td></tr>
+<tr><td align="center"><a href="../README/FR-fr.md">🇫🇷<br>Français</a></td><td align="center"><b>🇮🇳<br>తెలుగు</b></td><td align="center"><a href="../README/MR-in.md">🇮🇳<br>मराठी</a></td><td align="center"><a href="../README/TA-in.md">🇮🇳<br>தமிழ்</a></td><td align="center"><a href="../README/TR-tr.md">🇹🇷<br>Türkçe</a></td><td align="center"><a href="../README/UR-pk.md">🇵🇰<br>اردو</a></td><td align="center"><a href="../README/VI-vn.md">🇻🇳<br>Tiếng Việt</a></td><td align="center"><a href="../README/GU-in.md">🇮🇳<br>ગુજરાતી</a></td></tr>
+<tr><td align="center"><a href="../README/IT-it.md">🇮🇹<br>Italiano</a></td><td align="center"><a href="../README/KO-kr.md">🇰🇷<br>한국어</a></td><td align="center"><a href="../README/AR-sa.md">🇸🇦<br>العربية</a></td><td align="center"><a href="../README/JV-id.md">🇮🇩<br>Basa Jawa</a></td><td align="center"><a href="../README/ML-in.md">🇮🇳<br>മലയാളം</a></td><td align="center"><a href="../README/NE-np.md">🇳🇵<br>नेपाली</a></td><td align="center"><a href="../README/UZ-uz.md">🇺🇿<br>Oʻzbekcha</a></td><td align="center"><a href="../README/OR-in.md">🇮🇳<br>ଓଡ଼ିଆ</a></td></tr>
 </table>
 
 </details>
+
+<p align="center"><img src="../assets/banner/TE-in.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
   <img alt="status" src="https://img.shields.io/badge/%E0%B0%B8%E0%B1%8D%E0%B0%A5%E0%B0%BF%E0%B0%A4%E0%B0%BF-%E0%B0%AA%E0%B1%8D%E0%B0%B0%E0%B1%80--%E0%B0%86%E0%B0%B2%E0%B1%8D%E0%B0%AB%E0%B0%BE-e07b39?style=flat-square">
@@ -18,19 +18,18 @@
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
   <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%B0%AA%E0%B0%B0%E0%B1%80%E0%B0%95%E0%B1%8D%E0%B0%B7%E0%B0%B2%E0%B1%81-363-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
+  <a href="../LICENSE/TE-in.md"><img alt="licence" src="https://img.shields.io/badge/%E0%B0%B2%E0%B1%88%E0%B0%B8%E0%B1%86%E0%B0%A8%E0%B1%8D%E0%B0%B8%E0%B1%8D-C2UI-2a475e?style=flat-square"></a>
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — ఆధునిక షెల్‌లో Source Filmmaker ఎడిటర్: అదే కంటెంట్, అదే సెషన్ ఫార్మాట్, అదే డేటా మోడల్, Steam లైబ్రరీ మరియు Unreal Engine 5 ఎడిటర్ శైలిలో ఇంటర్‌ఫేస్.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — ఆధునిక షెల్‌లో Source Filmmaker ఎడిటర్: అదే కంటెంట్, అదే సెషన్ ఫార్మాట్, అదే డేటా మోడల్, Steam లైబ్రరీ మరియు Unreal Engine 5 ఎడిటర్ శైలిలో ఇంటర్‌ఫేస్.</p>
 
 ---
 
 ## సిద్ధత
 
-<p align="center"><img src="../assets/TE-in/sidebar.svg" alt="సిద్ధత" width="320"></p>
+<p align="center"><img src="../assets/readiness/TE-in.svg" alt="సిద్ధత" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>విడుదలకు మొత్తం సిద్ధత: 51%</b></p>
-
-<p align="center"><a href="../assets/TE-in/sidebar.md"><img alt="సిద్ధత వివరంగా" src="https://img.shields.io/badge/%E0%B0%B8%E0%B0%BF%E0%B0%A6%E0%B1%8D%E0%B0%A7%E0%B0%A4_%E0%B0%B5%E0%B0%BF%E0%B0%B5%E0%B0%B0%E0%B0%82%E0%B0%97%E0%B0%BE-66c0f4?style=for-the-badge"></a></p>
+<p align="center"><a href="../READINESS/TE-in.md"><img alt="సిద్ధత వివరంగా" src="https://img.shields.io/badge/%E0%B0%B8%E0%B0%BF%E0%B0%A6%E0%B1%8D%E0%B0%A7%E0%B0%A4_%E0%B0%B5%E0%B0%BF%E0%B0%B5%E0%B0%B0%E0%B0%82%E0%B0%97%E0%B0%BE-66c0f4?style=for-the-badge"></a></p>
 
 ## ఆలోచన
 
@@ -41,17 +40,13 @@ Source Filmmaker బలమైన సాధనం, కానీ దాని ఇ�
 మొదటి లక్ష్యం ఎముకలు, రిగ్‌లతో సహా SFM తో పూర్తి అనుకూలత. తర్వాత — SFM లో లోపించినవి.
 
 ```
-  ┌──────────────┐    "SFM ఎక్కడ?"    ┌──────────────────────────────┐
-  │   C2UI       │ ─────────────────────▶│  SourceFilmmaker/game/       │
+  ┌──────────────┐                       ┌──────────────────────────────┐
+  │   C2UI       │ ──── "SFM ఎక్కడ?" ────▶│  SourceFilmmaker/game/       │
   │              │                       │    usermod/gameinfo.txt      │
-  │  సొంత UI     │ ◀─────   మౌంట్    ───────│    tf/  hl2/  tf_movies/ …   │
-  │  సొంత రెండర్  │      చదవడం మాత్రమే      │    models/ materials/ dmx    │
+  │  సొంత UI     │ ◀─────── మౌంట్ ────────│    tf/  hl2/  tf_movies/ …   │
+  │  సొంత రెండర్  │     చదవడం మాత్రమే      │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-<p align="center"><img src="../assets/editor.png" alt="Meet the Heavy తెరిచిన ఎడిటర్" width="100%"><br><sub>నేటి ఎడిటర్, Valve యొక్క Meet the Heavy తెరిచి: టైమ్‌లైన్‌లో షాట్లు మరియు ధ్వని, సెషన్ ట్రీ, మొదటి షాట్ దాని సొంత కెమెరా ద్వారా, సెషన్ ప్రకారం భంగిమలు మరియు ముఖాలతో పాత్రలు.</sub></p>
-
-## ఏది భిన్నం
 
 - **పోర్టబుల్.** అప్లికేషన్ ఫోల్డర్ వెలుపల ఏమీ రాయబడదు: సెట్టింగ్‌లు `App/User`, క్యాష్ `App/Cache`, తాత్కాలికం `App/Temporary`. ఫోల్డర్ తొలగించండి, ఆనవాళ్లు లేవు.
 - **SFM ను ఎప్పుడూ నడపదు.** నడిపించే ప్రాసెస్ లేదు, స్వాధీనం చేసుకునే విండోలు లేవు. ఇన్‌స్టాలేషన్ కంటెంట్ ప్యాక్ లాగా చదవబడుతుంది.
@@ -59,7 +54,53 @@ Source Filmmaker బలమైన సాధనం, కానీ దాని ఇ�
 - **సేవ్ ఖచ్చితం.** మార్పు లేకుండా చదివి రాసిన సెషన్ అదే ఫైల్.
 - **ఇంజిన్‌కు డిపెండెన్సీలు లేవు.** `Core/` మరియు మొత్తం టెస్ట్ సూట్ స్వచ్ఛమైన Python పై నడుస్తాయి; విండోకు మాత్రమే Qt మరియు OpenGL కావాలి.
 
-## నడపడం
+<p align="center"><img src="../assets/editor.png" alt="Meet the Heavy తెరిచిన ఎడిటర్" width="100%"><br><sub>నేటి ఎడిటర్, Valve యొక్క Meet the Heavy తెరిచి: టైమ్‌లైన్‌లో షాట్లు మరియు ధ్వని, సెషన్ ట్రీ, మొదటి షాట్ దాని సొంత కెమెరా ద్వారా, సెషన్ ప్రకారం భంగిమలు మరియు ముఖాలతో పాత్రలు.</sub></p>
+
+## నిర్మాణం
+
+```
+C2UI_SDK/
+├── README.md
+├── Core/               ఇంజిన్: ఫార్మాట్లు, వర్చువల్ ఫైల్ సిస్టమ్, ఇండెక్స్, బ్రిడ్జ్‌లు
+│   ├── API/            ఎడిటర్, టూల్స్ మరియు ప్లగిన్‌ల ఒప్పందం
+│   ├── Code/           ఇంజిన్: యానిమేషన్, ఆపరేటర్లు, ముఖాలు, సవరణ
+│   │   └── formats/    Valve రీడర్లు: mdl vvd vtx vmt vtf dmx bsp
+│   └── dev-kit/        SDK స్లాట్‌లు (ఖాళీ) మరియు ఇన్‌స్టాలేషన్ బ్రిడ్జ్‌లు
+├── App/                ఎడిటర్: కంటెంట్ లైబ్రరీ, రెండరర్, విండో
+│   ├── Code/           కంటెంట్ లైబ్రరీ, విండో, సెట్టింగ్‌లు
+│   │   ├── render/     దృశ్యం, OpenGL రెండరర్, షేడర్లు, కెమెరా
+│   │   └── ui/         టైమ్‌లైన్, సెషన్ ట్రీ, ఇన్‌స్పెక్టర్, గ్రాఫ్ ఎడిటర్, డాకింగ్
+│   ├── Data/           ప్రోగ్రామ్ వనరులు, చదవడానికి మాత్రమే
+│   ├── User/           వినియోగదారు డేటా — ఎప్పుడూ తొలగించబడదు
+│   └── Cache/          కంటెంట్ ఇండెక్స్, షేడర్లు, థంబ్‌నెయిల్స్
+├── Tools/              స్థానికీకరణ, UI టూల్స్, ప్లగిన్‌లు (తర్వాత)
+│   ├── Launcher/       లాంచర్
+│   ├── Market Load/    ప్లగిన్ మార్కెట్‌ప్లేస్ క్లయింట్ (తర్వాత)
+│   ├── Localization/   అనువాదాలు రూపొందించడం
+│   ├── NewPlugins/     ప్లగిన్‌లు రూపొందించడం
+│   └── UI/             థీమ్‌లు మరియు వర్క్‌స్పేస్‌లు
+├── Testing/            పరీక్షలు, బైట్-ఖచ్చిత ఫిక్స్చర్లు, ఒక రన్నర్
+│   ├── core/           ఇంజిన్
+│   ├── app/            ఎడిటర్
+│   └── fixtures/       నకిలీ ఇన్‌స్టాలేషన్, మోడళ్లు, టెక్స్చర్లు
+└── GIT&DOCK/           README, సంసిద్ధత మరియు లైసెన్స్ 32 భాషల్లో
+```
+
+### ఇది ఎలా పనిచేస్తుంది
+
+«Source Filmmaker ఎక్కడ?» నుండి తెరపై ఒక ఫ్రేమ్ వరకు మార్గం ఐదు పొరల గుండా వెళుతుంది; ప్రతి పొరకు దాని కింది పొర మాత్రమే తెలుసు.
+
+1. **బ్రిడ్జ్** (`Core/dev-kit/bridge_sfm`) Steam ద్వారా ఇన్‌స్టాలేషన్‌ను కనుగొంటుంది, `gameinfo.txt` చదువుతుంది మరియు ఇంజిన్ క్రమంలో కంటెంట్ మార్గాలను తిరిగి ఇస్తుంది. `sfm.exe` ఎప్పుడూ ప్రారంభించబడదు.
+2. **వర్చువల్ ఫైల్ సిస్టమ్ మరియు ఇండెక్స్** (`Core/Code/vfs.py`, `content_index.py`) ఆ మార్గాలను Source లాగా పొరలుగా పేరుస్తాయి: మొదట దొరికిన ఫైల్ గెలుస్తుంది. ఇండెక్స్ `App/Cache`లో ఒక SQLite ఫైల్, కాబట్టి 70 000 ఫైళ్ల నడక ఒకసారే జరుగుతుంది.
+3. **ఫార్మాట్లు** (`Core/Code/formats`) మూడవ పక్ష లైబ్రరీలు లేకుండా Valve ఫైళ్లను చదువుతాయి: `.mdl` `.vvd` `.vtx` ఒక మోడల్, `.vmt` `.vtf` మెటీరియల్ మరియు టెక్స్చర్, `.dmx` సెషన్, `.bsp` మ్యాప్. ప్రతి రీడర్ మొత్తం ఇన్‌స్టాలేషన్‌పై తనిఖీ చేయబడింది; సెషన్ బైట్‌కు బైట్ అలాగే తిరిగి రాయబడుతుంది.
+4. **సెషన్** DMX మూలకాల గ్రాఫ్. `animation.py` ఒక క్షణంలో ఛానెళ్లను లెక్కిస్తుంది, `operators.py` వ్యక్తీకరణలు మరియు రిగ్ కన్‌స్ట్రెయింట్‌లను నడుపుతుంది, `flex.py` ముఖాలను కదిలిస్తుంది, `pose.py` ఎముక మాత్రికలను నిర్మిస్తుంది. ప్రతి సవరణ `editing.py` ద్వారా రద్దు చేయగల ఆదేశంగా వెళుతుంది.
+5. **ఎడిటర్** (`App/Code`) దీన్నుంచి ఒక దృశ్యాన్ని (`render/scene.py`) కూర్చి, తన సొంత OpenGL 3.3 రెండరర్‌తో (`renderer.py`, `shaders.py`) గీస్తుంది: సెషన్ లైట్లు, లైట్‌మ్యాప్‌లు మరియు మ్యాప్ వెలుతురు — SFM చూపించినట్లే. ప్యానెళ్లు (`ui/`) టైమ్‌లైన్, సెషన్ ట్రీ, ఇన్‌స్పెక్టర్, గ్రాఫ్ ఎడిటర్ మరియు UE5 తరహా డాకింగ్.
+
+ప్రోగ్రామ్ రాసేదంతా దాని ఫోల్డర్‌లోనే ఉంటుంది: సెట్టింగ్‌లు `App/User`లో, ఇండెక్స్ మరియు కాష్ `App/Cache`లో, లాగ్ `App/Temporary`లో. `Core/` ఏమీ రాయదు మరియు Qt పై ఆధారపడదు, కాబట్టి ఇంజిన్ మరియు పరీక్షలు స్వచ్ఛమైన Python పై నడుస్తాయి; Qt మరియు OpenGL విండోకు మాత్రమే అవసరం. `Tools/`లోని యుటిలిటీలు కచ్చితంగా `Core/API`పై నిర్మించబడ్డాయి — ఆ API మూడవ పక్ష ప్లగిన్‌లకూ సరిపోతుందని ఇలా నిరూపించబడుతుంది.
+
+<p align="center"><img src="../assets/models.png" alt="ఇన్‌స్టాలేషన్ నుండి నేరుగా రెండర్ చేసిన 64 మోడల్స్" width="60%"><br><sub>ఇన్‌స్టాలేషన్ నుండి యాదృచ్ఛికంగా ఎంచుకున్న అరవై నాలుగు మోడల్స్, C2UI సొంత రెండరర్‌తో గీసినవి.</sub></p>
+
+### నడపడం
 
 Windows, Python 3.13 మరియు Source Filmmaker ఇన్‌స్టాలేషన్ అవసరం.
 
@@ -77,25 +118,18 @@ python -m venv .venv
 python Testing/run.py
 ```
 
-## నిర్మాణం
+### ప్రణాళికలో
 
-```
-C2UI_SDK/
-├── README.md
-├── Core/              ఇంజిన్: ఫార్మాట్లు, వర్చువల్ ఫైల్ సిస్టమ్, ఇండెక్స్, బ్రిడ్జ్‌లు
-├── App/               ఎడిటర్: కంటెంట్ లైబ్రరీ, రెండరర్, విండో
-├── Tools/             స్థానికీకరణ, UI టూల్స్, ప్లగిన్‌లు (తర్వాత)
-│   └── Launcher/      లాంచర్
-├── Testing/           పరీక్షలు, బైట్-ఖచ్చిత ఫిక్స్చర్లు, ఒక రన్నర్
-└── GIT&DOCK/          ఈ README ఇతర భాషల్లో
-```
+**తర్వాత**
+- మ్యాప్ రూపం: స్కైబాక్స్, నీరు, prop_dynamic, లైట్ గోబో టెక్స్చర్లు, `$bumpmap` మరియు `$envmap`, సెషన్ లైట్ల నుండి నీడలు.
+- ఎగుమతి: చిత్ర శ్రేణులు మరియు వీడియో.
+- `.c2plg` ప్లగిన్‌లు మరియు `Tools/Market Load`లో మార్కెట్‌ప్లేస్ క్లయింట్; తర్వాత థీమ్‌లు మరియు వర్క్‌స్పేస్‌లు.
+- టైమ్‌లైన్‌లో ధ్వని, పార్టికల్స్, రింకిల్ మ్యాప్‌లు, మోషన్ ఎడిటర్ ప్రీసెట్‌లు మరియు లేయర్లు, గ్రాఫ్ ఎడిటర్‌లో టాంజెంట్లు.
 
-## రోడ్‌మ్యాప్
-
-1. **Source షేడింగ్** — SFM గీసినట్లు VertexLitGeneric: phong, rim, lightwarp, సీన్ లైట్లు.
-2. **మ్యాప్‌లు** — నేపథ్యాల కోసం `.bsp`.
-3. **అవుట్‌పుట్** — చిత్రం మరియు వీడియో ఎగుమతి.
-4. **ప్లగిన్‌లు** — `.c2plg` ఫార్మాట్; తర్వాత థీమ్‌లు మరియు వర్క్‌స్పేస్‌లు.
+**ఆ తర్వాత**
+- పూర్తి మ్యాప్‌లపై పనితీరు: స్టాటిక్ ప్రాప్ ఇన్‌స్టాన్సింగ్, పోజ్ కాష్.
+- ఇంజిన్ పునర్నిర్మాణం: మెరుగైన వెలుతురు మరియు నీడల కోసం కొత్త మ్యాప్-కంపైల్ పారామితులు, 120 000 యూనిట్ల మ్యాప్ పరిమితి.
+- సొంత Python మరియు స్వీయ-నవీకరణతో ప్యాక్ చేసిన లాంచర్; ఎడిటర్ స్థానికీకరణ.
 
 ## లైసెన్స్ మరియు కృతజ్ఞతలు
 
@@ -104,5 +138,3 @@ C2UI సొంత కోడ్ **C2UI లైసెన్స్** కింద �
 Source Filmmaker, Team Fortress 2, Source ఇంజిన్ Valve వి; ప్రాజెక్ట్ వాటి ఫార్మాట్లు చదువుతుంది, వాటి ఫైళ్లు చేర్చదు, Steam నుండి మీ సొంత SFM కాపీతో మాత్రమే పనిచేస్తుంది.
 
 <p align="center"><a href="../LICENSE/TE-in.md"><img alt="లైసెన్స్ పాఠం" src="https://img.shields.io/badge/%E0%B0%B2%E0%B1%88%E0%B0%B8%E0%B1%86%E0%B0%A8%E0%B1%8D%E0%B0%B8%E0%B1%8D_%E0%B0%AA%E0%B0%BE%E0%B0%A0%E0%B0%82-66c0f4?style=for-the-badge"></a></p>
-
-<p align="center"><img src="../assets/models.png" alt="ఇన్‌స్టాలేషన్ నుండి నేరుగా రెండర్ చేసిన 64 మోడల్స్" width="60%"><br><sub>ఇన్‌స్టాలేషన్ నుండి యాదృచ్ఛికంగా ఎంచుకున్న అరవై నాలుగు మోడల్స్, C2UI సొంత రెండరర్‌తో గీసినవి.</sub></p>

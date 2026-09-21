@@ -1,15 +1,15 @@
-<p align="center"><img src="../assets/UZ-uz/banner.png" alt="C2UI" width="100%"></p>
-
 <details align="center"><summary>&nbsp;🌐 <b>🇺🇿 Oʻzbekcha</b> &nbsp;·&nbsp; <sub>Language · Язык · 語言 · Idioma · Sprache · भाषा · لغة</sub></summary>
 
 <table align="center">
-<tr><td align="center"><a href="../../README.md">🇷🇺<br>Русский</a></td><td align="center"><a href="EN-en.md">🇬🇧<br>English</a></td><td align="center"><a href="PL-pl.md">🇵🇱<br>Polski</a></td><td align="center"><a href="UK-ua.md">🇺🇦<br>Українська</a></td><td align="center"><a href="DE-de.md">🇩🇪<br>Deutsch</a></td><td align="center"><a href="RO-md.md">🇲🇩<br>Moldovenească</a></td><td align="center"><a href="SL-si.md">🇸🇮<br>Slovenščina</a></td><td align="center"><a href="BE-by.md">🇧🇾<br>Беларуская</a></td></tr>
-<tr><td align="center"><a href="KK-kz.md">🇰🇿<br>Қазақша</a></td><td align="center"><a href="JA-jp.md">🇯🇵<br>日本語</a></td><td align="center"><a href="ZH-cn.md">🇨🇳<br>中文</a></td><td align="center"><a href="SV-se.md">🇸🇪<br>Svenska</a></td><td align="center"><a href="ES-es.md">🇪🇸<br>Español</a></td><td align="center"><a href="HI-in.md">🇮🇳<br>हिन्दी</a></td><td align="center"><a href="PT-pt.md">🇵🇹<br>Português</a></td><td align="center"><a href="BN-bd.md">🇧🇩<br>বাংলা</a></td></tr>
-<tr><td align="center"><a href="FR-fr.md">🇫🇷<br>Français</a></td><td align="center"><a href="TE-in.md">🇮🇳<br>తెలుగు</a></td><td align="center"><a href="MR-in.md">🇮🇳<br>मराठी</a></td><td align="center"><a href="TA-in.md">🇮🇳<br>தமிழ்</a></td><td align="center"><a href="TR-tr.md">🇹🇷<br>Türkçe</a></td><td align="center"><a href="UR-pk.md">🇵🇰<br>اردو</a></td><td align="center"><a href="VI-vn.md">🇻🇳<br>Tiếng Việt</a></td><td align="center"><a href="GU-in.md">🇮🇳<br>ગુજરાતી</a></td></tr>
-<tr><td align="center"><a href="IT-it.md">🇮🇹<br>Italiano</a></td><td align="center"><a href="KO-kr.md">🇰🇷<br>한국어</a></td><td align="center"><a href="AR-sa.md">🇸🇦<br>العربية</a></td><td align="center"><a href="JV-id.md">🇮🇩<br>Basa Jawa</a></td><td align="center"><a href="ML-in.md">🇮🇳<br>മലയാളം</a></td><td align="center"><a href="NE-np.md">🇳🇵<br>नेपाली</a></td><td align="center"><b>🇺🇿<br>Oʻzbekcha</b></td><td align="center"><a href="OR-in.md">🇮🇳<br>ଓଡ଼ିଆ</a></td></tr>
+<tr><td align="center"><a href="../../README.md">🇷🇺<br>Русский</a></td><td align="center"><a href="../README/EN-en.md">🇬🇧<br>English</a></td><td align="center"><a href="../README/PL-pl.md">🇵🇱<br>Polski</a></td><td align="center"><a href="../README/UK-ua.md">🇺🇦<br>Українська</a></td><td align="center"><a href="../README/DE-de.md">🇩🇪<br>Deutsch</a></td><td align="center"><a href="../README/RO-md.md">🇲🇩<br>Moldovenească</a></td><td align="center"><a href="../README/SL-si.md">🇸🇮<br>Slovenščina</a></td><td align="center"><a href="../README/BE-by.md">🇧🇾<br>Беларуская</a></td></tr>
+<tr><td align="center"><a href="../README/KK-kz.md">🇰🇿<br>Қазақша</a></td><td align="center"><a href="../README/JA-jp.md">🇯🇵<br>日本語</a></td><td align="center"><a href="../README/ZH-cn.md">🇨🇳<br>中文</a></td><td align="center"><a href="../README/SV-se.md">🇸🇪<br>Svenska</a></td><td align="center"><a href="../README/ES-es.md">🇪🇸<br>Español</a></td><td align="center"><a href="../README/HI-in.md">🇮🇳<br>हिन्दी</a></td><td align="center"><a href="../README/PT-pt.md">🇵🇹<br>Português</a></td><td align="center"><a href="../README/BN-bd.md">🇧🇩<br>বাংলা</a></td></tr>
+<tr><td align="center"><a href="../README/FR-fr.md">🇫🇷<br>Français</a></td><td align="center"><a href="../README/TE-in.md">🇮🇳<br>తెలుగు</a></td><td align="center"><a href="../README/MR-in.md">🇮🇳<br>मराठी</a></td><td align="center"><a href="../README/TA-in.md">🇮🇳<br>தமிழ்</a></td><td align="center"><a href="../README/TR-tr.md">🇹🇷<br>Türkçe</a></td><td align="center"><a href="../README/UR-pk.md">🇵🇰<br>اردو</a></td><td align="center"><a href="../README/VI-vn.md">🇻🇳<br>Tiếng Việt</a></td><td align="center"><a href="../README/GU-in.md">🇮🇳<br>ગુજરાતી</a></td></tr>
+<tr><td align="center"><a href="../README/IT-it.md">🇮🇹<br>Italiano</a></td><td align="center"><a href="../README/KO-kr.md">🇰🇷<br>한국어</a></td><td align="center"><a href="../README/AR-sa.md">🇸🇦<br>العربية</a></td><td align="center"><a href="../README/JV-id.md">🇮🇩<br>Basa Jawa</a></td><td align="center"><a href="../README/ML-in.md">🇮🇳<br>മലയാളം</a></td><td align="center"><a href="../README/NE-np.md">🇳🇵<br>नेपाली</a></td><td align="center"><b>🇺🇿<br>Oʻzbekcha</b></td><td align="center"><a href="../README/OR-in.md">🇮🇳<br>ଓଡ଼ିଆ</a></td></tr>
 </table>
 
 </details>
+
+<p align="center"><img src="../assets/banner/UZ-uz.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
   <img alt="status" src="https://img.shields.io/badge/holat-pre--alfa-e07b39?style=flat-square">
@@ -18,19 +18,18 @@
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
   <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/test-363-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
+  <a href="../LICENSE/UZ-uz.md"><img alt="licence" src="https://img.shields.io/badge/litsenziya-C2UI-2a475e?style=flat-square"></a>
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — zamonaviy qobiqdagi Source Filmmaker muharriri: xuddi shu kontent, xuddi shu sessiya formati, xuddi shu maʼlumotlar modeli, Steam kutubxonasi va Unreal Engine 5 muharriri ruhidagi interfeys.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — zamonaviy qobiqdagi Source Filmmaker muharriri: xuddi shu kontent, xuddi shu sessiya formati, xuddi shu maʼlumotlar modeli, Steam kutubxonasi va Unreal Engine 5 muharriri ruhidagi interfeys.</p>
 
 ---
 
 ## Tayyorlik
 
-<p align="center"><img src="../assets/UZ-uz/sidebar.svg" alt="Tayyorlik" width="320"></p>
+<p align="center"><img src="../assets/readiness/UZ-uz.svg" alt="Tayyorlik" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Relizga umumiy tayyorlik: 51%</b></p>
-
-<p align="center"><a href="../assets/UZ-uz/sidebar.md"><img alt="Tayyorlik batafsil" src="https://img.shields.io/badge/Tayyorlik_batafsil-66c0f4?style=for-the-badge"></a></p>
+<p align="center"><a href="../READINESS/UZ-uz.md"><img alt="Tayyorlik batafsil" src="https://img.shields.io/badge/Tayyorlik_batafsil-66c0f4?style=for-the-badge"></a></p>
 
 ## Gʻoya
 
@@ -41,17 +40,13 @@ Muharrir oʻrnatilgan SFM ni topadi, uni kontent kutubxonasi sifatida ulaydi —
 Birinchi maqsad — suyaklar va riglar bilan birga SFM bilan toʻliq moslik. Keyin — SFM da yetishmagan narsalar.
 
 ```
-  ┌──────────────┐    "SFM qayerda?"    ┌──────────────────────────────┐
-  │   C2UI       │ ─────────────────────▶│  SourceFilmmaker/game/       │
-  │              │                       │    usermod/gameinfo.txt      │
-  │  oʻz UI      │ ◀─────  ulangan  ───────│    tf/  hl2/  tf_movies/ …   │
-  │  oʻz render  │      faqat oʻqish      │    models/ materials/ dmx    │
-  └──────────────┘                       └──────────────────────────────┘
+  ┌──────────────┐                          ┌──────────────────────────────┐
+  │   C2UI       │ ──── "SFM qayerda?" ────▶│  SourceFilmmaker/game/       │
+  │              │                          │    usermod/gameinfo.txt      │
+  │  oʻz UI      │ ◀─────── ulangan ────────│    tf/  hl2/  tf_movies/ …   │
+  │  oʻz render  │       faqat oʻqish       │    models/ materials/ dmx    │
+  └──────────────┘                          └──────────────────────────────┘
 ```
-
-<p align="center"><img src="../assets/editor.png" alt="Meet the Heavy ochilgan muharrir" width="100%"><br><sub>Bugungi muharrir, Valve ning Meet the Heavy sessiyasi ochiq: taymlaynda shotlar va ovoz, sessiya daraxti, birinchi shot oʻz kamerasi orqali, sessiyadagi holat va yuz ifodalari bilan personajlar.</sub></p>
-
-## Nimasi bilan farq qiladi
 
 - **Koʻchma.** Ilova papkasidan tashqarida hech narsa yozilmaydi: sozlamalar `App/User`, kesh `App/Cache`, vaqtinchalik `App/Temporary`. Papkani oʻchirsangiz — iz qolmaydi.
 - **SFM ni hech qachon ishga tushirmaydi.** Boshqariladigan jarayon yoʻq, egallanadigan oynalar yoʻq. Oʻrnatma kontent paketi kabi oʻqiladi.
@@ -59,7 +54,53 @@ Birinchi maqsad — suyaklar va riglar bilan birga SFM bilan toʻliq moslik. Key
 - **Saqlash aniq.** Oʻzgarishsiz oʻqilgan va yozilgan sessiya — xuddi shu fayl.
 - **Dvigatelda bogʻliqliklar yoʻq.** `Core/` va barcha testlar sof Python da ishlaydi; Qt va OpenGL faqat oynaga kerak.
 
-## Ishga tushirish
+<p align="center"><img src="../assets/editor.png" alt="Meet the Heavy ochilgan muharrir" width="100%"><br><sub>Bugungi muharrir, Valve ning Meet the Heavy sessiyasi ochiq: taymlaynda shotlar va ovoz, sessiya daraxti, birinchi shot oʻz kamerasi orqali, sessiyadagi holat va yuz ifodalari bilan personajlar.</sub></p>
+
+## Tuzilma
+
+```
+C2UI_SDK/
+├── README.md
+├── Core/               dvigatel: formatlar, virtual fayl tizimi, indeks, koʻpriklar
+│   ├── API/            muharrir, vositalar va plaginlar uchun shartnoma
+│   ├── Code/           dvigatel: animatsiya, operatorlar, yuzlar, tahrir
+│   │   └── formats/    Valve o'qigichlari: mdl vvd vtx vmt vtf dmx bsp
+│   └── dev-kit/        SDK uyalari (bo'sh) va o'rnatmalarga ko'priklar
+├── App/                muharrir: kontent kutubxonasi, renderer, oyna
+│   ├── Code/           kontent kutubxonasi, oyna, sozlamalar
+│   │   ├── render/     sahna, OpenGL rendereri, sheyderlar, kamera
+│   │   └── ui/         taymlayn, seans daraxti, inspektor, graph editor, doking
+│   ├── Data/           dastur resurslari, faqat o'qish
+│   ├── User/           foydalanuvchi ma'lumotlari — hech qachon o'chirilmaydi
+│   └── Cache/          kontent indeksi, sheyderlar, miniatyuralar
+├── Tools/              lokalizatsiya, UI vositalari, plaginlar (keyinroq)
+│   ├── Launcher/       ishga tushirgich
+│   ├── Market Load/    plagin marketpleysi mijozi (keyinroq)
+│   ├── Localization/   tarjimalar yaratish
+│   ├── NewPlugins/     plaginlar yaratish
+│   └── UI/             mavzular va ish maydonlari
+├── Testing/            testlar, baytgacha aniq fiksturalar, bitta runner
+│   ├── core/           dvigatel
+│   ├── app/            muharrir
+│   └── fixtures/       soxta o'rnatma, modellar, teksturalar
+└── GIT&DOCK/           README, tayyorlik va litsenziya 32 tilda
+```
+
+### Bu qanday ishlaydi
+
+«Source Filmmaker qayerda?» degan savoldan ekrandagi bitta kadrgacha bo'lgan yo'l besh qatlamdan o'tadi; har bir qatlam faqat o'zidan pastdagini biladi.
+
+1. **Ko'prik** (`Core/dev-kit/bridge_sfm`) o'rnatmani Steam orqali topadi, `gameinfo.txt` ni o'qiydi va kontent yo'llarini dvigatel tartibida qaytaradi. `sfm.exe` hech qachon ishga tushirilmaydi.
+2. **Virtual fayl tizimi va indeks** (`Core/Code/vfs.py`, `content_index.py`) bu yo'llarni Source kabi qatlamlaydi: birinchi topilgan fayl g'olib. Indeks — `App/Cache` dagi bitta SQLite fayl, shuning uchun 70 000 faylni aylanib chiqish bir marta bajariladi.
+3. **Formatlar** (`Core/Code/formats`) Valve fayllarini tashqi kutubxonalarsiz o'qiydi: `.mdl` `.vvd` `.vtx` — model, `.vmt` `.vtf` — material va tekstura, `.dmx` — seans, `.bsp` — xarita. Har bir o'qigich butun o'rnatmada tekshirilgan; seans baytma-bayt qayta yoziladi.
+4. **Seans** — DMX elementlari grafi. `animation.py` kanallarni vaqt lahzasida hisoblaydi, `operators.py` ifodalar va rig cheklovlarini bajaradi, `flex.py` yuzlarni harakatlantiradi, `pose.py` suyak matritsalarini yig'adi. Har bir tahrir `editing.py` orqali bekor qilinadigan buyruq sifatida o'tadi.
+5. **Muharrir** (`App/Code`) bundan sahna (`render/scene.py`) yig'adi va uni o'z OpenGL 3.3 rendereri (`renderer.py`, `shaders.py`) bilan chizadi: seans chiroqlari, laytmaplar va xarita yoritilishi — SFM ko'rsatganidek. Panellar (`ui/`) — taymlayn, seans daraxti, inspektor, graph editor va UE5 uslubidagi doking.
+
+Dastur yozadigan hamma narsa o'z papkasida qoladi: `App/User` — sozlamalar, `App/Cache` — indeks va kesh, `App/Temporary` — jurnal. `Core/` hech narsa yozmaydi va Qt ga bog'liq emas, shuning uchun dvigatel va testlar sof Python da ishlaydi; Qt va OpenGL faqat oynaga kerak. `Tools/` dagi vositalar qat'iy `Core/API` ustida quriladi — shu tariqa API tashqi plaginlar uchun ham yetarli ekani isbotlanadi.
+
+<p align="center"><img src="../assets/models.png" alt="Oʻrnatmadan toʻgʻridan-toʻgʻri renderlangan 64 model" width="60%"><br><sub>Oʻrnatmadan tasodifiy tanlangan oltmish toʻrt model, C2UI ning oʻz rendereri bilan chizilgan.</sub></p>
+
+### Ishga tushirish
 
 Windows, Python 3.13 va oʻrnatilgan Source Filmmaker kerak.
 
@@ -77,25 +118,18 @@ Birinchi ishga tushirishda SFM Steam orqali qidiriladi; topilmasa — dastur so�
 python Testing/run.py
 ```
 
-## Tuzilma
+### Rejada
 
-```
-C2UI_SDK/
-├── README.md
-├── Core/              dvigatel: formatlar, virtual fayl tizimi, indeks, koʻpriklar
-├── App/               muharrir: kontent kutubxonasi, renderer, oyna
-├── Tools/             lokalizatsiya, UI vositalari, plaginlar (keyinroq)
-│   └── Launcher/      ishga tushirgich
-├── Testing/           testlar, baytgacha aniq fiksturalar, bitta runner
-└── GIT&DOCK/          bu README boshqa tillarda
-```
+**Keyingi**
+- Xarita ko'rinishi: skayboks, suv, prop_dynamic, chiroqlarning gobo teksturalari, `$bumpmap` va `$envmap`, seans chiroqlaridan soyalar.
+- Eksport: kadrlar ketma-ketligi va video.
+- `.c2plg` plaginlari va `Tools/Market Load` dagi marketpleys mijozi; keyin mavzular va ish maydonlari.
+- Taymlayndagi ovoz, zarrachalar, wrinkle-xaritalar, motion editor presetlari va qatlamlari, graph editor dagi urinmalar.
 
-## Yoʻl xaritasi
-
-1. **Source sheyding** — SFM chizganidek VertexLitGeneric: phong, rim, lightwarp, sahna yorugʻliklari.
-2. **Xaritalar** — fon uchun `.bsp`.
-3. **Eksport** — rasm va video.
-4. **Plaginlar** — `.c2plg` formati; keyin mavzular va ish maydonlari.
+**Keyinroq**
+- To'liq xaritalarda unumdorlik: statik proplar instansingi, pozalar keshi.
+- Dvigatelni qayta ishlash: yaxshilangan yoritish va soyalar uchun yangi xarita kompilyatsiya parametrlari, 120 000 birlik xarita chegarasi.
+- O'z Python i va avtoyangilanishi bo'lgan paketlangan launcher; muharrirni mahalliylashtirish.
 
 ## Litsenziya va minnatdorchilik
 
@@ -104,5 +138,3 @@ C2UI ning oʻz kodi **C2UI litsenziyasi** ostida: shaxsiy va notijorat maqsadlar
 Source Filmmaker, Team Fortress 2 va Source dvigateli Valve ga tegishli; loyiha ularning formatlarini oʻqiydi, fayllarini oʻz ichiga olmaydi va faqat Steam dagi oʻz SFM nusxangiz bilan ishlaydi.
 
 <p align="center"><a href="../LICENSE/UZ-uz.md"><img alt="Litsenziya matni" src="https://img.shields.io/badge/Litsenziya_matni-66c0f4?style=for-the-badge"></a></p>
-
-<p align="center"><img src="../assets/models.png" alt="Oʻrnatmadan toʻgʻridan-toʻgʻri renderlangan 64 model" width="60%"><br><sub>Oʻrnatmadan tasodifiy tanlangan oltmish toʻrt model, C2UI ning oʻz rendereri bilan chizilgan.</sub></p>

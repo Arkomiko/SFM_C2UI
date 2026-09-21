@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="706" viewBox="0 0 960 706" font-family="Segoe UI, Roboto, Helvetica, Arial, 'Noto Sans', sans-serif">
+  <style>
+    @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    @keyframes pulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+    @keyframes shimmer { from { transform: translateX(-960px); } to { transform: translateX(960px); } }
+    .bar { transform-origin: 324px 0; transform: scaleX(0); animation: grow 1.1s cubic-bezier(.2,.8,.2,1) forwards; }
+    .row, .head { opacity: 0; animation: rise .5s ease-out forwards; }
+    .label { font-size: 12px; fill: #c7d5e0; }
+    .pct { font-size: 11.5px; font-weight: 600; }
+    .dot { animation: pulse 2.4s ease-in-out infinite; }
+    .shine { animation: shimmer 3.2s ease-in-out 1.6s infinite; }
+  </style>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b2838"/><stop offset="1" stop-color="#121c26"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#66c0f4"/><stop offset="1" stop-color="#2f80ed"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="panel"><rect width="960" height="706" rx="10"/></clipPath>
+    <clipPath id="track"><rect x="324" y="66" width="556" height="14" rx="7"/></clipPath>
+  </defs>
+  <g clip-path="url(#panel)">
+    <rect width="960" height="706" rx="10" fill="url(#bg)"/>
+    <rect width="960" height="4" fill="url(#accent)"/>
+  </g>
+  <rect x=".5" y=".5" width="959" height="705" rx="10" fill="none" stroke="#2a475e"/>
+  <g class="head">
+    <circle class="dot" cx="28" cy="32" r="4" fill="#66c0f4"/>
+    <text x="40" y="37" font-size="16" font-weight="700" fill="#e6f0f8" letter-spacing="1">C2UI</text>
+    <text x="936" y="37" font-size="12" fill="#8fa5b8" text-anchor="end">Estado</text>
+  </g>
+  <g class="head" style="animation-delay:.15s">
+    <text x="24" y="77" font-size="12.5" font-weight="600" fill="#e6f0f8">Total</text>
+    <rect x="324" y="66" width="556" height="14" rx="7" fill="#0e1720"/>
+    <g clip-path="url(#track)">
+      <rect x="324" y="66" width="283.6" height="14" rx="7" fill="url(#accent)" class="bar" style="animation-delay:.15s"/>
+      <rect x="324" y="66" width="283.6" height="14" rx="7" fill="url(#shine)" class="shine"/>
+    </g>
+    <text x="936" y="79" font-size="15" font-weight="700" fill="#66c0f4" text-anchor="end">51%</text>
+    <line x1="24" y1="98" x2="936" y2="98" stroke="#2a475e"/>
+  </g>
+  <g class="row" style="animation-delay:0.30s">
+    <text x="24" y="124" class="label">Encontrar y montar SFM</text>
+    <rect x="324" y="115" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="115" width="556.0" height="10" rx="5" fill="#66c0f4" class="bar" style="animation-delay:0.30s"/>
+    <text x="936" y="124" class="pct" text-anchor="end" fill="#66c0f4">100%</text>
+  </g>
+  <g class="row" style="animation-delay:0.36s">
+    <text x="24" y="154" class="label">Índice de contenido</text>
+    <rect x="324" y="145" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="145" width="556.0" height="10" rx="5" fill="#66c0f4" class="bar" style="animation-delay:0.36s"/>
+    <text x="936" y="154" class="pct" text-anchor="end" fill="#66c0f4">100%</text>
+  </g>
+  <g class="row" style="animation-delay:0.42s">
+    <text x="24" y="184" class="label">Modelos — .mdl .vvd .vtx</text>
+    <rect x="324" y="175" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="175" width="556.0" height="10" rx="5" fill="#66c0f4" class="bar" style="animation-delay:0.42s"/>
+    <text x="936" y="184" class="pct" text-anchor="end" fill="#66c0f4">100%</text>
+  </g>
+  <g class="row" style="animation-delay:0.48s">
+    <text x="24" y="214" class="label">Materiales — .vmt</text>
+    <rect x="324" y="205" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="205" width="556.0" height="10" rx="5" fill="#66c0f4" class="bar" style="animation-delay:0.48s"/>
+    <text x="936" y="214" class="pct" text-anchor="end" fill="#66c0f4">100%</text>
+  </g>
+  <g class="row" style="animation-delay:0.54s">
+    <text x="24" y="244" class="label">Texturas — .vtf</text>
+    <rect x="324" y="235" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="235" width="556.0" height="10" rx="5" fill="#66c0f4" class="bar" style="animation-delay:0.54s"/>
+    <text x="936" y="244" class="pct" text-anchor="end" fill="#66c0f4">100%</text>
+  </g>
+  <g class="row" style="animation-delay:0.60s">
+    <text x="24" y="274" class="label">Sesiones — .dmx</text>
+    <rect x="324" y="265" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="265" width="556.0" height="10" rx="5" fill="#66c0f4" class="bar" style="animation-delay:0.60s"/>
+    <text x="936" y="274" class="pct" text-anchor="end" fill="#66c0f4">100%</text>
+  </g>
+  <g class="row" style="animation-delay:0.66s">
+    <text x="24" y="304" class="label">Sesión en pantalla</text>
+    <rect x="324" y="295" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="295" width="444.8" height="10" rx="5" fill="#3b9c5b" class="bar" style="animation-delay:0.66s"/>
+    <text x="936" y="304" class="pct" text-anchor="end" fill="#3b9c5b">80%</text>
+  </g>
+  <g class="row" style="animation-delay:0.72s">
+    <text x="24" y="334" class="label">Animación</text>
+    <rect x="324" y="325" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="325" width="472.6" height="10" rx="5" fill="#3b9c5b" class="bar" style="animation-delay:0.72s"/>
+    <text x="936" y="334" class="pct" text-anchor="end" fill="#3b9c5b">85%</text>
+  </g>
+  <g class="row" style="animation-delay:0.78s">
+    <text x="24" y="364" class="label">Caras</text>
+    <rect x="324" y="355" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="355" width="500.4" height="10" rx="5" fill="#3b9c5b" class="bar" style="animation-delay:0.78s"/>
+    <text x="936" y="364" class="pct" text-anchor="end" fill="#3b9c5b">90%</text>
+  </g>
+  <g class="row" style="animation-delay:0.84s">
+    <text x="24" y="394" class="label">Rigs</text>
+    <rect x="324" y="385" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="385" width="333.6" height="10" rx="5" fill="#e0a800" class="bar" style="animation-delay:0.84s"/>
+    <text x="936" y="394" class="pct" text-anchor="end" fill="#e0a800">60%</text>
+  </g>
+  <g class="row" style="animation-delay:0.90s">
+    <text x="24" y="424" class="label">Edición</text>
+    <rect x="324" y="415" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="415" width="333.6" height="10" rx="5" fill="#e0a800" class="bar" style="animation-delay:0.90s"/>
+    <text x="936" y="424" class="pct" text-anchor="end" fill="#e0a800">60%</text>
+  </g>
+  <g class="row" style="animation-delay:0.96s">
+    <text x="24" y="454" class="label">Motion editor</text>
+    <rect x="324" y="445" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="445" width="278.0" height="10" rx="5" fill="#e0a800" class="bar" style="animation-delay:0.96s"/>
+    <text x="936" y="454" class="pct" text-anchor="end" fill="#e0a800">50%</text>
+  </g>
+  <g class="row" style="animation-delay:1.02s">
+    <text x="24" y="484" class="label">Editor de gráficas</text>
+    <rect x="324" y="475" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="475" width="389.2" height="10" rx="5" fill="#3b9c5b" class="bar" style="animation-delay:1.02s"/>
+    <text x="936" y="484" class="pct" text-anchor="end" fill="#3b9c5b">70%</text>
+  </g>
+  <g class="row" style="animation-delay:1.08s">
+    <text x="24" y="514" class="label">Acoplamiento de paneles</text>
+    <rect x="324" y="505" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="505" width="444.8" height="10" rx="5" fill="#3b9c5b" class="bar" style="animation-delay:1.08s"/>
+    <text x="936" y="514" class="pct" text-anchor="end" fill="#3b9c5b">80%</text>
+  </g>
+  <g class="row" style="animation-delay:1.14s">
+    <text x="24" y="544" class="label">Sombreado Source</text>
+    <rect x="324" y="535" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="535" width="361.4" height="10" rx="5" fill="#e0a800" class="bar" style="animation-delay:1.14s"/>
+    <text x="936" y="544" class="pct" text-anchor="end" fill="#e0a800">65%</text>
+  </g>
+  <g class="row" style="animation-delay:1.20s">
+    <text x="24" y="574" class="label">Mapas — .bsp</text>
+    <rect x="324" y="565" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="565" width="333.6" height="10" rx="5" fill="#e0a800" class="bar" style="animation-delay:1.20s"/>
+    <text x="936" y="574" class="pct" text-anchor="end" fill="#e0a800">60%</text>
+  </g>
+  <g class="row" style="animation-delay:1.26s">
+    <text x="24" y="604" class="label">Render a imagen y vídeo</text>
+    <rect x="324" y="595" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="595" width="4.0" height="10" rx="5" fill="#3d4f60" class="bar" style="animation-delay:1.26s"/>
+    <text x="936" y="604" class="pct" text-anchor="end" fill="#3d4f60">0%</text>
+  </g>
+  <g class="row" style="animation-delay:1.32s">
+    <text x="24" y="634" class="label">Plugins .c2plg</text>
+    <rect x="324" y="625" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="625" width="4.0" height="10" rx="5" fill="#3d4f60" class="bar" style="animation-delay:1.32s"/>
+    <text x="936" y="634" class="pct" text-anchor="end" fill="#3d4f60">0%</text>
+  </g>
+  <g class="row" style="animation-delay:1.38s">
+    <text x="24" y="664" class="label">Temas y espacios de trabajo</text>
+    <rect x="324" y="655" width="556" height="10" rx="5" fill="#0e1720"/>
+    <rect x="324" y="655" width="4.0" height="10" rx="5" fill="#3d4f60" class="bar" style="animation-delay:1.38s"/>
+    <text x="936" y="664" class="pct" text-anchor="end" fill="#3d4f60">0%</text>
+  </g>
+</svg>

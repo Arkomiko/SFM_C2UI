@@ -1,15 +1,15 @@
-<p align="center"><img src="../assets/UK-ua/banner.png" alt="C2UI" width="100%"></p>
-
 <details align="center"><summary>&nbsp;🌐 <b>🇺🇦 Українська</b> &nbsp;·&nbsp; <sub>Language · Язык · 語言 · Idioma · Sprache · भाषा · لغة</sub></summary>
 
 <table align="center">
-<tr><td align="center"><a href="../../README.md">🇷🇺<br>Русский</a></td><td align="center"><a href="EN-en.md">🇬🇧<br>English</a></td><td align="center"><a href="PL-pl.md">🇵🇱<br>Polski</a></td><td align="center"><b>🇺🇦<br>Українська</b></td><td align="center"><a href="DE-de.md">🇩🇪<br>Deutsch</a></td><td align="center"><a href="RO-md.md">🇲🇩<br>Moldovenească</a></td><td align="center"><a href="SL-si.md">🇸🇮<br>Slovenščina</a></td><td align="center"><a href="BE-by.md">🇧🇾<br>Беларуская</a></td></tr>
-<tr><td align="center"><a href="KK-kz.md">🇰🇿<br>Қазақша</a></td><td align="center"><a href="JA-jp.md">🇯🇵<br>日本語</a></td><td align="center"><a href="ZH-cn.md">🇨🇳<br>中文</a></td><td align="center"><a href="SV-se.md">🇸🇪<br>Svenska</a></td><td align="center"><a href="ES-es.md">🇪🇸<br>Español</a></td><td align="center"><a href="HI-in.md">🇮🇳<br>हिन्दी</a></td><td align="center"><a href="PT-pt.md">🇵🇹<br>Português</a></td><td align="center"><a href="BN-bd.md">🇧🇩<br>বাংলা</a></td></tr>
-<tr><td align="center"><a href="FR-fr.md">🇫🇷<br>Français</a></td><td align="center"><a href="TE-in.md">🇮🇳<br>తెలుగు</a></td><td align="center"><a href="MR-in.md">🇮🇳<br>मराठी</a></td><td align="center"><a href="TA-in.md">🇮🇳<br>தமிழ்</a></td><td align="center"><a href="TR-tr.md">🇹🇷<br>Türkçe</a></td><td align="center"><a href="UR-pk.md">🇵🇰<br>اردو</a></td><td align="center"><a href="VI-vn.md">🇻🇳<br>Tiếng Việt</a></td><td align="center"><a href="GU-in.md">🇮🇳<br>ગુજરાતી</a></td></tr>
-<tr><td align="center"><a href="IT-it.md">🇮🇹<br>Italiano</a></td><td align="center"><a href="KO-kr.md">🇰🇷<br>한국어</a></td><td align="center"><a href="AR-sa.md">🇸🇦<br>العربية</a></td><td align="center"><a href="JV-id.md">🇮🇩<br>Basa Jawa</a></td><td align="center"><a href="ML-in.md">🇮🇳<br>മലയാളം</a></td><td align="center"><a href="NE-np.md">🇳🇵<br>नेपाली</a></td><td align="center"><a href="UZ-uz.md">🇺🇿<br>Oʻzbekcha</a></td><td align="center"><a href="OR-in.md">🇮🇳<br>ଓଡ଼ିଆ</a></td></tr>
+<tr><td align="center"><a href="../../README.md">🇷🇺<br>Русский</a></td><td align="center"><a href="../README/EN-en.md">🇬🇧<br>English</a></td><td align="center"><a href="../README/PL-pl.md">🇵🇱<br>Polski</a></td><td align="center"><b>🇺🇦<br>Українська</b></td><td align="center"><a href="../README/DE-de.md">🇩🇪<br>Deutsch</a></td><td align="center"><a href="../README/RO-md.md">🇲🇩<br>Moldovenească</a></td><td align="center"><a href="../README/SL-si.md">🇸🇮<br>Slovenščina</a></td><td align="center"><a href="../README/BE-by.md">🇧🇾<br>Беларуская</a></td></tr>
+<tr><td align="center"><a href="../README/KK-kz.md">🇰🇿<br>Қазақша</a></td><td align="center"><a href="../README/JA-jp.md">🇯🇵<br>日本語</a></td><td align="center"><a href="../README/ZH-cn.md">🇨🇳<br>中文</a></td><td align="center"><a href="../README/SV-se.md">🇸🇪<br>Svenska</a></td><td align="center"><a href="../README/ES-es.md">🇪🇸<br>Español</a></td><td align="center"><a href="../README/HI-in.md">🇮🇳<br>हिन्दी</a></td><td align="center"><a href="../README/PT-pt.md">🇵🇹<br>Português</a></td><td align="center"><a href="../README/BN-bd.md">🇧🇩<br>বাংলা</a></td></tr>
+<tr><td align="center"><a href="../README/FR-fr.md">🇫🇷<br>Français</a></td><td align="center"><a href="../README/TE-in.md">🇮🇳<br>తెలుగు</a></td><td align="center"><a href="../README/MR-in.md">🇮🇳<br>मराठी</a></td><td align="center"><a href="../README/TA-in.md">🇮🇳<br>தமிழ்</a></td><td align="center"><a href="../README/TR-tr.md">🇹🇷<br>Türkçe</a></td><td align="center"><a href="../README/UR-pk.md">🇵🇰<br>اردو</a></td><td align="center"><a href="../README/VI-vn.md">🇻🇳<br>Tiếng Việt</a></td><td align="center"><a href="../README/GU-in.md">🇮🇳<br>ગુજરાતી</a></td></tr>
+<tr><td align="center"><a href="../README/IT-it.md">🇮🇹<br>Italiano</a></td><td align="center"><a href="../README/KO-kr.md">🇰🇷<br>한국어</a></td><td align="center"><a href="../README/AR-sa.md">🇸🇦<br>العربية</a></td><td align="center"><a href="../README/JV-id.md">🇮🇩<br>Basa Jawa</a></td><td align="center"><a href="../README/ML-in.md">🇮🇳<br>മലയാളം</a></td><td align="center"><a href="../README/NE-np.md">🇳🇵<br>नेपाली</a></td><td align="center"><a href="../README/UZ-uz.md">🇺🇿<br>Oʻzbekcha</a></td><td align="center"><a href="../README/OR-in.md">🇮🇳<br>ଓଡ଼ିଆ</a></td></tr>
 </table>
 
 </details>
+
+<p align="center"><img src="../assets/banner/UK-ua.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
   <img alt="status" src="https://img.shields.io/badge/%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81-%D0%BF%D1%80%D0%B5--%D0%B0%D0%BB%D1%8C%D1%84%D0%B0-e07b39?style=flat-square">
@@ -18,19 +18,18 @@
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
   <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D1%82%D0%B5%D1%81%D1%82%D1%96%D0%B2-363-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
+  <a href="../LICENSE/UK-ua.md"><img alt="licence" src="https://img.shields.io/badge/%D0%BB%D1%96%D1%86%D0%B5%D0%BD%D0%B7%D1%96%D1%8F-C2UI-2a475e?style=flat-square"></a>
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — редактор Source Filmmaker у сучасній оболонці: той самий контент, той самий формат сесій, та сама модель даних, інтерфейс у дусі бібліотеки Steam і редактора Unreal Engine 5.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — редактор Source Filmmaker у сучасній оболонці: той самий контент, той самий формат сесій, та сама модель даних, інтерфейс у дусі бібліотеки Steam і редактора Unreal Engine 5.</p>
 
 ---
 
 ## Готовність
 
-<p align="center"><img src="../assets/UK-ua/sidebar.svg" alt="Готовність" width="320"></p>
+<p align="center"><img src="../assets/readiness/UK-ua.svg" alt="Готовність" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Загальна готовність до релізу: 51%</b></p>
-
-<p align="center"><a href="../assets/UK-ua/sidebar.md"><img alt="Готовність докладно" src="https://img.shields.io/badge/%D0%93%D0%BE%D1%82%D0%BE%D0%B2%D0%BD%D1%96%D1%81%D1%82%D1%8C_%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BD%D0%BE-66c0f4?style=for-the-badge"></a></p>
+<p align="center"><a href="../READINESS/UK-ua.md"><img alt="Готовність докладно" src="https://img.shields.io/badge/%D0%93%D0%BE%D1%82%D0%BE%D0%B2%D0%BD%D1%96%D1%81%D1%82%D1%8C_%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BD%D0%BE-66c0f4?style=for-the-badge"></a></p>
 
 ## Ідея
 
@@ -41,17 +40,13 @@ Source Filmmaker — сильний інструмент, інтерфейс я�
 Перша мета — повна сумісність із SFM, включно з кістками та ригами. Далі — те, чого в SFM бракувало.
 
 ```
-  ┌──────────────┐    "де SFM?"    ┌──────────────────────────────┐
-  │   C2UI       │ ─────────────────────▶│  SourceFilmmaker/game/       │
+  ┌──────────────┐                       ┌──────────────────────────────┐
+  │   C2UI       │ ───── "де SFM?" ─────▶│  SourceFilmmaker/game/       │
   │              │                       │    usermod/gameinfo.txt      │
-  │  свій UI     │ ◀─────  монтує   ───────│    tf/  hl2/  tf_movies/ …   │
-  │  свій рендер │      лише читання      │    models/ materials/ dmx    │
+  │  свій UI     │ ◀────── монтує ───────│    tf/  hl2/  tf_movies/ …   │
+  │  свій рендер │     лише читання      │    models/ materials/ dmx    │
   └──────────────┘                       └──────────────────────────────┘
 ```
-
-<p align="center"><img src="../assets/editor.png" alt="Редактор з відкритою сесією Meet the Heavy" width="100%"><br><sub>Редактор сьогодні: відкрита сесія Valve «Meet the Heavy» — шоти і звук на таймлайні, дерево сесії, перший шот через його власну камеру, персонажі в позах і з обличчями із сесії.</sub></p>
-
-## Чим відрізняється
 
 - **Переносний.** Нічого не пишеться поза текою програми: налаштування в `App/User`, кеш у `App/Cache`, тимчасове в `App/Temporary`. Видалили теку — сліду не лишилось.
 - **Не запускає SFM.** Немає процесу, яким треба керувати, немає вікон, які треба перехоплювати. Інсталяція читається як пакет контенту.
@@ -59,7 +54,53 @@ Source Filmmaker — сильний інструмент, інтерфейс я�
 - **Збереження точне.** Сесія, прочитана і записана без змін, — той самий файл.
 - **Ядро без залежностей.** `Core/` і всі тести працюють на голому Python; Qt і OpenGL потрібні лише вікну.
 
-## Запуск
+<p align="center"><img src="../assets/editor.png" alt="Редактор з відкритою сесією Meet the Heavy" width="100%"><br><sub>Редактор сьогодні: відкрита сесія Valve «Meet the Heavy» — шоти і звук на таймлайні, дерево сесії, перший шот через його власну камеру, персонажі в позах і з обличчями із сесії.</sub></p>
+
+## Структура
+
+```
+C2UI_SDK/
+├── README.md
+├── Core/               ядро: формати, віртуальна ФС, індекс, мости до інсталяцій
+│   ├── API/            контракт для редактора, інструментів і плагінів
+│   ├── Code/           рушій: анімація, оператори, обличчя, правки
+│   │   └── formats/    читачі Valve: mdl vvd vtx vmt vtf dmx bsp
+│   └── dev-kit/        слоти SDK (порожні) та мости до установок
+├── App/                редактор: бібліотека контенту, рендер, вікно
+│   ├── Code/           бібліотека контенту, вікно, налаштування
+│   │   ├── render/     сцена, рендерер OpenGL, шейдери, камера
+│   │   └── ui/         таймлайн, дерево сесії, інспектор, graph editor, докінг
+│   ├── Data/           ресурси програми, лише читання
+│   ├── User/           дані користувача — ніколи не видаляються
+│   └── Cache/          індекс контенту, шейдери, мініатюри
+├── Tools/              локалізація, інструменти UI, плагіни (пізніше)
+│   ├── Launcher/       лаунчер
+│   ├── Market Load/    клієнт маркетплейсу плагінів (пізніше)
+│   ├── Localization/   створення перекладів
+│   ├── NewPlugins/     створення плагінів
+│   └── UI/             теми й робочі простори
+├── Testing/            тести, побайтові фікстури, один ранер
+│   ├── core/           рушій
+│   ├── app/            редактор
+│   └── fixtures/       підроблена установка, моделі, текстури
+└── GIT&DOCK/           README, готовність і ліцензія 32 мовами
+```
+
+### Як це працює
+
+Шлях від «де Source Filmmaker?» до кадру на екрані проходить через п'ять шарів; кожен наступний знає лише про попередній.
+
+1. **Міст** (`Core/dev-kit/bridge_sfm`) знаходить установку через Steam, читає `gameinfo.txt` і віддає шляхи контенту в порядку рушія. `sfm.exe` не запускається.
+2. **Віртуальна ФС та індекс** (`Core/Code/vfs.py`, `content_index.py`) накладають ці шляхи один на одного, як Source: перший знайдений файл перемагає. Індекс — один файл SQLite в `App/Cache`, тому обхід 70 000 файлів робиться один раз.
+3. **Формати** (`Core/Code/formats`) читають файли Valve без сторонніх бібліотек: `.mdl` `.vvd` `.vtx` — модель, `.vmt` `.vtf` — матеріал і текстура, `.dmx` — сесія, `.bsp` — карта. Кожен читач перевірений на всій установці; сесія записується назад байт у байт.
+4. **Сесія** — граф елементів DMX. `animation.py` обчислює канали в момент часу, `operators.py` виконує вирази та констрейнти ригів, `flex.py` рухає обличчя, `pose.py` збирає матриці кісток. Кожна правка йде через `editing.py` як команда зі скасуванням.
+5. **Редактор** (`App/Code`) збирає з цього сцену (`render/scene.py`) і малює її власним рендерером на OpenGL 3.3 (`renderer.py`, `shaders.py`): світло сесії, лайтмапи та освітлення карти — як їх бачить SFM. Панелі (`ui/`) — таймлайн, дерево сесії, інспектор, graph editor, докінг у дусі UE5.
+
+Усе, що програма пише, лишається в її теці: `App/User` — налаштування, `App/Cache` — індекс і кеш, `App/Temporary` — журнал. `Core/` нічого не пише й не залежить від Qt, тому рушій і тести працюють на голому Python; Qt і OpenGL потрібні лише вікну. Інструменти в `Tools/` збираються суворо поверх `Core/API` — так перевіряється, що API достатній і для сторонніх плагінів.
+
+<p align="center"><img src="../assets/models.png" alt="64 моделі, відрендерені прямо з інсталяції" width="60%"><br><sub>Шістдесят чотири випадкові моделі з інсталяції, намальовані власним рендерером C2UI.</sub></p>
+
+### Запуск
 
 Потрібні Windows, Python 3.13 і встановлений Source Filmmaker.
 
@@ -77,25 +118,18 @@ python -m venv .venv
 python Testing/run.py
 ```
 
-## Структура
+### У планах
 
-```
-C2UI_SDK/
-├── README.md
-├── Core/              ядро: формати, віртуальна ФС, індекс, мости до інсталяцій
-├── App/               редактор: бібліотека контенту, рендер, вікно
-├── Tools/             локалізація, інструменти UI, плагіни (пізніше)
-│   └── Launcher/      лаунчер
-├── Testing/           тести, побайтові фікстури, один ранер
-└── GIT&DOCK/          цей README іншими мовами
-```
+**Найближче**
+- Вигляд карти: скайбокс, вода, prop_dynamic, гобо-текстури світла, `$bumpmap` і `$envmap`, тіні від світла сесії.
+- Експорт: послідовність кадрів і відео.
+- Плагіни `.c2plg` та клієнт маркетплейсу в `Tools/Market Load`; потім теми й робочі простори.
+- Звук на таймлайні, частинки, wrinkle-карти, пресети та шари motion editor, дотичні в graph editor.
 
-## Дорожня карта
-
-1. **Шейдинг Source** — VertexLitGeneric як малює SFM: phong, rim, lightwarp, освітлення сцени.
-2. **Карти** — `.bsp` для фону.
-3. **Експорт** — зображення і відео.
-4. **Плагіни** — формат `.c2plg`; потім теми і робочі простори.
+**Далі**
+- Продуктивність на повних картах: інстансинг статичних пропів, кеш поз.
+- Переробка рушія: нові параметри компіляції карт для кращого освітлення й тіней, ліміт карти 120 000 юнітів.
+- Упакований лаунчер із власним Python та автооновленням; локалізація редактора.
 
 ## Ліцензія і подяки
 
@@ -104,5 +138,3 @@ C2UI_SDK/
 Source Filmmaker, Team Fortress 2 і рушій Source належать Valve; проєкт читає їхні формати, не містить їхніх файлів і працює лише з вашою копією SFM зі Steam.
 
 <p align="center"><a href="../LICENSE/UK-ua.md"><img alt="Текст ліцензії" src="https://img.shields.io/badge/%D0%A2%D0%B5%D0%BA%D1%81%D1%82_%D0%BB%D1%96%D1%86%D0%B5%D0%BD%D0%B7%D1%96%D1%97-66c0f4?style=for-the-badge"></a></p>
-
-<p align="center"><img src="../assets/models.png" alt="64 моделі, відрендерені прямо з інсталяції" width="60%"><br><sub>Шістдесят чотири випадкові моделі з інсталяції, намальовані власним рендерером C2UI.</sub></p>

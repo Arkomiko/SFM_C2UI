@@ -1,15 +1,15 @@
-<p align="center"><img src="../assets/EN-en/banner.png" alt="C2UI" width="100%"></p>
-
 <details align="center"><summary>&nbsp;🌐 <b>🇬🇧 English</b> &nbsp;·&nbsp; <sub>Language · Язык · 語言 · Idioma · Sprache · भाषा · لغة</sub></summary>
 
 <table align="center">
-<tr><td align="center"><a href="../../README.md">🇷🇺<br>Русский</a></td><td align="center"><b>🇬🇧<br>English</b></td><td align="center"><a href="PL-pl.md">🇵🇱<br>Polski</a></td><td align="center"><a href="UK-ua.md">🇺🇦<br>Українська</a></td><td align="center"><a href="DE-de.md">🇩🇪<br>Deutsch</a></td><td align="center"><a href="RO-md.md">🇲🇩<br>Moldovenească</a></td><td align="center"><a href="SL-si.md">🇸🇮<br>Slovenščina</a></td><td align="center"><a href="BE-by.md">🇧🇾<br>Беларуская</a></td></tr>
-<tr><td align="center"><a href="KK-kz.md">🇰🇿<br>Қазақша</a></td><td align="center"><a href="JA-jp.md">🇯🇵<br>日本語</a></td><td align="center"><a href="ZH-cn.md">🇨🇳<br>中文</a></td><td align="center"><a href="SV-se.md">🇸🇪<br>Svenska</a></td><td align="center"><a href="ES-es.md">🇪🇸<br>Español</a></td><td align="center"><a href="HI-in.md">🇮🇳<br>हिन्दी</a></td><td align="center"><a href="PT-pt.md">🇵🇹<br>Português</a></td><td align="center"><a href="BN-bd.md">🇧🇩<br>বাংলা</a></td></tr>
-<tr><td align="center"><a href="FR-fr.md">🇫🇷<br>Français</a></td><td align="center"><a href="TE-in.md">🇮🇳<br>తెలుగు</a></td><td align="center"><a href="MR-in.md">🇮🇳<br>मराठी</a></td><td align="center"><a href="TA-in.md">🇮🇳<br>தமிழ்</a></td><td align="center"><a href="TR-tr.md">🇹🇷<br>Türkçe</a></td><td align="center"><a href="UR-pk.md">🇵🇰<br>اردو</a></td><td align="center"><a href="VI-vn.md">🇻🇳<br>Tiếng Việt</a></td><td align="center"><a href="GU-in.md">🇮🇳<br>ગુજરાતી</a></td></tr>
-<tr><td align="center"><a href="IT-it.md">🇮🇹<br>Italiano</a></td><td align="center"><a href="KO-kr.md">🇰🇷<br>한국어</a></td><td align="center"><a href="AR-sa.md">🇸🇦<br>العربية</a></td><td align="center"><a href="JV-id.md">🇮🇩<br>Basa Jawa</a></td><td align="center"><a href="ML-in.md">🇮🇳<br>മലയാളം</a></td><td align="center"><a href="NE-np.md">🇳🇵<br>नेपाली</a></td><td align="center"><a href="UZ-uz.md">🇺🇿<br>Oʻzbekcha</a></td><td align="center"><a href="OR-in.md">🇮🇳<br>ଓଡ଼ିଆ</a></td></tr>
+<tr><td align="center"><a href="../../README.md">🇷🇺<br>Русский</a></td><td align="center"><b>🇬🇧<br>English</b></td><td align="center"><a href="../README/PL-pl.md">🇵🇱<br>Polski</a></td><td align="center"><a href="../README/UK-ua.md">🇺🇦<br>Українська</a></td><td align="center"><a href="../README/DE-de.md">🇩🇪<br>Deutsch</a></td><td align="center"><a href="../README/RO-md.md">🇲🇩<br>Moldovenească</a></td><td align="center"><a href="../README/SL-si.md">🇸🇮<br>Slovenščina</a></td><td align="center"><a href="../README/BE-by.md">🇧🇾<br>Беларуская</a></td></tr>
+<tr><td align="center"><a href="../README/KK-kz.md">🇰🇿<br>Қазақша</a></td><td align="center"><a href="../README/JA-jp.md">🇯🇵<br>日本語</a></td><td align="center"><a href="../README/ZH-cn.md">🇨🇳<br>中文</a></td><td align="center"><a href="../README/SV-se.md">🇸🇪<br>Svenska</a></td><td align="center"><a href="../README/ES-es.md">🇪🇸<br>Español</a></td><td align="center"><a href="../README/HI-in.md">🇮🇳<br>हिन्दी</a></td><td align="center"><a href="../README/PT-pt.md">🇵🇹<br>Português</a></td><td align="center"><a href="../README/BN-bd.md">🇧🇩<br>বাংলা</a></td></tr>
+<tr><td align="center"><a href="../README/FR-fr.md">🇫🇷<br>Français</a></td><td align="center"><a href="../README/TE-in.md">🇮🇳<br>తెలుగు</a></td><td align="center"><a href="../README/MR-in.md">🇮🇳<br>मराठी</a></td><td align="center"><a href="../README/TA-in.md">🇮🇳<br>தமிழ்</a></td><td align="center"><a href="../README/TR-tr.md">🇹🇷<br>Türkçe</a></td><td align="center"><a href="../README/UR-pk.md">🇵🇰<br>اردو</a></td><td align="center"><a href="../README/VI-vn.md">🇻🇳<br>Tiếng Việt</a></td><td align="center"><a href="../README/GU-in.md">🇮🇳<br>ગુજરાતી</a></td></tr>
+<tr><td align="center"><a href="../README/IT-it.md">🇮🇹<br>Italiano</a></td><td align="center"><a href="../README/KO-kr.md">🇰🇷<br>한국어</a></td><td align="center"><a href="../README/AR-sa.md">🇸🇦<br>العربية</a></td><td align="center"><a href="../README/JV-id.md">🇮🇩<br>Basa Jawa</a></td><td align="center"><a href="../README/ML-in.md">🇮🇳<br>മലയാളം</a></td><td align="center"><a href="../README/NE-np.md">🇳🇵<br>नेपाली</a></td><td align="center"><a href="../README/UZ-uz.md">🇺🇿<br>Oʻzbekcha</a></td><td align="center"><a href="../README/OR-in.md">🇮🇳<br>ଓଡ଼ିଆ</a></td></tr>
 </table>
 
 </details>
+
+<p align="center"><img src="../assets/banner/EN-en.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
   <img alt="status" src="https://img.shields.io/badge/status-pre--alpha-e07b39?style=flat-square">
@@ -18,19 +18,18 @@
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
   <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tests-363-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
+  <a href="../LICENSE/EN-en.md"><img alt="licence" src="https://img.shields.io/badge/licence-C2UI-2a475e?style=flat-square"></a>
 </p>
 
-<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — — the Source Filmmaker editor in a modern shell: the same content, the same session format, the same data model, with an interface in the spirit of the Steam library and the Unreal Engine 5 editor.</p>
+<p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — the Source Filmmaker editor in a modern shell: the same content, the same session format, the same data model, with an interface in the spirit of the Steam library and the Unreal Engine 5 editor.</p>
 
 ---
 
 ## Readiness
 
-<p align="center"><img src="../assets/EN-en/sidebar.svg" alt="Readiness" width="320"></p>
+<p align="center"><img src="../assets/readiness/EN-en.svg" alt="Readiness" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Overall readiness for release: 51%</b></p>
-
-<p align="center"><a href="../assets/EN-en/sidebar.md"><img alt="Readiness in detail" src="https://img.shields.io/badge/Readiness_in_detail-66c0f4?style=for-the-badge"></a></p>
+<p align="center"><a href="../READINESS/EN-en.md"><img alt="Readiness in detail" src="https://img.shields.io/badge/Readiness_in_detail-66c0f4?style=for-the-badge"></a></p>
 
 ## The idea
 
@@ -41,17 +40,13 @@ The editor finds the installed SFM, attaches it as a content library — models,
 The first goal is full compatibility with SFM, bones and rigs included. After that, what SFM was missing.
 
 ```
-  ┌──────────────┐    "where is SFM?"    ┌──────────────────────────────┐
-  │   C2UI       │ ─────────────────────▶│  SourceFilmmaker/game/       │
-  │              │                       │    usermod/gameinfo.txt      │
-  │  own UI      │ ◀─────  mounted  ───────│    tf/  hl2/  tf_movies/ …   │
-  │  own render  │       read only       │    models/ materials/ dmx    │
-  └──────────────┘                       └──────────────────────────────┘
+  ┌──────────────┐                           ┌──────────────────────────────┐
+  │   C2UI       │ ──── "where is SFM?" ────▶│  SourceFilmmaker/game/       │
+  │              │                           │    usermod/gameinfo.txt      │
+  │  own UI      │ ◀──────── mounted ────────│    tf/  hl2/  tf_movies/ …   │
+  │  own render  │         read only         │    models/ materials/ dmx    │
+  └──────────────┘                           └──────────────────────────────┘
 ```
-
-<p align="center"><img src="../assets/editor.png" alt="The editor with Meet the Heavy open" width="100%"><br><sub>The editor today, with Valve's Meet the Heavy open: shots and sound on the timeline, the session tree, the first shot seen through its own camera, characters posed and facing as the session says.</sub></p>
-
-## What makes it different
 
 - **Portable.** Nothing is written outside the application folder: settings under `App/User`, caches under `App/Cache`, scratch under `App/Temporary`. Delete the folder and it is gone.
 - **Never runs SFM.** No process to drive, no windows to hijack. The installation is read like a content pack.
@@ -59,7 +54,53 @@ The first goal is full compatibility with SFM, bones and rigs included. After th
 - **Saving is exact.** A session read and written unchanged is the same file.
 - **The engine has no dependencies.** `Core/` and the whole test suite run on a bare Python; only the window needs Qt and OpenGL.
 
-## Running it
+<p align="center"><img src="../assets/editor.png" alt="The editor with Meet the Heavy open" width="100%"><br><sub>The editor today, with Valve's Meet the Heavy open: shots and sound on the timeline, the session tree, the first shot seen through its own camera, characters posed and facing as the session says.</sub></p>
+
+## Layout
+
+```
+C2UI_SDK/
+├── README.md
+├── Core/               engine: formats, virtual file system, index, bridges
+│   ├── API/            the contract for the editor, tools and plugins
+│   ├── Code/           engine: animation, operators, faces, editing
+│   │   └── formats/    Valve readers: mdl vvd vtx vmt vtf dmx bsp
+│   └── dev-kit/        SDK slots (empty) and bridges to installations
+├── App/                the editor: content library, renderer, window
+│   ├── Code/           content library, window, settings
+│   │   ├── render/     scene, OpenGL renderer, shaders, camera
+│   │   └── ui/         timeline, session tree, inspector, graph editor, docking
+│   ├── Data/           program resources, read-only
+│   ├── User/           user data — never deleted
+│   └── Cache/          content index, shaders, thumbnails
+├── Tools/              localisation, UI tooling, plugins (later)
+│   ├── Launcher/       the launcher
+│   ├── Market Load/    plugin marketplace client (later)
+│   ├── Localization/   authoring translations
+│   ├── NewPlugins/     authoring plugins
+│   └── UI/             themes and workspaces
+├── Testing/            tests, byte-exact fixtures, one runner
+│   ├── core/           the engine
+│   ├── app/            the editor
+│   └── fixtures/       fake installation, models, textures
+└── GIT&DOCK/           README, readiness and licence in 32 languages
+```
+
+### How it works
+
+The path from "where is Source Filmmaker?" to a frame on screen runs through five layers; each one knows only about the one below it.
+
+1. **The bridge** (`Core/dev-kit/bridge_sfm`) finds the installation through Steam, reads `gameinfo.txt` and returns the content paths in the engine's order. `sfm.exe` is never launched.
+2. **The virtual file system and the index** (`Core/Code/vfs.py`, `content_index.py`) layer those paths the way Source does: the first file found wins. The index is one SQLite file in `App/Cache`, so the walk over 70 000 files is paid once.
+3. **The formats** (`Core/Code/formats`) read Valve's files with no third-party libraries: `.mdl` `.vvd` `.vtx` are a model, `.vmt` `.vtf` a material and its texture, `.dmx` a session, `.bsp` a map. Every reader is checked against the whole installation; a session is written back byte for byte.
+4. **The session** is a graph of DMX elements. `animation.py` evaluates the channels at a moment in time, `operators.py` runs expressions and rig constraints, `flex.py` moves the faces, `pose.py` builds the bone matrices. Every edit goes through `editing.py` as an undoable command.
+5. **The editor** (`App/Code`) turns that into a scene (`render/scene.py`) and draws it with its own OpenGL 3.3 renderer (`renderer.py`, `shaders.py`): session lights, lightmaps and the map's lighting as SFM shows them. The panels (`ui/`) are the timeline, the session tree, the inspector, the graph editor and UE5-style docking.
+
+Everything the program writes stays inside its folder: `App/User` for settings, `App/Cache` for the index and caches, `App/Temporary` for the log. `Core/` writes nothing and does not depend on Qt, so the engine and the tests run on bare Python; Qt and OpenGL are needed only by the window. The utilities in `Tools/` are built strictly on `Core/API` — that is how the API is proven good enough for third-party plugins.
+
+<p align="center"><img src="../assets/models.png" alt="64 models rendered straight from the installation" width="60%"><br><sub>Sixty-four models picked at random from the installation, rendered by C2UI's own renderer.</sub></p>
+
+### Running it
 
 Requires Windows, Python 3.13 and a Source Filmmaker installation.
 
@@ -77,25 +118,18 @@ On first start it looks for SFM through Steam; if it cannot find it, it asks. <k
 python Testing/run.py
 ```
 
-## Layout
+### Planned
 
-```
-C2UI_SDK/
-├── README.md
-├── Core/              engine: formats, virtual file system, index, bridges
-├── App/               the editor: content library, renderer, window
-├── Tools/             localisation, UI tooling, plugins (later)
-│   └── Launcher/      the launcher
-├── Testing/           tests, byte-exact fixtures, one runner
-└── GIT&DOCK/          this README in other languages
-```
+**Next**
+- The map's look: skybox, water, prop_dynamic, light gobo textures, `$bumpmap` and `$envmap`, shadows from session lights.
+- Export: image sequences and video.
+- `.c2plg` plugins and the marketplace client in `Tools/Market Load`; then themes and workspaces.
+- Sound on the timeline, particles, wrinkle maps, motion-editor presets and layers, tangents in the graph editor.
 
-## Roadmap
-
-1. **Source shading** — VertexLitGeneric as SFM draws it: phong, rim, lightwarp, scene lights.
-2. **Maps** — `.bsp` for backgrounds.
-3. **Output** — image and video export.
-4. **Plugins** — the `.c2plg` format; then themes and workspaces.
+**Later**
+- Performance on full maps: instanced static props, cached poses.
+- Engine rework: new map-compile parameters for improved lighting and shadows, a 120 000-unit map limit.
+- A packaged launcher with its own Python and self-update; editor localisation.
 
 ## Licence and credits
 
@@ -104,5 +138,3 @@ C2UI's own code is under the **C2UI licence**: free for personal and non-commerc
 Source Filmmaker, Team Fortress 2 and the Source engine are Valve's; this project reads their formats, ships none of their files and works only with your own copy of SFM from Steam.
 
 <p align="center"><a href="../LICENSE/EN-en.md"><img alt="Licence text" src="https://img.shields.io/badge/Licence_text-66c0f4?style=for-the-badge"></a></p>
-
-<p align="center"><img src="../assets/models.png" alt="64 models rendered straight from the installation" width="60%"><br><sub>Sixty-four models picked at random from the installation, rendered by C2UI's own renderer.</sub></p>

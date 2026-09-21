@@ -1,0 +1,15 @@
+# GIT&DOCK
+
+Everything the repository shows on GitHub, in every language the front page speaks.
+Generated from one set of strings and one set of numbers; nothing here is edited by hand.
+
+| Folder | Holds |
+|---|---|
+| `README/` | The front page, one file per language (`README.md` at the root is the Russian one) |
+| `READINESS/` | Every readiness row in words: what works, what does not yet |
+| `LICENSE/` | The C2UI licence and the plugins & addons licence |
+| `assets/banner/` | The banner, one per language |
+| `assets/readiness/` | The overall readiness strip, one per language; `areas/` holds the chart with one bar per area |
+| `assets/editor.png`, `assets/models.png` | Screenshots of the editor and its renderer |
+
+Language codes are `XX-yy`: the language, then the region whose spelling is used.
