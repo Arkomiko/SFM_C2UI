@@ -95,3 +95,20 @@ def test_avi_writer_lays_out_a_valid_riff():
         _cc, _flags, offset, size = struct.unpack_from("<4sIII", data, idx_at + 16 * n)
         chunk = movi + offset                                          # the first chunk sits at offset 4
         assert data[chunk:chunk + 4] == b"00dc" and struct.unpack_from("<I", data, chunk + 4)[0] == size
+
+
+def test_samples_spread_over_the_shutter_and_the_lens():
+    from App.Code.export import lens_samples, shutter_times
+    # one sample, or a closed shutter: the frame's own moment
+    assert shutter_times(Time(5000), Time(208), 1, Time(0), Time(10000)) == [Time(5000)]
+    assert shutter_times(Time(5000), Time(0), 4, Time(0), Time(10000)) == [Time(5000)] * 4
+    # four samples centred on the moment, inside the shutter, never past the clip's end
+    times = shutter_times(Time(5000), Time(208), 4, Time(0), Time(10000))
+    assert times[0].ticks < 5000 < times[-1].ticks and max(t.ticks for t in times) - min(t.ticks for t in times) < 208
+    assert max(t.ticks for t in shutter_times(Time(9999), Time(2000), 4, Time(0), Time(10000))) == 9999
+    # the lens: the centre alone, or points on the disk within the radius, all different
+    assert lens_samples(1, 0.8) == [(0.0, 0.0)]
+    assert lens_samples(4, 0.0) == [(0.0, 0.0)] * 4
+    points = lens_samples(16, 0.8)
+    assert len(set(points)) == 16 and all(x * x + y * y <= 0.8 * 0.8 + 1e-9 for x, y in points)
+    assert "samples per frame" in ExportSettings(Path("x"), end=Time(1), passes=0).check()

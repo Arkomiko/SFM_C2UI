@@ -101,11 +101,17 @@ class ExportDialog(QDialog):
         self.fps.setDecimals(3)
         self.fps.setValue(session.frame_rate)
         self.fps.valueChanged.connect(self._update_count)
+        self.passes = QSpinBox()
+        self.passes.setRange(1, 256)
+        self.passes.setValue(16)
+        self.passes.setToolTip("Renders per frame, spread over the camera's shutter (motion blur) "
+                               "and its aperture (depth of field); 1 is sharp and quick")
 
         frame = QGroupBox("Frame")
         form = QFormLayout(frame)
         form.addRow("Size", size_row)
         form.addRow("Frames per second", self.fps)
+        form.addRow("Samples per frame", self.passes)
 
         # -- which part
         self.whole = QRadioButton("Whole sequence")
@@ -156,6 +162,7 @@ class ExportDialog(QDialog):
             self.kind.setCurrentIndex(index)
         self.path.setText(self.settings.get("export.folder") or str(DEFAULT_FOLDER))
         self.quality.setValue(int(self.settings.get("export.quality") or 90))
+        self.passes.setValue(int(self.settings.get("export.passes") or 16))
         self.whole.setChecked(True)
         self._size_edited()
 
@@ -164,6 +171,7 @@ class ExportDialog(QDialog):
         folder = Path(self.path.text())
         self.settings.set("export.folder", str(folder if not self._is_movie() else folder.parent))
         self.settings.set("export.quality", self.quality.value())
+        self.settings.set("export.passes", self.passes.value())
 
     def _is_movie(self) -> bool:
         return self.kind.currentData() in MOVIE_KINDS
@@ -259,4 +267,5 @@ class ExportDialog(QDialog):
         start, end = self._span()
         return ExportSettings(Path(self.path.text()), self.width.value(), self.height.value(),
                               self.fps.value(), start, end, kind=self.kind.currentData(),
-                              quality=self.quality.value(), name=self.name.text().strip() or "frame")
+                              quality=self.quality.value(), name=self.name.text().strip() or "frame",
+                              passes=self.passes.value())

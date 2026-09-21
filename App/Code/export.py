@@ -18,6 +18,7 @@ each shot, as it does in the editor.  Sound is not exported yet.
 from __future__ import annotations
 
 import logging
+import math
 import shutil
 import struct
 import subprocess
@@ -32,7 +33,8 @@ from Core.Code.animation import Evaluator
 from .locations import APP_ROOT, USER
 from .render.scene import Scene, build_shot_scene, refresh_shot_scene, shot_camera_pose
 
-__all__ = ["ExportSettings", "ExportResult", "export", "frame_times", "ffmpeg_path", "mp4_available",
+__all__ = ["ExportSettings", "ExportResult", "export", "frame_times", "lens_samples", "shutter_times",
+           "ffmpeg_path", "mp4_available",
            "IMAGE_KINDS", "MOVIE_KINDS", "MjpegAviWriter", "write_tga"]
 
 log = logging.getLogger("c2ui.export")
@@ -66,6 +68,9 @@ class ExportSettings:
     name: str = "frame"
     #: multisample count for the off-screen frame
     samples: int = 4
+    #: renders per frame, spread over the camera's shutter (motion blur) and its lens
+    #: (depth of field); 1 renders each frame once, sharp and unblurred
+    passes: int = 16
 
     @property
     def is_movie(self) -> bool:
@@ -85,6 +90,8 @@ class ExportSettings:
             return "the frame must be between 16 and 8192 pixels each way"
         if not 1.0 <= self.fps <= 240.0:
             return "the frame rate must be between 1 and 240"
+        if not 1 <= self.passes <= 256:
+            return "samples per frame must be between 1 and 256"
         if self.end.ticks <= self.start.ticks:
             return "the range is empty"
         if self.kind == "mp4" and not mp4_available():
@@ -107,6 +114,39 @@ class ExportResult:
         state = "cancelled after" if self.cancelled else "wrote"
         where = self.files[0] if len(self.files) == 1 else (self.files[0].parent if self.files else "")
         return f"export {state} {self.frames} frames to {where} in {self.seconds:.1f} s"
+
+
+#: how far the lens opens per unit of the camera's aperture, in world units: the
+#: radius of the disk the eye is moved over for depth of field
+APERTURE_RADIUS = 0.1
+#: the golden angle: consecutive samples on the disk never line up
+_GOLDEN = 2.399963229728653
+
+
+def lens_samples(count: int, radius: float) -> List[Tuple[float, float]]:
+    """`count` points on a disk of `radius`, evenly spread (a Vogel spiral); one point
+    at the centre when there is only one or no radius."""
+    if count <= 1 or radius <= 0.0:
+        return [(0.0, 0.0)] * max(1, count)
+    out = []
+    for k in range(count):
+        r = radius * math.sqrt((k + 0.5) / count)
+        a = k * _GOLDEN
+        out.append((r * math.cos(a), r * math.sin(a)))
+    return out
+
+
+def shutter_times(moment: Time, shutter: Time, count: int, start: Time, end: Time) -> List[Time]:
+    """`count` moments spread over the shutter centred on `moment`, kept inside
+    [start, end) so a frame never samples the neighbouring shot."""
+    if count <= 1 or shutter.ticks <= 0:
+        return [moment] * max(1, count)
+    out = []
+    for k in range(count):
+        offset = shutter.ticks * ((k + 0.5) / count - 0.5)
+        ticks = moment.ticks + round(offset)
+        out.append(Time(min(max(ticks, start.ticks), end.ticks - 1)))
+    return out
 
 
 def frame_times(start: Time, end: Time, fps: float) -> List[Time]:
@@ -432,16 +472,37 @@ def export(session: Session, source, settings: ExportSettings,
                         result.warnings.append(f"{shot.name}: {warning}")
                 renderer.set_scene(scene)
                 current = shot
-            if scene is not None and shot is not None:
-                refresh_shot_scene(scene, shot)
-                scene.fade = shot.fade_at(moment)
-                if shot.camera is not None:
-                    eye, target, fov = shot_camera_pose(shot, shot.camera, settings.width / settings.height)
-                    camera.look_from(eye, target, fov_y=fov)
-                else:
-                    camera.frame(scene.bounds, guess_up=False)
             screen.bind()
-            renderer.draw(camera, settings.width, settings.height)
+            if scene is None or shot is None:
+                renderer.draw(camera, settings.width, settings.height)
+            else:
+                # several renders per frame: the shutter open for motion blur, the eye moved
+                # over the lens for depth of field, each sample evaluated at its own moment
+                shot_camera = shot.camera
+                passes = settings.passes if shot_camera is not None else 1
+                shutter = shot_camera.shutter_speed if shot_camera is not None else Time(0)
+                radius = shot_camera.aperture * APERTURE_RADIUS if shot_camera is not None else 0.0
+                moments = shutter_times(moment, shutter, passes, shot.time_frame.start, shot.time_frame.end)
+                lens = lens_samples(passes, radius)
+                renderer.begin_frame(settings.width, settings.height)
+                for sample, (at, (dx, dy)) in enumerate(zip(moments, lens)):
+                    if passes > 1 or sample == 0:
+                        if at.ticks != moment.ticks or sample > 0:
+                            evaluator.evaluate(clip, at)
+                        refresh_shot_scene(scene, shot)
+                    scene.fade = shot.fade_at(moment)
+                    if shot_camera is not None:
+                        eye, target, fov = shot_camera_pose(shot, shot_camera, settings.width / settings.height)
+                        camera.look_from(eye, target, fov_y=fov)
+                        if dx or dy:
+                            _forward, right, up = camera.screen_axes()
+                            eye = tuple(eye[i] + right[i] * dx + up[i] * dy for i in range(3))
+                            camera.look_from(eye, target, fov_y=fov)
+                    else:
+                        camera.frame(scene.bounds, guess_up=False)
+                    screen.bind()
+                    renderer.draw_sample(camera, settings.width, settings.height, 1.0 / passes)
+                renderer.finish_frame(settings.width, settings.height)
             image = screen.image().convertToFormat(QImage.Format_RGB888)
             if settings.is_movie:
                 if settings.kind == "avi":
