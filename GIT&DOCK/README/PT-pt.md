@@ -54,8 +54,6 @@ O primeiro objetivo é a compatibilidade total com o SFM, ossos e rigs incluído
 - **A gravação é exata.** Uma sessão lida e escrita sem alterações é o mesmo ficheiro.
 - **O motor não tem dependências.** `Core/` e toda a suíte de testes correm em Python puro; só a janela precisa de Qt e OpenGL.
 
-<p align="center"><img src="../assets/editor.png" alt="O editor com Meet the Heavy aberto" width="100%"><br><sub>O editor hoje, com o Meet the Heavy da Valve aberto: planos e som na linha temporal, a árvore da sessão, o primeiro plano visto pela sua própria câmara, personagens em pose e com as caras que a sessão dita.</sub></p>
-
 ## Estrutura
 
 ```
@@ -94,11 +92,9 @@ O caminho de «onde está o Source Filmmaker?» até um fotograma no ecrã passa
 2. **O sistema de ficheiros virtual e o índice** (`Core/Code/vfs.py`, `content_index.py`) sobrepõem esses caminhos como o Source faz: o primeiro ficheiro encontrado ganha. O índice é um único ficheiro SQLite em `App/Cache`, por isso a passagem por 70 000 ficheiros é paga uma vez.
 3. **Os formatos** (`Core/Code/formats`) leem os ficheiros da Valve sem bibliotecas de terceiros: `.mdl` `.vvd` `.vtx` são um modelo, `.vmt` `.vtf` um material e a sua textura, `.dmx` uma sessão, `.bsp` um mapa. Cada leitor é verificado contra toda a instalação; uma sessão é reescrita byte a byte.
 4. **A sessão** é um grafo de elementos DMX. `animation.py` avalia os canais num instante, `operators.py` executa expressões e restrições de rig, `flex.py` move as caras, `pose.py` constrói as matrizes dos ossos. Cada edição passa por `editing.py` como um comando anulável.
-5. **O editor** (`App/Code`) transforma isso numa cena (`render/scene.py`) e desenha-a com o seu próprio renderizador OpenGL 3.3 (`renderer.py`, `shaders.py`): luzes da sessão, lightmaps e a iluminação do mapa tal como o SFM as mostra. Os painéis (`ui/`) são a linha de tempo, a árvore da sessão, o inspetor, o graph editor e a ancoragem ao estilo do UE5.
+5. **O editor** (`App/Code`) transforma isso numa cena (`render/scene.py`) e desenha-a com o seu próprio renderizador OpenGL 3.3 (`renderer.py`, `shaders.py`): luzes da sessão, lightmaps e a iluminação do mapa — a imagem ainda está longe da do SFM e continua em trabalho. Os painéis (`ui/`) são a linha de tempo, a árvore da sessão, o inspetor, o graph editor e a ancoragem ao estilo do UE5.
 
 Tudo o que o programa escreve fica na sua pasta: `App/User` para definições, `App/Cache` para o índice e caches, `App/Temporary` para o registo. `Core/` não escreve nada e não depende do Qt, por isso o motor e os testes correm em Python puro; Qt e OpenGL só são precisos pela janela. As utilidades em `Tools/` são construídas estritamente sobre `Core/API` — é assim que se prova que a API chega também para plugins de terceiros.
-
-<p align="center"><img src="../assets/models.png" alt="64 modelos renderizados diretamente da instalação" width="60%"><br><sub>Sessenta e quatro modelos escolhidos ao acaso da instalação, desenhados pelo renderizador próprio do C2UI.</sub></p>
 
 ### Executar
 

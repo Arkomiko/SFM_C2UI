@@ -54,8 +54,6 @@ Birinchi maqsad — suyaklar va riglar bilan birga SFM bilan toʻliq moslik. Key
 - **Saqlash aniq.** Oʻzgarishsiz oʻqilgan va yozilgan sessiya — xuddi shu fayl.
 - **Dvigatelda bogʻliqliklar yoʻq.** `Core/` va barcha testlar sof Python da ishlaydi; Qt va OpenGL faqat oynaga kerak.
 
-<p align="center"><img src="../assets/editor.png" alt="Meet the Heavy ochilgan muharrir" width="100%"><br><sub>Bugungi muharrir, Valve ning Meet the Heavy sessiyasi ochiq: taymlaynda shotlar va ovoz, sessiya daraxti, birinchi shot oʻz kamerasi orqali, sessiyadagi holat va yuz ifodalari bilan personajlar.</sub></p>
-
 ## Tuzilma
 
 ```
@@ -94,11 +92,9 @@ C2UI_SDK/
 2. **Virtual fayl tizimi va indeks** (`Core/Code/vfs.py`, `content_index.py`) bu yo'llarni Source kabi qatlamlaydi: birinchi topilgan fayl g'olib. Indeks — `App/Cache` dagi bitta SQLite fayl, shuning uchun 70 000 faylni aylanib chiqish bir marta bajariladi.
 3. **Formatlar** (`Core/Code/formats`) Valve fayllarini tashqi kutubxonalarsiz o'qiydi: `.mdl` `.vvd` `.vtx` — model, `.vmt` `.vtf` — material va tekstura, `.dmx` — seans, `.bsp` — xarita. Har bir o'qigich butun o'rnatmada tekshirilgan; seans baytma-bayt qayta yoziladi.
 4. **Seans** — DMX elementlari grafi. `animation.py` kanallarni vaqt lahzasida hisoblaydi, `operators.py` ifodalar va rig cheklovlarini bajaradi, `flex.py` yuzlarni harakatlantiradi, `pose.py` suyak matritsalarini yig'adi. Har bir tahrir `editing.py` orqali bekor qilinadigan buyruq sifatida o'tadi.
-5. **Muharrir** (`App/Code`) bundan sahna (`render/scene.py`) yig'adi va uni o'z OpenGL 3.3 rendereri (`renderer.py`, `shaders.py`) bilan chizadi: seans chiroqlari, laytmaplar va xarita yoritilishi — SFM ko'rsatganidek. Panellar (`ui/`) — taymlayn, seans daraxti, inspektor, graph editor va UE5 uslubidagi doking.
+5. **Muharrir** (`App/Code`) bundan sahna (`render/scene.py`) yig'adi va uni o'z OpenGL 3.3 rendereri (`renderer.py`, `shaders.py`) bilan chizadi: seans chiroqlari, laytmaplar va xarita yoritilishi — tasvir hali SFM dan ancha uzoq, ish davom etmoqda. Panellar (`ui/`) — taymlayn, seans daraxti, inspektor, graph editor va UE5 uslubidagi doking.
 
 Dastur yozadigan hamma narsa o'z papkasida qoladi: `App/User` — sozlamalar, `App/Cache` — indeks va kesh, `App/Temporary` — jurnal. `Core/` hech narsa yozmaydi va Qt ga bog'liq emas, shuning uchun dvigatel va testlar sof Python da ishlaydi; Qt va OpenGL faqat oynaga kerak. `Tools/` dagi vositalar qat'iy `Core/API` ustida quriladi — shu tariqa API tashqi plaginlar uchun ham yetarli ekani isbotlanadi.
-
-<p align="center"><img src="../assets/models.png" alt="Oʻrnatmadan toʻgʻridan-toʻgʻri renderlangan 64 model" width="60%"><br><sub>Oʻrnatmadan tasodifiy tanlangan oltmish toʻrt model, C2UI ning oʻz rendereri bilan chizilgan.</sub></p>
 
 ### Ishga tushirish
 

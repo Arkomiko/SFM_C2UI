@@ -54,8 +54,6 @@ Das erste Ziel ist volle Kompatibilität mit SFM, Knochen und Rigs eingeschlosse
 - **Speichern ist exakt.** Eine unverändert gelesene und geschriebene Sitzung ist dieselbe Datei.
 - **Die Engine hat keine Abhängigkeiten.** `Core/` und alle Tests laufen auf nacktem Python; nur das Fenster braucht Qt und OpenGL.
 
-<p align="center"><img src="../assets/editor.png" alt="Der Editor mit geöffnetem Meet the Heavy" width="100%"><br><sub>Der Editor heute, mit Valves „Meet the Heavy“: Shots und Ton auf der Zeitleiste, der Sitzungsbaum, der erste Shot durch seine eigene Kamera, Figuren in Pose und mit Mimik aus der Sitzung.</sub></p>
-
 ## Aufbau
 
 ```
@@ -94,11 +92,9 @@ Der Weg von „Wo ist Source Filmmaker?“ bis zum Bild auf dem Schirm führt du
 2. **Virtuelles Dateisystem und Index** (`Core/Code/vfs.py`, `content_index.py`) schichten diese Pfade wie Source: die zuerst gefundene Datei gewinnt. Der Index ist eine SQLite-Datei in `App/Cache`, sodass der Durchlauf über 70 000 Dateien nur einmal anfällt.
 3. **Die Formate** (`Core/Code/formats`) lesen Valves Dateien ohne Fremdbibliotheken: `.mdl` `.vvd` `.vtx` sind ein Modell, `.vmt` `.vtf` Material und Textur, `.dmx` eine Sitzung, `.bsp` eine Karte. Jeder Leser ist an der ganzen Installation geprüft; eine Sitzung wird Byte für Byte zurückgeschrieben.
 4. **Die Sitzung** ist ein Graph aus DMX-Elementen. `animation.py` wertet die Kanäle zu einem Zeitpunkt aus, `operators.py` führt Ausdrücke und Rig-Constraints aus, `flex.py` bewegt die Gesichter, `pose.py` baut die Knochenmatrizen. Jede Änderung läuft als rückgängig machbarer Befehl durch `editing.py`.
-5. **Der Editor** (`App/Code`) macht daraus eine Szene (`render/scene.py`) und zeichnet sie mit eigenem OpenGL-3.3-Renderer (`renderer.py`, `shaders.py`): Sitzungslichter, Lightmaps und die Beleuchtung der Karte, wie SFM sie zeigt. Die Panels (`ui/`) sind Zeitleiste, Sitzungsbaum, Inspektor, Graph-Editor und Docking im Stil von UE5.
+5. **Der Editor** (`App/Code`) macht daraus eine Szene (`render/scene.py`) und zeichnet sie mit eigenem OpenGL-3.3-Renderer (`renderer.py`, `shaders.py`): Sitzungslichter, Lightmaps und die Beleuchtung der Karte — das Bild ist noch weit von SFM entfernt und in Arbeit. Die Panels (`ui/`) sind Zeitleiste, Sitzungsbaum, Inspektor, Graph-Editor und Docking im Stil von UE5.
 
 Alles, was das Programm schreibt, bleibt in seinem Ordner: `App/User` für Einstellungen, `App/Cache` für Index und Caches, `App/Temporary` für das Protokoll. `Core/` schreibt nichts und hängt nicht von Qt ab, also laufen Engine und Tests auf blankem Python; Qt und OpenGL braucht nur das Fenster. Die Werkzeuge in `Tools/` bauen strikt auf `Core/API` — so wird geprüft, ob die API auch für fremde Plugins ausreicht.
-
-<p align="center"><img src="../assets/models.png" alt="64 Modelle direkt aus der Installation gerendert" width="60%"><br><sub>Vierundsechzig zufällige Modelle aus der Installation, gezeichnet vom eigenen Renderer von C2UI.</sub></p>
 
 ### Starten
 

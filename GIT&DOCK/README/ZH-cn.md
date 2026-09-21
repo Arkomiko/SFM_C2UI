@@ -54,8 +54,6 @@ Source Filmmaker 是一款强大的工具，但界面停留在 2012 年。C2UI �
 - **保存精确。** 未经修改读取并写入的会话就是同一个文件。
 - **引擎没有依赖。** `Core/` 和整套测试在纯 Python 上运行；只有窗口需要 Qt 和 OpenGL。
 
-<p align="center"><img src="../assets/editor.png" alt="打开 Meet the Heavy 的编辑器" width="100%"><br><sub>今天的编辑器，打开了 Valve 的《Meet the Heavy》：时间线上的镜头和声音、会话树、通过自身相机看到的第一个镜头、按会话摆好姿势和表情的角色。</sub></p>
-
 ## 结构
 
 ```
@@ -94,11 +92,9 @@ C2UI_SDK/
 2. **虚拟文件系统与索引**（`Core/Code/vfs.py`、`content_index.py`）像 Source 一样把这些路径叠加起来：先找到的文件优先。索引是 `App/Cache` 中的一个 SQLite 文件，因此遍历 70 000 个文件只需一次。
 3. **格式**（`Core/Code/formats`）不依赖第三方库读取 Valve 的文件：`.mdl` `.vvd` `.vtx` 是模型，`.vmt` `.vtf` 是材质和贴图，`.dmx` 是会话，`.bsp` 是地图。每个读取器都在整个安装目录上验证过；会话可逐字节原样写回。
 4. **会话**是 DMX 元素的图。`animation.py` 计算某一时刻的通道，`operators.py` 执行表达式和绑定约束，`flex.py` 驱动面部，`pose.py` 构建骨骼矩阵。每次编辑都作为可撤销的命令经过 `editing.py`。
-5. **编辑器**（`App/Code`）据此组成场景（`render/scene.py`），并用自己的 OpenGL 3.3 渲染器（`renderer.py`、`shaders.py`）绘制：会话灯光、光照贴图和地图光照，与 SFM 显示的一致。面板（`ui/`）包括时间线、会话树、检查器、曲线编辑器和 UE5 风格的停靠。
+5. **编辑器**（`App/Code`）据此组成场景（`render/scene.py`），并用自己的 OpenGL 3.3 渲染器（`renderer.py`、`shaders.py`）绘制：会话灯光、光照贴图和地图光照——画面离 SFM 还很远，仍在打磨。面板（`ui/`）包括时间线、会话树、检查器、曲线编辑器和 UE5 风格的停靠。
 
 程序写入的一切都留在自己的文件夹内：设置在 `App/User`，索引和缓存在 `App/Cache`，日志在 `App/Temporary`。`Core/` 不写任何东西，也不依赖 Qt，因此引擎和测试在纯 Python 上运行；只有窗口需要 Qt 和 OpenGL。`Tools/` 中的工具严格建立在 `Core/API` 之上——以此验证该 API 对第三方插件同样足够。
-
-<p align="center"><img src="../assets/models.png" alt="直接从安装渲染的 64 个模型" width="60%"><br><sub>从安装中随机挑选的六十四个模型，由 C2UI 自己的渲染器绘制。</sub></p>
 
 ### 运行
 

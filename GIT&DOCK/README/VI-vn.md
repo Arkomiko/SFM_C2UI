@@ -54,8 +54,6 @@ Mục tiêu đầu tiên là tương thích hoàn toàn với SFM, kể cả xư
 - **Lưu chính xác.** Phiên đọc rồi ghi không đổi là cùng một tập tin.
 - **Engine không phụ thuộc.** `Core/` và toàn bộ kiểm thử chạy trên Python thuần; chỉ cửa sổ cần Qt và OpenGL.
 
-<p align="center"><img src="../assets/editor.png" alt="Trình biên tập đang mở Meet the Heavy" width="100%"><br><sub>Trình biên tập hôm nay, mở Meet the Heavy của Valve: các cảnh và âm thanh trên dòng thời gian, cây phiên, cảnh đầu nhìn qua camera riêng của nó, nhân vật tạo dáng và biểu cảm đúng như phiên.</sub></p>
-
 ## Cấu trúc
 
 ```
@@ -94,11 +92,9 @@ Con đường từ «Source Filmmaker ở đâu?» đến một khung hình trê
 2. **Hệ thống tệp ảo và chỉ mục** (`Core/Code/vfs.py`, `content_index.py`) xếp lớp các đường dẫn đó như Source: tệp tìm thấy đầu tiên thắng. Chỉ mục là một tệp SQLite duy nhất trong `App/Cache`, nên việc duyệt 70 000 tệp chỉ tốn một lần.
 3. **Các định dạng** (`Core/Code/formats`) đọc tệp của Valve mà không cần thư viện bên thứ ba: `.mdl` `.vvd` `.vtx` là một mô hình, `.vmt` `.vtf` là vật liệu và texture, `.dmx` là phiên làm việc, `.bsp` là bản đồ. Mỗi trình đọc được kiểm chứng trên toàn bộ bản cài đặt; phiên làm việc được ghi lại chính xác từng byte.
 4. **Phiên làm việc** là một đồ thị các phần tử DMX. `animation.py` tính các kênh tại một thời điểm, `operators.py` chạy biểu thức và ràng buộc rig, `flex.py` cử động khuôn mặt, `pose.py` dựng ma trận xương. Mỗi chỉnh sửa đi qua `editing.py` dưới dạng lệnh có thể hoàn tác.
-5. **Trình biên tập** (`App/Code`) dựng từ đó một cảnh (`render/scene.py`) và vẽ bằng bộ kết xuất OpenGL 3.3 của riêng mình (`renderer.py`, `shaders.py`): đèn của phiên, lightmap và ánh sáng bản đồ đúng như SFM hiển thị. Các bảng (`ui/`) gồm dòng thời gian, cây phiên, trình kiểm tra, graph editor và neo bảng kiểu UE5.
+5. **Trình biên tập** (`App/Code`) dựng từ đó một cảnh (`render/scene.py`) và vẽ bằng bộ kết xuất OpenGL 3.3 của riêng mình (`renderer.py`, `shaders.py`): đèn của phiên, lightmap và ánh sáng bản đồ — hình ảnh vẫn còn xa SFM và đang được hoàn thiện. Các bảng (`ui/`) gồm dòng thời gian, cây phiên, trình kiểm tra, graph editor và neo bảng kiểu UE5.
 
 Mọi thứ chương trình ghi đều nằm trong thư mục của nó: `App/User` cho cài đặt, `App/Cache` cho chỉ mục và bộ nhớ đệm, `App/Temporary` cho nhật ký. `Core/` không ghi gì và không phụ thuộc Qt, nên engine và các bài kiểm thử chạy trên Python thuần; Qt và OpenGL chỉ cần cho cửa sổ. Các tiện ích trong `Tools/` được xây dựng hoàn toàn trên `Core/API` — đó là cách chứng minh API đủ dùng cho cả plugin bên thứ ba.
-
-<p align="center"><img src="../assets/models.png" alt="64 mô hình kết xuất trực tiếp từ bản cài" width="60%"><br><sub>Sáu mươi bốn mô hình chọn ngẫu nhiên từ bản cài, vẽ bằng renderer riêng của C2UI.</sub></p>
 
 ### Chạy
 

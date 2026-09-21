@@ -54,8 +54,6 @@ Source Filmmaker는 강력한 도구이지만 인터페이스는 2012년에 머�
 - **저장은 정확함.** 변경 없이 읽고 쓴 세션은 같은 파일입니다.
 - **엔진에 의존성 없음.** `Core/`와 전체 테스트는 순수 Python에서 돌아갑니다. 창만 Qt와 OpenGL이 필요합니다.
 
-<p align="center"><img src="../assets/editor.png" alt="Meet the Heavy를 연 편집기" width="100%"><br><sub>오늘의 편집기, Valve의 Meet the Heavy를 연 모습: 타임라인의 샷과 사운드, 세션 트리, 자체 카메라로 본 첫 샷, 세션대로 포즈와 표정을 취한 캐릭터.</sub></p>
-
 ## 구조
 
 ```
@@ -94,11 +92,9 @@ C2UI_SDK/
 2. **가상 파일 시스템과 인덱스**(`Core/Code/vfs.py`, `content_index.py`)가 Source처럼 그 경로들을 겹칩니다. 먼저 찾은 파일이 우선합니다. 인덱스는 `App/Cache`의 SQLite 파일 하나이므로 70 000개 파일 순회는 한 번만 합니다.
 3. **포맷**(`Core/Code/formats`)은 외부 라이브러리 없이 Valve 파일을 읽습니다. `.mdl` `.vvd` `.vtx`는 모델, `.vmt` `.vtf`는 재질과 텍스처, `.dmx`는 세션, `.bsp`는 맵입니다. 모든 리더는 설치 전체에서 검증되었고, 세션은 바이트 단위로 동일하게 다시 기록됩니다.
 4. **세션**은 DMX 요소의 그래프입니다. `animation.py`가 특정 시각의 채널을 계산하고, `operators.py`가 표현식과 리그 제약을 실행하며, `flex.py`가 얼굴을 움직이고, `pose.py`가 본 행렬을 만듭니다. 모든 편집은 `editing.py`를 통해 되돌릴 수 있는 명령으로 처리됩니다.
-5. **에디터**(`App/Code`)는 이를 장면(`render/scene.py`)으로 구성하고 자체 OpenGL 3.3 렌더러(`renderer.py`, `shaders.py`)로 그립니다. 세션 조명, 라이트맵, 맵 조명을 SFM이 보여주는 그대로 표시합니다. 패널(`ui/`)은 타임라인, 세션 트리, 인스펙터, 그래프 에디터, UE5 스타일 도킹입니다.
+5. **에디터**(`App/Code`)는 이를 장면(`render/scene.py`)으로 구성하고 자체 OpenGL 3.3 렌더러(`renderer.py`, `shaders.py`)로 그립니다. 세션 조명, 라이트맵, 맵 조명을 다루지만, 화면은 아직 SFM과 거리가 멀고 작업 중입니다. 패널(`ui/`)은 타임라인, 세션 트리, 인스펙터, 그래프 에디터, UE5 스타일 도킹입니다.
 
 프로그램이 쓰는 모든 것은 자기 폴더 안에 남습니다. 설정은 `App/User`, 인덱스와 캐시는 `App/Cache`, 로그는 `App/Temporary`입니다. `Core/`는 아무것도 쓰지 않고 Qt에 의존하지 않으므로 엔진과 테스트는 순수 Python에서 실행됩니다. Qt와 OpenGL은 창에만 필요합니다. `Tools/`의 유틸리티는 엄격하게 `Core/API` 위에 만들어지며, 이를 통해 그 API가 서드파티 플러그인에도 충분함을 증명합니다.
-
-<p align="center"><img src="../assets/models.png" alt="설치에서 바로 렌더링한 64개 모델" width="60%"><br><sub>설치에서 무작위로 고른 64개 모델을 C2UI 자체 렌더러로 그린 것.</sub></p>
 
 ### 실행
 

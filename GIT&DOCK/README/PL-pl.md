@@ -54,8 +54,6 @@ Pierwszy cel to pełna zgodność z SFM, łącznie z kośćmi i rigami. Potem �
 - **Zapis jest dokładny.** Sesja odczytana i zapisana bez zmian to ten sam plik.
 - **Silnik bez zależności.** `Core/` i wszystkie testy działają na czystym Pythonie; tylko okno potrzebuje Qt i OpenGL.
 
-<p align="center"><img src="../assets/editor.png" alt="Edytor z otwartą sesją Meet the Heavy" width="100%"><br><sub>Edytor dzisiaj: otwarta sesja Valve „Meet the Heavy” — ujęcia i dźwięk na osi czasu, drzewo sesji, pierwsze ujęcie przez jego własną kamerę, postacie w pozach i z twarzami z sesji.</sub></p>
-
 ## Struktura
 
 ```
@@ -94,11 +92,9 @@ Droga od „gdzie jest Source Filmmaker?” do klatki na ekranie prowadzi przez 
 2. **Wirtualny system plików i indeks** (`Core/Code/vfs.py`, `content_index.py`) nakładają te ścieżki tak jak Source: wygrywa pierwszy znaleziony plik. Indeks to jeden plik SQLite w `App/Cache`, więc przejście 70 000 plików odbywa się raz.
 3. **Formaty** (`Core/Code/formats`) czytają pliki Valve bez zewnętrznych bibliotek: `.mdl` `.vvd` `.vtx` to model, `.vmt` `.vtf` materiał i tekstura, `.dmx` sesja, `.bsp` mapa. Każdy czytnik sprawdzono na całej instalacji; sesja zapisuje się z powrotem bajt w bajt.
 4. **Sesja** to graf elementów DMX. `animation.py` oblicza kanały w danej chwili, `operators.py` wykonuje wyrażenia i ograniczenia rigów, `flex.py` porusza twarzami, `pose.py` buduje macierze kości. Każda zmiana przechodzi przez `editing.py` jako polecenie z cofaniem.
-5. **Edytor** (`App/Code`) składa z tego scenę (`render/scene.py`) i rysuje ją własnym rendererem OpenGL 3.3 (`renderer.py`, `shaders.py`): światła sesji, lightmapy i oświetlenie mapy tak, jak pokazuje je SFM. Panele (`ui/`) to oś czasu, drzewo sesji, inspektor, graph editor i dokowanie w stylu UE5.
+5. **Edytor** (`App/Code`) składa z tego scenę (`render/scene.py`) i rysuje ją własnym rendererem OpenGL 3.3 (`renderer.py`, `shaders.py`): światła sesji, lightmapy i oświetlenie mapy — obraz jest jeszcze daleki od SFM i jest dopracowywany. Panele (`ui/`) to oś czasu, drzewo sesji, inspektor, graph editor i dokowanie w stylu UE5.
 
 Wszystko, co program zapisuje, zostaje w jego folderze: `App/User` — ustawienia, `App/Cache` — indeks i pamięć podręczna, `App/Temporary` — dziennik. `Core/` nic nie zapisuje i nie zależy od Qt, więc silnik i testy działają na czystym Pythonie; Qt i OpenGL są potrzebne tylko oknu. Narzędzia w `Tools/` budowane są wyłącznie na `Core/API` — tak sprawdza się, czy API wystarcza także zewnętrznym wtyczkom.
-
-<p align="center"><img src="../assets/models.png" alt="64 modele wyrenderowane prosto z instalacji" width="60%"><br><sub>Sześćdziesiąt cztery losowe modele z instalacji, narysowane przez własny renderer C2UI.</sub></p>
 
 ### Uruchamianie
 

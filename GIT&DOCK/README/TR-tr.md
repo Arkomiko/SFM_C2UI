@@ -54,8 +54,6 @@ Düzenleyici kurulu SFM'yi bulur, onu bir içerik kitaplığı olarak bağlar �
 - **Kayıt tamdır.** Değiştirilmeden okunup yazılan oturum aynı dosyadır.
 - **Motorun bağımlılığı yok.** `Core/` ve tüm test paketi çıplak Python'da çalışır; yalnızca pencere Qt ve OpenGL ister.
 
-<p align="center"><img src="../assets/editor.png" alt="Meet the Heavy açık düzenleyici" width="100%"><br><sub>Bugünkü düzenleyici, Valve'ın Meet the Heavy'si açık: zaman çizelgesinde çekimler ve ses, oturum ağacı, ilk çekim kendi kamerasından, oturumun dediği gibi pozlanmış ve yüz ifadeli karakterler.</sub></p>
-
 ## Yapı
 
 ```
@@ -94,11 +92,9 @@ C2UI_SDK/
 2. **Sanal dosya sistemi ve dizin** (`Core/Code/vfs.py`, `content_index.py`) bu yolları Source gibi katmanlar: ilk bulunan dosya kazanır. Dizin `App/Cache` içinde tek bir SQLite dosyasıdır; 70 000 dosyanın taranması bu yüzden bir kez yapılır.
 3. **Biçimler** (`Core/Code/formats`) Valve dosyalarını üçüncü taraf kütüphane olmadan okur: `.mdl` `.vvd` `.vtx` bir model, `.vmt` `.vtf` bir malzeme ve dokusu, `.dmx` bir oturum, `.bsp` bir haritadır. Her okuyucu tüm kurulumda doğrulanmıştır; bir oturum bayt bayt aynı geri yazılır.
 4. **Oturum** DMX öğelerinden oluşan bir grafiktir. `animation.py` bir andaki kanalları hesaplar, `operators.py` ifadeleri ve rig kısıtlarını çalıştırır, `flex.py` yüzleri hareket ettirir, `pose.py` kemik matrislerini kurar. Her düzenleme `editing.py` üzerinden geri alınabilir bir komut olarak geçer.
-5. **Düzenleyici** (`App/Code`) bundan bir sahne (`render/scene.py`) kurar ve kendi OpenGL 3.3 işleyicisiyle (`renderer.py`, `shaders.py`) çizer: oturum ışıkları, lightmap'ler ve haritanın aydınlatması, SFM'nin gösterdiği gibi. Paneller (`ui/`) zaman çizelgesi, oturum ağacı, denetçi, graph editor ve UE5 tarzı yerleştirmedir.
+5. **Düzenleyici** (`App/Code`) bundan bir sahne (`render/scene.py`) kurar ve kendi OpenGL 3.3 işleyicisiyle (`renderer.py`, `shaders.py`) çizer: oturum ışıkları, lightmap'ler ve haritanın aydınlatması — görüntü SFM'ninkinden hâlâ uzak ve üzerinde çalışılıyor. Paneller (`ui/`) zaman çizelgesi, oturum ağacı, denetçi, graph editor ve UE5 tarzı yerleştirmedir.
 
 Programın yazdığı her şey kendi klasöründe kalır: ayarlar `App/User`, dizin ve önbellekler `App/Cache`, günlük `App/Temporary`. `Core/` hiçbir şey yazmaz ve Qt'ye bağımlı değildir; motor ve testler bu yüzden yalın Python'da çalışır; Qt ve OpenGL yalnızca pencereye gerekir. `Tools/` içindeki araçlar sıkı sıkıya `Core/API` üzerine kurulur — API'nin üçüncü taraf eklentilere de yettiği böyle kanıtlanır.
-
-<p align="center"><img src="../assets/models.png" alt="Kurulumdan doğrudan render edilen 64 model" width="60%"><br><sub>Kurulumdan rastgele seçilen altmış dört model, C2UI'nin kendi renderer'ı ile çizildi.</sub></p>
 
 ### Çalıştırma
 

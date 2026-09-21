@@ -54,8 +54,6 @@ Tujuan pisanan yaiku kompatibilitas lengkap karo SFM, kalebu balung lan rig. Sab
 - **Nyimpen presisi.** Sesi sing diwaca lan ditulis tanpa owah iku file sing padha.
 - **Mesin ora duwe ketergantungan.** `Core/` lan kabeh tes mlaku ing Python murni; mung jendhela sing butuh Qt lan OpenGL.
 
-<p align="center"><img src="../assets/editor.png" alt="Editor karo Meet the Heavy dibukak" width="100%"><br><sub>Editor saiki, karo Meet the Heavy saka Valve dibukak: shot lan swara ing garis wektu, wit sesi, shot pisanan liwat kamerané dhewe, karakter mapan lan raine kaya sing diomongake sesi.</sub></p>
-
 ## Struktur
 
 ```
@@ -94,11 +92,9 @@ Dalan saka «Source Filmmaker ana ngendi?» tekan siji frame ing layar liwat lim
 2. **Sistem berkas virtual lan indeks** (`Core/Code/vfs.py`, `content_index.py`) nyusun dalan-dalan kasebut kaya Source: berkas sing ditemokake dhisik menang. Indeks iku siji berkas SQLite ing `App/Cache`, dadi nglakoni 70 000 berkas mung sepisan.
 3. **Format** (`Core/Code/formats`) maca berkas Valve tanpa pustaka pihak katelu: `.mdl` `.vvd` `.vtx` iku model, `.vmt` `.vtf` material lan tekstur, `.dmx` sesi, `.bsp` peta. Saben maca wis dipriksa ing kabeh instalasi; sesi ditulis maneh bait demi bait.
 4. **Sesi** iku grafik unsur DMX. `animation.py` ngitung saluran ing sawijining wektu, `operators.py` nglakokake ekspresi lan watesan rig, `flex.py` ngobahake rai, `pose.py` nggawe matriks balung. Saben owah-owahan liwat `editing.py` minangka prentah sing bisa dibatalake.
-5. **Editor** (`App/Code`) nggawe adegan (`render/scene.py`) saka iku lan nggambar nganggo renderer OpenGL 3.3 dhewe (`renderer.py`, `shaders.py`): lampu sesi, lightmap lan cahya peta kaya sing dituduhake SFM. Panel (`ui/`) yaiku garis wektu, wit sesi, inspektur, graph editor lan docking gaya UE5.
+5. **Editor** (`App/Code`) nggawe adegan (`render/scene.py`) saka iku lan nggambar nganggo renderer OpenGL 3.3 dhewe (`renderer.py`, `shaders.py`): lampu sesi, lightmap lan cahya peta — gambare isih adoh saka SFM lan isih digarap. Panel (`ui/`) yaiku garis wektu, wit sesi, inspektur, graph editor lan docking gaya UE5.
 
 Kabeh sing ditulis program tetep ing folder dhewe: `App/User` kanggo setelan, `App/Cache` kanggo indeks lan cache, `App/Temporary` kanggo log. `Core/` ora nulis apa-apa lan ora gumantung Qt, dadi mesin lan tes mlaku ing Python murni; Qt lan OpenGL mung dibutuhake jendhela. Piranti ing `Tools/` dibangun ketat ing `Core/API` — mangkono dibuktekake yen API cukup uga kanggo plugin pihak katelu.
-
-<p align="center"><img src="../assets/models.png" alt="64 model dirender langsung saka instalasi" width="60%"><br><sub>Sewidak papat model dipilih acak saka instalasi, digambar dening renderer C2UI dhewe.</sub></p>
 
 ### Mbukak
 

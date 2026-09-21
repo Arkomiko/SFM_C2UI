@@ -54,8 +54,6 @@ Första målet är full kompatibilitet med SFM, ben och riggar inräknade. Däre
 - **Sparningen är exakt.** En session som läses och skrivs oförändrad är samma fil.
 - **Motorn har inga beroenden.** `Core/` och hela testsviten körs på ren Python; bara fönstret behöver Qt och OpenGL.
 
-<p align="center"><img src="../assets/editor.png" alt="Redigeraren med Meet the Heavy öppen" width="100%"><br><sub>Redigeraren idag, med Valves Meet the Heavy öppen: shots och ljud på tidslinjen, sessionsträdet, första shoten sedd genom sin egen kamera, karaktärer poserade och med ansikten enligt sessionen.</sub></p>
-
 ## Struktur
 
 ```
@@ -94,11 +92,9 @@ Vägen från ”var är Source Filmmaker?” till en bildruta på skärmen går 
 2. **Det virtuella filsystemet och indexet** (`Core/Code/vfs.py`, `content_index.py`) lagrar sökvägarna som Source gör: den först hittade filen vinner. Indexet är en SQLite-fil i `App/Cache`, så genomgången av 70 000 filer görs en gång.
 3. **Formaten** (`Core/Code/formats`) läser Valves filer utan tredjepartsbibliotek: `.mdl` `.vvd` `.vtx` är en modell, `.vmt` `.vtf` ett material och dess textur, `.dmx` en session, `.bsp` en karta. Varje läsare är kontrollerad mot hela installationen; en session skrivs tillbaka byte för byte.
 4. **Sessionen** är en graf av DMX-element. `animation.py` utvärderar kanalerna vid en tidpunkt, `operators.py` kör uttryck och riggbegränsningar, `flex.py` rör ansiktena, `pose.py` bygger benmatriserna. Varje ändring går genom `editing.py` som ett ångringsbart kommando.
-5. **Redigeraren** (`App/Code`) gör det till en scen (`render/scene.py`) och ritar den med sin egen OpenGL 3.3-renderare (`renderer.py`, `shaders.py`): sessionsljus, lightmaps och kartans belysning som SFM visar dem. Panelerna (`ui/`) är tidslinjen, sessionsträdet, inspektören, grafredigeraren och dockning i UE5-stil.
+5. **Redigeraren** (`App/Code`) gör det till en scen (`render/scene.py`) och ritar den med sin egen OpenGL 3.3-renderare (`renderer.py`, `shaders.py`): sessionsljus, lightmaps och kartans belysning — bilden är ännu långt från SFM:s och arbetas på. Panelerna (`ui/`) är tidslinjen, sessionsträdet, inspektören, grafredigeraren och dockning i UE5-stil.
 
 Allt programmet skriver stannar i dess mapp: `App/User` för inställningar, `App/Cache` för index och cache, `App/Temporary` för loggen. `Core/` skriver inget och är oberoende av Qt, så motorn och testerna kör på ren Python; Qt och OpenGL behövs bara av fönstret. Verktygen i `Tools/` byggs strikt på `Core/API` — så bevisas att API:et räcker även för tredjepartsplugin.
-
-<p align="center"><img src="../assets/models.png" alt="64 modeller renderade direkt från installationen" width="60%"><br><sub>Sextiofyra slumpvis valda modeller från installationen, ritade av C2UI:s egen renderare.</sub></p>
 
 ### Köra
 

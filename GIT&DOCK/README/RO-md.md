@@ -54,8 +54,6 @@ Primul obiectiv este compatibilitatea deplină cu SFM, inclusiv oase și rig-uri
 - **Salvarea este exactă.** O sesiune citită și scrisă nemodificată este același fișier.
 - **Motorul nu are dependențe.** `Core/` și toate testele rulează pe Python simplu; doar fereastra are nevoie de Qt și OpenGL.
 
-<p align="center"><img src="../assets/editor.png" alt="Editorul cu Meet the Heavy deschis" width="100%"><br><sub>Editorul azi, cu sesiunea Valve „Meet the Heavy” deschisă: cadre și sunet pe cronologie, arborele sesiunii, primul cadru văzut prin propria cameră, personaje în pozele și cu fețele din sesiune.</sub></p>
-
 ## Structură
 
 ```
@@ -94,11 +92,9 @@ Drumul de la „unde este Source Filmmaker?” până la un cadru pe ecran trece
 2. **Sistemul de fișiere virtual și indexul** (`Core/Code/vfs.py`, `content_index.py`) suprapun aceste căi așa cum face Source: primul fișier găsit câștigă. Indexul este un singur fișier SQLite în `App/Cache`, așa că parcurgerea a 70 000 de fișiere se face o singură dată.
 3. **Formatele** (`Core/Code/formats`) citesc fișierele Valve fără biblioteci terțe: `.mdl` `.vvd` `.vtx` sunt un model, `.vmt` `.vtf` un material și textura lui, `.dmx` o sesiune, `.bsp` o hartă. Fiecare cititor e verificat pe toată instalarea; o sesiune se scrie înapoi octet cu octet.
 4. **Sesiunea** este un graf de elemente DMX. `animation.py` evaluează canalele la un moment dat, `operators.py` rulează expresiile și constrângerile rig-urilor, `flex.py` mișcă fețele, `pose.py` construiește matricele oaselor. Fiecare modificare trece prin `editing.py` ca o comandă cu anulare.
-5. **Editorul** (`App/Code`) transformă totul într-o scenă (`render/scene.py`) și o desenează cu propriul renderer OpenGL 3.3 (`renderer.py`, `shaders.py`): luminile sesiunii, lightmap-urile și iluminarea hărții așa cum le arată SFM. Panourile (`ui/`) sunt cronologia, arborele sesiunii, inspectorul, graph editor-ul și andocarea în stil UE5.
+5. **Editorul** (`App/Code`) transformă totul într-o scenă (`render/scene.py`) și o desenează cu propriul renderer OpenGL 3.3 (`renderer.py`, `shaders.py`): luminile sesiunii, lightmap-urile și iluminarea hărții — imaginea e încă departe de SFM și se lucrează la ea. Panourile (`ui/`) sunt cronologia, arborele sesiunii, inspectorul, graph editor-ul și andocarea în stil UE5.
 
 Tot ce scrie programul rămâne în dosarul lui: `App/User` pentru setări, `App/Cache` pentru index și cache, `App/Temporary` pentru jurnal. `Core/` nu scrie nimic și nu depinde de Qt, deci motorul și testele rulează pe Python simplu; Qt și OpenGL sunt necesare doar ferestrei. Utilitarele din `Tools/` sunt construite strict pe `Core/API` — așa se verifică dacă API-ul ajunge și pentru plugin-uri terțe.
-
-<p align="center"><img src="../assets/models.png" alt="64 de modele randate direct din instalare" width="60%"><br><sub>Șaizeci și patru de modele alese la întâmplare din instalare, desenate de renderer-ul propriu al C2UI.</sub></p>
 
 ### Rulare
 

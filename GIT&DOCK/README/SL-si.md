@@ -54,8 +54,6 @@ Prvi cilj je polna združljivost s SFM, vključno s kostmi in rigi. Potem tisto,
 - **Shranjevanje je natančno.** Seja, prebrana in zapisana nespremenjena, je ista datoteka.
 - **Pogon nima odvisnosti.** `Core/` in vsi testi tečejo na golem Pythonu; le okno potrebuje Qt in OpenGL.
 
-<p align="center"><img src="../assets/editor.png" alt="Urejevalnik z odprto sejo Meet the Heavy" width="100%"><br><sub>Urejevalnik danes, z odprto Valvovo sejo »Meet the Heavy«: posnetki in zvok na časovnici, drevo seje, prvi posnetek skozi lastno kamero, liki v pozah in z obrazi iz seje.</sub></p>
-
 ## Zgradba
 
 ```
@@ -94,11 +92,9 @@ Pot od »kje je Source Filmmaker?« do sličice na zaslonu teče skozi pet plast
 2. **Navidezni datotečni sistem in indeks** (`Core/Code/vfs.py`, `content_index.py`) te poti plastita kot Source: zmaga prva najdena datoteka. Indeks je ena datoteka SQLite v `App/Cache`, zato se obhod 70 000 datotek opravi enkrat.
 3. **Formati** (`Core/Code/formats`) berejo Valvove datoteke brez tujih knjižnic: `.mdl` `.vvd` `.vtx` so model, `.vmt` `.vtf` material in tekstura, `.dmx` seja, `.bsp` zemljevid. Vsak bralnik je preverjen na celotni namestitvi; seja se zapiše nazaj bajt za bajtom.
 4. **Seja** je graf elementov DMX. `animation.py` izračuna kanale v danem trenutku, `operators.py` izvaja izraze in omejitve rigov, `flex.py` premika obraze, `pose.py` sestavi matrike kosti. Vsaka sprememba gre skozi `editing.py` kot ukaz z razveljavitvijo.
-5. **Urejevalnik** (`App/Code`) iz tega sestavi sceno (`render/scene.py`) in jo nariše z lastnim upodabljalnikom OpenGL 3.3 (`renderer.py`, `shaders.py`): luči seje, lightmapi in osvetlitev zemljevida, kot jih kaže SFM. Plošče (`ui/`) so časovnica, drevo seje, inšpektor, graph editor in sidranje v slogu UE5.
+5. **Urejevalnik** (`App/Code`) iz tega sestavi sceno (`render/scene.py`) in jo nariše z lastnim upodabljalnikom OpenGL 3.3 (`renderer.py`, `shaders.py`): luči seje, lightmapi in osvetlitev zemljevida — slika je še daleč od SFM in se izpopolnjuje. Plošče (`ui/`) so časovnica, drevo seje, inšpektor, graph editor in sidranje v slogu UE5.
 
 Vse, kar program zapiše, ostane v njegovi mapi: `App/User` za nastavitve, `App/Cache` za indeks in predpomnilnik, `App/Temporary` za dnevnik. `Core/` ne piše ničesar in ni odvisen od Qt, zato pogon in testi tečejo na golem Pythonu; Qt in OpenGL potrebuje le okno. Orodja v `Tools/` so zgrajena strogo na `Core/API` — tako se preveri, ali API zadošča tudi tujim vtičnikom.
-
-<p align="center"><img src="../assets/models.png" alt="64 modelov, upodobljenih naravnost iz namestitve" width="60%"><br><sub>Štiriinšestdeset naključnih modelov iz namestitve, ki jih je narisal lastni upodabljalnik C2UI.</sub></p>
 
 ### Zagon
 

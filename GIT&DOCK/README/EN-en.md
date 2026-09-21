@@ -54,8 +54,6 @@ The first goal is full compatibility with SFM, bones and rigs included. After th
 - **Saving is exact.** A session read and written unchanged is the same file.
 - **The engine has no dependencies.** `Core/` and the whole test suite run on a bare Python; only the window needs Qt and OpenGL.
 
-<p align="center"><img src="../assets/editor.png" alt="The editor with Meet the Heavy open" width="100%"><br><sub>The editor today, with Valve's Meet the Heavy open: shots and sound on the timeline, the session tree, the first shot seen through its own camera, characters posed and facing as the session says.</sub></p>
-
 ## Layout
 
 ```
@@ -94,11 +92,9 @@ The path from "where is Source Filmmaker?" to a frame on screen runs through fiv
 2. **The virtual file system and the index** (`Core/Code/vfs.py`, `content_index.py`) layer those paths the way Source does: the first file found wins. The index is one SQLite file in `App/Cache`, so the walk over 70 000 files is paid once.
 3. **The formats** (`Core/Code/formats`) read Valve's files with no third-party libraries: `.mdl` `.vvd` `.vtx` are a model, `.vmt` `.vtf` a material and its texture, `.dmx` a session, `.bsp` a map. Every reader is checked against the whole installation; a session is written back byte for byte.
 4. **The session** is a graph of DMX elements. `animation.py` evaluates the channels at a moment in time, `operators.py` runs expressions and rig constraints, `flex.py` moves the faces, `pose.py` builds the bone matrices. Every edit goes through `editing.py` as an undoable command.
-5. **The editor** (`App/Code`) turns that into a scene (`render/scene.py`) and draws it with its own OpenGL 3.3 renderer (`renderer.py`, `shaders.py`): session lights, lightmaps and the map's lighting as SFM shows them. The panels (`ui/`) are the timeline, the session tree, the inspector, the graph editor and UE5-style docking.
+5. **The editor** (`App/Code`) turns that into a scene (`render/scene.py`) and draws it with its own OpenGL 3.3 renderer (`renderer.py`, `shaders.py`): session lights, lightmaps and the map's lighting — the picture is still far from SFM's and is being worked on. The panels (`ui/`) are the timeline, the session tree, the inspector, the graph editor and UE5-style docking.
 
 Everything the program writes stays inside its folder: `App/User` for settings, `App/Cache` for the index and caches, `App/Temporary` for the log. `Core/` writes nothing and does not depend on Qt, so the engine and the tests run on bare Python; Qt and OpenGL are needed only by the window. The utilities in `Tools/` are built strictly on `Core/API` — that is how the API is proven good enough for third-party plugins.
-
-<p align="center"><img src="../assets/models.png" alt="64 models rendered straight from the installation" width="60%"><br><sub>Sixty-four models picked at random from the installation, rendered by C2UI's own renderer.</sub></p>
 
 ### Running it
 
