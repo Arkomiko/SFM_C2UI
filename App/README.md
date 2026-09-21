@@ -24,6 +24,7 @@ nothing is written anywhere else on the machine.
 | `locations.py` | Every writable path, all inside this folder |
 | `settings.py` | User settings as JSON under `User/Settings` |
 | `export.py` | Renders the sequence to an image sequence or a movie (MJPEG AVI natively, H.264 MP4 through Qt Multimedia) |
+| `audio.py` | Plays the sequence's mixed sound during playback and keeps the timeline on it |
 | `render/scene.py` | From content to draw items: models, poses, the map, lights |
 | `render/renderer.py` | Draws a scene with the GL 3.3 shaders in `render/shaders.py` |
 | `render/gl_resources.py` | Meshes and textures on the GPU |

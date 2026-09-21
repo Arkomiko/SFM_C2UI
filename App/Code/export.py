@@ -13,7 +13,9 @@ ffmpeg executable as the fallback where that recorder has no encoder.
     result = export(session, library.disk_source(), settings, progress)
 
 Scenes are built once per shot for the run; the map behind them reloads for
-each shot, as it does in the editor.  Sound is not exported yet.
+each shot, as it does in the editor.  The sequence's sound tracks are mixed
+once (`Core.Code.sound`) and go into the movie - a PCM stream in the AVI,
+AAC in the MP4 - or beside an image sequence as `<name>.wav`.
 """
 from __future__ import annotations
 
@@ -29,6 +31,7 @@ from typing import Callable, Dict, List, Optional, Tuple
 from Core.API.dmx import Time
 from Core.API.session import FilmClip, Session
 from Core.Code.animation import Evaluator
+from Core.Code.sound import Mix, mix_sequence
 
 from .locations import APP_ROOT, USER
 from .render.scene import Scene, build_shot_scene, refresh_shot_scene, shot_camera_pose
@@ -71,6 +74,10 @@ class ExportSettings:
     #: renders per frame, spread over the camera's shutter (motion blur) and its lens
     #: (depth of field); 1 renders each frame once, sharp and unblurred
     passes: int = 16
+    #: mix the sequence's sound tracks into the movie (or a .wav beside the images)
+    sound: bool = True
+    #: sample rate of that mix
+    sound_rate: int = 44100
 
     @property
     def is_movie(self) -> bool:
@@ -198,36 +205,52 @@ class MjpegAviWriter:
     with the `idx1` index players need to seek.  Plain RIFF, no dependencies;
     the AVI 1.0 layout holds up to 2 GB."""
 
-    def __init__(self, path: Path, width: int, height: int, fps: float) -> None:
+    def __init__(self, path: Path, width: int, height: int, fps: float, audio: Optional[Mix] = None) -> None:
         self.path = path
         self.width, self.height, self.fps = width, height, fps
+        self.audio = audio if audio is not None and audio.frames else None
         self._file = open(path, "wb")
-        self._index: List[Tuple[int, int]] = []     # (offset from movi start, size) per frame
+        self._index: List[Tuple[bytes, int, int]] = []   # (chunk id, offset from movi start, size)
         self._largest = 0
+        self._audio_bytes = 0
+        self._video_frames = 0
         self._file.write(self._headers(0, 0))
         self._movi_start = self._file.tell()
         self._file.write(b"LIST" + struct.pack("<I", 0) + b"movi")
 
     def add(self, jpeg: bytes) -> None:
-        """Append one frame."""
-        offset = self._file.tell() - (self._movi_start + 8)
-        padded = jpeg + (b"\0" if len(jpeg) & 1 else b"")
-        self._file.write(b"00dc" + struct.pack("<I", len(jpeg)) + padded)
-        self._index.append((offset, len(jpeg)))
+        """Append one frame, and the sound that plays during it."""
+        self._write_chunk(b"00dc", jpeg)
         self._largest = max(self._largest, len(jpeg))
+        frame = self._video_frames
+        self._video_frames += 1
+        if self.audio is not None:
+            rate = self.audio.rate
+            first = round(frame * rate / self.fps)
+            last = round((frame + 1) * rate / self.fps)
+            width = self.audio.channels * 2
+            raw = self.audio.samples[first * self.audio.channels:last * self.audio.channels].tobytes()
+            raw += bytes(max(0, (last - first) * width - len(raw)))    # silence past the mix's end
+            self._write_chunk(b"01wb", raw)
+            self._audio_bytes += len(raw)
+
+    def _write_chunk(self, fourcc: bytes, data: bytes) -> None:
+        offset = self._file.tell() - (self._movi_start + 8)
+        self._file.write(fourcc + struct.pack("<I", len(data)) + data + (b"\0" if len(data) & 1 else b""))
+        self._index.append((fourcc, offset, len(data)))
 
     def close(self) -> None:
         """Write the index and the final sizes."""
         f = self._file
         movi_end = f.tell()
         f.write(b"idx1" + struct.pack("<I", 16 * len(self._index)))
-        for offset, size in self._index:
-            f.write(b"00dc" + struct.pack("<III", 0x10, offset, size))    # AVIIF_KEYFRAME
+        for fourcc, offset, size in self._index:
+            f.write(fourcc + struct.pack("<III", 0x10, offset, size))    # AVIIF_KEYFRAME
         end = f.tell()
         f.seek(self._movi_start + 4)
         f.write(struct.pack("<I", movi_end - self._movi_start - 8))
         f.seek(0)
-        f.write(self._headers(len(self._index), end - 8))
+        f.write(self._headers(self._video_frames, end - 8))
         f.close()
 
     def _headers(self, frames: int, riff_size: int) -> bytes:
@@ -235,15 +258,26 @@ class MjpegAviWriter:
         rate = max(1, round(self.fps * 1000))
         scale = 1000
         us_per_frame = round(1_000_000 / self.fps) if self.fps else 0
+        streams = 2 if self.audio is not None else 1
         avih = struct.pack("<IIIIIIIIIIIIII", us_per_frame, self._largest * max(1, round(self.fps)), 0,
-                           0x10, frames, 0, 1, self._largest, self.width, self.height, 0, 0, 0, 0)
+                           0x10 | (0x100 if self.audio is not None else 0), frames, 0, streams, self._largest,
+                           self.width, self.height, 0, 0, 0, 0)
         strh = (b"vids" + b"MJPG" + struct.pack("<IHHIIIIIIII", 0, 0, 0, 0, scale, rate, 0, frames,
                                                  self._largest, 0xFFFFFFFF, 0)
                 + struct.pack("<hhhh", 0, 0, self.width, self.height))
         strf = struct.pack("<IiiHHIIiiII", 40, self.width, self.height, 1, 24, 0x47504A4D,   # 'MJPG'
                            self.width * self.height * 3, 0, 0, 0, 0)
-        strl = _list(b"strl", _chunk(b"strh", strh) + _chunk(b"strf", strf))
-        hdrl = _list(b"hdrl", _chunk(b"avih", avih) + strl)
+        hdrl_body = _chunk(b"avih", avih) + _list(b"strl", _chunk(b"strh", strh) + _chunk(b"strf", strf))
+        if self.audio is not None:
+            block = self.audio.channels * 2
+            audio_rate = self.audio.rate
+            length = self._audio_bytes // block
+            strh_a = (b"auds" + struct.pack("<I", 1) + struct.pack("<IHHIIIIIIII", 0, 0, 0, 0, block, audio_rate * block,
+                                                                     0, length, audio_rate * block, 0xFFFFFFFF, block)
+                      + struct.pack("<hhhh", 0, 0, 0, 0))
+            strf_a = struct.pack("<HHIIHHH", 1, self.audio.channels, audio_rate, audio_rate * block, block, 16, 0)
+            hdrl_body += _list(b"strl", _chunk(b"strh", strh_a) + _chunk(b"strf", strf_a))
+        hdrl = _list(b"hdrl", hdrl_body)
         return b"RIFF" + struct.pack("<I", riff_size) + b"AVI " + hdrl
 
 
@@ -260,9 +294,11 @@ class _QtMovieWriter:
     with the platform's encoder.  The recorder works asynchronously; this waits on
     its signals by pumping events, so the export stays one straight loop."""
 
-    def __init__(self, path: Path, width: int, height: int, fps: float, quality: int) -> None:
+    def __init__(self, path: Path, width: int, height: int, fps: float, quality: int,
+                 audio: Optional[Mix] = None) -> None:
         from PySide6.QtCore import QSize, QUrl
-        from PySide6.QtMultimedia import QMediaCaptureSession, QMediaFormat, QMediaRecorder, QVideoFrameInput
+        from PySide6.QtMultimedia import (QAudioBufferInput, QAudioFormat, QMediaCaptureSession, QMediaFormat,
+                                          QMediaRecorder, QVideoFrameInput)
 
         self.path = path
         self.fps = fps
@@ -271,10 +307,22 @@ class _QtMovieWriter:
         self.session = QMediaCaptureSession()
         self.input = QVideoFrameInput()
         self.session.setVideoFrameInput(self.input)
+        self.audio = audio if audio is not None and audio.frames else None
+        self.audio_input = None
+        self.audio_format = None
+        if self.audio is not None:
+            self.audio_format = QAudioFormat()
+            self.audio_format.setSampleRate(self.audio.rate)
+            self.audio_format.setChannelCount(self.audio.channels)
+            self.audio_format.setSampleFormat(QAudioFormat.Int16)
+            self.audio_input = QAudioBufferInput()          # a format given here makes it refuse every buffer
+            self.session.setAudioBufferInput(self.audio_input)
         self.recorder = QMediaRecorder()
         self.session.setRecorder(self.recorder)
         media = QMediaFormat(QMediaFormat.MPEG4)
         media.setVideoCodec(QMediaFormat.VideoCodec.H264)
+        if self.audio is not None:
+            media.setAudioCodec(QMediaFormat.AudioCodec.AAC)
         self.recorder.setMediaFormat(media)
         levels = (QMediaRecorder.VeryLowQuality, QMediaRecorder.LowQuality, QMediaRecorder.NormalQuality,
                   QMediaRecorder.HighQuality, QMediaRecorder.VeryHighQuality)
@@ -295,14 +343,37 @@ class _QtMovieWriter:
         frame = QVideoFrame(image.convertToFormat(QImage.Format_RGBA8888))
         frame.setStartTime(round(self.index * 1_000_000 / self.fps))
         frame.setEndTime(round((self.index + 1) * 1_000_000 / self.fps))
+        index = self.index
         self.index += 1
         for _attempt in range(3000):                    # 30 s at most
             if self.error:
                 raise RuntimeError(f"MP4 encoder: {self.error}")
             if self.input.sendVideoFrame(frame):
+                break
+            _pump(10)
+        else:
+            raise RuntimeError("MP4 encoder stopped taking frames")
+        if self.audio is not None:
+            self._add_audio(index)
+
+    def _add_audio(self, index: int) -> None:
+        """The sound that plays during frame `index`, as one buffer."""
+        from PySide6.QtCore import QByteArray
+        from PySide6.QtMultimedia import QAudioBuffer
+        rate = self.audio.rate
+        first = round(index * rate / self.fps)
+        last = round((index + 1) * rate / self.fps)
+        channels = self.audio.channels
+        raw = self.audio.samples[first * channels:last * channels].tobytes()
+        raw += bytes(max(0, (last - first) * channels * 2 - len(raw)))
+        buffer = QAudioBuffer(QByteArray(raw), self.audio_format, round(first * 1_000_000 / rate))
+        for _attempt in range(3000):
+            if self.error:
+                raise RuntimeError(f"MP4 encoder: {self.error}")
+            if self.audio_input.sendAudioBuffer(buffer):
                 return
             _pump(10)
-        raise RuntimeError("MP4 encoder stopped taking frames")
+        raise RuntimeError("MP4 encoder stopped taking sound")
 
     def close(self) -> Optional[str]:
         """Stop the recorder and wait for the file to be finished."""
@@ -435,14 +506,26 @@ def export(session: Session, source, settings: ExportSettings,
         settings.path.parent.mkdir(parents=True, exist_ok=True)
     else:
         settings.path.mkdir(parents=True, exist_ok=True)
+    mix: Optional[Mix] = None
+    if settings.sound:
+        mix = mix_sequence(session, source, settings.sound_rate, settings.start, settings.end)
+        result.warnings.extend(mix.warnings)
+        if not mix.frames or not any(mix.samples[::501]):
+            mix = None                                # nothing plays over the span: no track
     writer = None
     if settings.kind == "avi":
-        writer = MjpegAviWriter(settings.path, settings.width, settings.height, settings.fps)
+        writer = MjpegAviWriter(settings.path, settings.width, settings.height, settings.fps, mix)
     elif settings.kind == "mp4":
         if _qt_recorder_available():
-            writer = _QtMovieWriter(settings.path, settings.width, settings.height, settings.fps, settings.quality)
+            writer = _QtMovieWriter(settings.path, settings.width, settings.height, settings.fps, settings.quality, mix)
         else:
             writer = _FfmpegWriter(settings.path, settings.width, settings.height, settings.fps, settings.quality)
+            if mix is not None:
+                result.warnings.append("sound needs Qt Multimedia's recorder; the ffmpeg fallback wrote none")
+    elif mix is not None:
+        wav = settings.path / f"{settings.name}.wav"
+        wav.write_bytes(mix.wav_bytes())
+        result.files.append(wav)
 
     screen = _Offscreen(settings.width, settings.height, settings.samples)
     renderer = Renderer()

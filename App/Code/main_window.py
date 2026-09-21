@@ -31,10 +31,12 @@ from Core.Code.formats import FormatError, load_dmx, save_dmx
 from Core.Code.keys import components
 from Core.Code.motion import TimeSelection
 from Core.Code.operators import constrained_attributes, constraint_handle
+from Core.Code.sound import mix_sequence
 from Core.Code.transform import (apply, invert, matrix_to_quaternion, multiply,
                                  quaternion_from_axis_angle, quaternion_multiply,
                                  quaternion_normalize, translation_of)
 
+from .audio import SoundPlayer
 from .content_library import ContentLibrary
 from .export import ExportResult, ExportSettings, export, frame_times
 from .render.scene import Scene, build_scene, build_shot_scene, refresh_shot_scene, shot_camera_pose
@@ -50,6 +52,24 @@ from .ui.graph_editor import Curve, GraphEditor
 log = logging.getLogger("c2ui.window")
 
 __all__ = ["MainWindow"]
+
+
+class _MixLoader(QThread):
+    """Mixes the session's sound tracks off the UI thread."""
+    done = Signal(object)               # Mix or None
+
+    def __init__(self, session: Session, source, parent=None) -> None:
+        super().__init__(parent)
+        self.session = session
+        self.source = source
+
+    def run(self) -> None:
+        """Mix and report; a failure is logged and leaves the editor silent."""
+        try:
+            self.done.emit(mix_sequence(self.session, self.source))
+        except Exception:                                # noqa: BLE001 - sound must never stop a session
+            log.exception("sound mix failed")
+            self.done.emit(None)
 
 
 class _SceneLoader(QThread):
@@ -101,6 +121,8 @@ class MainWindow(QMainWindow):
         self._drag_start = None
         #: whether the viewport keeps looking through the shot's camera as time moves
         self.follow_camera = True
+        self.audio = SoundPlayer(self)
+        self._mixer: Optional[_MixLoader] = None
         self._play_timer = QTimer(self)
         self._play_timer.setInterval(1000 // 60)
         self._play_timer.timeout.connect(self._tick)
@@ -358,6 +380,10 @@ class MainWindow(QMainWindow):
         self.timeline.set_session(session)
         self.setWindowTitle(f"C2UI - {path.name}")
         self.statusBar().showMessage(session.summary())
+        self.audio.set_mix(None)
+        self._mixer = _MixLoader(session, self.library.disk_source(), self)
+        self._mixer.done.connect(self._mixed)
+        self._mixer.start()
         shots = session.active_clip.shots if session.active_clip else []
         first = next((s for s in shots if s.scene is not None), shots[0] if shots else None)
         if first is not None:
@@ -371,6 +397,7 @@ class MainWindow(QMainWindow):
         if not self._confirm_discard():
             return
         self._play_timer.stop()
+        self.audio.set_mix(None)
         self.undo.clear()
         self.inspector.set_element(None)
         self.session = None
@@ -855,28 +882,50 @@ class MainWindow(QMainWindow):
             self._place_manipulator()
         self.viewport.update()
 
+    @Slot(object)
+    def _mixed(self, mix) -> None:
+        """The sound mix is ready: keep it, and join in if playback already runs."""
+        if self.sender() is not self._mixer or self.session is None:
+            return
+        self.audio.set_mix(mix)
+        if mix is not None and mix.warnings:
+            log.info("sound: %s", "; ".join(mix.warnings[:5]))
+        if self._play_timer.isActive():
+            self._play_from = self.timeline.time
+            self._play_clock.start()
+            self.audio.play_from(self._play_from)
+
     def toggle_play(self) -> None:
         """Play or pause from the current time."""
         if self._play_timer.isActive():
             self._play_timer.stop()
+            self.audio.stop()
             self.statusBar().showMessage(f"paused at {self.timeline.time.seconds:.3f} s")
         elif self.session is not None:
             self._play_from = self.timeline.time
             self._play_clock.start()
+            self.audio.play_from(self._play_from)
             self._play_timer.start()
 
     def stop(self) -> None:
         """Stop and return to where playback began."""
         if self._play_timer.isActive():
             self._play_timer.stop()
+            self.audio.stop()
             self.timeline.set_time(self._play_from)
 
     def _tick(self) -> None:
-        elapsed = self._play_clock.elapsed() / 1000.0
-        time = Time(self._play_from.ticks + round(elapsed * Time.PER_SECOND))
+        # the sound is the clock while it plays: picture and sound then never drift apart
+        if self.audio.playing:
+            elapsed = self.audio.elapsed()
+            time = Time(self._play_from.ticks + elapsed.ticks)
+        else:
+            elapsed = self._play_clock.elapsed() / 1000.0
+            time = Time(self._play_from.ticks + round(elapsed * Time.PER_SECOND))
         clip = self.session.active_clip if self.session else None
         if clip is not None and time.ticks >= clip.time_frame.duration.ticks:
             self._play_timer.stop()
+            self.audio.stop()
             time = clip.time_frame.duration
         self.timeline.set_time(time)
 

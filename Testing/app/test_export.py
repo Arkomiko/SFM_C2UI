@@ -112,3 +112,25 @@ def test_samples_spread_over_the_shutter_and_the_lens():
     points = lens_samples(16, 0.8)
     assert len(set(points)) == 16 and all(x * x + y * y <= 0.8 * 0.8 + 1e-9 for x, y in points)
     assert "samples per frame" in ExportSettings(Path("x"), end=Time(1), passes=0).check()
+
+
+def test_avi_writer_interleaves_a_sound_stream():
+    from array import array
+    from Core.Code.sound import Mix
+    folder = Path(tempfile.mkdtemp(prefix="c2ui_avi_"))
+    path = folder / "m.avi"
+    # 3 frames at 10 fps with 8 kHz stereo: 800 frames of sound per video frame
+    mix = Mix(8000, 2, array("h", range(0, 3 * 800 * 2)))
+    writer = MjpegAviWriter(path, 64, 48, 10.0, mix)
+    for _ in range(3):
+        writer.add(b"\xff\xd8" + bytes(96) + b"\xff\xd9")
+    writer.close()
+    data = path.read_bytes()
+    frames, idx, total, fourccs = _walk_avi(data)
+    assert frames == 3 and idx == 6 and total == 3
+    assert fourccs == [(b"vids", b"MJPG"), (b"auds", b"\x01\x00\x00\x00")]
+    assert data.count(b"01wb") == 3 + 3                                # three chunks, three index entries
+    # the first sound chunk holds the first 800 stereo frames, verbatim
+    at = data.index(b"01wb") + 8
+    assert struct.unpack_from("<4h", data, at) == (0, 1, 2, 3)
+    assert struct.unpack_from("<I", data, at - 4)[0] == 800 * 2 * 2

@@ -284,3 +284,60 @@ def test_material_overlay_and_fades():
     assert abs(shot1.fade_at(Time(47500)) - 0.5) < 1e-9
     assert shot1.fade_at(Time(50000)) == 1.0
     assert session.active_clip.shots[1].fade_at(Time(50000)) == 0.0   # no fades set
+
+
+def test_sound_clips_wav_and_mix():
+    import struct
+    from array import array
+    from Core.Code.sound import active_sound_clips, mix_sequence, parse_wav, sound_path
+    assert sound_path("#vo" + chr(92) + "monologues" + chr(92) + "engineer.wav") == "sound/vo/monologues/engineer.wav"
+    assert sound_path("*)music/x.wav") == "sound/music/x.wav" and sound_path("") == ""
+    # a 16-bit mono wave of 100 frames at 8 kHz, a ramp, plus a stray chunk before the data
+    frames = array("h", range(0, 1000, 10))
+    fmt = struct.pack("<HHIIHH", 1, 1, 8000, 16000, 2, 16)
+    data = frames.tobytes()
+    wav = (b"RIFF" + struct.pack("<I", 4 + 8 + len(fmt) + 8 + 5 + 8 + len(data)) + b"WAVE"
+           + b"fmt " + struct.pack("<I", len(fmt)) + fmt + b"LIST" + struct.pack("<I", 5) + b"abcde\0"
+           + b"data" + struct.pack("<I", len(data)) + data)
+    wave = parse_wav(wav, "ramp.wav")
+    assert wave.rate == 8000 and wave.channels == 1 and wave.frames == 100 and list(wave.samples[:3]) == [0, 10, 20]
+    eight = b"RIFF" + struct.pack("<I", 36 + 4) + b"WAVE" + b"fmt " + struct.pack("<I", 16) + struct.pack("<HHIIHH", 1, 1, 8000, 8000, 1, 8) + b"data" + struct.pack("<I", 4) + bytes([128, 255, 0, 128])
+    assert list(parse_wav(eight).samples) == [0, 127 << 8, -128 << 8, 0]
+
+    # a session whose sequence has one sound clip on an unmuted track and one on a muted track
+    session = Session(_session())
+    doc = session.document
+    seq = session.active_clip
+    def sound_clip(name, start, duration, offset=0):
+        clip = doc.add(Element("DmeSoundClip", name))
+        clip.set("timeFrame", AttrType.ELEMENT, _time_frame(doc, start, duration, offset=offset))
+        sound = doc.add(Element("DmeGameSound", "sound"))
+        sound.set("soundname", AttrType.STRING, "#tools\\ramp.wav")
+        sound.set("volume", AttrType.FLOAT, 1.0)
+        clip.set("sound", AttrType.ELEMENT, sound)
+        return clip
+    live = doc.add(Element("DmeTrack", "mix"))
+    live.set("children", AttrType.ELEMENT + ARRAY_OFFSET, [sound_clip("a", 10000, 5000, offset=25)])
+    live.set("mute", AttrType.BOOL, False)
+    muted = doc.add(Element("DmeTrack", "voice"))
+    muted.set("children", AttrType.ELEMENT + ARRAY_OFFSET, [sound_clip("b", 0, 5000)])
+    muted.set("mute", AttrType.BOOL, True)
+    group = seq.track_groups[0]
+    group.element.set("tracks", AttrType.ELEMENT + ARRAY_OFFSET, [live.element if hasattr(live, "element") else live, muted])
+    placed = active_sound_clips(seq)
+    assert [(p.clip.name, p.path, p.start.ticks, p.offset.ticks) for p in placed] == [("a", "sound/tools/ramp.wav", 10000, 25)]
+
+    class _Source:
+        def read_bytes(self, rel):
+            return wav if rel == "sound/tools/ramp.wav" else None
+    mix = mix_sequence(session, _Source(), rate=8000, start=Time(0), end=Time(20000))
+    assert mix.rate == 8000 and mix.channels == 2 and mix.frames == 16000 and not mix.warnings
+    # silence before the clip; at the clip's start the sound plays from its offset (25 ticks = 0.0025 s = frame 20 = value 200)
+    assert mix.samples[0] == 0 and mix.samples[7999 * 2] == 0
+    assert mix.samples[8000 * 2] == 200 and mix.samples[8000 * 2 + 1] == 200
+    assert mix.samples[8010 * 2] == 300
+    # past the sound's end (100 frames) the clip is silent again
+    assert mix.samples[8200 * 2] == 0
+    # the slice of a span past the mix is padded with silence and the wav is a valid file
+    assert len(mix.slice(Time(19000), Time(21000))) == 1600 * 2 * 2          # 0.2 s of stereo 16-bit
+    assert parse_wav(mix.wav_bytes()).frames == 16000

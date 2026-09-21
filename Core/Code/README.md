@@ -21,5 +21,6 @@ lets the engine change without breaking anything built on it.
 | `editing.py` | The undo stack and the elementary commands |
 | `keys.py` | Editing a log's keys: move, insert, delete, per component |
 | `motion.py` | The time selection and offsets applied over it |
+| `sound.py` | WAV reader and the mix of the sequence's sound clips |
 | `locations.py` | Where Core's own folders are |
 | `formats/` | Readers: `binary` (bounds-checked cursors), `dmx` (binary 1–5 and keyvalues2), `mdl` / `vvd` / `vtx` / `studio` (models), `vmt` (materials), `vtf` (textures), `bsp` (maps) |
