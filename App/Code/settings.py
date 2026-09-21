@@ -31,6 +31,7 @@ DEFAULTS: Dict[str, Any] = {
 
 
 class Settings:
+    """User settings: a JSON file under App/User/Settings."""
     FILE_NAME = "settings.json"
 
     def __init__(self, path: Optional[Path] = None, values: Optional[Dict[str, Any]] = None) -> None:
@@ -42,6 +43,7 @@ class Settings:
 
     @classmethod
     def load(cls, path: Optional[Path] = None) -> "Settings":
+        """Read settings, falling back to defaults on any error."""
         settings = cls(path)
         try:
             raw = json.loads(settings.path.read_text(encoding="utf-8"))
@@ -55,9 +57,11 @@ class Settings:
         return settings
 
     def get(self, key: str, default: Any = None) -> Any:
+        """A value, else its default."""
         return self.values.get(key, DEFAULTS.get(key, default))
 
     def set(self, key: str, value: Any) -> None:
+        """Change a value and mark the settings dirty."""
         if self.values.get(key) != value:
             self.values[key] = value
             self.dirty = True

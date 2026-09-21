@@ -2,22 +2,27 @@
 Source engine maps: `.bsp` versions 19 to 21 (Team Fortress 2 and SFM's own).
 
 What the editor needs from a map is what SFM shows of it: the world's
-drawable faces with their materials, the displacement terrain built on
-top of some of those faces, and the static props.  This reader gives
-exactly that:
+drawable faces with their materials and lightmaps, the displacement terrain
+built on top of some of those faces, the brush entities, the static props,
+and the light vrad baked in - so that models placed on the map are lit the
+way the map is.  This reader gives exactly that:
 
     bsp = parse_bsp(data, "maps/cp_badlands.bsp")
-    bsp.faces          # WorldFace: material, polygon in world units, uvs, plane normal
+    bsp.faces          # WorldFace: material, polygon in world units, uvs, normal, lightmap
     bsp.static_props   # StaticProp: model path, origin, QAngle, skin
     bsp.entities       # the entity lump as a list of key/value dicts
+    bsp.world_lights   # WorldLight: sun, point and spot lights as vrad saw them
+    bsp.ambient_at(p)  # the ambient cube around a point, from the leaf it is in
+    bsp.lights_at(p)   # the strongest world lights at a point
 
-Lumps read: planes 1, texdata 2, vertexes 3, texinfo 6, faces 7, edges 12,
-surfedges 13, models 14, dispinfo 26, disp verts 33, game lump 35 (static
-props), pakfile 40 (the zip of the map's own materials), texdata string
-data/table 43/44, entities 0, lighting 8 (or its HDR twin 53 when the map
-has only that): each face's luxels decoded from RGBExp32 to gamma-space
-bytes, with per-vertex luxel coordinates from the texinfo's lightmap
-vectors (a displacement's cover its grid).
+Lumps read: entities 0, planes 1, texdata 2, vertexes 3, nodes 5, texinfo 6,
+faces 7, lighting 8 (or its HDR twin 53 when the map has only that), leafs 10,
+edges 12, surfedges 13, models 14, worldlights 15, dispinfo 26, disp verts 33,
+game lump 35 (static props), pakfile 40 (the zip of the map's own materials),
+texdata string data/table 43/44, leaf ambient index/lighting 52/56.  Each
+face's luxels are decoded from RGBExp32 to gamma-space bytes, with per-vertex
+luxel coordinates from the texinfo's lightmap vectors (a displacement's cover
+its grid).  Brush entities (model "*N") are placed at their entity's origin.
 
 Faces that are never drawn (sky, nodraw, hint, skip, trigger, the tool
 textures) are dropped.  A face with a displacement is replaced by the
@@ -57,6 +62,7 @@ GAME_LUMP_STATIC_PROPS = 0x73707270            # 'sprp' as the engine packs it
 
 
 class FormatError(ValueError):
+    """The data is not a BSP this reader understands."""
     pass
 
 
@@ -79,6 +85,7 @@ class WorldFace:
 
 @dataclass
 class StaticProp:
+    """One prop_static: model, placement, skin."""
     model: str                                 # "models/props_xxx/yyy.mdl"
     origin: Vec3
     angles: Vec3                               # QAngle: pitch, yaw, roll in degrees
@@ -122,6 +129,7 @@ class WorldLight:
 
 @dataclass
 class BspFile:
+    """A parsed map: geometry, props, entities, lighting."""
     name: str
     version: int
     faces: List[WorldFace] = field(default_factory=list)
@@ -141,10 +149,12 @@ class BspFile:
 
     @property
     def sky_light(self) -> Optional[WorldLight]:
+        """The sun (light_environment), or None."""
         return next((l for l in self.world_lights if l.kind == EMIT_SKYLIGHT), None)
 
     @property
     def sky_ambient(self) -> Optional[Vec3]:
+        """The sky's ambient colour, or None."""
         light = next((l for l in self.world_lights if l.kind == EMIT_SKYAMBIENT), None)
         return light.intensity if light is not None else None
 
@@ -204,6 +214,7 @@ class BspFile:
 
     @property
     def bounds(self) -> Tuple[Vec3, Vec3]:
+        """Axis-aligned box around every drawn face."""
         lo = [math.inf] * 3
         hi = [-math.inf] * 3
         for face in self.faces:
@@ -244,6 +255,7 @@ _DISP_STRIDE = 176
 
 
 def parse_bsp(data: bytes, name: str = "") -> BspFile:
+    """Parse a .bsp; `name` labels errors and warnings."""
     if len(data) < 8 + 64 * 16 or data[:4] != IDENT:
         raise FormatError(f"{name}: not a Source BSP")
     _ident, version = _HEADER.unpack_from(data, 0)
@@ -253,6 +265,7 @@ def parse_bsp(data: bytes, name: str = "") -> BspFile:
     lumps = [_LUMP.unpack_from(data, 8 + i * 16) for i in range(64)]
 
     def lump(index: int) -> bytes:
+        """Raw bytes of a lump, empty when absent or malformed."""
         offset, length, _version, _fourcc = lumps[index]
         if length <= 0 or offset < 0 or offset + length > len(data):
             return b""

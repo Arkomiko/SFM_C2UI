@@ -25,13 +25,12 @@ import math
 from typing import Dict, List, Optional, Tuple
 
 from Core.API.dmx import AttrType, Element, Time
-from Core.API.session import Dag, FilmClip
+from Core.API.session import FilmClip
 
 from .expression import ExpressionError, evaluate
 from .transform import (IDENTITY, Mat34, apply, apply_direction, invert, matrix_from,
-                        matrix_to_quaternion, multiply, quaternion_inverse, quaternion_multiply,
-                        quaternion_normalize, quaternion_slerp, rotate_vector, rotation_between,
-                        translation_of)
+                        matrix_to_quaternion, multiply, quaternion_multiply, quaternion_normalize,
+                        quaternion_slerp, rotation_between, translation_of)
 
 __all__ = ["run_operators", "OperatorRunner"]
 
@@ -64,6 +63,7 @@ class OperatorRunner:
     # -- transforms ------------------------------------------------------------------
     @staticmethod
     def local(element: Element) -> Mat34:
+        """A dag element's local matrix."""
         t = element.get("transform")
         if not isinstance(t, Element):
             return IDENTITY
@@ -71,12 +71,14 @@ class OperatorRunner:
                            tuple(t.get("orientation", (0.0, 0.0, 0.0, 1.0))))
 
     def world(self, element: Optional[Element]) -> Mat34:
+        """A dag element's world matrix from the recorded parents."""
         if element is None:
             return IDENTITY
         parent = self.parent.get(id(element))
         return multiply(self.world(parent), self.local(element))
 
     def parent_world(self, element: Element) -> Mat34:
+        """World matrix of the element's parent."""
         return self.world(self.parent.get(id(element)))
 
     def write_world(self, element: Element, position: Optional[Vec3], orientation: Optional[Quat]) -> None:
@@ -94,6 +96,7 @@ class OperatorRunner:
 
     # -- running ---------------------------------------------------------------------
     def run(self, time: Time) -> None:
+        """Evaluate every operator of every animation set."""
         self.operators_run = 0
         for aset in self.shot.animation_sets:
             for op in aset.element.get("operators") or []:
@@ -105,6 +108,7 @@ class OperatorRunner:
                     self.errors.append(f"{op.type} {op.name!r}: {type(exc).__name__}: {exc}")
 
     def run_one(self, op: Element, time: Time) -> bool:
+        """Evaluate one operator; True when its type is handled."""
         kind = op.type
         if kind == "DmeExpressionOperator":
             return self._expression(op, time)
@@ -288,6 +292,7 @@ class OperatorRunner:
 
 
 def run_operators(shot: FilmClip, time: Time) -> OperatorRunner:
+    """Run every operator of the shot at `time`; returns the runner."""
     runner = OperatorRunner(shot)
     runner.run(time)
     return runner

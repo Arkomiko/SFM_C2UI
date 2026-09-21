@@ -30,7 +30,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Dict, Iterable, Iterator, List, Optional, Sequence, Tuple
 
-from Core.API.types import Mount, MountSet
+from Core.API.types import Mount
 
 from .vfs import VirtualFileSystem
 
@@ -103,10 +103,12 @@ class ContentEntry:
 
     @property
     def path(self) -> Path:
+        """Absolute path of the file on disk."""
         return self.mount_path / self.rel
 
     @property
     def name(self) -> str:
+        """File name without folders."""
         return self.rel.rsplit("/", 1)[-1]
 
     def __str__(self) -> str:
@@ -125,6 +127,7 @@ class IndexStats:
     rebuilt: bool = False
 
     def summary(self) -> str:
+        """One line on what the build did."""
         if not self.rebuilt:
             return f"index reused: {self.winners} files across {self.mounts} mounts"
         return (f"indexed {self.files} files ({self.winners} visible, "
@@ -148,6 +151,7 @@ class ContentIndex:
 
     # ------------------------------------------------------------------ lifetime
     def open(self) -> sqlite3.Connection:
+        """Open (or reuse) the SQLite connection."""
         if self._db is not None:
             return self._db
         self.cache_dir.mkdir(parents=True, exist_ok=True)
@@ -196,6 +200,7 @@ class ContentIndex:
                 log.debug("Could not remove %s", candidate, exc_info=True)
 
     def close(self) -> None:
+        """Close the connection if open."""
         if self._db is not None:
             self._db.close()
             self._db = None
@@ -288,6 +293,7 @@ class ContentIndex:
         return self._meta("signature") == _signature(mounts)
 
     def built_at(self) -> Optional[float]:
+        """When the index was built, seconds since the epoch, or None."""
         raw = self._meta("built")
         try:
             return float(raw) if raw else None
@@ -313,6 +319,7 @@ class ContentIndex:
 
     # ------------------------------------------------------------------ queries
     def count(self, kind: Optional[str] = None, winners_only: bool = True) -> int:
+        """Number of indexed files, optionally of one kind."""
         db = self.open()
         sql = "SELECT COUNT(*) FROM files WHERE 1=1"
         args: List[object] = []
@@ -392,6 +399,7 @@ class ContentIndex:
         return [self._entry(r) for r in db.execute(sql, args)]
 
     def stats(self) -> IndexStats:
+        """Counts of files, winners and mounts."""
         db = self.open()
         files = int(db.execute("SELECT COUNT(*) FROM files").fetchone()[0])
         winners = int(db.execute("SELECT COUNT(*) FROM files WHERE winner = 1").fetchone()[0])

@@ -17,7 +17,7 @@ as a preview and taken back before the real command is emitted.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Callable, List, Optional, Set, Tuple
+from typing import Callable, List, Optional, Set, Tuple
 
 from PySide6.QtCore import QPointF, QRect, QRectF, Qt, Signal
 from PySide6.QtGui import QColor, QFont, QPainter, QPainterPath, QPen
@@ -82,6 +82,7 @@ class Curve:
                 [component_value(self.kind, v, self.component) for v in values[:n]])
 
     def value_at(self, session_time: Time) -> Optional[float]:
+        """The curve's value at a session time, or None outside its keys."""
         layer = top_layer(self.log)
         keys = _layer_keys(layer) if layer is not None else None
         if keys is None:
@@ -90,6 +91,7 @@ class Curve:
 
 
 class GraphEditor(QWidget):
+    """Curves of the selected logs over time, with key editing."""
     time_changed = Signal(object)       # Time: the ruler was clicked or dragged
     edited = Signal(object)             # Command: push it
     previewed = Signal()                # the logs changed under a drag: re-pose
@@ -129,11 +131,13 @@ class GraphEditor(QWidget):
         self.update()
 
     def set_curves(self, curves: List[Curve]) -> None:
+        """Show these curves."""
         self.curves = list(curves)
         self.selected = set()
         self.fit_values()
 
     def set_time(self, time: Time) -> None:
+        """Move the time cursor."""
         self._time = time
         self.update()
 
@@ -513,6 +517,7 @@ class GraphEditor(QWidget):
         self.update()
 
     def delete_selected(self) -> None:
+        """Delete the selected keys as one undoable command."""
         commands = []
         for c, keys in self._by_curve():
             command = delete_keys(self.curves[c].log, keys)

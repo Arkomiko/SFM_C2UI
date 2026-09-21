@@ -60,6 +60,7 @@ class _Row:
 
 
 class Timeline(QWidget):
+    """Clips on tracks, the time cursor and the time selection."""
     time_changed = Signal(object)        # Time
     shot_selected = Signal(object)       # FilmClip
     selection_changed = Signal(object)   # TimeSelection
@@ -87,6 +88,7 @@ class Timeline(QWidget):
 
     # -- data ------------------------------------------------------------------------
     def set_session(self, session: Optional[Session]) -> None:
+        """Show this session, or clear."""
         self._session = session
         self._rows = []
         self._selected = None
@@ -114,9 +116,11 @@ class Timeline(QWidget):
 
     @property
     def time(self) -> Time:
+        """The current time."""
         return self._time
 
     def set_time(self, time: Time, emit: bool = True) -> None:
+        """Move the time cursor, clamped to the session."""
         ticks = max(0, min(time.ticks, int(self._duration * Time.PER_SECOND)))
         if ticks == self._time.ticks:
             return
@@ -126,11 +130,13 @@ class Timeline(QWidget):
             self.time_changed.emit(self._time)
 
     def select_clip(self, clip: Optional[Clip]) -> None:
+        """Highlight a clip."""
         self._selected = clip
         self.update()
 
     # -- time selection ----------------------------------------------------------------
     def set_selection(self, selection: Optional[TimeSelection], write: bool = True) -> None:
+        """Show a time selection, writing it to the session when asked."""
         self.selection = selection
         if write and self._session is not None and self._session.settings is not None:
             element = self._session.settings.get("timeSelection")
@@ -140,6 +146,7 @@ class Timeline(QWidget):
         self.update()
 
     def clear_selection(self) -> None:
+        """Disable the time selection."""
         self.set_selection(TimeSelection(enabled=False))
 
     def _edges(self):
@@ -164,6 +171,7 @@ class Timeline(QWidget):
         return best
 
     def fit(self) -> None:
+        """Zoom so the whole session fits."""
         width = max(50, self.width() - HEADER_W - 8)
         self._scale = width / self._duration
         self._origin = 0.0
@@ -173,13 +181,16 @@ class Timeline(QWidget):
     # the graph editor shares this axis
     @property
     def origin(self) -> float:
+        """Time at the left edge, seconds."""
         return self._origin
 
     @property
     def scale(self) -> float:
+        """Pixels per second."""
         return self._scale
 
     def tick_step(self) -> float:
+        """Seconds between ruler ticks."""
         return self._tick_step()
 
     # -- geometry ----------------------------------------------------------------------
@@ -265,6 +276,7 @@ class Timeline(QWidget):
             return
 
         def x_of(t: Time, fallback: float) -> float:
+            """Pixel x of a time, `fallback` for an infinite one."""
             return fallback if abs(t.ticks) >= INFINITE.ticks else self._x(t.seconds)
 
         fl = x_of(sel.falloff_left, HEADER_W)

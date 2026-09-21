@@ -65,6 +65,7 @@ class _Keys:
         self.kind = kind
 
     def sample(self, time: Time) -> Any:
+        """The value at `time`, held before the first key and after the last."""
         ticks = self.ticks
         i = bisect_right(ticks, time.ticks)
         if i == 0:
@@ -124,6 +125,7 @@ class Evaluator:
         self.errors: List[str] = []
 
     def invalidate(self) -> None:
+        """Forget cached samplers and operator runners."""
         self._cache.clear()
         self._runners.clear()
 
@@ -200,6 +202,7 @@ class Evaluator:
 
     # -- channels --------------------------------------------------------------------
     def evaluate_channel(self, channel: Channel, time: Time) -> bool:
+        """Drive one channel; True when it wrote its target."""
         mode = channel.mode
         if mode == MODE_OFF:
             return False

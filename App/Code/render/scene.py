@@ -4,7 +4,15 @@ From loaded content to a list of things to draw.
 A scene is a set of *instances*: a model placed somewhere, in some pose. The
 model browser shows one instance at the origin in its bind pose; a shot of a
 session shows every game model in its scene DAG, each with its world matrix
-and the bone transforms the session stored for it.
+and the bone transforms the session stored for it, plus the shot's map: its
+world geometry as one instance per material with the lightmaps packed into
+one atlas, and its static props as instances of their own.
+
+Lighting comes from two places.  The session's projected lights become
+`LightState`s that move with the pose (`refresh_shot_scene`).  The map's
+baked light - vrad's world lights and the ambient cubes in its leaves - is
+looked up per instance at its position (`_map_light`), so a character
+standing in a doorway is lit like the doorway.
 
 Models and textures are loaded once per scene however many instances share
 them. Nothing here touches OpenGL, which keeps it testable with fake content.
@@ -12,7 +20,7 @@ them. Nothing here touches OpenGL, which keeps it testable with fake content.
     scene = build_scene(library, "models/player/scout.mdl")
     scene = build_shot_scene(library, shot)          # a FilmClip from a session
     for instance in scene.instances:
-        instance.items, instance.world, instance.bones
+        instance.items, instance.world, instance.bones, instance.map_lights
 """
 from __future__ import annotations
 
@@ -25,8 +33,7 @@ from Core.API.model import Mesh, Model
 from Core.API.material import as_bool, as_float, as_vec
 from Core.API.session import FilmClip, GameModel, ProjectedLight
 from Core.Code.formats import FormatError, load_material, load_model, parse_vtf
-from Core.Code.formats.bsp import (EMIT_POINT, EMIT_SKYLIGHT, EMIT_SPOTLIGHT, BspFile, WorldLight, map_path,
-                                   parse_bsp)
+from Core.Code.formats.bsp import EMIT_SKYLIGHT, EMIT_SPOTLIGHT, BspFile, map_path, parse_bsp
 from Core.Code.formats.vtf import VtfFile
 from Core.Code.flex import controller_values, morph, run_rules
 from Core.Code.pose import skin_matrices
@@ -40,12 +47,20 @@ __all__ = ["DrawItem", "LoadedModel", "SceneInstance", "Scene", "build_scene", "
 
 
 class SceneSource(Protocol):
-    def read_bytes(self, rel: str) -> Optional[bytes]: ...
-    def read_text(self, rel: str) -> Optional[str]: ...
+    """Anything that hands out content files by path."""
+
+    def read_bytes(self, rel: str) -> Optional[bytes]:
+        """A file's bytes, or None."""
+        ...
+
+    def read_text(self, rel: str) -> Optional[str]:
+        """A file's text, or None."""
+        ...
 
 
 @dataclass
 class DrawItem:
+    """One mesh with its material, ready to draw."""
     mesh: Mesh
     material: Optional[Material] = None
     #: key into Scene.textures, or "" when the surface has no texture
@@ -76,6 +91,7 @@ class DrawItem:
 
     @property
     def blended(self) -> bool:
+        """True for a surface drawn after the opaque ones."""
         return self.translucent or self.additive
 
 
@@ -89,6 +105,7 @@ class LoadedModel:
 
 @dataclass
 class SceneInstance:
+    """A placed model: pose, skinning, lighting."""
     loaded: LoadedModel
     #: a label for the UI - the game model's name in a session
     name: str = ""
@@ -110,10 +127,12 @@ class SceneInstance:
 
     @property
     def model(self) -> Model:
+        """The parsed model."""
         return self.loaded.model
 
     @property
     def items(self) -> List[DrawItem]:
+        """The model's draw items."""
         return self.loaded.items
 
     def bounds(self):
@@ -168,6 +187,7 @@ class LightState:
 
 @dataclass
 class Scene:
+    """Everything the renderer needs for one shot at one time."""
     instances: List[SceneInstance] = field(default_factory=list)
     #: the session's projected lights, updated with the pose
     lights: List[LightState] = field(default_factory=list)
@@ -194,10 +214,12 @@ class Scene:
 
     @property
     def items(self) -> List[DrawItem]:
+        """Draw items of every instance."""
         return [item for instance in self.instances for item in instance.items]
 
     @property
     def bounds(self):
+        """Box around every visible instance."""
         boxes = [i.bounds() for i in self.instances if i.visible]
         boxes = [b for b in boxes if b[0] != b[1]]
         if not boxes:
@@ -206,6 +228,7 @@ class Scene:
                 tuple(max(b[1][a] for b in boxes) for a in range(3)))
 
     def summary(self) -> str:
+        """One line for the status bar."""
         textured = sum(1 for i in self.items if i.texture_key)
         verts = sum(i.model.vertex_count for i in self.instances)
         tris = sum(i.model.triangle_count for i in self.instances)
@@ -382,6 +405,7 @@ class _LightmapAtlas:
         self.height = 0
 
     def place(self, lightmap: Tuple[int, int, bytes]):
+        """Pack a face's lightmap; returns its uv mapping."""
         w, h, data = lightmap
         if self.x + w + 1 > self.WIDTH:
             self.x = 1
@@ -395,6 +419,7 @@ class _LightmapAtlas:
 
         def uv(s: float, t: float, x=x, y=y, w=w, h=h):
             # luxel s in [0, w-1] sits at its centre: (x + s + 0.5) / atlas width
+            """Luxel (s, t) of this block to atlas coordinates."""
             s = min(max(s, 0.0), w - 1)
             t = min(max(t, 0.0), h - 1)
             return (x + s + 0.5) / self.WIDTH, (y + t + 0.5) / max(1, self.final_height)
@@ -402,9 +427,11 @@ class _LightmapAtlas:
 
     @property
     def final_height(self) -> int:
+        """Atlas height rounded up to a power of two."""
         return 1 << max(1, (self.height - 1).bit_length())
 
     def image(self) -> Optional[Tuple[int, int, bytes]]:
+        """The packed atlas as (width, height, rgb bytes), or None."""
         if not self.blocks:
             return None
         height = self.final_height
@@ -425,10 +452,12 @@ class _WithPak:
         self._files = files
 
     def read_bytes(self, rel: str) -> Optional[bytes]:
+        """A file's bytes, the map's own files first."""
         data = self._files.get(rel.replace("\\", "/").lower())
         return data if data is not None else self._source.read_bytes(rel)
 
     def read_text(self, rel: str) -> Optional[str]:
+        """A file's text, the map's own files first."""
         data = self._files.get(rel.replace("\\", "/").lower())
         if data is not None:
             return data.decode("utf-8", "replace")

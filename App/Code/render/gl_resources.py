@@ -51,6 +51,7 @@ def s3tc_available() -> bool:
 
 
 class GLTexture:
+    """A 2D texture on the GPU."""
     def __init__(self, vtf: Optional[VtfFile], name: str = "", rgb: Optional[Tuple[int, int, bytes]] = None) -> None:
         """A texture from a parsed .vtf, or from raw RGB bytes (`rgb` = width, height, data)."""
         self.name = name
@@ -99,16 +100,19 @@ class GLTexture:
         return levels
 
     def bind(self, unit: int = 0) -> None:
+        """Bind to a texture unit."""
         GL.glActiveTexture(GL.GL_TEXTURE0 + unit)
         GL.glBindTexture(GL.GL_TEXTURE_2D, self.id)
 
     def release(self) -> None:
+        """Free the GPU object."""
         if self.id:
             GL.glDeleteTextures(1, [self.id])
             self.id = 0
 
 
 class GLMesh:
+    """A mesh's vertex buffers and VAO on the GPU."""
     def __init__(self, mesh: Mesh) -> None:
         self.index_count = len(mesh.indices)
         self.vao = int(GL.glGenVertexArrays(1))
@@ -152,6 +156,7 @@ class GLMesh:
         GL.glBindBuffer(GL.GL_ARRAY_BUFFER, 0)
 
     def draw(self) -> None:
+        """Issue the indexed draw."""
         if not self.index_count:
             return
         GL.glBindVertexArray(self.vao)
@@ -159,6 +164,7 @@ class GLMesh:
         GL.glBindVertexArray(0)
 
     def release(self) -> None:
+        """Free the GPU object."""
         if self.vao:
             GL.glDeleteVertexArrays(1, [self.vao])
             GL.glDeleteBuffers(len(self.buffers), self.buffers)

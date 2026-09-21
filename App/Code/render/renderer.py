@@ -29,6 +29,7 @@ __all__ = ["Renderer"]
 
 
 class Renderer:
+    """Draws a Scene with the model, line and id shaders."""
     def __init__(self) -> None:
         self.program = 0
         self.uniforms: Dict[str, int] = {}
@@ -63,6 +64,7 @@ class Renderer:
 
     # -- lifecycle -----------------------------------------------------------------
     def initialize(self) -> None:
+        """Compile the shaders and look up their uniforms; needs a current context."""
         self.program = build_program(MODEL_VERT, MODEL_FRAG)
         for name in ("u_view_proj", "u_model", "u_skinned", "u_bones", "u_texture", "u_textured",
                      "u_lit", "u_alpha_test", "u_blended", "u_color", "u_alpha", "u_light_dir", "u_eye",
@@ -85,6 +87,7 @@ class Renderer:
         GL.glBindVertexArray(0)
 
     def set_scene(self, scene: Optional[Scene]) -> None:
+        """Upload a scene's meshes and textures, releasing the previous one."""
         self._release_scene()
         self.scene = scene
         if scene is None:
@@ -128,6 +131,7 @@ class Renderer:
         self.scene = None
 
     def release(self) -> None:
+        """Free every GPU object."""
         self._release_scene()
         for name in ("program", "line_program", "id_program"):
             if getattr(self, name):
@@ -140,6 +144,7 @@ class Renderer:
 
     # -- drawing -----------------------------------------------------------------
     def draw(self, camera: OrbitCamera, width: int, height: int) -> None:
+        """Draw the scene from `camera` into a width x height viewport."""
         GL.glViewport(0, 0, max(1, width), max(1, height))
         GL.glClearColor(*self.background)
         GL.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT)

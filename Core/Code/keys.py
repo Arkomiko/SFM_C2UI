@@ -12,10 +12,9 @@ quaternion log shows as pitch / yaw / roll and a float log is one curve.
 """
 from __future__ import annotations
 
-from bisect import bisect_left
-from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple
+from typing import Any, Callable, List, Optional, Sequence, Tuple
 
-from Core.API.dmx import ARRAY_OFFSET, AttrType, Element, Time
+from Core.API.dmx import ARRAY_OFFSET, AttrType, Time
 from Core.API.session import Log
 
 from .animation import _layer_keys
@@ -86,6 +85,7 @@ def with_component(kind: Optional[int], value: Any, component: int, number: floa
 
 
 def key_count(log: Log) -> int:
+    """Number of keys in the log's top layer."""
     layer = top_layer(log)
     return len(layer.get("times") or []) if layer is not None else 0
 
@@ -112,9 +112,11 @@ class ReplaceKeys(Command):
         self.new_types = list(curvetypes) if curvetypes is not None else None
 
     def apply(self) -> None:
+        """Write the new arrays."""
         self._write(self.new_times, self.new_values, self.new_types)
 
     def revert(self) -> None:
+        """Write the old arrays back."""
         self._write(self.old_times, self.old_values, self.old_types)
 
     def _write(self, times: List[Time], values: List[Any], types: Optional[List[int]]) -> None:
@@ -209,6 +211,7 @@ def insert_key(log: Log, time: Time, value: Any = None, label: str = "insert key
 
 
 def delete_keys(log: Log, indices: Sequence[int], label: str = "delete keys") -> Optional[ReplaceKeys]:
+    """A command deleting the keys at `indices`; None when nothing changes."""
     times, values, types = _arrays(log)
     chosen = set(i for i in indices if 0 <= i < len(times))
     if not chosen or len(chosen) >= len(times):          # a log keeps at least one key

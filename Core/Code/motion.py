@@ -17,14 +17,13 @@ caller maps the selection through the clip first (`mapped`).
 """
 from __future__ import annotations
 
-import math
 from dataclasses import dataclass
-from typing import Any, Callable, List, Optional, Sequence, Tuple
+from typing import Any, List, Optional, Tuple
 
 from Core.API.dmx import ARRAY_OFFSET, AttrType, Element, Time
 from Core.API.session import Log, TimeFrame
 
-from .animation import _layer_keys, interpolate
+from .animation import _layer_keys
 from .editing import Command, top_layer
 from .transform import quaternion_multiply, quaternion_normalize, quaternion_slerp
 
@@ -69,6 +68,7 @@ def weight_curve(t: float, interpolator: int) -> float:
 
 @dataclass
 class TimeSelection:
+    """SFM's time selection: hold region with falloffs on both sides."""
     falloff_left: Time = Time(-INFINITE.ticks)
     hold_left: Time = Time(-INFINITE.ticks)
     hold_right: Time = INFINITE
@@ -81,6 +81,7 @@ class TimeSelection:
 
     @classmethod
     def from_element(cls, element: Element) -> "TimeSelection":
+        """Read from a DmeTimeSelection element."""
         return cls(
             falloff_left=element.get("falloff_left", Time(-INFINITE.ticks)),
             hold_left=element.get("hold_left", Time(-INFINITE.ticks)),
@@ -93,6 +94,7 @@ class TimeSelection:
         )
 
     def write(self, element: Element) -> None:
+        """Store into a DmeTimeSelection element."""
         element.set("falloff_left", AttrType.TIME, self.falloff_left)
         element.set("hold_left", AttrType.TIME, self.hold_left)
         element.set("hold_right", AttrType.TIME, self.hold_right)
@@ -103,9 +105,11 @@ class TimeSelection:
 
     @property
     def is_infinite(self) -> bool:
+        """True when both falloffs extend forever."""
         return (self.falloff_left.ticks <= -INFINITE.ticks and self.falloff_right.ticks >= INFINITE.ticks)
 
     def weight(self, time: Time) -> float:
+        """How much `time` is affected, 0..1."""
         t = time.ticks
         if t < self.falloff_left.ticks or t > self.falloff_right.ticks:
             return 0.0
@@ -120,6 +124,7 @@ class TimeSelection:
     def mapped(self, frame: TimeFrame) -> "TimeSelection":
         """The same selection expressed in a clip's local time."""
         def convert(time: Time) -> Time:
+            """Shot time to log time, leaving infinities alone."""
             if abs(time.ticks) >= INFINITE.ticks:
                 return time
             return frame.to_child_time(time)
@@ -220,9 +225,11 @@ class OffsetOverSelection(Command):
         return new_times, new_values
 
     def apply(self) -> None:
+        """Write the new arrays."""
         self._write(self.new_times, self.new_values)
 
     def revert(self) -> None:
+        """Write the old arrays back."""
         self._write(self.old_times, self.old_values)
 
     def _write(self, times: List[Time], values: List[Any]) -> None:

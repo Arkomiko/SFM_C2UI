@@ -1,14 +1,19 @@
 """
 GLSL sources and the small amount of code needed to build them.
 
-One program draws everything.  Without session lights a surface gets a
-directional key light from the camera and a floor of ambient - enough to
-read a model's shape in the browser.  With lights it is lit the way Source
-lights a model under SFM's projected lights: each light is a frustum with
-the flashlight attenuation (constant + linear / d + quadratic / d^2), a
-fade to nothing between farZAtten and maxDistance, diffuse with optional
-half-lambert and a $lightwarptexture ramp, Blinn phong with $phongexponent,
-$phongboost and $phongfresnelranges, and $rimlight fed by the ambient.
+One program draws everything.  Without lights a surface gets a directional
+key light from the camera and a floor of ambient - enough to read a model's
+shape in the browser.  With lights it is lit the way Source lights a model:
+the session's projected lights are frustums with the flashlight attenuation
+(constant + linear / d + quadratic / d^2) and a fade to nothing between
+farZAtten and maxDistance; the map's point, spot and sun lights use vrad's
+attenuation and the spot's inner / outer cone; the ambient is the map's
+ambient cube sampled by the normal.  Diffuse has optional half-lambert and
+a $lightwarptexture ramp, specular is Blinn phong with $phongexponent,
+$phongboost and $phongfresnelranges, $rimlight is fed by the ambient and
+$selfillum glows through the base alpha.  World faces skip all of that and
+multiply the base texture by their lightmap.  Light is summed in linear
+space and written out in gamma, as the engine does.
 The vertex stage skins with up to three bones per vertex when the instance
 has a pose; otherwise the bind pose goes through untouched.
 """
@@ -21,6 +26,7 @@ __all__ = ["MODEL_VERT", "MODEL_FRAG", "LINE_VERT", "LINE_FRAG", "ID_FRAG", "MAX
 
 
 class ShaderError(RuntimeError):
+    """A shader failed to compile or link."""
     pass
 
 

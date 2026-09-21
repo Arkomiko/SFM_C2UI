@@ -34,6 +34,7 @@ PICK_DISTANCE = 10.0
 
 
 class Manipulator:
+    """The move/rotate gizmo: three axes, one active while dragging."""
     def __init__(self) -> None:
         self.mode = MOVE
         self.origin: Vec3 = (0.0, 0.0, 0.0)
@@ -47,6 +48,7 @@ class Manipulator:
 
     # -- placement -------------------------------------------------------------------
     def place(self, origin: Vec3, rotation: Optional[Tuple[float, float, float, float]] = None) -> None:
+        """Put the gizmo at `origin`, aligned to `rotation` or world axes."""
         self.origin = tuple(origin)
         if rotation is None:
             self.axes = [(1.0, 0.0, 0.0), (0.0, 1.0, 0.0), (0.0, 0.0, 1.0)]
@@ -56,6 +58,7 @@ class Manipulator:
         self.visible = True
 
     def hide(self) -> None:
+        """Hide and stop any drag."""
         self.visible = False
         self.active = None
         self._start = None
@@ -128,6 +131,7 @@ class Manipulator:
 
     # -- dragging --------------------------------------------------------------------
     def begin(self, axis: int, px: float, py: float, project: Project) -> None:
+        """Start dragging along `axis` from screen point (px, py)."""
         self.active = axis
         self._start = (px, py)
         o = project(self.origin)
@@ -165,6 +169,7 @@ class Manipulator:
         return (axis, angle)
 
     def end(self) -> None:
+        """Finish the drag."""
         self.active = None
         self._start = None
 

@@ -32,32 +32,39 @@ IDENTITY: Mat4 = (1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 #  Vectors
 # ---------------------------------------------------------------------------
 def add(a: Vec3, b: Vec3) -> Vec3:
+    """a + b"""
     return a[0] + b[0], a[1] + b[1], a[2] + b[2]
 
 
 def sub(a: Vec3, b: Vec3) -> Vec3:
+    """a - b"""
     return a[0] - b[0], a[1] - b[1], a[2] - b[2]
 
 
 def scale(a: Vec3, s: float) -> Vec3:
+    """a * s"""
     return a[0] * s, a[1] * s, a[2] * s
 
 
 def dot(a: Vec3, b: Vec3) -> float:
+    """Dot product."""
     return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
 
 
 def cross(a: Vec3, b: Vec3) -> Vec3:
+    """Cross product."""
     return (a[1] * b[2] - a[2] * b[1],
             a[2] * b[0] - a[0] * b[2],
             a[0] * b[1] - a[1] * b[0])
 
 
 def length(a: Vec3) -> float:
+    """Euclidean length."""
     return math.sqrt(dot(a, a))
 
 
 def normalize(a: Vec3) -> Vec3:
+    """Unit vector; zero for a zero input."""
     n = length(a)
     return (a[0] / n, a[1] / n, a[2] / n) if n > 1e-12 else (0.0, 0.0, 0.0)
 
@@ -76,10 +83,12 @@ def multiply(a: Mat4, b: Mat4) -> Mat4:
 
 
 def transpose(m: Mat4) -> Mat4:
+    """Transpose a column-major 4x4."""
     return tuple(m[r * 4 + c] for c in range(4) for r in range(4))
 
 
 def transform_point(m: Mat4, p: Vec3) -> Vec3:
+    """Transform a point, dividing by w."""
     x, y, z = p
     w = m[3] * x + m[7] * y + m[11] * z + m[15]
     w = w if abs(w) > 1e-12 else 1.0
@@ -89,6 +98,7 @@ def transform_point(m: Mat4, p: Vec3) -> Vec3:
 
 
 def transform_direction(m: Mat4, d: Vec3) -> Vec3:
+    """Transform a direction (no translation)."""
     x, y, z = d
     return (m[0] * x + m[4] * y + m[8] * z,
             m[1] * x + m[5] * y + m[9] * z,
@@ -96,6 +106,7 @@ def transform_direction(m: Mat4, d: Vec3) -> Vec3:
 
 
 def translation(t: Vec3) -> Mat4:
+    """A translation matrix."""
     return (1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, t[0], t[1], t[2], 1)
 
 
@@ -121,6 +132,7 @@ def perspective(fov_y: float, aspect: float, near: float, far: float) -> Mat4:
 
 def orthographic(left: float, right: float, bottom: float, top: float,
                  near: float, far: float) -> Mat4:
+    """An orthographic projection matrix."""
     return (2 / (right - left), 0, 0, 0,
             0, 2 / (top - bottom), 0, 0,
             0, 0, -2 / (far - near), 0,

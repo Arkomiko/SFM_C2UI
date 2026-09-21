@@ -63,13 +63,16 @@ class VirtualFile:
 
     @property
     def name(self) -> str:
+        """File name without folders."""
         return self.path.name
 
     @property
     def suffix(self) -> str:
+        """Lower-case extension, with the dot."""
         return self.path.suffix.lower()
 
     def read_bytes(self) -> bytes:
+        """The file's contents."""
         return self.path.read_bytes()
 
     def __str__(self) -> str:
@@ -92,12 +95,14 @@ class VirtualFileSystem:
 
     # -- mounts -----------------------------------------------------------------
     def set_mounts(self, mounts: Union[MountSet, Sequence[Mount]]) -> None:
+        """Replace the mounts, lowest priority first."""
         source = list(mounts) if not isinstance(mounts, MountSet) else list(mounts.mounts)
         self._mounts = sorted(source, key=lambda m: m.priority)
         self._cache.clear()
 
     @property
     def mounts(self) -> List[Mount]:
+        """The mounts in priority order."""
         return list(self._mounts)
 
     def __bool__(self) -> bool:
@@ -149,10 +154,12 @@ class VirtualFileSystem:
         return out
 
     def exists(self, rel: str) -> bool:
+        """True when some mount has the file."""
         return self.resolve(rel) is not None
 
     # -- reading ----------------------------------------------------------------
     def read_bytes(self, rel: str) -> Optional[bytes]:
+        """The file's contents."""
         path = self.resolve(rel)
         if path is None:
             return None
@@ -163,6 +170,7 @@ class VirtualFileSystem:
             return None
 
     def read_text(self, rel: str, encodings: Iterable[str] = ("utf-8", "cp1252", "latin-1")) -> Optional[str]:
+        """The file as text, trying each encoding in turn."""
         raw = self.read_bytes(rel)
         if raw is None:
             return None
@@ -192,6 +200,7 @@ class VirtualFileSystem:
         return sorted(seen, key=str.lower)
 
     def isdir(self, rel: str) -> bool:
+        """True when some mount has the folder."""
         key = normalise(rel)
         if key is None:
             return False
@@ -239,6 +248,7 @@ class VirtualFileSystem:
 
     # -- diagnostics ------------------------------------------------------------
     def describe(self) -> str:
+        """Mount names joined by ``>``."""
         if not self._mounts:
             return "no mounts"
         return " > ".join(m.name for m in self._mounts)

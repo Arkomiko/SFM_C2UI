@@ -33,7 +33,7 @@ import re
 import struct
 import uuid
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Tuple, Union
 
 from Core.API.dmx import (ARRAY_OFFSET, TYPE_IDS, AttrType, DmxDocument, Element, Time, is_array,
                           type_id, type_name)
@@ -48,6 +48,7 @@ _MAX_STRINGS = 50_000_000
 
 
 class DmxHeader:
+    """The ``<!-- dmx encoding ... -->`` line, parsed."""
     __slots__ = ("encoding", "encoding_version", "format", "format_version", "length")
 
     def __init__(self, encoding: str, encoding_version: int, format_: str,
@@ -60,6 +61,7 @@ class DmxHeader:
 
 
 def read_header(data: bytes, name: str = "") -> DmxHeader:
+    """Parse the header line; raises FormatError when absent."""
     match = _HEADER.match(data)
     if not match:
         raise FormatError(f"{name or 'dmx'}: not a DMX file (no header)")
@@ -100,25 +102,30 @@ class _BinaryReader:
         self.name = name
 
     def need(self, count: int, what: str) -> None:
+        """Raise FormatError unless `count` bytes remain."""
         if self.pos + count > len(self.data):
             raise FormatError(f"{self.name}: truncated while reading {what} at {self.pos}")
 
     def unpack(self, s: struct.Struct, what: str = "value"):
+        """Unpack a struct and advance."""
         self.need(s.size, what)
         value = s.unpack_from(self.data, self.pos)
         self.pos += s.size
         return value
 
     def int(self, what: str = "int") -> int:
+        """One int32."""
         return self.unpack(_S_INT, what)[0]
 
     def raw(self, count: int, what: str) -> bytes:
+        """`count` bytes, advancing."""
         self.need(count, what)
         out = self.data[self.pos:self.pos + count]
         self.pos += count
         return out
 
     def cstring(self, what: str = "string") -> str:
+        """A NUL-terminated string."""
         end = self.data.find(b"\0", self.pos)
         if end < 0:
             raise FormatError(f"{self.name}: unterminated {what} at {self.pos}")
@@ -146,6 +153,7 @@ def _parse_binary(data: bytes, header: DmxHeader, name: str) -> DmxDocument:
         doc.strings = [r.cstring("table string") for _ in range(count)]
 
     def table_string(what: str) -> str:
+        """A string referenced by table index."""
         index = r.unpack(layout.index_struct, what)[0]
         if not 0 <= index < len(doc.strings):
             raise FormatError(f"{name}: string index {index} out of range for {what}")
@@ -163,6 +171,7 @@ def _parse_binary(data: bytes, header: DmxHeader, name: str) -> DmxDocument:
 
     # attributes
     def element_ref() -> Any:
+        """An element reference: index, -1 for none, -2 for an external GUID."""
         index = r.int("element index")
         if index == -1:
             return None
@@ -173,6 +182,7 @@ def _parse_binary(data: bytes, header: DmxHeader, name: str) -> DmxDocument:
         return doc.elements[index]
 
     def value(kind: int) -> Any:
+        """One attribute value of type `kind`."""
         if kind == AttrType.ELEMENT:
             return element_ref()
         if kind == AttrType.INT:
@@ -233,6 +243,7 @@ class _StringTable:
             self.index.setdefault(s, i)
 
     def add(self, s: str) -> int:
+        """Intern a string; returns its index."""
         i = self.index.get(s)
         if i is None:
             i = len(self.strings)
@@ -251,6 +262,7 @@ def _serialise_binary(doc: DmxDocument) -> bytes:
     table = _StringTable(doc.strings)
 
     def encode(s: str) -> bytes:
+        """UTF-8 with a NUL terminator, surrogates passed through."""
         return s.encode("utf-8", "surrogateescape") + b"\0"
 
     # pass one: collect strings in the order the reader would have met them,
@@ -269,12 +281,14 @@ def _serialise_binary(doc: DmxDocument) -> bytes:
     body = bytearray()
 
     def write_string(s: str, in_table: bool) -> None:
+        """A string in the table (versions that have one) or inline."""
         if in_table:
             body.extend(layout.index_struct.pack(table.add(s)))
         else:
             body.extend(encode(s))
 
     def element_ref(v: Any) -> None:
+        """An element reference: index, -1 for none, -2 for an external GUID."""
         if v is None:
             body.extend(_S_INT.pack(-1))
         elif isinstance(v, uuid.UUID):
@@ -287,6 +301,7 @@ def _serialise_binary(doc: DmxDocument) -> bytes:
             body.extend(_S_INT.pack(index))
 
     def write_value(kind: int, v: Any) -> None:
+        """One attribute value of type `kind`."""
         if kind == AttrType.ELEMENT:
             element_ref(v)
         elif kind == AttrType.INT:
@@ -395,6 +410,7 @@ def _parse_kv2(data: bytes, header: DmxHeader, name: str) -> DmxDocument:
     pending: List[Tuple[Element, str, int, uuid.UUID]] = []     # element refs to fix up by id
 
     def expect(tok: str) -> None:
+        """Consume `tok` or raise FormatError."""
         nonlocal pos
         if pos >= len(tokens) or tokens[pos] != tok:
             got = tokens[pos] if pos < len(tokens) else "<end>"
@@ -402,6 +418,7 @@ def _parse_kv2(data: bytes, header: DmxHeader, name: str) -> DmxDocument:
         pos += 1
 
     def next_token(what: str) -> str:
+        """Consume the next token or raise FormatError at the end."""
         nonlocal pos
         if pos >= len(tokens):
             raise FormatError(f"{name}: file ends inside {what}")
@@ -464,6 +481,7 @@ def _parse_kv2(data: bytes, header: DmxHeader, name: str) -> DmxDocument:
                 element.set(aname, AttrType.ELEMENT, read_element(tname))
 
     def read_element(etype: str) -> Element:
+        """Read an element body into a new element."""
         element = Element(etype, "")
         doc.add(element)
         read_body(element)
@@ -513,9 +531,11 @@ def _serialise_kv2(doc: DmxDocument) -> bytes:
     written: set = set()
 
     def reference(v: Any) -> str:
+        """An element or GUID as its GUID string."""
         return str(v if isinstance(v, uuid.UUID) else v.id)
 
     def write_body(element: Element, depth: int) -> None:
+        """Write an element and, inline, the elements only it refers to."""
         written.add(id(element))
         indent = "\t" * depth
         inner = indent + "\t"
@@ -572,6 +592,7 @@ def _serialise_kv2(doc: DmxDocument) -> bytes:
 #  Entry points
 # ===========================================================================
 def parse_dmx(data: bytes, name: str = "file.dmx") -> DmxDocument:
+    """Parse binary or keyvalues2 DMX bytes."""
     header = read_header(data, name)
     if header.encoding == "binary":
         return _parse_binary(data, header, name)
@@ -581,6 +602,7 @@ def parse_dmx(data: bytes, name: str = "file.dmx") -> DmxDocument:
 
 
 def serialise_dmx(doc: DmxDocument) -> bytes:
+    """Bytes in the document's own encoding and version."""
     if doc.encoding == "binary":
         return _serialise_binary(doc)
     if doc.encoding == "keyvalues2":
@@ -589,9 +611,11 @@ def serialise_dmx(doc: DmxDocument) -> bytes:
 
 
 def load_dmx(path: Union[str, Path]) -> DmxDocument:
+    """Parse a .dmx file."""
     path = Path(path)
     return parse_dmx(path.read_bytes(), path.name)
 
 
 def save_dmx(doc: DmxDocument, path: Union[str, Path]) -> None:
+    """Write a document to a .dmx file."""
     Path(path).write_bytes(serialise_dmx(doc))

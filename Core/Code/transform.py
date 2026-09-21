@@ -12,7 +12,7 @@ result into whatever its API wants; nothing here knows about OpenGL.
 from __future__ import annotations
 
 import math
-from typing import List, Sequence, Tuple
+from typing import Tuple
 
 __all__ = ["Mat34", "IDENTITY", "matrix_from", "multiply", "apply", "apply_direction",
            "invert", "quaternion_to_matrix", "quaternion_multiply", "quaternion_normalize",
@@ -30,6 +30,7 @@ IDENTITY: Mat34 = (1.0, 0.0, 0.0, 0.0,
 
 
 def quaternion_normalize(q: Quat) -> Quat:
+    """Unit quaternion; identity for a zero input."""
     x, y, z, w = q
     n = math.sqrt(x * x + y * y + z * z + w * w)
     if n < 1e-12:
@@ -124,6 +125,7 @@ def matrix_to_quaternion(m: Mat34) -> Quat:
 
 
 def quaternion_inverse(q: Quat) -> Quat:
+    """The rotation that undoes `q`."""
     x, y, z, w = quaternion_normalize(q)
     return (-x, -y, -z, w)
 
@@ -151,6 +153,7 @@ def rotation_between(a: Vec3, b: Vec3) -> Quat:
 
 
 def quaternion_from_axis_angle(axis: Vec3, angle: float) -> Quat:
+    """Rotation of `angle` radians about `axis`."""
     x, y, z = axis
     n = math.sqrt(x * x + y * y + z * z)
     if n < 1e-12:
@@ -160,6 +163,7 @@ def quaternion_from_axis_angle(axis: Vec3, angle: float) -> Quat:
 
 
 def rotate_vector(q: Quat, v: Vec3) -> Vec3:
+    """Rotate a vector by a quaternion."""
     m = quaternion_to_matrix(q)
     return (m[0] * v[0] + m[1] * v[1] + m[2] * v[2],
             m[3] * v[0] + m[4] * v[1] + m[5] * v[2],
@@ -167,6 +171,7 @@ def rotate_vector(q: Quat, v: Vec3) -> Vec3:
 
 
 def matrix_from(position: Vec3, rotation: Quat) -> Mat34:
+    """A 3x4 matrix from a position and a rotation."""
     r = quaternion_to_matrix(rotation)
     return (r[0], r[1], r[2], position[0],
             r[3], r[4], r[5], position[1],
@@ -192,6 +197,7 @@ def multiply(a: Mat34, b: Mat34) -> Mat34:
 
 
 def apply(m: Mat34, p: Vec3) -> Vec3:
+    """Transform a point."""
     x, y, z = p
     return (m[0] * x + m[1] * y + m[2] * z + m[3],
             m[4] * x + m[5] * y + m[6] * z + m[7],
@@ -199,6 +205,7 @@ def apply(m: Mat34, p: Vec3) -> Vec3:
 
 
 def apply_direction(m: Mat34, d: Vec3) -> Vec3:
+    """Transform a direction (no translation)."""
     x, y, z = d
     return (m[0] * x + m[1] * y + m[2] * z,
             m[4] * x + m[5] * y + m[6] * z,
@@ -217,6 +224,7 @@ def invert(m: Mat34) -> Mat34:
 
 
 def translation_of(m: Mat34) -> Vec3:
+    """The translation column."""
     return (m[3], m[7], m[11])
 
 

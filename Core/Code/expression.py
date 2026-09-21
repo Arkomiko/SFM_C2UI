@@ -22,6 +22,7 @@ __all__ = ["evaluate", "ExpressionError", "compile_expression"]
 
 
 class ExpressionError(ValueError):
+    """A malformed or unevaluable expression."""
     pass
 
 
@@ -84,9 +85,11 @@ class _Parser:
         self.pos = 0
 
     def peek(self) -> Optional[str]:
+        """The next token without consuming it."""
         return self.tokens[self.pos] if self.pos < len(self.tokens) else None
 
     def take(self, expected: Optional[str] = None) -> str:
+        """Consume the next token, checking it when `expected` is given."""
         tok = self.peek()
         if tok is None or (expected is not None and tok != expected):
             raise ExpressionError(f"expected {expected!r}, got {tok!r}")
@@ -95,6 +98,7 @@ class _Parser:
 
     # grammar, lowest precedence first
     def conditional(self, v):
+        """``a ? b : c``"""
         cond = self.or_(v)
         if self.peek() == "?":
             self.take()
@@ -105,6 +109,7 @@ class _Parser:
         return cond
 
     def or_(self, v):
+        """``a || b``"""
         left = self.and_(v)
         while self.peek() == "||":
             self.take(); right = self.and_(v)
@@ -112,6 +117,7 @@ class _Parser:
         return left
 
     def and_(self, v):
+        """``a && b``"""
         left = self.equality(v)
         while self.peek() == "&&":
             self.take(); right = self.equality(v)
@@ -119,6 +125,7 @@ class _Parser:
         return left
 
     def equality(self, v):
+        """``a == b``, ``a != b``"""
         left = self.comparison(v)
         while self.peek() in ("==", "!="):
             op = self.take(); right = self.comparison(v)
@@ -126,6 +133,7 @@ class _Parser:
         return left
 
     def comparison(self, v):
+        """``<``, ``>``, ``<=``, ``>=``"""
         left = self.additive(v)
         while self.peek() in ("<", ">", "<=", ">="):
             op = self.take(); right = self.additive(v)
@@ -133,6 +141,7 @@ class _Parser:
         return left
 
     def additive(self, v):
+        """``+``, ``-``"""
         left = self.term(v)
         while self.peek() in ("+", "-"):
             op = self.take(); right = self.term(v)
@@ -140,6 +149,7 @@ class _Parser:
         return left
 
     def term(self, v):
+        """``*``, ``/``, ``%``"""
         left = self.power(v)
         while self.peek() in ("*", "/", "%"):
             op = self.take(); right = self.power(v)
@@ -152,6 +162,7 @@ class _Parser:
         return left
 
     def power(self, v):
+        """``a ^ b``"""
         base = self.unary(v)
         if self.peek() == "^":
             self.take()
@@ -163,6 +174,7 @@ class _Parser:
         return base
 
     def unary(self, v):
+        """``-a``, ``!a``"""
         tok = self.peek()
         if tok == "-":
             self.take(); return -self.unary(v)
@@ -173,6 +185,7 @@ class _Parser:
         return self.primary(v)
 
     def primary(self, v):
+        """Number, variable, call or parenthesised expression."""
         tok = self.take()
         if tok == "(":
             value = self.conditional(v)
@@ -220,6 +233,7 @@ def compile_expression(text: str) -> Callable[[Mapping[str, float]], float]:
     tokens = list(parser.tokens)
 
     def run(variables: Mapping[str, float]) -> float:
+        """Evaluate with these variable values."""
         parser.tokens = tokens
         parser.pos = 0
         if not tokens:

@@ -19,7 +19,7 @@ from __future__ import annotations
 from bisect import bisect_left
 from typing import Any, Callable, List, Optional, Sequence
 
-from Core.API.dmx import ARRAY_OFFSET, AttrType, Element, Time
+from Core.API.dmx import ARRAY_OFFSET, Element, Time
 from Core.API.session import Channel, Log
 
 __all__ = ["Command", "SetAttribute", "SetKey", "Group", "UndoStack", "set_key", "remove_key",
@@ -31,9 +31,11 @@ class Command:
     label = "edit"
 
     def apply(self) -> None:
+        """Do the change."""
         raise NotImplementedError
 
     def revert(self) -> None:
+        """Undo the change."""
         raise NotImplementedError
 
 
@@ -53,9 +55,11 @@ class SetAttribute(Command):
         self.label = label or f"set {name}"
 
     def apply(self) -> None:
+        """Do the change."""
         _write(self.element, self.name, self.index, self.value)
 
     def revert(self) -> None:
+        """Undo the change."""
         _write(self.element, self.name, self.index, self.old)
 
 
@@ -81,9 +85,11 @@ class SetKey(Command):
         self.previous = _key_at(layer, time) if layer is not None else None
 
     def apply(self) -> None:
+        """Do the change."""
         set_key(self.log, self.time, self.value)
 
     def revert(self) -> None:
+        """Undo the change."""
         if self.previous is None:
             remove_key(self.log, self.time)
         else:
@@ -98,6 +104,7 @@ class Group(Command):
         self.label = label
 
     def apply(self) -> None:
+        """Do the change."""
         done = []
         try:
             for command in self.commands:
@@ -109,11 +116,13 @@ class Group(Command):
             raise
 
     def revert(self) -> None:
+        """Undo the change."""
         for command in reversed(self.commands):
             command.revert()
 
 
 class UndoStack:
+    """Commands done and undone, with a clean mark for the dirty flag."""
     def __init__(self, limit: int = 1000) -> None:
         self._done: List[Command] = []
         self._undone: List[Command] = []
@@ -134,6 +143,7 @@ class UndoStack:
         self._notify()
 
     def undo(self) -> Optional[Command]:
+        """Revert the last command; returns it, or None."""
         if not self._done:
             return None
         command = self._done.pop()
@@ -143,6 +153,7 @@ class UndoStack:
         return command
 
     def redo(self) -> Optional[Command]:
+        """Re-apply the last undone command; returns it, or None."""
         if not self._undone:
             return None
         command = self._undone.pop()
@@ -153,29 +164,36 @@ class UndoStack:
 
     @property
     def can_undo(self) -> bool:
+        """True when there is something to undo."""
         return bool(self._done)
 
     @property
     def can_redo(self) -> bool:
+        """True when there is something to redo."""
         return bool(self._undone)
 
     @property
     def undo_label(self) -> str:
+        """Label of the command undo would revert."""
         return self._done[-1].label if self._done else ""
 
     @property
     def redo_label(self) -> str:
+        """Label of the command redo would apply."""
         return self._undone[-1].label if self._undone else ""
 
     @property
     def dirty(self) -> bool:
+        """True when the document differs from the last clean mark."""
         return len(self._done) != self._clean_at
 
     def mark_clean(self) -> None:
+        """Record the current state as saved."""
         self._clean_at = len(self._done)
         self._notify()
 
     def clear(self) -> None:
+        """Forget every command."""
         self._done.clear()
         self._undone.clear()
         self._clean_at = 0
@@ -190,6 +208,7 @@ class UndoStack:
 #  Keys
 # ---------------------------------------------------------------------------
 def top_layer(log: Log) -> Optional[Element]:
+    """The log's last layer element, or None."""
     layers = log.element.get("layers")
     if isinstance(layers, list):
         for layer in reversed(layers):
@@ -229,6 +248,7 @@ def set_key(log: Log, time: Time, value: Any) -> bool:
 
 
 def remove_key(log: Log, time: Time) -> bool:
+    """Delete the key at `time` from the top layer; True when found."""
     layer = top_layer(log)
     if layer is None:
         return False
@@ -244,6 +264,7 @@ def remove_key(log: Log, time: Time) -> bool:
 
 
 def value_type_of(log: Log) -> Optional[int]:
+    """Attribute type of the log's values, or None."""
     layer = top_layer(log)
     if layer is None:
         return None

@@ -1,10 +1,15 @@
 """
-The editor window: a viewport in the middle, the content browser on the
-left, the session tree on the right and the timeline along the bottom.
+The editor window: the viewport in the middle and, in dockable panels around
+it, the content browser, the session tree, the element inspector, the
+timeline and the graph editor.  Panels dock the UE5 way (`ui.docking`).
 
-Deliberately plain - one default look, plain dock widgets, no workspaces yet.
-What it proves is the whole path from "where is Source Filmmaker?" to a
-session's shot on screen, inside the application folder, without sfm.exe.
+The window is the only place that ties the pieces together: it loads a
+session, builds the scene of the current shot off the GUI thread, evaluates
+animation at the timeline's time, turns clicks in the viewport into a
+selected bone (or the rig handle that drives it), and pushes every edit
+from the inspector, manipulator, graph and motion editors on one undo stack.
+Everything it writes stays inside the application folder; sfm.exe is never
+involved.
 """
 from __future__ import annotations
 
@@ -19,16 +24,14 @@ from PySide6.QtWidgets import (QDockWidget, QFileDialog, QLabel, QLineEdit, QLis
                                QListWidgetItem, QMainWindow, QMessageBox, QStatusBar,
                                QVBoxLayout, QWidget)
 
-from Core.API.dmx import Time
+from Core.API.dmx import Element, Time
 from Core.API.session import Camera, Dag, FilmClip, GameModel, Session
-from Core.API.dmx import Element
 from Core.Code.animation import Evaluator
-from Core.Code.editing import UndoStack, channel_index, record_edit, value_type_of
-from Core.Code.keys import components
-from Core.Code.operators import constrained_attributes, constraint_handle
+from Core.Code.editing import Group, UndoStack, channel_index, record_edit, value_type_of
 from Core.Code.formats import FormatError, load_dmx, save_dmx
-from Core.Code.editing import Group
+from Core.Code.keys import components
 from Core.Code.motion import TimeSelection
+from Core.Code.operators import constrained_attributes, constraint_handle
 from Core.Code.transform import (apply, apply_direction, invert, matrix_to_quaternion, multiply,
                                  quaternion_from_axis_angle, quaternion_multiply,
                                  quaternion_normalize, translation_of)
@@ -58,6 +61,7 @@ class _SceneLoader(QThread):
         self.label = label
 
     def run(self) -> None:
+        """Build the scene off the GUI thread and report the result."""
         try:
             self.done.emit(self.build(), "")
         except FormatError as exc:
@@ -74,6 +78,7 @@ def _same(a, b) -> bool:
 
 
 class MainWindow(QMainWindow):
+    """The editor window: viewport, session tree, timeline, graph, inspector."""
     def __init__(self, settings: Settings) -> None:
         super().__init__()
         self.settings = settings
@@ -301,6 +306,7 @@ class MainWindow(QMainWindow):
 
     # -- sessions ------------------------------------------------------------------
     def sessions_folder(self) -> str:
+        """Where SFM keeps its sessions, or the home folder."""
         root = self.library.state.root
         if root is not None:
             for candidate in (root / "game" / "usermod" / "elements" / "sessions",
@@ -310,6 +316,7 @@ class MainWindow(QMainWindow):
         return str(Path.home())
 
     def open_session_dialog(self) -> None:
+        """Ask for a .dmx and open it."""
         path, _filter = QFileDialog.getOpenFileName(
             self, "Open Session", self.settings.get("session.last_folder") or self.sessions_folder(),
             "Source Filmmaker sessions (*.dmx);;All files (*)")
@@ -317,6 +324,7 @@ class MainWindow(QMainWindow):
             self.open_session(Path(path))
 
     def open_session(self, path: Path) -> bool:
+        """Load a session; False when cancelled or unreadable."""
         if not self._confirm_discard():
             return False
         self.statusBar().showMessage(f"reading {path.name}...")
@@ -353,6 +361,7 @@ class MainWindow(QMainWindow):
         return True
 
     def close_session(self) -> None:
+        """Drop the session and empty every view."""
         if not self._confirm_discard():
             return
         self._play_timer.stop()
@@ -369,6 +378,7 @@ class MainWindow(QMainWindow):
 
     # -- saving and editing --------------------------------------------------------
     def save_session(self) -> bool:
+        """Save to the current path, asking for one when there is none."""
         if self.session is None:
             return False
         if self.session_path is None:
@@ -376,6 +386,7 @@ class MainWindow(QMainWindow):
         return self._save_to(self.session_path)
 
     def save_session_as(self) -> bool:
+        """Ask for a path and save."""
         if self.session is None:
             return False
         start = str(self.session_path) if self.session_path else self.sessions_folder()
@@ -424,10 +435,12 @@ class MainWindow(QMainWindow):
         self.setWindowTitle(title)
 
     def undo_edit(self) -> None:
+        """Undo the last command."""
         if self.undo.undo() is not None:
             self._after_edit()
 
     def redo_edit(self) -> None:
+        """Redo the last undone command."""
         if self.undo.redo() is not None:
             self._after_edit()
 
@@ -452,6 +465,7 @@ class MainWindow(QMainWindow):
         self._after_edit()
 
     def show_graph_editor(self) -> None:
+        """Bring the graph editor to the front."""
         self.graph_dock.show()
         self.graph_dock.raise_()
         self.graph.setFocus()
@@ -474,9 +488,11 @@ class MainWindow(QMainWindow):
             clip_frame, shot_frame = d.clip.time_frame, shot.time_frame
 
             def to_log(time: Time, cf=clip_frame, sf=shot_frame) -> Time:
+                """Session time to log time."""
                 return cf.to_child_time(sf.to_child_time(time))
 
             def to_session(time: Time, cf=clip_frame, sf=shot_frame) -> Time:
+                """Log time to session time."""
                 return sf.to_parent_time(cf.to_parent_time(time))
 
             for i, name in enumerate(names):
@@ -508,12 +524,15 @@ class MainWindow(QMainWindow):
             from Core.Code.editing import Command
 
             class Rename(Command):
+                """Undoable rename of an element."""
                 label = "rename"
 
                 def apply(self_inner) -> None:
+                    """Set the new name."""
                     element.name = value
 
                 def revert(self_inner) -> None:
+                    """Put the old name back."""
                     element.name = old
             self.undo.push(Rename())
             self.tree.set_session(self.session)
@@ -552,6 +571,7 @@ class MainWindow(QMainWindow):
         return True
 
     def show_shot(self, shot: FilmClip) -> None:
+        """Make `shot` current and build its scene."""
         if _same(shot, self.current_shot):
             return
         self.current_shot = shot
@@ -596,6 +616,7 @@ class MainWindow(QMainWindow):
         self.viewport.update()
 
     def frame_selection(self) -> None:
+        """Fit the camera to the selected node, or the scene."""
         scene = self.viewport.scene
         node = self.selected
         if scene is None or node is None:
@@ -726,6 +747,7 @@ class MainWindow(QMainWindow):
         self.viewport.update()
 
     def use_shot_camera(self) -> None:
+        """Look through the shot's camera."""
         shot = self.current_shot
         if shot is not None and shot.camera is not None:
             self.follow_camera = True
@@ -793,6 +815,7 @@ class MainWindow(QMainWindow):
         self.viewport.update()
 
     def toggle_play(self) -> None:
+        """Play or pause from the current time."""
         if self._play_timer.isActive():
             self._play_timer.stop()
             self.statusBar().showMessage(f"paused at {self.timeline.time.seconds:.3f} s")
@@ -802,6 +825,7 @@ class MainWindow(QMainWindow):
             self._play_timer.start()
 
     def stop(self) -> None:
+        """Stop and return to where playback began."""
         if self._play_timer.isActive():
             self._play_timer.stop()
             self.timeline.set_time(self._play_from)
@@ -868,6 +892,7 @@ class MainWindow(QMainWindow):
         super().closeEvent(event)
 
     def restore_geometry(self) -> None:
+        """Put the window and docks where they were last time."""
         raw = self.settings.get("window.geometry")
         if raw:
             self.restoreGeometry(QByteArray.fromBase64(raw.encode("ascii")))

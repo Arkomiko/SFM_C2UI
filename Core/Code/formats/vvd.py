@@ -56,6 +56,7 @@ class VvdFile:
 
     @property
     def vertex_count(self) -> int:
+        """Number of vertices."""
         return len(self.positions) // 3
 
 

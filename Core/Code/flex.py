@@ -23,7 +23,7 @@ from __future__ import annotations
 
 import math
 from array import array
-from typing import Dict, List, Mapping, Optional, Sequence, Tuple
+from typing import List, Mapping, Optional, Sequence, Tuple
 
 from Core.API.model import Mesh, Model
 

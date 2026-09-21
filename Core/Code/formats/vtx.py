@@ -70,6 +70,7 @@ class VtxMesh:
 
     @property
     def triangle_count(self) -> int:
+        """Number of triangles."""
         return len(self.indices) // 3
 
 
@@ -86,6 +87,7 @@ class VtxFile:
 
     @property
     def triangle_count(self) -> int:
+        """Number of triangles."""
         return sum(mesh.triangle_count
                    for part in self.body_parts for model in part for mesh in model)
 

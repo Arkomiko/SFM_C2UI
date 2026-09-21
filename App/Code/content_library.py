@@ -47,9 +47,11 @@ class LibraryState:
 
     @property
     def ready(self) -> bool:
+        """True when the installation is usable and something is mounted."""
         return self.availability.usable and self.mounts > 0
 
     def summary(self) -> str:
+        """One line for the status bar."""
         if not self.ready:
             return self.detail or "no content mounted"
         counted = self.stats.winners if self.stats else 0
@@ -114,6 +116,7 @@ class ContentLibrary:
             return None
 
     def close(self) -> None:
+        """Close the index database."""
         self.index.close()
 
     def rescan(self, progress: Optional[Callable[[str, int], None]] = None) -> Optional[IndexStats]:
@@ -125,19 +128,24 @@ class ContentLibrary:
     # ---------------------------------------------------------------- queries
     @property
     def ready(self) -> bool:
+        """True when content is mounted."""
         return self.state.ready
 
     def kinds(self) -> Dict[str, int]:
+        """File kind to count."""
         return self.index.kinds() if self.ready else {}
 
     def search(self, text: str, kind: Optional[str] = None, limit: int = 200) -> List[ContentEntry]:
+        """Files whose path contains `text`."""
         return self.index.search(text, kind, limit) if self.ready else []
 
     def browse(self, folder: str = "", kind: Optional[str] = None,
                limit: int = 500) -> List[ContentEntry]:
+        """Files in a folder."""
         return self.index.in_folder(folder, kind, limit) if self.ready else []
 
     def page(self, kind: Optional[str] = None, limit: int = 200, offset: int = 0) -> List[ContentEntry]:
+        """A page of visible files."""
         return self.index.winners(kind, limit, offset) if self.ready else []
 
     def resolve(self, rel: str) -> Optional[Path]:
@@ -148,9 +156,11 @@ class ContentLibrary:
         return self.vfs.resolve(rel)
 
     def overrides(self, rel: str) -> List[ContentEntry]:
+        """Every mount's copy of a file, winner first."""
         return self.index.overrides(rel) if self.ready else []
 
     def read_bytes(self, rel: str) -> Optional[bytes]:
+        """A file's bytes through the mounts, or None."""
         path = self.resolve(rel)
         if path is None:
             return None
@@ -161,6 +171,7 @@ class ContentLibrary:
             return None
 
     def read_text(self, rel: str) -> Optional[str]:
+        """A file's text through the mounts, or None."""
         return self.vfs.read_text(rel) if self.vfs else None
 
     def disk_source(self) -> "DiskSource":
@@ -180,10 +191,13 @@ class DiskSource:
         self.vfs = vfs
 
     def resolve(self, rel: str) -> Optional[Path]:
+        """Where the file is on disk, or None."""
         return self.vfs.resolve(rel)
 
     def read_bytes(self, rel: str) -> Optional[bytes]:
+        """A file's bytes through the mounts, or None."""
         return self.vfs.read_bytes(rel)
 
     def read_text(self, rel: str) -> Optional[str]:
+        """A file's text through the mounts, or None."""
         return self.vfs.read_text(rel)

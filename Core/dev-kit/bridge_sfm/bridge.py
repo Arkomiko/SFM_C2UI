@@ -45,6 +45,7 @@ class SFMBridge(SourceBridge):
         found: List[Path] = []
 
         def add(candidate) -> None:
+            """Record a candidate once."""
             if not candidate:
                 return
             p = Path(candidate)

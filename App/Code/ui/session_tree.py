@@ -19,6 +19,7 @@ ROLE_VIEW = Qt.UserRole + 1
 
 
 class SessionTree(QTreeWidget):
+    """Shots, their scenes and animation sets as a tree."""
     shot_selected = Signal(object)          # FilmClip
     node_selected = Signal(object, object)  # FilmClip, Dag (or None)
     element_selected = Signal(object)       # the Element behind whatever was picked
@@ -34,6 +35,7 @@ class SessionTree(QTreeWidget):
 
     # -- filling -------------------------------------------------------------------
     def set_session(self, session: Optional[Session]) -> None:
+        """Show this session, or clear."""
         self.clear()
         self._session = session
         if session is None:
@@ -118,6 +120,7 @@ class SessionTree(QTreeWidget):
         return False
 
     def select_shot(self, shot: FilmClip) -> None:
+        """Select the item of this shot."""
         root = self.topLevelItem(0)
         if root is None:
             return

@@ -1,14 +1,19 @@
 """
-The viewport widget: a Renderer inside a QOpenGLWidget with orbit controls.
+The viewport widget: a Renderer inside a QOpenGLWidget with SFM's controls.
 
-    left drag        orbit; on a manipulator axis, move or rotate the target
-    left click       pick what is under the pointer
-    middle drag      pan          (also shift + left drag)
-    wheel            dolly
-    F                frame the model
-    W                wireframe
-    T / R            manipulator: move / rotate
-    X / Y / Z        set the up axis
+    right drag             look around from where the camera is
+    right + W A S D        fly forward / left / back / right (Z or Q down, X or E up;
+                           Shift faster, Ctrl slower)
+    middle drag            pan
+    Alt + left drag        orbit the target
+    wheel                  dolly
+    left click             pick the bone under the pointer (instance, then bone)
+    left drag on an axis   move or rotate along the manipulator
+    F3                     wireframe
+    T / R                  manipulator: move / rotate
+    X / Y / Z              set the up axis
+
+`F` (frame the selection) and the playback keys are the window's shortcuts.
 
 The scene is built off the GL thread (it is pure Python) and handed over with
 `set_scene`; the GPU upload happens on the next paint, with the context current.
@@ -33,6 +38,7 @@ __all__ = ["Viewport", "gl_format"]
 
 
 def gl_format() -> QSurfaceFormat:
+    """The GL 3.3 core surface format the viewport needs."""
     fmt = QSurfaceFormat()
     fmt.setVersion(3, 3)
     fmt.setProfile(QSurfaceFormat.CoreProfile)
@@ -43,6 +49,7 @@ def gl_format() -> QSurfaceFormat:
 
 class Viewport(QOpenGLWidget):
     #: emitted with a human-readable message when the GL side fails
+    """The 3D view: renders a Scene, handles the SFM camera and picking."""
     failed = Signal(str)
     #: emitted after a scene is uploaded, with the scene summary
     scene_ready = Signal(str)
@@ -84,6 +91,7 @@ class Viewport(QOpenGLWidget):
 
     # -- scene ---------------------------------------------------------------------
     def set_scene(self, scene: Optional[Scene], frame: bool = True) -> None:
+        """Show `scene` on the next paint, framing it when `frame` is set."""
         self._pending = scene
         self._pending_frame = frame
         self._scene_changed = True
@@ -91,9 +99,11 @@ class Viewport(QOpenGLWidget):
 
     @property
     def scene(self) -> Optional[Scene]:
+        """The scene on screen, or None."""
         return self.renderer.scene
 
     def frame_scene(self) -> None:
+        """Fit the camera to the whole scene."""
         scene = self.renderer.scene
         if scene is not None:
             self._frame(scene)

@@ -16,8 +16,7 @@ from __future__ import annotations
 
 import logging
 from array import array
-from pathlib import Path
-from typing import Callable, List, Optional, Protocol
+from typing import List, Optional, Protocol
 
 from Core.API.model import Mesh, Model
 
@@ -41,7 +40,9 @@ class ModelSource(Protocol):
     loaded straight from mounted content or from a folder in a test.
     """
 
-    def read_bytes(self, rel: str) -> Optional[bytes]: ...
+    def read_bytes(self, rel: str) -> Optional[bytes]:
+        """The file's bytes, or None when it does not exist."""
+        ...
 
 
 def find_model_files(source: ModelSource, rel: str) -> tuple[str, Optional[str], Optional[str]]:

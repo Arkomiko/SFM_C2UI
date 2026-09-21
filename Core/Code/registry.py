@@ -94,11 +94,13 @@ class BridgeRegistry:
         )
 
     def info(self, bridge_id: str) -> Optional[BridgeInfo]:
+        """The manifest of a bridge by id, or None."""
         if not self._found:
             self.discover()
         return self._found.get(bridge_id)
 
     def available(self) -> List[BridgeInfo]:
+        """Bridges whose manifests loaded."""
         if not self._found:
             self.discover()
         return [i for i in self._found.values() if i.ok]

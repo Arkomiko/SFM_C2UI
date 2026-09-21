@@ -148,6 +148,7 @@ class MdlBodyPart:
     base: int = 1
 
     def chosen(self, body: int) -> int:
+        """Index of the sub-model this body group value selects."""
         if not self.models:
             return -1
         return (body // max(1, self.base)) % len(self.models)

@@ -42,6 +42,7 @@ class KeyValues:
 
     # -- building ---------------------------------------------------------------
     def append(self, key: str, value: Value) -> None:
+        """Add a pair; duplicates are kept, as the format allows."""
         self._pairs.append((key, value))
 
     # -- lookup -----------------------------------------------------------------
@@ -61,6 +62,7 @@ class KeyValues:
         return value
 
     def get(self, key: str, default: Any = None) -> Any:
+        """The first value for `key`, case-insensitive."""
         return next(self._find(key), default)
 
     def all(self, key: str) -> List[Value]:
@@ -68,10 +70,12 @@ class KeyValues:
         return list(self._find(key))
 
     def get_str(self, key: str, default: str = "") -> str:
+        """The first string value for `key`."""
         value = next(self._find(key), None)
         return value if isinstance(value, str) else default
 
     def get_int(self, key: str, default: int = 0) -> int:
+        """The first value for `key` as an int."""
         try:
             return int(self.get_str(key, "").strip())
         except ValueError:
@@ -95,9 +99,11 @@ class KeyValues:
 
     # -- iteration --------------------------------------------------------------
     def items(self) -> List[Tuple[str, Value]]:
+        """Every pair in file order."""
         return list(self._pairs)
 
     def keys(self) -> List[str]:
+        """Every key in file order."""
         return [k for k, _ in self._pairs]
 
     def pairs(self) -> List[Tuple[str, str]]:
@@ -150,6 +156,7 @@ class _Tokenizer:
         return i
 
     def next(self) -> Optional[str]:
+        """The next token, or None at the end."""
         text, size = self.text, self.size
         i = self._skip(self.pos)
         if i >= size:
@@ -183,6 +190,7 @@ class _Tokenizer:
         return text[start:i]
 
     def peek(self) -> Optional[str]:
+        """The next token without consuming it."""
         saved = self.pos
         token = self.next()
         self.pos = saved

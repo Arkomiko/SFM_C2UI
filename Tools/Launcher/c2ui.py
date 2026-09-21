@@ -32,6 +32,7 @@ def _logging() -> None:
 
 
 def main() -> int:
+    """Start the editor; returns the process exit code."""
     _logging()
     from PySide6.QtGui import QSurfaceFormat
     from PySide6.QtWidgets import QApplication

@@ -19,7 +19,7 @@ from __future__ import annotations
 
 from array import array
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Sequence, Tuple
+from typing import Dict, List, Tuple
 
 __all__ = ["Bone", "Mesh", "Model", "ModelInfo", "FlexController", "FlexRule", "MeshFlex"]
 
@@ -60,6 +60,7 @@ class MeshFlex:
 
     @property
     def count(self) -> int:
+        """Number of indices."""
         return len(self.indices)
 
 
@@ -76,6 +77,7 @@ class Bone:
 
     @property
     def is_root(self) -> bool:
+        """True for a bone with no parent."""
         return self.parent < 0
 
 
@@ -99,10 +101,12 @@ class Mesh:
 
     @property
     def vertex_count(self) -> int:
+        """Number of vertices."""
         return len(self.positions) // 3
 
     @property
     def triangle_count(self) -> int:
+        """Number of triangles."""
         return len(self.indices) // 3
 
     def bounds(self) -> Tuple[Tuple[float, float, float], Tuple[float, float, float]]:
@@ -159,14 +163,17 @@ class Model:
 
     @property
     def name(self) -> str:
+        """The model's name from its header."""
         return self.info.name
 
     @property
     def vertex_count(self) -> int:
+        """Number of vertices."""
         return sum(m.vertex_count for m in self.meshes)
 
     @property
     def triangle_count(self) -> int:
+        """Number of triangles."""
         return sum(m.triangle_count for m in self.meshes)
 
     def __bool__(self) -> bool:
@@ -190,13 +197,16 @@ class Model:
         )
 
     def bone_map(self) -> Dict[str, int]:
+        """Bone name to index."""
         return {bone.name: i for i, bone in enumerate(self.bones)}
 
     @property
     def has_flexes(self) -> bool:
+        """True when any mesh carries flex deltas."""
         return any(m.flexes for m in self.meshes)
 
     def flex_controller_map(self) -> Dict[str, int]:
+        """Flex controller name to index."""
         return {c.name: i for i, c in enumerate(self.flex_controllers)}
 
     def material_candidates(self, material: str) -> List[str]:
@@ -220,6 +230,7 @@ class Model:
         return out
 
     def summary(self) -> str:
+        """One line: name, version, bones, meshes, verts, tris."""
         return (f"{self.info.name or '<unnamed>'} v{self.info.version}: "
                 f"{len(self.bones)} bones, {len(self.meshes)} meshes, "
                 f"{self.vertex_count} verts, {self.triangle_count} tris")

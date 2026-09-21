@@ -10,7 +10,7 @@ Element references show as links; double-clicking one navigates to it.
 from __future__ import annotations
 
 import uuid
-from typing import Any, List, Optional
+from typing import Any, Optional
 
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import QAbstractItemView, QTreeWidget, QTreeWidgetItem
@@ -29,6 +29,7 @@ _EDITABLE = {AttrType.INT, AttrType.FLOAT, AttrType.BOOL, AttrType.STRING, AttrT
 
 
 def format_value(kind: int, value: Any) -> str:
+    """A value as the inspector shows it."""
     if value is None:
         return ""
     if isinstance(value, Element):
@@ -78,6 +79,7 @@ def parse_value(kind: int, text: str) -> Any:
 
 class Inspector(QTreeWidget):
     #: element, attribute name, array index (-1 for a scalar), new value
+    """Attributes of one element, editable in place."""
     edited = Signal(object, str, int, object)
     #: an element reference was activated
     navigate = Signal(object)
@@ -96,9 +98,11 @@ class Inspector(QTreeWidget):
 
     @property
     def element(self) -> Optional[Element]:
+        """The element shown, or None."""
         return self._element
 
     def set_element(self, element: Optional[Element]) -> None:
+        """Show this element's attributes."""
         self._filling = True
         self.clear()
         self._element = element

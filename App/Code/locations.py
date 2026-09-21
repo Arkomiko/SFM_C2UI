@@ -11,7 +11,7 @@ import os
 import shutil
 import uuid
 from pathlib import Path
-from typing import Iterable, List
+from typing import Iterable
 
 __all__ = [
     "APP_ROOT", "PROJECT_ROOT",
@@ -132,4 +132,5 @@ def is_inside_app(path) -> bool:
 
 
 def describe() -> str:
+    """One line: app, cache and user folders."""
     return f"app={APP_ROOT} cache={CACHE} user={USER}"

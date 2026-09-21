@@ -31,6 +31,7 @@ VTF_MAGIC = b"VTF\0"
 #  Image formats
 # ---------------------------------------------------------------------------
 class ImageFormat:
+    """VTF pixel format ids."""
     NONE = -1
     RGBA8888 = 0
     ABGR8888 = 1
@@ -137,13 +138,16 @@ class VtfFile:
 
     @property
     def format_name(self) -> str:
+        """Human-readable pixel format."""
         return FORMAT_NAMES.get(self.image_format, str(self.image_format))
 
     @property
     def is_cubemap(self) -> bool:
+        """True for an environment map with six faces."""
         return bool(self.flags & _FLAG_ENVMAP)
 
     def mip_size(self, level: int) -> Tuple[int, int]:
+        """Width and height of mip `level`."""
         return max(1, self.width >> level), max(1, self.height >> level)
 
     def to_rgba(self, level: int = 0, max_size: Optional[int] = None) -> Tuple[bytes, int, int]:

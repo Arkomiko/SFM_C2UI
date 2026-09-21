@@ -35,6 +35,7 @@ class Availability(Enum):
 
     @property
     def usable(self) -> bool:
+        """True only for AVAILABLE."""
         return self is Availability.AVAILABLE
 
 
@@ -54,12 +55,15 @@ class Mount:
 
     @property
     def writable(self) -> bool:
+        """True for the mount that takes writes."""
         return "write" in self.roles or "mod" in self.roles
 
     def has(self, sub: str) -> bool:
+        """True when the mount has this sub-folder."""
         return (self.path / sub).is_dir()
 
     def content_dirs(self) -> List[str]:
+        """Which standard content folders the mount has."""
         return [d for d in CONTENT_DIRS if self.has(d)]
 
     def __str__(self) -> str:
@@ -86,13 +90,16 @@ class MountSet:
         return iter(self.mounts)
 
     def by_name(self, name: str) -> Optional[Mount]:
+        """The mount called `name`, or None."""
         lowered = name.lower()
         return next((m for m in self.mounts if m.name.lower() == lowered), None)
 
     def writable(self) -> Optional[Mount]:
+        """The mount that takes writes, or None."""
         return next((m for m in self.mounts if m.writable), None)
 
     def summary(self) -> str:
+        """One line: title, mount count, root."""
         if not self.mounts:
             return f"{self.title}: nothing mounted"
         return f"{self.title}: {len(self.mounts)} mounts from {self.root}"
@@ -109,6 +116,7 @@ class ProbeResult:
 
     @property
     def ok(self) -> bool:
+        """True when the installation is usable."""
         return self.availability.usable
 
     def __bool__(self) -> bool:
@@ -116,10 +124,12 @@ class ProbeResult:
 
     @classmethod
     def available(cls, root: Path, title: str) -> "ProbeResult":
+        """A successful probe."""
         return cls(Availability.AVAILABLE, root, title)
 
     @classmethod
     def failed(cls, availability: Availability, detail: str, root: Optional[Path] = None) -> "ProbeResult":
+        """A probe that did not find a usable installation."""
         return cls(availability, root, "", detail)
 
 

@@ -43,7 +43,11 @@ _FILE = "<file>"
 
 
 class MaterialSource(Protocol):
-    def read_text(self, rel: str) -> Optional[str]: ...
+    """Anything that hands out .vmt text by path."""
+
+    def read_text(self, rel: str) -> Optional[str]:
+        """The file's text, or None when it does not exist."""
+        ...
 
 
 # ---------------------------------------------------------------------------

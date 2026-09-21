@@ -28,6 +28,7 @@ __all__ = ["bone_world_matrices", "skin_matrices", "bind_local_matrices"]
 
 
 def bind_local_matrices(bones: Sequence[Bone]) -> List[Mat34]:
+    """Each bone's bind pose in its parent's space."""
     return [matrix_from(b.position, b.rotation) for b in bones]
 
 

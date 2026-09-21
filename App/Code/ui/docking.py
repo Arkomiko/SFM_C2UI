@@ -19,7 +19,7 @@ from typing import Dict, List, Optional, Tuple
 
 from PySide6.QtCore import (Property, QEasingCurve, QEvent, QObject, QPoint, QPropertyAnimation,
                             QRect, Qt, Signal)
-from PySide6.QtGui import QColor, QCursor, QMouseEvent, QPainter, QPainterPath, QPen, QPolygon
+from PySide6.QtGui import QColor, QMouseEvent, QPainter, QPen
 from PySide6.QtWidgets import (QApplication, QDockWidget, QHBoxLayout, QLabel, QMainWindow,
                                QToolButton, QWidget)
 
@@ -162,6 +162,7 @@ class DockOverlay(QWidget):
     preview = Property(QRect, _get_preview, _set_preview)
 
     def begin(self, dragged: QDockWidget) -> None:
+        """Start showing drop targets for `dragged`."""
         self.dragged = dragged
         self.setGeometry(self.main.rect())
         self.hot = None
@@ -173,6 +174,7 @@ class DockOverlay(QWidget):
         self.raise_()
 
     def end(self) -> None:
+        """Hide the overlay."""
         self._animation.stop()
         self.hide()
         self.dragged = None
@@ -181,12 +183,6 @@ class DockOverlay(QWidget):
         self.buttons = {}
 
     # -- geometry ----------------------------------------------------------------------
-    def _central_rect(self) -> QRect:
-        central = self.main.centralWidget()
-        if central is None:
-            return self.rect()
-        return QRect(central.mapTo(self.main, QPoint(0, 0)), central.size())
-
     def _dock_rect(self, dock: QDockWidget) -> QRect:
         return QRect(dock.mapTo(self.main, QPoint(0, 0)), dock.size())
 
@@ -212,6 +208,7 @@ class DockOverlay(QWidget):
             self._compass(self._dock_rect(self.hover_dock).center(), "dock", self.hover_dock, True)
 
     def set_hover_dock(self, dock: Optional[QDockWidget]) -> None:
+        """Show the targets around this dock, or the window edges."""
         if dock is self.hover_dock:
             return
         self.hover_dock = dock
@@ -219,6 +216,7 @@ class DockOverlay(QWidget):
         self.update()
 
     def hit(self, local: QPoint) -> Optional[Tuple[str, Optional[QDockWidget], str]]:
+        """The drop target under `local`, or None."""
         for key, rect in self.buttons.items():
             if rect.contains(local):
                 return key
@@ -254,6 +252,7 @@ class DockOverlay(QWidget):
         return QRect(r.left(), r.center().y(), r.width(), r.height() - r.height() // 2)
 
     def set_hot(self, key) -> None:
+        """Highlight one target."""
         if key == self.hot:
             return
         self.hot = key
@@ -326,6 +325,7 @@ class Docking(QObject):
             self.attach(dock)
 
     def attach(self, dock: QDockWidget) -> None:
+        """Give a dock the custom title bar."""
         if isinstance(dock.titleBarWidget(), DockTitleBar):
             return
         bar = DockTitleBar(dock)
@@ -336,6 +336,7 @@ class Docking(QObject):
         bar.drag_cancelled.connect(self._cancel)
 
     def docks(self) -> List[QDockWidget]:
+        """Every visible dock widget."""
         return [d for d in self.main.findChildren(QDockWidget) if d.isVisible()]
 
     # -- the drag ------------------------------------------------------------------------

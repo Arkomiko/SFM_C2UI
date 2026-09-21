@@ -1,14 +1,18 @@
 """
-An orbit camera: the viewport's default way of looking at a model.
+The viewport camera: orbits a target, or looks and flies like SFM's.
 
-It circles a target point at a distance, with yaw and pitch about a chosen up
-axis. Source content does not agree on which axis is up (see the model notes:
-Y in most re-exported models, Z in the rest), so the up axis is a property,
-and `frame()` can guess it from the model's shape.
+The state is a target point, a distance and yaw / pitch about a chosen up
+axis; the eye follows from those.  `orbit`, `dolly` and `pan` move about the
+target; `look` turns about the eye instead (the target swings with it) and
+`fly` moves the whole camera along its own axes - SFM's right-drag and WASD.
+Source content does not agree on which axis is up (Y in most re-exported
+models, Z in the rest), so the up axis is a property and `frame()` can guess
+it from the model's shape.
 
     cam = OrbitCamera()
     cam.frame(model.bounds())          # fit the model, guess its up axis
-    cam.orbit(dx, dy); cam.dolly(steps); cam.pan(dx, dy)
+    cam.orbit(dx, dy); cam.dolly(steps); cam.pan(dx, dy, height)
+    cam.look(dx, dy); cam.fly(forward, right, up)
     cam.view(), cam.projection(aspect)
 """
 from __future__ import annotations
@@ -31,6 +35,7 @@ Bounds = Tuple[Vec3, Vec3]
 
 
 class OrbitCamera:
+    """The viewport camera: orbit about a target or fly freely."""
     def __init__(self) -> None:
         self.target: Vec3 = (0.0, 0.0, 0.0)
         self.distance = 100.0
@@ -95,6 +100,7 @@ class OrbitCamera:
     # -- basis -------------------------------------------------------------------
     @property
     def up(self) -> Vec3:
+        """World up for the current up axis."""
         return UP_AXES[self.up_axis]
 
     def _basis(self) -> Tuple[Vec3, Vec3]:
@@ -106,6 +112,7 @@ class OrbitCamera:
         return forward, right
 
     def eye(self) -> Vec3:
+        """Where the camera is."""
         forward, right = self._basis()
         cp = math.cos(self.pitch)
         offset = add(add(scale(forward, cp * math.cos(self.yaw)),
@@ -114,9 +121,11 @@ class OrbitCamera:
         return add(self.target, scale(offset, self.distance))
 
     def view(self) -> Mat4:
+        """The view matrix."""
         return look_at(self.eye(), self.target, self.up)
 
     def projection(self, aspect: float) -> Mat4:
+        """A perspective matrix for this aspect ratio."""
         aspect = aspect if aspect > 1e-6 else 1.0
         near = max(self.distance * 0.01, 0.05)
         far = self.distance * 50.0 + 1000.0
@@ -170,5 +179,6 @@ class OrbitCamera:
         self.target = add(self.target, step)
 
     def describe(self) -> str:
+        """One line for the status bar."""
         return (f"target {tuple(round(v, 1) for v in self.target)} dist {self.distance:.1f} "
                 f"yaw {math.degrees(self.yaw):.0f} pitch {math.degrees(self.pitch):.0f} up {self.up_axis}")

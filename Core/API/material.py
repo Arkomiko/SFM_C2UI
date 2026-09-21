@@ -68,6 +68,7 @@ def as_vec(value: Optional[str], default: Tuple[float, ...] = ()) -> Tuple[float
 
 
 def as_bool(value: Optional[str], default: bool = False) -> bool:
+    """A VMT flag: anything non-zero is true."""
     if value is None:
         return default
     return as_float(value, 1.0 if default else 0.0) != 0.0
@@ -90,9 +91,11 @@ class Material:
 
     # -- lookups ------------------------------------------------------------------
     def param(self, key: str, default: Optional[str] = None) -> Optional[str]:
+        """A parameter by name, case-insensitive."""
         return self.params.get(key.lower(), default)
 
     def has(self, key: str) -> bool:
+        """True when the parameter is present."""
         return key.lower() in self.params
 
     def texture(self, key: str) -> str:
@@ -112,26 +115,32 @@ class Material:
 
     @property
     def bump_map(self) -> str:
+        """Path of the normal map, or ""."""
         return self.texture("$bumpmap")
 
     @property
     def translucent(self) -> bool:
+        """$translucent: alpha-blended surface."""
         return as_bool(self.param("$translucent"))
 
     @property
     def alpha_test(self) -> bool:
+        """$alphatest: hard alpha cut-out."""
         return as_bool(self.param("$alphatest"))
 
     @property
     def additive(self) -> bool:
+        """$additive: added to what is behind it."""
         return as_bool(self.param("$additive"))
 
     @property
     def two_sided(self) -> bool:
+        """$nocull: drawn from both sides."""
         return as_bool(self.param("$nocull"))
 
     @property
     def self_illum(self) -> bool:
+        """$selfillum: the alpha channel glows."""
         return as_bool(self.param("$selfillum"))
 
     @property
@@ -148,6 +157,7 @@ class Material:
 
     @property
     def alpha(self) -> float:
+        """$alpha: whole-surface opacity, 1 when unset."""
         return as_float(self.param("$alpha"), 1.0)
 
     @property
@@ -164,6 +174,7 @@ class Material:
         return out
 
     def summary(self) -> str:
+        """One line: shader, path, parameter count, base texture."""
         return (f"{self.shader or '<no shader>'} {self.path}: {len(self.params)} params, "
                 f"base {self.base_texture or '<none>'}")
 

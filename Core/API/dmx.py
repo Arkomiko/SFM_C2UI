@@ -68,18 +68,21 @@ TYPE_IDS: Dict[str, int] = {v: k for k, v in TYPE_NAMES.items()}
 
 
 def type_name(type_id: int) -> str:
+    """Name of a DMX attribute type id, e.g. ``"vector3_array"``."""
     if type_id > ARRAY_OFFSET:
         return TYPE_NAMES[type_id - ARRAY_OFFSET] + "_array"
     return TYPE_NAMES[type_id]
 
 
 def type_id(name: str) -> int:
+    """Type id for a DMX attribute type name."""
     if name.endswith("_array"):
         return TYPE_IDS[name[:-6]] + ARRAY_OFFSET
     return TYPE_IDS[name]
 
 
 def is_array(type_id_: int) -> bool:
+    """True when the id is an array type."""
     return type_id_ > ARRAY_OFFSET
 
 
@@ -98,10 +101,12 @@ class Time:
 
     @classmethod
     def from_seconds(cls, seconds: float) -> "Time":
+        """A time from seconds, rounded to the nearest tick."""
         return cls(round(seconds * cls.PER_SECOND))
 
     @property
     def seconds(self) -> float:
+        """The time in seconds."""
         return self.ticks / self.PER_SECOND
 
     def __eq__(self, other: object) -> bool:
@@ -119,16 +124,19 @@ class Time:
 
 @dataclass
 class Attribute:
+    """One named, typed value on an element."""
     name: str
     type: int
     value: Any
 
     @property
     def is_array(self) -> bool:
+        """True when the id is an array type."""
         return is_array(self.type)
 
     @property
     def type_name(self) -> str:
+        """Name of a DMX attribute type id, e.g. ``"vector3_array"``."""
         return type_name(self.type)
 
 
@@ -150,12 +158,15 @@ class Element:
 
     # -- attributes ------------------------------------------------------------------
     def attribute(self, name: str) -> Optional[Attribute]:
+        """The attribute called `name`, or None."""
         return self._attributes.get(name)
 
     def attributes(self) -> List[Attribute]:
+        """Every attribute in the order it was added."""
         return list(self._attributes.values())
 
     def set(self, name: str, type: int, value: Any) -> Attribute:
+        """Set an attribute, creating it when missing; returns it."""
         attr = self._attributes.get(name)
         if attr is None:
             attr = Attribute(name, type, value)
@@ -166,9 +177,11 @@ class Element:
         return attr
 
     def remove(self, name: str) -> bool:
+        """Drop an attribute; True when it existed."""
         return self._attributes.pop(name, None) is not None
 
     def get(self, name: str, default: Any = None) -> Any:
+        """An attribute's value, or `default` when it has none."""
         attr = self._attributes.get(name)
         return attr.value if attr is not None else default
 
@@ -205,23 +218,28 @@ class DmxDocument:
 
     @property
     def root(self) -> Optional[Element]:
+        """The first element: the document's root."""
         return self.elements[0] if self.elements else None
 
     def find(self, type: Optional[str] = None, name: Optional[str] = None) -> List[Element]:
+        """Elements matching a type and/or name."""
         return [e for e in self.elements
                 if (type is None or e.type == type) and (name is None or e.name == name)]
 
     def by_id(self, id: uuid.UUID) -> Optional[Element]:
+        """The element with this UUID, or None."""
         for element in self.elements:
             if element.id == id:
                 return element
         return None
 
     def add(self, element: Element) -> Element:
+        """Append an element and return it."""
         self.elements.append(element)
         return element
 
     def summary(self) -> str:
+        """A one-line count of elements by type."""
         types = {}
         for e in self.elements:
             types[e.type] = types.get(e.type, 0) + 1
