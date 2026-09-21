@@ -234,3 +234,25 @@ def test_short_pose_falls_back_to_bind():
     skins = skin_matrices(_two_bone_model(), pose)
     assert _close(tf.apply(skins[0], (0, 0, 0)), (0, 0, 3))
     assert _close(tf.apply(skins[1], (0, 0, 10)), (0, 0, 13))       # child inherits the move
+
+
+def test_shot_at_and_the_render_defaults():
+    session = Session(_session())
+    clip = session.active_clip
+    assert clip.shot_at(Time(0)).name == "shot1"
+    assert clip.shot_at(Time(49999)).name == "shot1"
+    assert clip.shot_at(Time(50000)).name == "shot2"
+    assert clip.shot_at(Time(100000)) is None                       # the end is exclusive
+    # no settings element: SFM's defaults
+    assert session.frame_rate == 24.0 and session.movie_size == (1280, 720)
+    doc = session.document
+    settings = doc.add(Element("DmElement", "sessionSettings"))
+    render = doc.add(Element("DmElement", "renderSettings"))
+    render.set("frameRate", AttrType.FLOAT, 30.0)
+    movie = doc.add(Element("DmElement", "movieSettings"))
+    movie.set("width", AttrType.INT, 1920)
+    movie.set("height", AttrType.INT, 1080)
+    settings.set("renderSettings", AttrType.ELEMENT, render)
+    settings.set("movieSettings", AttrType.ELEMENT, movie)
+    session.element.set("settings", AttrType.ELEMENT, settings)
+    assert session.frame_rate == 30.0 and session.movie_size == (1920, 1080)

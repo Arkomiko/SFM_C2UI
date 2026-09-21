@@ -14,14 +14,13 @@ involved.
 from __future__ import annotations
 
 import logging
-import math
 from pathlib import Path
 from typing import Callable, Optional
 
 from PySide6.QtCore import QByteArray, QElapsedTimer, QThread, QTimer, Qt, Signal, Slot
 from PySide6.QtGui import QAction, QKeySequence
-from PySide6.QtWidgets import (QDockWidget, QFileDialog, QLabel, QLineEdit, QListWidget,
-                               QListWidgetItem, QMainWindow, QMessageBox, QStatusBar,
+from PySide6.QtWidgets import (QApplication, QDockWidget, QFileDialog, QLabel, QLineEdit, QListWidget,
+                               QListWidgetItem, QMainWindow, QMessageBox, QProgressDialog, QStatusBar,
                                QVBoxLayout, QWidget)
 
 from Core.API.dmx import Element, Time
@@ -32,15 +31,17 @@ from Core.Code.formats import FormatError, load_dmx, save_dmx
 from Core.Code.keys import components
 from Core.Code.motion import TimeSelection
 from Core.Code.operators import constrained_attributes, constraint_handle
-from Core.Code.transform import (apply, apply_direction, invert, matrix_to_quaternion, multiply,
+from Core.Code.transform import (apply, invert, matrix_to_quaternion, multiply,
                                  quaternion_from_axis_angle, quaternion_multiply,
                                  quaternion_normalize, translation_of)
 
 from .content_library import ContentLibrary
-from .render.scene import Scene, build_scene, build_shot_scene, refresh_shot_scene
+from .export import ExportResult, ExportSettings, export, frame_times
+from .render.scene import Scene, build_scene, build_shot_scene, refresh_shot_scene, shot_camera_pose
 from .render.viewport import Viewport
 from .settings import Settings
 from .ui.docking import Docking
+from .ui.export_dialog import ExportDialog
 from .ui.inspector import Inspector
 from .ui.session_tree import SessionTree
 from .ui.timeline import Timeline
@@ -195,6 +196,11 @@ class MainWindow(QMainWindow):
         close_action = QAction("&Close Session", self)
         close_action.triggered.connect(self.close_session)
         file_menu.addAction(close_action)
+        file_menu.addSeparator()
+        self.export_action = QAction("&Export...", self)
+        self.export_action.setShortcut("Ctrl+E")
+        self.export_action.triggered.connect(self.export_dialog)
+        file_menu.addAction(self.export_action)
         file_menu.addSeparator()
         quit_action = QAction("&Quit", self)
         quit_action.setShortcut(QKeySequence.Quit)
@@ -433,6 +439,56 @@ class MainWindow(QMainWindow):
         if self.undo.dirty:
             title += " *"
         self.setWindowTitle(title)
+
+    # -- export --------------------------------------------------------------------
+    def export_dialog(self) -> None:
+        """Ask what to export, then render it with a progress bar."""
+        if self.session is None or self.session.active_clip is None:
+            self.statusBar().showMessage("open a session to export")
+            return
+        dialog = ExportDialog(self.session, self.current_shot, self.settings, self)
+        if not dialog.exec():
+            return
+        self.run_export(dialog.export_settings())
+
+    def run_export(self, settings: ExportSettings) -> Optional[ExportResult]:
+        """Render `settings` from this session, keeping the window alive and
+        cancellable; the pose comes back to the timeline's time afterwards."""
+        if self.session is None:
+            return None
+        self._play_timer.stop()
+        total = len(frame_times(settings.start, settings.end, settings.fps))
+        progress = QProgressDialog("Rendering...", "Cancel", 0, total, self)
+        progress.setWindowTitle("Export")
+        progress.setWindowModality(Qt.WindowModal)
+        progress.setMinimumDuration(0)
+        progress.setValue(0)
+
+        def report(done: int, count: int) -> bool:
+            progress.setLabelText(f"Rendering frame {done} of {count}")
+            progress.setValue(done)
+            QApplication.processEvents()
+            return not progress.wasCanceled()
+
+        result: Optional[ExportResult] = None
+        try:
+            result = export(self.session, self.library.disk_source(), settings, report)
+        except (ValueError, RuntimeError, OSError) as exc:
+            log.exception("export failed")
+            QMessageBox.critical(self, "Export", str(exc))
+        finally:
+            progress.close()
+            # the export evaluated the session at its last frame: back to the cursor
+            self.evaluator.evaluate(self.session.active_clip, self.timeline.time)
+            self._refresh_pose()
+            self.viewport.update()
+        if result is not None:
+            self.statusBar().showMessage(result.summary)
+            if result.warnings:
+                lines = [result.summary, f"{len(result.warnings)} warnings:"]
+                lines.extend(f"  {w}" for w in result.warnings[:5])
+                self.info.setText("\n".join(lines))
+        return result
 
     def undo_edit(self) -> None:
         """Undo the last command."""
@@ -758,18 +814,8 @@ class MainWindow(QMainWindow):
 
     def _look_through(self, shot: FilmClip, camera: Camera) -> None:
         """Put the orbit camera where a session camera is, looking along its +X."""
-        world = camera.local_matrix()
-        if shot.scene is not None:
-            for node, m in shot.scene.walk(include_hidden=True):
-                if node.element is camera.element:
-                    world = m
-                    break
-        eye = apply(world, (0.0, 0.0, 0.0))
-        forward = apply_direction(world, (1.0, 0.0, 0.0))
-        target = tuple(eye[i] + forward[i] * camera.focal_distance for i in range(3))
-        # SFM's field of view is horizontal; the orbit camera's is vertical
         aspect = self.viewport.width() / max(1, self.viewport.height())
-        fov_y = 2 * math.atan(math.tan(math.radians(camera.field_of_view) / 2) / max(aspect, 1e-3))
+        eye, target, fov_y = shot_camera_pose(shot, camera, aspect)
         self.viewport.camera.up_axis = "z"
         self.viewport.camera.look_from(eye, target, fov_y=fov_y)
         self.viewport.update()
@@ -794,13 +840,7 @@ class MainWindow(QMainWindow):
 
     def _shot_at(self, time: Time) -> Optional[FilmClip]:
         clip = self.session.active_clip if self.session else None
-        if clip is None:
-            return None
-        for shot in clip.shots:
-            frame = shot.time_frame
-            if frame.start.ticks <= time.ticks < frame.end.ticks:
-                return shot
-        return None
+        return clip.shot_at(time) if clip is not None else None
 
     def _refresh_pose(self) -> None:
         scene = self.viewport.scene

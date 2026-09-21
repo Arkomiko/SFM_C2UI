@@ -32,7 +32,7 @@ from typing import Dict, List, Optional, Protocol, Tuple
 from Core.API.material import Material
 from Core.API.model import Mesh, Model
 from Core.API.material import as_bool, as_float, as_vec
-from Core.API.session import FilmClip, GameModel, ProjectedLight
+from Core.API.session import Camera, FilmClip, GameModel, ProjectedLight
 from Core.Code.formats import FormatError, load_material, load_model, parse_vtf
 from Core.Code.formats.bsp import EMIT_SKYLIGHT, EMIT_SPOTLIGHT, BspFile, map_path, parse_bsp
 from Core.Code.formats.vtf import VtfFile
@@ -44,7 +44,7 @@ from Core.Code.transform import (IDENTITY as IDENTITY34, Mat34, apply, apply_dir
 from .math3d import IDENTITY, Mat4
 
 __all__ = ["DrawItem", "LoadedModel", "SceneInstance", "Scene", "build_scene", "build_shot_scene",
-           "refresh_shot_scene", "load_sky", "sky_face_corners", "SceneSource", "SKY_FACES"]
+           "refresh_shot_scene", "shot_camera_pose", "load_sky", "sky_face_corners", "SceneSource", "SKY_FACES"]
 
 
 class SceneSource(Protocol):
@@ -587,6 +587,23 @@ def refresh_shot_scene(scene: Scene, shot: FilmClip) -> None:
         if visible:
             _apply_face(instance)
             _map_light(scene, instance, apply(world, (0.0, 0.0, 0.0)))
+
+
+def shot_camera_pose(shot: FilmClip, camera: Camera, aspect: float):
+    """Where a session camera is and what it looks at: (eye, target, vertical fov in
+    radians) for a viewport of this aspect.  A Source camera looks along its +X and
+    its field of view is horizontal; the target sits at its focal distance."""
+    world = camera.local_matrix()
+    if shot.scene is not None:
+        for node, m in shot.scene.walk(include_hidden=True):
+            if node.element is camera.element:
+                world = m
+                break
+    eye = apply(world, (0.0, 0.0, 0.0))
+    forward = apply_direction(world, (1.0, 0.0, 0.0))
+    target = tuple(eye[i] + forward[i] * camera.focal_distance for i in range(3))
+    fov_y = 2 * math.atan(math.tan(math.radians(camera.field_of_view) / 2) / max(aspect, 1e-3))
+    return eye, target, fov_y
 
 
 def _apply_face(instance: SceneInstance) -> None:

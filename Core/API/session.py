@@ -430,6 +430,14 @@ class FilmClip(Clip):
         shots.sort(key=lambda c: c.time_frame.start.ticks)
         return shots
 
+    def shot_at(self, time: Time) -> Optional["FilmClip"]:
+        """The shot playing at `time` (this clip's time), or None between shots."""
+        for shot in self.shots:
+            frame = shot.time_frame
+            if frame.start.ticks <= time.ticks < frame.end.ticks:
+                return shot
+        return None
+
     def game_models(self, include_hidden: bool = False) -> List[Tuple[GameModel, Mat34]]:
         """Every game model in the scene with its world matrix; hidden ones
         too when asked, since animation can show them later."""
@@ -593,6 +601,25 @@ class Session(View):
     def settings(self) -> Optional[Element]:
         """The session settings element, or None."""
         return self._get("settings")
+
+    @property
+    def frame_rate(self) -> float:
+        """Frames per second from the render settings; SFM's default 24 when unset."""
+        settings = self.settings
+        render = settings.get("renderSettings") if settings is not None else None
+        rate = render.get("frameRate") if isinstance(render, Element) else None
+        return float(rate) if rate else 24.0
+
+    @property
+    def movie_size(self) -> Tuple[int, int]:
+        """Width and height from the movie settings; 1280 x 720 when unset."""
+        settings = self.settings
+        movie = settings.get("movieSettings") if settings is not None else None
+        if isinstance(movie, Element):
+            width, height = int(movie.get("width", 0) or 0), int(movie.get("height", 0) or 0)
+            if width > 0 and height > 0:
+                return width, height
+        return 1280, 720
 
     def summary(self) -> str:
         """One line: name, active clip, shot count."""
