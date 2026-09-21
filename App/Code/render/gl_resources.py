@@ -99,6 +99,13 @@ class GLTexture:
             levels += 1
         return levels
 
+    def set_clamp(self) -> None:
+        """Clamp instead of repeat: a lookup past the edge reads the edge pixel."""
+        GL.glBindTexture(GL.GL_TEXTURE_2D, self.id)
+        GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_S, GL.GL_CLAMP_TO_EDGE)
+        GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_T, GL.GL_CLAMP_TO_EDGE)
+        GL.glBindTexture(GL.GL_TEXTURE_2D, 0)
+
     def bind(self, unit: int = 0) -> None:
         """Bind to a texture unit."""
         GL.glActiveTexture(GL.GL_TEXTURE0 + unit)

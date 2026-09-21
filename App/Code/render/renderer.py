@@ -39,6 +39,8 @@ class Renderer:
         #: per-instance copies of meshes a face moves: (instance id, item index) -> mesh
         self.morphed: Dict[Tuple[int, int], Tuple[GLMesh, int]] = {}
         self.lightmap: Optional[GLTexture] = None
+        #: the sky's six faces on the GPU, drawn first around the eye
+        self.sky: List[Tuple[DrawItem, GLMesh]] = []
         #: per-instance uniform arrays, rebuilt when the placement or skin objects change
         self._instance_cache: Dict[int, tuple] = {}
         self._light_cache: Dict[tuple, tuple] = {}
@@ -100,15 +102,18 @@ class Renderer:
         if scene.lightmap_atlas is not None:
             try:
                 self.lightmap = GLTexture(None, "lightmap", rgb=scene.lightmap_atlas)
-                GL.glBindTexture(GL.GL_TEXTURE_2D, self.lightmap.id)
-                GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_S, GL.GL_CLAMP_TO_EDGE)
-                GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_T, GL.GL_CLAMP_TO_EDGE)
-                GL.glBindTexture(GL.GL_TEXTURE_2D, 0)
+                self.lightmap.set_clamp()
             except Exception as exc:                        # noqa: BLE001
                 self.errors.append(f"lightmap atlas: {exc}")
         for key, loaded in scene.models.items():
             self.meshes[key] = [(item, GLMesh(item.mesh)) for item in loaded.items
                                 if item.mesh.indices]
+        if scene.sky is not None:
+            self.sky = [(item, GLMesh(item.mesh)) for item in scene.sky.items if item.mesh.indices]
+            for item, _mesh in self.sky:
+                texture = self.textures.get(item.texture_key)
+                if texture is not None:
+                    texture.set_clamp()               # the sides' lower half repeats the horizon row
         for instance in scene.instances:
             if len(instance.bones) > MAX_BONES:
                 self.errors.append(f"{instance.name}: {len(instance.bones)} bones, only "
@@ -126,6 +131,9 @@ class Renderer:
         if self.lightmap is not None:
             self.lightmap.release()
             self.lightmap = None
+        for _item, mesh in self.sky:
+            mesh.release()
+        self.sky = []
         self.meshes = {}
         self.textures = {}
         self.scene = None
@@ -175,6 +183,8 @@ class Renderer:
         GL.glFrontFace(GL.GL_CCW if self.front_face_ccw else GL.GL_CW)
         self._item_state = None
         self._int_state = {}
+        if self.sky and not self.wireframe:
+            self._draw_sky(camera, eye)
         if len(self._instance_cache) > 4 * max(1, len(self.scene.instances)):
             self._instance_cache = {}             # instances came and went: start over
             self._bounds_cache = {}
@@ -219,6 +229,29 @@ class Renderer:
         GL.glUseProgram(0)
         if self.overlay_lines:
             self._draw_lines(view_proj)
+
+    def _draw_sky(self, camera: OrbitCamera, eye) -> None:
+        """The sky: the unit cube's six faces scaled to sit inside the far plane and
+        centred on the eye, drawn unlit with depth off so everything else paints
+        over them - the map's own sky brushes were dropped by the reader."""
+        u = self.uniforms
+        _near, far = camera.depth_range()
+        h = far * 0.5                                # the far corner is at h * sqrt(3) < far
+        model = (GL.GLfloat * 16)(h, 0.0, 0.0, 0.0, 0.0, h, 0.0, 0.0, 0.0, 0.0, h, 0.0,
+                                  eye[0], eye[1], eye[2], 1.0)
+        GL.glUniformMatrix4fv(u["u_model"], 1, GL.GL_FALSE, model)
+        self._set_int("u_skinned", 0)
+        GL.glDisable(GL.GL_DEPTH_TEST)
+        for item, mesh in self.sky:
+            self._apply_state(item)
+            GL.glDepthMask(GL.GL_FALSE)
+            texture = self.textures.get(item.texture_key)
+            if texture is not None:
+                texture.bind(0)
+            self._set_int("u_textured", 1 if texture is not None else 0)
+            mesh.draw()
+        GL.glDepthMask(GL.GL_TRUE)
+        GL.glEnable(GL.GL_DEPTH_TEST)
 
     def _draw_lines(self, view_proj) -> None:
         """Overlay lines (manipulators), on top of everything."""

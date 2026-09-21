@@ -90,3 +90,69 @@ def test_summary_mentions_what_was_found():
     src = _content('"VertexLitGeneric" { "$basetexture" "models/test/skin" }')
     text = build_scene(src, "models/test/thing.mdl").summary()
     assert "1 draw items" in text and "1 textured" in text
+
+
+# -- the sky ------------------------------------------------------------------------
+def _sky_content(faces=("rt", "lf", "bk", "ft", "up", "dn"), transform=True):
+    files = {}
+    pixel = build_vtf([(10, 20, 30, 255)] * 16, 4, 4, fmt=ImageFormat.DXT1)
+    for face in faces:
+        extra = ' "$basetexturetransform" "center 0 0 scale 1 2 rotate 0 translate 0 0"' \
+            if transform and face not in ("up", "dn") else ""
+        files[f"materials/skybox/test_sky{face}.vmt"] = \
+            f'"sky" {{ "$basetexture" "skybox/test_sky{face}" "$nofog" 1 "$ignorez" 1{extra} }}'
+        files[f"materials/skybox/test_sky{face}.vtf"] = pixel
+    return _Content(files)
+
+
+def test_sky_faces_sit_on_the_unit_cube_where_the_engine_puts_them():
+    from App.Code.render.scene import SKY_FACES, sky_face_corners
+    where = {"rt": (0, 1), "lf": (0, -1), "bk": (1, 1), "ft": (1, -1), "up": (2, 1), "dn": (2, -1)}
+    for name, table in SKY_FACES:
+        positions, uvs = sky_face_corners(table)
+        axis, sign = where[name]
+        assert all(p[axis] == sign for p in positions), name
+        assert all(abs(p[a]) == 1 for p in positions for a in range(3)), name
+        assert uvs == [(0.0, 1.0), (1.0, 1.0), (1.0, 0.0), (0.0, 0.0)]
+    # neighbours share an edge with matching texture sides: rt's left (u=0) is +Y,
+    # where bk's right (u=1) is +X - that is what keeps the seams continuous
+    rt, _ = sky_face_corners(dict(SKY_FACES)["rt"])
+    bk, _ = sky_face_corners(dict(SKY_FACES)["bk"])
+    assert rt[0][1] == 1 and rt[3][1] == 1 and bk[1][0] == 1 and bk[2][0] == 1
+
+
+def test_load_sky_builds_six_unlit_faces_with_the_transform_applied():
+    from App.Code.render.scene import Scene, load_sky
+    scene = Scene()
+    sky = load_sky(_sky_content(), scene, "test_sky")
+    assert sky is not None and len(sky.items) == 6
+    for item in sky.items:
+        assert not item.lit and item.two_sided and not item.blended
+        assert item.texture_key == f"materials/skybox/{item.mesh.material.split('/')[-1]}.vtf"
+        assert item.mesh.vertex_count == 4 and item.mesh.triangle_count == 2
+    by_name = {item.mesh.material[-2:]: item for item in sky.items}
+    # a side: the texture is the top half of the face, so v runs 0..2 top to bottom
+    assert list(by_name["rt"].mesh.uvs[1::2]) == [2.0, 2.0, 0.0, 0.0]
+    # the top has no transform and covers the face
+    assert list(by_name["up"].mesh.uvs[1::2]) == [1.0, 1.0, 0.0, 0.0]
+    assert len(scene.textures) == 6 and not scene.warnings
+
+
+def test_sky_is_none_without_a_name_and_a_missing_face_is_a_warning():
+    from App.Code.render.scene import Scene, load_sky
+    assert load_sky(_sky_content(), Scene(), "") is None
+    scene = Scene()
+    sky = load_sky(_sky_content(faces=("rt", "lf", "bk", "ft", "up")), scene, "test_sky")
+    assert sky is not None and len(sky.items) == 5
+    assert any("test_skydn" in w for w in scene.warnings)
+    assert load_sky(_Content({}), Scene(), "nothing") is None
+
+
+def test_texture_transform_scales_rotates_and_translates_about_the_centre():
+    from App.Code.render.scene import _texture_transform
+    from Core.Code.formats.vmt import parse_vmt
+    m = parse_vmt('"sky" { "$basetexturetransform" "center .5 .5 scale 2 2 rotate 90 translate .1 0" }', "t")
+    f = _texture_transform(m)
+    u, v = f(1.0, 0.5)                  # (0.5, 0) after scaling about the centre, then a quarter turn
+    assert abs(u - 0.6) < 1e-9 and abs(v - 1.5) < 1e-9
+    assert _texture_transform(parse_vmt('"sky" { }', "t")) is None

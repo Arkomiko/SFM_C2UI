@@ -124,11 +124,15 @@ class OrbitCamera:
         """The view matrix."""
         return look_at(self.eye(), self.target, self.up)
 
+    def depth_range(self) -> Tuple[float, float]:
+        """Near and far clip distances.  Both scale with the distance to the target,
+        so a model an inch across and a map a mile across each get the precision."""
+        return max(self.distance * 0.01, 0.05), self.distance * 50.0 + 1000.0
+
     def projection(self, aspect: float) -> Mat4:
         """A perspective matrix for this aspect ratio."""
         aspect = aspect if aspect > 1e-6 else 1.0
-        near = max(self.distance * 0.01, 0.05)
-        far = self.distance * 50.0 + 1000.0
+        near, far = self.depth_range()
         return perspective(self.fov_y, aspect, near, far)
 
     # -- interaction -------------------------------------------------------------

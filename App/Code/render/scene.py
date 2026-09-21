@@ -24,6 +24,7 @@ them. Nothing here touches OpenGL, which keeps it testable with fake content.
 """
 from __future__ import annotations
 
+import math
 from array import array
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Protocol, Tuple
@@ -43,7 +44,7 @@ from Core.Code.transform import (IDENTITY as IDENTITY34, Mat34, apply, apply_dir
 from .math3d import IDENTITY, Mat4
 
 __all__ = ["DrawItem", "LoadedModel", "SceneInstance", "Scene", "build_scene", "build_shot_scene",
-           "refresh_shot_scene", "SceneSource"]
+           "refresh_shot_scene", "load_sky", "sky_face_corners", "SceneSource", "SKY_FACES"]
 
 
 class SceneSource(Protocol):
@@ -195,6 +196,10 @@ class Scene:
     lightmap_atlas: Optional[Tuple[int, int, bytes]] = None
     #: the map, kept for light lookups as instances move
     bsp: Optional[BspFile] = None
+    #: the map's sky: six unlit faces around the eye (see `load_sky`), or None
+    sky: Optional[LoadedModel] = None
+    #: worldspawn's `skyname`, "" when the map has none
+    sky_name: str = ""
     #: models by content path, each loaded once
     models: Dict[str, LoadedModel] = field(default_factory=dict)
     #: textures by content path, each parsed once however many meshes use it
@@ -232,9 +237,10 @@ class Scene:
         textured = sum(1 for i in self.items if i.texture_key)
         verts = sum(i.model.vertex_count for i in self.instances)
         tris = sum(i.model.triangle_count for i in self.instances)
+        sky = f", sky {self.sky_name}" if self.sky is not None else ""
         return (f"{self.title}: {len(self.instances)} instances of {len(self.models)} models, "
                 f"{verts} verts, {tris} tris; {len(self.items)} draw items, {textured} textured, "
-                f"{len(self.textures)} textures, {len(self.warnings)} warnings")
+                f"{len(self.textures)} textures{sky}, {len(self.warnings)} warnings")
 
 
 # ---------------------------------------------------------------------------
@@ -340,6 +346,8 @@ def _load_map(source: SceneSource, scene: Scene, name: str) -> None:
     loaded.items.sort(key=lambda item: item.blended)
     scene.models[rel] = loaded
     scene.instances.append(SceneInstance(loaded, name=rel, world=to_column_major_4x4(IDENTITY34)))
+    scene.sky_name = bsp.sky_name
+    scene.sky = load_sky(source, scene, bsp.sky_name)
     for prop in bsp.static_props:
         try:
             prop_model = _load(source, scene, prop.model, 0, 0)
@@ -389,6 +397,93 @@ def _map_light(scene: Scene, instance: SceneInstance, point) -> None:
             lights.append(LightState(light.origin, (0.0, 0.0, 1.0), light.intensity, light.attenuation,
                                      0.0, 1e9, 1e9, -1.0, kind=LIGHT_POINT))
     instance.map_lights = lights
+
+
+#: Source's sky faces, each with Quake's table that turns a face corner (s, t) into
+#: a world direction: for j in 0..2, world[j] = sign(k) * b[|k| - 1] with b = (s, t, 1)
+#: and k = table[j].  "rt" is the +X face, "lf" -X, "bk" +Y, "ft" -Y, "up" +Z, "dn" -Z
+#: (the engine's skytexorder: the names are not where a compass would put them);
+#: a face's texture is read with s to the right and t downwards.
+SKY_FACES = (("rt", (3, -1, 2)), ("lf", (-3, 1, 2)), ("bk", (1, 3, 2)), ("ft", (-1, -3, 2)),
+             ("up", (-2, -1, 3)), ("dn", (2, -1, -3)))
+
+
+def sky_face_corners(table):
+    """The four corners of a sky face on the unit cube and their texture
+    coordinates, in quad order: (s, t) = (-1, -1), (1, -1), (1, 1), (-1, 1)."""
+    positions = []
+    uvs = []
+    for s, t in ((-1.0, -1.0), (1.0, -1.0), (1.0, 1.0), (-1.0, 1.0)):
+        b = (s, t, 1.0)
+        positions.append(tuple(-b[-k - 1] if k < 0 else b[k - 1] for k in table))
+        uvs.append(((s + 1.0) * 0.5, (1.0 - t) * 0.5))
+    return positions, uvs
+
+
+def _texture_transform(material: Material):
+    """`$basetexturetransform` as a function on (u, v): scale and rotate about the
+    centre, then translate - the order Source applies them in."""
+    raw = material.param("$basetexturetransform")
+    if not raw:
+        return None
+    words = raw.replace('"', " ").split()
+    values = {"center": (0.0, 0.0), "scale": (1.0, 1.0), "rotate": (0.0,), "translate": (0.0, 0.0)}
+    i = 0
+    while i < len(words):
+        key = words[i].lower()
+        count = len(values.get(key, ()))
+        if not count:
+            i += 1
+            continue
+        try:
+            values[key] = tuple(float(w) for w in words[i + 1:i + 1 + count])
+        except ValueError:
+            return None
+        i += 1 + count
+    cx, cy = values["center"]
+    sx, sy = values["scale"]
+    angle = math.radians(values["rotate"][0])
+    tx, ty = values["translate"]
+    cos_a, sin_a = math.cos(angle), math.sin(angle)
+
+    def transform(u: float, v: float):
+        u, v = (u - cx) * sx, (v - cy) * sy
+        return (u * cos_a - v * sin_a + cx + tx, u * sin_a + v * cos_a + cy + ty)
+    return transform
+
+
+def load_sky(source: SceneSource, scene: Scene, sky_name: str) -> Optional[LoadedModel]:
+    """The map's sky as six faces of the unit cube, each with the material
+    `skybox/<name><face>` and its texture: the renderer draws them around the eye,
+    unlit, behind everything.  Valve's LDR sides are 512x256 - the top half of
+    the face - and their `$basetexturetransform scale 1 2` stretches them onto
+    it, so that transform is applied to the corners here.  None when the map
+    names no sky or none of its faces can be read."""
+    if not sky_name:
+        return None
+    sky = LoadedModel(rel=f"skybox/{sky_name}", model=Model())
+    sky.model.info.name = sky.rel
+    sky.model.material_dirs = [""]
+    for suffix, table in SKY_FACES:
+        mesh = Mesh(material=f"skybox/{sky_name}{suffix}")
+        positions, uvs = sky_face_corners(table)
+        item = _item_for(source, scene, sky.model, mesh)
+        if item.material is None:
+            continue                                  # the warning is already in the scene
+        transform = _texture_transform(item.material)
+        if transform is not None:
+            uvs = [transform(u, v) for u, v in uvs]
+        for p, uv in zip(positions, uvs):
+            mesh.positions.extend(p)
+            mesh.normals.extend((-p[0], -p[1], -p[2]))    # faces look inwards
+            mesh.uvs.extend(uv)
+        mesh.indices.extend((0, 1, 2, 0, 2, 3))
+        item.lit = False
+        item.two_sided = True
+        item.translucent = item.additive = item.alpha_test = False
+        sky.items.append(item)
+        sky.model.meshes.append(mesh)
+    return sky if sky.items else None
 
 
 class _LightmapAtlas:
@@ -607,7 +702,6 @@ def _shading(item: DrawItem, material: Material) -> None:
 
 
 def _light_state(light: ProjectedLight, world: Mat34) -> LightState:
-    import math
     position = apply(world, (0.0, 0.0, 0.0))
     forward = apply_direction(world, (1.0, 0.0, 0.0))     # Source lights shine along their +X
     n = math.sqrt(sum(v * v for v in forward)) or 1.0

@@ -154,6 +154,7 @@ def test_static_props_and_entities_and_pak():
     prop = bsp.static_props[0]
     assert prop.model == "models/props/b.mdl" and prop.origin == (10, 20, 30) and prop.angles == (0, 90, 0) and prop.skin == 2
     assert bsp.entities[0]["classname"] == "worldspawn" and bsp.entities[1]["origin"] == "1 2 3"
+    assert bsp.sky_name == "sky_day01"
     assert bsp.pak_files() == {"materials/maps/quad/metal/x.vmt": b'"VertexLitGeneric" {}'}
 
 
