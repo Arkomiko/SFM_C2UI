@@ -193,8 +193,10 @@ def build_mdl(name: str = "test/fake.mdl",
 def build_vvd(vertices: Sequence[FakeVertex] = tuple(DEFAULT_VERTICES),
               checksum: int = 0x1234,
               fixups: Sequence[Tuple[int, int, int]] = (),
-              lod_counts: Sequence[int] = ()) -> bytes:
-    """A .vvd holding `vertices`, optionally with a fixup table."""
+              lod_counts: Sequence[int] = (),
+              tangents: bool = False) -> bytes:
+    """A .vvd holding `vertices`, optionally with a fixup table and a tangent block
+    (tangent (1, 0, 0) with the bitangent sign +1 for even vertices, -1 for odd)."""
     counts = list(lod_counts) or [len(vertices)]
     counts = (counts + [0] * 8)[:8]
     num_lods = max(1, len([c for c in counts if c]))
@@ -224,6 +226,9 @@ def build_vvd(vertices: Sequence[FakeVertex] = tuple(DEFAULT_VERTICES),
         body += struct.pack("<2f", *uv)
 
     tangent_start = len(header) + len(body)
+    if tangents:
+        for i in range(len(vertices)):
+            body += struct.pack("<4f", 1.0, 0.0, 0.0, 1.0 if i % 2 == 0 else -1.0)
     struct.pack_into("<i", header, fixup_at, fixup_start if fixups else 0)
     struct.pack_into("<i", header, vertex_at, vertex_start)
     struct.pack_into("<i", header, tangent_at, tangent_start)

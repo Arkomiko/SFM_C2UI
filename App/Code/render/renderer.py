@@ -77,7 +77,9 @@ class Renderer:
                      "u_phong_boost", "u_fresnel", "u_rim", "u_rim_exponent", "u_rim_boost", "u_self_illum",
                      "u_light_count", "u_light_pos", "u_light_dirs", "u_light_color", "u_light_atten",
                      "u_light_range", "u_ambient", "u_lightmap", "u_lightmapped", "u_light_kind",
-                     "u_ambient_cube", "u_has_cube"):
+                     "u_ambient_cube", "u_has_cube", "u_bumpmap", "u_exponent", "u_selfillum_mask",
+                     "u_has_bumpmap", "u_has_exponent", "u_has_selfillum_mask", "u_phong_mask",
+                     "u_invert_phong_mask", "u_albedo_tint", "u_rim_mask"):
             self.uniforms[name] = GL.glGetUniformLocation(self.program, name)
         GL.glEnable(GL.GL_DEPTH_TEST)
         GL.glDepthFunc(GL.GL_LEQUAL)
@@ -187,6 +189,9 @@ class Renderer:
         GL.glUniform1i(u["u_texture"], 0)
         GL.glUniform1i(u["u_lightwarp"], 1)
         GL.glUniform1i(u["u_lightmap"], 2)
+        GL.glUniform1i(u["u_bumpmap"], 3)
+        GL.glUniform1i(u["u_exponent"], 4)
+        GL.glUniform1i(u["u_selfillum_mask"], 5)
         self._lights_key = None
         if self.lightmap is not None:
             self.lightmap.bind(2)
@@ -505,7 +510,9 @@ class Renderer:
         u = self.uniforms
         key = (item.color, item.alpha, item.lit, item.alpha_test, item.blended, item.two_sided, item.additive,
                item.lightmapped, item.halflambert, item.phong, item.phong_exponent, item.phong_boost, item.fresnel, item.rim,
-               item.rim_exponent, item.rim_boost, item.self_illum, item.lightwarp_key)
+               item.rim_exponent, item.rim_boost, item.self_illum, item.lightwarp_key, item.bumpmap_key,
+               item.exponent_key, item.selfillum_key, item.phong_mask, item.invert_phong_mask, item.albedo_tint,
+               item.rim_mask)
         if key == self._item_state:
             return
         self._item_state = key
@@ -525,6 +532,16 @@ class Renderer:
         if warp is not None:
             warp.bind(1)
         self._set_int("u_has_lightwarp", 1 if warp is not None else 0)
+        for unit, key, flag in ((3, item.bumpmap_key, "u_has_bumpmap"), (4, item.exponent_key, "u_has_exponent"),
+                                (5, item.selfillum_key, "u_has_selfillum_mask")):
+            texture = self.textures.get(key) if key else None
+            if texture is not None:
+                texture.bind(unit)
+            self._set_int(flag, 1 if texture is not None else 0)
+        self._set_int("u_phong_mask", item.phong_mask if item.bumpmap_key or item.phong_mask == 1 else 0)
+        self._set_int("u_invert_phong_mask", 1 if item.invert_phong_mask else 0)
+        self._set_int("u_albedo_tint", 1 if item.albedo_tint else 0)
+        self._set_int("u_rim_mask", 1 if item.rim_mask else 0)
         self._set_int("u_lightmapped", 1 if item.lightmapped and self.lightmap is not None else 0)
         self._set_int("u_alpha_test", 1 if item.alpha_test else 0)
         self._set_int("u_blended", 1 if item.blended else 0)

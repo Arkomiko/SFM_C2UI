@@ -34,6 +34,9 @@ _HEADER_SIZE = 64
 #: weight[3], bone[3], numbones, position, normal, uv
 _VERTEX = struct.Struct("<3f4B3f3f2f")
 _FIXUP = struct.Struct("<3i")
+#: the tangent block that follows the vertices: xyz and the bitangent's sign, per vertex
+_TANGENT = struct.Struct("<4f")
+TANGENT_SIZE = 16
 
 
 @dataclass
@@ -52,6 +55,9 @@ class VvdFile:
     uvs: array = field(default_factory=lambda: array("f"))
     bone_indices: array = field(default_factory=lambda: array("B"))
     bone_weights: array = field(default_factory=lambda: array("f"))
+    #: four floats per vertex - the tangent and the sign of the bitangent - or empty
+    #: when the file carries none; normal maps need them
+    tangents: array = field(default_factory=lambda: array("f"))
     warnings: List[str] = field(default_factory=list)
 
     @property
@@ -79,8 +85,11 @@ def parse_vvd(data: bytes, name: str = "model.vvd", lod: int = 0) -> VvdFile:
     fixup_count = reader.i32_at(_H_NUM_FIXUPS)
     fixup_offset = reader.i32_at(_H_FIXUP_INDEX)
     vertex_offset = reader.i32_at(_H_VERTEX_INDEX)
+    tangent_offset = reader.i32_at(_H_TANGENT_INDEX)
 
-    stored = (reader.size - vertex_offset) // VERTEX_SIZE
+    # the vertices run up to the tangent block (which studiomdl always writes after them)
+    vertices_end = tangent_offset if vertex_offset < tangent_offset <= reader.size else reader.size
+    stored = (vertices_end - vertex_offset) // VERTEX_SIZE
     wanted = lod_counts[0] if lod_counts[0] > 0 else stored
     if wanted > stored:
         warnings.append(f"header promises {wanted} vertices, only {stored} are present")
@@ -91,6 +100,8 @@ def parse_vvd(data: bytes, name: str = "model.vvd", lod: int = 0) -> VvdFile:
     out = VvdFile(version=version, checksum=reader.i32_at(_H_CHECKSUM),
                   lod_count=lod_count, lod=lod, has_fixups=fixup_count > 0, warnings=warnings)
     _read_runs(reader, vertex_offset, runs, out)
+    if tangent_offset > 0 and tangent_offset + stored * TANGENT_SIZE <= reader.size:
+        _read_tangents(reader, tangent_offset, runs, out)
     return out
 
 
@@ -120,6 +131,18 @@ def _runs_for_lod(reader: Reader, count: int, offset: int, lod: int,
         warnings.append(f"no fixups apply to level {lod}; using vertices unchanged")
         return [(0, total)]
     return runs
+
+
+def _read_tangents(reader: Reader, base: int, runs: List[Tuple[int, int]], out: VvdFile) -> None:
+    """The tangent of every vertex the runs cover, in the same order as the vertices."""
+    tangents = out.tangents
+    unpack = _TANGENT.unpack_from
+    data = reader.data
+    for start, length in runs:
+        cursor = base + start * TANGENT_SIZE
+        for _ in range(length):
+            tangents.extend(unpack(data, cursor))
+            cursor += TANGENT_SIZE
 
 
 def _read_runs(reader: Reader, base: int, runs: List[Tuple[int, int]], out: VvdFile) -> None:

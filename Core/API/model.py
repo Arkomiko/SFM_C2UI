@@ -93,6 +93,8 @@ class Mesh:
     uvs: array = field(default_factory=lambda: array("f"))
     bone_indices: array = field(default_factory=lambda: array("B"))
     bone_weights: array = field(default_factory=lambda: array("f"))
+    #: array('f') [x,y,z,w, ...]: the tangent and the bitangent's sign, or empty
+    tangents: array = field(default_factory=lambda: array("f"))
     indices: array = field(default_factory=lambda: array("I"))
     #: lightmap coordinates, only for a map's faces; empty for a model
     lightmap_uvs: array = field(default_factory=lambda: array("f"))

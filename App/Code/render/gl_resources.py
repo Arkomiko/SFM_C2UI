@@ -123,7 +123,7 @@ class GLMesh:
     def __init__(self, mesh: Mesh) -> None:
         self.index_count = len(mesh.indices)
         self.vao = int(GL.glGenVertexArrays(1))
-        self.buffers = [int(b) for b in GL.glGenBuffers(7)]
+        self.buffers = [int(b) for b in GL.glGenBuffers(8)]
         GL.glBindVertexArray(self.vao)
         self._attribute(0, mesh.positions, 3)
         self._attribute(1, mesh.normals, 3)
@@ -131,6 +131,7 @@ class GLMesh:
         self._integer_attribute(3, mesh.bone_indices, 3)
         self._attribute(4, mesh.bone_weights, 3)
         self._attribute(6, mesh.lightmap_uvs, 2)      # buffer 5 is the index buffer
+        self._attribute(7, mesh.tangents, 4)
         GL.glBindBuffer(GL.GL_ELEMENT_ARRAY_BUFFER, self.buffers[5])
         raw = mesh.indices.tobytes()
         GL.glBufferData(GL.GL_ELEMENT_ARRAY_BUFFER, len(raw), raw, GL.GL_STATIC_DRAW)

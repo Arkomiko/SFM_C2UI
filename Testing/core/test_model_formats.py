@@ -433,3 +433,15 @@ def test_body_group_choice_uses_the_base():
     from Core.Code.formats.mdl import MdlBodyPart, MdlModel
     part = MdlBodyPart("hat", [MdlModel("a", 0, 0), MdlModel("b", 0, 0), MdlModel("c", 0, 0)], base=2)
     assert [part.chosen(b) for b in (0, 1, 2, 3, 4, 5, 6)] == [0, 0, 1, 1, 2, 2, 0]
+
+
+def test_tangents_follow_the_vertices_through_fixups():
+    vertices = [((float(i), 0.0, 0.0), (0.0, 0.0, 1.0), (0.0, 0.0), 0, 1.0) for i in range(4)]
+    # no tangent block: the array stays empty and nothing breaks
+    assert len(parse_vvd(build_vvd(vertices), "flat.vvd").tangents) == 0
+    # with one, every vertex gets four floats, reordered exactly as the vertices are
+    data = build_vvd(vertices, fixups=[(0, 2, 2), (0, 0, 2)], lod_counts=[4], tangents=True)
+    vvd = parse_vvd(data, "tangents.vvd", lod=0)
+    assert len(vvd.tangents) == 16
+    assert [vvd.tangents[i * 4] for i in range(4)] == [1.0, 1.0, 1.0, 1.0]
+    assert [vvd.tangents[i * 4 + 3] for i in range(4)] == [1.0, -1.0, 1.0, -1.0]     # stored 2, 3, 0, 1

@@ -200,6 +200,8 @@ def _build_mesh(model: Model, part, sub, mdl_mesh, vtx_mesh, vvd: VvdFile,
     mesh.uvs = vvd.uvs[base * 2:(base + count) * 2]
     mesh.bone_indices = vvd.bone_indices[base * 3:(base + count) * 3]
     mesh.bone_weights = vvd.bone_weights[base * 3:(base + count) * 3]
+    if len(vvd.tangents) >= (base + count) * 4:
+        mesh.tangents = vvd.tangents[base * 4:(base + count) * 4]
 
     out = array("I")
     dropped = 0

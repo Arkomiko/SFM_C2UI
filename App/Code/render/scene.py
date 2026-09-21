@@ -88,6 +88,20 @@ class DrawItem:
     self_illum: bool = False
     #: key into Scene.textures for $lightwarptexture, or ""
     lightwarp_key: str = ""
+    #: key into Scene.textures for $bumpmap, or ""
+    bumpmap_key: str = ""
+    #: key into Scene.textures for $phongexponenttexture, or "": red is the exponent,
+    #: green the albedo tint amount, alpha the rim mask
+    exponent_key: str = ""
+    #: where the specular mask comes from: 0 none (full), 1 the base alpha, 2 the normal map's alpha
+    phong_mask: int = 0
+    invert_phong_mask: bool = False
+    #: $phongalbedotint: specular takes the base colour (by the exponent texture's green)
+    albedo_tint: bool = False
+    #: $rimmask: rim light masked by the exponent texture's alpha
+    rim_mask: bool = False
+    #: key into Scene.textures for $selfillummask, or "" (then the base alpha glows)
+    selfillum_key: str = ""
     #: a map face: draw with the lightmap atlas
     lightmapped: bool = False
 
@@ -706,6 +720,22 @@ def _item_for(source: SceneSource, scene: Scene, model: Model, mesh: Mesh) -> Dr
     warp = material.texture("$lightwarptexture")
     if warp and _texture(source, scene, warp):
         item.lightwarp_key = warp
+    bump = material.texture("$bumpmap")
+    if bump and _texture(source, scene, bump):
+        item.bumpmap_key = bump
+    exponent = material.texture("$phongexponenttexture")
+    if exponent and _texture(source, scene, exponent):
+        item.exponent_key = exponent
+    mask = material.texture("$selfillummask")
+    if item.self_illum and mask and _texture(source, scene, mask):
+        item.selfillum_key = mask
+    # the specular mask, as VertexLitGeneric picks it: the base alpha when asked for,
+    # else the normal map's alpha, else none
+    if as_bool(material.param("$basemapalphaphongmask")):
+        item.phong_mask = 1
+    elif item.bumpmap_key:
+        item.phong_mask = 2
+    item.invert_phong_mask = as_bool(material.param("$invertphongmask"))
     texture = material.base_texture
     if not texture:
         return item
@@ -751,7 +781,10 @@ def _shading(item: DrawItem, material: Material) -> None:
     """VertexLitGeneric's lighting parameters, with the engine's defaults."""
     item.halflambert = as_bool(material.param("$halflambert"))
     item.phong = as_bool(material.param("$phong"))
-    item.phong_exponent = as_float(material.param("$phongexponent"), 5.0)
+    # an explicit exponent wins over the exponent texture; 0 means "use the texture"
+    item.phong_exponent = as_float(material.param("$phongexponent"), 0.0)
+    item.albedo_tint = as_bool(material.param("$phongalbedotint"))
+    item.rim_mask = as_bool(material.param("$rimmask"))
     item.phong_boost = as_float(material.param("$phongboost"), 1.0)
     ranges = as_vec(material.param("$phongfresnelranges"))
     if len(ranges) >= 3:

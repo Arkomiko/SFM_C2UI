@@ -43,6 +43,7 @@ layout(location = 2) in vec2 in_uv;
 layout(location = 3) in ivec3 in_bones;
 layout(location = 4) in vec3 in_weights;
 layout(location = 6) in vec2 in_lightmap_uv;
+layout(location = 7) in vec4 in_tangent;     // xyz and the bitangent's sign
 
 uniform mat4 u_view_proj;
 uniform mat4 u_model;
@@ -51,6 +52,7 @@ uniform bool u_skinned;
 uniform vec4 u_bones[3 * MAX_BONES];
 
 out vec3 v_normal;
+out vec4 v_tangent;
 out vec2 v_uv;
 out vec2 v_lightmap_uv;
 out vec3 v_world;
@@ -64,11 +66,14 @@ vec3 bone_point(int bone, vec4 p) {
 void main() {
     vec3 position = in_position;
     vec3 normal = in_normal;
+    vec3 tangent = in_tangent.xyz;
     if (u_skinned) {
         vec4 p = vec4(in_position, 1.0);
         vec4 n = vec4(in_normal, 0.0);
+        vec4 t = vec4(in_tangent.xyz, 0.0);
         vec3 sp = vec3(0.0);
         vec3 sn = vec3(0.0);
+        vec3 st = vec3(0.0);
         float total = 0.0;
         for (int k = 0; k < 3; ++k) {
             float w = in_weights[k];
@@ -76,16 +81,19 @@ void main() {
             int bone = clamp(in_bones[k], 0, MAX_BONES - 1);
             sp += w * bone_point(bone, p);
             sn += w * bone_point(bone, n);
+            st += w * bone_point(bone, t);
             total += w;
         }
         if (total > 0.0) {
             position = sp / total;
             normal = sn / total;
+            tangent = st / total;
         }
     }
     vec4 world = u_model * vec4(position, 1.0);
     v_world = world.xyz;
     v_normal = mat3(u_model) * normal;
+    v_tangent = vec4(mat3(u_model) * tangent, in_tangent.w);
     v_uv = in_uv;
     v_lightmap_uv = in_lightmap_uv;
     gl_Position = u_view_proj * world;
@@ -95,6 +103,7 @@ void main() {
 MODEL_FRAG = """
 #version 330 core
 in vec3 v_normal;
+in vec4 v_tangent;
 in vec2 v_uv;
 in vec2 v_lightmap_uv;
 in vec3 v_world;
@@ -102,6 +111,16 @@ in vec3 v_world;
 uniform sampler2D u_texture;
 uniform sampler2D u_lightwarp;
 uniform sampler2D u_lightmap;
+uniform sampler2D u_bumpmap;
+uniform sampler2D u_exponent;     // $phongexponenttexture: r exponent, g albedo tint, a rim mask
+uniform sampler2D u_selfillum_mask;
+uniform bool u_has_bumpmap;
+uniform bool u_has_exponent;
+uniform bool u_has_selfillum_mask;
+uniform int u_phong_mask;         // 0 none, 1 base alpha, 2 normal map alpha
+uniform bool u_invert_phong_mask;
+uniform bool u_albedo_tint;
+uniform bool u_rim_mask;
 uniform bool u_lightmapped;   // a map face: its compiled light instead of the model lighting
 uniform bool u_textured;
 uniform bool u_lit;
@@ -201,6 +220,17 @@ void main() {
     // a near-zero normal is real in shipped art; treat it as facing the viewer
     if (dot(n, n) < 0.25) n = normalize(u_eye - v_world);
     if (!gl_FrontFacing) n = -n;
+    vec4 bump = vec4(0.5, 0.5, 1.0, 1.0);
+    if (u_has_bumpmap) {
+        bump = texture(u_bumpmap, v_uv);
+        vec3 t = v_tangent.xyz - n * dot(n, v_tangent.xyz);
+        if (dot(t, t) > 1e-8) {
+            t = normalize(t);
+            vec3 b = cross(n, t) * (v_tangent.w < 0.0 ? -1.0 : 1.0);
+            vec3 tn = bump.xyz * 2.0 - 1.0;
+            n = normalize(t * tn.x + b * tn.y + n * tn.z);
+        }
+    }
     vec3 v = normalize(u_eye - v_world);
 
     vec3 color = base.rgb;
@@ -230,6 +260,21 @@ void main() {
         // Source's fresnel: three ranges over the view angle
         float f = 1.0 - ndotv;
         float fresnel = f < 0.5 ? mix(u_fresnel.x, u_fresnel.y, f * 2.0) : mix(u_fresnel.y, u_fresnel.z, (f - 0.5) * 2.0);
+        // the specular mask and exponent, as the material says
+        float mask = 1.0;
+        if (u_phong_mask == 1) mask = base.a;
+        else if (u_phong_mask == 2) mask = bump.a;
+        if (u_invert_phong_mask) mask = 1.0 - mask;
+        float exponent = u_phong_exponent;
+        vec3 spec_tint = vec3(1.0);
+        float rim_mask = 1.0;
+        if (u_has_exponent) {
+            vec4 e = texture(u_exponent, v_uv);
+            if (exponent <= 0.0) exponent = 1.0 + 149.0 * e.r;
+            if (u_albedo_tint) spec_tint = mix(vec3(1.0), pow(base.rgb, vec3(2.2)), e.g);
+            if (u_rim_mask) rim_mask = e.a;
+        }
+        if (exponent <= 0.0) exponent = 5.0;
         for (int i = 0; i < u_light_count; ++i) {
             vec3 l;
             vec3 radiance;
@@ -238,17 +283,20 @@ void main() {
             lit += radiance * diffuse_term(ndotl);
             if (u_phong && ndotl > 0.0) {
                 vec3 h = normalize(l + v);
-                spec += radiance * pow(max(dot(n, h), 0.0), u_phong_exponent) * fresnel * u_phong_boost * ndotl;
+                spec += radiance * spec_tint * pow(max(dot(n, h), 0.0), exponent) * fresnel * u_phong_boost * mask * ndotl;
             }
         }
         if (u_rim) {
-            // rim light: the ambient wrapping the silhouette
-            spec += ambient_light(v) * pow(1.0 - ndotv, u_rim_exponent) * u_rim_boost;
+            // rim light: the ambient wrapping the silhouette, through the phong mask as Source does
+            spec += ambient_light(v) * pow(1.0 - ndotv, u_rim_exponent) * u_rim_boost * mask * rim_mask;
         }
         // Source lights in linear space and writes gamma: the texture comes in as gamma
         vec3 albedo = pow(base.rgb, vec3(2.2));
         color = pow(max(albedo * lit + spec, vec3(0.0)), vec3(1.0 / 2.2));
-        if (u_self_illum) color = max(color, base.rgb * base.a);
+        if (u_self_illum) {
+            float glow = u_has_selfillum_mask ? texture(u_selfillum_mask, v_uv).r : base.a;
+            color = max(color, base.rgb * glow);
+        }
     }
     // an opaque surface's alpha is a mask for other shaders (phong, cloak),
     // not coverage; writing it to the frame would punch holes in a capture
