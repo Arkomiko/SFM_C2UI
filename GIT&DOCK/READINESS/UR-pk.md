@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/UR-pk.svg" alt="تیاری" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 55%</b></p>
 
 ہر حصہ کھلتا ہے: کیا پہلے سے کام کرتا ہے اور کیا ابھی نہیں۔ فیصد SFM کی صلاحیتوں کے مقابلے ایک اندازہ ہے۔
 
@@ -43,7 +43,7 @@ Steam رجسٹری → `libraryfolders.vdf` → `gameinfo.txt` کے سرچ پا�
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> اسکرین پر سیشن
 
-ٹائم لائن پر شاٹس اور ساؤنڈ ٹریک، ایلیمنٹ ٹری، ہر شاٹ کا منظر اس کے کیمرے سے۔ ابھی نہیں: نقشے، پارٹیکل، آواز۔
+ٹائم لائن پر شاٹس اور ساؤنڈ ٹریکس، عناصر کا درخت، ہر شاٹ کا منظر اس کے کیمرے سے، شاٹ کا نقشہ۔ ابھی نہیں: پارٹیکلز، آواز۔
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> اینیمیشن
 
@@ -75,15 +75,15 @@ UE5 اور Visual Studio کی طرح، پیش نظارہ کے ساتھ اہدا�
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source شیڈنگ
 
-سیشن لائٹس (DmeProjectedLight): فرسٹم، Source تخفیف، maxDistance تک دھندلاہٹ؛ ہاف لیمبرٹ، $lightwarptexture، phong ($phongexponent/boost/fresnelranges)، $rimlight، $selfillum۔ نقشے کی دنیا لائٹ میپس سے۔ ابھی نہیں: سائے، گوبو ٹیکسچر، $bumpmap، $envmap، ایمبیئنٹ کیوبز، اسکائی باکس۔
+سیشن کی روشنیاں (DmeProjectedLight): فرسٹم، Source اٹینیوایشن، maxDistance تک فیڈ؛ half-lambert، $lightwarptexture، phong، $rimlight، $selfillum۔ نقشے کی دنیا لائٹ میپس سے؛ ماڈلز نقشے کے ایمبیئنٹ کیوبز اور ورلڈ لائٹس سے روشن۔ ابھی نہیں: سائے، گوبو ٹیکسچر، $bumpmap، $envmap۔
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> نقشے — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> نقشے — <code>.bsp</code>
 
-ورژن 19–21: دنیا کی جیومیٹری، ڈسپلیسمنٹ زمین، برش اینٹیٹی، جامد پراپس، نقشے کے اپنے pak میٹیریل۔ فرسٹم کلنگ۔ ابھی نہیں: لائٹ میپ، اسکائی باکس، پانی، prop_dynamic۔
+ورژن 19–21: ورلڈ جیومیٹری، ڈسپلیسمنٹ زمین، برش اینٹیٹیز، اسٹیٹک پراپس، نقشے کے اپنے pak میٹیریل، لائٹ میپس، کیمرے کے گرد اسکائی باکس۔ فرسٹم کلنگ۔ ابھی نہیں: پانی، prop_dynamic۔
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> تصویر اور ویڈیو میں رینڈر
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> تصویر اور ویڈیو میں رینڈر
 
-شروع نہیں ہوا۔
+سیشن سے PNG/TGA سیکوئنس اور AVI/MP4 فلمیں: پورا سیشن، موجودہ شاٹ یا ایک رینج؛ پری سیٹس؛ File → Export، Ctrl+E۔ ابھی نہیں: فلم میں آواز۔
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> پلگ ان <code>.c2plg</code>
 

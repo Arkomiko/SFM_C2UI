@@ -31,15 +31,15 @@
     <circle class="dot" cx="28" cy="32" r="4" fill="#66c0f4"/>
     <text x="40" y="37" font-size="16" font-weight="700" fill="#e6f0f8" letter-spacing="1">C2UI</text>
     <text x="96" y="37" font-size="12.5" fill="#c7d5e0">മൊത്തം</text>
-    <text x="936" y="38" font-size="24" font-weight="700" fill="#66c0f4" text-anchor="end">51%</text>
+    <text x="936" y="38" font-size="24" font-weight="700" fill="#66c0f4" text-anchor="end">55%</text>
   </g>
   <rect x="24" y="56" width="912" height="16" rx="8" fill="#0e1720"/>
   <g clip-path="url(#track)">
-    <rect x="24" y="56" width="465.1" height="16" rx="8" fill="url(#accent)" class="bar"/>
-    <rect x="24" y="56" width="465.1" height="16" rx="8" fill="url(#shine)" class="shine"/>
+    <rect x="24" y="56" width="501.6" height="16" rx="8" fill="url(#accent)" class="bar"/>
+    <rect x="24" y="56" width="501.6" height="16" rx="8" fill="url(#shine)" class="shine"/>
   </g>
   <g class="head" style="animation-delay:.4s">
-    <text x="24" y="86" font-size="10.5" fill="#8fa5b8">363 ടെസ്റ്റുകൾ</text>
+    <text x="24" y="86" font-size="10.5" fill="#8fa5b8">372 ടെസ്റ്റുകൾ</text>
     <text x="936" y="86" font-size="10.5" fill="#8fa5b8" text-anchor="end">Windows · Python 3.13 · Qt 6 · OpenGL 3.3</text>
   </g>
 </svg>

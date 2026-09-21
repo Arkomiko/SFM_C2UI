@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tests-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tests-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/EN-en.md"><img alt="licence" src="https://img.shields.io/badge/licence-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### Planned
 
 **Next**
-- The map's look: skybox, water, prop_dynamic, light gobo textures, `$bumpmap` and `$envmap`, shadows from session lights.
-- Export: image sequences and video.
+- The map's look: water, prop_dynamic, light gobo textures, `$bumpmap` and `$envmap`, shadows from session lights.
+- Sound in exported movies.
 - `.c2plg` plugins and the marketplace client in `Tools/Market Load`; then themes and workspaces.
 - Sound on the timeline, particles, wrinkle maps, motion-editor presets and layers, tangents in the graph editor.
 

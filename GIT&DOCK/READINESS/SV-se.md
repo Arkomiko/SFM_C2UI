@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/SV-se.svg" alt="Mognad" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Total mognad för release: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Total mognad för release: 55%</b></p>
 
 Varje område kan fällas ut: vad som redan fungerar och vad som inte finns än. Procenten är en uppskattning mot vad SFM kan.
 
@@ -41,9 +41,9 @@ Version 7.0–7.5, DXT1/3/5 och alla okomprimerade format, kubkartor, mippar. DX
 
 Binär 1–5 och KeyValues2. Varje session och partikelfil i installationen skrivs tillbaka **byte för byte**.
 
-### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Session på skärmen
+### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Sessionen på skärmen
 
-Shots och ljudspår på en tidslinje, elementträdet, varje shots scen genom sin kamera. Inte ännu: kartor, partiklar, ljud.
+Tagningar och ljudspår på tidslinjen, elementträdet, varje tagnings scen genom dess kamera, tagningens karta. Inte än: partiklar, ljud.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> Animation
 
@@ -75,15 +75,15 @@ Dra paneler till en kompass av mål med förhandsvisning, som i UE5 och Visual S
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source-skuggning
 
-Sessionens ljus (DmeProjectedLight): frustum, Source-dämpning, toning till maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Kartans värld via lightmaps. Inte ännu: skuggor, gobo-texturer, $bumpmap, $envmap, ambient-kuber, skybox.
+Sessionsljus (DmeProjectedLight): frustum, Source-dämpning, toning till maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Kartans värld via lightmaps; modeller belysta av kartans ambient-kuber och världsljus. Inte än: skuggor, gobo-texturer, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Kartor — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Kartor — <code>.bsp</code>
 
-Version 19–21: världsgeometri, displacement-terräng, brush-entiteter, statiska props, kartans egna pak-material. Frustum-culling. Inte ännu: lightmaps, skybox, vatten, prop_dynamic.
+Version 19–21: världsgeometri, displacement-terräng, brush-entiteter, statiska props, kartans egna pak-material, lightmaps, skyboxen runt kameran. Frustum-culling. Inte än: vatten, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Rendering till bild och video
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Rendering till bild och video
 
-Inte påbörjat.
+PNG/TGA-sekvenser och AVI/MP4-filmer från sessionen: hela sessionen, aktuell tagning eller ett intervall; förinställningar; File → Export, Ctrl+E. Inte än: ljud i filmen.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Insticksprogram <code>.c2plg</code>
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/TR-tr.svg" alt="Hazırlık" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Yayın için genel hazırlık: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Yayın için genel hazırlık: 55%</b></p>
 
 Her alan açılabilir: neyin zaten çalıştığı ve neyin henüz olmadığı. Yüzdeler, SFM'nin yapabildiklerine göre bir tahmindir.
 
@@ -41,9 +41,9 @@ Sürüm 7.0–7.5, DXT1/3/5 ve tüm sıkıştırılmamış biçimler, cubemap'le
 
 İkili 1–5 ve KeyValues2. Kurulumdaki her oturum ve parçacık dosyası **bayt bayt** geri yazılır.
 
-### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Ekranda oturum
+### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Ekrandaki oturum
 
-Zaman çizelgesinde çekimler ve ses parçaları, öğe ağacı, her çekimin sahnesi kendi kamerasından. Henüz yok: haritalar, parçacıklar, ses.
+Zaman çizelgesinde çekimler ve ses parçaları, öğe ağacı, her çekimin sahnesi kendi kamerasından, çekimin haritası. Henüz yok: parçacıklar, ses.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> Animasyon
 
@@ -73,17 +73,17 @@ Seçili öğeyi süren her logun eğrileri: X/Y/Z, pitch/yaw/roll, skalerler. An
 
 UE5 ve Visual Studio'daki gibi panelleri önizlemeli hedef pusulasına sürükleyin. Henüz yok: kayıtlı yerleşimler, temalar.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source gölgelendirme
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source gölgeleme
 
-Oturum ışıkları (DmeProjectedLight): frustum, Source zayıflaması, maxDistance'a kadar sönme; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Haritanın dünyası lightmap'leriyle. Henüz yok: gölgeler, gobo dokular, $bumpmap, $envmap, ortam küpleri, skybox.
+Oturum ışıkları (DmeProjectedLight): frustum, Source sönümü, maxDistance'a kadar solma; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Haritanın dünyası lightmap'lerle; modeller haritanın ambient küpleri ve dünya ışıklarıyla aydınlatılır. Henüz yok: gölgeler, gobo dokuları, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Haritalar — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Haritalar — <code>.bsp</code>
 
-Sürüm 19–21: dünya geometrisi, displacement arazi, brush varlıkları, statik prop'lar, haritanın kendi pak malzemeleri. Frustum ayıklama. Henüz yok: lightmap, skybox, su, prop_dynamic.
+Sürüm 19–21: dünya geometrisi, displacement arazi, brush varlıkları, statik prop'lar, haritanın kendi pak malzemeleri, lightmap'ler, kameranın çevresindeki skybox. Frustum ayıklama. Henüz yok: su, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Görüntü ve videoya render
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Görüntü ve videoya işleme
 
-Başlanmadı.
+Oturumdan PNG/TGA dizileri ve AVI/MP4 filmler: tüm oturum, geçerli çekim veya bir aralık; ön ayarlar; File → Export, Ctrl+E. Henüz yok: filmde ses.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Eklentiler <code>.c2plg</code>
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/SL-si.svg" alt="Pripravljenost" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Skupna pripravljenost za izdajo: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Skupna pripravljenost za izdajo: 55%</b></p>
 
 Vsako področje se razpre: kaj že deluje in česa še ni. Odstotki so ocena glede na zmožnosti SFM.
 
@@ -43,7 +43,7 @@ Binarno 1–5 in KeyValues2. Vsaka seja in datoteka delcev iz namestitve se zapi
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Seja na zaslonu
 
-Posnetki in zvočne steze na časovnici, drevo elementov, prizor vsakega posnetka skozi njegovo kamero. Še ne: zemljevidi, delci, zvok.
+Posnetki in zvočne sledi na časovnici, drevo elementov, scena posnetka skozi njegovo kamero, zemljevid posnetka. Še ne: delci, zvok.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> Animacija
 
@@ -75,15 +75,15 @@ Vlečenje plošč na kompas ciljev s predogledom, kot v UE5 in Visual Studiu. Š
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Senčenje Source
 
-Luči seje (DmeProjectedLight): frustum, slabljenje Source, pojemanje do maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Svet zemljevida po lightmapih. Še ne: sence, gobo teksture, $bumpmap, $envmap, ambientne kocke, skybox.
+Luči seje (DmeProjectedLight): frustum, dušenje Source, pojemanje do maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Svet zemljevida po lightmapih; modele osvetljujejo ambient kocke in luči zemljevida. Še ne: sence, gobo teksture, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Zemljevidi — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Zemljevidi — <code>.bsp</code>
 
-Različice 19–21: geometrija sveta, displacement teren, brush entitete, statični propi, materiali iz pak zemljevida. Izločanje zunaj kamere. Še ne: lightmapi, skybox, voda, prop_dynamic.
+Različice 19–21: geometrija sveta, displacement teren, brush entitete, statični propi, pak materiali zemljevida, lightmapi, skybox okoli kamere. Odstranjevanje po frustumu. Še ne: voda, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Upodabljanje v sliko in video
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Upodabljanje v sliko in video
 
-Ni začeto.
+Zaporedja PNG/TGA in filmi AVI/MP4 iz seje: cela seja, trenutni posnetek ali obseg; prednastavitve; File → Export, Ctrl+E. Še ne: zvok v filmu.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Vtičniki <code>.c2plg</code>
 

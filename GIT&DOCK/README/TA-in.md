@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AE%9A%E0%AF%8B%E0%AE%A4%E0%AE%A9%E0%AF%88%E0%AE%95%E0%AE%B3%E0%AF%8D-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AE%9A%E0%AF%8B%E0%AE%A4%E0%AE%A9%E0%AF%88%E0%AE%95%E0%AE%B3%E0%AF%8D-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/TA-in.md"><img alt="licence" src="https://img.shields.io/badge/%E0%AE%89%E0%AE%B0%E0%AE%BF%E0%AE%AE%E0%AE%AE%E0%AF%8D-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### திட்டத்தில்
 
 **அடுத்து**
-- வரைபடத்தின் தோற்றம்: ஸ்கைபாக்ஸ், நீர், prop_dynamic, விளக்குகளின் கோபோ அமைப்புகள், `$bumpmap` மற்றும் `$envmap`, அமர்வு விளக்குகளின் நிழல்கள்.
-- ஏற்றுமதி: படத் தொடர்களும் காணொளியும்.
+- வரைபடத்தின் தோற்றம்: நீர், prop_dynamic, விளக்குகளின் கோபோ அமைப்புகள், `$bumpmap` மற்றும் `$envmap`, அமர்வு விளக்குகளின் நிழல்கள்.
+- ஏற்றுமதி செய்த திரைப்படங்களில் ஒலி.
 - `.c2plg` செருகுநிரல்களும் `Tools/Market Load` இல் சந்தை கிளையண்டும்; பின்னர் தீம்களும் பணியிடங்களும்.
 - காலவரிசையில் ஒலி, துகள்கள், சுருக்க வரைபடங்கள், மோஷன் திருத்தியின் முன்னமைவுகளும் அடுக்குகளும், வரைபடத் திருத்தியில் தொடுகோடுகள்.
 

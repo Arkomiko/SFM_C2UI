@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/GU-in.svg" alt="તૈયારી" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 55%</b></p>
 
 દરેક ક્ષેત્ર ખુલે છે: શું પહેલેથી કામ કરે છે અને શું હજુ નથી. ટકાવારી SFM ની ક્ષમતાઓની સાપેક્ષ અંદાજ છે.
 
@@ -43,7 +43,7 @@ Steam રજિસ્ટ્રી → `libraryfolders.vdf` → `gameinfo.txt` �
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> સ્ક્રીન પર સેશન
 
-ટાઇમલાઇન પર શોટ અને સાઉન્ડ ટ્રેક, એલિમેન્ટ ટ્રી, દરેક શોટનું દૃશ્ય તેના કેમેરાથી. હજુ નહીં: નકશા, પાર્ટિકલ, અવાજ.
+ટાઇમલાઇન પર શોટ અને સાઉન્ડ ટ્રેક, તત્વ વૃક્ષ, દરેક શોટનું દૃશ્ય તેના કેમેરાથી, શોટનો નકશો. હજી નહીં: પાર્ટિકલ, અવાજ.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> એનિમેશન
 
@@ -75,15 +75,15 @@ UE5 અને Visual Studio જેમ, પ્રીવ્યૂ સાથે લ
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source શેડિંગ
 
-સેશન લાઇટ (DmeProjectedLight): ફ્રસ્ટમ, Source ક્ષીણતા, maxDistance સુધી ઝાંખું; હાફ-લેમ્બર્ટ, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. નકશાની દુનિયા લાઇટમેપથી. હજુ નહીં: છાયા, ગોબો ટેક્સચર, $bumpmap, $envmap, એમ્બિયન્ટ ક્યુબ, સ્કાયબોક્સ.
+સેશન લાઇટો (DmeProjectedLight): ફ્રસ્ટમ, Source ક્ષીણન, maxDistance સુધી ફેડ; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. નકશાની દુનિયા લાઇટમેપથી; મોડેલ નકશાના એમ્બિયન્ટ ક્યુબ અને વર્લ્ડ લાઇટથી પ્રકાશિત. હજી નહીં: પડછાયા, ગોબો ટેક્સચર, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> નકશા — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> નકશા — <code>.bsp</code>
 
-વર્ઝન 19–21: વિશ્વ ભૂમિતિ, ડિસ્પ્લેસમેન્ટ ભૂપ્રદેશ, બ્રશ એન્ટિટી, સ્થિર પ્રોપ, નકશાના પોતાના pak મટીરિયલ. ફ્રસ્ટમ કલિંગ. હજુ નહીં: લાઇટમેપ, સ્કાયબોક્સ, પાણી, prop_dynamic.
+આવૃત્તિઓ 19–21: વર્લ્ડ ભૂમિતિ, ડિસ્પ્લેસમેન્ટ ભૂપ્રદેશ, બ્રશ એન્ટિટી, સ્ટેટિક પ્રોપ્સ, નકશાના પોતાના pak મટીરિયલ, લાઇટમેપ, કેમેરાની આસપાસ સ્કાયબોક્સ. ફ્રસ્ટમ કલિંગ. હજી નહીં: પાણી, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> છબી અને વિડિયોમાં રેન્ડર
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> છબી અને વિડિઓમાં રેન્ડર
 
-શરૂ થયું નથી.
+સેશનમાંથી PNG/TGA સિક્વન્સ અને AVI/MP4 ફિલ્મો: આખું સેશન, વર્તમાન શોટ કે રેન્જ; પ્રીસેટ; File → Export, Ctrl+E. હજી નહીં: ફિલ્મમાં અવાજ.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> પ્લગઇન <code>.c2plg</code>
 

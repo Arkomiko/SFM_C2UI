@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%ED%85%8C%EC%8A%A4%ED%8A%B8-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%ED%85%8C%EC%8A%A4%ED%8A%B8-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/KO-kr.md"><img alt="licence" src="https://img.shields.io/badge/%EB%9D%BC%EC%9D%B4%EC%84%A0%EC%8A%A4-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### 계획
 
 **다음**
-- 맵의 모습: 스카이박스, 물, prop_dynamic, 조명 고보 텍스처, `$bumpmap`과 `$envmap`, 세션 조명의 그림자.
-- 내보내기: 이미지 시퀀스와 비디오.
+- 맵의 모습: 물, prop_dynamic, 조명 고보 텍스처, `$bumpmap`과 `$envmap`, 세션 조명의 그림자.
+- 내보낸 영상의 사운드.
 - `.c2plg` 플러그인과 `Tools/Market Load`의 마켓플레이스 클라이언트, 이후 테마와 작업 공간.
 - 타임라인의 사운드, 파티클, 주름 맵, 모션 에디터 프리셋과 레이어, 그래프 에디터의 탄젠트.
 

@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/test-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/test-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/IT-it.md"><img alt="licence" src="https://img.shields.io/badge/licenza-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### In programma
 
 **Prossimamente**
-- L'aspetto della mappa: skybox, acqua, prop_dynamic, texture gobo delle luci, `$bumpmap` e `$envmap`, ombre dalle luci della sessione.
-- Esportazione: sequenze di immagini e video.
+- L'aspetto della mappa: acqua, prop_dynamic, texture gobo delle luci, `$bumpmap` e `$envmap`, ombre dalle luci della sessione.
+- L'audio nei filmati esportati.
 - Plugin `.c2plg` e il client del marketplace in `Tools/Market Load`; poi temi e spazi di lavoro.
 - Audio sulla timeline, particelle, wrinkle map, preset e livelli del motion editor, tangenti nel graph editor.
 

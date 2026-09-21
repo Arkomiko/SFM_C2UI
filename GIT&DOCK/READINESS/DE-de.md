@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/DE-de.svg" alt="Reifegrad" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Gesamtreife für eine Veröffentlichung: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Gesamtreife für eine Veröffentlichung: 55%</b></p>
 
 Jeder Bereich lässt sich aufklappen: was schon funktioniert und was noch fehlt. Die Prozente sind eine Einschätzung gegenüber dem, was SFM kann.
 
@@ -41,9 +41,9 @@ Versionen 7.0–7.5, DXT1/3/5 und alle unkomprimierten Formate, Cubemaps, Mips. 
 
 Binär 1–5 und KeyValues2. Jede Sitzung und Partikeldatei der Installation wird **Byte für Byte** identisch zurückgeschrieben.
 
-### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Sitzung auf dem Bildschirm
+### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Sitzung auf dem Schirm
 
-Shots und Tonspuren auf der Zeitleiste, der Elementbaum, die Szene jedes Shots durch seine Kamera. Noch nicht: Karten, Partikel, Ton.
+Shots und Tonspuren auf der Zeitleiste, der Elementbaum, die Szene jedes Shots durch seine Kamera, die Karte des Shots. Noch nicht: Partikel, Ton.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> Animation
 
@@ -75,15 +75,15 @@ Panels auf einen Zielkompass mit Vorschau ziehen, wie in UE5 und Visual Studio. 
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source-Shading
 
-Sitzungslichter (DmeProjectedLight): Frustum, Source-Abschwächung, Ausblenden bis maxDistance; Half-Lambert, $lightwarptexture, Phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Die Welt der Karte über ihre Lightmaps. Noch nicht: Schatten, Gobo-Texturen, $bumpmap, $envmap, Ambient-Cubes, Skybox.
+Sitzungslichter (DmeProjectedLight): Frustum, Source-Abschwächung, Ausblenden bis maxDistance; Half-Lambert, $lightwarptexture, Phong, $rimlight, $selfillum. Die Welt der Karte über ihre Lightmaps; Modelle durch Ambient-Cubes und World-Lights der Karte beleuchtet. Noch nicht: Schatten, Gobo-Texturen, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Karten — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Karten — <code>.bsp</code>
 
-Versionen 19–21: Weltgeometrie, Displacement-Gelände, Brush-Entities, statische Props, die Pak-Materialien der Karte. Frustum-Culling. Noch nicht: Lightmaps, Skybox, Wasser, prop_dynamic.
+Versionen 19–21: Weltgeometrie, Displacement-Gelände, Brush-Entities, statische Props, die Pak-Materialien der Karte, Lightmaps, die Skybox um die Kamera. Frustum-Culling. Noch nicht: Wasser, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Rendern in Bild und Video
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Rendern in Bild und Video
 
-Nicht begonnen.
+PNG/TGA-Sequenzen und AVI/MP4-Filme aus der Sitzung: ganze Sitzung, aktueller Shot oder ein Bereich; Presets; File → Export, Strg+E. Noch nicht: Ton im Film.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Plugins <code>.c2plg</code>
 

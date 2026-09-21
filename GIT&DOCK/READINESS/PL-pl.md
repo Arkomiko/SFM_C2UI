@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/PL-pl.svg" alt="Gotowość" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Ogólna gotowość do wydania: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Ogólna gotowość do wydania: 55%</b></p>
 
 Każdy obszar można rozwinąć: co już działa, a czego jeszcze nie ma. Procenty to ocena względem możliwości SFM.
 
@@ -43,7 +43,7 @@ Binary 1–5 i KeyValues2. Każda sesja i plik cząsteczek z instalacji zapisuje
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Sesja na ekranie
 
-Ujęcia i ścieżki dźwięku na osi czasu, drzewo elementów, scena ujęcia przez jego kamerę. Brak: map, cząsteczek, dźwięku.
+Ujęcia i ścieżki dźwiękowe na osi czasu, drzewo elementów, scena ujęcia przez jego kamerę, mapa ujęcia. Brak: cząsteczek, dźwięku.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> Animacja
 
@@ -75,15 +75,15 @@ Przeciąganie paneli na kompas celów z podglądem, jak w UE5 i Visual Studio. B
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Cieniowanie Source
 
-Światła sesji (DmeProjectedLight): frustum, tłumienie Source, zanik do maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Świat mapy z lightmap. Brak: cieni, tekstur gobo, $bumpmap, $envmap, kostek ambient, skyboxu.
+Światła sesji (DmeProjectedLight): frustum, tłumienie Source, zanik do maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Świat mapy z lightmap; modele oświetlone kostkami ambient i światłami mapy. Brak: cieni, tekstur gobo, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Mapy — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Mapy — <code>.bsp</code>
 
-Wersje 19–21: geometria świata, teren displacement, encje brush, statyczne propy, materiały z paka mapy. Odcinanie poza kamerą. Brak: lightmap, skyboxu, wody, prop_dynamic.
+Wersje 19–21: geometria świata, teren displacement, brush entities, statyczne propy, materiały z pak-lumpu mapy, lightmapy, skybox wokół kamery. Odcinanie po bryle widzenia. Brak: wody, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Render do obrazu i wideo
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Render do obrazu i wideo
 
-Nie rozpoczęte.
+Sekwencje PNG/TGA i filmy AVI/MP4 z sesji: cała sesja, bieżące ujęcie lub zakres; presety; File → Export, Ctrl+E. Brak: dźwięku w filmie.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Wtyczki <code>.c2plg</code>
 

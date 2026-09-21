@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/OR-in.svg" alt="ପ୍ରସ୍ତୁତି" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 55%</b></p>
 
 ପ୍ରତ୍ୟେକ କ୍ଷେତ୍ର ଖୋଲାଯାଏ: କଣ ପୂର୍ବରୁ କାମ କରେ ଓ କଣ ଏବେ ନାହିଁ। ପ୍ରତିଶତ SFM ର କ୍ଷମତା ତୁଳନାରେ ଆକଳନ।
 
@@ -41,9 +41,9 @@ Steam ରେଜିଷ୍ଟ୍ରି → `libraryfolders.vdf` → `gameinfo.txt`
 
 ବାଇନାରୀ ୧–୫ ଓ KeyValues2। ଇନ୍‌ଷ୍ଟଲର ପ୍ରତ୍ୟେକ ସେସନ ଓ ପାର୍ଟିକଲ ଫାଇଲ **ବାଇଟ ବାଇଟ** ଫେରି ଲେଖାହୁଏ।
 
-### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> ସ୍କ୍ରିନରେ ସେସନ
+### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> ପରଦାରେ ସେସନ୍
 
-ଟାଇମଲାଇନରେ ଶଟ ଓ ସାଉଣ୍ଡ ଟ୍ରାକ, ଏଲିମେଣ୍ଟ ଟ୍ରୀ, ପ୍ରତ୍ୟେକ ଶଟର ଦୃଶ୍ୟ ନିଜ କ୍ୟାମେରାରୁ। ଏବେ ନାହିଁ: ମ୍ୟାପ, ପାର୍ଟିକଲ, ଶବ୍ଦ।
+ଟାଇମ୍‌ଲାଇନ୍‌ରେ ଶଟ୍ ଓ ସାଉଣ୍ଡ ଟ୍ରାକ୍, ଉପାଦାନ ବୃକ୍ଷ, ପ୍ରତ୍ୟେକ ଶଟ୍‌ର ଦୃଶ୍ୟ ତା କ୍ୟାମେରା ଦେଇ, ଶଟ୍‌ର ମ୍ୟାପ୍। ଏବେ ନୁହେଁ: ପାର୍ଟିକଲ୍, ଶବ୍ଦ।
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> ଆନିମେସନ
 
@@ -75,15 +75,15 @@ UE5 ଓ Visual Studio ପରି, ପ୍ରିଭ୍ୟୁ ସହ ଲକ୍ଷ୍
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source ସେଡିଂ
 
-ସେସନ ଲାଇଟ (DmeProjectedLight): ଫ୍ରଷ୍ଟମ, Source କ୍ଷୀଣତା, maxDistance ପର୍ଯ୍ୟନ୍ତ ଫିକା; ହାଫ-ଲାମ୍ବର୍ଟ, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum। ମ୍ୟାପର ଜଗତ ଲାଇଟମ୍ୟାପରେ। ଏବେ ନାହିଁ: ଛାଇ, ଗୋବୋ ଟେକ୍ସଚର, $bumpmap, $envmap, ଆମ୍ବିଏଣ୍ଟ କ୍ୟୁବ, ସ୍କାଇବକ୍ସ।
+ସେସନ୍ ଆଲୋକ (DmeProjectedLight): ଫ୍ରଷ୍ଟମ୍, Source କ୍ଷୀଣନ, maxDistance ପର୍ଯ୍ୟନ୍ତ ଫେଡ୍; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum। ମ୍ୟାପ୍ ଜଗତ ଲାଇଟ୍‌ମ୍ୟାପ୍ ଦ୍ୱାରା; ମଡେଲ୍ ମ୍ୟାପ୍‌ର ଆମ୍ବିଏଣ୍ଟ କ୍ୟୁବ୍ ଓ ୱାର୍ଲ୍ଡ ଲାଇଟ୍ ଦ୍ୱାରା ଆଲୋକିତ। ଏବେ ନୁହେଁ: ଛାୟା, ଗୋବୋ ଟେକ୍ସଚର୍, $bumpmap, $envmap।
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> ମ୍ୟାପ — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> ମ୍ୟାପ୍ — <code>.bsp</code>
 
-ସଂସ୍କରଣ 19–21: ବିଶ୍ୱ ଜ୍ୟାମିତି, ଡିସପ୍ଲେସମେଣ୍ଟ ଭୂଭାଗ, ବ୍ରଶ ଏଣ୍ଟିଟି, ସ୍ଥିର ପ୍ରପ, ମ୍ୟାପର ନିଜ pak ମ୍ୟାଟେରିଆଲ। ଫ୍ରଷ୍ଟମ କଲିଂ। ଏବେ ନାହିଁ: ଲାଇଟମ୍ୟାପ, ସ୍କାଇବକ୍ସ, ପାଣି, prop_dynamic।
+ସଂସ୍କରଣ 19–21: ଜଗତ ଜ୍ୟାମିତି, ଡିସପ୍ଲେସମେଣ୍ଟ ଭୂଭାଗ, ବ୍ରଶ୍ ଏଣ୍ଟିଟି, ଷ୍ଟାଟିକ୍ ପ୍ରପ୍, ମ୍ୟାପ୍‌ର ନିଜ pak ମ୍ୟାଟେରିଆଲ୍, ଲାଇଟ୍‌ମ୍ୟାପ୍, କ୍ୟାମେରା ଚାରିପାଖେ ସ୍କାଇବକ୍ସ। ଫ୍ରଷ୍ଟମ୍ କଲିଂ। ଏବେ ନୁହେଁ: ପାଣି, prop_dynamic।
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> ଚିତ୍ର ଓ ଭିଡିଓରେ ରେଣ୍ଡର
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> ଛବି ଓ ଭିଡିଓରେ ରେଣ୍ଡର
 
-ଆରମ୍ଭ ହୋଇନାହିଁ।
+ସେସନ୍‌ରୁ PNG/TGA କ୍ରମ ଓ AVI/MP4 ଚଳଚ୍ଚିତ୍ର: ସମ୍ପୂର୍ଣ୍ଣ ସେସନ୍, ବର୍ତ୍ତମାନ ଶଟ୍ କିମ୍ବା ଏକ ପରିସର; ପ୍ରିସେଟ୍; File → Export, Ctrl+E। ଏବେ ନୁହେଁ: ଚଳଚ୍ଚିତ୍ରରେ ଶବ୍ଦ।
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> ପ୍ଲଗଇନ <code>.c2plg</code>
 

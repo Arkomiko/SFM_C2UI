@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/TE-in.svg" alt="సిద్ధత" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>విడుదలకు మొత్తం సిద్ధత: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>విడుదలకు మొత్తం సిద్ధత: 55%</b></p>
 
 ప్రతి విభాగం విస్తరిస్తుంది: ఇప్పటికే ఏది పనిచేస్తుంది, ఏది ఇంకా లేదు. శాతాలు SFM సామర్థ్యాలకు సాపేక్షంగా అంచనా.
 
@@ -43,7 +43,7 @@ Steam రిజిస్ట్రీ → `libraryfolders.vdf` → `gameinfo.txt`
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> తెరపై సెషన్
 
-టైమ్‌లైన్‌లో షాట్లు మరియు సౌండ్ ట్రాక్‌లు, ఎలిమెంట్ ట్రీ, ప్రతి షాట్ దృశ్యం దాని కెమెరా ద్వారా. ఇంకా లేదు: మ్యాప్‌లు, పార్టికల్స్, ధ్వని.
+టైమ్‌లైన్‌లో షాట్‌లు మరియు సౌండ్ ట్రాక్‌లు, ఎలిమెంట్ ట్రీ, ప్రతి షాట్ దృశ్యం దాని కెమెరా ద్వారా, షాట్ మ్యాప్. ఇంకా లేదు: పార్టికల్స్, ధ్వని.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> యానిమేషన్
 
@@ -75,15 +75,15 @@ UE5 మరియు Visual Studio లాగా, ప్రివ్యూతో �
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source షేడింగ్
 
-సెషన్ లైట్లు (DmeProjectedLight): ఫ్రస్టమ్, Source క్షీణత, maxDistance వరకు మసకబారడం; హాఫ్-లాంబర్ట్, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. మ్యాప్ ప్రపంచం లైట్‌మ్యాప్‌లతో. ఇంకా లేదు: నీడలు, గోబో టెక్స్చర్లు, $bumpmap, $envmap, యాంబియంట్ క్యూబ్‌లు, స్కైబాక్స్.
+సెషన్ లైట్లు (DmeProjectedLight): ఫ్రస్టమ్, Source అటెన్యుయేషన్, maxDistance వరకు ఫేడ్; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. మ్యాప్ ప్రపంచం లైట్‌మ్యాప్‌లతో; మోడళ్లు మ్యాప్ యాంబియంట్ క్యూబ్‌లు మరియు వరల్డ్ లైట్లతో వెలిగించబడతాయి. ఇంకా లేదు: నీడలు, గోబో టెక్స్చర్లు, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> మ్యాప్‌లు — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> మ్యాప్‌లు — <code>.bsp</code>
 
-వెర్షన్లు 19–21: ప్రపంచ జ్యామితి, డిస్‌ప్లేస్‌మెంట్ భూభాగం, బ్రష్ ఎంటిటీలు, స్థిర ప్రాప్‌లు, మ్యాప్ సొంత pak మెటీరియల్స్. ఫ్రస్టమ్ కల్లింగ్. ఇంకా లేదు: లైట్‌మ్యాప్‌లు, స్కైబాక్స్, నీరు, prop_dynamic.
+వెర్షన్లు 19–21: ప్రపంచ జ్యామితి, డిస్ప్లేస్‌మెంట్ భూభాగం, బ్రష్ ఎంటిటీలు, స్టాటిక్ ప్రాప్‌లు, మ్యాప్ సొంత pak మెటీరియల్స్, లైట్‌మ్యాప్‌లు, కెమెరా చుట్టూ స్కైబాక్స్. ఫ్రస్టమ్ కల్లింగ్. ఇంకా లేదు: నీరు, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> చిత్రం మరియు వీడియోకు రెండర్
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> చిత్రం మరియు వీడియోగా రెండరింగ్
 
-ప్రారంభించలేదు.
+సెషన్ నుండి PNG/TGA శ్రేణులు మరియు AVI/MP4 సినిమాలు: మొత్తం సెషన్, ప్రస్తుత షాట్ లేదా పరిధి; ప్రీసెట్‌లు; File → Export, Ctrl+E. ఇంకా లేదు: సినిమాలో ధ్వని.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> ప్లగిన్‌లు <code>.c2plg</code>
 

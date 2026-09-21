@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/EN-en.svg" alt="Readiness" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Overall readiness for release: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Overall readiness for release: 55%</b></p>
 
 Each area expands: what already works and what does not yet. The percentages are an estimate against what SFM can do.
 
@@ -43,7 +43,7 @@ Binary 1–5 and KeyValues2. Every session and particle file in the install writ
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Session on screen
 
-Shots and sound tracks on a timeline, the element tree, each shot's scene through its camera. Not yet: maps, particles, sound.
+Shots and sound tracks on a timeline, the element tree, each shot's scene through its camera, the shot's map. Not yet: particles, sound.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> Animation
 
@@ -75,15 +75,15 @@ Drag panels onto a compass of targets with a preview, as in UE5 and Visual Studi
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source shading
 
-Session lights (DmeProjectedLight): frustum, Source's attenuation, fade to maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. The map's world by its lightmaps. Not yet: shadows, gobo textures, $bumpmap, $envmap, ambient cubes, skybox.
+Session lights (DmeProjectedLight): frustum, Source's attenuation, fade to maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. The map's world by its lightmaps; models lit by the map's ambient cubes and world lights. Not yet: shadows, gobo textures, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Maps — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Maps — <code>.bsp</code>
 
-Versions 19–21: world geometry, displacement terrain, brush entities, static props, the map's own pak materials. Frustum culling. World lightmaps. Not yet: skybox, water, prop_dynamic.
+Versions 19–21: world geometry, displacement terrain, brush entities, static props, the map's own pak materials, lightmaps, the skybox around the camera. Frustum culling. Not yet: water, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Rendering to image and video
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Rendering to image and video
 
-Not started.
+PNG/TGA sequences and AVI/MP4 movies from the session: the whole session, the current shot or a range; presets; File → Export, Ctrl+E. Not yet: sound in the movie.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Plugins <code>.c2plg</code>
 

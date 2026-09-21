@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E3%83%86%E3%82%B9%E3%83%88-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E3%83%86%E3%82%B9%E3%83%88-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/JA-jp.md"><img alt="licence" src="https://img.shields.io/badge/%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### 今後の予定
 
 **次に**
-- マップの見た目：スカイボックス、水、prop_dynamic、ライトのゴボテクスチャ、`$bumpmap` と `$envmap`、セッションライトによる影。
-- 書き出し：連番画像と動画。
+- マップの見た目：水、prop_dynamic、ライトのゴボテクスチャ、`$bumpmap` と `$envmap`、セッションライトによる影。
+- 書き出した動画の音声。
 - `.c2plg` プラグインと `Tools/Market Load` のマーケットプレイスクライアント。その後テーマとワークスペース。
 - タイムライン上のサウンド、パーティクル、しわマップ、モーションエディターのプリセットとレイヤー、グラフエディターの接線。
 

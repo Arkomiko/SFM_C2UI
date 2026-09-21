@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%B4%9F%E0%B5%86%E0%B4%B8%E0%B5%8D%E0%B4%B1%E0%B5%8D%E0%B4%B1%E0%B5%81%E0%B4%95%E0%B5%BE-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%B4%9F%E0%B5%86%E0%B4%B8%E0%B5%8D%E0%B4%B1%E0%B5%8D%E0%B4%B1%E0%B5%81%E0%B4%95%E0%B5%BE-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/ML-in.md"><img alt="licence" src="https://img.shields.io/badge/%E0%B4%B2%E0%B5%88%E0%B4%B8%E0%B5%BB%E0%B4%B8%E0%B5%8D-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### പദ്ധതിയിൽ
 
 **അടുത്തത്**
-- മാപ്പിന്റെ രൂപം: സ്കൈബോക്സ്, വെള്ളം, prop_dynamic, ലൈറ്റുകളുടെ ഗോബോ ടെക്സ്ചറുകൾ, `$bumpmap`-ഉം `$envmap`-ഉം, സെഷൻ ലൈറ്റുകളിൽ നിന്നുള്ള നിഴലുകൾ.
-- എക്സ്പോർട്ട്: ഇമേജ് സീക്വൻസുകളും വീഡിയോയും.
+- മാപ്പിന്റെ രൂപം: വെള്ളം, prop_dynamic, ലൈറ്റുകളുടെ ഗോബോ ടെക്സ്ചറുകൾ, `$bumpmap`-ഉം `$envmap`-ഉം, സെഷൻ ലൈറ്റുകളിൽ നിന്നുള്ള നിഴലുകൾ.
+- എക്സ്പോർട്ട് ചെയ്ത സിനിമകളിൽ ശബ്ദം.
 - `.c2plg` പ്ലഗിനുകളും `Tools/Market Load`-ലെ മാർക്കറ്റ്പ്ലേസ് ക്ലയന്റും; തുടർന്ന് തീമുകളും വർക്ക്സ്പേസുകളും.
 - ടൈംലൈനിൽ ശബ്ദം, പാർട്ടിക്കിളുകൾ, റിങ്കിൾ മാപ്പുകൾ, മോഷൻ എഡിറ്റർ പ്രീസെറ്റുകളും ലെയറുകളും, ഗ്രാഫ് എഡിറ്ററിലെ ടാൻജന്റുകൾ.
 

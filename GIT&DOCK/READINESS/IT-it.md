@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/IT-it.svg" alt="Stato di avanzamento" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Avanzamento complessivo verso il rilascio: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Avanzamento complessivo verso il rilascio: 55%</b></p>
 
 Ogni area si espande: cosa funziona già e cosa non c'è ancora. Le percentuali sono una stima rispetto a ciò che sa fare SFM.
 
@@ -41,9 +41,9 @@ Versioni 7.0–7.5, DXT1/3/5 e tutti i formati non compressi, cubemap, mip. Il D
 
 Binario 1–5 e KeyValues2. Ogni sessione e file di particelle dell'installazione si riscrive **byte per byte**.
 
-### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Sessione a schermo
+### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Sessione sullo schermo
 
-Inquadrature e tracce audio sulla timeline, l'albero degli elementi, la scena di ogni inquadratura dalla sua camera. Non ancora: mappe, particelle, audio.
+Inquadrature e tracce audio sulla timeline, l'albero degli elementi, la scena di ogni inquadratura attraverso la sua camera, la mappa dell'inquadratura. Non ancora: particelle, audio.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> Animazione
 
@@ -75,15 +75,15 @@ Trascina i pannelli su una bussola di destinazioni con anteprima, come in UE5 e 
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Shading Source
 
-Luci della sessione (DmeProjectedLight): frustum, attenuazione Source, dissolvenza fino a maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Il mondo della mappa con le sue lightmap. Non ancora: ombre, texture gobo, $bumpmap, $envmap, cubi ambientali, skybox.
+Luci della sessione (DmeProjectedLight): frustum, attenuazione Source, dissolvenza fino a maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Il mondo della mappa tramite le lightmap; i modelli illuminati dai cubi ambientali e dalle luci della mappa. Non ancora: ombre, texture gobo, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Mappe — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Mappe — <code>.bsp</code>
 
-Versioni 19–21: geometria del mondo, terreno displacement, entità brush, prop statici, materiali del pak della mappa. Frustum culling. Non ancora: lightmap, skybox, acqua, prop_dynamic.
+Versioni 19–21: geometria del mondo, terreno displacement, brush entity, prop statici, materiali pak della mappa, lightmap, la skybox intorno alla camera. Frustum culling. Non ancora: acqua, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Render in immagine e video
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Rendering in immagine e video
 
-Non iniziato.
+Sequenze PNG/TGA e filmati AVI/MP4 dalla sessione: tutta la sessione, l'inquadratura corrente o un intervallo; preset; File → Export, Ctrl+E. Non ancora: l'audio nel filmato.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Plugin <code>.c2plg</code>
 

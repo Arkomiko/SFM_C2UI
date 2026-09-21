@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/ki%E1%BB%83m_th%E1%BB%AD-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/ki%E1%BB%83m_th%E1%BB%AD-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/VI-vn.md"><img alt="licence" src="https://img.shields.io/badge/gi%E1%BA%A5y_ph%C3%A9p-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### Dự kiến
 
 **Tiếp theo**
-- Diện mạo bản đồ: skybox, nước, prop_dynamic, texture gobo của đèn, `$bumpmap` và `$envmap`, bóng đổ từ đèn của phiên.
-- Xuất: chuỗi ảnh và video.
+- Diện mạo bản đồ: nước, prop_dynamic, texture gobo của đèn, `$bumpmap` và `$envmap`, bóng đổ từ đèn của phiên.
+- Âm thanh trong phim đã xuất.
 - Plugin `.c2plg` và trình khách chợ ứng dụng trong `Tools/Market Load`; sau đó là chủ đề và không gian làm việc.
 - Âm thanh trên dòng thời gian, hạt, wrinkle map, preset và lớp của motion editor, tiếp tuyến trong graph editor.
 

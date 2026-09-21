@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E6%B5%8B%E8%AF%95-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E6%B5%8B%E8%AF%95-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/ZH-cn.md"><img alt="licence" src="https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF%E8%AF%81-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### 计划中
 
 **下一步**
-- 地图外观：天空盒、水面、prop_dynamic、灯光 gobo 贴图、`$bumpmap` 和 `$envmap`、会话灯光的阴影。
-- 导出：序列帧和视频。
+- 地图外观：水面、prop_dynamic、灯光 gobo 贴图、`$bumpmap` 和 `$envmap`、会话灯光的阴影。
+- 导出影片中的声音。
 - `.c2plg` 插件和 `Tools/Market Load` 中的市场客户端；之后是主题和工作区。
 - 时间线上的声音、粒子、皱纹贴图、运动编辑器的预设和图层、曲线编辑器的切线。
 

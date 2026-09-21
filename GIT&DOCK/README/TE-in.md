@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%B0%AA%E0%B0%B0%E0%B1%80%E0%B0%95%E0%B1%8D%E0%B0%B7%E0%B0%B2%E0%B1%81-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%B0%AA%E0%B0%B0%E0%B1%80%E0%B0%95%E0%B1%8D%E0%B0%B7%E0%B0%B2%E0%B1%81-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/TE-in.md"><img alt="licence" src="https://img.shields.io/badge/%E0%B0%B2%E0%B1%88%E0%B0%B8%E0%B1%86%E0%B0%A8%E0%B1%8D%E0%B0%B8%E0%B1%8D-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### ప్రణాళికలో
 
 **తర్వాత**
-- మ్యాప్ రూపం: స్కైబాక్స్, నీరు, prop_dynamic, లైట్ గోబో టెక్స్చర్లు, `$bumpmap` మరియు `$envmap`, సెషన్ లైట్ల నుండి నీడలు.
-- ఎగుమతి: చిత్ర శ్రేణులు మరియు వీడియో.
+- మ్యాప్ రూపం: నీరు, prop_dynamic, లైట్ గోబో టెక్స్చర్లు, `$bumpmap` మరియు `$envmap`, సెషన్ లైట్ల నుండి నీడలు.
+- ఎగుమతి చేసిన సినిమాల్లో ధ్వని.
 - `.c2plg` ప్లగిన్‌లు మరియు `Tools/Market Load`లో మార్కెట్‌ప్లేస్ క్లయింట్; తర్వాత థీమ్‌లు మరియు వర్క్‌స్పేస్‌లు.
 - టైమ్‌లైన్‌లో ధ్వని, పార్టికల్స్, రింకిల్ మ్యాప్‌లు, మోషన్ ఎడిటర్ ప్రీసెట్‌లు మరియు లేయర్లు, గ్రాఫ్ ఎడిటర్‌లో టాంజెంట్లు.
 

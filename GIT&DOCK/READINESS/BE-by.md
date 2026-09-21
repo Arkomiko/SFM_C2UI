@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/BE-by.svg" alt="Гатоўнасць" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Агульная гатоўнасць да рэлізу: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Агульная гатоўнасць да рэлізу: 55%</b></p>
 
 Кожная вобласць разгортваецца: што ўжо працуе і чаго пакуль няма. Працэнты — ацэнка адносна магчымасцей SFM.
 
@@ -43,7 +43,7 @@ Binary 1–5 і KeyValues2. Кожная сесія і файл часціц у�
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Сесія на экране
 
-Шоты і гукавыя дарожкі на таймлайне, дрэва элементаў, сцэна шота праз яго камеру. Няма: карт, часціц, гуку.
+Шоты і гукавыя дарожкі на таймлайне, дрэва элементаў, сцэна шота праз яго камеру, карта шота. Няма: часціц, гуку.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> Анімацыя
 
@@ -75,15 +75,15 @@ Flex-кантролеры, скампіляваныя правілы і вярш
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Шэйдынг Source
 
-Святло сесіі (DmeProjectedLight): фрустум, згасанне Source, спад да maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Свет карты — па лайтмапах. Няма: ценяў, гоба-тэкстур, $bumpmap, $envmap, ambient-кубаў, скайбокса.
+Святло сесіі (DmeProjectedLight): фрустум, згасанне Source, спад да maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Свет карты — па лайтмапах; мадэлі асвятляюць ambient-кубы і world lights карты. Няма: ценяў, гобо-тэкстур, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Карты — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Карты — <code>.bsp</code>
 
-Версіі 19–21: геаметрыя свету, displacement-рэльеф, brush-энтыці, статычныя пропы, матэрыялы з pak-лампа карты. Адсячэнне па пірамідзе камеры. Няма: лайтмап, скайбокса, вады, prop_dynamic.
+Версіі 19–21: геаметрыя свету, displacement-рэльеф, brush-энтыці, статычныя пропы, матэрыялы з pak-лампа карты, лайтмапы, скайбокс вакол камеры. Адсячэнне па пірамідзе камеры. Няма: вады, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Рэндар у выяву і відэа
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Рэндэр у выяву і відэа
 
-Не пачата.
+PNG/TGA-паслядоўнасці і AVI/MP4 з сесіі: уся сесія, бягучы шот або дыяпазон; прэсеты; File → Export, Ctrl+E. Няма: гуку ў відэа.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Плагіны <code>.c2plg</code>
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/JA-jp.svg" alt="完成度" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>リリースへの全体的な完成度: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>リリースへの全体的な完成度: 55%</b></p>
 
 各領域を開くと、すでに動くものとまだないものが分かります。パーセントは SFM の機能に対する目安です。
 
@@ -43,7 +43,7 @@ Steam レジストリ → `libraryfolders.vdf` → `gameinfo.txt` の検索パ�
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> 画面上のセッション
 
-タイムラインのショットと音声トラック、要素ツリー、各ショットのシーンをそのカメラから。未対応: マップ、パーティクル、音声。
+タイムライン上のショットとサウンドトラック、要素ツリー、各ショットのカメラを通したシーン、ショットのマップ。未対応：パーティクル、音声。
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> アニメーション
 
@@ -75,15 +75,15 @@ UE5 や Visual Studio のように、プレビュー付きのターゲットコ�
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source シェーディング
 
-セッションのライト (DmeProjectedLight): 視錐台、Source の減衰、maxDistance へのフェード; ハーフランバート、$lightwarptexture、フォン ($phongexponent/boost/fresnelranges)、$rimlight、$selfillum。マップのワールドはライトマップで。未対応: 影、ゴボテクスチャ、$bumpmap、$envmap、アンビエントキューブ、スカイボックス。
+セッションライト（DmeProjectedLight）：フラスタム、Source の減衰、maxDistance までのフェード；half-lambert、$lightwarptexture、phong、$rimlight、$selfillum。マップのワールドはライトマップで、モデルはマップのアンビエントキューブとワールドライトで照らされます。未対応：影、ゴボテクスチャ、$bumpmap、$envmap。
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> マップ — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> マップ — <code>.bsp</code>
 
-バージョン 19–21: ワールド形状、ディスプレイスメント地形、ブラシエンティティ、静的プロップ、マップ内蔵 pak のマテリアル。視錐台カリング。未対応: ライトマップ、スカイボックス、水、prop_dynamic。
+バージョン 19〜21：ワールド形状、ディスプレイスメント地形、ブラシエンティティ、静的プロップ、マップ内蔵の pak マテリアル、ライトマップ、カメラを囲むスカイボックス。視錐台カリング。未対応：水、prop_dynamic。
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> 画像・動画への書き出し
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> 画像と動画への書き出し
 
-未着手。
+セッションから PNG/TGA 連番と AVI/MP4 動画：セッション全体、現在のショット、または範囲；プリセット；File → Export、Ctrl+E。未対応：動画の音声。
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> プラグイン <code>.c2plg</code>
 

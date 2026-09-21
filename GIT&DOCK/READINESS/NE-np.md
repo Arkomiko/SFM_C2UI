@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/NE-np.svg" alt="तयारी" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>रिलिजका लागि समग्र तयारी: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>रिलिजका लागि समग्र तयारी: 55%</b></p>
 
 हरेक क्षेत्र खुल्छ: के पहिले नै काम गर्छ र के अझै छैन। प्रतिशत SFM को क्षमताको तुलनामा अनुमान हो।
 
@@ -41,9 +41,9 @@ Steam रजिस्ट्री → `libraryfolders.vdf` → `gameinfo.txt` �
 
 बाइनरी १–५ र KeyValues2। स्थापनाको हरेक सेसन र पार्टिकल फाइल **बाइट-बाइट** फिर्ता लेखिन्छ।
 
-### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> स्क्रिनमा सेसन
+### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> स्क्रिनमा सत्र
 
-टाइमलाइनमा शट र साउन्ड ट्र्याक, एलिमेन्ट ट्री, हरेक शटको दृश्य आफ्नै क्यामेराबाट। अझै छैन: नक्सा, पार्टिकल, आवाज।
+टाइमलाइनमा शट र साउन्ड ट्र्याक, तत्व वृक्ष, हरेक शटको दृश्य उसको क्यामेराबाट, शटको नक्सा। अझै छैन: कण, ध्वनि।
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> एनिमेसन
 
@@ -73,17 +73,17 @@ Flex नियन्त्रक, कम्पाइल गरिएका न�
 
 UE5 र Visual Studio जस्तै, पूर्वावलोकनसहित लक्ष्यहरूको कम्पासमा प्यानल तान्नुहोस्। अझै छैन: सुरक्षित लेआउट, थिम।
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source शेडिङ
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source सेडिङ
 
-सेसन बत्ती (DmeProjectedLight): फ्रस्टम, Source क्षीणन, maxDistance सम्म फिका; हाफ-ल्याम्बर्ट, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum। नक्साको संसार लाइटम्यापबाट। अझै छैन: छाया, गोबो टेक्सचर, $bumpmap, $envmap, एम्बियन्ट क्युब, स्काइबक्स।
+सत्रका बत्ती (DmeProjectedLight): फ्रस्टम, Source क्षीणन, maxDistance सम्म फेड; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum। नक्साको संसार लाइटम्यापबाट; मोडेलहरू नक्साका एम्बियन्ट क्युब र वर्ल्ड लाइटबाट उज्यालो। अझै छैन: छायाँ, गोबो टेक्स्चर, $bumpmap, $envmap।
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> नक्सा — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> नक्साहरू — <code>.bsp</code>
 
-संस्करण 19–21: विश्व ज्यामिति, डिस्प्लेसमेन्ट भूभाग, ब्रश एन्टिटी, स्थिर प्रप, नक्साको आफ्नै pak सामग्री। फ्रस्टम कलिङ। अझै छैन: लाइटम्याप, स्काइबक्स, पानी, prop_dynamic।
+संस्करण 19–21: संसारको ज्यामिति, डिस्प्लेसमेन्ट भूभाग, ब्रश एन्टिटी, स्थिर प्रप, नक्साका आफ्नै pak सामग्री, लाइटम्याप, क्यामेरा वरिपरि स्काइबक्स। फ्रस्टम कलिङ। अझै छैन: पानी, prop_dynamic।
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> तस्बिर र भिडियोमा रेन्डर
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> छवि र भिडियोमा रेन्डर
 
-सुरु भएको छैन।
+सत्रबाट PNG/TGA अनुक्रम र AVI/MP4 फिल्महरू: पूरै सत्र, हालको शट वा एक दायरा; प्रिसेट; File → Export, Ctrl+E। अझै छैन: फिल्ममा ध्वनि।
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> प्लगइन <code>.c2plg</code>
 

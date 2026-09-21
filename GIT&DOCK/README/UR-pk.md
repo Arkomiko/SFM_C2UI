@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D9%B9%DB%8C%D8%B3%D9%B9-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D9%B9%DB%8C%D8%B3%D9%B9-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/UR-pk.md"><img alt="licence" src="https://img.shields.io/badge/%D9%84%D8%A7%D8%A6%D8%B3%D9%86%D8%B3-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### منصوبے میں
 
 **اگلا**
-- نقشے کی شکل: اسکائی باکس، پانی، prop_dynamic، روشنیوں کے گوبو ٹیکسچر، `$bumpmap` اور `$envmap`، سیشن کی روشنیوں کے سائے۔
-- ایکسپورٹ: امیج سیکوئنس اور ویڈیو۔
+- نقشے کی شکل: پانی، prop_dynamic، روشنیوں کے گوبو ٹیکسچر، `$bumpmap` اور `$envmap`، سیشن کی روشنیوں کے سائے۔
+- ایکسپورٹ کی گئی فلموں میں آواز۔
 - `.c2plg` پلگ اِنز اور `Tools/Market Load` میں مارکیٹ پلیس کلائنٹ؛ پھر تھیمز اور ورک اسپیسز۔
 - ٹائم لائن پر آواز، پارٹیکلز، رِنکل میپس، موشن ایڈیٹر کے پری سیٹس اور لیئرز، گراف ایڈیٹر میں ٹینجنٹس۔
 

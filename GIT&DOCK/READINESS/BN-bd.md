@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/BN-bd.svg" alt="প্রস্তুতি" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>রিলিজের জন্য সামগ্রিক প্রস্তুতি: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>রিলিজের জন্য সামগ্রিক প্রস্তুতি: 55%</b></p>
 
 প্রতিটি ক্ষেত্র খোলা যায়: কী ইতিমধ্যে কাজ করে আর কী এখনো নেই। শতাংশ SFM-এর সক্ষমতার তুলনায় একটি অনুমান।
 
@@ -43,7 +43,7 @@ Steam রেজিস্ট্রি → `libraryfolders.vdf` → `gameinfo.txt`
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> পর্দায় সেশন
 
-টাইমলাইনে শট ও সাউন্ড ট্র্যাক, এলিমেন্ট ট্রি, প্রতিটি শটের দৃশ্য তার ক্যামেরায়। এখনো নয়: ম্যাপ, পার্টিকল, শব্দ।
+টাইমলাইনে শট ও সাউন্ড ট্র্যাক, উপাদান ট্রি, প্রতিটি শটের দৃশ্য তার ক্যামেরায়, শটের ম্যাপ। এখনও নয়: পার্টিকল, শব্দ।
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> অ্যানিমেশন
 
@@ -75,15 +75,15 @@ UE5 ও Visual Studio-র মতো, প্রিভিউ সহ লক্ষ�
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source শেডিং
 
-সেশন লাইট (DmeProjectedLight): ফ্রাস্টাম, Source ক্ষীণতা, maxDistance পর্যন্ত ম্লান; হাফ-ল্যাম্বার্ট, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum। ম্যাপের জগৎ লাইটম্যাপে। এখনো নয়: ছায়া, গোবো টেক্সচার, $bumpmap, $envmap, অ্যাম্বিয়েন্ট কিউব, স্কাইবক্স।
+সেশন লাইট (DmeProjectedLight): ফ্রাস্টাম, Source অ্যাটেনুয়েশন, maxDistance পর্যন্ত ফেড; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum। ম্যাপের জগৎ লাইটম্যাপে; মডেল ম্যাপের অ্যাম্বিয়েন্ট কিউব ও ওয়ার্ল্ড লাইটে আলোকিত। এখনও নয়: ছায়া, গোবো টেক্সচার, $bumpmap, $envmap।
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> ম্যাপ — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> ম্যাপ — <code>.bsp</code>
 
-সংস্করণ ১৯–২১: বিশ্ব জ্যামিতি, ডিসপ্লেসমেন্ট ভূমি, ব্রাশ এনটিটি, স্থির প্রপ, ম্যাপের নিজস্ব pak ম্যাটেরিয়াল। ফ্রাস্টাম কালিং। এখনো নয়: লাইটম্যাপ, স্কাইবক্স, জল, prop_dynamic।
+সংস্করণ ১৯–২১: ওয়ার্ল্ড জ্যামিতি, ডিসপ্লেসমেন্ট ভূমি, ব্রাশ এনটিটি, স্ট্যাটিক প্রপ, ম্যাপের নিজস্ব pak ম্যাটেরিয়াল, লাইটম্যাপ, ক্যামেরার চারপাশে স্কাইবক্স। ফ্রাস্টাম কালিং। এখনও নয়: পানি, prop_dynamic।
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> ছবি ও ভিডিওতে রেন্ডার
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> ছবি ও ভিডিওতে রেন্ডার
 
-শুরু হয়নি।
+সেশন থেকে PNG/TGA সিকোয়েন্স ও AVI/MP4 ফিল্ম: পুরো সেশন, বর্তমান শট বা একটি পরিসর; প্রিসেট; File → Export, Ctrl+E। এখনও নয়: ফিল্মে শব্দ।
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> প্লাগইন <code>.c2plg</code>
 

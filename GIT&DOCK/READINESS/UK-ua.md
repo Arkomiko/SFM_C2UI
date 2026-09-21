@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/UK-ua.svg" alt="Готовність" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Загальна готовність до релізу: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Загальна готовність до релізу: 55%</b></p>
 
 Кожна область розгортається: що вже працює і чого поки немає. Відсотки — оцінка відносно можливостей SFM.
 
@@ -43,7 +43,7 @@ Binary 1–5 і KeyValues2. Кожна сесія і файл частинок �
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Сесія на екрані
 
-Шоти і звукові доріжки на таймлайні, дерево елементів, сцена шота через його камеру. Немає: карт, частинок, звуку.
+Шоти та звукові доріжки на таймлайні, дерево елементів, сцена шота через його камеру, карта шота. Немає: частинок, звуку.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> Анімація
 
@@ -75,15 +75,15 @@ Flex-контролери, скомпільовані правила і верш
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Шейдинг Source
 
-Світло сесії (DmeProjectedLight): фрустум, згасання Source, спад до maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Світ карти — за лайтмапами. Немає: тіней, гобо-текстур, $bumpmap, $envmap, ambient-кубів, скайбоксу.
+Світло сесії (DmeProjectedLight): фрустум, згасання Source, спад до maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Світ карти — за лайтмапами; моделі освітлюють ambient-куби та world lights карти. Немає: тіней, гобо-текстур, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Карти — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Карти — <code>.bsp</code>
 
-Версії 19–21: геометрія світу, displacement-рельєф, brush-ентіті, статичні пропи, матеріали з pak-лампа карти. Відсікання за пірамідою камери. Немає: лайтмап, скайбоксу, води, prop_dynamic.
+Версії 19–21: геометрія світу, displacement-рельєф, brush-ентиті, статичні пропи, матеріали з pak-лампа карти, лайтмапи, скайбокс навколо камери. Відсікання за пірамідою камери. Немає: води, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Рендер у зображення і відео
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Рендер у зображення та відео
 
-Не розпочато.
+PNG/TGA-послідовності та AVI/MP4 із сесії: уся сесія, поточний шот або діапазон; пресети; File → Export, Ctrl+E. Немає: звуку у відео.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Плагіни <code>.c2plg</code>
 

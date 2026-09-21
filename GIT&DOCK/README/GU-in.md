@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AA%AA%E0%AA%B0%E0%AB%80%E0%AA%95%E0%AB%8D%E0%AA%B7%E0%AA%A3%E0%AB%8B-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AA%AA%E0%AA%B0%E0%AB%80%E0%AA%95%E0%AB%8D%E0%AA%B7%E0%AA%A3%E0%AB%8B-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/GU-in.md"><img alt="licence" src="https://img.shields.io/badge/%E0%AA%B2%E0%AA%BE%E0%AA%87%E0%AA%B8%E0%AA%A8%E0%AB%8D%E0%AA%B8-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### યોજનામાં
 
 **આગળ**
-- નકશાનો દેખાવ: સ્કાયબોક્સ, પાણી, prop_dynamic, લાઇટના ગોબો ટેક્સચર, `$bumpmap` અને `$envmap`, સેશન લાઇટોના પડછાયા.
-- નિકાસ: ઇમેજ સિક્વન્સ અને વિડિઓ.
+- નકશાનો દેખાવ: પાણી, prop_dynamic, લાઇટના ગોબો ટેક્સચર, `$bumpmap` અને `$envmap`, સેશન લાઇટોના પડછાયા.
+- નિકાસ કરેલી ફિલ્મોમાં અવાજ.
 - `.c2plg` પ્લગઇન અને `Tools/Market Load` માં માર્કેટપ્લેસ ક્લાયન્ટ; પછી થીમ અને વર્કસ્પેસ.
 - ટાઇમલાઇન પર અવાજ, પાર્ટિકલ, રિંકલ મેપ, મોશન એડિટરના પ્રીસેટ અને લેયર, ગ્રાફ એડિટરમાં ટેન્જન્ટ.
 

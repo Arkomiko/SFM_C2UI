@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/ZH-cn.svg" alt="完成度" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>整体发布就绪度：51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>整体发布就绪度：55%</b></p>
 
 每个领域都可以展开：已经能用的和暂时还没有的。百分比是相对于 SFM 能力的估计。
 
@@ -43,7 +43,7 @@ Steam 注册表 → `libraryfolders.vdf` → `gameinfo.txt` 的搜索路径，�
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> 屏幕上的会话
 
-时间线上的镜头和音轨、元素树、每个镜头通过其相机的场景。尚无：地图、粒子、声音。
+时间线上的镜头和音轨、元素树、通过各镜头相机看到的场景、镜头的地图。尚未：粒子、声音。
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> 动画
 
@@ -75,15 +75,15 @@ Flex 控制器、编译后的规则和顶点动画——角色会说话和做表
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source 着色
 
-会话灯光（DmeProjectedLight）：视锥、Source 衰减、到 maxDistance 的淡出；半兰伯特、$lightwarptexture、phong（$phongexponent/boost/fresnelranges）、$rimlight、$selfillum。地图世界按光照贴图。尚无：阴影、gobo 纹理、$bumpmap、$envmap、环境立方体、天空盒。
+会话灯光（DmeProjectedLight）：视锥、Source 衰减、到 maxDistance 的淡出；half-lambert、$lightwarptexture、phong、$rimlight、$selfillum。地图世界使用光照贴图；模型由地图的环境立方体和世界光源照亮。尚未：阴影、gobo 贴图、$bumpmap、$envmap。
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> 地图 — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> 地图 — <code>.bsp</code>
 
-版本 19–21：世界几何、置换地形、笔刷实体、静态道具、地图自带 pak 材质。视锥剔除。尚无：光照贴图、天空盒、水、prop_dynamic。
+版本 19–21：世界几何、位移地形、笔刷实体、静态道具、地图自带的 pak 材质、光照贴图、围绕相机的天空盒。视锥剔除。尚未：水面、prop_dynamic。
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> 渲染为图像和视频
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> 渲染为图像和视频
 
-未开始。
+从会话导出 PNG/TGA 序列和 AVI/MP4 影片：整个会话、当前镜头或某个范围；预设；File → Export，Ctrl+E。尚未：影片中的声音。
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> 插件 <code>.c2plg</code>
 

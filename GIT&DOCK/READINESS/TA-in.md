@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/TA-in.svg" alt="தயார்நிலை" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>வெளியீட்டுக்கான மொத்த தயார்நிலை: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>வெளியீட்டுக்கான மொத்த தயார்நிலை: 55%</b></p>
 
 ஒவ்வொரு பகுதியும் விரிகிறது: ஏற்கனவே என்ன வேலை செய்கிறது, என்ன இன்னும் இல்லை. சதவீதங்கள் SFM திறன்களுக்கு ஒப்பிட்ட மதிப்பீடு.
 
@@ -43,7 +43,7 @@ Steam பதிவகம் → `libraryfolders.vdf` → `gameinfo.txt` தே�
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> திரையில் அமர்வு
 
-காலக்கோட்டில் ஷாட்கள் மற்றும் ஒலி தடங்கள், உறுப்பு மரம், ஒவ்வொரு ஷாட்டின் காட்சி அதன் கேமரா வழியாக. இன்னும் இல்லை: வரைபடங்கள், துகள்கள், ஒலி.
+காலவரிசையில் ஷாட்களும் ஒலித் தடங்களும், உறுப்பு மரம், ஒவ்வொரு ஷாட்டின் காட்சி அதன் கேமரா வழியாக, ஷாட்டின் வரைபடம். இன்னும் இல்லை: துகள்கள், ஒலி.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> அனிமேஷன்
 
@@ -75,15 +75,15 @@ UE5 மற்றும் Visual Studio போல, முன்னோட்ட�
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source ஷேடிங்
 
-அமர்வு விளக்குகள் (DmeProjectedLight): விழுகோணம், Source குறைவு, maxDistance வரை மங்கல்; ஹாஃப்-லாம்பர்ட், $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. வரைபட உலகம் லைட்மேப்களால். இன்னும் இல்லை: நிழல்கள், கோபோ அமைப்புகள், $bumpmap, $envmap, சுற்றுச்சூழல் கனசதுரங்கள், ஸ்கைபாக்ஸ்.
+அமர்வு விளக்குகள் (DmeProjectedLight): ஃப்ரஸ்டம், Source தேய்வு, maxDistance வரை மங்கல்; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. வரைபட உலகம் லைட்மேப்களால்; மாதிரிகள் வரைபடத்தின் சூழல் கனசதுரங்களாலும் உலக விளக்குகளாலும் ஒளிரும். இன்னும் இல்லை: நிழல்கள், கோபோ அமைப்புகள், $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> வரைபடங்கள் — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> வரைபடங்கள் — <code>.bsp</code>
 
-பதிப்புகள் 19–21: உலக வடிவியல், டிஸ்ப்ளேஸ்மென்ட் நிலப்பரப்பு, பிரஷ் என்டிட்டிகள், நிலையான ப்ராப்கள், வரைபடத்தின் சொந்த pak பொருட்கள். ஃப்ரஸ்டம் கல்லிங். இன்னும் இல்லை: லைட்மேப், ஸ்கைபாக்ஸ், நீர், prop_dynamic.
+பதிப்புகள் 19–21: உலக வடிவியல், இடப்பெயர்ச்சி நிலப்பரப்பு, பிரஷ் என்டிட்டிகள், நிலையான ப்ராப்கள், வரைபடத்தின் சொந்த pak பொருட்கள், லைட்மேப்கள், கேமராவைச் சுற்றிய ஸ்கைபாக்ஸ். ஃப்ரஸ்டம் கல்லிங். இன்னும் இல்லை: நீர், prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> படம் மற்றும் வீடியோவாக ரெண்டர்
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> படமும் காணொளியுமாக ரெண்டர்
 
-தொடங்கவில்லை.
+அமர்விலிருந்து PNG/TGA தொடர்களும் AVI/MP4 திரைப்படங்களும்: முழு அமர்வு, தற்போதைய ஷாட் அல்லது வரம்பு; முன்னமைவுகள்; File → Export, Ctrl+E. இன்னும் இல்லை: திரைப்படத்தில் ஒலி.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> செருகுநிரல்கள் <code>.c2plg</code>
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/KO-kr.svg" alt="완성도" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>릴리스 전체 준비도: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>릴리스 전체 준비도: 55%</b></p>
 
 각 영역을 펼치면 이미 동작하는 것과 아직 없는 것이 보입니다. 백분율은 SFM의 기능 대비 추정치입니다.
 
@@ -41,9 +41,9 @@ Steam 레지스트리 → `libraryfolders.vdf` → `gameinfo.txt`의 검색 경�
 
 바이너리 1–5와 KeyValues2. 설치의 모든 세션과 파티클 파일이 **바이트 단위로 동일하게** 다시 기록됩니다.
 
-### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> 화면 위의 세션
+### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> 화면의 세션
 
-타임라인의 샷과 사운드 트랙, 요소 트리, 각 샷의 장면을 그 카메라로. 아직 없음: 맵, 파티클, 사운드.
+타임라인의 샷과 사운드 트랙, 요소 트리, 각 샷의 카메라를 통한 장면, 샷의 맵. 아직 없음: 파티클, 사운드.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> 애니메이션
 
@@ -75,15 +75,15 @@ UE5와 Visual Studio처럼 미리보기가 있는 대상 컴퍼스로 패널을 
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source 셰이딩
 
-세션 조명(DmeProjectedLight): 절두체, Source 감쇠, maxDistance까지 페이드; 하프 램버트, $lightwarptexture, 퐁($phongexponent/boost/fresnelranges), $rimlight, $selfillum. 맵의 월드는 라이트맵으로. 아직 없음: 그림자, 고보 텍스처, $bumpmap, $envmap, 앰비언트 큐브, 스카이박스.
+세션 조명(DmeProjectedLight): 절두체, Source 감쇠, maxDistance까지 페이드; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. 맵 월드는 라이트맵으로, 모델은 맵의 앰비언트 큐브와 월드 라이트로 조명. 아직 없음: 그림자, 고보 텍스처, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> 맵 — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> 맵 — <code>.bsp</code>
 
-버전 19–21: 월드 지오메트리, 디스플레이스먼트 지형, 브러시 엔티티, 정적 프롭, 맵 자체 pak 머티리얼. 절두체 컬링. 아직 없음: 라이트맵, 스카이박스, 물, prop_dynamic.
+버전 19–21: 월드 지오메트리, 디스플레이스먼트 지형, 브러시 엔티티, 정적 프롭, 맵 자체 pak 재질, 라이트맵, 카메라를 둘러싼 스카이박스. 절두체 컬링. 아직 없음: 물, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> 이미지·비디오 렌더
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> 이미지와 비디오로 렌더링
 
-시작 안 함.
+세션에서 PNG/TGA 시퀀스와 AVI/MP4 영상: 전체 세션, 현재 샷 또는 범위; 프리셋; File → Export, Ctrl+E. 아직 없음: 영상의 사운드.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> 플러그인 <code>.c2plg</code>
 

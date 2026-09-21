@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/pruebas-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/pruebas-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/ES-es.md"><img alt="licence" src="https://img.shields.io/badge/licencia-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### En los planes
 
 **Próximo**
-- El aspecto del mapa: skybox, agua, prop_dynamic, texturas gobo de las luces, `$bumpmap` y `$envmap`, sombras de las luces de la sesión.
-- Exportación: secuencias de imágenes y vídeo.
+- El aspecto del mapa: agua, prop_dynamic, texturas gobo de las luces, `$bumpmap` y `$envmap`, sombras de las luces de la sesión.
+- Sonido en las películas exportadas.
 - Plugins `.c2plg` y el cliente del marketplace en `Tools/Market Load`; después temas y espacios de trabajo.
 - Sonido en la línea de tiempo, partículas, wrinkle maps, presets y capas del motion editor, tangentes en el graph editor.
 

@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AC%AA%E0%AC%B0%E0%AD%80%E0%AC%95%E0%AD%8D%E0%AC%B7%E0%AC%BE-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AC%AA%E0%AC%B0%E0%AD%80%E0%AC%95%E0%AD%8D%E0%AC%B7%E0%AC%BE-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/OR-in.md"><img alt="licence" src="https://img.shields.io/badge/%E0%AC%B2%E0%AC%BE%E0%AC%87%E0%AC%B8%E0%AD%87%E0%AC%A8%E0%AD%8D%E0%AC%B8-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### ଯୋଜନାରେ
 
 **ପରବର୍ତ୍ତୀ**
-- ମ୍ୟାପ୍ ରୂପ: ସ୍କାଇବକ୍ସ, ପାଣି, prop_dynamic, ଆଲୋକର ଗୋବୋ ଟେକ୍ସଚର୍, `$bumpmap` ଓ `$envmap`, ସେସନ୍ ଆଲୋକରୁ ଛାୟା।
-- ରପ୍ତାନି: ଛବି କ୍ରମ ଓ ଭିଡିଓ।
+- ମ୍ୟାପ୍ ରୂପ: ପାଣି, prop_dynamic, ଆଲୋକର ଗୋବୋ ଟେକ୍ସଚର୍, `$bumpmap` ଓ `$envmap`, ସେସନ୍ ଆଲୋକରୁ ଛାୟା।
+- ରପ୍ତାନି ହୋଇଥିବା ଚଳଚ୍ଚିତ୍ରରେ ଶବ୍ଦ।
 - `.c2plg` ପ୍ଲଗଇନ୍ ଓ `Tools/Market Load` ରେ ମାର୍କେଟପ୍ଲେସ୍ କ୍ଲାଏଣ୍ଟ; ତାପରେ ଥିମ୍ ଓ ୱାର୍କସ୍ପେସ୍।
 - ଟାଇମ୍‌ଲାଇନ୍‌ରେ ଶବ୍ଦ, ପାର୍ଟିକଲ୍, ରିଙ୍କଲ୍ ମ୍ୟାପ୍, ମୋସନ୍ ଏଡିଟର୍ ପ୍ରିସେଟ୍ ଓ ଲେୟାର୍, ଗ୍ରାଫ୍ ଏଡିଟର୍‌ରେ ଟ୍ୟାଞ୍ଜେଣ୍ଟ।
 

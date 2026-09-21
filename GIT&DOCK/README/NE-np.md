@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%A4%AA%E0%A4%B0%E0%A5%80%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%A3-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%A4%AA%E0%A4%B0%E0%A5%80%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%A3-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/NE-np.md"><img alt="licence" src="https://img.shields.io/badge/%E0%A4%87%E0%A4%9C%E0%A4%BE%E0%A4%9C%E0%A4%A4%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### योजनामा
 
 **अर्को**
-- नक्साको रूप: स्काइबक्स, पानी, prop_dynamic, बत्तीका गोबो टेक्स्चर, `$bumpmap` र `$envmap`, सत्रका बत्तीबाट छायाँ।
-- निर्यात: छवि अनुक्रम र भिडियो।
+- नक्साको रूप: पानी, prop_dynamic, बत्तीका गोबो टेक्स्चर, `$bumpmap` र `$envmap`, सत्रका बत्तीबाट छायाँ।
+- निर्यात गरिएका फिल्ममा ध्वनि।
 - `.c2plg` प्लगइन र `Tools/Market Load` मा मार्केटप्लेस क्लाइन्ट; त्यसपछि थिम र कार्यक्षेत्र।
 - टाइमलाइनमा ध्वनि, कण, रिङ्कल म्याप, मोसन सम्पादकका प्रिसेट र तह, ग्राफ सम्पादकमा ट्यान्जेन्ट।
 

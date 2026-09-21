@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/MR-in.svg" alt="तयारी" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>रिलीजसाठी एकूण तयारी: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>रिलीजसाठी एकूण तयारी: 55%</b></p>
 
 प्रत्येक क्षेत्र उघडता येते: काय आधीच काम करते आणि काय अजून नाही. टक्केवारी SFM च्या क्षमतांच्या तुलनेत अंदाज आहे.
 
@@ -43,7 +43,7 @@ Steam रजिस्ट्री → `libraryfolders.vdf` → `gameinfo.txt` �
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> पडद्यावर सेशन
 
-टाइमलाइनवर शॉट्स आणि साउंड ट्रॅक, एलिमेंट ट्री, प्रत्येक शॉटचे दृश्य त्याच्या कॅमेऱ्यातून. अजून नाही: नकाशे, पार्टिकल, आवाज.
+टाइमलाइनवर शॉट आणि साउंड ट्रॅक, घटक वृक्ष, प्रत्येक शॉटचे दृश्य त्याच्या कॅमेऱ्यातून, शॉटचा नकाशा. अजून नाही: पार्टिकल, ध्वनी.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> अॅनिमेशन
 
@@ -75,15 +75,15 @@ UE5 आणि Visual Studio प्रमाणे, पूर्वावलो�
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source शेडिंग
 
-सेशन लाइट (DmeProjectedLight): फ्रस्टम, Source क्षीणन, maxDistance पर्यंत फिका; हाफ-लॅम्बर्ट, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. नकाशाचे जग लाइटमॅपने. अजून नाही: सावल्या, गोबो टेक्सचर, $bumpmap, $envmap, अँबियंट क्यूब, स्कायबॉक्स.
+सेशनचे दिवे (DmeProjectedLight): फ्रस्टम, Source क्षीणन, maxDistance पर्यंत फेड; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. नकाशाचे जग लाइटमॅपने; मॉडेल नकाशाच्या अ‍ॅम्बियंट क्यूब आणि वर्ल्ड लाइटने उजळलेली. अजून नाही: सावल्या, गोबो टेक्स्चर, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> नकाशे — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> नकाशे — <code>.bsp</code>
 
-आवृत्त्या 19–21: जग भूमिती, डिस्प्लेसमेंट भूभाग, ब्रश एंटिटी, स्थिर प्रॉप, नकाशाचे स्वतःचे pak मटेरियल. फ्रस्टम कलिंग. अजून नाही: लाइटमॅप, स्कायबॉक्स, पाणी, prop_dynamic.
+आवृत्त्या 19–21: जगाची भूमिती, डिस्प्लेसमेंट भूभाग, ब्रश एंटिटी, स्टॅटिक प्रॉप्स, नकाशाचे स्वतःचे pak मटेरियल, लाइटमॅप, कॅमेऱ्याभोवती स्कायबॉक्स. फ्रस्टम कलिंग. अजून नाही: पाणी, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> प्रतिमा आणि व्हिडिओमध्ये रेंडर
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> प्रतिमा आणि व्हिडिओमध्ये रेंडर
 
-सुरू केले नाही.
+सेशनमधून PNG/TGA अनुक्रम आणि AVI/MP4 चित्रपट: संपूर्ण सेशन, सध्याचा शॉट किंवा श्रेणी; प्रीसेट; File → Export, Ctrl+E. अजून नाही: चित्रपटात ध्वनी.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> प्लगइन <code>.c2plg</code>
 

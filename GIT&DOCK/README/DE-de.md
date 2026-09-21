@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tests-363-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tests-372-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/DE-de.md"><img alt="licence" src="https://img.shields.io/badge/Lizenz-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -121,8 +121,8 @@ python Testing/run.py
 ### Geplant
 
 **Als Nächstes**
-- Das Aussehen der Karte: Skybox, Wasser, prop_dynamic, Gobo-Texturen der Lichter, `$bumpmap` und `$envmap`, Schatten von Sitzungslichtern.
-- Export: Bildsequenzen und Video.
+- Das Aussehen der Karte: Wasser, prop_dynamic, Gobo-Texturen der Lichter, `$bumpmap` und `$envmap`, Schatten von Sitzungslichtern.
+- Ton im exportierten Film.
 - `.c2plg`-Plugins und der Marktplatz-Client in `Tools/Market Load`; danach Themes und Arbeitsbereiche.
 - Ton auf der Zeitleiste, Partikel, Wrinkle-Maps, Presets und Ebenen im Motion-Editor, Tangenten im Graph-Editor.
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/RO-md.svg" alt="Grad de pregătire" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Pregătire generală pentru lansare: 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Pregătire generală pentru lansare: 55%</b></p>
 
 Fiecare zonă se deschide: ce funcționează deja și ce nu există încă. Procentele sunt o estimare față de posibilitățile SFM.
 
@@ -43,7 +43,7 @@ Binar 1–5 și KeyValues2. Fiecare sesiune și fișier de particule din instala
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Sesiunea pe ecran
 
-Cadre și piste de sunet pe cronologie, arborele elementelor, scena fiecărui cadru prin camera sa. Încă nu: hărți, particule, sunet.
+Cadre și piste audio pe cronologie, arborele elementelor, scena fiecărui cadru prin camera lui, harta cadrului. Încă nu: particule, sunet.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> Animație
 
@@ -75,15 +75,15 @@ Trageți panourile pe o busolă de ținte cu previzualizare, ca în UE5 și Visu
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Umbrire Source
 
-Luminile sesiunii (DmeProjectedLight): frustum, atenuarea Source, estompare până la maxDistance; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Lumea hărții prin lightmap-uri. Încă nu: umbre, texturi gobo, $bumpmap, $envmap, cuburi ambientale, skybox.
+Luminile sesiunii (DmeProjectedLight): frustum, atenuarea Source, estompare până la maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Lumea hărții prin lightmap-uri; modelele luminate de cuburile ambient și luminile hărții. Încă nu: umbre, texturi gobo, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Hărți — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Hărți — <code>.bsp</code>
 
-Versiunile 19–21: geometria lumii, teren displacement, entități brush, prop-uri statice, materialele din pak-ul hărții. Eliminare în afara camerei. Încă nu: lightmap-uri, skybox, apă, prop_dynamic.
+Versiunile 19–21: geometria lumii, teren displacement, brush entities, props statice, materialele pak ale hărții, lightmap-uri, skybox-ul în jurul camerei. Decupare după frustum. Încă nu: apă, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Randare în imagine și video
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Randare în imagine și video
 
-Neînceput.
+Secvențe PNG/TGA și filme AVI/MP4 din sesiune: toată sesiunea, cadrul curent sau un interval; presetări; File → Export, Ctrl+E. Încă nu: sunet în film.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Plugin-uri <code>.c2plg</code>
 

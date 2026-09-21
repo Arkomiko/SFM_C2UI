@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/FR-fr.svg" alt="Avancement" width="100%"></p>
 
-<p align="center"><img alt="51%" src="https://img.shields.io/badge/51%25-e0a800?style=flat-square"> <b>Avancement global vers la sortie : 51%</b></p>
+<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Avancement global vers la sortie : 55%</b></p>
 
 Chaque domaine se déplie : ce qui fonctionne déjà et ce qui n'existe pas encore. Les pourcentages sont une estimation par rapport à ce que sait faire SFM.
 
@@ -43,7 +43,7 @@ Binaire 1–5 et KeyValues2. Chaque session et fichier de particules de l'instal
 
 ### <img alt="80%" src="https://img.shields.io/badge/80%25-3b9c5b?style=flat-square"> Session à l'écran
 
-Plans et pistes son sur une timeline, l'arbre des éléments, la scène de chaque plan par sa caméra. Pas encore : cartes, particules, son.
+Plans et pistes son sur la timeline, l'arbre des éléments, la scène de chaque plan par sa caméra, la carte du plan. Pas encore : particules, son.
 
 ### <img alt="85%" src="https://img.shields.io/badge/85%25-3b9c5b?style=flat-square"> Animation
 
@@ -75,15 +75,15 @@ Glissez les panneaux sur une boussole de cibles avec aperçu, comme dans UE5 et 
 
 ### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Ombrage Source
 
-Lumières de la session (DmeProjectedLight) : frustum, atténuation Source, fondu jusqu'à maxDistance ; half-lambert, $lightwarptexture, phong ($phongexponent/boost/fresnelranges), $rimlight, $selfillum. Le monde de la carte par ses lightmaps. Pas encore : ombres, textures gobo, $bumpmap, $envmap, cubes d'ambiance, skybox.
+Lumières de session (DmeProjectedLight) : frustum, atténuation Source, fondu jusqu'à maxDistance ; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Le monde de la carte par ses lightmaps ; les modèles éclairés par les cubes ambiants et les lumières de la carte. Pas encore : ombres, textures gobo, $bumpmap, $envmap.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Cartes — <code>.bsp</code>
+### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Cartes — <code>.bsp</code>
 
-Versions 19–21 : géométrie du monde, terrain displacement, entités brush, props statiques, matériaux du pak de la carte. Élimination hors champ. Pas encore : lightmaps, skybox, eau, prop_dynamic.
+Versions 19–21 : géométrie du monde, terrain displacement, brush entities, props statiques, matériaux pak de la carte, lightmaps, la skybox autour de la caméra. Élimination par frustum. Pas encore : l'eau, prop_dynamic.
 
-### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Rendu en image et vidéo
+### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Rendu en image et vidéo
 
-Pas commencé.
+Séquences PNG/TGA et films AVI/MP4 depuis la session : toute la session, le plan courant ou une plage ; presets ; File → Export, Ctrl+E. Pas encore : le son dans le film.
 
 ### <img alt="0%" src="https://img.shields.io/badge/0%25-555555?style=flat-square"> Plugins <code>.c2plg</code>
 
