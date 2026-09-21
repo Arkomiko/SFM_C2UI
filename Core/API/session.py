@@ -232,6 +232,41 @@ class Camera(Dag):
         """Focus distance for depth of field."""
         return float(self._get("focalDistance", 72.0))
 
+    @property
+    def aperture(self) -> float:
+        """Lens opening for depth of field; 0 keeps everything sharp."""
+        return float(self._get("aperture", 8.0))
+
+    @property
+    def shutter_speed(self) -> Time:
+        """How long the shutter stays open per frame: the motion blur span."""
+        return self._get("shutterSpeed", Time(round(Time.PER_SECOND / 48))) or Time(0)
+
+    @property
+    def tone_map_scale(self) -> float:
+        """Exposure: the linear frame is scaled by this before gamma."""
+        return float(self._get("toneMapScale", 1.0))
+
+    @property
+    def bloom_scale(self) -> float:
+        """How much the bright parts glow; 0 for none."""
+        return float(self._get("bloomScale", 0.28))
+
+    @property
+    def bloom_width(self) -> float:
+        """The glow's radius in pixels of the frame."""
+        return float(self._get("bloomWidth", 9.0))
+
+    @property
+    def dof_quality(self) -> int:
+        """Depth of field quality step, 0..3 (SFM's sample count grows with it)."""
+        return int(self._get("depthOfFieldQuality", 0) or 0)
+
+    @property
+    def motion_blur_quality(self) -> int:
+        """Motion blur quality step, 0..3."""
+        return int(self._get("motionBlurQuality", 0) or 0)
+
 
 class ProjectedLight(Dag):
     """SFM's spot light: a projected texture with a frustum, colour, intensity and

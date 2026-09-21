@@ -22,7 +22,7 @@ from __future__ import annotations
 from OpenGL import GL
 
 __all__ = ["MODEL_VERT", "MODEL_FRAG", "LINE_VERT", "LINE_FRAG", "ID_FRAG", "DEPTH_FRAG", "MAX_BONES", "MAX_LIGHTS",
-           "MAX_SHADOWS", "SHADOW_SIZE",
+           "MAX_SHADOWS", "SHADOW_SIZE", "POST_VERT", "ADD_FRAG", "BRIGHT_FRAG", "BLUR_FRAG", "RESOLVE_FRAG",
            "build_program", "ShaderError"]
 
 
@@ -147,6 +147,7 @@ uniform bool u_rim;
 uniform float u_rim_exponent;
 uniform float u_rim_boost;
 uniform bool u_self_illum;
+uniform bool u_gamma_out;     // write gamma (drawing straight to the screen) instead of linear
 
 // session lights
 uniform int u_light_count;
@@ -236,7 +237,7 @@ bool light_at(int i, vec3 world, out vec3 l, out vec3 radiance) {
         if (cone <= 0.0) return false;
         float fade = range.z > range.y ? 1.0 - clamp((d - range.y) / (range.z - range.y), 0.0, 1.0) : 1.0;
         float atten = u_light_atten[i].x + u_light_atten[i].y / d + u_light_atten[i].z / (d * d);
-        radiance = u_light_color[i] * min(atten, 4.0) * cone * fade;
+        radiance = u_light_color[i] * min(atten, 1.0) * cone * fade;    // saturate, as the flashlight shader does
         return true;
     }
     // the map's point and spot lights: intensity over (c + l d + q d^2), as vrad's
@@ -284,21 +285,19 @@ void main() {
     }
     vec3 v = normalize(u_eye - v_world);
 
-    vec3 color = base.rgb;
+    // everything below is linear light; the frame is developed to gamma afterwards
+    vec3 albedo = pow(base.rgb, vec3(2.2));
+    vec3 color = albedo;
     if (u_lightmapped) {
         // Source's lightmaps carry twice the range: the overbright factor
-        color = base.rgb * texture(u_lightmap, v_lightmap_uv).rgb * 2.0;
+        color = pow(base.rgb * texture(u_lightmap, v_lightmap_uv).rgb * 2.0, vec3(2.2));
         // the session's projected lights fall on the world as well, on top of what
-        // vrad baked (a set lit only by them has a black lightmap); added in linear space
-        vec3 extra = vec3(0.0);
+        // vrad baked (a set lit only by them has a black lightmap)
         for (int i = 0; i < u_light_count; ++i) {
             if (int(u_light_kind[i].x + 0.5) != 0) continue;
             vec3 l;
             vec3 radiance;
-            if (light_at(i, v_world, l, radiance)) extra += radiance * max(dot(n, l), 0.0);
-        }
-        if (extra != vec3(0.0)) {
-            color = pow(pow(color, vec3(2.2)) + pow(base.rgb, vec3(2.2)) * extra, vec3(1.0 / 2.2));
+            if (light_at(i, v_world, l, radiance)) color += albedo * radiance * max(dot(n, l), 0.0);
         }
     } else if (u_lit && u_light_count == 0) {
         // the browser: half-lambert keeps the dark side readable, as Source does
@@ -341,20 +340,94 @@ void main() {
             // rim light: the ambient wrapping the silhouette, through the phong mask as Source does
             spec += ambient_light(v) * pow(1.0 - ndotv, u_rim_exponent) * u_rim_boost * mask * rim_mask;
         }
-        // Source lights in linear space and writes gamma: the texture comes in as gamma
-        vec3 albedo = pow(base.rgb, vec3(2.2));
-        color = pow(max(albedo * lit + spec, vec3(0.0)), vec3(1.0 / 2.2));
+        color = max(albedo * lit + spec, vec3(0.0));
         if (u_self_illum) {
             float glow = u_has_selfillum_mask ? texture(u_selfillum_mask, v_uv).r : base.a;
-            color = max(color, base.rgb * glow);
+            color = max(color, albedo * glow);
         }
     }
+    if (u_gamma_out) color = pow(min(color, vec3(1.0)), vec3(1.0 / 2.2));
     // an opaque surface's alpha is a mask for other shaders (phong, cloak),
     // not coverage; writing it to the frame would punch holes in a capture
-    out_color = vec4(min(color, vec3(1.0)), u_blended ? base.a : 1.0);
+    out_color = vec4(color, u_blended ? base.a : 1.0);
 }
 """.replace("MAX_LIGHTS", str(MAX_LIGHTS)).replace("MAX_SHADOWS", str(MAX_SHADOWS))
 
+
+#: a full-screen triangle from the vertex id alone: the post passes need no buffers
+POST_VERT = """
+#version 330 core
+out vec2 v_uv;
+void main() {
+    vec2 p = vec2((gl_VertexID == 1) ? 3.0 : -1.0, (gl_VertexID == 2) ? 3.0 : -1.0);
+    v_uv = p * 0.5 + 0.5;
+    gl_Position = vec4(p, 0.0, 1.0);
+}
+"""
+
+#: adds one sample of the frame into the accumulation, weighted
+ADD_FRAG = """
+#version 330 core
+uniform sampler2D u_source;
+uniform float u_weight;
+in vec2 v_uv;
+out vec4 out_color;
+void main() { out_color = vec4(texture(u_source, v_uv).rgb * u_weight, 1.0); }
+"""
+
+#: keeps what is brighter than the threshold: the bloom's seed, at quarter size
+BRIGHT_FRAG = """
+#version 330 core
+uniform sampler2D u_source;
+uniform float u_scale;        // 1 / accumulated weight
+uniform float u_threshold;
+in vec2 v_uv;
+out vec4 out_color;
+void main() {
+    vec3 c = texture(u_source, v_uv).rgb * u_scale;
+    float l = dot(c, vec3(0.299, 0.587, 0.114));
+    out_color = vec4(c * smoothstep(u_threshold, u_threshold + 0.5, l), 1.0);
+}
+"""
+
+#: one direction of a gaussian blur
+BLUR_FRAG = """
+#version 330 core
+uniform sampler2D u_source;
+uniform vec2 u_step;          // one texel along the blur direction
+uniform float u_sigma;        // in texels
+in vec2 v_uv;
+out vec4 out_color;
+void main() {
+    int radius = int(ceil(u_sigma * 2.5));
+    vec3 sum = vec3(0.0);
+    float total = 0.0;
+    for (int i = -radius; i <= radius; ++i) {
+        float w = exp(-0.5 * float(i * i) / (u_sigma * u_sigma));
+        sum += texture(u_source, v_uv + u_step * float(i)).rgb * w;
+        total += w;
+    }
+    out_color = vec4(sum / total, 1.0);
+}
+"""
+
+#: the developed frame: accumulated linear light, bloom, exposure, gamma
+RESOLVE_FRAG = """
+#version 330 core
+uniform sampler2D u_source;
+uniform sampler2D u_bloom;
+uniform float u_scale;        // 1 / accumulated weight
+uniform float u_tonemap;
+uniform float u_bloom_scale;
+in vec2 v_uv;
+out vec4 out_color;
+void main() {
+    vec3 c = texture(u_source, v_uv).rgb * u_scale;
+    c += texture(u_bloom, v_uv).rgb * u_bloom_scale;
+    c = min(c * u_tonemap, vec3(1.0));
+    out_color = vec4(pow(c, vec3(1.0 / 2.2)), 1.0);
+}
+"""
 
 #: writes depth only: the shadow map pass (alpha-tested surfaces still cut holes)
 DEPTH_FRAG = """

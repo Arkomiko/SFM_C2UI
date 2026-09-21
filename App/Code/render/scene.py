@@ -45,7 +45,7 @@ from .math3d import IDENTITY, Mat4
 
 __all__ = ["DrawItem", "LoadedModel", "SceneInstance", "Scene", "build_scene", "build_shot_scene",
            "refresh_shot_scene", "shot_camera_pose", "load_sky", "sky_face_corners", "load_overlay", "OverlayState",
-           "SceneSource", "SKY_FACES"]
+           "Look", "SceneSource", "SKY_FACES"]
 
 
 class SceneSource(Protocol):
@@ -216,6 +216,21 @@ class OverlayState:
 
 
 @dataclass
+class Look:
+    """How the finished frame is developed: the shot camera's exposure and bloom."""
+    tone_map_scale: float = 1.0
+    bloom_scale: float = 0.0
+    bloom_width: float = 9.0
+
+    @classmethod
+    def of(cls, camera: Optional[Camera]) -> "Look":
+        """The look a session camera asks for; the plain one without a camera."""
+        if camera is None:
+            return cls()
+        return cls(camera.tone_map_scale, camera.bloom_scale, camera.bloom_width)
+
+
+@dataclass
 class Scene:
     """Everything the renderer needs for one shot at one time."""
     instances: List[SceneInstance] = field(default_factory=list)
@@ -233,6 +248,8 @@ class Scene:
     overlay: Optional[OverlayState] = None
     #: how much black covers the frame right now (the shot's fade in / out), 0..1
     fade: float = 0.0
+    #: exposure and bloom, from the shot's camera
+    look: Look = field(default_factory=Look)
     #: models by content path, each loaded once
     models: Dict[str, LoadedModel] = field(default_factory=dict)
     #: textures by content path, each parsed once however many meshes use it
@@ -293,7 +310,7 @@ def build_shot_scene(source: SceneSource, shot: FilmClip, map_name: str = "") ->
     """Every visible game model of a shot, placed and posed as the session says,
     on the map the shot (or, failing that, `map_name` - the sequence's) names.
     A model that cannot be read is a warning; the shot still shows."""
-    scene = Scene(title=shot.name, up_axis="z")
+    scene = Scene(title=shot.name, up_axis="z", look=Look.of(shot.camera))
     overlay = shot.material_overlay
     if overlay is not None:
         scene.overlay = load_overlay(source, scene, overlay)

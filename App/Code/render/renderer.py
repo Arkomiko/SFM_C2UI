@@ -23,8 +23,9 @@ from .camera import OrbitCamera
 from .gl_resources import GLMesh, GLTexture
 from .math3d import IDENTITY, add, look_at, multiply, normalize, perspective, sub
 from .scene import LIGHT_PROJECTED, DrawItem, LightState, Scene, SceneInstance
-from .shaders import (DEPTH_FRAG, ID_FRAG, LINE_FRAG, LINE_VERT, MAX_BONES, MAX_LIGHTS, MAX_SHADOWS,
-                      MODEL_FRAG, MODEL_VERT, SHADOW_SIZE, build_program)
+from .shaders import (ADD_FRAG, BLUR_FRAG, BRIGHT_FRAG, DEPTH_FRAG, ID_FRAG, LINE_FRAG, LINE_VERT, MAX_BONES,
+                      MAX_LIGHTS, MAX_SHADOWS, MODEL_FRAG, MODEL_VERT, POST_VERT, RESOLVE_FRAG, SHADOW_SIZE,
+                      build_program)
 
 __all__ = ["Renderer"]
 
@@ -55,10 +56,19 @@ class Renderer:
         self._int_state: Dict[str, int] = {}
         self.textures: Dict[str, GLTexture] = {}
         self.background = (0.16, 0.17, 0.19, 1.0)
+        self._last_view_proj = None
         self.line_program = 0
         self.id_program = 0
         self.depth_program = 0
         self.depth_uniforms: Dict[str, int] = {}
+        #: the post passes: add a sample, bloom's bright pass and blur, the resolve
+        self.post_programs: Dict[str, int] = {}
+        self._post_vao = 0
+        #: linear HDR frame (colour + depth), the accumulation of samples, two bloom buffers
+        self._targets: Dict[str, Tuple[int, int, int, int, int]] = {}   # name -> fbo, texture, depth, w, h
+        self._accumulated = 0.0
+        #: the framebuffer the frame is finally developed into (whatever was bound at begin)
+        self._output = 0
         #: one (framebuffer, depth texture) per shadow slot, made on first use
         self._shadow_maps: List[Tuple[int, int]] = []
         #: the projected lights that hold a slot this frame, by their index in the session list
@@ -87,7 +97,7 @@ class Renderer:
                      "u_ambient_cube", "u_has_cube", "u_bumpmap", "u_exponent", "u_selfillum_mask",
                      "u_has_bumpmap", "u_has_exponent", "u_has_selfillum_mask", "u_phong_mask",
                      "u_invert_phong_mask", "u_albedo_tint", "u_rim_mask", "u_shadow_matrix", "u_shadow_map",
-                     "u_cookie", "u_has_shadow", "u_has_cookie", "u_shadow_texel", "u_light_slot"):
+                     "u_cookie", "u_has_shadow", "u_has_cookie", "u_shadow_texel", "u_light_slot", "u_gamma_out"):
             self.uniforms[name] = GL.glGetUniformLocation(self.program, name)
         GL.glEnable(GL.GL_DEPTH_TEST)
         GL.glDepthFunc(GL.GL_LEQUAL)
@@ -96,6 +106,9 @@ class Renderer:
         self.depth_program = build_program(MODEL_VERT, DEPTH_FRAG)
         for name in ("u_view_proj", "u_model", "u_skinned", "u_bones", "u_texture", "u_textured", "u_alpha_test"):
             self.depth_uniforms[name] = GL.glGetUniformLocation(self.depth_program, name)
+        for name, source in (("add", ADD_FRAG), ("bright", BRIGHT_FRAG), ("blur", BLUR_FRAG), ("resolve", RESOLVE_FRAG)):
+            self.post_programs[name] = build_program(POST_VERT, source)
+        self._post_vao = int(GL.glGenVertexArrays(1))
         self._line_vao = int(GL.glGenVertexArrays(1))
         self._line_vbo = int(GL.glGenBuffers(1))
         GL.glBindVertexArray(self._line_vao)
@@ -169,6 +182,13 @@ class Renderer:
             if getattr(self, name):
                 GL.glDeleteProgram(getattr(self, name))
                 setattr(self, name, 0)
+        for program in self.post_programs.values():
+            GL.glDeleteProgram(program)
+        self.post_programs = {}
+        self._release_targets()
+        if self._post_vao:
+            GL.glDeleteVertexArrays(1, [self._post_vao])
+            self._post_vao = 0
         for fbo, texture in self._shadow_maps:
             GL.glDeleteFramebuffers(1, [fbo])
             GL.glDeleteTextures(1, [texture])
@@ -180,13 +200,189 @@ class Renderer:
 
     # -- drawing -----------------------------------------------------------------
     def draw(self, camera: OrbitCamera, width: int, height: int) -> None:
-        """Draw the scene from `camera` into a width x height viewport."""
-        GL.glViewport(0, 0, max(1, width), max(1, height))
+        """Draw the scene from `camera` into a width x height viewport: one sample,
+        developed straight away."""
+        self.begin_frame(width, height)
+        self.draw_sample(camera, width, height, 1.0)
+        self.finish_frame(width, height)
+
+    # -- a frame from samples ------------------------------------------------------------
+    def begin_frame(self, width: int, height: int) -> None:
+        """Start a frame into whatever framebuffer is bound: samples drawn next add up
+        in linear light until `finish_frame` develops them."""
+        previous = GL.glGetIntegerv(GL.GL_FRAMEBUFFER_BINDING)
+        self._output = int(previous[0]) if hasattr(previous, "__len__") else int(previous)
+        self._accumulated = 0.0
+        width, height = max(1, width), max(1, height)
+        GL.glViewport(0, 0, width, height)
         GL.glClearColor(*self.background)
         GL.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT)
+        if not self.post_programs:
+            return
+        fbo, _t, _d, _w, _h = self._target("accum", width, height, GL.GL_RGBA32F, False)
+        GL.glBindFramebuffer(GL.GL_FRAMEBUFFER, fbo)
+        GL.glClearColor(0.0, 0.0, 0.0, 1.0)
+        GL.glClear(GL.GL_COLOR_BUFFER_BIT)
+        GL.glBindFramebuffer(GL.GL_FRAMEBUFFER, self._output)
+
+    def draw_sample(self, camera: OrbitCamera, width: int, height: int, weight: float) -> None:
+        """Render the scene once from `camera` and add it to the frame with `weight`."""
+        width, height = max(1, width), max(1, height)
         if self.scene is None or not self.program:
             return
+        direct = not self.post_programs
+        if not direct:
+            fbo, _t, _d, _w, _h = self._target("hdr", width, height, GL.GL_RGBA16F, True)
+            GL.glBindFramebuffer(GL.GL_FRAMEBUFFER, fbo)
+            GL.glViewport(0, 0, width, height)
+            r, g, b, a = self.background
+            GL.glClearColor(r ** 2.2, g ** 2.2, b ** 2.2, a)
+            GL.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT)
+        self._draw_scene(camera, width, height, gamma_out=direct)
+        if direct:
+            return
+        # add the sample into the accumulation
+        accum = self._target("accum", width, height, GL.GL_RGBA32F, False)
+        GL.glBindFramebuffer(GL.GL_FRAMEBUFFER, accum[0])
+        GL.glDisable(GL.GL_DEPTH_TEST)
+        GL.glEnable(GL.GL_BLEND)
+        GL.glBlendFunc(GL.GL_ONE, GL.GL_ONE)
+        program = self.post_programs["add"]
+        GL.glUseProgram(program)
+        GL.glActiveTexture(GL.GL_TEXTURE0)
+        GL.glBindTexture(GL.GL_TEXTURE_2D, self._targets["hdr"][1])
+        GL.glUniform1i(GL.glGetUniformLocation(program, "u_source"), 0)
+        GL.glUniform1f(GL.glGetUniformLocation(program, "u_weight"), weight)
+        self._post_triangle()
+        GL.glDisable(GL.GL_BLEND)
+        GL.glEnable(GL.GL_DEPTH_TEST)
+        self._accumulated += weight
+        GL.glBindFramebuffer(GL.GL_FRAMEBUFFER, self._output)
 
+    def finish_frame(self, width: int, height: int) -> None:
+        """Develop the accumulated samples into the output: bloom, exposure, gamma; then
+        the overlay, the fade and the overlay lines on top."""
+        width, height = max(1, width), max(1, height)
+        if self.scene is None or not self.program:
+            return
+        if self.post_programs and self._accumulated > 0.0:
+            self._resolve(width, height)
+        GL.glBindFramebuffer(GL.GL_FRAMEBUFFER, self._output)
+        GL.glViewport(0, 0, width, height)
+        GL.glUseProgram(self.program)
+        self._set_int("u_gamma_out", 1)
+        if self.overlay is not None or self.scene.fade > 0.0:
+            self._draw_overlay()
+        GL.glDisable(GL.GL_BLEND)
+        GL.glDepthMask(GL.GL_TRUE)
+        GL.glEnable(GL.GL_CULL_FACE)
+        GL.glUseProgram(0)
+        if self.overlay_lines and self._last_view_proj is not None:
+            self._draw_lines(self._last_view_proj)
+
+    def _resolve(self, width: int, height: int) -> None:
+        """Bloom at quarter size from the accumulation, then the resolve pass."""
+        look = self.scene.look
+        scale = 1.0 / self._accumulated
+        accum = self._targets["accum"]
+        GL.glDisable(GL.GL_DEPTH_TEST)
+        GL.glDisable(GL.GL_BLEND)
+        bloom_texture = 0
+        if look.bloom_scale > 0.0:
+            qw, qh = max(1, width // 4), max(1, height // 4)
+            a = self._target("bloom_a", qw, qh, GL.GL_RGBA16F, False)
+            b = self._target("bloom_b", qw, qh, GL.GL_RGBA16F, False)
+            GL.glViewport(0, 0, qw, qh)
+            program = self.post_programs["bright"]
+            GL.glBindFramebuffer(GL.GL_FRAMEBUFFER, a[0])
+            GL.glUseProgram(program)
+            GL.glActiveTexture(GL.GL_TEXTURE0)
+            GL.glBindTexture(GL.GL_TEXTURE_2D, accum[1])
+            GL.glUniform1i(GL.glGetUniformLocation(program, "u_source"), 0)
+            GL.glUniform1f(GL.glGetUniformLocation(program, "u_scale"), scale)
+            GL.glUniform1f(GL.glGetUniformLocation(program, "u_threshold"), 0.6)
+            self._post_triangle()
+            program = self.post_programs["blur"]
+            GL.glUseProgram(program)
+            GL.glUniform1i(GL.glGetUniformLocation(program, "u_source"), 0)
+            GL.glUniform1f(GL.glGetUniformLocation(program, "u_sigma"), max(0.5, look.bloom_width / 4.0))
+            for source, target, step in ((a, b, (1.0 / qw, 0.0)), (b, a, (0.0, 1.0 / qh))):
+                GL.glBindFramebuffer(GL.GL_FRAMEBUFFER, target[0])
+                GL.glBindTexture(GL.GL_TEXTURE_2D, source[1])
+                GL.glUniform2f(GL.glGetUniformLocation(program, "u_step"), *step)
+                self._post_triangle()
+            bloom_texture = a[1]
+        GL.glBindFramebuffer(GL.GL_FRAMEBUFFER, self._output)
+        GL.glViewport(0, 0, width, height)
+        program = self.post_programs["resolve"]
+        GL.glUseProgram(program)
+        GL.glActiveTexture(GL.GL_TEXTURE0)
+        GL.glBindTexture(GL.GL_TEXTURE_2D, accum[1])
+        GL.glActiveTexture(GL.GL_TEXTURE1)
+        GL.glBindTexture(GL.GL_TEXTURE_2D, bloom_texture)
+        GL.glUniform1i(GL.glGetUniformLocation(program, "u_source"), 0)
+        GL.glUniform1i(GL.glGetUniformLocation(program, "u_bloom"), 1)
+        GL.glUniform1f(GL.glGetUniformLocation(program, "u_scale"), scale)
+        GL.glUniform1f(GL.glGetUniformLocation(program, "u_tonemap"), look.tone_map_scale)
+        GL.glUniform1f(GL.glGetUniformLocation(program, "u_bloom_scale"), look.bloom_scale if bloom_texture else 0.0)
+        self._post_triangle()
+        GL.glActiveTexture(GL.GL_TEXTURE0)
+        GL.glEnable(GL.GL_DEPTH_TEST)
+        GL.glUseProgram(0)
+
+    def _post_triangle(self) -> None:
+        """One triangle over the whole target, whichever way the models wind."""
+        GL.glDisable(GL.GL_CULL_FACE)
+        GL.glBindVertexArray(self._post_vao)
+        GL.glDrawArrays(GL.GL_TRIANGLES, 0, 3)
+        GL.glBindVertexArray(0)
+        GL.glEnable(GL.GL_CULL_FACE)
+
+    def _target(self, name: str, width: int, height: int, internal, with_depth: bool):
+        """A render target of this size, made or remade as needed."""
+        found = self._targets.get(name)
+        if found is not None and found[3] == width and found[4] == height:
+            return found
+        if found is not None:
+            self._delete_target(found)
+        texture = int(GL.glGenTextures(1))
+        GL.glBindTexture(GL.GL_TEXTURE_2D, texture)
+        GL.glTexImage2D(GL.GL_TEXTURE_2D, 0, internal, width, height, 0, GL.GL_RGBA, GL.GL_FLOAT, None)
+        GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MIN_FILTER, GL.GL_LINEAR)
+        GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MAG_FILTER, GL.GL_LINEAR)
+        GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_S, GL.GL_CLAMP_TO_EDGE)
+        GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_T, GL.GL_CLAMP_TO_EDGE)
+        GL.glBindTexture(GL.GL_TEXTURE_2D, 0)
+        fbo = int(GL.glGenFramebuffers(1))
+        GL.glBindFramebuffer(GL.GL_FRAMEBUFFER, fbo)
+        GL.glFramebufferTexture2D(GL.GL_FRAMEBUFFER, GL.GL_COLOR_ATTACHMENT0, GL.GL_TEXTURE_2D, texture, 0)
+        depth = 0
+        if with_depth:
+            depth = int(GL.glGenRenderbuffers(1))
+            GL.glBindRenderbuffer(GL.GL_RENDERBUFFER, depth)
+            GL.glRenderbufferStorage(GL.GL_RENDERBUFFER, GL.GL_DEPTH_COMPONENT24, width, height)
+            GL.glFramebufferRenderbuffer(GL.GL_FRAMEBUFFER, GL.GL_DEPTH_ATTACHMENT, GL.GL_RENDERBUFFER, depth)
+        if GL.glCheckFramebufferStatus(GL.GL_FRAMEBUFFER) != GL.GL_FRAMEBUFFER_COMPLETE:
+            self.errors.append(f"{name} framebuffer incomplete")
+        GL.glBindFramebuffer(GL.GL_FRAMEBUFFER, self._output)
+        made = (fbo, texture, depth, width, height)
+        self._targets[name] = made
+        return made
+
+    def _delete_target(self, target) -> None:
+        fbo, texture, depth, _w, _h = target
+        GL.glDeleteFramebuffers(1, [fbo])
+        GL.glDeleteTextures(1, [texture])
+        if depth:
+            GL.glDeleteRenderbuffers(1, [depth])
+
+    def _release_targets(self) -> None:
+        for target in self._targets.values():
+            self._delete_target(target)
+        self._targets = {}
+
+    def _draw_scene(self, camera: OrbitCamera, width: int, height: int, gamma_out: bool) -> None:
+        """The sky and every instance from `camera` into the bound framebuffer."""
         # the shadow maps of the session's projected lights, before anything is drawn to the frame
         self._render_shadows()
         GL.glViewport(0, 0, max(1, width), max(1, height))
@@ -202,6 +398,10 @@ class Renderer:
 
         u = self.uniforms
         GL.glUseProgram(self.program)
+        self._item_state = None
+        self._int_state = {}
+        self._set_int("u_gamma_out", 1 if gamma_out else 0)
+        self._last_view_proj = view_proj
         GL.glUniformMatrix4fv(u["u_view_proj"], 1, GL.GL_FALSE, view_proj)
         GL.glUniform3f(u["u_light_dir"], *light)
         GL.glUniform3f(u["u_eye"], *eye)
@@ -259,14 +459,10 @@ class Renderer:
                     mesh.draw()
 
         GL.glPolygonMode(GL.GL_FRONT_AND_BACK, GL.GL_FILL)
-        if self.overlay is not None or self.scene.fade > 0.0:
-            self._draw_overlay()
         GL.glDisable(GL.GL_BLEND)
         GL.glDepthMask(GL.GL_TRUE)
         GL.glEnable(GL.GL_CULL_FACE)
         GL.glUseProgram(0)
-        if self.overlay_lines:
-            self._draw_lines(view_proj)
 
     # -- projected lights: cookies and shadows -----------------------------------------
     def _light_matrix(self, light: LightState) -> tuple:
@@ -433,6 +629,7 @@ class Renderer:
         """The shot's material overlay and its fade: quads in clip space, blended over
         the finished frame with depth off, through the same program as everything."""
         u = self.uniforms
+        self._item_state = None
         GL.glUniformMatrix4fv(u["u_view_proj"], 1, GL.GL_FALSE, IDENTITY)
         GL.glUniformMatrix4fv(u["u_model"], 1, GL.GL_FALSE, IDENTITY)
         self._set_int("u_skinned", 0)
