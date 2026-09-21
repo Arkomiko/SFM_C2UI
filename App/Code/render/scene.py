@@ -199,6 +199,12 @@ class LightState:
     source: Optional[ProjectedLight] = None
     kind: int = LIGHT_PROJECTED
     cone_inner_cos: float = 1.0                     # spot: full inside this, off beyond cone_cos
+    #: a projected light's frustum: horizontal and vertical field of view in degrees, its up
+    fov: Tuple[float, float] = (45.0, 45.0)
+    up: Tuple[float, float, float] = (0.0, 0.0, 1.0)
+    shadows: bool = False
+    #: key into Scene.textures for the cookie it projects, or ""
+    texture_key: str = ""
 
 
 @dataclass
@@ -319,6 +325,9 @@ def build_shot_scene(source: SceneSource, shot: FilmClip, map_name: str = "") ->
         _apply_face(instance)
         _map_light(scene, instance, apply(world, (0.0, 0.0, 0.0)))
         scene.instances.append(instance)
+    for light in scene.lights:
+        if light.texture_key and not _texture(source, scene, light.texture_key):
+            light.texture_key = ""
     if not scene.instances and not scene.warnings:
         scene.warnings.append("the shot has no game models")
     return scene
@@ -800,12 +809,15 @@ def _light_state(light: ProjectedLight, world: Mat34) -> LightState:
     forward = apply_direction(world, (1.0, 0.0, 0.0))     # Source lights shine along their +X
     n = math.sqrt(sum(v * v for v in forward)) or 1.0
     forward = (forward[0] / n, forward[1] / n, forward[2] / n)
+    up = apply_direction(world, (0.0, 0.0, 1.0))
     r, g, b = light.color
     k = light.intensity
     half = math.radians(max(light.horizontal_fov, light.vertical_fov) / 2.0)
     return LightState(position, forward, (r * k, g * k, b * k), light.attenuation,
                       light.min_distance, light.max_distance, min(light.far_z_atten, light.max_distance),
-                      math.cos(half), light.ambient_intensity, light)
+                      math.cos(half), light.ambient_intensity, light,
+                      fov=(light.horizontal_fov, light.vertical_fov), up=up, shadows=light.casts_shadows,
+                      texture_key=f"materials/{light.texture}.vtf" if light.texture else "")
 
 
 def _resolve_material(source: SceneSource, scene: Scene, model: Model, name: str) -> Optional[Material]:

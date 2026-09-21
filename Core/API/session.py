@@ -290,6 +290,12 @@ class ProjectedLight(Dag):
         """Whether the light casts shadows."""
         return bool(self._get("castsShadows", True))
 
+    @property
+    def texture(self) -> str:
+        """The cookie the light projects (`effects/flashlight001` by default), as a
+        path under `materials/`, forward slashes."""
+        return str(self._get("texture", "effects/flashlight001") or "effects/flashlight001").replace("\\", "/").strip("/")
+
 
 
 # ---------------------------------------------------------------------------

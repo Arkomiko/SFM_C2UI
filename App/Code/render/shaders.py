@@ -21,7 +21,8 @@ from __future__ import annotations
 
 from OpenGL import GL
 
-__all__ = ["MODEL_VERT", "MODEL_FRAG", "LINE_VERT", "LINE_FRAG", "ID_FRAG", "MAX_BONES", "MAX_LIGHTS",
+__all__ = ["MODEL_VERT", "MODEL_FRAG", "LINE_VERT", "LINE_FRAG", "ID_FRAG", "DEPTH_FRAG", "MAX_BONES", "MAX_LIGHTS",
+           "MAX_SHADOWS", "SHADOW_SIZE",
            "build_program", "ShaderError"]
 
 
@@ -34,6 +35,10 @@ class ShaderError(RuntimeError):
 MAX_BONES = 128
 #: lights a surface takes at once: the session's and the map's nearest
 MAX_LIGHTS = 12
+#: projected lights that get a cookie and a shadow map each frame (the rest keep the plain cone)
+MAX_SHADOWS = 4
+#: shadow map side in texels
+SHADOW_SIZE = 2048
 
 MODEL_VERT = """
 #version 330 core
@@ -155,6 +160,48 @@ uniform vec3 u_ambient;
 uniform vec3 u_ambient_cube[6];           // +x -x +y -y +z -z, the map's ambient at the model
 uniform bool u_has_cube;
 
+// projected lights with a frustum of their own: the cookie they throw and their shadow map
+uniform mat4 u_shadow_matrix[MAX_SHADOWS];
+uniform sampler2DShadow u_shadow_map[MAX_SHADOWS];
+uniform sampler2D u_cookie[MAX_SHADOWS];
+uniform bool u_has_shadow[MAX_SHADOWS];
+uniform bool u_has_cookie[MAX_SHADOWS];
+uniform float u_shadow_texel;             // 1 / shadow map side
+uniform int u_light_slot[MAX_LIGHTS];     // a light's slot above, or -1
+
+// GLSL 330 indexes sampler arrays with constants only
+float shadow_sample(int slot, vec3 c) {
+    if (slot == 0) return texture(u_shadow_map[0], c);
+    if (slot == 1) return texture(u_shadow_map[1], c);
+    if (slot == 2) return texture(u_shadow_map[2], c);
+    return texture(u_shadow_map[3], c);
+}
+
+float cookie_sample(int slot, vec2 uv) {
+    if (slot == 0) return texture(u_cookie[0], uv).r;
+    if (slot == 1) return texture(u_cookie[1], uv).r;
+    if (slot == 2) return texture(u_cookie[2], uv).r;
+    return texture(u_cookie[3], uv).r;
+}
+
+// how much of a slotted light reaches `world`: its cookie through its frustum, times
+// the shadow map with a 3x3 filter, as SFM's shadowFilterSize 3 does
+float projected_factor(int slot, vec3 world) {
+    vec4 p = u_shadow_matrix[slot] * vec4(world, 1.0);
+    if (p.w <= 0.0) return 0.0;
+    vec3 c = p.xyz / p.w * 0.5 + 0.5;
+    if (c.x < 0.0 || c.x > 1.0 || c.y < 0.0 || c.y > 1.0 || c.z > 1.0) return 0.0;
+    float factor = u_has_cookie[slot] ? cookie_sample(slot, c.xy) : 1.0;
+    if (u_has_shadow[slot] && factor > 0.0) {
+        float lit = 0.0;
+        for (int y = -1; y <= 1; ++y)
+            for (int x = -1; x <= 1; ++x)
+                lit += shadow_sample(slot, vec3(c.xy + vec2(x, y) * u_shadow_texel, c.z - 0.0008));
+        factor *= lit / 9.0;
+    }
+    return factor;
+}
+
 vec3 ambient_light(vec3 n) {
     if (!u_has_cube) return u_ambient;
     vec3 sq = n * n;
@@ -181,8 +228,12 @@ bool light_at(int i, vec3 world, out vec3 l, out vec3 radiance) {
     if (kind == 0) {
         vec3 range = u_light_range[i];
         if (d < range.x || d > range.z) return false;
-        // the projected frustum: a cone with a soft edge; fade to nothing towards maxDistance
-        float cone = smoothstep(u_light_atten[i].w, u_light_atten[i].w + 0.03, dot(-l, u_light_dirs[i]));
+        // the projected frustum: the light's cookie and shadow when it has a slot, else a
+        // cone with a soft edge; fade to nothing towards maxDistance
+        int slot = u_light_slot[i];
+        float cone = slot >= 0 ? projected_factor(slot, world)
+                               : smoothstep(u_light_atten[i].w, u_light_atten[i].w + 0.03, dot(-l, u_light_dirs[i]));
+        if (cone <= 0.0) return false;
         float fade = range.z > range.y ? 1.0 - clamp((d - range.y) / (range.z - range.y), 0.0, 1.0) : 1.0;
         float atten = u_light_atten[i].x + u_light_atten[i].y / d + u_light_atten[i].z / (d * d);
         radiance = u_light_color[i] * min(atten, 4.0) * cone * fade;
@@ -302,7 +353,22 @@ void main() {
     // not coverage; writing it to the frame would punch holes in a capture
     out_color = vec4(min(color, vec3(1.0)), u_blended ? base.a : 1.0);
 }
-""".replace("MAX_LIGHTS", str(MAX_LIGHTS))
+""".replace("MAX_LIGHTS", str(MAX_LIGHTS)).replace("MAX_SHADOWS", str(MAX_SHADOWS))
+
+
+#: writes depth only: the shadow map pass (alpha-tested surfaces still cut holes)
+DEPTH_FRAG = """
+#version 330 core
+uniform sampler2D u_texture;
+uniform bool u_textured;
+uniform bool u_alpha_test;
+in vec2 v_uv;
+in vec3 v_normal;
+in vec3 v_world;
+void main() {
+    if (u_alpha_test && u_textured && texture(u_texture, v_uv).a < 0.5) discard;
+}
+"""
 
 
 LINE_VERT = """

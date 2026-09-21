@@ -14,16 +14,17 @@ looking at a window.
 """
 from __future__ import annotations
 
+import math
 from typing import Dict, List, Optional, Tuple
 
 from OpenGL import GL
 
 from .camera import OrbitCamera
 from .gl_resources import GLMesh, GLTexture
-from .math3d import IDENTITY, multiply, normalize, sub
-from .scene import DrawItem, Scene, SceneInstance
-from .shaders import (ID_FRAG, LINE_FRAG, LINE_VERT, MAX_BONES, MAX_LIGHTS, MODEL_FRAG, MODEL_VERT,
-                      build_program)
+from .math3d import IDENTITY, add, look_at, multiply, normalize, perspective, sub
+from .scene import LIGHT_PROJECTED, DrawItem, LightState, Scene, SceneInstance
+from .shaders import (DEPTH_FRAG, ID_FRAG, LINE_FRAG, LINE_VERT, MAX_BONES, MAX_LIGHTS, MAX_SHADOWS,
+                      MODEL_FRAG, MODEL_VERT, SHADOW_SIZE, build_program)
 
 __all__ = ["Renderer"]
 
@@ -56,6 +57,12 @@ class Renderer:
         self.background = (0.16, 0.17, 0.19, 1.0)
         self.line_program = 0
         self.id_program = 0
+        self.depth_program = 0
+        self.depth_uniforms: Dict[str, int] = {}
+        #: one (framebuffer, depth texture) per shadow slot, made on first use
+        self._shadow_maps: List[Tuple[int, int]] = []
+        #: the projected lights that hold a slot this frame, by their index in the session list
+        self._slots: List[Tuple[int, LightState, tuple]] = []
         self._line_vao = 0
         self._line_vbo = 0
         #: line segments to draw over the scene: [(a, b, (r, g, b, a)), ...]
@@ -79,12 +86,16 @@ class Renderer:
                      "u_light_range", "u_ambient", "u_lightmap", "u_lightmapped", "u_light_kind",
                      "u_ambient_cube", "u_has_cube", "u_bumpmap", "u_exponent", "u_selfillum_mask",
                      "u_has_bumpmap", "u_has_exponent", "u_has_selfillum_mask", "u_phong_mask",
-                     "u_invert_phong_mask", "u_albedo_tint", "u_rim_mask"):
+                     "u_invert_phong_mask", "u_albedo_tint", "u_rim_mask", "u_shadow_matrix", "u_shadow_map",
+                     "u_cookie", "u_has_shadow", "u_has_cookie", "u_shadow_texel", "u_light_slot"):
             self.uniforms[name] = GL.glGetUniformLocation(self.program, name)
         GL.glEnable(GL.GL_DEPTH_TEST)
         GL.glDepthFunc(GL.GL_LEQUAL)
         self.line_program = build_program(LINE_VERT, LINE_FRAG)
         self.id_program = build_program(MODEL_VERT, ID_FRAG)
+        self.depth_program = build_program(MODEL_VERT, DEPTH_FRAG)
+        for name in ("u_view_proj", "u_model", "u_skinned", "u_bones", "u_texture", "u_textured", "u_alpha_test"):
+            self.depth_uniforms[name] = GL.glGetUniformLocation(self.depth_program, name)
         self._line_vao = int(GL.glGenVertexArrays(1))
         self._line_vbo = int(GL.glGenBuffers(1))
         GL.glBindVertexArray(self._line_vao)
@@ -154,10 +165,14 @@ class Renderer:
         if self._black is not None:
             self._black.release()
             self._black = None
-        for name in ("program", "line_program", "id_program"):
+        for name in ("program", "line_program", "id_program", "depth_program"):
             if getattr(self, name):
                 GL.glDeleteProgram(getattr(self, name))
                 setattr(self, name, 0)
+        for fbo, texture in self._shadow_maps:
+            GL.glDeleteFramebuffers(1, [fbo])
+            GL.glDeleteTextures(1, [texture])
+        self._shadow_maps = []
         if self._line_vao:
             GL.glDeleteVertexArrays(1, [self._line_vao])
             GL.glDeleteBuffers(1, [self._line_vbo])
@@ -171,6 +186,10 @@ class Renderer:
         GL.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT)
         if self.scene is None or not self.program:
             return
+
+        # the shadow maps of the session's projected lights, before anything is drawn to the frame
+        self._render_shadows()
+        GL.glViewport(0, 0, max(1, width), max(1, height))
 
         view = camera.view()
         projection = camera.projection(width / max(1, height))
@@ -192,6 +211,7 @@ class Renderer:
         GL.glUniform1i(u["u_bumpmap"], 3)
         GL.glUniform1i(u["u_exponent"], 4)
         GL.glUniform1i(u["u_selfillum_mask"], 5)
+        self._bind_slots()
         self._lights_key = None
         if self.lightmap is not None:
             self.lightmap.bind(2)
@@ -247,6 +267,144 @@ class Renderer:
         GL.glUseProgram(0)
         if self.overlay_lines:
             self._draw_lines(view_proj)
+
+    # -- projected lights: cookies and shadows -----------------------------------------
+    def _light_matrix(self, light: LightState) -> tuple:
+        """World to the light's clip space: its own frustum, near at minDistance."""
+        h, v = light.fov
+        aspect = math.tan(math.radians(max(h, 1.0)) / 2) / max(math.tan(math.radians(max(v, 1.0)) / 2), 1e-4)
+        near = max(light.near, 1.0)
+        far = max(light.far, near + 1.0)
+        view = look_at(light.position, add(light.position, light.direction), light.up)
+        return multiply(perspective(math.radians(max(v, 1.0)), aspect, near, far), view)
+
+    def _render_shadows(self) -> None:
+        """Give the first projected lights a slot each and draw the shadow map of those
+        that cast one: a depth pass of every visible instance from the light."""
+        self._slots = []
+        if self.scene is None or not self.depth_program:
+            return
+        session = self.scene.lights
+        for index, light in enumerate(session[:MAX_LIGHTS]):
+            if light.kind != LIGHT_PROJECTED:
+                continue
+            if len(self._slots) >= MAX_SHADOWS:
+                break
+            self._slots.append((index, light, self._light_matrix(light)))
+        if not any(light.shadows for _i, light, _m in self._slots):
+            return
+        previous = GL.glGetIntegerv(GL.GL_FRAMEBUFFER_BINDING)
+        previous = int(previous[0]) if hasattr(previous, "__len__") else int(previous)
+        d = self.depth_uniforms
+        GL.glUseProgram(self.depth_program)
+        GL.glUniform1i(d["u_texture"], 0)
+        GL.glEnable(GL.GL_DEPTH_TEST)
+        GL.glDepthMask(GL.GL_TRUE)
+        GL.glDisable(GL.GL_BLEND)
+        GL.glDisable(GL.GL_CULL_FACE)
+        GL.glEnable(GL.GL_POLYGON_OFFSET_FILL)
+        GL.glPolygonOffset(2.0, 4.0)
+        GL.glViewport(0, 0, SHADOW_SIZE, SHADOW_SIZE)
+        for slot, (_index, light, matrix) in enumerate(self._slots):
+            if not light.shadows:
+                continue
+            fbo, _texture = self._shadow_map(slot)
+            GL.glBindFramebuffer(GL.GL_FRAMEBUFFER, fbo)
+            GL.glClear(GL.GL_DEPTH_BUFFER_BIT)
+            GL.glUniformMatrix4fv(d["u_view_proj"], 1, GL.GL_FALSE, matrix)
+            planes = frustum_planes(matrix)
+            for instance in self.scene.instances:
+                if not instance.visible:
+                    continue
+                meshes = self.meshes.get(instance.loaded.rel, [])
+                if not meshes:
+                    continue
+                if instance.source is None and not instance.bones:
+                    box = self._static_bounds(instance)
+                    if box is not None and not box_in_frustum(box, planes):
+                        continue
+                self._apply_instance(instance, d)
+                for item_index, (item, mesh) in enumerate(meshes):
+                    if item.blended:
+                        continue                      # glass and smoke throw no shadow
+                    texture = self.textures.get(item.texture_key) if item.alpha_test else None
+                    if texture is not None:
+                        texture.bind(0)
+                    GL.glUniform1i(d["u_textured"], 1 if texture is not None else 0)
+                    GL.glUniform1i(d["u_alpha_test"], 1 if item.alpha_test else 0)
+                    if item_index in instance.morphs:
+                        mesh = self._morphed_mesh(instance, item_index, item)
+                    mesh.draw()
+        GL.glDisable(GL.GL_POLYGON_OFFSET_FILL)
+        GL.glEnable(GL.GL_CULL_FACE)
+        GL.glBindFramebuffer(GL.GL_FRAMEBUFFER, previous)
+        GL.glUseProgram(0)
+
+    def _shadow_map(self, slot: int) -> Tuple[int, int]:
+        """The framebuffer and depth texture of a slot, made on first use."""
+        while len(self._shadow_maps) <= slot:
+            texture = int(GL.glGenTextures(1))
+            GL.glBindTexture(GL.GL_TEXTURE_2D, texture)
+            GL.glTexImage2D(GL.GL_TEXTURE_2D, 0, GL.GL_DEPTH_COMPONENT24, SHADOW_SIZE, SHADOW_SIZE, 0,
+                            GL.GL_DEPTH_COMPONENT, GL.GL_FLOAT, None)
+            GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MIN_FILTER, GL.GL_LINEAR)
+            GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MAG_FILTER, GL.GL_LINEAR)
+            GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_S, GL.GL_CLAMP_TO_EDGE)
+            GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_T, GL.GL_CLAMP_TO_EDGE)
+            GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_COMPARE_MODE, GL.GL_COMPARE_REF_TO_TEXTURE)
+            GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_COMPARE_FUNC, GL.GL_LEQUAL)
+            fbo = int(GL.glGenFramebuffers(1))
+            GL.glBindFramebuffer(GL.GL_FRAMEBUFFER, fbo)
+            GL.glFramebufferTexture2D(GL.GL_FRAMEBUFFER, GL.GL_DEPTH_ATTACHMENT, GL.GL_TEXTURE_2D, texture, 0)
+            GL.glDrawBuffer(GL.GL_NONE)
+            GL.glReadBuffer(GL.GL_NONE)
+            if GL.glCheckFramebufferStatus(GL.GL_FRAMEBUFFER) != GL.GL_FRAMEBUFFER_COMPLETE:
+                self.errors.append("shadow map framebuffer incomplete")
+            GL.glBindTexture(GL.GL_TEXTURE_2D, 0)
+            self._shadow_maps.append((fbo, texture))
+        return self._shadow_maps[slot]
+
+    def _slot_location(self, name: str, slot: int) -> int:
+        """Location of one element of a sampler array (queried by name: the elements
+        need not be consecutive)."""
+        key = f"{name}[{slot}]"
+        location = self.uniforms.get(key)
+        if location is None:
+            location = self.uniforms[key] = GL.glGetUniformLocation(self.program, key)
+        return location
+
+    def _bind_slots(self) -> None:
+        """Tell the model program which lights hold a slot, with their matrices, shadow
+        maps (units 8..11) and cookies (units 12..15)."""
+        u = self.uniforms
+        slot_of = [-1] * MAX_LIGHTS
+        matrices: List[float] = []
+        has_shadow = [0] * MAX_SHADOWS
+        has_cookie = [0] * MAX_SHADOWS
+        for slot in range(MAX_SHADOWS):
+            if slot < len(self._slots):
+                index, light, matrix = self._slots[slot]
+                slot_of[index] = slot
+                matrices.extend(matrix)
+                if light.shadows and slot < len(self._shadow_maps):
+                    GL.glActiveTexture(GL.GL_TEXTURE8 + slot)
+                    GL.glBindTexture(GL.GL_TEXTURE_2D, self._shadow_maps[slot][1])
+                    has_shadow[slot] = 1
+                cookie = self.textures.get(light.texture_key) if light.texture_key else None
+                if cookie is not None:
+                    cookie.set_clamp()
+                    cookie.bind(12 + slot)
+                    has_cookie[slot] = 1
+            else:
+                matrices.extend(IDENTITY)
+            GL.glUniform1i(self._slot_location("u_shadow_map", slot), 8 + slot)
+            GL.glUniform1i(self._slot_location("u_cookie", slot), 12 + slot)
+        GL.glUniformMatrix4fv(u["u_shadow_matrix"], MAX_SHADOWS, GL.GL_FALSE, (GL.GLfloat * len(matrices))(*matrices))
+        GL.glUniform1iv(u["u_has_shadow"], MAX_SHADOWS, (GL.GLint * MAX_SHADOWS)(*has_shadow))
+        GL.glUniform1iv(u["u_has_cookie"], MAX_SHADOWS, (GL.GLint * MAX_SHADOWS)(*has_cookie))
+        GL.glUniform1iv(u["u_light_slot"], MAX_LIGHTS, (GL.GLint * MAX_LIGHTS)(*slot_of))
+        GL.glUniform1f(u["u_shadow_texel"], 1.0 / SHADOW_SIZE)
+        GL.glActiveTexture(GL.GL_TEXTURE0)
 
     def _draw_sky(self, camera: OrbitCamera, eye) -> None:
         """The sky: the unit cube's six faces scaled to sit inside the far plane and
@@ -409,12 +567,13 @@ class Renderer:
             self.morphed[key] = (mesh, instance.morph_version)
         return mesh
 
-    def _apply_instance(self, instance: SceneInstance) -> None:
+    def _apply_instance(self, instance: SceneInstance, uniforms: Optional[Dict[str, int]] = None) -> None:
         """Upload the instance's placement and skin.  The arrays are built once per
         placement (a static prop keeps its own for the scene's whole life) and handed
         to GL as ctypes, which skips PyOpenGL's per-call conversion - that conversion was
-        most of a frame on a map with two thousand props."""
-        u = self.uniforms
+        most of a frame on a map with two thousand props.  `uniforms` names another
+        program's locations (the depth pass); the model program's are the default."""
+        u = uniforms if uniforms is not None else self.uniforms
         cached = self._instance_cache.get(id(instance))
         if cached is None or cached[0] is not instance.world or cached[1] is not instance.bones or cached[2] is not self.model_matrix:
             model = (GL.GLfloat * 16)(*multiply(self.model_matrix, instance.world))
@@ -429,9 +588,15 @@ class Renderer:
         GL.glUniformMatrix4fv(u["u_model"], 1, GL.GL_FALSE, cached[3])
         if cached[4] is not None:
             GL.glUniform4fv(u["u_bones"], len(cached[4]) // 4, cached[4])
-            self._set_int("u_skinned", 1)
+            if uniforms is None:
+                self._set_int("u_skinned", 1)
+            else:
+                GL.glUniform1i(u["u_skinned"], 1)
         else:
-            self._set_int("u_skinned", 0)
+            if uniforms is None:
+                self._set_int("u_skinned", 0)
+            else:
+                GL.glUniform1i(u["u_skinned"], 0)
 
     def _apply_lights(self, instance: SceneInstance) -> None:
         """The lights on an instance: the session's, then the map's at its place; and the
