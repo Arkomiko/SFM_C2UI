@@ -217,17 +217,37 @@ class OverlayState:
 
 @dataclass
 class Look:
-    """How the finished frame is developed: the shot camera's exposure and bloom."""
+    """How the finished frame is developed: exposure and bloom.
+
+    Source's tonemap controller scales the linear frame so its average luminance
+    lands on a target, within bounds (`mat_autoexposure_min` / `_max`); a map that
+    carries an `env_tonemap_controller` is lit expecting that, and the shot
+    camera's `toneMapScale` multiplies the result."""
     tone_map_scale: float = 1.0
     bloom_scale: float = 0.0
     bloom_width: float = 9.0
+    #: scale the frame by the average luminance it turns out to have
+    auto_exposure: bool = False
+    #: the average luminance aimed for, and how far the scale may stray from 1
+    target: float = 0.18
+    exposure_min: float = 0.5
+    exposure_max: float = 2.0
 
     @classmethod
-    def of(cls, camera: Optional[Camera]) -> "Look":
-        """The look a session camera asks for; the plain one without a camera."""
-        if camera is None:
-            return cls()
-        return cls(camera.tone_map_scale, camera.bloom_scale, camera.bloom_width)
+    def of(cls, camera: Optional[Camera], bsp: Optional[BspFile] = None) -> "Look":
+        """The look a session camera asks for on this map; the plain one without either."""
+        look = cls()
+        if camera is not None:
+            look.tone_map_scale = camera.tone_map_scale
+            look.bloom_scale = camera.bloom_scale
+            look.bloom_width = camera.bloom_width
+        control = bsp.tone_map if bsp is not None else None
+        if control is not None:
+            look.auto_exposure = True
+            look.exposure_min = as_float(control.get("mat_autoexposure_min"), 0.5) or 0.5
+            look.exposure_max = as_float(control.get("mat_autoexposure_max"), 2.0) or 2.0
+            look.target = as_float(control.get("mat_tonemap_target"), 0.18) or 0.18
+        return look
 
 
 @dataclass
@@ -310,16 +330,18 @@ def build_shot_scene(source: SceneSource, shot: FilmClip, map_name: str = "") ->
     """Every visible game model of a shot, placed and posed as the session says,
     on the map the shot (or, failing that, `map_name` - the sequence's) names.
     A model that cannot be read is a warning; the shot still shows."""
-    scene = Scene(title=shot.name, up_axis="z", look=Look.of(shot.camera))
+    scene = Scene(title=shot.name, up_axis="z")
     overlay = shot.material_overlay
     if overlay is not None:
         scene.overlay = load_overlay(source, scene, overlay)
     if shot.scene is None:
+        scene.look = Look.of(shot.camera)
         scene.warnings.append("the shot has no scene")
         return scene
     map_name = shot.map_name or map_name
     if map_name:
         _load_map(source, scene, map_name)
+    scene.look = Look.of(shot.camera, scene.bsp)
     for node, world, visible in shot.scene.walk_visibility():
         if isinstance(node, ProjectedLight):
             if visible:

@@ -151,6 +151,15 @@ class BspFile:
     world_lights: List[WorldLight] = field(default_factory=list)
 
     @property
+    def tone_map(self) -> Optional[Dict[str, str]]:
+        """The map's `env_tonemap_controller` keys, or None when it has none.  Its
+        presence is what turns auto exposure on: a map without one is shown as lit."""
+        for entity in self.entities:
+            if entity.get("classname", "").lower() == "env_tonemap_controller":
+                return entity
+        return None
+
+    @property
     def sky_light(self) -> Optional[WorldLight]:
         """The sun (light_environment), or None."""
         return next((l for l in self.world_lights if l.kind == EMIT_SKYLIGHT), None)

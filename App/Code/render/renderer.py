@@ -67,6 +67,8 @@ class Renderer:
         #: linear HDR frame (colour + depth), the accumulation of samples, two bloom buffers
         self._targets: Dict[str, Tuple[int, int, int, int, int]] = {}   # name -> fbo, texture, depth, w, h
         self._accumulated = 0.0
+        #: the exposure the last resolve worked out, for the status line and the tests
+        self.exposure = 1.0
         #: the framebuffer the frame is finally developed into (whatever was bound at begin)
         self._output = 0
         #: one (framebuffer, depth texture) per shadow slot, made on first use
@@ -280,10 +282,33 @@ class Renderer:
         if self.overlay_lines and self._last_view_proj is not None:
             self._draw_lines(self._last_view_proj)
 
+    def _average_luminance(self, texture: int) -> float:
+        """The whole accumulation's average luminance, from its smallest mip level."""
+        GL.glActiveTexture(GL.GL_TEXTURE0)
+        GL.glBindTexture(GL.GL_TEXTURE_2D, texture)
+        GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MIN_FILTER, GL.GL_LINEAR_MIPMAP_LINEAR)
+        GL.glGenerateMipmap(GL.GL_TEXTURE_2D)
+        levels = max(0, int(math.log2(max(1, max(self._targets["accum"][3], self._targets["accum"][4])))))
+        raw = GL.glGetTexImage(GL.GL_TEXTURE_2D, levels, GL.GL_RGBA, GL.GL_FLOAT)
+        GL.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MIN_FILTER, GL.GL_LINEAR)
+        GL.glBindTexture(GL.GL_TEXTURE_2D, 0)
+        values = list(raw.flatten()) if hasattr(raw, "flatten") else list(raw)
+        if len(values) < 3:
+            return 0.0
+        r, g, b = values[0], values[1], values[2]
+        return 0.299 * r + 0.587 * g + 0.114 * b
+
     def _resolve(self, width: int, height: int) -> None:
         """Bloom at quarter size from the accumulation, then the resolve pass."""
         look = self.scene.look
         scale = 1.0 / self._accumulated
+        self.exposure = look.tone_map_scale
+        if look.auto_exposure:
+            # Source's tonemap controller: bring the average luminance to the target,
+            # but never further from one than the autoexposure bounds allow
+            average = self._average_luminance(self._targets["accum"][1]) * scale
+            wanted = look.target / average if average > 1e-5 else look.exposure_max
+            self.exposure = look.tone_map_scale * min(max(wanted, look.exposure_min), look.exposure_max)
         accum = self._targets["accum"]
         GL.glDisable(GL.GL_DEPTH_TEST)
         GL.glDisable(GL.GL_BLEND)
@@ -300,7 +325,7 @@ class Renderer:
             GL.glBindTexture(GL.GL_TEXTURE_2D, accum[1])
             GL.glUniform1i(GL.glGetUniformLocation(program, "u_source"), 0)
             GL.glUniform1f(GL.glGetUniformLocation(program, "u_scale"), scale)
-            GL.glUniform1f(GL.glGetUniformLocation(program, "u_threshold"), 0.6)
+            GL.glUniform1f(GL.glGetUniformLocation(program, "u_threshold"), 0.6 / max(self.exposure, 1e-3))
             self._post_triangle()
             program = self.post_programs["blur"]
             GL.glUseProgram(program)
@@ -323,7 +348,7 @@ class Renderer:
         GL.glUniform1i(GL.glGetUniformLocation(program, "u_source"), 0)
         GL.glUniform1i(GL.glGetUniformLocation(program, "u_bloom"), 1)
         GL.glUniform1f(GL.glGetUniformLocation(program, "u_scale"), scale)
-        GL.glUniform1f(GL.glGetUniformLocation(program, "u_tonemap"), look.tone_map_scale)
+        GL.glUniform1f(GL.glGetUniformLocation(program, "u_tonemap"), self.exposure)
         GL.glUniform1f(GL.glGetUniformLocation(program, "u_bloom_scale"), look.bloom_scale if bloom_texture else 0.0)
         self._post_triangle()
         GL.glActiveTexture(GL.GL_TEXTURE0)

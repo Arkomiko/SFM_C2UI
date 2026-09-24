@@ -237,7 +237,7 @@ bool light_at(int i, vec3 world, out vec3 l, out vec3 radiance) {
         if (cone <= 0.0) return false;
         float fade = range.z > range.y ? 1.0 - clamp((d - range.y) / (range.z - range.y), 0.0, 1.0) : 1.0;
         float atten = u_light_atten[i].x + u_light_atten[i].y / d + u_light_atten[i].z / (d * d);
-        radiance = u_light_color[i] * min(atten, 1.0) * cone * fade;    // saturate, as the flashlight shader does
+        radiance = u_light_color[i] * min(atten, 8.0) * cone * fade;     // the near field is bright, not clipped
         return true;
     }
     // the map's point and spot lights: intensity over (c + l d + q d^2), as vrad's

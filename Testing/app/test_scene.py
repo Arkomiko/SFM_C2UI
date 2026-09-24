@@ -156,3 +156,26 @@ def test_texture_transform_scales_rotates_and_translates_about_the_centre():
     u, v = f(1.0, 0.5)                  # (0.5, 0) after scaling about the centre, then a quarter turn
     assert abs(u - 0.6) < 1e-9 and abs(v - 1.5) < 1e-9
     assert _texture_transform(parse_vmt('"sky" { }', "t")) is None
+
+
+def test_look_takes_exposure_from_the_camera_and_the_map():
+    from App.Code.render.scene import Look
+    from Core.Code.formats.bsp import BspFile
+    plain = Look.of(None)
+    assert plain.tone_map_scale == 1.0 and not plain.auto_exposure and plain.bloom_scale == 0.0
+
+    class _Camera:
+        tone_map_scale, bloom_scale, bloom_width = 1.5, 0.28, 9.0
+    look = Look.of(_Camera())
+    assert look.tone_map_scale == 1.5 and look.bloom_scale == 0.28 and not look.auto_exposure
+    # a map without a tonemap controller is shown as it is lit
+    bsp = BspFile(name="m", version=20)
+    bsp.entities = [{"classname": "worldspawn"}]
+    assert not Look.of(_Camera(), bsp).auto_exposure and bsp.tone_map is None
+    # with one, auto exposure is on and its bounds come from the entity
+    bsp.entities.append({"classname": "env_tonemap_controller", "mat_autoexposure_min": "0.8",
+                         "mat_autoexposure_max": "4", "mat_tonemap_target": "0.22"})
+    look = Look.of(_Camera(), bsp)
+    assert look.auto_exposure and look.exposure_min == 0.8 and look.exposure_max == 4.0
+    assert look.target == 0.22 and look.tone_map_scale == 1.5
+    assert bsp.tone_map["classname"] == "env_tonemap_controller"
