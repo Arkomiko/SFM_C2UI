@@ -33,16 +33,16 @@ MARKERS = ("App", "Core", "Launcher")
 STYLE = """
 QWidget#root { background: #17181c; }
 QLabel#title { color: #f2f4f8; }
-QLabel#description { color: #98a0ad; }
+QLabel#description { color: #98a0ad; font-size: 11px; }
 QFrame#rule { background: #2a2d34; max-height: 1px; border: none; }
 QPushButton {
     background: #23262d; color: #e8ebf0; border: 1px solid #333842;
-    border-radius: 4px; padding: 10px 18px; min-width: 150px;
+    border-radius: 4px; padding: 6px 10px; min-width: 104px;
 }
 QPushButton:hover { background: #2c3039; border-color: #3d4450; }
 QPushButton:pressed { background: #1d2026; }
 QPushButton:disabled { background: #1c1e23; color: #5b616b; border-color: #26292f; }
-QPushButton#quit { min-width: 110px; }
+QPushButton#quit { min-width: 74px; }
 """
 
 
@@ -101,14 +101,14 @@ class LauncherWindow(QWidget):
         self.root = project_root()
         self.setObjectName("root")
         self.setWindowTitle(TITLE)
-        self.setFixedSize(560, 300)
+        self.setFixedSize(410, 172)
         self.setStyleSheet(STYLE)
 
         title = QLabel(TITLE)
         title.setObjectName("title")
         title.setAlignment(Qt.AlignHCenter)
         font = QFont(title.font())
-        font.setPointSize(17)
+        font.setPointSize(13)
         font.setWeight(QFont.DemiBold)
         title.setFont(font)
 
@@ -131,7 +131,7 @@ class LauncherWindow(QWidget):
         quit_button.clicked.connect(self.close)
 
         buttons = QHBoxLayout()
-        buttons.setSpacing(12)
+        buttons.setSpacing(8)
         buttons.addStretch(1)
         buttons.addWidget(self.core_button)
         buttons.addWidget(self.app_button)
@@ -139,8 +139,8 @@ class LauncherWindow(QWidget):
         buttons.addStretch(1)
 
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(28, 26, 28, 26)
-        layout.setSpacing(14)
+        layout.setContentsMargins(18, 14, 18, 14)
+        layout.setSpacing(8)
         layout.addWidget(title)
         layout.addWidget(description)
         layout.addWidget(rule)
