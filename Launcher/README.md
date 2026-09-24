@@ -1,12 +1,31 @@
 # Launcher
 
-How C2UI is started. Two entry points for now; the packaged launcher - one
-executable that carries its own Python and updates itself - will live here too.
+How C2UI is started.
+
+## The window
+
+`launcher.py` is what a person opens: a title, a line of description and three
+buttons - start Core, start App (greyed out, there is no App yet) and quit.
+Temporary by design; it will be rewritten when App exists.
+
+    .venv/Scripts/python.exe Launcher/launcher.py
+
+Built into one executable that needs no Python on the machine:
+
+    .venv/Scripts/python.exe -m pip install pyinstaller
+    .venv/Scripts/python.exe Launcher/build_exe.py      ->  Launcher/dist/C2UI Launcher.exe
+
+The executable finds the project by walking up from wherever it sits until it
+sees `App`, `Core` and `Launcher` together, so it works from `Launcher/dist`,
+from `Launcher/` or from the project root - but it has to stay inside the
+project, which is what it starts.  `build/`, `dist/` and the spec file are
+ignored by git: a binary does not belong in the source tree.
 
 ## The editor
 
-`c2ui.py` opens the window; `requirements.txt` lists what that window needs
-(the engine in `Core/` needs nothing beyond the standard library).
+`c2ui.py` opens the editor, which is what the launcher's "Запустить Core"
+starts; `requirements.txt` lists what that window needs (the engine in `Core/`
+needs nothing beyond the standard library).
 
     python -m venv .venv
     .venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
