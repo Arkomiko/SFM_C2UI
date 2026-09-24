@@ -1,0 +1,8 @@
+# The editor's user interface and viewport. The engine in Core/ and the test
+# suite need nothing beyond the standard library.
+#
+#   python -m venv .venv
+#   .venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+#   .venv/Scripts/python.exe Launcher/c2ui.py
+PySide6>=6.6
+PyOpenGL>=3.1.7

@@ -4,7 +4,6 @@ Utilities built on Core. They are not part of the shipped editor.
 
 | Tool | Purpose |
 |---|---|
-| `Launcher/` | Starts the editor; the packaged launcher will live here |
 | `Localization/` | Authoring translations |
 | `Market Load/` | The marketplace client for plugins and addons (planned) |
 | `NewPlugins/` | Authoring plugins |
