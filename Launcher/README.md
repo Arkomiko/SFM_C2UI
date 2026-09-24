@@ -13,13 +13,13 @@ Temporary by design; it will be rewritten when App exists.
 Built into one executable that needs no Python on the machine:
 
     .venv/Scripts/python.exe -m pip install pyinstaller
-    .venv/Scripts/python.exe Launcher/build_exe.py      ->  Launcher/dist/C2UI Launcher.exe
+    .venv/Scripts/python.exe Launcher/build_exe.py      ->  Launcher/Launcher-C2UI.exe
 
 The executable finds the project by walking up from wherever it sits until it
-sees `App`, `Core` and `Launcher` together, so it works from `Launcher/dist`,
-from `Launcher/` or from the project root - but it has to stay inside the
-project, which is what it starts.  `build/`, `dist/` and the spec file are
-ignored by git: a binary does not belong in the source tree.
+sees `App`, `Core` and `Launcher` together, so it works from `Launcher/` or
+from the project root - but it has to stay inside the project, which is what
+it starts.  It is rebuilt from source and not kept in git, so it is ignored
+along with the build's leavings.
 
 ## The editor
 

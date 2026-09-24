@@ -3,3 +3,6 @@ __pycache__/
 build/
 dist/
 *.spec
+
+# the built launcher: rebuilt by build_exe.py, not kept in the source tree
+Launcher-C2UI.exe

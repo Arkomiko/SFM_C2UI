@@ -73,6 +73,26 @@ def python_for(root: Path) -> Optional[Path]:
     return Path(found) if found else None
 
 
+def dark_title_bar(window: QWidget) -> bool:
+    """Ask Windows for a dark title bar, so the frame matches the window.
+
+    Windows 10 1809 and up; anywhere else the light frame simply stays.
+    """
+    if sys.platform != "win32":
+        return False
+    try:
+        import ctypes
+        handle = int(window.winId())
+        for attribute in (20, 19):          # DWMWA_USE_IMMERSIVE_DARK_MODE, and the number it had before 1903
+            value = ctypes.c_int(1)
+            if ctypes.windll.dwmapi.DwmSetWindowAttribute(
+                    handle, attribute, ctypes.byref(value), ctypes.sizeof(value)) == 0:
+                return True
+    except Exception:                       # noqa: BLE001 - a light frame is not a failure
+        pass
+    return False
+
+
 class LauncherWindow(QWidget):
     """Title, one line of description, and the three buttons."""
 
@@ -130,6 +150,10 @@ class LauncherWindow(QWidget):
         if self.root is None:
             self.core_button.setEnabled(False)
             description.setText(DESCRIPTION + "\n\nПроект не найден: положите лаунчер внутрь папки C2UI_SDK.")
+
+    def showEvent(self, event) -> None:
+        super().showEvent(event)
+        dark_title_bar(self)                           # the window handle exists only once shown
 
     # -- starting things -------------------------------------------------------------
     def start_core(self) -> None:
