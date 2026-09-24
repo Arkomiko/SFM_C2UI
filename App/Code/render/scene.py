@@ -768,7 +768,7 @@ def _item_for(source: SceneSource, scene: Scene, model: Model, mesh: Mesh) -> Dr
     warp = material.texture("$lightwarptexture")
     if warp and _texture(source, scene, warp):
         item.lightwarp_key = warp
-    bump = material.texture("$bumpmap")
+    bump = material.bump_map
     if bump and _texture(source, scene, bump):
         item.bumpmap_key = bump
     exponent = material.texture("$phongexponenttexture")
@@ -784,25 +784,29 @@ def _item_for(source: SceneSource, scene: Scene, model: Model, mesh: Mesh) -> Dr
     elif item.bumpmap_key:
         item.phong_mask = 2
     item.invert_phong_mask = as_bool(material.param("$invertphongmask"))
-    texture = material.base_texture
-    if not texture:
+    candidates = material.base_textures
+    if not candidates:
         return item
-    if texture not in scene.textures:
+    for texture in candidates:
+        if texture in scene.textures:
+            item.texture_key = texture
+            return item
         data = source.read_bytes(texture)
         if data is None:
-            scene.warnings.append(f"{material.path}: texture {texture} not found")
-            return item
+            continue                                  # try the next one the material names
         try:
             vtf = parse_vtf(data, texture)
         except FormatError as exc:
             scene.warnings.append(str(exc))
-            return item
+            continue
         for warning in vtf.warnings:
             scene.warnings.append(f"{texture}: {warning}")
         if not vtf.mips:
-            return item
+            continue
         scene.textures[texture] = vtf
-    item.texture_key = texture
+        item.texture_key = texture
+        return item
+    scene.warnings.append(f"{material.path}: no texture of {', '.join(candidates)} could be read")
     return item
 
 

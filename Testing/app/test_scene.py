@@ -57,7 +57,24 @@ def test_missing_texture_is_a_warning_not_a_failure():
     src = _content('"VertexLitGeneric" { "$basetexture" "models/test/skin" }', with_texture=False)
     scene = build_scene(src, "models/test/thing.mdl")
     assert scene.items[0].texture_key == ""
-    assert any("not found" in w for w in scene.warnings)
+    assert any("could be read" in w for w in scene.warnings)
+
+
+def test_a_material_falls_through_to_the_texture_it_can_read():
+    # shipped materials name a base texture that was never packed and an HDR twin
+    # that was; the engine draws with whichever it finds
+    src = _content('"Sky" { "$basetexture" "models/test/missing" "$hdrbasetexture" "models/test/skin" }')
+    scene = build_scene(src, "models/test/thing.mdl")
+    assert scene.items[0].texture_key == "materials/models/test/skin.vtf"
+    assert not scene.warnings
+
+
+def test_a_self_shadowed_bump_is_not_used_as_a_normal_map():
+    from Core.Code.formats.vmt import parse_vmt
+    plain = parse_vmt('"LightmappedGeneric" { "$bumpmap" "nature/x_normal" }', "a.vmt")
+    assert plain.bump_map == "materials/nature/x_normal.vtf" and not plain.self_shadowed_bump
+    ss = parse_vmt('"LightmappedGeneric" { "$bumpmap" "nature/x-ssbump" "$ssbump" 1 }', "b.vmt")
+    assert ss.self_shadowed_bump and ss.bump_map == ""
 
 
 def test_missing_material_is_a_warning_not_a_failure():

@@ -103,20 +103,38 @@ class Material:
         return texture_path(self.params.get(key.lower(), ""))
 
     # -- what a renderer asks first ---------------------------------------------
+    #: where a material keeps the texture to draw with, best first: nearly everything
+    #: uses $basetexture, eye shaders keep theirs in $iris, skies have HDR twins
+    BASE_TEXTURE_KEYS = ("$basetexture", "$iris", "$hdrbasetexture", "$hdrcompressedtexture")
+
+    @property
+    def base_textures(self) -> List[str]:
+        """Every texture this material could be drawn with, best first.  Shipped
+        materials sometimes name one that was never packed (a sky's `dn` face with
+        `skybox\\skybox/...` in it), and the engine falls through to the next."""
+        out: List[str] = []
+        for key in self.BASE_TEXTURE_KEYS:
+            path = self.texture(key)
+            if path and path not in out:
+                out.append(path)
+        return out
+
     @property
     def base_texture(self) -> str:
-        """The texture to draw with.  `$basetexture` for nearly everything;
-        eye shaders keep theirs in `$iris`, HDR skies in `$hdrbasetexture`."""
-        for key in ("$basetexture", "$iris", "$hdrbasetexture", "$hdrcompressedtexture"):
-            path = self.texture(key)
-            if path:
-                return path
-        return ""
+        """The texture to draw with, or ""."""
+        found = self.base_textures
+        return found[0] if found else ""
 
     @property
     def bump_map(self) -> str:
-        """Path of the normal map, or ""."""
-        return self.texture("$bumpmap")
+        """Path of the normal map, or "" - also when `$ssbump` says the map is a
+        self-shadowed bump, which is three basis heights, not a normal."""
+        return "" if self.self_shadowed_bump else self.texture("$bumpmap")
+
+    @property
+    def self_shadowed_bump(self) -> bool:
+        """$ssbump: the bump map holds Valve's self-shadowed basis."""
+        return as_bool(self.param("$ssbump"))
 
     @property
     def translucent(self) -> bool:
