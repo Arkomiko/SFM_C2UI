@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/UK-ua.svg" alt="Готовність" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Загальна готовність до релізу: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Загальна готовність до релізу: 60%</b></p>
 
 Кожна область розгортається: що вже працює і чого поки немає. Відсотки — оцінка відносно можливостей SFM.
 
@@ -73,15 +73,15 @@ Flex-контролери, скомпільовані правила і верш
 
 Перетягування панелей на хрестовину цілей з попереднім переглядом, як в UE5 і Visual Studio. Немає: збережених розкладок, тем.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Шейдинг Source
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Шейдинг Source
 
 Світло сесії (DmeProjectedLight): фрустум, згасання Source, спад до maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Світ карти — за лайтмапами; моделі освітлюють ambient-куби та world lights карти. Немає: тіней, гобо-текстур, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Карти — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Карти — <code>.bsp</code>
 
 Версії 19–21: геометрія світу, displacement-рельєф, brush-ентиті, статичні пропи, матеріали з pak-лампа карти, лайтмапи, скайбокс навколо камери. Відсікання за пірамідою камери. Немає: води, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Рендер у зображення та відео
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Рендер у зображення та відео
 
 PNG/TGA-послідовності та AVI/MP4 із сесії: уся сесія, поточний шот або діапазон; пресети; File → Export, Ctrl+E. Немає: звуку у відео.
 

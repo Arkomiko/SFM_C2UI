@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/MR-in.svg" alt="तयारी" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>रिलीजसाठी एकूण तयारी: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>रिलीजसाठी एकूण तयारी: 60%</b></p>
 
 प्रत्येक क्षेत्र उघडता येते: काय आधीच काम करते आणि काय अजून नाही. टक्केवारी SFM च्या क्षमतांच्या तुलनेत अंदाज आहे.
 
@@ -73,15 +73,15 @@ Flex कंट्रोलर, संकलित नियम आणि व्�
 
 UE5 आणि Visual Studio प्रमाणे, पूर्वावलोकनासह लक्ष्यांच्या कंपासवर पॅनेल ओढा. अजून नाही: जतन केलेली मांडणी, थीम.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source शेडिंग
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source शेडिंग
 
 सेशनचे दिवे (DmeProjectedLight): फ्रस्टम, Source क्षीणन, maxDistance पर्यंत फेड; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. नकाशाचे जग लाइटमॅपने; मॉडेल नकाशाच्या अ‍ॅम्बियंट क्यूब आणि वर्ल्ड लाइटने उजळलेली. अजून नाही: सावल्या, गोबो टेक्स्चर, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> नकाशे — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> नकाशे — <code>.bsp</code>
 
 आवृत्त्या 19–21: जगाची भूमिती, डिस्प्लेसमेंट भूभाग, ब्रश एंटिटी, स्टॅटिक प्रॉप्स, नकाशाचे स्वतःचे pak मटेरियल, लाइटमॅप, कॅमेऱ्याभोवती स्कायबॉक्स. फ्रस्टम कलिंग. अजून नाही: पाणी, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> प्रतिमा आणि व्हिडिओमध्ये रेंडर
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> प्रतिमा आणि व्हिडिओमध्ये रेंडर
 
 सेशनमधून PNG/TGA अनुक्रम आणि AVI/MP4 चित्रपट: संपूर्ण सेशन, सध्याचा शॉट किंवा श्रेणी; प्रीसेट; File → Export, Ctrl+E. अजून नाही: चित्रपटात ध्वनी.
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/BN-bd.svg" alt="প্রস্তুতি" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>রিলিজের জন্য সামগ্রিক প্রস্তুতি: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>রিলিজের জন্য সামগ্রিক প্রস্তুতি: 60%</b></p>
 
 প্রতিটি ক্ষেত্র খোলা যায়: কী ইতিমধ্যে কাজ করে আর কী এখনো নেই। শতাংশ SFM-এর সক্ষমতার তুলনায় একটি অনুমান।
 
@@ -73,15 +73,15 @@ Flex কন্ট্রোলার, কম্পাইল করা নিয�
 
 UE5 ও Visual Studio-র মতো, প্রিভিউ সহ লক্ষ্যের কম্পাসে প্যানেল টানুন। এখনো নয়: সংরক্ষিত লেআউট, থিম।
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source শেডিং
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source শেডিং
 
 সেশন লাইট (DmeProjectedLight): ফ্রাস্টাম, Source অ্যাটেনুয়েশন, maxDistance পর্যন্ত ফেড; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum। ম্যাপের জগৎ লাইটম্যাপে; মডেল ম্যাপের অ্যাম্বিয়েন্ট কিউব ও ওয়ার্ল্ড লাইটে আলোকিত। এখনও নয়: ছায়া, গোবো টেক্সচার, $bumpmap, $envmap।
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> ম্যাপ — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> ম্যাপ — <code>.bsp</code>
 
 সংস্করণ ১৯–২১: ওয়ার্ল্ড জ্যামিতি, ডিসপ্লেসমেন্ট ভূমি, ব্রাশ এনটিটি, স্ট্যাটিক প্রপ, ম্যাপের নিজস্ব pak ম্যাটেরিয়াল, লাইটম্যাপ, ক্যামেরার চারপাশে স্কাইবক্স। ফ্রাস্টাম কালিং। এখনও নয়: পানি, prop_dynamic।
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> ছবি ও ভিডিওতে রেন্ডার
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> ছবি ও ভিডিওতে রেন্ডার
 
 সেশন থেকে PNG/TGA সিকোয়েন্স ও AVI/MP4 ফিল্ম: পুরো সেশন, বর্তমান শট বা একটি পরিসর; প্রিসেট; File → Export, Ctrl+E। এখনও নয়: ফিল্মে শব্দ।
 

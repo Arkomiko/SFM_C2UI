@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/ML-in.svg" alt="തയ്യാറെടുപ്പ്" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>റിലീസിനുള്ള മൊത്തം തയ്യാറെടുപ്പ്: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>റിലീസിനുള്ള മൊത്തം തയ്യാറെടുപ്പ്: 60%</b></p>
 
 ഓരോ മേഖലയും വികസിപ്പിക്കാം: ഇപ്പോൾ തന്നെ പ്രവർത്തിക്കുന്നതും ഇതുവരെ ഇല്ലാത്തതും. ശതമാനങ്ങൾ SFM-ന്റെ കഴിവുകളുമായി താരതമ്യപ്പെടുത്തിയ കണക്കാണ്.
 
@@ -73,15 +73,15 @@ Flex കൺട്രോളറുകൾ, കംപൈൽ ചെയ്ത നി�
 
 UE5-ലും Visual Studio-യിലും പോലെ, പ്രിവ്യൂവുള്ള ലക്ഷ്യ കോമ്പസിലേക്ക് പാനലുകൾ വലിച്ചിടുക. ഇതുവരെ ഇല്ല: സേവ് ചെയ്ത ലേഔട്ടുകൾ, തീമുകൾ.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source ഷേഡിംഗ്
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source ഷേഡിംഗ്
 
 സെഷൻ ലൈറ്റുകൾ (DmeProjectedLight): ഫ്രസ്റ്റം, Source അറ്റന്യുവേഷൻ, maxDistance വരെ ഫേഡ്; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. മാപ്പിന്റെ ലോകം ലൈറ്റ്മാപ്പുകളാൽ; മോഡലുകൾ മാപ്പിന്റെ ആംബിയന്റ് ക്യൂബുകളും വേൾഡ് ലൈറ്റുകളും കൊണ്ട് പ്രകാശിതം. ഇനിയും ഇല്ല: നിഴലുകൾ, ഗോബോ ടെക്സ്ചറുകൾ, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> മാപ്പുകൾ — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> മാപ്പുകൾ — <code>.bsp</code>
 
 പതിപ്പുകൾ 19–21: ലോക ജ്യാമിതി, ഡിസ്പ്ലേസ്മെന്റ് ഭൂപ്രദേശം, ബ്രഷ് എന്റിറ്റികൾ, സ്റ്റാറ്റിക് പ്രോപ്പുകൾ, മാപ്പിന്റെ സ്വന്തം pak മെറ്റീരിയലുകൾ, ലൈറ്റ്മാപ്പുകൾ, ക്യാമറയ്ക്ക് ചുറ്റും സ്കൈബോക്സ്. ഫ്രസ്റ്റം കള്ളിംഗ്. ഇനിയും ഇല്ല: വെള്ളം, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> ചിത്രത്തിലേക്കും വീഡിയോയിലേക്കും റെൻഡർ
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> ചിത്രത്തിലേക്കും വീഡിയോയിലേക്കും റെൻഡർ
 
 സെഷനിൽ നിന്ന് PNG/TGA ശ്രേണികളും AVI/MP4 സിനിമകളും: മുഴുവൻ സെഷൻ, നിലവിലെ ഷോട്ട് അല്ലെങ്കിൽ ഒരു പരിധി; പ്രീസെറ്റുകൾ; File → Export, Ctrl+E. ഇനിയും ഇല്ല: സിനിമയിൽ ശബ്ദം.
 

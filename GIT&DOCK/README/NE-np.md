@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%A4%AA%E0%A4%B0%E0%A5%80%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%A3-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%A4%AA%E0%A4%B0%E0%A5%80%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%A3-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/NE-np.md"><img alt="licence" src="https://img.shields.io/badge/%E0%A4%87%E0%A4%9C%E0%A4%BE%E0%A4%9C%E0%A4%A4%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           इन्जिन: एनिमेसन, अपरेटर, अनुहार, सम्पादन
 │   │   └── formats/    Valve रिडर: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK स्लट (खाली) र इन्स्टलेसनका ब्रिज
+├── Launcher/           लन्चर
 ├── App/                सम्पादक: सामग्री पुस्तकालय, रेन्डरर, विन्डो
 │   ├── Code/           सामग्री पुस्तकालय, झ्याल, सेटिङ
 │   │   ├── render/     दृश्य, OpenGL रेन्डरर, सेडर, क्यामेरा
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           प्रयोगकर्ताको डेटा — कहिल्यै मेटिँदैन
 │   └── Cache/          सामग्री सूचकांक, सेडर, थम्बनेल
 ├── Tools/              स्थानीयकरण, UI उपकरण, प्लगइन (पछि)
-│   ├── Launcher/       लन्चर
 │   ├── Market Load/    प्लगइन मार्केटप्लेस क्लाइन्ट (पछि)
 │   ├── Localization/   अनुवाद बनाउने
 │   ├── NewPlugins/     प्लगइन बनाउने
@@ -104,9 +104,13 @@ Windows, Python 3.13 र Source Filmmaker स्थापना आवश्य�
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+यसले लन्चर खोल्छ: तीन बटन भएको सानो विन्डो। यसको रूप अस्थायी हो — App बनेपछि पुनः लेखिनेछ; यसको विन्डो अहिले रुसी भाषामा मात्र छ।
+
+<p align="center"><a href="../LAUNCHER/NE-np.md"><img alt="लन्चरबारे" src="https://img.shields.io/badge/%E0%A4%B2%E0%A4%A8%E0%A5%8D%E0%A4%9A%E0%A4%B0%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%87-66c0f4?style=for-the-badge"></a></p>
 
 पहिलो पटक Steam मार्फत SFM खोज्छ; नपाए सोध्छ। <kbd>Ctrl</kbd>+<kbd>O</kbd> सेसन खोल्छ, <kbd>Space</kbd> प्ले, <kbd>C</kbd> शट क्यामेरा, <kbd>T</kbd>/<kbd>R</kbd> मुभ/रोटेट, <kbd>M</kbd> मोशन सम्पादक, <kbd>Ctrl</kbd>+<kbd>Z</kbd> अन्डु, <kbd>Ctrl</kbd>+<kbd>S</kbd> सेभ। प्यानल शीर्षकबाट तानिन्छन्। परीक्षणलाई केही चाहिँदैन:
 

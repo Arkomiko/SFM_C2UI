@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/SV-se.svg" alt="Mognad" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Total mognad för release: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Total mognad för release: 60%</b></p>
 
 Varje område kan fällas ut: vad som redan fungerar och vad som inte finns än. Procenten är en uppskattning mot vad SFM kan.
 
@@ -73,15 +73,15 @@ Kurvor för varje logg som styr det valda elementet: X/Y/Z, pitch/yaw/roll, skal
 
 Dra paneler till en kompass av mål med förhandsvisning, som i UE5 och Visual Studio. Inte ännu: sparade layouter, teman.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source-skuggning
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source-skuggning
 
 Sessionsljus (DmeProjectedLight): frustum, Source-dämpning, toning till maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Kartans värld via lightmaps; modeller belysta av kartans ambient-kuber och världsljus. Inte än: skuggor, gobo-texturer, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Kartor — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Kartor — <code>.bsp</code>
 
 Version 19–21: världsgeometri, displacement-terräng, brush-entiteter, statiska props, kartans egna pak-material, lightmaps, skyboxen runt kameran. Frustum-culling. Inte än: vatten, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Rendering till bild och video
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Rendering till bild och video
 
 PNG/TGA-sekvenser och AVI/MP4-filmer från sessionen: hela sessionen, aktuell tagning eller ett intervall; förinställningar; File → Export, Ctrl+E. Inte än: ljud i filmen.
 

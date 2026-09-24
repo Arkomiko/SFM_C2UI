@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/RO-md.svg" alt="Grad de pregătire" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Pregătire generală pentru lansare: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Pregătire generală pentru lansare: 60%</b></p>
 
 Fiecare zonă se deschide: ce funcționează deja și ce nu există încă. Procentele sunt o estimare față de posibilitățile SFM.
 
@@ -73,15 +73,15 @@ Curbele fiecărui log al elementului selectat: X/Y/Z, pitch/yaw/roll, scalari. C
 
 Trageți panourile pe o busolă de ținte cu previzualizare, ca în UE5 și Visual Studio. Încă nu: aranjări salvate, teme.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Umbrire Source
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Umbrire Source
 
 Luminile sesiunii (DmeProjectedLight): frustum, atenuarea Source, estompare până la maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Lumea hărții prin lightmap-uri; modelele luminate de cuburile ambient și luminile hărții. Încă nu: umbre, texturi gobo, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Hărți — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Hărți — <code>.bsp</code>
 
 Versiunile 19–21: geometria lumii, teren displacement, brush entities, props statice, materialele pak ale hărții, lightmap-uri, skybox-ul în jurul camerei. Decupare după frustum. Încă nu: apă, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Randare în imagine și video
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Randare în imagine și video
 
 Secvențe PNG/TGA și filme AVI/MP4 din sesiune: toată sesiunea, cadrul curent sau un interval; presetări; File → Export, Ctrl+E. Încă nu: sunet în film.
 

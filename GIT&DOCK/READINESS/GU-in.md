@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/GU-in.svg" alt="તૈયારી" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 60%</b></p>
 
 દરેક ક્ષેત્ર ખુલે છે: શું પહેલેથી કામ કરે છે અને શું હજુ નથી. ટકાવારી SFM ની ક્ષમતાઓની સાપેક્ષ અંદાજ છે.
 
@@ -73,15 +73,15 @@ Flex કંટ્રોલર, કમ્પાઇલ કરેલા નિય�
 
 UE5 અને Visual Studio જેમ, પ્રીવ્યૂ સાથે લક્ષ્યોના કંપાસ પર પેનલ ખેંચો. હજુ નહીં: સાચવેલા લેઆઉટ, થીમ.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source શેડિંગ
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source શેડિંગ
 
 સેશન લાઇટો (DmeProjectedLight): ફ્રસ્ટમ, Source ક્ષીણન, maxDistance સુધી ફેડ; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. નકશાની દુનિયા લાઇટમેપથી; મોડેલ નકશાના એમ્બિયન્ટ ક્યુબ અને વર્લ્ડ લાઇટથી પ્રકાશિત. હજી નહીં: પડછાયા, ગોબો ટેક્સચર, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> નકશા — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> નકશા — <code>.bsp</code>
 
 આવૃત્તિઓ 19–21: વર્લ્ડ ભૂમિતિ, ડિસ્પ્લેસમેન્ટ ભૂપ્રદેશ, બ્રશ એન્ટિટી, સ્ટેટિક પ્રોપ્સ, નકશાના પોતાના pak મટીરિયલ, લાઇટમેપ, કેમેરાની આસપાસ સ્કાયબોક્સ. ફ્રસ્ટમ કલિંગ. હજી નહીં: પાણી, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> છબી અને વિડિઓમાં રેન્ડર
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> છબી અને વિડિઓમાં રેન્ડર
 
 સેશનમાંથી PNG/TGA સિક્વન્સ અને AVI/MP4 ફિલ્મો: આખું સેશન, વર્તમાન શોટ કે રેન્જ; પ્રીસેટ; File → Export, Ctrl+E. હજી નહીં: ફિલ્મમાં અવાજ.
 

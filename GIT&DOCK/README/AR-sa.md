@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/AR-sa.md"><img alt="licence" src="https://img.shields.io/badge/%D8%A7%D9%84%D8%B1%D8%AE%D8%B5%D8%A9-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           المحرّك: الحركة، المشغّلات، الوجوه، التحرير
 │   │   └── formats/    قارئات Valve: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        فتحات SDK (فارغة) وجسور إلى التثبيتات
+├── Launcher/           المُشغِّل
 ├── App/                المحرّر: مكتبة المحتوى، المُصيِّر، النافذة
 │   ├── Code/           مكتبة المحتوى، النافذة، الإعدادات
 │   │   ├── render/     المشهد، مصيّر OpenGL، المظلّلات، الكاميرا
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           بيانات المستخدم — لا تُحذف أبدًا
 │   └── Cache/          فهرس المحتوى، المظلّلات، المصغّرات
 ├── Tools/              التوطين، أدوات الواجهة، الإضافات (لاحقًا)
-│   ├── Launcher/       المُشغِّل
 │   ├── Market Load/    عميل متجر الإضافات (لاحقًا)
 │   ├── Localization/   إعداد الترجمات
 │   ├── NewPlugins/     إعداد الإضافات
@@ -104,9 +104,13 @@ C2UI_SDK/
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+يفتح ذلك المشغّل: نافذة صغيرة بثلاثة أزرار. مظهرها مؤقت — ستُعاد كتابته عند وجود App، ونافذته حتى الآن بالروسية فقط.
+
+<p align="center"><a href="../LAUNCHER/AR-sa.md"><img alt="عن المشغّل" src="https://img.shields.io/badge/%D8%B9%D9%86_%D8%A7%D9%84%D9%85%D8%B4%D8%BA%D9%91%D9%84-66c0f4?style=for-the-badge"></a></p>
 
 عند أول تشغيل يُبحث عن SFM عبر Steam؛ إن لم يُوجد يسأل البرنامج. <kbd>Ctrl</kbd>+<kbd>O</kbd> يفتح جلسة، <kbd>Space</kbd> تشغيل، <kbd>C</kbd> كاميرا اللقطة، <kbd>T</kbd>/<kbd>R</kbd> تحريك/تدوير، <kbd>M</kbd> محرّر الحركة، <kbd>Ctrl</kbd>+<kbd>Z</kbd> تراجع، <kbd>Ctrl</kbd>+<kbd>S</kbd> حفظ. تُسحب اللوحات من عنوانها. الاختبارات لا تحتاج شيئًا:
 

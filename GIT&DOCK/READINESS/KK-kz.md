@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/KK-kz.svg" alt="Дайындық" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Релизге жалпы дайындық: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Релизге жалпы дайындық: 60%</b></p>
 
 Әр аймақ ашылады: не жұмыс істейді және не әлі жоқ. Пайыздар — SFM мүмкіндіктеріне қатысты баға.
 
@@ -73,15 +73,15 @@ Flex-контроллерлер, компиляцияланған ережеле
 
 UE5 және Visual Studio сияқты, панельдерді алдын ала қараумен мақсаттар крестовинасына сүйреу. Жоқ: сақталған орналасулар, тақырыптар.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source шейдингі
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source шейдингі
 
 Сессия жарығы (DmeProjectedLight): фрустум, Source өшуі, maxDistance-қа дейін бәсеңдеу; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Карта әлемі лайтмаптармен; модельдерді картаның ambient-кубтары мен world lights жарықтандырады. Әзірге жоқ: көлеңкелер, гобо-текстуралар, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Карталар — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Карталар — <code>.bsp</code>
 
 19–21 нұсқалары: әлем геометриясы, displacement рельефі, brush-энтитилер, статикалық проптар, картаның pak материалдары, лайтмаптар, камера айналасындағы скайбокс. Фрустум бойынша қиып тастау. Әзірге жоқ: су, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Суретке және видеоға рендер
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Суретке және видеоға рендер
 
 Сессиядан PNG/TGA тізбектері мен AVI/MP4 фильмдер: бүкіл сессия, ағымдағы шот немесе аралық; пресеттер; File → Export, Ctrl+E. Әзірге жоқ: фильмдегі дыбыс.
 

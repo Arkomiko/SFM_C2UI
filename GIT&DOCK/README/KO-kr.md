@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%ED%85%8C%EC%8A%A4%ED%8A%B8-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%ED%85%8C%EC%8A%A4%ED%8A%B8-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/KO-kr.md"><img alt="licence" src="https://img.shields.io/badge/%EB%9D%BC%EC%9D%B4%EC%84%A0%EC%8A%A4-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           엔진: 애니메이션, 오퍼레이터, 얼굴, 편집
 │   │   └── formats/    Valve 리더: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK 슬롯(비어 있음)과 설치 브리지
+├── Launcher/           런처
 ├── App/                편집기: 콘텐츠 라이브러리, 렌더러, 창
 │   ├── Code/           콘텐츠 라이브러리, 창, 설정
 │   │   ├── render/     장면, OpenGL 렌더러, 셰이더, 카메라
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           사용자 데이터 — 절대 삭제되지 않음
 │   └── Cache/          콘텐츠 인덱스, 셰이더, 섬네일
 ├── Tools/              현지화, UI 도구, 플러그인 (나중에)
-│   ├── Launcher/       런처
 │   ├── Market Load/    플러그인 마켓플레이스 클라이언트(추후)
 │   ├── Localization/   번역 제작
 │   ├── NewPlugins/     플러그인 제작
@@ -104,9 +104,13 @@ Windows, Python 3.13, Source Filmmaker 설치가 필요합니다.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+런처가 열립니다. 버튼 세 개짜리 작은 창이며, 생김새는 임시입니다. App이 생기면 다시 작성되고, 창은 현재 러시아어로만 되어 있습니다.
+
+<p align="center"><a href="../LAUNCHER/KO-kr.md"><img alt="런처 소개" src="https://img.shields.io/badge/%EB%9F%B0%EC%B2%98_%EC%86%8C%EA%B0%9C-66c0f4?style=for-the-badge"></a></p>
 
 첫 실행 시 Steam을 통해 SFM을 찾습니다. 못 찾으면 묻습니다. <kbd>Ctrl</kbd>+<kbd>O</kbd> 세션 열기, <kbd>Space</kbd> 재생, <kbd>C</kbd> 샷 카메라, <kbd>T</kbd>/<kbd>R</kbd> 이동/회전, <kbd>M</kbd> 모션 편집기, <kbd>Ctrl</kbd>+<kbd>Z</kbd> 실행 취소, <kbd>Ctrl</kbd>+<kbd>S</kbd> 저장. 패널은 제목을 잡아 끕니다. 테스트에는 아무것도 필요 없습니다:
 

@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/RU-ru.md"><img alt="licence" src="https://img.shields.io/badge/%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           движок: анимация, операторы, лица, правки
 │   │   └── formats/    читалки Valve: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        слоты SDK (пустые) и мосты к установкам
+├── Launcher/           лаунчер
 ├── App/                редактор: библиотека контента, рендер, окно
 │   ├── Code/           библиотека контента, окно, настройки
 │   │   ├── render/     сцена, рендерер OpenGL, шейдеры, камера
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           данные пользователя — никогда не удаляются
 │   └── Cache/          индекс контента, шейдеры, миниатюры
 ├── Tools/              локализация, инструменты UI, плагины (позже)
-│   ├── Launcher/       лаунчер
 │   ├── Market Load/    клиент маркетплейса плагинов (позже)
 │   ├── Localization/   создание переводов
 │   ├── NewPlugins/     создание плагинов
@@ -104,9 +104,13 @@ C2UI_SDK/
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+Открывается окно лаунчера с тремя кнопками. Вид у него временный — он будет переписан, когда появится App; его окно пока только на русском.
+
+<p align="center"><a href="../LAUNCHER/RU-ru.md"><img alt="О лаунчере" src="https://img.shields.io/badge/%D0%9E_%D0%BB%D0%B0%D1%83%D0%BD%D1%87%D0%B5%D1%80%D0%B5-66c0f4?style=for-the-badge"></a></p>
 
 При первом запуске SFM ищется через Steam; если не нашёлся — программа спросит. <kbd>Ctrl</kbd>+<kbd>O</kbd> открывает сессию, <kbd>Space</kbd> — воспроизведение, <kbd>C</kbd> — камера шота, <kbd>T</kbd>/<kbd>R</kbd> — перемещение/поворот, <kbd>M</kbd> — motion editor, <kbd>G</kbd> — graph editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> — отмена, <kbd>Ctrl</kbd>+<kbd>S</kbd> — сохранить. Камера как в SFM: правая кнопка — осмотр, с зажатой правой <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <kbd>Z</kbd><kbd>X</kbd> — полёт (<kbd>Shift</kbd> быстрее), средняя — панорама, колесо — наезд, <kbd>Alt</kbd>+левая — орбита. Клик по персонажу выбирает кость под курсором (или её ручку рига). Панели перетаскиваются за заголовок. Тесты не требуют ничего:
 

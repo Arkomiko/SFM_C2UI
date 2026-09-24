@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%A6%AA%E0%A6%B0%E0%A7%80%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%A6%AA%E0%A6%B0%E0%A7%80%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/BN-bd.md"><img alt="licence" src="https://img.shields.io/badge/%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%B8-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           ইঞ্জিন: অ্যানিমেশন, অপারেটর, মুখ, সম্পাদনা
 │   │   └── formats/    Valve রিডার: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK স্লট (খালি) ও ইনস্টলেশনের ব্রিজ
+├── Launcher/           লঞ্চার
 ├── App/                এডিটর: কনটেন্ট লাইব্রেরি, রেন্ডারার, উইন্ডো
 │   ├── Code/           কনটেন্ট লাইব্রেরি, উইন্ডো, সেটিংস
 │   │   ├── render/     দৃশ্য, OpenGL রেন্ডারার, শেডার, ক্যামেরা
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           ব্যবহারকারীর ডেটা — কখনও মোছা হয় না
 │   └── Cache/          কনটেন্ট ইনডেক্স, শেডার, থাম্বনেইল
 ├── Tools/              স্থানীয়করণ, UI টুল, প্লাগইন (পরে)
-│   ├── Launcher/       লঞ্চার
 │   ├── Market Load/    প্লাগইন মার্কেটপ্লেস ক্লায়েন্ট (পরে)
 │   ├── Localization/   অনুবাদ তৈরি
 │   ├── NewPlugins/     প্লাগইন তৈরি
@@ -104,9 +104,13 @@ Windows, Python 3.13 ও Source Filmmaker ইনস্টলেশন প্র�
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+এতে লঞ্চার খোলে: তিনটি বোতামসহ একটি ছোট উইন্ডো। এর চেহারা সাময়িক — App তৈরি হলে এটি নতুন করে লেখা হবে, আর এর উইন্ডো এখন কেবল রুশ ভাষায়।
+
+<p align="center"><a href="../LAUNCHER/BN-bd.md"><img alt="লঞ্চার সম্পর্কে" src="https://img.shields.io/badge/%E0%A6%B2%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%BE%E0%A6%B0_%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A7%87-66c0f4?style=for-the-badge"></a></p>
 
 প্রথম চালুতে Steam-এর মাধ্যমে SFM খোঁজে; না পেলে জিজ্ঞেস করে। <kbd>Ctrl</kbd>+<kbd>O</kbd> সেশন খোলে, <kbd>Space</kbd> প্লে, <kbd>C</kbd> শট ক্যামেরা, <kbd>T</kbd>/<kbd>R</kbd> মুভ/রোটেট, <kbd>M</kbd> মোশন এডিটর, <kbd>Ctrl</kbd>+<kbd>Z</kbd> আনডু, <kbd>Ctrl</kbd>+<kbd>S</kbd> সেভ। প্যানেল শিরোনাম ধরে টানা হয়। পরীক্ষার কিছু লাগে না:
 

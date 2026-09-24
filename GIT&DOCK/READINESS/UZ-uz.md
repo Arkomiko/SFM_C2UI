@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/UZ-uz.svg" alt="Tayyorlik" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Relizga umumiy tayyorlik: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Relizga umumiy tayyorlik: 60%</b></p>
 
 Har bir soha ochiladi: nima allaqachon ishlaydi va nima hali yoʻq. Foizlar — SFM imkoniyatlariga nisbatan baho.
 
@@ -73,15 +73,15 @@ Tanlangan elementni boshqaradigan har bir logning egri chiziqlari: X/Y/Z, pitch/
 
 UE5 va Visual Studio dagidek, panellarni oldindan koʻrish bilan maqsadlar kompasiga torting. Hali yoʻq: saqlangan joylashuvlar, mavzular.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source sheydingi
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source sheydingi
 
 Seans chiroqlari (DmeProjectedLight): frustum, Source so'nishi, maxDistance gacha so'nish; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Xarita dunyosi laytmaplar bilan; modellarni xaritaning ambient kublari va world lights yoritadi. Hali yo'q: soyalar, gobo teksturalari, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Xaritalar — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Xaritalar — <code>.bsp</code>
 
 19–21 versiyalar: dunyo geometriyasi, displacement relyefi, brush-entitilar, statik proplar, xaritaning o'z pak materiallari, laytmaplar, kamera atrofidagi skayboks. Frustum bo'yicha kesish. Hali yo'q: suv, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Tasvir va videoga render
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Tasvir va videoga render
 
 Seansdan PNG/TGA ketma-ketliklari va AVI/MP4 filmlar: butun seans, joriy shot yoki oraliq; presetlar; File → Export, Ctrl+E. Hali yo'q: filmda ovoz.
 

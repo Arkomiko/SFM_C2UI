@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/ki%E1%BB%83m_th%E1%BB%AD-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/ki%E1%BB%83m_th%E1%BB%AD-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/VI-vn.md"><img alt="licence" src="https://img.shields.io/badge/gi%E1%BA%A5y_ph%C3%A9p-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           engine: hoạt ảnh, toán tử, khuôn mặt, chỉnh sửa
 │   │   └── formats/    trình đọc Valve: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        khe SDK (trống) và cầu nối tới bản cài đặt
+├── Launcher/           trình khởi chạy
 ├── App/                trình biên tập: thư viện nội dung, renderer, cửa sổ
 │   ├── Code/           thư viện nội dung, cửa sổ, cài đặt
 │   │   ├── render/     cảnh, bộ kết xuất OpenGL, shader, camera
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           dữ liệu người dùng — không bao giờ bị xóa
 │   └── Cache/          chỉ mục nội dung, shader, ảnh thu nhỏ
 ├── Tools/              bản địa hóa, công cụ UI, plugin (sau)
-│   ├── Launcher/       trình khởi chạy
 │   ├── Market Load/    trình khách chợ plugin (sau này)
 │   ├── Localization/   soạn bản dịch
 │   ├── NewPlugins/     soạn plugin
@@ -104,9 +104,13 @@ Cần Windows, Python 3.13 và một bản cài Source Filmmaker.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+Việc đó mở trình khởi chạy: một cửa sổ nhỏ với ba nút. Diện mạo của nó là tạm thời — sẽ được viết lại khi có App, và cửa sổ hiện chỉ có tiếng Nga.
+
+<p align="center"><a href="../LAUNCHER/VI-vn.md"><img alt="Về trình khởi chạy" src="https://img.shields.io/badge/V%E1%BB%81_tr%C3%ACnh_kh%E1%BB%9Fi_ch%E1%BA%A1y-66c0f4?style=for-the-badge"></a></p>
 
 Lần đầu chạy sẽ tìm SFM qua Steam; không thấy thì hỏi. <kbd>Ctrl</kbd>+<kbd>O</kbd> mở phiên, <kbd>Space</kbd> phát, <kbd>C</kbd> camera cảnh, <kbd>T</kbd>/<kbd>R</kbd> di chuyển/xoay, <kbd>M</kbd> motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> hoàn tác, <kbd>Ctrl</kbd>+<kbd>S</kbd> lưu. Bảng kéo bằng tiêu đề. Kiểm thử không cần gì:
 

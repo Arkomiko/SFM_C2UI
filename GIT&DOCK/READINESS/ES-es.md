@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/ES-es.svg" alt="Estado" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Preparación general para el lanzamiento: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Preparación general para el lanzamiento: 60%</b></p>
 
 Cada área se despliega: qué funciona ya y qué no existe todavía. Los porcentajes son una estimación frente a lo que puede hacer SFM.
 
@@ -73,15 +73,15 @@ Curvas de cada log que mueve el elemento seleccionado: X/Y/Z, pitch/yaw/roll, es
 
 Arrastra paneles a una brújula de destinos con vista previa, como en UE5 y Visual Studio. Aún no: diseños guardados, temas.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Sombreado Source
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Sombreado Source
 
 Luces de la sesión (DmeProjectedLight): frustum, atenuación de Source, desvanecimiento hasta maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. El mundo del mapa por sus lightmaps; los modelos iluminados por los cubos ambientales y las luces del mapa. Aún no: sombras, texturas gobo, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Mapas — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Mapas — <code>.bsp</code>
 
 Versiones 19–21: geometría del mundo, terreno displacement, brush entities, props estáticos, materiales pak del mapa, lightmaps, el skybox alrededor de la cámara. Recorte por frustum. Aún no: agua, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Renderizado a imagen y vídeo
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Renderizado a imagen y vídeo
 
 Secuencias PNG/TGA y películas AVI/MP4 desde la sesión: toda la sesión, el plano actual o un rango; presets; File → Export, Ctrl+E. Aún no: sonido en la película.
 

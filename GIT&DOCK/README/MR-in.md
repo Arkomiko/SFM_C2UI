@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%A4%9A%E0%A4%BE%E0%A4%9A%E0%A4%A3%E0%A5%8D%E0%A4%AF%E0%A4%BE-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%A4%9A%E0%A4%BE%E0%A4%9A%E0%A4%A3%E0%A5%8D%E0%A4%AF%E0%A4%BE-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/MR-in.md"><img alt="licence" src="https://img.shields.io/badge/%E0%A4%AA%E0%A4%B0%E0%A4%B5%E0%A4%BE%E0%A4%A8%E0%A4%BE-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           इंजिन: अॅनिमेशन, ऑपरेटर, चेहरे, संपादन
 │   │   └── formats/    Valve रीडर: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK स्लॉट (रिकामे) आणि इन्स्टॉलेशनचे ब्रिज
+├── Launcher/           लाँचर
 ├── App/                एडिटर: कंटेंट लायब्ररी, रेंडरर, खिडकी
 │   ├── Code/           कंटेंट लायब्ररी, विंडो, सेटिंग्ज
 │   │   ├── render/     दृश्य, OpenGL रेंडरर, शेडर, कॅमेरा
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           वापरकर्त्याचा डेटा — कधीही हटवला जात नाही
 │   └── Cache/          कंटेंट इंडेक्स, शेडर, थंबनेल
 ├── Tools/              स्थानिकीकरण, UI साधने, प्लगइन (नंतर)
-│   ├── Launcher/       लाँचर
 │   ├── Market Load/    प्लगइन मार्केटप्लेस क्लायंट (नंतर)
 │   ├── Localization/   भाषांतरे तयार करणे
 │   ├── NewPlugins/     प्लगइन तयार करणे
@@ -104,9 +104,13 @@ Windows, Python 3.13 आणि Source Filmmaker इन्स्टॉलेश�
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+यामुळे लाँचर उघडतो: तीन बटणांची छोटी विंडो. त्याचे रूप तात्पुरते आहे — App आल्यावर तो पुन्हा लिहिला जाईल; त्याची विंडो सध्या फक्त रशियनमध्ये आहे.
+
+<p align="center"><a href="../LAUNCHER/MR-in.md"><img alt="लाँचरबद्दल" src="https://img.shields.io/badge/%E0%A4%B2%E0%A4%BE%E0%A4%81%E0%A4%9A%E0%A4%B0%E0%A4%AC%E0%A4%A6%E0%A5%8D%E0%A4%A6%E0%A4%B2-66c0f4?style=for-the-badge"></a></p>
 
 पहिल्या सुरुवातीला Steam द्वारे SFM शोधते; न सापडल्यास विचारते. <kbd>Ctrl</kbd>+<kbd>O</kbd> सेशन उघडते, <kbd>Space</kbd> प्ले, <kbd>C</kbd> शॉट कॅमेरा, <kbd>T</kbd>/<kbd>R</kbd> मूव्ह/रोटेट, <kbd>M</kbd> मोशन एडिटर, <kbd>Ctrl</kbd>+<kbd>Z</kbd> अनडू, <kbd>Ctrl</kbd>+<kbd>S</kbd> सेव्ह. पॅनेल शीर्षकाने ओढले जातात. चाचण्यांना काही लागत नाही:
 

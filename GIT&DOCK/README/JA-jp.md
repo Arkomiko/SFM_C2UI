@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E3%83%86%E3%82%B9%E3%83%88-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E3%83%86%E3%82%B9%E3%83%88-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/JA-jp.md"><img alt="licence" src="https://img.shields.io/badge/%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           エンジン：アニメーション、オペレーター、顔、編集
 │   │   └── formats/    Valve リーダー：mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK スロット（空）とインストールへのブリッジ
+├── Launcher/           ランチャー
 ├── App/                エディタ: コンテンツライブラリ、レンダラ、ウィンドウ
 │   ├── Code/           コンテンツライブラリ、ウィンドウ、設定
 │   │   ├── render/     シーン、OpenGL レンダラー、シェーダー、カメラ
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           ユーザーデータ — 決して削除されない
 │   └── Cache/          コンテンツインデックス、シェーダー、サムネイル
 ├── Tools/              ローカライズ、UI ツール、プラグイン (後日)
-│   ├── Launcher/       ランチャー
 │   ├── Market Load/    プラグインマーケットプレイスのクライアント（後日）
 │   ├── Localization/   翻訳の作成
 │   ├── NewPlugins/     プラグインの作成
@@ -104,9 +104,13 @@ Windows、Python 3.13、Source Filmmaker のインストールが必要です。
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+ランチャーが開きます。ボタンが三つの小さなウィンドウで、見た目は暫定です。App ができたら書き直され、ウィンドウの表示は今のところロシア語だけです。
+
+<p align="center"><a href="../LAUNCHER/JA-jp.md"><img alt="ランチャーについて" src="https://img.shields.io/badge/%E3%83%A9%E3%83%B3%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6-66c0f4?style=for-the-badge"></a></p>
 
 初回起動時に Steam 経由で SFM を探します。見つからなければ尋ねます。<kbd>Ctrl</kbd>+<kbd>O</kbd> でセッションを開く、<kbd>Space</kbd> で再生、<kbd>C</kbd> でショットカメラ、<kbd>T</kbd>/<kbd>R</kbd> で移動/回転、<kbd>M</kbd> でモーションエディタ、<kbd>Ctrl</kbd>+<kbd>Z</kbd> で元に戻す、<kbd>Ctrl</kbd>+<kbd>S</kbd> で保存。パネルはタイトルをドラッグします。テストには何も必要ありません:
 

@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/test%C3%B3w-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/test%C3%B3w-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/PL-pl.md"><img alt="licence" src="https://img.shields.io/badge/licencja-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           silnik: animacja, operatory, twarze, edycja
 │   │   └── formats/    czytniki Valve: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        sloty SDK (puste) i mosty do instalacji
+├── Launcher/           program uruchamiający
 ├── App/                edytor: biblioteka zawartości, renderer, okno
 │   ├── Code/           biblioteka zawartości, okno, ustawienia
 │   │   ├── render/     scena, renderer OpenGL, shadery, kamera
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           dane użytkownika — nigdy nie usuwane
 │   └── Cache/          indeks zawartości, shadery, miniatury
 ├── Tools/              lokalizacja, narzędzia UI, wtyczki (później)
-│   ├── Launcher/       program uruchamiający
 │   ├── Market Load/    klient marketplace wtyczek (później)
 │   ├── Localization/   tworzenie tłumaczeń
 │   ├── NewPlugins/     tworzenie wtyczek
@@ -104,9 +104,13 @@ Wymaga Windows, Pythona 3.13 i zainstalowanego Source Filmmakera.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+Otwiera się launcher: małe okno z trzema przyciskami. Jego wygląd jest tymczasowy — zostanie przepisany, gdy powstanie App, a samo okno jest na razie tylko po rosyjsku.
+
+<p align="center"><a href="../LAUNCHER/PL-pl.md"><img alt="O launcherze" src="https://img.shields.io/badge/O_launcherze-66c0f4?style=for-the-badge"></a></p>
 
 Przy pierwszym uruchomieniu SFM jest szukany przez Steam; jeśli go nie znajdzie — zapyta. <kbd>Ctrl</kbd>+<kbd>O</kbd> otwiera sesję, <kbd>Space</kbd> odtwarza, <kbd>C</kbd> patrzy przez kamerę ujęcia, <kbd>T</kbd>/<kbd>R</kbd> przesuwa/obraca, <kbd>M</kbd> motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> cofa, <kbd>Ctrl</kbd>+<kbd>S</kbd> zapisuje. Panele przeciąga się za tytuł. Testy nie wymagają niczego:
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/TA-in.svg" alt="தயார்நிலை" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>வெளியீட்டுக்கான மொத்த தயார்நிலை: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>வெளியீட்டுக்கான மொத்த தயார்நிலை: 60%</b></p>
 
 ஒவ்வொரு பகுதியும் விரிகிறது: ஏற்கனவே என்ன வேலை செய்கிறது, என்ன இன்னும் இல்லை. சதவீதங்கள் SFM திறன்களுக்கு ஒப்பிட்ட மதிப்பீடு.
 
@@ -73,15 +73,15 @@ Flex கட்டுப்படுத்திகள், தொகுக்க�
 
 UE5 மற்றும் Visual Studio போல, முன்னோட்டத்துடன் இலக்குகளின் திசைகாட்டியில் பேனல்களை இழுக்கவும். இன்னும் இல்லை: சேமித்த அமைப்புகள், தீம்கள்.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source ஷேடிங்
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source ஷேடிங்
 
 அமர்வு விளக்குகள் (DmeProjectedLight): ஃப்ரஸ்டம், Source தேய்வு, maxDistance வரை மங்கல்; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. வரைபட உலகம் லைட்மேப்களால்; மாதிரிகள் வரைபடத்தின் சூழல் கனசதுரங்களாலும் உலக விளக்குகளாலும் ஒளிரும். இன்னும் இல்லை: நிழல்கள், கோபோ அமைப்புகள், $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> வரைபடங்கள் — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> வரைபடங்கள் — <code>.bsp</code>
 
 பதிப்புகள் 19–21: உலக வடிவியல், இடப்பெயர்ச்சி நிலப்பரப்பு, பிரஷ் என்டிட்டிகள், நிலையான ப்ராப்கள், வரைபடத்தின் சொந்த pak பொருட்கள், லைட்மேப்கள், கேமராவைச் சுற்றிய ஸ்கைபாக்ஸ். ஃப்ரஸ்டம் கல்லிங். இன்னும் இல்லை: நீர், prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> படமும் காணொளியுமாக ரெண்டர்
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> படமும் காணொளியுமாக ரெண்டர்
 
 அமர்விலிருந்து PNG/TGA தொடர்களும் AVI/MP4 திரைப்படங்களும்: முழு அமர்வு, தற்போதைய ஷாட் அல்லது வரம்பு; முன்னமைவுகள்; File → Export, Ctrl+E. இன்னும் இல்லை: திரைப்படத்தில் ஒலி.
 

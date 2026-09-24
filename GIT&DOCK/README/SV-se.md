@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tester-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tester-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/SV-se.md"><img alt="licence" src="https://img.shields.io/badge/licens-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           motor: animation, operatorer, ansikten, redigering
 │   │   └── formats/    Valve-läsare: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK-platser (tomma) och bryggor till installationer
+├── Launcher/           startaren
 ├── App/                redigeraren: innehållsbibliotek, renderare, fönster
 │   ├── Code/           innehållsbibliotek, fönster, inställningar
 │   │   ├── render/     scen, OpenGL-renderare, shaders, kamera
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           användardata — raderas aldrig
 │   └── Cache/          innehållsindex, shaders, miniatyrer
 ├── Tools/              lokalisering, UI-verktyg, insticksprogram (senare)
-│   ├── Launcher/       startaren
 │   ├── Market Load/    marknadsklient för plugin (senare)
 │   ├── Localization/   skapa översättningar
 │   ├── NewPlugins/     skapa plugin
@@ -104,9 +104,13 @@ Kräver Windows, Python 3.13 och en Source Filmmaker-installation.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+Det öppnar startaren: ett litet fönster med tre knappar. Utseendet är tillfälligt — det skrivs om när App finns, och fönstret är än så länge bara på ryska.
+
+<p align="center"><a href="../LAUNCHER/SV-se.md"><img alt="Om startaren" src="https://img.shields.io/badge/Om_startaren-66c0f4?style=for-the-badge"></a></p>
 
 Vid första start söks SFM via Steam; hittas det inte frågar programmet. <kbd>Ctrl</kbd>+<kbd>O</kbd> öppnar en session, <kbd>Mellanslag</kbd> spelar, <kbd>C</kbd> tittar genom shotkameran, <kbd>T</kbd>/<kbd>R</kbd> flytta/rotera, <kbd>M</kbd> motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> ångrar, <kbd>Ctrl</kbd>+<kbd>S</kbd> sparar. Paneler dras i sin titel. Testerna behöver ingenting alls:
 

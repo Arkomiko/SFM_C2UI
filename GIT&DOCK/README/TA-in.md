@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AE%9A%E0%AF%8B%E0%AE%A4%E0%AE%A9%E0%AF%88%E0%AE%95%E0%AE%B3%E0%AF%8D-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AE%9A%E0%AF%8B%E0%AE%A4%E0%AE%A9%E0%AF%88%E0%AE%95%E0%AE%B3%E0%AF%8D-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/TA-in.md"><img alt="licence" src="https://img.shields.io/badge/%E0%AE%89%E0%AE%B0%E0%AE%BF%E0%AE%AE%E0%AE%AE%E0%AF%8D-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           எஞ்சின்: அனிமேஷன், ஆபரேட்டர்கள், முகங்கள், திருத்தம்
 │   │   └── formats/    Valve படிப்பான்கள்: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK இடங்கள் (வெற்று) மற்றும் நிறுவல் பாலங்கள்
+├── Launcher/           லாஞ்சர்
 ├── App/                எடிட்டர்: உள்ளடக்க நூலகம், ரெண்டரர், சாளரம்
 │   ├── Code/           உள்ளடக்க நூலகம், சாளரம், அமைப்புகள்
 │   │   ├── render/     காட்சி, OpenGL ரெண்டரர், ஷேடர்கள், கேமரா
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           பயனர் தரவு — ஒருபோதும் நீக்கப்படாது
 │   └── Cache/          உள்ளடக்க அட்டவணை, ஷேடர்கள், சிறுபடங்கள்
 ├── Tools/              உள்ளூர்மயமாக்கல், UI கருவிகள், செருகுநிரல்கள் (பின்னர்)
-│   ├── Launcher/       லாஞ்சர்
 │   ├── Market Load/    செருகுநிரல் சந்தை கிளையண்ட் (பின்னர்)
 │   ├── Localization/   மொழிபெயர்ப்புகளை உருவாக்குதல்
 │   ├── NewPlugins/     செருகுநிரல்களை உருவாக்குதல்
@@ -104,9 +104,13 @@ Windows, Python 3.13 மற்றும் Source Filmmaker நிறுவல�
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+இது துவக்கியைத் திறக்கிறது: மூன்று பொத்தான்கள் கொண்ட சிறிய சாளரம். அதன் தோற்றம் தற்காலிகமானது — App உருவானதும் மீண்டும் எழுதப்படும்; அதன் சாளரம் தற்போது ரஷ்ய மொழியில் மட்டுமே.
+
+<p align="center"><a href="../LAUNCHER/TA-in.md"><img alt="துவக்கி பற்றி" src="https://img.shields.io/badge/%E0%AE%A4%E0%AF%81%E0%AE%B5%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF_%E0%AE%AA%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AE%BF-66c0f4?style=for-the-badge"></a></p>
 
 முதல் தொடக்கத்தில் Steam வழியாக SFM ஐத் தேடுகிறது; கிடைக்காவிட்டால் கேட்கிறது. <kbd>Ctrl</kbd>+<kbd>O</kbd> அமர்வைத் திறக்கிறது, <kbd>Space</kbd> ப்ளே, <kbd>C</kbd> ஷாட் கேமரா, <kbd>T</kbd>/<kbd>R</kbd> நகர்த்து/சுழற்று, <kbd>M</kbd> மோஷன் எடிட்டர், <kbd>Ctrl</kbd>+<kbd>Z</kbd> செயல்தவிர், <kbd>Ctrl</kbd>+<kbd>S</kbd> சேமி. பேனல்கள் தலைப்பால் இழுக்கப்படுகின்றன. சோதனைகளுக்கு எதுவும் தேவையில்லை:
 

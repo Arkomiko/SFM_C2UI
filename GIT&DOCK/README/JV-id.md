@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tes-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/tes-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/JV-id.md"><img alt="licence" src="https://img.shields.io/badge/lis%C3%A8nsi-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           mesin: animasi, operator, rai, panyuntingan
 │   │   └── formats/    pamaca Valve: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        slot SDK (kosong) lan jembatan menyang instalasi
+├── Launcher/           peluncur
 ├── App/                editor: pustaka isi, renderer, jendhela
 │   ├── Code/           pustaka konten, jendhela, setelan
 │   │   ├── render/     adegan, renderer OpenGL, shader, kamera
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           data panganggo — ora tau dibusak
 │   └── Cache/          indeks konten, shader, gambar cilik
 ├── Tools/              lokalisasi, piranti UI, plugin (mengko)
-│   ├── Launcher/       peluncur
 │   ├── Market Load/    klien pasar plugin (mengko)
 │   ├── Localization/   nggawe terjemahan
 │   ├── NewPlugins/     nggawe plugin
@@ -104,9 +104,13 @@ Mbutuhake Windows, Python 3.13 lan instalasi Source Filmmaker.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+Iki mbukak launcher: jendhela cilik kanthi telung tombol. Rupane sauntara — bakal ditulis maneh yen App wis ana, lan jendhelane saiki mung nganggo basa Rusia.
+
+<p align="center"><a href="../LAUNCHER/JV-id.md"><img alt="Bab launcher" src="https://img.shields.io/badge/Bab_launcher-66c0f4?style=for-the-badge"></a></p>
 
 Nalika pisanan mbukak, SFM digoleki liwat Steam; yen ora ketemu, program takon. <kbd>Ctrl</kbd>+<kbd>O</kbd> mbukak sesi, <kbd>Space</kbd> muter, <kbd>C</kbd> kamera shot, <kbd>T</kbd>/<kbd>R</kbd> pindhah/puter, <kbd>M</kbd> motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> batal, <kbd>Ctrl</kbd>+<kbd>S</kbd> simpen. Panel diseret saka judhulé. Tes ora butuh apa-apa:
 

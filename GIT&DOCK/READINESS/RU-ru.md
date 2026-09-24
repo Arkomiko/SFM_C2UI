@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/RU-ru.svg" alt="Готовность" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Общая готовность к релизу: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Общая готовность к релизу: 60%</b></p>
 
 Каждая область раскрывается: что уже работает и чего пока нет. Проценты — оценка относительно возможностей SFM.
 
@@ -73,15 +73,15 @@ Flex-контроллеры, скомпилированные правила и 
 
 Перетаскивание панелей с крестовиной целей и предпросмотром, как в UE5 и Visual Studio. Нет: сохранённых раскладок и тем.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Шейдинг Source
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Шейдинг Source
 
 Свет сессии (DmeProjectedLight): фрустум, затухание Source, спад к maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Мир карты — по лайтмапам; модели освещают ambient-кубы и world lights карты. Нет: теней, гобо-текстур, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Карты — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Карты — <code>.bsp</code>
 
 Версии 19–21: геометрия мира, displacement-рельеф, brush-энтити, статичные пропы, материалы из pak-лампа карты, лайтмапы, скайбокс вокруг камеры. Отсекание по пирамиде камеры. Нет: воды, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Рендер в изображение и видео
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Рендер в изображение и видео
 
 PNG/TGA-последовательности и AVI/MP4 из сессии: вся сессия, текущий шот или диапазон; пресеты; File → Export, Ctrl+E. Нет: звука в видео.
 

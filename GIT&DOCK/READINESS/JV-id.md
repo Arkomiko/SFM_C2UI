@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/JV-id.svg" alt="Kesiapan" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Kesiapan sakabèhé kanggo rilis: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Kesiapan sakabèhé kanggo rilis: 60%</b></p>
 
 Saben wilayah bisa dibukak: apa sing wis mlaku lan apa sing durung ana. Persentase iku prakiraan dibandhing kemampuan SFM.
 
@@ -73,15 +73,15 @@ Kurva saben log sing nglakokake unsur sing dipilih: X/Y/Z, pitch/yaw/roll, skala
 
 Seret panel menyang kompas target karo pratinjau, kaya ing UE5 lan Visual Studio. Durung: tata letak sing disimpen, tema.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Shading Source
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Shading Source
 
 Lampu sesi (DmeProjectedLight): frustum, atenuasi Source, luntur nganti maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Jagad peta liwat lightmap; model dipadhangi kubus ambient lan lampu jagad peta. Durung: bayangan, tekstur gobo, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Peta — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Peta — <code>.bsp</code>
 
 Versi 19–21: geometri jagad, lemah displacement, brush entity, prop statis, material pak peta dhewe, lightmap, skybox ngubengi kamera. Frustum culling. Durung: banyu, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Render dadi gambar lan video
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Render dadi gambar lan video
 
 Urutan PNG/TGA lan film AVI/MP4 saka sesi: kabeh sesi, shot saiki utawa jangkauan; preset; File → Export, Ctrl+E. Durung: swara ing film.
 

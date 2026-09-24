@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/SL-si.svg" alt="Pripravljenost" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Skupna pripravljenost za izdajo: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Skupna pripravljenost za izdajo: 60%</b></p>
 
 Vsako področje se razpre: kaj že deluje in česa še ni. Odstotki so ocena glede na zmožnosti SFM.
 
@@ -73,15 +73,15 @@ Krivulje vsakega dnevnika izbranega elementa: X/Y/Z, pitch/yaw/roll, skalarji. K
 
 Vlečenje plošč na kompas ciljev s predogledom, kot v UE5 in Visual Studiu. Še ne: shranjene postavitve, teme.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Senčenje Source
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Senčenje Source
 
 Luči seje (DmeProjectedLight): frustum, dušenje Source, pojemanje do maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Svet zemljevida po lightmapih; modele osvetljujejo ambient kocke in luči zemljevida. Še ne: sence, gobo teksture, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Zemljevidi — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Zemljevidi — <code>.bsp</code>
 
 Različice 19–21: geometrija sveta, displacement teren, brush entitete, statični propi, pak materiali zemljevida, lightmapi, skybox okoli kamere. Odstranjevanje po frustumu. Še ne: voda, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Upodabljanje v sliko in video
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Upodabljanje v sliko in video
 
 Zaporedja PNG/TGA in filmi AVI/MP4 iz seje: cela seja, trenutni posnetek ali obseg; prednastavitve; File → Export, Ctrl+E. Še ne: zvok v filmu.
 

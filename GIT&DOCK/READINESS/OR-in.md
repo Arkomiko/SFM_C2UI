@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/OR-in.svg" alt="ପ୍ରସ୍ତୁତି" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 60%</b></p>
 
 ପ୍ରତ୍ୟେକ କ୍ଷେତ୍ର ଖୋଲାଯାଏ: କଣ ପୂର୍ବରୁ କାମ କରେ ଓ କଣ ଏବେ ନାହିଁ। ପ୍ରତିଶତ SFM ର କ୍ଷମତା ତୁଳନାରେ ଆକଳନ।
 
@@ -73,15 +73,15 @@ Flex କଣ୍ଟ୍ରୋଲର, କମ୍ପାଇଲ ନିୟମ ଓ ଭର�
 
 UE5 ଓ Visual Studio ପରି, ପ୍ରିଭ୍ୟୁ ସହ ଲକ୍ଷ୍ୟ କମ୍ପାସରେ ପ୍ୟାନେଲ ଟାଣନ୍ତୁ। ଏବେ ନାହିଁ: ସେଭ ଲେଆଉଟ, ଥିମ।
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source ସେଡିଂ
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source ସେଡିଂ
 
 ସେସନ୍ ଆଲୋକ (DmeProjectedLight): ଫ୍ରଷ୍ଟମ୍, Source କ୍ଷୀଣନ, maxDistance ପର୍ଯ୍ୟନ୍ତ ଫେଡ୍; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum। ମ୍ୟାପ୍ ଜଗତ ଲାଇଟ୍‌ମ୍ୟାପ୍ ଦ୍ୱାରା; ମଡେଲ୍ ମ୍ୟାପ୍‌ର ଆମ୍ବିଏଣ୍ଟ କ୍ୟୁବ୍ ଓ ୱାର୍ଲ୍ଡ ଲାଇଟ୍ ଦ୍ୱାରା ଆଲୋକିତ। ଏବେ ନୁହେଁ: ଛାୟା, ଗୋବୋ ଟେକ୍ସଚର୍, $bumpmap, $envmap।
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> ମ୍ୟାପ୍ — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> ମ୍ୟାପ୍ — <code>.bsp</code>
 
 ସଂସ୍କରଣ 19–21: ଜଗତ ଜ୍ୟାମିତି, ଡିସପ୍ଲେସମେଣ୍ଟ ଭୂଭାଗ, ବ୍ରଶ୍ ଏଣ୍ଟିଟି, ଷ୍ଟାଟିକ୍ ପ୍ରପ୍, ମ୍ୟାପ୍‌ର ନିଜ pak ମ୍ୟାଟେରିଆଲ୍, ଲାଇଟ୍‌ମ୍ୟାପ୍, କ୍ୟାମେରା ଚାରିପାଖେ ସ୍କାଇବକ୍ସ। ଫ୍ରଷ୍ଟମ୍ କଲିଂ। ଏବେ ନୁହେଁ: ପାଣି, prop_dynamic।
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> ଛବି ଓ ଭିଡିଓରେ ରେଣ୍ଡର
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> ଛବି ଓ ଭିଡିଓରେ ରେଣ୍ଡର
 
 ସେସନ୍‌ରୁ PNG/TGA କ୍ରମ ଓ AVI/MP4 ଚଳଚ୍ଚିତ୍ର: ସମ୍ପୂର୍ଣ୍ଣ ସେସନ୍, ବର୍ତ୍ତମାନ ଶଟ୍ କିମ୍ବା ଏକ ପରିସର; ପ୍ରିସେଟ୍; File → Export, Ctrl+E। ଏବେ ନୁହେଁ: ଚଳଚ୍ଚିତ୍ରରେ ଶବ୍ଦ।
 

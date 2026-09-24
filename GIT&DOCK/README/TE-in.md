@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%B0%AA%E0%B0%B0%E0%B1%80%E0%B0%95%E0%B1%8D%E0%B0%B7%E0%B0%B2%E0%B1%81-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%B0%AA%E0%B0%B0%E0%B1%80%E0%B0%95%E0%B1%8D%E0%B0%B7%E0%B0%B2%E0%B1%81-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/TE-in.md"><img alt="licence" src="https://img.shields.io/badge/%E0%B0%B2%E0%B1%88%E0%B0%B8%E0%B1%86%E0%B0%A8%E0%B1%8D%E0%B0%B8%E0%B1%8D-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           ఇంజిన్: యానిమేషన్, ఆపరేటర్లు, ముఖాలు, సవరణ
 │   │   └── formats/    Valve రీడర్లు: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK స్లాట్‌లు (ఖాళీ) మరియు ఇన్‌స్టాలేషన్ బ్రిడ్జ్‌లు
+├── Launcher/           లాంచర్
 ├── App/                ఎడిటర్: కంటెంట్ లైబ్రరీ, రెండరర్, విండో
 │   ├── Code/           కంటెంట్ లైబ్రరీ, విండో, సెట్టింగ్‌లు
 │   │   ├── render/     దృశ్యం, OpenGL రెండరర్, షేడర్లు, కెమెరా
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           వినియోగదారు డేటా — ఎప్పుడూ తొలగించబడదు
 │   └── Cache/          కంటెంట్ ఇండెక్స్, షేడర్లు, థంబ్‌నెయిల్స్
 ├── Tools/              స్థానికీకరణ, UI టూల్స్, ప్లగిన్‌లు (తర్వాత)
-│   ├── Launcher/       లాంచర్
 │   ├── Market Load/    ప్లగిన్ మార్కెట్‌ప్లేస్ క్లయింట్ (తర్వాత)
 │   ├── Localization/   అనువాదాలు రూపొందించడం
 │   ├── NewPlugins/     ప్లగిన్‌లు రూపొందించడం
@@ -104,9 +104,13 @@ Windows, Python 3.13 మరియు Source Filmmaker ఇన్‌స్టా�
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+ఇది లాంచర్‌ను తెరుస్తుంది: మూడు బటన్లున్న చిన్న విండో. దీని రూపం తాత్కాలికం — App వచ్చాక దీన్ని తిరిగి రాస్తారు; దాని విండో ప్రస్తుతం రష్యన్‌లో మాత్రమే ఉంది.
+
+<p align="center"><a href="../LAUNCHER/TE-in.md"><img alt="లాంచర్ గురించి" src="https://img.shields.io/badge/%E0%B0%B2%E0%B0%BE%E0%B0%82%E0%B0%9A%E0%B0%B0%E0%B1%8D_%E0%B0%97%E0%B1%81%E0%B0%B0%E0%B0%BF%E0%B0%82%E0%B0%9A%E0%B0%BF-66c0f4?style=for-the-badge"></a></p>
 
 మొదటి ప్రారంభంలో Steam ద్వారా SFM ను వెతుకుతుంది; దొరకకపోతే అడుగుతుంది. <kbd>Ctrl</kbd>+<kbd>O</kbd> సెషన్ తెరుస్తుంది, <kbd>Space</kbd> ప్లే, <kbd>C</kbd> షాట్ కెమెరా, <kbd>T</kbd>/<kbd>R</kbd> మూవ్/రొటేట్, <kbd>M</kbd> మోషన్ ఎడిటర్, <kbd>Ctrl</kbd>+<kbd>Z</kbd> అన్‌డు, <kbd>Ctrl</kbd>+<kbd>S</kbd> సేవ్. ప్యానెల్‌లు శీర్షిక ద్వారా లాగబడతాయి. పరీక్షలకు ఏమీ అవసరం లేదు:
 

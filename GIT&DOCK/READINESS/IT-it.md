@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/IT-it.svg" alt="Stato di avanzamento" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Avanzamento complessivo verso il rilascio: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Avanzamento complessivo verso il rilascio: 60%</b></p>
 
 Ogni area si espande: cosa funziona già e cosa non c'è ancora. Le percentuali sono una stima rispetto a ciò che sa fare SFM.
 
@@ -73,15 +73,15 @@ Curve di ogni log che muove l'elemento selezionato: X/Y/Z, pitch/yaw/roll, scala
 
 Trascina i pannelli su una bussola di destinazioni con anteprima, come in UE5 e Visual Studio. Non ancora: layout salvati, temi.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Shading Source
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Shading Source
 
 Luci della sessione (DmeProjectedLight): frustum, attenuazione Source, dissolvenza fino a maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Il mondo della mappa tramite le lightmap; i modelli illuminati dai cubi ambientali e dalle luci della mappa. Non ancora: ombre, texture gobo, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Mappe — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Mappe — <code>.bsp</code>
 
 Versioni 19–21: geometria del mondo, terreno displacement, brush entity, prop statici, materiali pak della mappa, lightmap, la skybox intorno alla camera. Frustum culling. Non ancora: acqua, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Rendering in immagine e video
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Rendering in immagine e video
 
 Sequenze PNG/TGA e filmati AVI/MP4 dalla sessione: tutta la sessione, l'inquadratura corrente o un intervallo; preset; File → Export, Ctrl+E. Non ancora: l'audio nel filmato.
 

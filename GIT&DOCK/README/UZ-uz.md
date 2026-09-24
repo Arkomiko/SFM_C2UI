@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/test-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/test-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/UZ-uz.md"><img alt="licence" src="https://img.shields.io/badge/litsenziya-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           dvigatel: animatsiya, operatorlar, yuzlar, tahrir
 │   │   └── formats/    Valve o'qigichlari: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK uyalari (bo'sh) va o'rnatmalarga ko'priklar
+├── Launcher/           ishga tushirgich
 ├── App/                muharrir: kontent kutubxonasi, renderer, oyna
 │   ├── Code/           kontent kutubxonasi, oyna, sozlamalar
 │   │   ├── render/     sahna, OpenGL rendereri, sheyderlar, kamera
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           foydalanuvchi ma'lumotlari — hech qachon o'chirilmaydi
 │   └── Cache/          kontent indeksi, sheyderlar, miniatyuralar
 ├── Tools/              lokalizatsiya, UI vositalari, plaginlar (keyinroq)
-│   ├── Launcher/       ishga tushirgich
 │   ├── Market Load/    plagin marketpleysi mijozi (keyinroq)
 │   ├── Localization/   tarjimalar yaratish
 │   ├── NewPlugins/     plaginlar yaratish
@@ -104,9 +104,13 @@ Windows, Python 3.13 va oʻrnatilgan Source Filmmaker kerak.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+Bu launcher'ni ochadi: uchta tugmali kichik oyna. Uning ko'rinishi vaqtinchalik — App paydo bo'lgach qayta yoziladi; oynasi hozircha faqat rus tilida.
+
+<p align="center"><a href="../LAUNCHER/UZ-uz.md"><img alt="Launcher haqida" src="https://img.shields.io/badge/Launcher_haqida-66c0f4?style=for-the-badge"></a></p>
 
 Birinchi ishga tushirishda SFM Steam orqali qidiriladi; topilmasa — dastur soʻraydi. <kbd>Ctrl</kbd>+<kbd>O</kbd> sessiyani ochadi, <kbd>Space</kbd> — ijro, <kbd>C</kbd> — shot kamerasi, <kbd>T</kbd>/<kbd>R</kbd> — koʻchirish/aylantirish, <kbd>M</kbd> — motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> — bekor qilish, <kbd>Ctrl</kbd>+<kbd>S</kbd> — saqlash. Panellar sarlavhasidan tortiladi. Testlarga hech narsa kerak emas:
 

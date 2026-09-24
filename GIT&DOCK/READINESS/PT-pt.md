@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/PT-pt.svg" alt="Estado" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Prontidão geral para lançamento: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Prontidão geral para lançamento: 60%</b></p>
 
 Cada área expande-se: o que já funciona e o que ainda não existe. As percentagens são uma estimativa face ao que o SFM consegue.
 
@@ -73,15 +73,15 @@ Curvas de cada log que move o elemento selecionado: X/Y/Z, pitch/yaw/roll, escal
 
 Arraste painéis para uma bússola de alvos com pré-visualização, como no UE5 e no Visual Studio. Ainda não: disposições guardadas, temas.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Sombreamento Source
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Sombreamento Source
 
 Luzes da sessão (DmeProjectedLight): frustum, atenuação Source, desvanecimento até maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. O mundo do mapa pelos lightmaps; modelos iluminados pelos cubos ambiente e luzes do mapa. Ainda não: sombras, texturas gobo, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Mapas — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Mapas — <code>.bsp</code>
 
 Versões 19–21: geometria do mundo, terreno displacement, brush entities, props estáticos, materiais pak do mapa, lightmaps, o skybox à volta da câmara. Recorte por frustum. Ainda não: água, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Renderização para imagem e vídeo
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Renderização para imagem e vídeo
 
 Sequências PNG/TGA e filmes AVI/MP4 a partir da sessão: toda a sessão, o plano atual ou um intervalo; predefinições; File → Export, Ctrl+E. Ainda não: som no filme.
 

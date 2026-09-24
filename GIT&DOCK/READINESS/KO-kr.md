@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/KO-kr.svg" alt="완성도" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>릴리스 전체 준비도: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>릴리스 전체 준비도: 60%</b></p>
 
 각 영역을 펼치면 이미 동작하는 것과 아직 없는 것이 보입니다. 백분율은 SFM의 기능 대비 추정치입니다.
 
@@ -73,15 +73,15 @@ Flex 컨트롤러, 컴파일된 규칙, 정점 애니메이션 — 캐릭터가 
 
 UE5와 Visual Studio처럼 미리보기가 있는 대상 컴퍼스로 패널을 끌어다 놓기. 아직 없음: 저장된 레이아웃, 테마.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source 셰이딩
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source 셰이딩
 
 세션 조명(DmeProjectedLight): 절두체, Source 감쇠, maxDistance까지 페이드; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. 맵 월드는 라이트맵으로, 모델은 맵의 앰비언트 큐브와 월드 라이트로 조명. 아직 없음: 그림자, 고보 텍스처, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> 맵 — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> 맵 — <code>.bsp</code>
 
 버전 19–21: 월드 지오메트리, 디스플레이스먼트 지형, 브러시 엔티티, 정적 프롭, 맵 자체 pak 재질, 라이트맵, 카메라를 둘러싼 스카이박스. 절두체 컬링. 아직 없음: 물, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> 이미지와 비디오로 렌더링
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> 이미지와 비디오로 렌더링
 
 세션에서 PNG/TGA 시퀀스와 AVI/MP4 영상: 전체 세션, 현재 샷 또는 범위; 프리셋; File → Export, Ctrl+E. 아직 없음: 영상의 사운드.
 

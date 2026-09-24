@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D9%B9%DB%8C%D8%B3%D9%B9-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D9%B9%DB%8C%D8%B3%D9%B9-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/UR-pk.md"><img alt="licence" src="https://img.shields.io/badge/%D9%84%D8%A7%D8%A6%D8%B3%D9%86%D8%B3-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           انجن: اینیمیشن، آپریٹرز، چہرے، ترمیم
 │   │   └── formats/    Valve ریڈرز: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK سلاٹس (خالی) اور انسٹالیشنز کے برج
+├── Launcher/           لانچر
 ├── App/                ایڈیٹر: مواد لائبریری، رینڈرر، ونڈو
 │   ├── Code/           کانٹینٹ لائبریری، ونڈو، سیٹنگز
 │   │   ├── render/     منظر، OpenGL رینڈرر، شیڈرز، کیمرہ
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           صارف کا ڈیٹا — کبھی حذف نہیں ہوتا
 │   └── Cache/          کانٹینٹ انڈیکس، شیڈرز، تھمب نیلز
 ├── Tools/              لوکلائزیشن، UI ٹولز، پلگ ان (بعد میں)
-│   ├── Launcher/       لانچر
 │   ├── Market Load/    پلگ اِن مارکیٹ پلیس کلائنٹ (بعد میں)
 │   ├── Localization/   تراجم تیار کرنا
 │   ├── NewPlugins/     پلگ اِنز تیار کرنا
@@ -104,9 +104,13 @@ Windows، Python 3.13 اور Source Filmmaker انسٹالیشن درکار۔
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+اس سے لانچر کھلتا ہے: تین بٹنوں والی ایک چھوٹی ونڈو۔ اس کی شکل عارضی ہے — App بننے پر اسے دوبارہ لکھا جائے گا، اور اس کی ونڈو فی الحال صرف روسی میں ہے۔
+
+<p align="center"><a href="../LAUNCHER/UR-pk.md"><img alt="لانچر کے بارے میں" src="https://img.shields.io/badge/%D9%84%D8%A7%D9%86%DA%86%D8%B1_%DA%A9%DB%92_%D8%A8%D8%A7%D8%B1%DB%92_%D9%85%DB%8C%DA%BA-66c0f4?style=for-the-badge"></a></p>
 
 پہلی بار Steam سے SFM تلاش کرتا ہے؛ نہ ملے تو پوچھتا ہے۔ <kbd>Ctrl</kbd>+<kbd>O</kbd> سیشن کھولتا ہے، <kbd>Space</kbd> پلے، <kbd>C</kbd> شاٹ کیمرہ، <kbd>T</kbd>/<kbd>R</kbd> موو/روٹیٹ، <kbd>M</kbd> موشن ایڈیٹر، <kbd>Ctrl</kbd>+<kbd>Z</kbd> انڈو، <kbd>Ctrl</kbd>+<kbd>S</kbd> سیو۔ پینل عنوان سے گھسیٹے جاتے ہیں۔ ٹیسٹ کو کچھ نہیں چاہیے:
 

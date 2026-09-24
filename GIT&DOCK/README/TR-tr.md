@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/test-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/test-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/TR-tr.md"><img alt="licence" src="https://img.shields.io/badge/lisans-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           motor: animasyon, operatörler, yüzler, düzenleme
 │   │   └── formats/    Valve okuyucuları: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK yuvaları (boş) ve kurulumlara köprüler
+├── Launcher/           başlatıcı
 ├── App/                düzenleyici: içerik kitaplığı, renderer, pencere
 │   ├── Code/           içerik kütüphanesi, pencere, ayarlar
 │   │   ├── render/     sahne, OpenGL işleyici, gölgelendiriciler, kamera
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           kullanıcı verisi — asla silinmez
 │   └── Cache/          içerik dizini, gölgelendiriciler, küçük resimler
 ├── Tools/              yerelleştirme, UI araçları, eklentiler (sonra)
-│   ├── Launcher/       başlatıcı
 │   ├── Market Load/    eklenti pazar yeri istemcisi (sonra)
 │   ├── Localization/   çeviri hazırlama
 │   ├── NewPlugins/     eklenti hazırlama
@@ -104,9 +104,13 @@ Windows, Python 3.13 ve bir Source Filmmaker kurulumu gerekir.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+Bu, başlatıcıyı açar: üç düğmeli küçük bir pencere. Görünümü geçicidir — App ortaya çıkınca yeniden yazılacak; penceresi şimdilik yalnızca Rusça.
+
+<p align="center"><a href="../LAUNCHER/TR-tr.md"><img alt="Başlatıcı hakkında" src="https://img.shields.io/badge/Ba%C5%9Flat%C4%B1c%C4%B1_hakk%C4%B1nda-66c0f4?style=for-the-badge"></a></p>
 
 İlk açılışta SFM Steam üzerinden aranır; bulunamazsa program sorar. <kbd>Ctrl</kbd>+<kbd>O</kbd> oturum açar, <kbd>Space</kbd> oynatır, <kbd>C</kbd> çekim kamerasından bakar, <kbd>T</kbd>/<kbd>R</kbd> taşı/döndür, <kbd>M</kbd> motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> geri alır, <kbd>Ctrl</kbd>+<kbd>S</kbd> kaydeder. Paneller başlıklarından sürüklenir. Testler hiçbir şey gerektirmez:
 

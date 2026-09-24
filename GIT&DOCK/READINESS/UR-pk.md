@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/UR-pk.svg" alt="تیاری" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 60%</b></p>
 
 ہر حصہ کھلتا ہے: کیا پہلے سے کام کرتا ہے اور کیا ابھی نہیں۔ فیصد SFM کی صلاحیتوں کے مقابلے ایک اندازہ ہے۔
 
@@ -73,15 +73,15 @@ Flex کنٹرولر، کمپائل شدہ قواعد اور ورٹیکس این�
 
 UE5 اور Visual Studio کی طرح، پیش نظارہ کے ساتھ اہداف کے کمپاس پر پینل گھسیٹیں۔ ابھی نہیں: محفوظ لے آؤٹ، تھیم۔
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source شیڈنگ
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source شیڈنگ
 
 سیشن کی روشنیاں (DmeProjectedLight): فرسٹم، Source اٹینیوایشن، maxDistance تک فیڈ؛ half-lambert، $lightwarptexture، phong، $rimlight، $selfillum۔ نقشے کی دنیا لائٹ میپس سے؛ ماڈلز نقشے کے ایمبیئنٹ کیوبز اور ورلڈ لائٹس سے روشن۔ ابھی نہیں: سائے، گوبو ٹیکسچر، $bumpmap، $envmap۔
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> نقشے — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> نقشے — <code>.bsp</code>
 
 ورژن 19–21: ورلڈ جیومیٹری، ڈسپلیسمنٹ زمین، برش اینٹیٹیز، اسٹیٹک پراپس، نقشے کے اپنے pak میٹیریل، لائٹ میپس، کیمرے کے گرد اسکائی باکس۔ فرسٹم کلنگ۔ ابھی نہیں: پانی، prop_dynamic۔
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> تصویر اور ویڈیو میں رینڈر
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> تصویر اور ویڈیو میں رینڈر
 
 سیشن سے PNG/TGA سیکوئنس اور AVI/MP4 فلمیں: پورا سیشن، موجودہ شاٹ یا ایک رینج؛ پری سیٹس؛ File → Export، Ctrl+E۔ ابھی نہیں: فلم میں آواز۔
 

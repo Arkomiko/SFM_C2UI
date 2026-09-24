@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AC%AA%E0%AC%B0%E0%AD%80%E0%AC%95%E0%AD%8D%E0%AC%B7%E0%AC%BE-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%AC%AA%E0%AC%B0%E0%AD%80%E0%AC%95%E0%AD%8D%E0%AC%B7%E0%AC%BE-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/OR-in.md"><img alt="licence" src="https://img.shields.io/badge/%E0%AC%B2%E0%AC%BE%E0%AC%87%E0%AC%B8%E0%AD%87%E0%AC%A8%E0%AD%8D%E0%AC%B8-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           ଇଞ୍ଜିନ୍: ଆନିମେସନ୍, ଅପରେଟର୍, ମୁହଁ, ସମ୍ପାଦନା
 │   │   └── formats/    Valve ରିଡର୍: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK ସ୍ଲଟ୍ (ଖାଲି) ଓ ଇନ୍‌ଷ୍ଟଲେସନ୍ ବ୍ରିଜ୍
+├── Launcher/           ଲଞ୍ଚର
 ├── App/                ଏଡିଟର: କଣ୍ଟେଣ୍ଟ ଲାଇବ୍ରେରୀ, ରେଣ୍ଡରର, ୱିଣ୍ଡୋ
 │   ├── Code/           ବିଷୟବସ୍ତୁ ଲାଇବ୍ରେରୀ, ୱିଣ୍ଡୋ, ସେଟିଂ
 │   │   ├── render/     ଦୃଶ୍ୟ, OpenGL ରେଣ୍ଡରର୍, ସେଡର୍, କ୍ୟାମେରା
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           ବ୍ୟବହାରକାରୀ ତଥ୍ୟ — କେବେ ଲିଭାଯାଏ ନାହିଁ
 │   └── Cache/          ବିଷୟବସ୍ତୁ ସୂଚକାଙ୍କ, ସେଡର୍, ଥମ୍ବନେଲ୍
 ├── Tools/              ସ୍ଥାନୀୟକରଣ, UI ଉପକରଣ, ପ୍ଲଗଇନ (ପରେ)
-│   ├── Launcher/       ଲଞ୍ଚର
 │   ├── Market Load/    ପ୍ଲଗଇନ୍ ମାର୍କେଟପ୍ଲେସ୍ କ୍ଲାଏଣ୍ଟ (ପରେ)
 │   ├── Localization/   ଅନୁବାଦ ପ୍ରସ୍ତୁତି
 │   ├── NewPlugins/     ପ୍ଲଗଇନ୍ ପ୍ରସ୍ତୁତି
@@ -104,9 +104,13 @@ Windows, Python 3.13 ଓ Source Filmmaker ଇନ୍‌ଷ୍ଟଲେସନ ଆ�
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+ଏହା ଲଞ୍ଚର ଖୋଲେ: ତିନୋଟି ବଟନ୍ ଥିବା ଛୋଟ ୱିଣ୍ଡୋ। ଏହାର ରୂପ ଅସ୍ଥାୟୀ — App ଆସିଲେ ପୁଣି ଲେଖାଯିବ; ଏହାର ୱିଣ୍ଡୋ ଏବେ କେବଳ ରୁଷୀ ଭାଷାରେ।
+
+<p align="center"><a href="../LAUNCHER/OR-in.md"><img alt="ଲଞ୍ଚର ବିଷୟରେ" src="https://img.shields.io/badge/%E0%AC%B2%E0%AC%9E%E0%AD%8D%E0%AC%9A%E0%AC%B0_%E0%AC%AC%E0%AC%BF%E0%AC%B7%E0%AD%9F%E0%AC%B0%E0%AD%87-66c0f4?style=for-the-badge"></a></p>
 
 ପ୍ରଥମ ଥର Steam ଦ୍ୱାରା SFM ଖୋଜେ; ନ ମିଳିଲେ ପଚାରେ। <kbd>Ctrl</kbd>+<kbd>O</kbd> ସେସନ ଖୋଲେ, <kbd>Space</kbd> ପ୍ଲେ, <kbd>C</kbd> ଶଟ କ୍ୟାମେରା, <kbd>T</kbd>/<kbd>R</kbd> ମୁଭ/ରୋଟେଟ, <kbd>M</kbd> ମୋସନ ଏଡିଟର, <kbd>Ctrl</kbd>+<kbd>Z</kbd> ଅନଡୁ, <kbd>Ctrl</kbd>+<kbd>S</kbd> ସେଭ। ପ୍ୟାନେଲ ଶୀର୍ଷକରୁ ଟାଣାହୁଏ। ପରୀକ୍ଷାକୁ କିଛି ଦରକାର ନାହିଁ:
 

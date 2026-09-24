@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E6%B5%8B%E8%AF%95-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E6%B5%8B%E8%AF%95-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/ZH-cn.md"><img alt="licence" src="https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF%E8%AF%81-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           引擎：动画、运算符、面部、编辑
 │   │   └── formats/    Valve 读取器：mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK 槽位（空）与到安装目录的桥接
+├── Launcher/           启动器
 ├── App/                编辑器：内容库、渲染器、窗口
 │   ├── Code/           内容库、窗口、设置
 │   │   ├── render/     场景、OpenGL 渲染器、着色器、相机
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           用户数据——永不删除
 │   └── Cache/          内容索引、着色器、缩略图
 ├── Tools/              本地化、UI 工具、插件（稍后）
-│   ├── Launcher/       启动器
 │   ├── Market Load/    插件市场客户端（稍后）
 │   ├── Localization/   编写翻译
 │   ├── NewPlugins/     编写插件
@@ -104,9 +104,13 @@ C2UI_SDK/
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+这会打开启动器：一个带三个按钮的小窗口。它的样子是临时的——等 App 出现后会重写，而它的窗口目前只有俄语。
+
+<p align="center"><a href="../LAUNCHER/ZH-cn.md"><img alt="关于启动器" src="https://img.shields.io/badge/%E5%85%B3%E4%BA%8E%E5%90%AF%E5%8A%A8%E5%99%A8-66c0f4?style=for-the-badge"></a></p>
 
 首次启动时通过 Steam 查找 SFM；找不到则询问。<kbd>Ctrl</kbd>+<kbd>O</kbd> 打开会话，<kbd>Space</kbd> 播放，<kbd>C</kbd> 通过镜头相机观看，<kbd>T</kbd>/<kbd>R</kbd> 移动/旋转，<kbd>M</kbd> 运动编辑器，<kbd>Ctrl</kbd>+<kbd>Z</kbd> 撤销，<kbd>Ctrl</kbd>+<kbd>S</kbd> 保存。面板按标题拖动。测试不需要任何东西：
 

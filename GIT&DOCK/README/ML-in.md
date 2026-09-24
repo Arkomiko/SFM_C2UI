@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%B4%9F%E0%B5%86%E0%B4%B8%E0%B5%8D%E0%B4%B1%E0%B5%8D%E0%B4%B1%E0%B5%81%E0%B4%95%E0%B5%BE-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%E0%B4%9F%E0%B5%86%E0%B4%B8%E0%B5%8D%E0%B4%B1%E0%B5%8D%E0%B4%B1%E0%B5%81%E0%B4%95%E0%B5%BE-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/ML-in.md"><img alt="licence" src="https://img.shields.io/badge/%E0%B4%B2%E0%B5%88%E0%B4%B8%E0%B5%BB%E0%B4%B8%E0%B5%8D-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           എഞ്ചിൻ: ആനിമേഷൻ, ഓപ്പറേറ്ററുകൾ, മുഖങ്ങൾ, എഡിറ്റിംഗ്
 │   │   └── formats/    Valve റീഡറുകൾ: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK സ്ലോട്ടുകൾ (ശൂന്യം), ഇൻസ്റ്റാളേഷൻ ബ്രിഡ്ജുകൾ
+├── Launcher/           ലോഞ്ചർ
 ├── App/                എഡിറ്റർ: ഉള്ളടക്ക ലൈബ്രറി, റെൻഡറർ, വിൻഡോ
 │   ├── Code/           ഉള്ളടക്ക ലൈബ്രറി, വിൻഡോ, ക്രമീകരണങ്ങൾ
 │   │   ├── render/     രംഗം, OpenGL റെൻഡറർ, ഷേഡറുകൾ, ക്യാമറ
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           ഉപയോക്തൃ ഡാറ്റ — ഒരിക്കലും മായ്ക്കപ്പെടില്ല
 │   └── Cache/          ഉള്ളടക്ക സൂചിക, ഷേഡറുകൾ, ലഘുചിത്രങ്ങൾ
 ├── Tools/              പ്രാദേശികവൽക്കരണം, UI ഉപകരണങ്ങൾ, പ്ലഗിനുകൾ (പിന്നീട്)
-│   ├── Launcher/       ലോഞ്ചർ
 │   ├── Market Load/    പ്ലഗിൻ മാർക്കറ്റ്പ്ലേസ് ക്ലയന്റ് (പിന്നീട്)
 │   ├── Localization/   വിവർത്തനങ്ങൾ തയ്യാറാക്കൽ
 │   ├── NewPlugins/     പ്ലഗിനുകൾ തയ്യാറാക്കൽ
@@ -104,9 +104,13 @@ Windows, Python 3.13, Source Filmmaker ഇൻസ്റ്റാളേഷൻ ആ�
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+ഇത് ലോഞ്ചർ തുറക്കുന്നു: മൂന്ന് ബട്ടണുകളുള്ള ചെറിയ ജാലകം. അതിന്റെ രൂപം താൽക്കാലികമാണ് — App വന്നാൽ അത് വീണ്ടും എഴുതും; ജാലകം ഇപ്പോൾ റഷ്യൻ ഭാഷയിൽ മാത്രം.
+
+<p align="center"><a href="../LAUNCHER/ML-in.md"><img alt="ലോഞ്ചറിനെക്കുറിച്ച്" src="https://img.shields.io/badge/%E0%B4%B2%E0%B5%8B%E0%B4%9E%E0%B5%8D%E0%B4%9A%E0%B4%B1%E0%B4%BF%E0%B4%A8%E0%B5%86%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%81%E0%B4%B1%E0%B4%BF%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B5%8D-66c0f4?style=for-the-badge"></a></p>
 
 ആദ്യ തുടക്കത്തിൽ Steam വഴി SFM തിരയുന്നു; കിട്ടിയില്ലെങ്കിൽ ചോദിക്കുന്നു. <kbd>Ctrl</kbd>+<kbd>O</kbd> സെഷൻ തുറക്കുന്നു, <kbd>Space</kbd> പ്ലേ, <kbd>C</kbd> ഷോട്ട് കാമറ, <kbd>T</kbd>/<kbd>R</kbd> മൂവ്/റൊട്ടേറ്റ്, <kbd>M</kbd> മോഷൻ എഡിറ്റർ, <kbd>Ctrl</kbd>+<kbd>Z</kbd> അൻഡു, <kbd>Ctrl</kbd>+<kbd>S</kbd> സേവ്. പാനലുകൾ തലക്കെട്ടിൽ പിടിച്ച് വലിക്കുന്നു. ടെസ്റ്റുകൾക്ക് ഒന്നും വേണ്ട:
 

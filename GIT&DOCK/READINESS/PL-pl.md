@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/PL-pl.svg" alt="Gotowość" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Ogólna gotowość do wydania: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Ogólna gotowość do wydania: 60%</b></p>
 
 Każdy obszar można rozwinąć: co już działa, a czego jeszcze nie ma. Procenty to ocena względem możliwości SFM.
 
@@ -73,15 +73,15 @@ Krzywe każdego logu wybranego elementu: X/Y/Z, pitch/yaw/roll, skalary. Klucze 
 
 Przeciąganie paneli na kompas celów z podglądem, jak w UE5 i Visual Studio. Brak: zapisanych układów, motywów.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Cieniowanie Source
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Cieniowanie Source
 
 Światła sesji (DmeProjectedLight): frustum, tłumienie Source, zanik do maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Świat mapy z lightmap; modele oświetlone kostkami ambient i światłami mapy. Brak: cieni, tekstur gobo, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Mapy — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Mapy — <code>.bsp</code>
 
 Wersje 19–21: geometria świata, teren displacement, brush entities, statyczne propy, materiały z pak-lumpu mapy, lightmapy, skybox wokół kamery. Odcinanie po bryle widzenia. Brak: wody, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Render do obrazu i wideo
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Render do obrazu i wideo
 
 Sekwencje PNG/TGA i filmy AVI/MP4 z sesji: cała sesja, bieżące ujęcie lub zakres; presety; File → Export, Ctrl+E. Brak: dźwięku w filmie.
 

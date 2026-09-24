@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/ZH-cn.svg" alt="完成度" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>整体发布就绪度：55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>整体发布就绪度：60%</b></p>
 
 每个领域都可以展开：已经能用的和暂时还没有的。百分比是相对于 SFM 能力的估计。
 
@@ -73,15 +73,15 @@ Flex 控制器、编译后的规则和顶点动画——角色会说话和做表
 
 像 UE5 和 Visual Studio 一样，把面板拖到带预览的目标罗盘上。尚无：保存布局、主题。
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source 着色
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source 着色
 
 会话灯光（DmeProjectedLight）：视锥、Source 衰减、到 maxDistance 的淡出；half-lambert、$lightwarptexture、phong、$rimlight、$selfillum。地图世界使用光照贴图；模型由地图的环境立方体和世界光源照亮。尚未：阴影、gobo 贴图、$bumpmap、$envmap。
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> 地图 — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> 地图 — <code>.bsp</code>
 
 版本 19–21：世界几何、位移地形、笔刷实体、静态道具、地图自带的 pak 材质、光照贴图、围绕相机的天空盒。视锥剔除。尚未：水面、prop_dynamic。
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> 渲染为图像和视频
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> 渲染为图像和视频
 
 从会话导出 PNG/TGA 序列和 AVI/MP4 影片：整个会话、当前镜头或某个范围；预设；File → Export，Ctrl+E。尚未：影片中的声音。
 

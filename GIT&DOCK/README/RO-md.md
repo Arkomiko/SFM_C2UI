@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/teste-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/teste-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/RO-md.md"><img alt="licence" src="https://img.shields.io/badge/licen%C8%9B%C4%83-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           motor: animație, operatori, fețe, editare
 │   │   └── formats/    cititoare Valve: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        sloturi SDK (goale) și punți către instalări
+├── Launcher/           lansatorul
 ├── App/                editorul: biblioteca de conținut, renderer, fereastră
 │   ├── Code/           biblioteca de conținut, fereastra, setări
 │   │   ├── render/     scenă, renderer OpenGL, shadere, cameră
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           datele utilizatorului — nu se șterg niciodată
 │   └── Cache/          index de conținut, shadere, miniaturi
 ├── Tools/              localizare, unelte UI, plugin-uri (mai târziu)
-│   ├── Launcher/       lansatorul
 │   ├── Market Load/    client de marketplace pentru plugin-uri (mai târziu)
 │   ├── Localization/   crearea traducerilor
 │   ├── NewPlugins/     crearea plugin-urilor
@@ -104,9 +104,13 @@ Necesită Windows, Python 3.13 și o instalare Source Filmmaker.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+Se deschide launcher-ul: o fereastră mică cu trei butoane. Aspectul lui e temporar — va fi rescris când apare App, iar fereastra lui e deocamdată doar în rusă.
+
+<p align="center"><a href="../LAUNCHER/RO-md.md"><img alt="Despre launcher" src="https://img.shields.io/badge/Despre_launcher-66c0f4?style=for-the-badge"></a></p>
 
 La prima pornire SFM este căutat prin Steam; dacă nu este găsit, programul întreabă. <kbd>Ctrl</kbd>+<kbd>O</kbd> deschide o sesiune, <kbd>Space</kbd> redă, <kbd>C</kbd> privește prin camera cadrului, <kbd>T</kbd>/<kbd>R</kbd> mută/rotește, <kbd>M</kbd> motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> anulează, <kbd>Ctrl</kbd>+<kbd>S</kbd> salvează. Panourile se trag de titlu. Testele nu au nevoie de nimic:
 

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/JA-jp.svg" alt="完成度" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>リリースへの全体的な完成度: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>リリースへの全体的な完成度: 60%</b></p>
 
 各領域を開くと、すでに動くものとまだないものが分かります。パーセントは SFM の機能に対する目安です。
 
@@ -73,15 +73,15 @@ Flex コントローラ、コンパイル済みルール、頂点アニメーシ
 
 UE5 や Visual Studio のように、プレビュー付きのターゲットコンパスにパネルをドラッグ。未対応: レイアウト保存、テーマ。
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source シェーディング
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source シェーディング
 
 セッションライト（DmeProjectedLight）：フラスタム、Source の減衰、maxDistance までのフェード；half-lambert、$lightwarptexture、phong、$rimlight、$selfillum。マップのワールドはライトマップで、モデルはマップのアンビエントキューブとワールドライトで照らされます。未対応：影、ゴボテクスチャ、$bumpmap、$envmap。
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> マップ — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> マップ — <code>.bsp</code>
 
 バージョン 19〜21：ワールド形状、ディスプレイスメント地形、ブラシエンティティ、静的プロップ、マップ内蔵の pak マテリアル、ライトマップ、カメラを囲むスカイボックス。視錐台カリング。未対応：水、prop_dynamic。
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> 画像と動画への書き出し
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> 画像と動画への書き出し
 
 セッションから PNG/TGA 連番と AVI/MP4 動画：セッション全体、現在のショット、または範囲；プリセット；File → Export、Ctrl+E。未対応：動画の音声。
 

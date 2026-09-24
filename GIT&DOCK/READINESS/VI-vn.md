@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/VI-vn.svg" alt="Mức sẵn sàng" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 60%</b></p>
 
 Mỗi mảng có thể mở ra: cái gì đã chạy và cái gì chưa có. Phần trăm là ước lượng so với khả năng của SFM.
 
@@ -73,15 +73,15 @@ Chọn thời gian với hold và falloff trên thước; chỉnh sửa lan ra n
 
 Kéo bảng lên la bàn mục tiêu có xem trước, như UE5 và Visual Studio. Chưa có: bố cục đã lưu, chủ đề.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Đổ bóng Source
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Đổ bóng Source
 
 Đèn của phiên (DmeProjectedLight): frustum, suy giảm Source, mờ dần đến maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Thế giới bản đồ theo lightmap; mô hình được chiếu sáng bởi khối ambient và đèn thế giới của bản đồ. Chưa có: bóng đổ, texture gobo, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Bản đồ — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Bản đồ — <code>.bsp</code>
 
 Phiên bản 19–21: hình học thế giới, địa hình displacement, brush entity, prop tĩnh, vật liệu pak của bản đồ, lightmap, skybox quanh camera. Loại bỏ theo frustum. Chưa có: nước, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Kết xuất ra ảnh và video
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Kết xuất ra ảnh và video
 
 Chuỗi PNG/TGA và phim AVI/MP4 từ phiên: cả phiên, cảnh quay hiện tại hoặc một khoảng; preset; File → Export, Ctrl+E. Chưa có: âm thanh trong phim.
 

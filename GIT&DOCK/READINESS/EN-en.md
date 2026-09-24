@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/EN-en.svg" alt="Readiness" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Overall readiness for release: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Overall readiness for release: 60%</b></p>
 
 Each area expands: what already works and what does not yet. The percentages are an estimate against what SFM can do.
 
@@ -73,15 +73,15 @@ Curves of every log driving the selected element: X/Y/Z, pitch/yaw/roll, scalars
 
 Drag panels onto a compass of targets with a preview, as in UE5 and Visual Studio. Not yet: saved layouts, themes.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source shading
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source shading
 
 Session lights (DmeProjectedLight): frustum, Source's attenuation, fade to maxDistance; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. The map's world by its lightmaps; models lit by the map's ambient cubes and world lights. Not yet: shadows, gobo textures, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Maps — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Maps — <code>.bsp</code>
 
 Versions 19–21: world geometry, displacement terrain, brush entities, static props, the map's own pak materials, lightmaps, the skybox around the camera. Frustum culling. Not yet: water, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Rendering to image and video
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Rendering to image and video
 
 PNG/TGA sequences and AVI/MP4 movies from the session: the whole session, the current shot or a range; presets; File → Export, Ctrl+E. Not yet: sound in the movie.
 

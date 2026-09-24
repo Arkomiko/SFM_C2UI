@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/testov-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/testov-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/SL-si.md"><img alt="licence" src="https://img.shields.io/badge/licenca-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           pogon: animacija, operatorji, obrazi, urejanje
 │   │   └── formats/    bralniki Valve: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        reže SDK (prazne) in mostovi do namestitev
+├── Launcher/           zaganjalnik
 ├── App/                urejevalnik: knjižnica vsebine, upodabljalnik, okno
 │   ├── Code/           knjižnica vsebine, okno, nastavitve
 │   │   ├── render/     scena, upodabljalnik OpenGL, senčilniki, kamera
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           uporabnikovi podatki — nikoli izbrisani
 │   └── Cache/          indeks vsebine, senčilniki, sličice
 ├── Tools/              lokalizacija, orodja UI, vtičniki (pozneje)
-│   ├── Launcher/       zaganjalnik
 │   ├── Market Load/    odjemalec tržnice vtičnikov (pozneje)
 │   ├── Localization/   ustvarjanje prevodov
 │   ├── NewPlugins/     ustvarjanje vtičnikov
@@ -104,9 +104,13 @@ Potrebuje Windows, Python 3.13 in nameščen Source Filmmaker.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+Odpre se zaganjalnik: majhno okno s tremi gumbi. Videz je začasen — prepisan bo, ko bo obstajal App, njegovo okno pa je zaenkrat le v ruščini.
+
+<p align="center"><a href="../LAUNCHER/SL-si.md"><img alt="O zaganjalniku" src="https://img.shields.io/badge/O_zaganjalniku-66c0f4?style=for-the-badge"></a></p>
 
 Ob prvem zagonu se SFM poišče prek Steama; če ga ne najde, program vpraša. <kbd>Ctrl</kbd>+<kbd>O</kbd> odpre sejo, <kbd>Preslednica</kbd> predvaja, <kbd>C</kbd> pogleda skozi kamero posnetka, <kbd>T</kbd>/<kbd>R</kbd> premik/vrtenje, <kbd>M</kbd> motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> razveljavi, <kbd>Ctrl</kbd>+<kbd>S</kbd> shrani. Plošče se vlečejo za naslov. Testi ne potrebujejo ničesar:
 

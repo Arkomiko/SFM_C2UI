@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/AR-sa.svg" alt="الجاهزية" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>الجاهزية الإجمالية للإصدار: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>الجاهزية الإجمالية للإصدار: 60%</b></p>
 
 كل مجال قابل للفتح: ما يعمل بالفعل وما لم يوجد بعد. النسب تقدير مقابل ما يستطيعه SFM.
 
@@ -73,15 +73,15 @@
 
 اسحب اللوحات إلى بوصلة أهداف مع معاينة، كما في UE5 وVisual Studio. ليس بعد: التخطيطات المحفوظة، السمات.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> تظليل Source
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> تظليل Source
 
 أضواء الجلسة (DmeProjectedLight): frustum، توهين Source، تلاشٍ حتى maxDistance؛ half-lambert، $lightwarptexture، phong، $rimlight، $selfillum. عالم الخريطة عبر خرائط الإضاءة؛ النماذج مضاءة بمكعبات الإضاءة المحيطة وأضواء العالم. ليس بعد: الظلال، أنسجة gobo، $bumpmap، $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> الخرائط — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> الخرائط — <code>.bsp</code>
 
 الإصدارات 19–21: هندسة العالم، تضاريس displacement، كيانات brush، الدعائم الثابتة، خامات pak الخاصة بالخريطة، خرائط الإضاءة، السكايبوكس حول الكاميرا. حذف خارج المنظور. ليس بعد: الماء، prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> التصيير إلى صورة وفيديو
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> التصيير إلى صورة وفيديو
 
 تسلسلات PNG/TGA وأفلام AVI/MP4 من الجلسة: الجلسة كلها أو اللقطة الحالية أو نطاق؛ إعدادات مسبقة؛ File → Export، Ctrl+E. ليس بعد: الصوت في الفيلم.
 

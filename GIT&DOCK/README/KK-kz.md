@@ -16,7 +16,7 @@
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
   <img alt="opengl" src="https://img.shields.io/badge/OpenGL-3.3%20core-5586a4?style=flat-square&logo=opengl&logoColor=white">
-  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D1%82%D0%B5%D1%81%D1%82-372-66c0f4?style=flat-square"></a>
+  <a href="../../Testing"><img alt="tests" src="https://img.shields.io/badge/%D1%82%D0%B5%D1%81%D1%82-381-66c0f4?style=flat-square"></a>
   <img alt="platform" src="https://img.shields.io/badge/Windows-1b2838?style=flat-square&logo=windows&logoColor=white">
   <a href="../LICENSE/KK-kz.md"><img alt="licence" src="https://img.shields.io/badge/%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F-C2UI-2a475e?style=flat-square"></a>
 </p>
@@ -64,6 +64,7 @@ C2UI_SDK/
 │   ├── Code/           қозғалтқыш: анимация, операторлар, беттер, өңдеу
 │   │   └── formats/    Valve оқығыштары: mdl vvd vtx vmt vtf dmx bsp
 │   └── dev-kit/        SDK ұялары (бос) және орнатуларға көпірлер
+├── Launcher/           іске қосқыш
 ├── App/                редактор: контент кітапханасы, рендер, терезе
 │   ├── Code/           контент кітапханасы, терезе, баптаулар
 │   │   ├── render/     сахна, OpenGL рендерері, шейдерлер, камера
@@ -72,7 +73,6 @@ C2UI_SDK/
 │   ├── User/           пайдаланушы деректері — ешқашан өшірілмейді
 │   └── Cache/          контент индексі, шейдерлер, нобайлар
 ├── Tools/              локализация, UI құралдары, плагиндер (кейін)
-│   ├── Launcher/       іске қосқыш
 │   ├── Market Load/    плагин маркетплейсінің клиенті (кейін)
 │   ├── Localization/   аудармалар жасау
 │   ├── NewPlugins/     плагиндер жасау
@@ -104,9 +104,13 @@ Windows, Python 3.13 және орнатылған Source Filmmaker қажет.
 git clone https://github.com/Arkomiko/SFM_C2UI.git
 cd SFM_C2UI
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r Tools/Launcher/requirements.txt
-.venv/Scripts/python.exe Tools/Launcher/c2ui.py
+.venv/Scripts/python.exe -m pip install -r Launcher/requirements.txt
+.venv/Scripts/python.exe Launcher/launcher.py
 ```
+
+Үш түймесі бар лаунчер терезесі ашылады. Оның көрінісі уақытша — App пайда болғанда қайта жазылады; терезесі әзірге тек орысша.
+
+<p align="center"><a href="../LAUNCHER/KK-kz.md"><img alt="Лаунчер туралы" src="https://img.shields.io/badge/%D0%9B%D0%B0%D1%83%D0%BD%D1%87%D0%B5%D1%80_%D1%82%D1%83%D1%80%D0%B0%D0%BB%D1%8B-66c0f4?style=for-the-badge"></a></p>
 
 Алғашқы іске қосуда SFM Steam арқылы ізделеді; табылмаса — бағдарлама сұрайды. <kbd>Ctrl</kbd>+<kbd>O</kbd> сессияны ашады, <kbd>Space</kbd> — ойнату, <kbd>C</kbd> — шот камерасы, <kbd>T</kbd>/<kbd>R</kbd> — жылжыту/бұру, <kbd>M</kbd> — motion editor, <kbd>Ctrl</kbd>+<kbd>Z</kbd> — болдырмау, <kbd>Ctrl</kbd>+<kbd>S</kbd> — сақтау. Панельдер тақырыбынан сүйреледі. Тесттерге ештеңе керек емес:
 

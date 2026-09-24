@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/TR-tr.svg" alt="Hazırlık" width="100%"></p>
 
-<p align="center"><img alt="55%" src="https://img.shields.io/badge/55%25-e0a800?style=flat-square"> <b>Yayın için genel hazırlık: 55%</b></p>
+<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Yayın için genel hazırlık: 60%</b></p>
 
 Her alan açılabilir: neyin zaten çalıştığı ve neyin henüz olmadığı. Yüzdeler, SFM'nin yapabildiklerine göre bir tahmindir.
 
@@ -73,15 +73,15 @@ Seçili öğeyi süren her logun eğrileri: X/Y/Z, pitch/yaw/roll, skalerler. An
 
 UE5 ve Visual Studio'daki gibi panelleri önizlemeli hedef pusulasına sürükleyin. Henüz yok: kayıtlı yerleşimler, temalar.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Source gölgeleme
+### <img alt="75%" src="https://img.shields.io/badge/75%25-3b9c5b?style=flat-square"> Source gölgeleme
 
 Oturum ışıkları (DmeProjectedLight): frustum, Source sönümü, maxDistance'a kadar solma; half-lambert, $lightwarptexture, phong, $rimlight, $selfillum. Haritanın dünyası lightmap'lerle; modeller haritanın ambient küpleri ve dünya ışıklarıyla aydınlatılır. Henüz yok: gölgeler, gobo dokuları, $bumpmap, $envmap.
 
-### <img alt="65%" src="https://img.shields.io/badge/65%25-e0a800?style=flat-square"> Haritalar — <code>.bsp</code>
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Haritalar — <code>.bsp</code>
 
 Sürüm 19–21: dünya geometrisi, displacement arazi, brush varlıkları, statik prop'lar, haritanın kendi pak malzemeleri, lightmap'ler, kameranın çevresindeki skybox. Frustum ayıklama. Henüz yok: su, prop_dynamic.
 
-### <img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> Görüntü ve videoya işleme
+### <img alt="70%" src="https://img.shields.io/badge/70%25-3b9c5b?style=flat-square"> Görüntü ve videoya işleme
 
 Oturumdan PNG/TGA dizileri ve AVI/MP4 filmler: tüm oturum, geçerli çekim veya bir aralık; ön ayarlar; File → Export, Ctrl+E. Henüz yok: filmde ses.
 
