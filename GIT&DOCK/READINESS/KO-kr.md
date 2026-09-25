@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/KO-kr.svg" alt="완성도" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>릴리스 전체 준비도: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>릴리스 전체 준비도: 15%</b></p>
 
 각 영역을 펼치면 이미 동작하는 것과 아직 없는 것이 보입니다. 백분율은 SFM의 기능 대비 추정치입니다.
+
+각 퍼센트는 **그 영역에서 SFM이 하는 일에 견준 값**이며, 계획에 견준 값이 아닙니다. 전체 수치는 제품 전체를 SFM 옆에 놓고 재기 때문에 훨씬 낮습니다. 포맷은 온전히 읽히지만, Source Filmmaker가 된다는 것은 약 350가지 `Dme*` 요소 타입을 뜻하고 엔진이 아는 것은 그중 23개입니다.
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> SFM 찾기와 마운트
 

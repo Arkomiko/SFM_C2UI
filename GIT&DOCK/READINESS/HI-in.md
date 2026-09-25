@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/HI-in.svg" alt="तैयारी" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>रिलीज़ के लिए कुल तैयारी: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>रिलीज़ के लिए कुल तैयारी: 15%</b></p>
 
 हर क्षेत्र खुलता है: क्या पहले से काम करता है और क्या अभी नहीं है। प्रतिशत SFM की क्षमताओं के सापेक्ष अनुमान हैं।
+
+हर प्रतिशत **उस क्षेत्र को मापता है जो SFM उसमें करता है**, न कि योजना को। कुल आँकड़ा पूरे उत्पाद को SFM के बगल में मापता है और इसीलिए कहीं कम है: फ़ॉर्मैट पूरी तरह पढ़े जाते हैं, पर Source Filmmaker होना मतलब लगभग 350 `Dme*` एलिमेंट प्रकार, जिनमें से इंजन 23 जानता है।
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> SFM खोजना और माउंट करना
 

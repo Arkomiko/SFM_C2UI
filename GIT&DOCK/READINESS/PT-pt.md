@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/PT-pt.svg" alt="Estado" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Prontidão geral para lançamento: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Prontidão geral para lançamento: 15%</b></p>
 
 Cada área expande-se: o que já funciona e o que ainda não existe. As percentagens são uma estimativa face ao que o SFM consegue.
+
+Cada percentagem mede **uma área face ao que o SFM faz nessa área**, não face ao planeado. O número global mede todo o produto ao lado do SFM e é muito mais baixo: os formatos são lidos por inteiro, mas ser o Source Filmmaker são uns 350 tipos de elementos `Dme*`, dos quais o motor conhece 23.
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> Encontrar e montar o SFM
 

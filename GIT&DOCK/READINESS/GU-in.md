@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/GU-in.svg" alt="તૈયારી" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 15%</b></p>
 
 દરેક ક્ષેત્ર ખુલે છે: શું પહેલેથી કામ કરે છે અને શું હજુ નથી. ટકાવારી SFM ની ક્ષમતાઓની સાપેક્ષ અંદાજ છે.
+
+દરેક ટકાવારી **તે ક્ષેત્રમાં SFM શું કરે છે તેની સામે તે ક્ષેત્રને** માપે છે, યોજનાની સામે નહીં. કુલ આંકડો આખા ઉત્પાદનને SFM ની બાજુમાં માપે છે, તેથી ઘણો ઓછો છે: ફોર્મેટ સંપૂર્ણ વંચાય છે, પણ Source Filmmaker હોવું એટલે આશરે 350 `Dme*` એલિમેન્ટ પ્રકારો, જેમાંથી એન્જિન 23 જાણે છે.
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> SFM શોધવું અને માઉન્ટ કરવું
 

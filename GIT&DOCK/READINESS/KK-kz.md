@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/KK-kz.svg" alt="Дайындық" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Релизге жалпы дайындық: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Релизге жалпы дайындық: 15%</b></p>
 
 Әр аймақ ашылады: не жұмыс істейді және не әлі жоқ. Пайыздар — SFM мүмкіндіктеріне қатысты баға.
+
+Әр пайыз — **сол саладағы SFM не істейтінімен салыстырылған сала**, жоспармен емес. Жалпы сан бүкіл өнімді SFM-мен қатар өлшейді, сондықтан әлдеқайда төмен: форматтар толық оқылады, бірақ Source Filmmaker болу — бұл шамамен 350 `Dme*` элемент түрі, оның 23-ін ғана қозғалтқыш біледі.
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> SFM-ді табу және жалғау
 

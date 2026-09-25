@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/TE-in.svg" alt="సిద్ధత" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>విడుదలకు మొత్తం సిద్ధత: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>విడుదలకు మొత్తం సిద్ధత: 15%</b></p>
 
 ప్రతి విభాగం విస్తరిస్తుంది: ఇప్పటికే ఏది పనిచేస్తుంది, ఏది ఇంకా లేదు. శాతాలు SFM సామర్థ్యాలకు సాపేక్షంగా అంచనా.
+
+ప్రతి శాతం **ఆ రంగంలో SFM చేసేదానితో పోల్చి ఆ రంగాన్ని** కొలుస్తుంది, ప్రణాళికతో కాదు. మొత్తం సంఖ్య ఉత్పత్తిని పూర్తిగా SFM పక్కన కొలుస్తుంది కాబట్టి చాలా తక్కువ: ఫార్మాట్లు పూర్తిగా చదవబడతాయి, కానీ Source Filmmaker కావడమంటే సుమారు 350 `Dme*` మూలక రకాలు, వాటిలో ఇంజిన్‌కు 23 తెలుసు.
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> SFM ను కనుగొని మౌంట్ చేయడం
 

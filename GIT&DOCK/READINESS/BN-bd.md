@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/BN-bd.svg" alt="প্রস্তুতি" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>রিলিজের জন্য সামগ্রিক প্রস্তুতি: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>রিলিজের জন্য সামগ্রিক প্রস্তুতি: 15%</b></p>
 
 প্রতিটি ক্ষেত্র খোলা যায়: কী ইতিমধ্যে কাজ করে আর কী এখনো নেই। শতাংশ SFM-এর সক্ষমতার তুলনায় একটি অনুমান।
+
+প্রতিটি শতাংশ **সেই ক্ষেত্রে SFM যা করে তার তুলনায় ক্ষেত্রটিকে** মাপে, পরিকল্পনার তুলনায় নয়। সামগ্রিক সংখ্যাটি পুরো পণ্যকে SFM-এর পাশে মাপে, তাই অনেক কম: ফরম্যাট পুরোপুরি পড়া যায়, কিন্তু Source Filmmaker হওয়া মানে প্রায় ৩৫০টি `Dme*` উপাদান ধরন, যার ২৩টি ইঞ্জিন জানে।
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> SFM খোঁজা ও মাউন্ট করা
 

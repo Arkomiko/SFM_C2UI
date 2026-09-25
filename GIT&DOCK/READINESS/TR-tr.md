@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/TR-tr.svg" alt="Hazırlık" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Yayın için genel hazırlık: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Yayın için genel hazırlık: 15%</b></p>
 
 Her alan açılabilir: neyin zaten çalıştığı ve neyin henüz olmadığı. Yüzdeler, SFM'nin yapabildiklerine göre bir tahmindir.
+
+Her yüzde **bir alanı, SFM'nin o alanda yaptığına göre** ölçer; planlanana göre değil. Genel rakam ürünün tamamını SFM'nin yanında ölçer ve çok daha düşüktür: biçimler eksiksiz okunuyor, ama Source Filmmaker olmak yaklaşık 350 `Dme*` öğe türü demek ve motor bunların 23'ünü biliyor.
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> SFM'yi bulma ve bağlama
 

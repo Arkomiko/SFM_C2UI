@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/NE-np.svg" alt="तयारी" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>रिलिजका लागि समग्र तयारी: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>रिलिजका लागि समग्र तयारी: 15%</b></p>
 
 हरेक क्षेत्र खुल्छ: के पहिले नै काम गर्छ र के अझै छैन। प्रतिशत SFM को क्षमताको तुलनामा अनुमान हो।
+
+हरेक प्रतिशतले **त्यो क्षेत्रमा SFM ले गर्ने कामसँग त्यो क्षेत्रलाई** नाप्छ, योजनासँग होइन। कुल अंकले सम्पूर्ण उत्पादनलाई SFM छेउमा नाप्छ, त्यसैले धेरै कम छ: ढाँचाहरू पूरै पढिन्छन्, तर Source Filmmaker हुनु भनेको करिब 350 `Dme*` तत्व प्रकार हो, जसमध्ये इन्जिनले 23 चिन्छ।
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> SFM खोज्ने र माउन्ट गर्ने
 

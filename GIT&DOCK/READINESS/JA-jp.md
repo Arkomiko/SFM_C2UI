@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/JA-jp.svg" alt="完成度" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>リリースへの全体的な完成度: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>リリースへの全体的な完成度: 15%</b></p>
 
 各領域を開くと、すでに動くものとまだないものが分かります。パーセントは SFM の機能に対する目安です。
+
+各パーセントは**その分野で SFM ができることに対する割合**であり、計画に対する割合ではありません。全体の数字は製品全体を SFM と並べて測るため、はるかに低くなります。フォーマットは完全に読めますが、Source Filmmaker であることは約 350 種類の `Dme*` 要素型を意味し、エンジンが知るのはそのうち 23 です。
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> SFM の検出とマウント
 

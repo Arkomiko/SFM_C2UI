@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/RU-ru.svg" alt="Готовность" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Общая готовность к релизу: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Общая готовность к релизу: 15%</b></p>
 
 Каждая область раскрывается: что уже работает и чего пока нет. Проценты — оценка относительно возможностей SFM.
+
+Каждый процент — это **область относительно того, что делает SFM в ней**, а не относительно задуманного. Общая цифра измеряет весь продукт целиком рядом с SFM и потому намного ниже: форматы читаются полностью, но быть Source Filmmaker'ом — это ещё около 350 типов элементов `Dme*`, из которых движок знает 23.
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> Поиск и монтирование SFM
 

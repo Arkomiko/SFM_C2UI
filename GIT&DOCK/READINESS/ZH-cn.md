@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/ZH-cn.svg" alt="完成度" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>整体发布就绪度：60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>整体发布就绪度：15%</b></p>
 
 每个领域都可以展开：已经能用的和暂时还没有的。百分比是相对于 SFM 能力的估计。
+
+每个百分比衡量的是**该领域相对于 SFM 在该领域所做的事**，而不是相对于计划。总体数字把整个产品与 SFM 并排衡量，因此低得多：格式已能完整读取，但要成为 Source Filmmaker 意味着约 350 种 `Dme*` 元素类型，而引擎只认识其中 23 种。
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> 查找并挂载 SFM
 

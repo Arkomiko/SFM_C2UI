@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/RO-md.svg" alt="Grad de pregătire" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Pregătire generală pentru lansare: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Pregătire generală pentru lansare: 15%</b></p>
 
 Fiecare zonă se deschide: ce funcționează deja și ce nu există încă. Procentele sunt o estimare față de posibilitățile SFM.
+
+Fiecare procent măsoară **un domeniu față de ce face SFM în el**, nu față de ce s-a plănuit. Cifra generală măsoară întregul produs lângă SFM și e mult mai mică: formatele se citesc integral, dar a fi Source Filmmaker înseamnă vreo 350 de tipuri de elemente `Dme*`, dintre care motorul cunoaște 23.
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> Găsirea și montarea SFM
 

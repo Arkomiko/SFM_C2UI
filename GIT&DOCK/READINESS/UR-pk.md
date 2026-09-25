@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/UR-pk.svg" alt="تیاری" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 15%</b></p>
 
 ہر حصہ کھلتا ہے: کیا پہلے سے کام کرتا ہے اور کیا ابھی نہیں۔ فیصد SFM کی صلاحیتوں کے مقابلے ایک اندازہ ہے۔
+
+ہر فیصد **اُس شعبے کو ناپتا ہے جو SFM اُس میں کرتا ہے**، منصوبے کو نہیں۔ مجموعی عدد پورے پروڈکٹ کو SFM کے پہلو میں ناپتا ہے اس لیے بہت کم ہے: فارمیٹ مکمل پڑھے جاتے ہیں، مگر Source Filmmaker ہونے کا مطلب تقریباً 350 `Dme*` عنصر اقسام ہیں، جن میں سے انجن 23 جانتا ہے۔
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> SFM تلاش کرنا اور ماؤنٹ کرنا
 

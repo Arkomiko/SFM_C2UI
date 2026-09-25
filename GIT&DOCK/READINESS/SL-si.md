@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/SL-si.svg" alt="Pripravljenost" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Skupna pripravljenost za izdajo: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Skupna pripravljenost za izdajo: 15%</b></p>
 
 Vsako področje se razpre: kaj že deluje in česa še ni. Odstotki so ocena glede na zmožnosti SFM.
+
+Vsak odstotek meri **področje glede na to, kar na njem zmore SFM**, ne glede na načrtovano. Skupna številka meri celoten izdelek ob SFM in je precej nižja: formati se berejo v celoti, a biti Source Filmmaker pomeni okoli 350 vrst elementov `Dme*`, od katerih jih pogon pozna 23.
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> Iskanje in priklop SFM
 

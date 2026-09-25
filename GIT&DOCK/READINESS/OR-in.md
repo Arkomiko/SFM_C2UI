@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/OR-in.svg" alt="ପ୍ରସ୍ତୁତି" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 15%</b></p>
 
 ପ୍ରତ୍ୟେକ କ୍ଷେତ୍ର ଖୋଲାଯାଏ: କଣ ପୂର୍ବରୁ କାମ କରେ ଓ କଣ ଏବେ ନାହିଁ। ପ୍ରତିଶତ SFM ର କ୍ଷମତା ତୁଳନାରେ ଆକଳନ।
+
+ପ୍ରତ୍ୟେକ ଶତାଂଶ **ସେହି କ୍ଷେତ୍ରରେ SFM ଯାହା କରେ ତା ସହ ସେହି କ୍ଷେତ୍ରକୁ** ମାପେ, ଯୋଜନା ସହ ନୁହେଁ। ସାମଗ୍ରିକ ସଂଖ୍ୟା ସମ୍ପୂର୍ଣ୍ଣ ଉତ୍ପାଦକୁ SFM ପାଖରେ ମାପେ ଓ ସେଥିପାଇଁ ବହୁ କମ୍: ଫର୍ମାଟ୍ ସମ୍ପୂର୍ଣ୍ଣ ପଢ଼ାଯାଏ, କିନ୍ତୁ Source Filmmaker ହେବା ମାନେ ପ୍ରାୟ 350 ଟି `Dme*` ଉପାଦାନ ପ୍ରକାର, ଯେଉଁଥିରୁ ଇଞ୍ଜିନ୍ 23 ଟି ଜାଣେ।
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> SFM ଖୋଜିବା ଓ ମାଉଣ୍ଟ କରିବା
 

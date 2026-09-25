@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/MR-in.svg" alt="तयारी" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>रिलीजसाठी एकूण तयारी: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>रिलीजसाठी एकूण तयारी: 15%</b></p>
 
 प्रत्येक क्षेत्र उघडता येते: काय आधीच काम करते आणि काय अजून नाही. टक्केवारी SFM च्या क्षमतांच्या तुलनेत अंदाज आहे.
+
+प्रत्येक टक्केवारी **त्या क्षेत्रात SFM काय करते याच्याशी त्या क्षेत्राची** तुलना करते, नियोजनाशी नाही. एकूण आकडा संपूर्ण उत्पादनाची SFM शेजारी तुलना करतो म्हणून तो खूपच कमी आहे: स्वरूपे पूर्णपणे वाचली जातात, पण Source Filmmaker असणे म्हणजे सुमारे 350 `Dme*` घटक प्रकार, त्यांपैकी इंजिनला 23 माहीत आहेत.
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> SFM शोधणे आणि माउंट करणे
 

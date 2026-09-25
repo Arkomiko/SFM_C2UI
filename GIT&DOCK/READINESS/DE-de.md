@@ -13,9 +13,11 @@
 
 <p align="center"><img src="../assets/readiness/areas/DE-de.svg" alt="Reifegrad" width="100%"></p>
 
-<p align="center"><img alt="60%" src="https://img.shields.io/badge/60%25-e0a800?style=flat-square"> <b>Gesamtreife für eine Veröffentlichung: 60%</b></p>
+<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Gesamtreife für eine Veröffentlichung: 15%</b></p>
 
 Jeder Bereich lässt sich aufklappen: was schon funktioniert und was noch fehlt. Die Prozente sind eine Einschätzung gegenüber dem, was SFM kann.
+
+Jeder Prozentwert misst **einen Bereich an dem, was SFM in diesem Bereich leistet**, nicht am Geplanten. Die Gesamtzahl misst das ganze Produkt neben SFM und liegt weit darunter: die Formate werden vollständig gelesen, aber Source Filmmaker zu sein heißt rund 350 `Dme*`-Elementtypen, von denen die Engine 23 kennt.
 
 ### <img alt="100%" src="https://img.shields.io/badge/100%25-66c0f4?style=flat-square"> SFM finden und einbinden
 

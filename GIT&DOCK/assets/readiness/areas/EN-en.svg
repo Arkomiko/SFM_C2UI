@@ -38,10 +38,10 @@
     <text x="24" y="77" font-size="12.5" font-weight="600" fill="#e6f0f8">Overall</text>
     <rect x="324" y="66" width="556" height="14" rx="7" fill="#0e1720"/>
     <g clip-path="url(#track)">
-      <rect x="324" y="66" width="333.6" height="14" rx="7" fill="url(#accent)" class="bar" style="animation-delay:.15s"/>
-      <rect x="324" y="66" width="333.6" height="14" rx="7" fill="url(#shine)" class="shine"/>
+      <rect x="324" y="66" width="83.4" height="14" rx="7" fill="url(#accent)" class="bar" style="animation-delay:.15s"/>
+      <rect x="324" y="66" width="83.4" height="14" rx="7" fill="url(#shine)" class="shine"/>
     </g>
-    <text x="936" y="79" font-size="15" font-weight="700" fill="#66c0f4" text-anchor="end">60%</text>
+    <text x="936" y="79" font-size="15" font-weight="700" fill="#66c0f4" text-anchor="end">15%</text>
     <line x1="24" y1="98" x2="936" y2="98" stroke="#2a475e"/>
   </g>
   <g class="row" style="animation-delay:0.30s">
