@@ -10,16 +10,18 @@ track and mutes the dialogue, music and effects it was made from.
     mix.rate, mix.channels, mix.samples      # array('h'), interleaved, -32768..32767
     mix.slice(Time.from_seconds(3), Time.from_seconds(5))
 
-Files are read with `parse_wav`: PCM 8, 16, 24 and 32 bit and 32-bit float,
-mono or stereo, any rate; they are resampled and spread to stereo on the way
-into the mix.  Everything here is standard library only.
+Files are read with `parse_wav`: PCM 8, 16, 24 and 32 bit, 32-bit float and
+Microsoft ADPCM (which some of Source's own sounds use), mono or stereo, any
+rate; they are resampled and spread to stereo on the way into the mix.  MP3 is
+not read - a session that names one is reported as a missing sound rather than
+played wrong.  Everything here is standard library only.
 """
 from __future__ import annotations
 
 import struct
 from array import array
 from dataclasses import dataclass, field
-from typing import Dict, Iterable, List, Optional, Protocol, Tuple
+from typing import Dict, List, Optional, Protocol
 
 from Core.API.dmx import Element, Time
 from Core.API.session import FilmClip, Session, SoundClip
@@ -136,9 +138,61 @@ def parse_wav(data: bytes, name: str = "sound.wav") -> Wave:
     elif tag == 3 and bits == 32:
         floats = array("f", payload[:len(payload) - len(payload) % 4])
         wave.samples = array("h", (max(-32768, min(32767, int(v * 32767))) for v in floats))
+    elif tag == 2:
+        wave.samples = _decode_ms_adpcm(payload, channels, fmt[4], name)
     else:
         raise ValueError(f"{name}: unsupported WAVE format tag {tag}, {bits} bits")
     return wave
+
+
+#: Microsoft ADPCM's fixed predictors, as the format defines them
+_ADPCM_COEFFICIENTS = ((256, 0), (512, -256), (0, 0), (192, 64), (240, 0), (460, -208), (392, -232))
+_ADPCM_STEPS = (230, 230, 230, 230, 307, 409, 512, 614, 768, 614, 512, 409, 307, 230, 230, 230)
+
+
+def _decode_ms_adpcm(payload: bytes, channels: int, block_size: int, name: str) -> array:
+    """Microsoft ADPCM (format tag 2) to 16-bit samples.
+
+    Source ships some of its sounds this way.  Each block starts with a predictor,
+    a delta and two samples per channel, then packs two four-bit nibbles per byte,
+    each nibble a correction on the prediction from the two samples before it.
+    """
+    out = array("h")
+    if block_size < 7 * channels:
+        raise ValueError(f"{name}: ADPCM block of {block_size} bytes is too small for {channels} channels")
+    for start in range(0, len(payload) - block_size + 1, block_size):
+        block = payload[start:start + block_size]
+        at = 0
+        predictor, delta, sample1, sample2 = [], [], [], []
+        for _channel in range(channels):
+            predictor.append(min(block[at], len(_ADPCM_COEFFICIENTS) - 1))
+            at += 1
+        for _channel in range(channels):
+            delta.append(struct.unpack_from("<h", block, at)[0])
+            at += 2
+        for _channel in range(channels):
+            sample1.append(struct.unpack_from("<h", block, at)[0])
+            at += 2
+        for _channel in range(channels):
+            sample2.append(struct.unpack_from("<h", block, at)[0])
+            at += 2
+        for channel in range(channels):                # the block opens with the two it carries
+            out.append(sample2[channel])
+        for channel in range(channels):
+            out.append(sample1[channel])
+        channel = 0
+        for byte in block[at:]:
+            for nibble in (byte >> 4, byte & 0x0F):
+                c0, c1 = _ADPCM_COEFFICIENTS[predictor[channel]]
+                signed = nibble - 16 if nibble > 7 else nibble
+                predicted = (sample1[channel] * c0 + sample2[channel] * c1) // 256 + signed * delta[channel]
+                value = max(-32768, min(32767, predicted))
+                out.append(value)
+                delta[channel] = max(16, (_ADPCM_STEPS[nibble] * delta[channel]) // 256)
+                sample2[channel] = sample1[channel]
+                sample1[channel] = value
+                channel = (channel + 1) % channels
+    return out
 
 
 @dataclass

@@ -7,7 +7,6 @@ stays portable - copy the folder to another disk and it keeps working.
 """
 from __future__ import annotations
 
-import os
 import shutil
 import uuid
 from pathlib import Path

@@ -341,3 +341,27 @@ def test_sound_clips_wav_and_mix():
     # the slice of a span past the mix is padded with silence and the wav is a valid file
     assert len(mix.slice(Time(19000), Time(21000))) == 1600 * 2 * 2          # 0.2 s of stereo 16-bit
     assert parse_wav(mix.wav_bytes()).frames == 16000
+
+
+def test_ms_adpcm_sounds_decode():
+    import struct
+    from Core.Code.sound import parse_wav
+    # one mono block: predictor 0 (coefficients 256, 0), delta 16, two samples, then nibbles
+    block_size = 7 + 4
+    block = bytes([0]) + struct.pack("<hhh", 16, 100, 50) + bytes([0x12, 0x80, 0x00, 0x77])
+    fmt = struct.pack("<HHIIHHH", 2, 1, 22050, 22050, block_size, 4, 32) + bytes(32)
+    data = (b"RIFF" + struct.pack("<I", 4 + 8 + len(fmt) + 8 + len(block)) + b"WAVE"
+            + b"fmt " + struct.pack("<I", len(fmt)) + fmt
+            + b"data" + struct.pack("<I", len(block)) + block)
+    wave = parse_wav(data, "adpcm.wav")
+    assert wave.rate == 22050 and wave.channels == 1
+    # the block opens with the two samples it carries, oldest first
+    assert wave.samples[0] == 50 and wave.samples[1] == 100
+    # then one sample per nibble: 8 nibbles in 4 bytes
+    assert wave.frames == 2 + 8
+    # the first nibble is 1: prediction 100 * 256 / 256 + 1 * 16 = 116
+    assert wave.samples[2] == 116
+    # a nibble above 7 is negative: 8 -> -8, so the next prediction drops
+    assert wave.samples[4] < wave.samples[3]
+    # every sample stays in range
+    assert all(-32768 <= v <= 32767 for v in wave.samples)

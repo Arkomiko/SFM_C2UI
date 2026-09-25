@@ -30,7 +30,7 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import ClassVar, List, Optional
 
-from .types import Availability, Mount, MountSet, ProbeResult
+from .types import Availability, MountSet, ProbeResult
 
 __all__ = ["SourceBridge", "BridgeInfo"]
 
