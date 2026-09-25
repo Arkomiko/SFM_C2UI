@@ -282,6 +282,26 @@ def test_material_candidates_use_the_model_folders():
     ]
 
 
+def test_a_material_that_steps_out_of_its_folder_is_resolved_first():
+    # the spy names a material as /../../effects/invulnfx_red; the steps have to be
+    # walked, or the name asked for is in no archive and the material never resolves
+    mdl = build_mdl(materials=("fakemat",),
+                    material_dirs=("models/player/spy/hwm/", "models/player/spy/"))
+    source, rel = _source(mdl, build_vvd(), build_vtx())
+    model = load_model(source, rel)
+    assert model.material_candidates("/../../effects/invulnfx_red") == [
+        "materials/models/player/effects/invulnfx_red.vmt",
+        "materials/models/effects/invulnfx_red.vmt",       # where the file really is
+    ]
+
+
+def test_a_material_cannot_climb_out_of_the_content_root():
+    mdl, vvd, vtx = build_triangle_model()
+    source, rel = _source(mdl, vvd, vtx)
+    model = load_model(source, rel)
+    assert model.material_candidates("../../../../etc/passwd") == []
+
+
 def test_missing_vertex_data_yields_bones_and_a_warning():
     source, rel = _source(build_mdl(), None, build_vtx())
     model = load_model(source, rel)

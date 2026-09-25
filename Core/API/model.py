@@ -24,6 +24,27 @@ from typing import Dict, List, Tuple
 __all__ = ["Bone", "Mesh", "Model", "ModelInfo", "FlexController", "FlexRule", "MeshFlex"]
 
 
+def _normalise(path: str) -> str:
+    """Collapse `.` and `..` in a content path, or return "" if it escapes the root.
+
+    Some models name a material with a way out of its own folder - the spy carries
+    `/../../effects/invulnfx_red` - and the engine walks that path before looking the
+    file up.  Leaving the steps in place means asking the content for a name that is
+    in no archive, so the material silently never resolves.
+    """
+    parts: list[str] = []
+    for part in path.replace("\\", "/").split("/"):
+        if not part or part == ".":
+            continue
+        if part == "..":
+            if not parts:
+                return ""
+            parts.pop()
+            continue
+        parts.append(part)
+    return "/".join(parts)
+
+
 @dataclass
 class FlexController:
     """A face control the model exposes: a name and the range its value spans."""
@@ -243,10 +264,11 @@ class Model:
         for folder in self.material_dirs:
             folder = folder.replace("\\", "/").strip("/")
             candidate = f"materials/{folder}/{material}.vmt" if folder else f"materials/{material}.vmt"
-            if candidate not in out:
+            candidate = _normalise(candidate)
+            if candidate and candidate not in out:
                 out.append(candidate)
-        fallback = f"materials/{material}.vmt"
-        if fallback not in out:
+        fallback = _normalise(f"materials/{material}.vmt")
+        if fallback and fallback not in out:
             out.append(fallback)
         return out
 
