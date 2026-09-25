@@ -39,6 +39,14 @@ _H_NUM_TEXTURES = 204
 _H_TEXTURE_INDEX = 208
 _H_NUM_CDTEXTURES = 212
 _H_CDTEXTURE_INDEX = 216
+#: the skin table: how many textures a family names, how many families, where they are
+_H_NUM_SKINREF = 220
+_H_NUM_SKINFAMILIES = 224
+_H_SKIN_INDEX = 228
+#: the skin table: how many textures a family names, how many families, where they are
+_H_NUM_SKINREF = 220
+_H_NUM_SKINFAMILIES = 224
+_H_SKIN_INDEX = 228
 _H_NUM_BODYPARTS = 232
 _H_BODYPART_INDEX = 236
 _H_NUM_FLEXDESC = 260
@@ -163,6 +171,8 @@ class MdlFile:
     body_parts: List[MdlBodyPart] = field(default_factory=list)
     material_names: List[str] = field(default_factory=list)
     material_dirs: List[str] = field(default_factory=list)
+    #: one row per skin: which texture each material slot takes when that skin is chosen
+    skin_families: List[List[int]] = field(default_factory=list)
     flex_descs: List[str] = field(default_factory=list)
     flex_controllers: List[FlexController] = field(default_factory=list)
     flex_rules: List[FlexRule] = field(default_factory=list)
@@ -200,12 +210,13 @@ def parse_mdl(data: bytes, name: str = "model.mdl") -> MdlFile:
     info.bone_count = len(bones)
     materials = _parse_materials(reader, warnings)
     dirs = _parse_material_dirs(reader, warnings)
+    skins = _parse_skins(reader, len(materials))
     parts = _parse_body_parts(reader, warnings)
     info.mesh_count = sum(len(m.meshes) for p in parts for m in p.models)
     descs, controllers, rules = _parse_flex_tables(reader, warnings)
 
     return MdlFile(info=info, bones=bones, body_parts=parts,
-                   material_names=materials, material_dirs=dirs, warnings=warnings,
+                   material_names=materials, material_dirs=dirs, skin_families=skins, warnings=warnings,
                    flex_descs=descs, flex_controllers=controllers, flex_rules=rules)
 
 
@@ -274,6 +285,29 @@ def _parse_materials(reader: Reader, warnings: List[str]) -> List[str]:
     out: List[str] = []
     for cur in reader.array(offset, count, _TEXTURE_STRIDE, "textures"):
         out.append(cur.string(0).replace("\\", "/").strip())
+    return out
+
+
+def _parse_skins(reader: Reader, textures: int) -> List[List[int]]:
+    """The skin table: `families` rows of `refs` texture indices.
+
+    A mesh names a material slot; the row of the chosen skin says which texture that
+    slot actually uses.  A model without the table gets the identity row, so asking
+    for skin 0 always works.
+    """
+    refs = reader.i32_at(_H_NUM_SKINREF)
+    families = reader.i32_at(_H_NUM_SKINFAMILIES)
+    offset = reader.i32_at(_H_SKIN_INDEX)
+    if refs <= 0 or families <= 0 or offset <= 0:
+        return [list(range(textures))] if textures else []
+    out: List[List[int]] = []
+    try:
+        reader.check(offset, refs * families * 2, "skin table")
+    except FormatError:
+        return [list(range(textures))] if textures else []
+    for family in range(families):
+        row = [reader.i16_at(offset + (family * refs + ref) * 2) for ref in range(refs)]
+        out.append([index if 0 <= index < max(textures, 1) else 0 for index in row])
     return out
 
 

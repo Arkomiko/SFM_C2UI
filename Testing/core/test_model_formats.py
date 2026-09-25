@@ -445,3 +445,34 @@ def test_tangents_follow_the_vertices_through_fixups():
     assert len(vvd.tangents) == 16
     assert [vvd.tangents[i * 4] for i in range(4)] == [1.0, 1.0, 1.0, 1.0]
     assert [vvd.tangents[i * 4 + 3] for i in range(4)] == [1.0, -1.0, 1.0, -1.0]     # stored 2, 3, 0, 1
+
+
+# ------------------------------------------------------------------- skins
+def test_the_skin_table_is_read_as_one_row_per_skin():
+    # the table sits at header offset 228: numskinref texture indices per family
+    mdl = parse_mdl(build_mdl(materials=("red", "blue", "glass"),
+                              skins=((0, 2), (1, 2))), "fake.mdl")
+    assert mdl.skin_families == [[0, 2], [1, 2]]
+
+
+def test_a_model_without_a_skin_table_gets_the_identity_row():
+    # asking for skin 0 must work on every model, table or not
+    mdl = parse_mdl(build_mdl(materials=("red", "blue")), "fake.mdl")
+    assert mdl.skin_families == [[0, 1]]
+
+
+def test_an_index_outside_the_texture_list_falls_back_to_the_first():
+    mdl = parse_mdl(build_mdl(materials=("red",), skins=((0,), (7,))), "fake.mdl")
+    assert mdl.skin_families == [[0], [0]]
+
+
+def test_the_session_s_skin_chooses_the_material_a_mesh_draws_with():
+    # this is how a BLU character is a BLU one: the session sets skin 1
+    source, rel = _source(build_mdl(materials=("red", "blue"), skins=((0,), (1,))),
+                          build_vvd(), build_vtx())
+    model = load_model(source, rel)
+    assert model.skin_families == [[0], [1]]
+    mesh = model.meshes[0]
+    assert model.material_for(mesh, 0) == "red"
+    assert model.material_for(mesh, 1) == "blue"
+    assert model.material_for(mesh, 9) == "red"                     # a skin that does not exist

@@ -353,7 +353,7 @@ def build_shot_scene(source: SceneSource, shot: FilmClip, map_name: str = "") ->
         if not rel or rel.startswith("*"):
             continue                              # a map brush, not a file
         try:
-            loaded = _load(source, scene, rel, 0, node.body)
+            loaded = _load(source, scene, rel, 0, node.body, node.skin)
         except FormatError as exc:
             scene.warnings.append(f"{node.name}: {exc}")
             continue
@@ -428,7 +428,7 @@ def _load_map(source: SceneSource, scene: Scene, name: str) -> None:
     scene.sky = load_sky(source, scene, bsp.sky_name)
     for prop in bsp.static_props:
         try:
-            prop_model = _load(source, scene, prop.model, 0, 0)
+            prop_model = _load(source, scene, prop.model, 0, 0, prop.skin)
         except FormatError as exc:
             scene.warnings.append(f"{prop.model}: {exc}")
             continue
@@ -728,10 +728,12 @@ def _apply_face(instance: SceneInstance) -> None:
     instance.morph_version += 1
 
 
-def _load(source: SceneSource, scene: Scene, rel: str, lod: int, body: int) -> LoadedModel:
+def _load(source: SceneSource, scene: Scene, rel: str, lod: int, body: int, skin: int = 0) -> LoadedModel:
     key = rel.replace("\\", "/").lower()
     if body:
         key = f"{key}#{body}"                     # a different body group choice is a different mesh set
+    if skin:
+        key = f"{key}@{skin}"                     # and a different skin a different set of materials
     loaded = scene.models.get(key)
     if loaded is not None:
         return loaded
@@ -739,16 +741,16 @@ def _load(source: SceneSource, scene: Scene, rel: str, lod: int, body: int) -> L
     loaded = LoadedModel(rel=key, model=model)
     scene.warnings.extend(f"{key}: {w}" for w in model.warnings)
     for mesh in model.meshes:
-        loaded.items.append(_item_for(source, scene, model, mesh))
+        loaded.items.append(_item_for(source, scene, model, mesh, skin))
     # opaque first, then blended surfaces (which rely on what is already drawn)
     loaded.items.sort(key=lambda item: item.blended)
     scene.models[key] = loaded
     return loaded
 
 
-def _item_for(source: SceneSource, scene: Scene, model: Model, mesh: Mesh) -> DrawItem:
+def _item_for(source: SceneSource, scene: Scene, model: Model, mesh: Mesh, skin: int = 0) -> DrawItem:
     item = DrawItem(mesh=mesh)
-    material = _resolve_material(source, scene, model, mesh.material)
+    material = _resolve_material(source, scene, model, model.material_for(mesh, skin))
     if material is None:
         scene.warnings.append(f"no material for {mesh.material!r}")
         return item

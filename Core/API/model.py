@@ -157,6 +157,9 @@ class Model:
     material_names: List[str] = field(default_factory=list)
     #: folders to search for those materials, from the model's cdtextures
     material_dirs: List[str] = field(default_factory=list)
+    #: the skin table: one row per skin, each naming the texture every slot takes.
+    #: A session's `skin` picks the row - that is how a BLU character is a BLU one
+    skin_families: List[List[int]] = field(default_factory=list)
     #: face controls, targets and the rules joining them; empty for most models
     flex_controllers: List[FlexController] = field(default_factory=list)
     flex_descs: List[str] = field(default_factory=list)
@@ -210,6 +213,22 @@ class Model:
     def flex_controller_map(self) -> Dict[str, int]:
         """Flex controller name to index."""
         return {c.name: i for i, c in enumerate(self.flex_controllers)}
+
+    def material_for(self, mesh: "Mesh", skin: int = 0) -> str:
+        """The material a mesh draws with under `skin`.
+
+        The mesh names a slot; the skin's row says which texture that slot takes.
+        Falls back to the mesh's own material when the model has no table, which is
+        what most props are.
+        """
+        if not self.skin_families or not self.material_names:
+            return mesh.material
+        row = self.skin_families[skin] if 0 <= skin < len(self.skin_families) else self.skin_families[0]
+        slot = mesh.material_index
+        if not 0 <= slot < len(row):
+            return mesh.material
+        index = row[slot]
+        return self.material_names[index] if 0 <= index < len(self.material_names) else mesh.material
 
     def material_candidates(self, material: str) -> List[str]:
         """Content-relative paths to try for a material, best first.

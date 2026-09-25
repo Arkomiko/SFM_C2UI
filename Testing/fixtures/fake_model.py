@@ -73,6 +73,7 @@ def build_mdl(name: str = "test/fake.mdl",
               bones: Sequence[str] = ("root", "child"),
               materials: Sequence[str] = ("fakemat",),
               material_dirs: Sequence[str] = ("models/test/",),
+              skins: Sequence[Sequence[int]] = (),
               vertex_count: int = 4,
               checksum: int = 0x1234,
               version: int = MDL_VERSION) -> bytes:
@@ -97,7 +98,10 @@ def build_mdl(name: str = "test/fake.mdl",
     texture_index_at = b.i32(0)                           # 208
     b.i32(len(material_dirs))                             # 212 numcdtextures
     cd_index_at = b.i32(0)                                # 216
-    b.pad(12)                                             # 220 skin table
+    skin_refs = len(skins[0]) if skins else 0             # 220 skin table
+    b.i32(skin_refs)
+    b.i32(len(skins))
+    skin_index_at = b.i32(0)
     b.i32(1)                                              # 232 numbodyparts
     bodypart_index_at = b.i32(0)                          # 236
     b.pad(120)                                            # remainder of the header
@@ -149,6 +153,14 @@ def build_mdl(name: str = "test/fake.mdl",
     for slot, folder in zip(cd_slots, material_dirs):
         b.patch(slot, len(b))
         b.cstring(folder)
+
+    # ---- the skin table: one row of texture indices per skin --------------
+    if skins:
+        b.align()
+        b.patch(skin_index_at, len(b))
+        for row in skins:
+            for index in row:
+                b.write(struct.pack("<h", index))
 
     # ---- body part -> model -> mesh --------------------------------------
     b.align()
