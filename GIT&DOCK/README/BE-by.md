@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/BE-by.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/%D1%80%D0%B0%D1%81%D0%BF%D1%80%D0%B0%D1%86%D0%BE%D1%9E%D0%BA%D0%B0_%D0%BF%D1%80%D1%8B%D0%BF%D1%8B%D0%BD%D0%B5%D0%BD%D0%B0-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81-%D0%BF%D1%80%D1%8D--%D0%B0%D0%BB%D1%8C%D1%84%D0%B0-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — рэдактар Source Filmmaker у сучаснай абалонцы: той самы кантэнт, той самы фармат сесій, тая самая мадэль даных, інтэрфейс у духу бібліятэкі Steam і рэдактара Unreal Engine 5.</p>
+
+> [!IMPORTANT]
+> **Распрацоўка прыпынена.** Рэпазіторый застаецца адкрытым: код, дакументацыя і гісторыя на месцы, усё апісанае ніжэй працуе так, як апісана. Лічбы гатоўнасці, issues і дарожная карта адлюстроўваюць стан на момант паўзы.
 
 ---
 

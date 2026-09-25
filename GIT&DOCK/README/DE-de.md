@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/DE-de.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/Entwicklung_pausiert-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/status-pre--alpha-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — der Source-Filmmaker-Editor in einer modernen Hülle: derselbe Inhalt, dasselbe Sitzungsformat, dasselbe Datenmodell, eine Oberfläche im Geist der Steam-Bibliothek und des Unreal-Engine-5-Editors.</p>
+
+> [!IMPORTANT]
+> **Die Entwicklung ist pausiert.** Das Repository bleibt offen: Code, Dokumentation und Historie sind vorhanden, und alles unten Beschriebene funktioniert wie beschrieben. Die Bereitschaftszahlen, die Issues und die Roadmap geben den Stand zum Zeitpunkt der Pause wieder.
 
 ---
 

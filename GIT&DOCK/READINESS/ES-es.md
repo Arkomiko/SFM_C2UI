@@ -15,6 +15,9 @@
 
 <p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Preparación general para el lanzamiento: 15%</b></p>
 
+> [!IMPORTANT]
+> **El desarrollo está en pausa.** El repositorio sigue abierto: el código, la documentación y el historial están aquí, y todo lo descrito más abajo funciona como se describe. Las cifras de preparación, las incidencias y la hoja de ruta reflejan el estado en el momento de la pausa.
+
 Cada área se despliega: qué funciona ya y qué no existe todavía. Los porcentajes son una estimación frente a lo que puede hacer SFM.
 
 Cada porcentaje mide **un área frente a lo que SFM hace en ella**, no frente a lo planeado. La cifra global mide todo el producto junto a SFM y es mucho más baja: los formatos se leen por completo, pero ser Source Filmmaker son unos 350 tipos de elementos `Dme*`, de los que el motor conoce 23.

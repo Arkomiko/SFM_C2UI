@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/UR-pk.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/%D8%AA%D8%B1%D9%82%DB%8C_%D8%B1%D9%88%DA%A9_%D8%AF%DB%8C_%DA%AF%D8%A6%DB%8C-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/%D8%AD%D8%A7%D9%84%D8%AA-%D9%BE%D8%B1%DB%8C--%D8%A7%D9%84%D9%81%D8%A7-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — جدید خول میں Source Filmmaker کا ایڈیٹر: وہی مواد، وہی سیشن فارمیٹ، وہی ڈیٹا ماڈل، اور Steam لائبریری و Unreal Engine 5 ایڈیٹر کے انداز کا انٹرفیس۔</p>
+
+> [!IMPORTANT]
+> **ترقی فی الحال روک دی گئی ہے۔** ریپازٹری کھلی رہتی ہے: کوڈ، دستاویزات اور تاریخ سب یہیں ہیں، اور نیچے بیان کردہ ہر چیز بیان کے مطابق کام کرتی ہے۔ تیاری کے اعداد، issues اور روڈ میپ وقفے کے وقت کی حالت دکھاتے ہیں۔
 
 ---
 

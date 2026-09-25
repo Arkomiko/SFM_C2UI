@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/SV-se.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/utvecklingen_pausad-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/status-pre--alpha-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — Source Filmmakers redigerare i ett modernt skal: samma innehåll, samma sessionsformat, samma datamodell, ett gränssnitt i Steam-bibliotekets och Unreal Engine 5-redigerarens anda.</p>
+
+> [!IMPORTANT]
+> **Utvecklingen är pausad.** Förrådet förblir öppet: koden, dokumentationen och historiken finns kvar, och allt som beskrivs nedan fungerar som beskrivet. Färdighetssiffrorna, ärendena och färdplanen visar läget vid pausen.
 
 ---
 

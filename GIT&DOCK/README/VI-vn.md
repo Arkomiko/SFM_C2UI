@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/VI-vn.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/t%E1%BA%A1m_d%E1%BB%ABng_ph%C3%A1t_tri%E1%BB%83n-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/tr%E1%BA%A1ng_th%C3%A1i-ti%E1%BB%81n--alpha-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — trình biên tập Source Filmmaker trong một lớp vỏ hiện đại: cùng nội dung, cùng định dạng phiên, cùng mô hình dữ liệu, giao diện theo tinh thần thư viện Steam và trình biên tập Unreal Engine 5.</p>
+
+> [!IMPORTANT]
+> **Việc phát triển đang tạm dừng.** Kho mã vẫn mở: mã nguồn, tài liệu và lịch sử đều còn đây, và mọi điều mô tả bên dưới hoạt động đúng như mô tả. Các con số mức hoàn thiện, issues và lộ trình phản ánh trạng thái tại thời điểm tạm dừng.
 
 ---
 

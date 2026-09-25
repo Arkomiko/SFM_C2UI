@@ -15,6 +15,9 @@
 
 <p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Relizga umumiy tayyorlik: 15%</b></p>
 
+> [!IMPORTANT]
+> **Ishlanma vaqtincha to'xtatildi.** Ombor ochiq qoladi: kod, hujjatlar va tarix shu yerda, quyida tasvirlangan hamma narsa tasvirlanganidek ishlaydi. Tayyorlik raqamlari, issues va yo'l xaritasi to'xtatilgan paytdagi holatni ko'rsatadi.
+
 Har bir soha ochiladi: nima allaqachon ishlaydi va nima hali yoʻq. Foizlar — SFM imkoniyatlariga nisbatan baho.
 
 Har bir foiz **shu sohada SFM nima qilishiga nisbatan sohani** o'lchaydi, rejaga nisbatan emas. Umumiy raqam butun mahsulotni SFM yonida o'lchaydi, shuning uchun ancha past: formatlar to'liq o'qiladi, ammo Source Filmmaker bo'lish — bu taxminan 350 ta `Dme*` element turi, ulardan dvigatel 23 tasini biladi.

@@ -15,6 +15,9 @@
 
 <p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Avanzamento complessivo verso il rilascio: 15%</b></p>
 
+> [!IMPORTANT]
+> **Lo sviluppo è in pausa.** Il repository resta aperto: il codice, la documentazione e la cronologia sono qui, e tutto quanto descritto sotto funziona come descritto. I numeri di avanzamento, le issue e la roadmap riflettono lo stato al momento della pausa.
+
 Ogni area si espande: cosa funziona già e cosa non c'è ancora. Le percentuali sono una stima rispetto a ciò che sa fare SFM.
 
 Ogni percentuale misura **un'area rispetto a quello che SFM fa in quell'area**, non rispetto a quanto previsto. La cifra complessiva misura l'intero prodotto accanto a SFM ed è molto più bassa: i formati si leggono per intero, ma essere Source Filmmaker significa circa 350 tipi di elementi `Dme*`, dei quali il motore ne conosce 23.

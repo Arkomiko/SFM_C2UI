@@ -15,6 +15,9 @@
 
 <p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Skupna pripravljenost za izdajo: 15%</b></p>
 
+> [!IMPORTANT]
+> **Razvoj je začasno ustavljen.** Repozitorij ostaja odprt: koda, dokumentacija in zgodovina so tu, vse spodaj opisano deluje tako, kot je opisano. Številke pripravljenosti, prijave in načrt odražajo stanje ob ustavitvi.
+
 Vsako področje se razpre: kaj že deluje in česa še ni. Odstotki so ocena glede na zmožnosti SFM.
 
 Vsak odstotek meri **področje glede na to, kar na njem zmore SFM**, ne glede na načrtovano. Skupna številka meri celoten izdelek ob SFM in je precej nižja: formati se berejo v celoti, a biti Source Filmmaker pomeni okoli 350 vrst elementov `Dme*`, od katerih jih pogon pozna 23.

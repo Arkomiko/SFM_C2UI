@@ -15,6 +15,9 @@
 
 <p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Total mognad för release: 15%</b></p>
 
+> [!IMPORTANT]
+> **Utvecklingen är pausad.** Förrådet förblir öppet: koden, dokumentationen och historiken finns kvar, och allt som beskrivs nedan fungerar som beskrivet. Färdighetssiffrorna, ärendena och färdplanen visar läget vid pausen.
+
 Varje område kan fällas ut: vad som redan fungerar och vad som inte finns än. Procenten är en uppskattning mot vad SFM kan.
 
 Varje procenttal mäter **ett område mot vad SFM gör på det området**, inte mot vad som planerats. Den totala siffran mäter hela produkten bredvid SFM och är betydligt lägre: formaten läses fullt ut, men att vara Source Filmmaker innebär omkring 350 `Dme*`-elementtyper, varav motorn känner 23.

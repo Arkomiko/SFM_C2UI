@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/KO-kr.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/%EA%B0%9C%EB%B0%9C_%EC%9D%BC%EC%8B%9C_%EC%A4%91%EB%8B%A8-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/%EC%83%81%ED%83%9C-%ED%94%84%EB%A6%AC--%EC%95%8C%ED%8C%8C-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — 현대적인 셸에 담은 Source Filmmaker 편집기: 같은 콘텐츠, 같은 세션 형식, 같은 데이터 모델에 Steam 라이브러리와 Unreal Engine 5 편집기 분위기의 인터페이스.</p>
+
+> [!IMPORTANT]
+> **개발이 일시 중단되었습니다.** 저장소는 계속 열려 있습니다. 코드, 문서, 기록이 모두 그대로 있고 아래에 적힌 내용은 적힌 대로 동작합니다. 완성도 수치와 이슈, 로드맵은 중단 시점의 상태를 보여 줍니다.
 
 ---
 

@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/KK-kz.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/%D3%99%D0%B7%D1%96%D1%80%D0%BB%D0%B5%D1%83_%D1%82%D0%BE%D2%9B%D1%82%D0%B0%D1%82%D1%8B%D0%BB%D0%B4%D1%8B-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/%D0%BA%D2%AF%D0%B9%D1%96-%D0%BF%D1%80%D0%B5--%D0%B0%D0%BB%D1%8C%D1%84%D0%B0-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — заманауи қабықтағы Source Filmmaker редакторы: сол контент, сол сессия форматы, сол деректер моделі, Steam кітапханасы мен Unreal Engine 5 редакторы рухындағы интерфейс.</p>
+
+> [!IMPORTANT]
+> **Әзірлеу уақытша тоқтатылды.** Репозиторий ашық қалады: код, құжаттама және тарих орнында, төменде сипатталғанның бәрі сипатталғандай жұмыс істейді. Дайындық сандары, issues және жол картасы үзіліс сәтіндегі жағдайды көрсетеді.
 
 ---
 

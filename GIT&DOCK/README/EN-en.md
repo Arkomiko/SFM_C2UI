@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/EN-en.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/development_paused-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/status-pre--alpha-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — the Source Filmmaker editor in a modern shell: the same content, the same session format, the same data model, with an interface in the spirit of the Steam library and the Unreal Engine 5 editor.</p>
+
+> [!IMPORTANT]
+> **Development is paused.** The repository stays open: the code, the documentation and the history are all here, and everything described below works as described. The readiness figures, the issues and the roadmap reflect the state at the moment of the pause.
 
 ---
 

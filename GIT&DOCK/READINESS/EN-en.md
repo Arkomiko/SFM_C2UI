@@ -15,6 +15,9 @@
 
 <p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Overall readiness for release: 15%</b></p>
 
+> [!IMPORTANT]
+> **Development is paused.** The repository stays open: the code, the documentation and the history are all here, and everything described below works as described. The readiness figures, the issues and the roadmap reflect the state at the moment of the pause.
+
 Each area expands: what already works and what does not yet. The percentages are an estimate against what SFM can do.
 
 Each percentage measures **an area against what SFM does in that area**, not against what was planned. The overall figure measures the whole product next to SFM and is far lower: the formats are read in full, but being Source Filmmaker means some 350 `Dme*` element types, of which the engine knows 23.

@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/JA-jp.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E3%81%AF%E4%B8%80%E6%99%82%E5%81%9C%E6%AD%A2-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/%E7%8A%B6%E6%85%8B-%E3%83%97%E3%83%AC--%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — は、モダンなシェルに収めた Source Filmmaker のエディタです。同じコンテンツ、同じセッション形式、同じデータモデルに、Steam ライブラリと Unreal Engine 5 エディタの雰囲気を持つインターフェースを組み合わせています。</p>
+
+> [!IMPORTANT]
+> **開発は一時停止しています。** リポジトリは公開のままです。コード、ドキュメント、履歴はそのままで、以下に書かれていることは書かれたとおりに動きます。完成度の数字、issue、ロードマップは停止時点の状態を示しています。
 
 ---
 

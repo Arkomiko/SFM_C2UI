@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/SL-si.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/razvoj_je_ustavljen-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/stanje-pred--alfa-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — urejevalnik Source Filmmaker v sodobni lupini: ista vsebina, isti format seje, isti podatkovni model, vmesnik v duhu knjižnice Steam in urejevalnika Unreal Engine 5.</p>
+
+> [!IMPORTANT]
+> **Razvoj je začasno ustavljen.** Repozitorij ostaja odprt: koda, dokumentacija in zgodovina so tu, vse spodaj opisano deluje tako, kot je opisano. Številke pripravljenosti, prijave in načrt odražajo stanje ob ustavitvi.
 
 ---
 

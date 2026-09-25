@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/TA-in.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/%E0%AE%89%E0%AE%B0%E0%AF%81%E0%AE%B5%E0%AE%BE%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D_%E0%AE%A8%E0%AE%BF%E0%AE%B1%E0%AF%81%E0%AE%A4%E0%AF%8D%E0%AE%A4%E0%AE%BF_%E0%AE%B5%E0%AF%88%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%9F%E0%AF%8D%E0%AE%9F%E0%AF%81%E0%AE%B3%E0%AF%8D%E0%AE%B3%E0%AE%A4%E0%AF%81-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/%E0%AE%A8%E0%AE%BF%E0%AE%B2%E0%AF%88-%E0%AE%AE%E0%AF%81%E0%AE%A9%E0%AF%8D--%E0%AE%86%E0%AE%B2%E0%AF%8D%E0%AE%AA%E0%AE%BE-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — நவீன ஓட்டில் Source Filmmaker எடிட்டர்: அதே உள்ளடக்கம், அதே அமர்வு வடிவம், அதே தரவு மாதிரி, Steam நூலகம் மற்றும் Unreal Engine 5 எடிட்டர் பாணியிலான இடைமுகம்.</p>
+
+> [!IMPORTANT]
+> **உருவாக்கம் தற்காலிகமாக நிறுத்தி வைக்கப்பட்டுள்ளது.** களஞ்சியம் திறந்தே இருக்கும்: நிரல், ஆவணங்கள், வரலாறு அனைத்தும் இங்கே உள்ளன; கீழே விவரிக்கப்பட்டவை விவரித்தபடியே இயங்குகின்றன. தயார்நிலை எண்கள், issues, திட்ட வரைபடம் ஆகியவை நிறுத்திய தருணத்தின் நிலையைக் காட்டுகின்றன.
 
 ---
 

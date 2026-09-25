@@ -15,6 +15,9 @@
 
 <p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Yayın için genel hazırlık: 15%</b></p>
 
+> [!IMPORTANT]
+> **Geliştirme duraklatıldı.** Depo açık kalıyor: kod, belgeler ve geçmiş burada duruyor ve aşağıda anlatılan her şey anlatıldığı gibi çalışıyor. Hazırlık sayıları, konular ve yol haritası duraklama anındaki durumu gösteriyor.
+
 Her alan açılabilir: neyin zaten çalıştığı ve neyin henüz olmadığı. Yüzdeler, SFM'nin yapabildiklerine göre bir tahmindir.
 
 Her yüzde **bir alanı, SFM'nin o alanda yaptığına göre** ölçer; planlanana göre değil. Genel rakam ürünün tamamını SFM'nin yanında ölçer ve çok daha düşüktür: biçimler eksiksiz okunuyor, ama Source Filmmaker olmak yaklaşık 350 `Dme*` öğe türü demek ve motor bunların 23'ünü biliyor.

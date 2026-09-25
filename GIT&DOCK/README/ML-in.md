@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/ML-in.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/%E0%B4%B5%E0%B4%BF%E0%B4%95%E0%B4%B8%E0%B4%A8%E0%B4%82_%E0%B4%A4%E0%B4%BE%E0%B5%BD%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B4%BE%E0%B4%B2%E0%B4%BF%E0%B4%95%E0%B4%AE%E0%B4%BE%E0%B4%AF%E0%B4%BF_%E0%B4%A8%E0%B4%BF%E0%B5%BC%E0%B4%A4%E0%B5%8D%E0%B4%A4%E0%B4%BF-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/%E0%B4%A8%E0%B4%BF%E0%B4%B2-%E0%B4%AA%E0%B5%8D%E0%B4%B0%E0%B5%80--%E0%B4%86%E0%B5%BD%E0%B4%AB-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — ആധുനിക ഷെല്ലിലുള്ള Source Filmmaker എഡിറ്റർ: അതേ ഉള്ളടക്കം, അതേ സെഷൻ ഫോർമാറ്റ്, അതേ ഡേറ്റാ മോഡൽ, Steam ലൈബ്രറിയുടെയും Unreal Engine 5 എഡിറ്ററിന്റെയും ശൈലിയിലുള്ള ഇന്റർഫേസ്.</p>
+
+> [!IMPORTANT]
+> **വികസനം താൽക്കാലികമായി നിർത്തിവച്ചിരിക്കുന്നു.** ശേഖരം തുറന്നിരിക്കും: കോഡും രേഖകളും ചരിത്രവും എല്ലാം ഇവിടെയുണ്ട്, താഴെ വിവരിച്ചതെല്ലാം വിവരിച്ചതുപോലെ പ്രവർത്തിക്കുന്നു. സന്നദ്ധതാ കണക്കുകളും issues-ഉം റോഡ്‌മാപ്പും നിർത്തിയ നിമിഷത്തിലെ അവസ്ഥ കാണിക്കുന്നു.
 
 ---
 

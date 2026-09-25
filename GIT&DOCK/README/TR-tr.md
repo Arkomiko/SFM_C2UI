@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/TR-tr.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/geli%C5%9Ftirme_duraklat%C4%B1ld%C4%B1-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/durum-%C3%B6n--alfa-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — modern bir kabuk içinde Source Filmmaker düzenleyicisi: aynı içerik, aynı oturum biçimi, aynı veri modeli, Steam kitaplığı ve Unreal Engine 5 düzenleyicisi ruhunda bir arayüz.</p>
+
+> [!IMPORTANT]
+> **Geliştirme duraklatıldı.** Depo açık kalıyor: kod, belgeler ve geçmiş burada duruyor ve aşağıda anlatılan her şey anlatıldığı gibi çalışıyor. Hazırlık sayıları, konular ve yol haritası duraklama anındaki durumu gösteriyor.
 
 ---
 

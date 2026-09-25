@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/PL-pl.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/rozw%C3%B3j_wstrzymany-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/status-pre--alpha-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — edytor Source Filmmaker w nowoczesnej powłoce: ta sama zawartość, ten sam format sesji, ten sam model danych, interfejs w duchu biblioteki Steam i edytora Unreal Engine 5.</p>
+
+> [!IMPORTANT]
+> **Rozwój jest wstrzymany.** Repozytorium pozostaje otwarte: kod, dokumentacja i historia są na miejscu, a wszystko opisane poniżej działa tak, jak opisano. Liczby gotowości, zgłoszenia i mapa drogowa odzwierciedlają stan z chwili wstrzymania.
 
 ---
 

@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/BN-bd.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%A8%E0%A6%AF%E0%A6%BC%E0%A6%A8_%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%97%E0%A6%BF%E0%A6%A4-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BF--%E0%A6%86%E0%A6%B2%E0%A6%AB%E0%A6%BE-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — আধুনিক খোলসে Source Filmmaker-এর এডিটর: একই কনটেন্ট, একই সেশন ফরম্যাট, একই ডেটা মডেল, আর Steam লাইব্রেরি ও Unreal Engine 5 এডিটরের ধাঁচের ইন্টারফেস।</p>
+
+> [!IMPORTANT]
+> **উন্নয়ন আপাতত স্থগিত।** রিপোজিটরি খোলা থাকছে: কোড, নথি ও ইতিহাস সবই আছে, এবং নিচে যা বর্ণনা করা হয়েছে তা বর্ণনামতোই কাজ করে। প্রস্তুতির সংখ্যা, issues ও রোডম্যাপ বিরতির মুহূর্তের অবস্থা দেখায়।
 
 ---
 

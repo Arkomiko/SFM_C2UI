@@ -15,6 +15,9 @@
 
 <p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Ogólna gotowość do wydania: 15%</b></p>
 
+> [!IMPORTANT]
+> **Rozwój jest wstrzymany.** Repozytorium pozostaje otwarte: kod, dokumentacja i historia są na miejscu, a wszystko opisane poniżej działa tak, jak opisano. Liczby gotowości, zgłoszenia i mapa drogowa odzwierciedlają stan z chwili wstrzymania.
+
 Każdy obszar można rozwinąć: co już działa, a czego jeszcze nie ma. Procenty to ocena względem możliwości SFM.
 
 Każdy procent mierzy **obszar wobec tego, co robi w nim SFM**, a nie wobec planu. Liczba ogólna mierzy cały produkt obok SFM i jest dużo niższa: formaty czytane są w całości, ale być Source Filmmakerem to około 350 typów elementów `Dme*`, z których silnik zna 23.

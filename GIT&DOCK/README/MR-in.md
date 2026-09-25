@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/MR-in.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/%E0%A4%B5%E0%A4%BF%E0%A4%95%E0%A4%BE%E0%A4%B8_%E0%A4%A5%E0%A4%BE%E0%A4%82%E0%A4%AC%E0%A4%B5%E0%A4%B2%E0%A4%BE_%E0%A4%86%E0%A4%B9%E0%A5%87-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/%E0%A4%B8%E0%A5%8D%E0%A4%A5%E0%A4%BF%E0%A4%A4%E0%A5%80-%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%80--%E0%A4%85%E0%A4%B2%E0%A5%8D%E0%A4%AB%E0%A4%BE-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — आधुनिक कवचातील Source Filmmaker चा एडिटर: तोच कंटेंट, तोच सेशन फॉरमॅट, तेच डेटा मॉडेल, आणि Steam लायब्ररी व Unreal Engine 5 एडिटरच्या शैलीतील इंटरफेस.</p>
+
+> [!IMPORTANT]
+> **विकास तात्पुरता थांबवला आहे.** रिपॉझिटरी खुली राहते: कोड, दस्तऐवज आणि इतिहास सगळे इथेच आहेत, आणि खाली वर्णन केलेले सर्व वर्णनाप्रमाणेच चालते. तयारीचे आकडे, issues आणि रोडमॅप थांबण्याच्या क्षणीची स्थिती दाखवतात.
 
 ---
 

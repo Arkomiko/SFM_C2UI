@@ -15,6 +15,9 @@
 
 <p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Avancement global vers la sortie : 15%</b></p>
 
+> [!IMPORTANT]
+> **Le développement est en pause.** Le dépôt reste ouvert : le code, la documentation et l'historique sont là, et tout ce qui est décrit plus bas fonctionne comme décrit. Les chiffres d'avancement, les tickets et la feuille de route reflètent l'état au moment de la pause.
+
 Chaque domaine se déplie : ce qui fonctionne déjà et ce qui n'existe pas encore. Les pourcentages sont une estimation par rapport à ce que sait faire SFM.
 
 Chaque pourcentage mesure **un domaine par rapport à ce que SFM y fait**, non par rapport à ce qui était prévu. Le chiffre global mesure tout le produit à côté de SFM et reste bien plus bas : les formats sont lus intégralement, mais être Source Filmmaker, c'est quelque 350 types d'éléments `Dme*`, dont le moteur en connaît 23.

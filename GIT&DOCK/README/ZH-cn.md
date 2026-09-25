@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/ZH-cn.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/%E5%BC%80%E5%8F%91%E5%B7%B2%E6%9A%82%E5%81%9C-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/%E7%8A%B6%E6%80%81-%E9%A2%84--alpha-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — 是放在现代外壳中的 Source Filmmaker 编辑器：同样的内容、同样的会话格式、同样的数据模型，界面延续 Steam 库与 Unreal Engine 5 编辑器的风格。</p>
+
+> [!IMPORTANT]
+> **开发已暂停。** 仓库仍然开放：代码、文档和历史都在，下文所述的一切都按所述运行。完成度数字、issue 和路线图反映的是暂停时的状态。
 
 ---
 

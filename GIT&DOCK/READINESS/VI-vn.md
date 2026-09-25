@@ -15,6 +15,9 @@
 
 <p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 15%</b></p>
 
+> [!IMPORTANT]
+> **Việc phát triển đang tạm dừng.** Kho mã vẫn mở: mã nguồn, tài liệu và lịch sử đều còn đây, và mọi điều mô tả bên dưới hoạt động đúng như mô tả. Các con số mức hoàn thiện, issues và lộ trình phản ánh trạng thái tại thời điểm tạm dừng.
+
 Mỗi mảng có thể mở ra: cái gì đã chạy và cái gì chưa có. Phần trăm là ước lượng so với khả năng của SFM.
 
 Mỗi phần trăm đo **một mảng so với những gì SFM làm trong mảng đó**, không phải so với dự định. Con số tổng đo toàn bộ sản phẩm bên cạnh SFM nên thấp hơn nhiều: các định dạng đã đọc đầy đủ, nhưng là Source Filmmaker nghĩa là khoảng 350 kiểu phần tử `Dme*`, trong đó engine biết 23.

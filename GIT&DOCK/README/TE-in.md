@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/TE-in.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/%E0%B0%85%E0%B0%AD%E0%B0%BF%E0%B0%B5%E0%B1%83%E0%B0%A6%E0%B1%8D%E0%B0%A7%E0%B0%BF_%E0%B0%A8%E0%B0%BF%E0%B0%B2%E0%B0%BF%E0%B0%AA%E0%B0%BF%E0%B0%B5%E0%B1%87%E0%B0%AF%E0%B0%AC%E0%B0%A1%E0%B0%BF%E0%B0%82%E0%B0%A6%E0%B0%BF-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/%E0%B0%B8%E0%B1%8D%E0%B0%A5%E0%B0%BF%E0%B0%A4%E0%B0%BF-%E0%B0%AA%E0%B1%8D%E0%B0%B0%E0%B1%80--%E0%B0%86%E0%B0%B2%E0%B1%8D%E0%B0%AB%E0%B0%BE-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — ఆధునిక షెల్‌లో Source Filmmaker ఎడిటర్: అదే కంటెంట్, అదే సెషన్ ఫార్మాట్, అదే డేటా మోడల్, Steam లైబ్రరీ మరియు Unreal Engine 5 ఎడిటర్ శైలిలో ఇంటర్‌ఫేస్.</p>
+
+> [!IMPORTANT]
+> **అభివృద్ధి ప్రస్తుతం నిలిపివేయబడింది.** రిపాజిటరీ తెరిచే ఉంటుంది: కోడ్, పత్రాలు, చరిత్ర అన్నీ ఇక్కడే ఉన్నాయి, క్రింద వివరించినదంతా వివరించినట్లే పనిచేస్తుంది. సంసిద్ధత సంఖ్యలు, issues మరియు రోడ్‌మ్యాప్ విరామ సమయంలోని స్థితిని చూపుతాయి.
 
 ---
 

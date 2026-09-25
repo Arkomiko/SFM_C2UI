@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/OR-in.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/%E0%AC%AC%E0%AC%BF%E0%AC%95%E0%AC%BE%E0%AC%B6_%E0%AC%B8%E0%AD%8D%E0%AC%A5%E0%AC%97%E0%AC%BF%E0%AC%A4-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/%E0%AC%B8%E0%AD%8D%E0%AC%A5%E0%AC%BF%E0%AC%A4%E0%AC%BF-%E0%AC%AA%E0%AD%8D%E0%AC%B0%E0%AC%BF--%E0%AC%86%E0%AC%B2%E0%AC%AB%E0%AC%BE-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — ଆଧୁନିକ ଶେଲରେ Source Filmmaker ଏଡିଟର: ସମାନ କଣ୍ଟେଣ୍ଟ, ସମାନ ସେସନ ଫର୍ମାଟ, ସମାନ ଡାଟା ମଡେଲ, ଏବଂ Steam ଲାଇବ୍ରେରୀ ଓ Unreal Engine 5 ଏଡିଟର ଶୈଳୀର ଇଣ୍ଟରଫେସ।</p>
+
+> [!IMPORTANT]
+> **ବିକାଶ ବର୍ତ୍ତମାନ ସ୍ଥଗିତ ରହିଛି।** ଭଣ୍ଡାର ଖୋଲା ରହିବ: କୋଡ୍, ଦଲିଲ ଓ ଇତିହାସ ସବୁ ଏଠାରେ ଅଛି, ଏବଂ ତଳେ ବର୍ଣ୍ଣିତ ସବୁ ବର୍ଣ୍ଣନା ଅନୁଯାୟୀ ଚାଲେ। ପ୍ରସ୍ତୁତିର ସଂଖ୍ୟା, issues ଓ ରୋଡ୍‌ମ୍ୟାପ୍ ସ୍ଥଗିତ ହେବା ସମୟର ଅବସ୍ଥା ଦେଖାଏ।
 
 ---
 

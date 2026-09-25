@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/AR-sa.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/%D8%A7%D9%84%D8%AA%D8%B7%D9%88%D9%8A%D8%B1_%D9%85%D8%AA%D9%88%D9%82%D9%81_%D9%85%D8%A4%D9%82%D8%AA%D9%8B%D8%A7-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/%D8%A7%D9%84%D8%AD%D8%A7%D9%84%D8%A9-%D9%82%D8%A8%D9%84--%D8%A3%D9%84%D9%81%D8%A7-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — محرّر Source Filmmaker في غلاف حديث: المحتوى نفسه، صيغة الجلسات نفسها، نموذج البيانات نفسه، وواجهة بروح مكتبة Steam ومحرّر Unreal Engine 5.</p>
+
+> [!IMPORTANT]
+> **التطوير متوقف مؤقتًا.** يبقى المستودع مفتوحًا: الشيفرة والوثائق والتاريخ كلها هنا، وكل ما يوصف أدناه يعمل كما هو موصوف. أرقام الجاهزية والمسائل وخارطة الطريق تعكس الحال لحظة التوقف.
 
 ---
 

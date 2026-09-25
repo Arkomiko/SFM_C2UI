@@ -12,6 +12,7 @@
 <p align="center"><img src="../assets/banner/PT-pt.png" alt="C2UI" width="100%"></p>
 
 <p align="center">
+  <img alt="paused" src="https://img.shields.io/badge/desenvolvimento_em_pausa-8a8f98?style=flat-square">
   <img alt="status" src="https://img.shields.io/badge/estado-pr%C3%A9--alfa-e07b39?style=flat-square">
   <img alt="python" src="https://img.shields.io/badge/python-3.13-3776ab?style=flat-square&logo=python&logoColor=white">
   <img alt="qt" src="https://img.shields.io/badge/Qt-6%20%2F%20PySide6-41cd52?style=flat-square&logo=qt&logoColor=white">
@@ -22,6 +23,9 @@
 </p>
 
 <p align="center"><b>C2UI</b> — <i>Custom to User Interface</i> — o editor do Source Filmmaker numa interface moderna: o mesmo conteúdo, o mesmo formato de sessão, o mesmo modelo de dados, com um aspeto no espírito da biblioteca do Steam e do editor do Unreal Engine 5.</p>
+
+> [!IMPORTANT]
+> **O desenvolvimento está em pausa.** O repositório continua aberto: o código, a documentação e o histórico estão cá, e tudo o que se descreve abaixo funciona como descrito. Os números de prontidão, as questões e o roteiro refletem o estado no momento da pausa.
 
 ---
 
