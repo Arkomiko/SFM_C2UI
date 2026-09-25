@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/UK-ua.svg" alt="Готовність" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Загальна готовність до релізу: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>Загальна готовність до релізу: 23%</b></p>
 
 > [!IMPORTANT]
 > **Розробку призупинено.** Репозиторій лишається відкритим: код, документація та історія на місці, усе описане нижче працює так, як описано. Числа готовності, issues і дорожня карта відображають стан на момент паузи.

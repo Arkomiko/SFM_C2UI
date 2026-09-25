@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/TE-in.svg" alt="సిద్ధత" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>విడుదలకు మొత్తం సిద్ధత: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>విడుదలకు మొత్తం సిద్ధత: 23%</b></p>
 
 > [!IMPORTANT]
 > **అభివృద్ధి ప్రస్తుతం నిలిపివేయబడింది.** రిపాజిటరీ తెరిచే ఉంటుంది: కోడ్, పత్రాలు, చరిత్ర అన్నీ ఇక్కడే ఉన్నాయి, క్రింద వివరించినదంతా వివరించినట్లే పనిచేస్తుంది. సంసిద్ధత సంఖ్యలు, issues మరియు రోడ్‌మ్యాప్ విరామ సమయంలోని స్థితిని చూపుతాయి.

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/DE-de.svg" alt="Reifegrad" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Gesamtreife für eine Veröffentlichung: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>Gesamtreife für eine Veröffentlichung: 23%</b></p>
 
 > [!IMPORTANT]
 > **Die Entwicklung ist pausiert.** Das Repository bleibt offen: Code, Dokumentation und Historie sind vorhanden, und alles unten Beschriebene funktioniert wie beschrieben. Die Bereitschaftszahlen, die Issues und die Roadmap geben den Stand zum Zeitpunkt der Pause wieder.

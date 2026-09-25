@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/EN-en.svg" alt="Readiness" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Overall readiness for release: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>Overall readiness for release: 23%</b></p>
 
 > [!IMPORTANT]
 > **Development is paused.** The repository stays open: the code, the documentation and the history are all here, and everything described below works as described. The readiness figures, the issues and the roadmap reflect the state at the moment of the pause.

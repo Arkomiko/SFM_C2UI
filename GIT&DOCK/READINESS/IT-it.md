@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/IT-it.svg" alt="Stato di avanzamento" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Avanzamento complessivo verso il rilascio: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>Avanzamento complessivo verso il rilascio: 23%</b></p>
 
 > [!IMPORTANT]
 > **Lo sviluppo è in pausa.** Il repository resta aperto: il codice, la documentazione e la cronologia sono qui, e tutto quanto descritto sotto funziona come descritto. I numeri di avanzamento, le issue e la roadmap riflettono lo stato al momento della pausa.

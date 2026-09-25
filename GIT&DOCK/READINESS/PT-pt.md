@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/PT-pt.svg" alt="Estado" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Prontidão geral para lançamento: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>Prontidão geral para lançamento: 23%</b></p>
 
 > [!IMPORTANT]
 > **O desenvolvimento está em pausa.** O repositório continua aberto: o código, a documentação e o histórico estão cá, e tudo o que se descreve abaixo funciona como descrito. Os números de prontidão, as questões e o roteiro refletem o estado no momento da pausa.

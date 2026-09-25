@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/UZ-uz.svg" alt="Tayyorlik" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Relizga umumiy tayyorlik: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>Relizga umumiy tayyorlik: 23%</b></p>
 
 > [!IMPORTANT]
 > **Ishlanma vaqtincha to'xtatildi.** Ombor ochiq qoladi: kod, hujjatlar va tarix shu yerda, quyida tasvirlangan hamma narsa tasvirlanganidek ishlaydi. Tayyorlik raqamlari, issues va yo'l xaritasi to'xtatilgan paytdagi holatni ko'rsatadi.

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/ZH-cn.svg" alt="完成度" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>整体发布就绪度：15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>整体发布就绪度：23%</b></p>
 
 > [!IMPORTANT]
 > **开发已暂停。** 仓库仍然开放：代码、文档和历史都在，下文所述的一切都按所述运行。完成度数字、issue 和路线图反映的是暂停时的状态。

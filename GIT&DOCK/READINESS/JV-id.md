@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/JV-id.svg" alt="Kesiapan" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Kesiapan sakabèhé kanggo rilis: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>Kesiapan sakabèhé kanggo rilis: 23%</b></p>
 
 > [!IMPORTANT]
 > **Pangembangan lagi dilereni.** Repositori tetep mbukak: kode, dokumentasi lan riwayat kabeh ana ing kene, lan kabeh sing diterangake ing ngisor iki mlaku kaya sing diterangake. Angka kesiapan, issues lan roadmap nuduhake kahanan nalika dilereni.

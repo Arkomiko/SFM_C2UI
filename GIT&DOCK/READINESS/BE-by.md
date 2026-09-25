@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/BE-by.svg" alt="Гатоўнасць" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Агульная гатоўнасць да рэлізу: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>Агульная гатоўнасць да рэлізу: 23%</b></p>
 
 > [!IMPORTANT]
 > **Распрацоўка прыпынена.** Рэпазіторый застаецца адкрытым: код, дакументацыя і гісторыя на месцы, усё апісанае ніжэй працуе так, як апісана. Лічбы гатоўнасці, issues і дарожная карта адлюстроўваюць стан на момант паўзы.

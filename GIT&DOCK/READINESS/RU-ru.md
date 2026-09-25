@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/RU-ru.svg" alt="Готовность" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Общая готовность к релизу: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>Общая готовность к релизу: 23%</b></p>
 
 > [!IMPORTANT]
 > **Разработка приостановлена.** Репозиторий остаётся открытым: код, документация и история на месте, всё описанное ниже работает так, как описано. Числа готовности, issues и дорожная карта отражают состояние на момент паузы.

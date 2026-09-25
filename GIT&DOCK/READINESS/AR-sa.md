@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/AR-sa.svg" alt="الجاهزية" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>الجاهزية الإجمالية للإصدار: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>الجاهزية الإجمالية للإصدار: 23%</b></p>
 
 > [!IMPORTANT]
 > **التطوير متوقف مؤقتًا.** يبقى المستودع مفتوحًا: الشيفرة والوثائق والتاريخ كلها هنا، وكل ما يوصف أدناه يعمل كما هو موصوف. أرقام الجاهزية والمسائل وخارطة الطريق تعكس الحال لحظة التوقف.

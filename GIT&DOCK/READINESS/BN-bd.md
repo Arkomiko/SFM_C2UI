@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/BN-bd.svg" alt="প্রস্তুতি" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>রিলিজের জন্য সামগ্রিক প্রস্তুতি: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>রিলিজের জন্য সামগ্রিক প্রস্তুতি: 23%</b></p>
 
 > [!IMPORTANT]
 > **উন্নয়ন আপাতত স্থগিত।** রিপোজিটরি খোলা থাকছে: কোড, নথি ও ইতিহাস সবই আছে, এবং নিচে যা বর্ণনা করা হয়েছে তা বর্ণনামতোই কাজ করে। প্রস্তুতির সংখ্যা, issues ও রোডম্যাপ বিরতির মুহূর্তের অবস্থা দেখায়।

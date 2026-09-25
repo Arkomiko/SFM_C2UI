@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/ES-es.svg" alt="Estado" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Preparación general para el lanzamiento: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>Preparación general para el lanzamiento: 23%</b></p>
 
 > [!IMPORTANT]
 > **El desarrollo está en pausa.** El repositorio sigue abierto: el código, la documentación y el historial están aquí, y todo lo descrito más abajo funciona como se describe. Las cifras de preparación, las incidencias y la hoja de ruta reflejan el estado en el momento de la pausa.

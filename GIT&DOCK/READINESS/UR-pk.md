@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/UR-pk.svg" alt="تیاری" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>ریلیز کے لیے مجموعی تیاری: 23%</b></p>
 
 > [!IMPORTANT]
 > **ترقی فی الحال روک دی گئی ہے۔** ریپازٹری کھلی رہتی ہے: کوڈ، دستاویزات اور تاریخ سب یہیں ہیں، اور نیچے بیان کردہ ہر چیز بیان کے مطابق کام کرتی ہے۔ تیاری کے اعداد، issues اور روڈ میپ وقفے کے وقت کی حالت دکھاتے ہیں۔

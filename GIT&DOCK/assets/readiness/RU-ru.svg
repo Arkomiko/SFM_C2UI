@@ -14,7 +14,7 @@
       <stop offset="0" stop-color="#1b2838"/><stop offset="1" stop-color="#121c26"/>
     </linearGradient>
     <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#66c0f4"/><stop offset="1" stop-color="#2f80ed"/>
+      <stop offset="0" stop-color="#e0553f"/><stop offset="1" stop-color="#a32e22"/>
     </linearGradient>
     <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
@@ -28,15 +28,16 @@
   </g>
   <rect x=".5" y=".5" width="959" height="95" rx="10" fill="none" stroke="#2a475e"/>
   <g class="head">
-    <circle class="dot" cx="28" cy="32" r="4" fill="#66c0f4"/>
+    <circle class="dot" cx="28" cy="32" r="4" fill="#e0705f"/>
     <text x="40" y="37" font-size="16" font-weight="700" fill="#e6f0f8" letter-spacing="1">C2UI</text>
     <text x="96" y="37" font-size="12.5" fill="#c7d5e0">Общая готовность</text>
-    <text x="936" y="38" font-size="24" font-weight="700" fill="#66c0f4" text-anchor="end">15%</text>
+    <text x="96" y="86" font-size="10.5" font-weight="600" fill="#e0705f">РАЗРАБОТКА ПРИОСТАНОВЛЕНА</text>
+    <text x="936" y="38" font-size="24" font-weight="700" fill="#e0705f" text-anchor="end">23%</text>
   </g>
   <rect x="24" y="56" width="912" height="16" rx="8" fill="#0e1720"/>
   <g clip-path="url(#track)">
-    <rect x="24" y="56" width="136.8" height="16" rx="8" fill="url(#accent)" class="bar"/>
-    <rect x="24" y="56" width="136.8" height="16" rx="8" fill="url(#shine)" class="shine"/>
+    <rect x="24" y="56" width="209.8" height="16" rx="8" fill="url(#accent)" class="bar"/>
+    <rect x="24" y="56" width="209.8" height="16" rx="8" fill="url(#shine)" class="shine"/>
   </g>
   <g class="head" style="animation-delay:.4s">
     <text x="24" y="86" font-size="10.5" fill="#8fa5b8">398 тестов</text>

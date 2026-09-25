@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/FR-fr.svg" alt="Avancement" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Avancement global vers la sortie : 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>Avancement global vers la sortie : 23%</b></p>
 
 > [!IMPORTANT]
 > **Le développement est en pause.** Le dépôt reste ouvert : le code, la documentation et l'historique sont là, et tout ce qui est décrit plus bas fonctionne comme décrit. Les chiffres d'avancement, les tickets et la feuille de route reflètent l'état au moment de la pause.

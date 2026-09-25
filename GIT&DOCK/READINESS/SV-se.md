@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/SV-se.svg" alt="Mognad" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Total mognad för release: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>Total mognad för release: 23%</b></p>
 
 > [!IMPORTANT]
 > **Utvecklingen är pausad.** Förrådet förblir öppet: koden, dokumentationen och historiken finns kvar, och allt som beskrivs nedan fungerar som beskrivet. Färdighetssiffrorna, ärendena och färdplanen visar läget vid pausen.

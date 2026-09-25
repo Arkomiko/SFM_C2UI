@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/VI-vn.svg" alt="Mức sẵn sàng" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>Mức sẵn sàng phát hành tổng thể: 23%</b></p>
 
 > [!IMPORTANT]
 > **Việc phát triển đang tạm dừng.** Kho mã vẫn mở: mã nguồn, tài liệu và lịch sử đều còn đây, và mọi điều mô tả bên dưới hoạt động đúng như mô tả. Các con số mức hoàn thiện, issues và lộ trình phản ánh trạng thái tại thời điểm tạm dừng.

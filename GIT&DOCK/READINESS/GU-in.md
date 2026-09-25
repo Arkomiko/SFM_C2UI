@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/GU-in.svg" alt="તૈયારી" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>રિલીઝ માટે એકંદર તૈયારી: 23%</b></p>
 
 > [!IMPORTANT]
 > **વિકાસ હાલ અટકાવાયો છે.** રિપોઝિટરી ખુલ્લી રહે છે: કોડ, દસ્તાવેજો અને ઇતિહાસ બધું અહીં જ છે, અને નીચે વર્ણવેલું બધું વર્ણવ્યા પ્રમાણે ચાલે છે. તૈયારીના આંકડા, issues અને રોડમેપ વિરામની ક્ષણની સ્થિતિ બતાવે છે.

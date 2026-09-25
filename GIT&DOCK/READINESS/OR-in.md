@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/OR-in.svg" alt="ପ୍ରସ୍ତୁତି" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>ରିଲିଜ ପାଇଁ ସମୁଦାୟ ପ୍ରସ୍ତୁତି: 23%</b></p>
 
 > [!IMPORTANT]
 > **ବିକାଶ ବର୍ତ୍ତମାନ ସ୍ଥଗିତ ରହିଛି।** ଭଣ୍ଡାର ଖୋଲା ରହିବ: କୋଡ୍, ଦଲିଲ ଓ ଇତିହାସ ସବୁ ଏଠାରେ ଅଛି, ଏବଂ ତଳେ ବର୍ଣ୍ଣିତ ସବୁ ବର୍ଣ୍ଣନା ଅନୁଯାୟୀ ଚାଲେ। ପ୍ରସ୍ତୁତିର ସଂଖ୍ୟା, issues ଓ ରୋଡ୍‌ମ୍ୟାପ୍ ସ୍ଥଗିତ ହେବା ସମୟର ଅବସ୍ଥା ଦେଖାଏ।

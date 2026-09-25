@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/JA-jp.svg" alt="完成度" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>リリースへの全体的な完成度: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>リリースへの全体的な完成度: 23%</b></p>
 
 > [!IMPORTANT]
 > **開発は一時停止しています。** リポジトリは公開のままです。コード、ドキュメント、履歴はそのままで、以下に書かれていることは書かれたとおりに動きます。完成度の数字、issue、ロードマップは停止時点の状態を示しています。

@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/SL-si.svg" alt="Pripravljenost" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>Skupna pripravljenost za izdajo: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>Skupna pripravljenost za izdajo: 23%</b></p>
 
 > [!IMPORTANT]
 > **Razvoj je začasno ustavljen.** Repozitorij ostaja odprt: koda, dokumentacija in zgodovina so tu, vse spodaj opisano deluje tako, kot je opisano. Številke pripravljenosti, prijave in načrt odražajo stanje ob ustavitvi.

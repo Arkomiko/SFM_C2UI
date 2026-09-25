@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/HI-in.svg" alt="तैयारी" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>रिलीज़ के लिए कुल तैयारी: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>रिलीज़ के लिए कुल तैयारी: 23%</b></p>
 
 > [!IMPORTANT]
 > **विकास फ़िलहाल रोका गया है।** रिपॉज़िटरी खुली रहती है: कोड, दस्तावेज़ और इतिहास सब यहीं हैं, और नीचे बताया गया सब कुछ वैसे ही काम करता है। तैयारी के आँकड़े, issues और रोडमैप रुकने के समय की स्थिति दिखाते हैं।

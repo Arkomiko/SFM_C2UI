@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/ML-in.svg" alt="തയ്യാറെടുപ്പ്" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>റിലീസിനുള്ള മൊത്തം തയ്യാറെടുപ്പ്: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>റിലീസിനുള്ള മൊത്തം തയ്യാറെടുപ്പ്: 23%</b></p>
 
 > [!IMPORTANT]
 > **വികസനം താൽക്കാലികമായി നിർത്തിവച്ചിരിക്കുന്നു.** ശേഖരം തുറന്നിരിക്കും: കോഡും രേഖകളും ചരിത്രവും എല്ലാം ഇവിടെയുണ്ട്, താഴെ വിവരിച്ചതെല്ലാം വിവരിച്ചതുപോലെ പ്രവർത്തിക്കുന്നു. സന്നദ്ധതാ കണക്കുകളും issues-ഉം റോഡ്‌മാപ്പും നിർത്തിയ നിമിഷത്തിലെ അവസ്ഥ കാണിക്കുന്നു.

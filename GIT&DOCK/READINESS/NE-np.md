@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/NE-np.svg" alt="तयारी" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>रिलिजका लागि समग्र तयारी: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>रिलिजका लागि समग्र तयारी: 23%</b></p>
 
 > [!IMPORTANT]
 > **विकास हाल रोकिएको छ।** भण्डार खुला नै रहन्छ: कोड, कागजात र इतिहास सबै यहीँ छन्, र तल वर्णन गरिएको सबै वर्णनअनुसार नै चल्छ। तयारीका अंक, issues र रोडम्यापले रोकिएको बेलाको अवस्था देखाउँछन्।

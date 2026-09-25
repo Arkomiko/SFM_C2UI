@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/KO-kr.svg" alt="완성도" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>릴리스 전체 준비도: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>릴리스 전체 준비도: 23%</b></p>
 
 > [!IMPORTANT]
 > **개발이 일시 중단되었습니다.** 저장소는 계속 열려 있습니다. 코드, 문서, 기록이 모두 그대로 있고 아래에 적힌 내용은 적힌 대로 동작합니다. 완성도 수치와 이슈, 로드맵은 중단 시점의 상태를 보여 줍니다.

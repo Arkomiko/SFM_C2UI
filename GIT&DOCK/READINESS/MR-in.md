@@ -13,7 +13,7 @@
 
 <p align="center"><img src="../assets/readiness/areas/MR-in.svg" alt="तयारी" width="100%"></p>
 
-<p align="center"><img alt="15%" src="https://img.shields.io/badge/15%25-e07b39?style=flat-square"> <b>रिलीजसाठी एकूण तयारी: 15%</b></p>
+<p align="center"><img alt="23%" src="https://img.shields.io/badge/23%25-a32e22?style=flat-square"> <b>रिलीजसाठी एकूण तयारी: 23%</b></p>
 
 > [!IMPORTANT]
 > **विकास तात्पुरता थांबवला आहे.** रिपॉझिटरी खुली राहते: कोड, दस्तऐवज आणि इतिहास सगळे इथेच आहेत, आणि खाली वर्णन केलेले सर्व वर्णनाप्रमाणेच चालते. तयारीचे आकडे, issues आणि रोडमॅप थांबण्याच्या क्षणीची स्थिती दाखवतात.
