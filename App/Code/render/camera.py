@@ -12,7 +12,7 @@ it from the model's shape.
     cam = OrbitCamera()
     cam.frame(model.bounds())          # fit the model, guess its up axis
     cam.orbit(dx, dy); cam.dolly(steps); cam.pan(dx, dy, height)
-    cam.look(dx, dy); cam.fly(forward, right, up)
+    cam.look(dx, dy); cam.fly(forward, right, up); cam.tilt(dx)
     cam.view(), cam.projection(aspect)
 """
 from __future__ import annotations
@@ -38,6 +38,8 @@ class OrbitCamera:
     """The viewport camera: orbit about a target or fly freely."""
     def __init__(self) -> None:
         self.target: Vec3 = (0.0, 0.0, 0.0)
+        #: tilt about the view direction, radians (SFM's R + mouse)
+        self.roll = 0.0
         self.distance = 100.0
         self.yaw = math.radians(35.0)
         self.pitch = math.radians(20.0)
@@ -122,7 +124,22 @@ class OrbitCamera:
 
     def view(self) -> Mat4:
         """The view matrix."""
-        return look_at(self.eye(), self.target, self.up)
+        return look_at(self.eye(), self.target, self.rolled_up())
+
+    def rolled_up(self) -> Vec3:
+        """The up vector with `roll` applied: turned about the view direction."""
+        up = self.up
+        if abs(self.roll) < 1e-9:
+            return up
+        forward = normalize(sub(self.target, self.eye()))
+        cos_a, sin_a = math.cos(self.roll), math.sin(self.roll)
+        # Rodrigues about the view direction
+        return normalize(add(add(scale(up, cos_a), scale(cross(forward, up), sin_a)),
+                             scale(forward, dot(forward, up) * (1.0 - cos_a))))
+
+    def tilt(self, dx: float, speed: float = 0.004) -> None:
+        """Roll the camera, as holding R and moving the mouse sideways does in SFM."""
+        self.roll += dx * speed
 
     def depth_range(self) -> Tuple[float, float]:
         """Near and far clip distances.  Both scale with the distance to the target,
@@ -171,9 +188,10 @@ class OrbitCamera:
         self.target = sub(eye, offset)                    # keep the eye where it was
 
     def screen_axes(self) -> Tuple[Vec3, Vec3, Vec3]:
-        """Forward, right and up as the viewer sees them."""
+        """Forward, right and up as the viewer sees them, roll included."""
         forward = normalize(sub(self.target, self.eye()))
-        right = normalize(cross(forward, self.up))
+        up = self.rolled_up()
+        right = normalize(cross(forward, up))
         return forward, right, cross(right, forward)
 
     def fly(self, forward: float, right: float, up: float) -> None:

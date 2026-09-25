@@ -1,17 +1,21 @@
 """
 The viewport widget: a Renderer inside a QOpenGLWidget with SFM's controls.
 
-    right drag             look around from where the camera is
-    right + W A S D        fly forward / left / back / right (Z or Q down, X or E up;
+Source Filmmaker's own scheme, button for button:
+
+    left drag              look around from where the camera is
+    left + W A S D         fly forward / left / back / right (Z down, X up;
                            Shift faster, Ctrl slower)
-    middle drag            pan
-    Alt + left drag        orbit the target
-    wheel                  dolly
+    left + R + mouse       roll the camera
     left click             pick the bone under the pointer (instance, then bone)
     left drag on an axis   move or rotate along the manipulator
+    Alt + left drag        orbit the target
+    Alt + middle drag      pan (the middle button alone pans too)
+    Alt + right drag       dolly
+    wheel                  dolly
     F3                     wireframe
-    T / R                  manipulator: move / rotate
-    X / Y / Z              set the up axis
+    T / Y                  manipulator: move / rotate
+    Ctrl + X / Y / Z       set the up axis (Z and X belong to flying)
 
 `F` (frame the selection) and the playback keys are the window's shortcuts.
 
@@ -83,6 +87,10 @@ class Viewport(QOpenGLWidget):
         self.manipulator_pixels = 90
         # SFM's flight: keys held while the right button is down move the camera
         self._keys_down: set = set()
+        #: what a drag started with the mouse is doing: look, orbit, pan, dolly or None
+        self._drag_mode: Optional[str] = None
+        #: whether the camera flew while the button was down - then releasing is not a click
+        self._flew = False
         self._fly_timer = QTimer(self)
         self._fly_timer.setInterval(16)
         self._fly_timer.timeout.connect(self._fly_tick)
@@ -242,32 +250,43 @@ class Viewport(QOpenGLWidget):
                     best, best_d = heaviest, d
         return best
 
-    # -- input: SFM's scheme -------------------------------------------------------
-    #   left click      select what is under the cursor (a bone of a model)
-    #   left drag       the manipulator, when the press lands on it
-    #   right drag      look around from where the camera is; hold it and fly with
-    #                   W A S D (forward, left, back, right), Z / X (down, up),
-    #                   Shift faster, Ctrl slower
-    #   middle drag     pan;  Alt + left drag  orbit the target;  wheel  dolly
+    # -- input: Source Filmmaker's scheme -------------------------------------------
+    #   left drag       look around, and fly with W A S D / Z X while it is held;
+    #                   R and the mouse roll.  A left press on a manipulator axis
+    #                   drags that instead, and a left click that did not move picks
+    #   Alt + left      orbit the target;  Alt + middle (or middle) pan;
+    #   Alt + right     dolly;  wheel  dolly
     def mousePressEvent(self, event) -> None:
         pos = event.position().toPoint()
         self._last = pos
         self._press = pos
         self._dragged = False
         self.setFocus()
-        if event.button() == Qt.LeftButton and not (event.modifiers() & Qt.AltModifier):
+        alt = bool(event.modifiers() & Qt.AltModifier)
+        # what the drag does is decided when it starts, not on every move: a modifier
+        # released mid-drag must not change the gesture under the hand
+        self._drag_mode = None
+        self._flew = False
+        if event.button() == Qt.LeftButton and not alt:
             axis = self.manipulator.hit(pos.x(), pos.y(), self.project, self._manipulator_size())
             if axis is not None:
                 self.manipulator.begin(axis, pos.x(), pos.y(), self.project)
                 self.manipulate_begin.emit()
                 self.update()
                 return
-        if event.button() == Qt.RightButton:
+            self._drag_mode = "look"                   # SFM: the left button is the camera
             self._looking = True
             self._fly_clock.start()
             self._fly_timer.start()
             self.camera_taken.emit()
-        elif event.button() == Qt.MiddleButton or (event.button() == Qt.LeftButton and event.modifiers() & Qt.AltModifier):
+        elif event.button() == Qt.LeftButton and alt:
+            self._drag_mode = "orbit"
+            self.camera_taken.emit()
+        elif event.button() == Qt.MiddleButton:
+            self._drag_mode = "pan"
+            self.camera_taken.emit()
+        elif event.button() == Qt.RightButton:
+            self._drag_mode = "dolly"
             self.camera_taken.emit()
 
     def mouseMoveEvent(self, event) -> None:
@@ -283,18 +302,25 @@ class Viewport(QOpenGLWidget):
                 self.manipulated.emit(delta)
             self.update()
             return
-        if buttons & Qt.RightButton:
-            self.camera.look(dx, dy)
-        elif buttons & Qt.MiddleButton:
-            self.camera.pan(dx, dy, self.height())
-        elif buttons & Qt.LeftButton and event.modifiers() & Qt.AltModifier:
+        mode = self._drag_mode
+        if mode == "look":
+            if Qt.Key_R in self._keys_down:            # SFM rolls while R is held
+                self.camera.tilt(dx)
+            else:
+                self.camera.look(dx, dy)
+        elif mode == "orbit":
             self.camera.orbit(dx, dy)
+        elif mode == "pan":
+            self.camera.pan(dx, dy, self.height())
+        elif mode == "dolly":
+            self.camera.dolly(-dy / 20.0)              # Alt + right drag: away and towards
         else:
             return
         self.update()
 
     def mouseReleaseEvent(self, event) -> None:
-        if event.button() == Qt.RightButton:
+        self._drag_mode = None
+        if event.button() == Qt.LeftButton:
             self._looking = False
             if not self._keys_down:
                 self._fly_timer.stop()
@@ -303,7 +329,8 @@ class Viewport(QOpenGLWidget):
             self.manipulate_end.emit()
             self.update()
             return
-        if event.button() == Qt.LeftButton and not self._dragged and not (event.modifiers() & Qt.AltModifier):
+        if (event.button() == Qt.LeftButton and not self._dragged and not self._flew
+                and not (event.modifiers() & Qt.AltModifier)):
             pos = event.position().toPoint()
             instance = self.pick(pos.x(), pos.y())
             bone = self.pick_bone(instance, pos.x(), pos.y()) if instance is not None else -1
@@ -315,14 +342,14 @@ class Viewport(QOpenGLWidget):
         self.update()
 
     def _fly_tick(self) -> None:
-        """Move while the right button is held and flight keys are down."""
+        """Move while the left button is held and flight keys are down."""
         seconds = self._fly_clock.restart() / 1000.0
         if not self._looking or not self._keys_down:
             return
         keys = self._keys_down
         forward = (Qt.Key_W in keys) - (Qt.Key_S in keys)
         right = (Qt.Key_D in keys) - (Qt.Key_A in keys)
-        up = (Qt.Key_X in keys or Qt.Key_E in keys) - (Qt.Key_Z in keys or Qt.Key_Q in keys)
+        up = (Qt.Key_X in keys) - (Qt.Key_Z in keys)    # SFM's own pair
         if not (forward or right or up):
             return
         speed = self.camera.distance * 1.5                # units per second, scaled to the scene
@@ -332,6 +359,7 @@ class Viewport(QOpenGLWidget):
             speed *= 0.25
         step = speed * min(seconds, 0.1)
         self.camera.fly(forward * step, right * step, up * step)
+        self._flew = True                              # a flight is not a click, however still the mouse held
         self.update()
 
     def keyReleaseEvent(self, event) -> None:
@@ -354,10 +382,10 @@ class Viewport(QOpenGLWidget):
         elif key == Qt.Key_T:
             self.manipulator.mode = MOVE
             self.update()
-        elif key == Qt.Key_R:
+        elif key == Qt.Key_Y:
             self.manipulator.mode = ROTATE
             self.update()
-        elif key in (Qt.Key_X, Qt.Key_Y, Qt.Key_Z):
+        elif key in (Qt.Key_X, Qt.Key_Y, Qt.Key_Z) and event.modifiers() & Qt.ControlModifier:
             self.camera.up_axis = {Qt.Key_X: "x", Qt.Key_Y: "y", Qt.Key_Z: "z"}[key]
             self.update()
         else:
